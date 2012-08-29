@@ -1,0 +1,4329 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Javadoc API documentation for Apache Archiva Redback." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico" />
+<title>
+
+  RBACManager
+
+
+| Apache Archiva Redback
+
+</title>
+<link href="../../../../../../assets/doclava-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
+<script src="../../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../../../../assets/doclava-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../../../../../", "../../../../../../assets/");
+</script>
+<script src="../../../../../../assets/doclava-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../../../../../../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">Apache Archiva Redback</span>
+    
+    </div>
+    <div id="headerRight">
+      
+  <div id="search" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../../../../../')"
+                      onkeyup="return search_changed(event, false, '../../../../../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first side-nav-resizable" id="side-nav">
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav">
+              <div id="index-links"><nobr>
+                <a href="../../../../../packages.html"  >Package Index</a> | 
+                <a href="../../../../../classes.html" >Class Index</a></nobr>
+              </div>
+              <ul>
+                
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/authentication/package-summary.html">org.apache.archiva.redback.authentication</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/authentication/keystore/package-summary.html">org.apache.archiva.redback.authentication.keystore</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/authentication/ldap/package-summary.html">org.apache.archiva.redback.authentication.ldap</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/authentication/memory/package-summary.html">org.apache.archiva.redback.authentication.memory</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/authentication/open/package-summary.html">org.apache.archiva.redback.authentication.open</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/authentication/users/package-summary.html">org.apache.archiva.redback.authentication.users</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/authorization/package-summary.html">org.apache.archiva.redback.authorization</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/authorization/open/package-summary.html">org.apache.archiva.redback.authorization.open</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/authorization/rbac/package-summary.html">org.apache.archiva.redback.authorization.rbac</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/authorization/rbac/evaluator/package-summary.html">org.apache.archiva.redback.authorization.rbac.evaluator</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/common/jdo/package-summary.html">org.apache.archiva.redback.common.jdo</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/common/jdo/test/package-summary.html">org.apache.archiva.redback.common.jdo.test</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/common/ldap/package-summary.html">org.apache.archiva.redback.common.ldap</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/common/ldap/connection/package-summary.html">org.apache.archiva.redback.common.ldap.connection</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/configuration/package-summary.html">org.apache.archiva.redback.configuration</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/integration/package-summary.html">org.apache.archiva.redback.integration</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/integration/checks/package-summary.html">org.apache.archiva.redback.integration.checks</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/integration/checks/security/package-summary.html">org.apache.archiva.redback.integration.checks.security</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/integration/checks/xwork/package-summary.html">org.apache.archiva.redback.integration.checks.xwork</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/integration/eXc/package-summary.html">org.apache.archiva.redback.integration.eXc</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/integration/eXc/views/package-summary.html">org.apache.archiva.redback.integration.eXc.views</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/integration/filter/package-summary.html">org.apache.archiva.redback.integration.filter</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/integration/filter/authentication/package-summary.html">org.apache.archiva.redback.integration.filter.authentication</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/integration/filter/authentication/basic/package-summary.html">org.apache.archiva.redback.integration.filter.authentication.basic</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/integration/filter/authentication/digest/package-summary.html">org.apache.archiva.redback.integration.filter.authentication.digest</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/integration/filter/authorization/package-summary.html">org.apache.archiva.redback.integration.filter.authorization</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/integration/interceptor/package-summary.html">org.apache.archiva.redback.integration.interceptor</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/integration/mail/package-summary.html">org.apache.archiva.redback.integration.mail</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/integration/model/package-summary.html">org.apache.archiva.redback.integration.model</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/integration/reports/package-summary.html">org.apache.archiva.redback.integration.reports</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/integration/role/package-summary.html">org.apache.archiva.redback.integration.role</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/integration/security/role/package-summary.html">org.apache.archiva.redback.integration.security.role</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/integration/taglib/jsp/package-summary.html">org.apache.archiva.redback.integration.taglib.jsp</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/integration/util/package-summary.html">org.apache.archiva.redback.integration.util</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/jsecurity/package-summary.html">org.apache.archiva.redback.jsecurity</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/keys/package-summary.html">org.apache.archiva.redback.keys</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/keys/cached/package-summary.html">org.apache.archiva.redback.keys.cached</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/keys/jdo/package-summary.html">org.apache.archiva.redback.keys.jdo</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/keys/jdo/io/stax/package-summary.html">org.apache.archiva.redback.keys.jdo.io.stax</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/keys/memory/package-summary.html">org.apache.archiva.redback.keys.memory</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/management/package-summary.html">org.apache.archiva.redback.management</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/policy/package-summary.html">org.apache.archiva.redback.policy</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/policy/encoders/package-summary.html">org.apache.archiva.redback.policy.encoders</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/policy/rules/package-summary.html">org.apache.archiva.redback.policy.rules</a></li>
+    <li class="selected api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/rbac/package-summary.html">org.apache.archiva.redback.rbac</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/rbac/cached/package-summary.html">org.apache.archiva.redback.rbac.cached</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/rbac/jdo/package-summary.html">org.apache.archiva.redback.rbac.jdo</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/rbac/jdo/io/stax/package-summary.html">org.apache.archiva.redback.rbac.jdo.io.stax</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/rbac/memory/package-summary.html">org.apache.archiva.redback.rbac.memory</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/rest/api/model/package-summary.html">org.apache.archiva.redback.rest.api.model</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/rest/api/services/package-summary.html">org.apache.archiva.redback.rest.api.services</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/rest/services/package-summary.html">org.apache.archiva.redback.rest.services</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/rest/services/interceptors/package-summary.html">org.apache.archiva.redback.rest.services.interceptors</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/rest/services/utils/package-summary.html">org.apache.archiva.redback.rest.services.utils</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/role/package-summary.html">org.apache.archiva.redback.role</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/role/model/package-summary.html">org.apache.archiva.redback.role.model</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/role/model/io/stax/package-summary.html">org.apache.archiva.redback.role.model.io.stax</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/role/processor/package-summary.html">org.apache.archiva.redback.role.processor</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/role/template/package-summary.html">org.apache.archiva.redback.role.template</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/role/util/package-summary.html">org.apache.archiva.redback.role.util</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/role/validator/package-summary.html">org.apache.archiva.redback.role.validator</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/struts2/action/package-summary.html">org.apache.archiva.redback.struts2.action</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/struts2/action/admin/package-summary.html">org.apache.archiva.redback.struts2.action.admin</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/struts2/checks/package-summary.html">org.apache.archiva.redback.struts2.checks</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/struts2/interceptor/package-summary.html">org.apache.archiva.redback.struts2.interceptor</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/struts2/model/package-summary.html">org.apache.archiva.redback.struts2.model</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/struts2/result/package-summary.html">org.apache.archiva.redback.struts2.result</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/system/package-summary.html">org.apache.archiva.redback.system</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/system/check/package-summary.html">org.apache.archiva.redback.system.check</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/tests/package-summary.html">org.apache.archiva.redback.tests</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/tests/utils/package-summary.html">org.apache.archiva.redback.tests.utils</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/users/package-summary.html">org.apache.archiva.redback.users</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/users/cached/package-summary.html">org.apache.archiva.redback.users.cached</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/users/configurable/package-summary.html">org.apache.archiva.redback.users.configurable</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/users/jdo/package-summary.html">org.apache.archiva.redback.users.jdo</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/users/jdo/io/stax/package-summary.html">org.apache.archiva.redback.users.jdo.io.stax</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/users/ldap/package-summary.html">org.apache.archiva.redback.users.ldap</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/users/ldap/ctl/package-summary.html">org.apache.archiva.redback.users.ldap.ctl</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/users/ldap/service/package-summary.html">org.apache.archiva.redback.users.ldap.service</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/users/memory/package-summary.html">org.apache.archiva.redback.users.memory</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/users/memory/util/package-summary.html">org.apache.archiva.redback.users.memory.util</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../org/apache/archiva/redback/users/provider/test/package-summary.html">org.apache.archiva.redback.users.provider.test</a></li>
+              </ul><br/>
+            </div> <!-- end packages -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav">
+            <ul>
+              
+    <li><h2>Interfaces</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a></li>
+          <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html">RBACManager</a></li>
+          <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManagerListener.html">RBACManagerListener</a></li>
+          <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a></li>
+          <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a></li>
+          <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/rbac/AbstractRBACManager.html">AbstractRBACManager</a></li>
+          <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/rbac/AbstractRole.html">AbstractRole</a></li>
+          <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/rbac/AbstractUserAssignment.html">AbstractUserAssignment</a></li>
+          <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/rbac/RBACObjectAssertions.html">RBACObjectAssertions</a></li>
+          <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/rbac/TemplatedRole.html">TemplatedRole</a></li>
+      </ul>
+    </li>
+              
+              
+              
+    <li><h2>Exceptions</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></li>
+          <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectInvalidException.html">RbacObjectInvalidException</a></li>
+          <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></li>
+          <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/rbac/RbacPermanentException.html">RbacPermanentException</a></li>
+          <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/rbac/RbacSecurityViolation.html">RbacSecurityViolation</a></li>
+      </ul>
+    </li>
+              
+            </ul><br/>
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none">
+          <div id="index-links"><nobr>
+            <a href="../../../../../packages.html"  >Package Index</a> | 
+            <a href="../../../../../classes.html" >Class Index</a></nobr>
+          </div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+    </div> <!-- end side-nav -->
+    <script>
+      if (!isMobile) {
+        $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../../");
+        } else {
+          addLoadEvent(function() {
+            scrollIntoView("packages-nav");
+            scrollIntoView("classes-nav");
+          });
+        }
+        $("#swapper").css({borderBottom:"2px solid #aaa"});
+      } else {
+        swapNav(); // tree view should be used on mobile
+      }
+    </script>
+
+
+
+<div class="g-unit" id="doc-content">
+
+<div id="api-info-block">
+
+
+
+
+<div class="sum-details-links">
+
+
+Summary:
+
+
+
+
+
+
+
+
+
+
+
+  <a href="#pubmethods">Methods</a>
+  
+
+
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    interface
+<h1>RBACManager</h1>
+
+
+
+  
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+         	
+        <td colspan="1" class="jd-inheritance-class-cell">org.apache.archiva.redback.rbac.RBACManager</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+
+
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-indirect" class="jd-expando-trigger closed"
+          ><img id="subclasses-indirect-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Indirect Subclasses
+
+  <div id="subclasses-indirect">
+      <div id="subclasses-indirect-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../../org/apache/archiva/redback/rbac/AbstractRBACManager.html">AbstractRBACManager</a>,
+            
+              <a href="../../../../../org/apache/archiva/redback/rbac/cached/CachedRbacManager.html">CachedRbacManager</a>,
+            
+              <a href="../../../../../org/apache/archiva/redback/rbac/jdo/JdoRbacManager.html">JdoRbacManager</a>,
+            
+              <a href="../../../../../org/apache/archiva/redback/rbac/memory/MemoryRbacManager.html">MemoryRbacManager</a>
+            
+          
+      </div>
+      <div id="subclasses-indirect-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../org/apache/archiva/redback/rbac/AbstractRBACManager.html">AbstractRBACManager</a></td>
+              <td class="jd-descrcol" width="100%">AbstractRBACManager&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../org/apache/archiva/redback/rbac/cached/CachedRbacManager.html">CachedRbacManager</a></td>
+              <td class="jd-descrcol" width="100%">CachedRbacManager is a wrapped RBACManager with caching.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../org/apache/archiva/redback/rbac/jdo/JdoRbacManager.html">JdoRbacManager</a></td>
+              <td class="jd-descrcol" width="100%">JdoRbacManager:&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../org/apache/archiva/redback/rbac/memory/MemoryRbacManager.html">MemoryRbacManager</a></td>
+              <td class="jd-descrcol" width="100%">MemoryRbacManager: a very quick and dirty implementation of a rbac store
+ <p/>
+ WARNING: not for actual usage, its not sound - jesse&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p>RBACManager</p>
+
+
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#addChildRole(org.apache.archiva.redback.rbac.Role, org.apache.archiva.redback.rbac.Role)">addChildRole</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a> role, <a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a> childRole)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#addListener(org.apache.archiva.redback.rbac.RBACManagerListener)">addListener</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/RBACManagerListener.html">RBACManagerListener</a> listener)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#createOperation(java.lang.String)">createOperation</a></span>(String name)</nobr>
+        
+        <div class="jd-descrdiv">Creates an implementation specific <code><a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a></code>, or return an existing <code><a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a></code>, depending
+ on the provided <code>name</code> parameter.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#createPermission(java.lang.String)">createPermission</a></span>(String name)</nobr>
+        
+        <div class="jd-descrdiv">Creates an implementation specific <code><a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a></code>, or return an existing <code><a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a></code>, depending
+ on the provided <code>name</code> parameter.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#createPermission(java.lang.String, java.lang.String, java.lang.String)">createPermission</a></span>(String name, String operationName, String resourceIdentifier)</nobr>
+        
+        <div class="jd-descrdiv">Creates an implementation specific <code><a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a></code> with specified <code><a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a></code>,
+ and <code><a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a></code> identifiers.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#createResource(java.lang.String)">createResource</a></span>(String identifier)</nobr>
+        
+        <div class="jd-descrdiv">Creates an implementation specific <code><a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a></code>, or return an existing <code><a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a></code>, depending
+ on the provided <code>identifier</code> parameter.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#createRole(java.lang.String)">createRole</a></span>(String name)</nobr>
+        
+        <div class="jd-descrdiv">Creates an implementation specific <code><a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a></code>, or return an existing <code><a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a></code>, depending
+ on the provided <code>name</code> parameter.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#createUserAssignment(java.lang.String)">createUserAssignment</a></span>(String principal)</nobr>
+        
+        <div class="jd-descrdiv">Creates an implementation specific <code><a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a></code>, or return an existing <code><a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a></code>,
+ depending on the provided <code>identifier</code> parameter.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#eraseDatabase()">eraseDatabase</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            List&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getAllAssignableRoles()">getAllAssignableRoles</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">returns a list of all assignable roles@return</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            List&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getAllOperations()">getAllOperations</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            List&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getAllPermissions()">getAllPermissions</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            List&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getAllResources()">getAllResources</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            List&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getAllRoles()">getAllRoles</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Method getRoles
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            List&lt;<a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getAllUserAssignments()">getAllUserAssignments</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Method getAssignments
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            Map&lt;String,&nbsp;List&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a>&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getAssignedPermissionMap(java.lang.String)">getAssignedPermissionMap</a></span>(String principal)</nobr>
+        
+        <div class="jd-descrdiv">returns a map of assigned permissions keyed off of operation with a list value of Permissions@return</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            Set&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getAssignedPermissions(java.lang.String)">getAssignedPermissions</a></span>(String principal)</nobr>
+        
+        <div class="jd-descrdiv">returns a set of all permissions that are in all active roles for a given
+ principal@return</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            Collection&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getAssignedRoles(java.lang.String)">getAssignedRoles</a></span>(String principal)</nobr>
+        
+        <div class="jd-descrdiv">returns the active roles for a given principal
+ <p/>
+ NOTE: roles that are returned might have have roles themselves, if
+ you just want all permissions then use <code><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getAssignedPermissions(java.lang.String)">getAssignedPermissions(String)</a></code></div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            Collection&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getAssignedRoles(org.apache.archiva.redback.rbac.UserAssignment)">getAssignedRoles</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a> userAssignment)</nobr>
+        
+        <div class="jd-descrdiv">Get the Collection of <code><a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a></code> objects for this UserAssignment.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            Map&lt;String,&nbsp;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getChildRoles(org.apache.archiva.redback.rbac.Role)">getChildRoles</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a> role)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            Set&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getEffectiveRoles(org.apache.archiva.redback.rbac.Role)">getEffectiveRoles</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a> role)</nobr>
+        
+        <div class="jd-descrdiv">Method getEffectiveRoles
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            Collection&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getEffectivelyAssignedRoles(java.lang.String)">getEffectivelyAssignedRoles</a></span>(String principal)</nobr>
+        
+        <div class="jd-descrdiv">Get a list of the effectively assigned roles to the specified user, this includes child roles@return</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            Collection&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getEffectivelyUnassignedRoles(java.lang.String)">getEffectivelyUnassignedRoles</a></span>(String principal)</nobr>
+        
+        <div class="jd-descrdiv">Get a list of all assignable roles that are currently not effectively assigned to the specific user,
+ meaning, not a child of any already granted role@return</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getGlobalResource()">getGlobalResource</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">returns the global resource object@return</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getOperation(java.lang.String)">getOperation</a></span>(String operationName)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            Map&lt;String,&nbsp;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getParentRoles(org.apache.archiva.redback.rbac.Role)">getParentRoles</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a> role)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getPermission(java.lang.String)">getPermission</a></span>(String permissionName)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getResource(java.lang.String)">getResource</a></span>(String resourceIdentifier)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getRole(java.lang.String)">getRole</a></span>(String roleName)</nobr>
+        
+        <div class="jd-descrdiv">@return</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            Map&lt;String,&nbsp;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getRoles(java.util.Collection<java.lang.String>)">getRoles</a></span>(Collection&lt;String&gt; roleNames)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            Collection&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getUnassignedRoles(java.lang.String)">getUnassignedRoles</a></span>(String principal)</nobr>
+        
+        <div class="jd-descrdiv">Get a list of all assignable roles that are currently not assigned to the specific user.@return</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getUserAssignment(java.lang.String)">getUserAssignment</a></span>(String principal)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            List&lt;<a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getUserAssignmentsForRoles(java.util.Collection<java.lang.String>)">getUserAssignmentsForRoles</a></span>(Collection&lt;String&gt; roleNames)</nobr>
+        
+        <div class="jd-descrdiv">Method getUserAssignmentsForRoless
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#operationExists(org.apache.archiva.redback.rbac.Operation)">operationExists</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a> operation)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#operationExists(java.lang.String)">operationExists</a></span>(String name)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#permissionExists(org.apache.archiva.redback.rbac.Permission)">permissionExists</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a> permission)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#permissionExists(java.lang.String)">permissionExists</a></span>(String name)</nobr>
+        
+        <div class="jd-descrdiv">Tests for the existence of a permission.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#removeListener(org.apache.archiva.redback.rbac.RBACManagerListener)">removeListener</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/RBACManagerListener.html">RBACManagerListener</a> listener)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#removeOperation(java.lang.String)">removeOperation</a></span>(String operationName)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#removeOperation(org.apache.archiva.redback.rbac.Operation)">removeOperation</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a> operation)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#removePermission(org.apache.archiva.redback.rbac.Permission)">removePermission</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a> permission)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#removePermission(java.lang.String)">removePermission</a></span>(String permissionName)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#removeResource(org.apache.archiva.redback.rbac.Resource)">removeResource</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a> resource)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#removeResource(java.lang.String)">removeResource</a></span>(String resourceIdentifier)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#removeRole(org.apache.archiva.redback.rbac.Role)">removeRole</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a> role)</nobr>
+        
+        <div class="jd-descrdiv">Method removeRole</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#removeRole(java.lang.String)">removeRole</a></span>(String roleName)</nobr>
+        
+        <div class="jd-descrdiv">Method removeRole</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#removeUserAssignment(org.apache.archiva.redback.rbac.UserAssignment)">removeUserAssignment</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a> userAssignment)</nobr>
+        
+        <div class="jd-descrdiv">Method removeAssignment</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#removeUserAssignment(java.lang.String)">removeUserAssignment</a></span>(String principal)</nobr>
+        
+        <div class="jd-descrdiv">Method removeAssignment</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#resourceExists(org.apache.archiva.redback.rbac.Resource)">resourceExists</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a> resource)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#resourceExists(java.lang.String)">resourceExists</a></span>(String identifier)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#roleExists(java.lang.String)">roleExists</a></span>(String name)</nobr>
+        
+        <div class="jd-descrdiv">Tests for the existence of a Role.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#roleExists(org.apache.archiva.redback.rbac.Role)">roleExists</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a> role)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#saveOperation(org.apache.archiva.redback.rbac.Operation)">saveOperation</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a> operation)</nobr>
+        
+        <div class="jd-descrdiv">Save the new or existing operation to the store.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#savePermission(org.apache.archiva.redback.rbac.Permission)">savePermission</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a> permission)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#saveResource(org.apache.archiva.redback.rbac.Resource)">saveResource</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a> resource)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#saveRole(org.apache.archiva.redback.rbac.Role)">saveRole</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a> role)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#saveRoles(java.util.Collection<org.apache.archiva.redback.rbac.Role>)">saveRoles</a></span>(Collection&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt; roles)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#saveUserAssignment(org.apache.archiva.redback.rbac.UserAssignment)">saveUserAssignment</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a> userAssignment)</nobr>
+        
+        <div class="jd-descrdiv">Method saveUserAssignment</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#userAssignmentExists(java.lang.String)">userAssignmentExists</a></span>(String principal)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#userAssignmentExists(org.apache.archiva.redback.rbac.UserAssignment)">userAssignmentExists</a></span>(<a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a> assignment)</nobr>
+        
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="addChildRole(org.apache.archiva.redback.rbac.Role, org.apache.archiva.redback.rbac.Role)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">addChildRole</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a> role, <a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a> childRole)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectInvalidException.html">RbacObjectInvalidException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="addListener(org.apache.archiva.redback.rbac.RBACManagerListener)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">addListener</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/RBACManagerListener.html">RBACManagerListener</a> listener)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="createOperation(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a>
+      </span>
+      <span class="sympad">createOperation</span>
+      <span class="normal">(String name)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Creates an implementation specific <code><a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a></code>, or return an existing <code><a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a></code>, depending
+ on the provided <code>name</code> parameter.
+ <p/>
+ Note: Be sure to use <code><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#saveOperation(org.apache.archiva.redback.rbac.Operation)">saveOperation(Operation)</a></code> in order to persist any changes to the Role.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>name</td>
+          <td>the name.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the new Operation.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="createPermission(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a>
+      </span>
+      <span class="sympad">createPermission</span>
+      <span class="normal">(String name)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Creates an implementation specific <code><a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a></code>, or return an existing <code><a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a></code>, depending
+ on the provided <code>name</code> parameter.
+ <p/>
+ Note: Be sure to use <code><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#savePermission(org.apache.archiva.redback.rbac.Permission)">savePermission(Permission)</a></code> in order to persist any changes to the Role.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>name</td>
+          <td>the name.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the new Permission.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="createPermission(java.lang.String, java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a>
+      </span>
+      <span class="sympad">createPermission</span>
+      <span class="normal">(String name, String operationName, String resourceIdentifier)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Creates an implementation specific <code><a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a></code> with specified <code><a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a></code>,
+ and <code><a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a></code> identifiers.
+ <p/>
+ Note: Be sure to use <code><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#savePermission(org.apache.archiva.redback.rbac.Permission)">savePermission(Permission)</a></code> in order to persist any changes to the Role.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>name</td>
+          <td>the name.</td>
+        </tr>
+        <tr>
+          <th>operationName</td>
+          <td>the <code><a href="../../../../../org/apache/archiva/redback/rbac/Operation.html#setName(java.lang.String)">setName(String)</a></code> value</td>
+        </tr>
+        <tr>
+          <th>resourceIdentifier</td>
+          <td>the <code><a href="../../../../../org/apache/archiva/redback/rbac/Resource.html#setIdentifier(java.lang.String)">setIdentifier(String)</a></code> value</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the new Permission.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="createResource(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a>
+      </span>
+      <span class="sympad">createResource</span>
+      <span class="normal">(String identifier)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Creates an implementation specific <code><a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a></code>, or return an existing <code><a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a></code>, depending
+ on the provided <code>identifier</code> parameter.
+ <p/>
+ Note: Be sure to use <code><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#saveResource(org.apache.archiva.redback.rbac.Resource)">saveResource(Resource)</a></code> in order to persist any changes to the Role.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>identifier</td>
+          <td>the identifier.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the new Resource.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="createRole(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>
+      </span>
+      <span class="sympad">createRole</span>
+      <span class="normal">(String name)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Creates an implementation specific <code><a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a></code>, or return an existing <code><a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a></code>, depending
+ on the provided <code>name</code> parameter.
+ <p/>
+ Note: Be sure to use <code><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#saveRole(org.apache.archiva.redback.rbac.Role)">saveRole(Role)</a></code> in order to persist any changes to the Role.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>name</td>
+          <td>the name.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the new <code><a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a></code> object.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="createUserAssignment(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a>
+      </span>
+      <span class="sympad">createUserAssignment</span>
+      <span class="normal">(String principal)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Creates an implementation specific <code><a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a></code>, or return an existing <code><a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a></code>,
+ depending on the provided <code>identifier</code> parameter.
+ <p/>
+ Note: Be sure to use <code><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#saveUserAssignment(org.apache.archiva.redback.rbac.UserAssignment)">saveUserAssignment(UserAssignment)</a></code> in order to persist any changes to the Role.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>principal</td>
+          <td>the principal reference to the user.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the new UserAssignment object.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="eraseDatabase()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">eraseDatabase</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getAllAssignableRoles()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        List&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;
+      </span>
+      <span class="sympad">getAllAssignableRoles</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>returns a list of all assignable roles@return</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th></td>
+            <td>RbacManagerException</td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAllOperations()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        List&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a>&gt;
+      </span>
+      <span class="sympad">getAllOperations</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAllPermissions()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        List&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a>&gt;
+      </span>
+      <span class="sympad">getAllPermissions</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAllResources()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        List&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a>&gt;
+      </span>
+      <span class="sympad">getAllResources</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAllRoles()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        List&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;
+      </span>
+      <span class="sympad">getAllRoles</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Method getRoles
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAllUserAssignments()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        List&lt;<a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a>&gt;
+      </span>
+      <span class="sympad">getAllUserAssignments</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Method getAssignments
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAssignedPermissionMap(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        Map&lt;String,&nbsp;List&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a>&gt;&gt;
+      </span>
+      <span class="sympad">getAssignedPermissionMap</span>
+      <span class="normal">(String principal)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>returns a map of assigned permissions keyed off of operation with a list value of Permissions@return</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th></td>
+            <td>RbacObjectNotFoundException</td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAssignedPermissions(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        Set&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a>&gt;
+      </span>
+      <span class="sympad">getAssignedPermissions</span>
+      <span class="normal">(String principal)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>returns a set of all permissions that are in all active roles for a given
+ principal@return</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th></td>
+            <td>RbacObjectNotFoundException</td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAssignedRoles(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        Collection&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;
+      </span>
+      <span class="sympad">getAssignedRoles</span>
+      <span class="normal">(String principal)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>returns the active roles for a given principal
+ <p/>
+ NOTE: roles that are returned might have have roles themselves, if
+ you just want all permissions then use <code><a href="../../../../../org/apache/archiva/redback/rbac/RBACManager.html#getAssignedPermissions(java.lang.String)">getAssignedPermissions(String)</a></code></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Collection of <code><a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a></code> objects.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th></td>
+            <td>RbacObjectNotFoundException</td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAssignedRoles(org.apache.archiva.redback.rbac.UserAssignment)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        Collection&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;
+      </span>
+      <span class="sympad">getAssignedRoles</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a> userAssignment)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get the Collection of <code><a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a></code> objects for this UserAssignment.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Collection of <code><a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a></code> objects for the provided UserAssignment.
+</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getChildRoles(org.apache.archiva.redback.rbac.Role)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        Map&lt;String,&nbsp;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;
+      </span>
+      <span class="sympad">getChildRoles</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a> role)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getEffectiveRoles(org.apache.archiva.redback.rbac.Role)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        Set&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;
+      </span>
+      <span class="sympad">getEffectiveRoles</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a> role)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Method getEffectiveRoles
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getEffectivelyAssignedRoles(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        Collection&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;
+      </span>
+      <span class="sympad">getEffectivelyAssignedRoles</span>
+      <span class="normal">(String principal)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get a list of the effectively assigned roles to the specified user, this includes child roles@return</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th></td>
+            <td>RbacObjectNotFoundException</td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getEffectivelyUnassignedRoles(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        Collection&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;
+      </span>
+      <span class="sympad">getEffectivelyUnassignedRoles</span>
+      <span class="normal">(String principal)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get a list of all assignable roles that are currently not effectively assigned to the specific user,
+ meaning, not a child of any already granted role@return</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th></td>
+            <td>RbacManagerException</td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getGlobalResource()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a>
+      </span>
+      <span class="sympad">getGlobalResource</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>returns the global resource object@return</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getOperation(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a>
+      </span>
+      <span class="sympad">getOperation</span>
+      <span class="normal">(String operationName)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getParentRoles(org.apache.archiva.redback.rbac.Role)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        Map&lt;String,&nbsp;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;
+      </span>
+      <span class="sympad">getParentRoles</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a> role)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getPermission(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a>
+      </span>
+      <span class="sympad">getPermission</span>
+      <span class="normal">(String permissionName)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getResource(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a>
+      </span>
+      <span class="sympad">getResource</span>
+      <span class="normal">(String resourceIdentifier)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getRole(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>
+      </span>
+      <span class="sympad">getRole</span>
+      <span class="normal">(String roleName)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>@return</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th></td>
+            <td>RbacObjectNotFoundException</td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getRoles(java.util.Collection<java.lang.String>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        Map&lt;String,&nbsp;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;
+      </span>
+      <span class="sympad">getRoles</span>
+      <span class="normal">(Collection&lt;String&gt; roleNames)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getUnassignedRoles(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        Collection&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt;
+      </span>
+      <span class="sympad">getUnassignedRoles</span>
+      <span class="normal">(String principal)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get a list of all assignable roles that are currently not assigned to the specific user.@return</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th></td>
+            <td>RbacManagerException</td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getUserAssignment(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a>
+      </span>
+      <span class="sympad">getUserAssignment</span>
+      <span class="normal">(String principal)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getUserAssignmentsForRoles(java.util.Collection<java.lang.String>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        List&lt;<a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a>&gt;
+      </span>
+      <span class="sympad">getUserAssignmentsForRoles</span>
+      <span class="normal">(Collection&lt;String&gt; roleNames)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Method getUserAssignmentsForRoless
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="operationExists(org.apache.archiva.redback.rbac.Operation)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">operationExists</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a> operation)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="operationExists(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">operationExists</span>
+      <span class="normal">(String name)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="permissionExists(org.apache.archiva.redback.rbac.Permission)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">permissionExists</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a> permission)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="permissionExists(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">permissionExists</span>
+      <span class="normal">(String name)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Tests for the existence of a permission.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>name</td>
+          <td>the name to test for.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true if permission exists.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="removeListener(org.apache.archiva.redback.rbac.RBACManagerListener)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">removeListener</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/RBACManagerListener.html">RBACManagerListener</a> listener)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="removeOperation(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">removeOperation</span>
+      <span class="normal">(String operationName)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectInvalidException.html">RbacObjectInvalidException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="removeOperation(org.apache.archiva.redback.rbac.Operation)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">removeOperation</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a> operation)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectInvalidException.html">RbacObjectInvalidException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="removePermission(org.apache.archiva.redback.rbac.Permission)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">removePermission</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a> permission)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectInvalidException.html">RbacObjectInvalidException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="removePermission(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">removePermission</span>
+      <span class="normal">(String permissionName)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectInvalidException.html">RbacObjectInvalidException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="removeResource(org.apache.archiva.redback.rbac.Resource)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">removeResource</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a> resource)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectInvalidException.html">RbacObjectInvalidException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="removeResource(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">removeResource</span>
+      <span class="normal">(String resourceIdentifier)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectInvalidException.html">RbacObjectInvalidException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="removeRole(org.apache.archiva.redback.rbac.Role)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">removeRole</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a> role)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Method removeRole</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectInvalidException.html">RbacObjectInvalidException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="removeRole(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">removeRole</span>
+      <span class="normal">(String roleName)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Method removeRole</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectInvalidException.html">RbacObjectInvalidException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="removeUserAssignment(org.apache.archiva.redback.rbac.UserAssignment)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">removeUserAssignment</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a> userAssignment)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Method removeAssignment</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectInvalidException.html">RbacObjectInvalidException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="removeUserAssignment(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">removeUserAssignment</span>
+      <span class="normal">(String principal)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Method removeAssignment</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectInvalidException.html">RbacObjectInvalidException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectNotFoundException.html">RbacObjectNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="resourceExists(org.apache.archiva.redback.rbac.Resource)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">resourceExists</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a> resource)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="resourceExists(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">resourceExists</span>
+      <span class="normal">(String identifier)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="roleExists(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">roleExists</span>
+      <span class="normal">(String name)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Tests for the existence of a Role.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true if role exists in store.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="roleExists(org.apache.archiva.redback.rbac.Role)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">roleExists</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a> role)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="saveOperation(org.apache.archiva.redback.rbac.Operation)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a>
+      </span>
+      <span class="sympad">saveOperation</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a> operation)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Save the new or existing operation to the store.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>operation</td>
+          <td>the operation to save (new or existing)</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the Operation that was saved.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th></td>
+            <td>RbacObjectInvalidException</td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectInvalidException.html">RbacObjectInvalidException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="savePermission(org.apache.archiva.redback.rbac.Permission)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a>
+      </span>
+      <span class="sympad">savePermission</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a> permission)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectInvalidException.html">RbacObjectInvalidException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="saveResource(org.apache.archiva.redback.rbac.Resource)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a>
+      </span>
+      <span class="sympad">saveResource</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a> resource)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectInvalidException.html">RbacObjectInvalidException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="saveRole(org.apache.archiva.redback.rbac.Role)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>
+      </span>
+      <span class="sympad">saveRole</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a> role)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectInvalidException.html">RbacObjectInvalidException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="saveRoles(java.util.Collection<org.apache.archiva.redback.rbac.Role>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">saveRoles</span>
+      <span class="normal">(Collection&lt;<a href="../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a>&gt; roles)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectInvalidException.html">RbacObjectInvalidException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="saveUserAssignment(org.apache.archiva.redback.rbac.UserAssignment)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a>
+      </span>
+      <span class="sympad">saveUserAssignment</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a> userAssignment)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Method saveUserAssignment</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../../org/apache/archiva/redback/rbac/RbacObjectInvalidException.html">RbacObjectInvalidException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="userAssignmentExists(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">userAssignmentExists</span>
+      <span class="normal">(String principal)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="userAssignmentExists(org.apache.archiva.redback.rbac.UserAssignment)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">userAssignmentExists</span>
+      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a> assignment)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer">
+Generated by <a href="http://code.google.com/p/doclava/">Doclava</a>.
+</div> <!-- end footer -->
+
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize doclava-developer-docs.js */
+</script>
+
+</body>
+</html>
