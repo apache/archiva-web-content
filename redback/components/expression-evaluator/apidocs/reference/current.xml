@@ -1,0 +1,297 @@
+<api>
+<package name="org.apache.archiva.redback.components.evaluator"
+>
+<class name="DefaultExpressionEvaluator"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.apache.archiva.redback.components.evaluator.ExpressionEvaluator">
+</implements>
+<constructor name="DefaultExpressionEvaluator"
+ type="org.apache.archiva.redback.components.evaluator.DefaultExpressionEvaluator"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="addExpressionSource"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="source" type="org.apache.archiva.redback.components.evaluator.ExpressionSource">
+</parameter>
+</method>
+<method name="expand"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="str" type="java.lang.String">
+</parameter>
+<exception name="EvaluatorException" type="org.apache.archiva.redback.components.evaluator.EvaluatorException">
+</exception>
+</method>
+<method name="getExpressionSourceList"
+ return="java.util.List"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="removeExpressionSource"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="source" type="org.apache.archiva.redback.components.evaluator.ExpressionSource">
+</parameter>
+</method>
+</class>
+<class name="EvaluatorException"
+ extends="java.lang.Exception"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="EvaluatorException"
+ type="org.apache.archiva.redback.components.evaluator.EvaluatorException"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<constructor name="EvaluatorException"
+ type="org.apache.archiva.redback.components.evaluator.EvaluatorException"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="java.lang.String">
+</parameter>
+<parameter name="cause" type="java.lang.Throwable">
+</parameter>
+</constructor>
+<constructor name="EvaluatorException"
+ type="org.apache.archiva.redback.components.evaluator.EvaluatorException"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="java.lang.String">
+</parameter>
+</constructor>
+<constructor name="EvaluatorException"
+ type="org.apache.archiva.redback.components.evaluator.EvaluatorException"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="cause" type="java.lang.Throwable">
+</parameter>
+</constructor>
+</class>
+<interface name="ExpressionEvaluator"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="addExpressionSource"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="source" type="org.apache.archiva.redback.components.evaluator.ExpressionSource">
+</parameter>
+</method>
+<method name="expand"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="str" type="java.lang.String">
+</parameter>
+<exception name="EvaluatorException" type="org.apache.archiva.redback.components.evaluator.EvaluatorException">
+</exception>
+</method>
+<method name="getExpressionSourceList"
+ return="java.util.List"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="removeExpressionSource"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="source" type="org.apache.archiva.redback.components.evaluator.ExpressionSource">
+</parameter>
+</method>
+</interface>
+<interface name="ExpressionSource"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="getExpressionValue"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="expression" type="java.lang.String">
+</parameter>
+</method>
+</interface>
+</package>
+<package name="org.apache.archiva.redback.components.evaluator.sources"
+>
+<class name="PropertiesExpressionSource"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.apache.archiva.redback.components.evaluator.ExpressionSource">
+</implements>
+<constructor name="PropertiesExpressionSource"
+ type="org.apache.archiva.redback.components.evaluator.sources.PropertiesExpressionSource"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getExpressionValue"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="expression" type="java.lang.String">
+</parameter>
+</method>
+<method name="getProperties"
+ return="java.util.Properties"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setProperties"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="properties" type="java.util.Properties">
+</parameter>
+</method>
+</class>
+<class name="SystemPropertyExpressionSource"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.apache.archiva.redback.components.evaluator.ExpressionSource">
+</implements>
+<constructor name="SystemPropertyExpressionSource"
+ type="org.apache.archiva.redback.components.evaluator.sources.SystemPropertyExpressionSource"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getExpressionValue"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="expression" type="java.lang.String">
+</parameter>
+</method>
+</class>
+</package>
+</api>

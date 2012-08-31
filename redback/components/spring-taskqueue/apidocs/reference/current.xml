@@ -1,0 +1,633 @@
+<api>
+<package name="org.apache.archiva.redback.components.taskqueue"
+>
+<class name="DefaultTaskQueue"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.apache.archiva.redback.components.taskqueue.TaskQueue">
+</implements>
+<constructor name="DefaultTaskQueue"
+ type="org.apache.archiva.redback.components.taskqueue.DefaultTaskQueue"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getQueueSnapshot"
+ return="java.util.List&lt;org.apache.archiva.redback.components.taskqueue.Task&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="TaskQueueException" type="org.apache.archiva.redback.components.taskqueue.TaskQueueException">
+</exception>
+</method>
+<method name="getTaskEntryEvaluators"
+ return="java.util.List&lt;org.apache.archiva.redback.components.taskqueue.TaskEntryEvaluator&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getTaskExitEvaluators"
+ return="java.util.List&lt;org.apache.archiva.redback.components.taskqueue.TaskExitEvaluator&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getTaskViabilityEvaluators"
+ return="java.util.List&lt;org.apache.archiva.redback.components.taskqueue.TaskViabilityEvaluator&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="poll"
+ return="org.apache.archiva.redback.components.taskqueue.Task"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="timeout" type="int">
+</parameter>
+<parameter name="timeUnit" type="java.util.concurrent.TimeUnit">
+</parameter>
+<exception name="InterruptedException" type="java.lang.InterruptedException">
+</exception>
+</method>
+<method name="put"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="task" type="org.apache.archiva.redback.components.taskqueue.Task">
+</parameter>
+<exception name="TaskQueueException" type="org.apache.archiva.redback.components.taskqueue.TaskQueueException">
+</exception>
+</method>
+<method name="remove"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="task" type="org.apache.archiva.redback.components.taskqueue.Task">
+</parameter>
+<exception name="ClassCastException" type="java.lang.ClassCastException">
+</exception>
+<exception name="NullPointerException" type="java.lang.NullPointerException">
+</exception>
+</method>
+<method name="removeAll"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="tasks" type="java.util.List">
+</parameter>
+<exception name="ClassCastException" type="java.lang.ClassCastException">
+</exception>
+<exception name="NullPointerException" type="java.lang.NullPointerException">
+</exception>
+</method>
+<method name="setTaskEntryEvaluators"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="taskEntryEvaluators" type="java.util.List&lt;org.apache.archiva.redback.components.taskqueue.TaskEntryEvaluator&gt;">
+</parameter>
+</method>
+<method name="setTaskExitEvaluators"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="taskExitEvaluators" type="java.util.List&lt;org.apache.archiva.redback.components.taskqueue.TaskExitEvaluator&gt;">
+</parameter>
+</method>
+<method name="setTaskViabilityEvaluators"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="taskViabilityEvaluators" type="java.util.List&lt;org.apache.archiva.redback.components.taskqueue.TaskViabilityEvaluator&gt;">
+</parameter>
+</method>
+<method name="take"
+ return="org.apache.archiva.redback.components.taskqueue.Task"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="TaskQueueException" type="org.apache.archiva.redback.components.taskqueue.TaskQueueException">
+</exception>
+</method>
+</class>
+<interface name="Task"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="getMaxExecutionTime"
+ return="long"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</interface>
+<interface name="TaskEntryEvaluator"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="evaluate"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="task" type="org.apache.archiva.redback.components.taskqueue.Task">
+</parameter>
+<exception name="TaskQueueException" type="org.apache.archiva.redback.components.taskqueue.TaskQueueException">
+</exception>
+</method>
+</interface>
+<interface name="TaskExitEvaluator"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="evaluate"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="task" type="org.apache.archiva.redback.components.taskqueue.Task">
+</parameter>
+<exception name="TaskQueueException" type="org.apache.archiva.redback.components.taskqueue.TaskQueueException">
+</exception>
+</method>
+</interface>
+<interface name="TaskQueue"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="getQueueSnapshot"
+ return="java.util.List"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="TaskQueueException" type="org.apache.archiva.redback.components.taskqueue.TaskQueueException">
+</exception>
+</method>
+<method name="poll"
+ return="org.apache.archiva.redback.components.taskqueue.Task"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="timeout" type="int">
+</parameter>
+<parameter name="timeUnit" type="java.util.concurrent.TimeUnit">
+</parameter>
+<exception name="InterruptedException" type="java.lang.InterruptedException">
+</exception>
+</method>
+<method name="put"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="task" type="org.apache.archiva.redback.components.taskqueue.Task">
+</parameter>
+<exception name="TaskQueueException" type="org.apache.archiva.redback.components.taskqueue.TaskQueueException">
+</exception>
+</method>
+<method name="remove"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="task" type="org.apache.archiva.redback.components.taskqueue.Task">
+</parameter>
+<exception name="ClassCastException" type="java.lang.ClassCastException">
+</exception>
+<exception name="NullPointerException" type="java.lang.NullPointerException">
+</exception>
+</method>
+<method name="removeAll"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="tasks" type="java.util.List">
+</parameter>
+<exception name="ClassCastException" type="java.lang.ClassCastException">
+</exception>
+<exception name="NullPointerException" type="java.lang.NullPointerException">
+</exception>
+</method>
+<method name="take"
+ return="org.apache.archiva.redback.components.taskqueue.Task"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="TaskQueueException" type="org.apache.archiva.redback.components.taskqueue.TaskQueueException">
+</exception>
+</method>
+</interface>
+<class name="TaskQueueException"
+ extends="java.lang.Exception"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="TaskQueueException"
+ type="org.apache.archiva.redback.components.taskqueue.TaskQueueException"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="java.lang.String">
+</parameter>
+</constructor>
+<constructor name="TaskQueueException"
+ type="org.apache.archiva.redback.components.taskqueue.TaskQueueException"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="java.lang.String">
+</parameter>
+<parameter name="cause" type="java.lang.Throwable">
+</parameter>
+</constructor>
+</class>
+<interface name="TaskViabilityEvaluator"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="evaluate"
+ return="java.util.Collection&lt;org.apache.archiva.redback.components.taskqueue.Task&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="tasks" type="java.util.Collection">
+</parameter>
+<exception name="TaskQueueException" type="org.apache.archiva.redback.components.taskqueue.TaskQueueException">
+</exception>
+</method>
+</interface>
+</package>
+<package name="org.apache.archiva.redback.components.taskqueue.execution"
+>
+<class name="TaskExecutionException"
+ extends="java.lang.Exception"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="TaskExecutionException"
+ type="org.apache.archiva.redback.components.taskqueue.execution.TaskExecutionException"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="java.lang.String">
+</parameter>
+</constructor>
+<constructor name="TaskExecutionException"
+ type="org.apache.archiva.redback.components.taskqueue.execution.TaskExecutionException"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="java.lang.String">
+</parameter>
+<parameter name="cause" type="java.lang.Throwable">
+</parameter>
+</constructor>
+</class>
+<interface name="TaskExecutor"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="executeTask"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="task" type="org.apache.archiva.redback.components.taskqueue.Task">
+</parameter>
+<exception name="TaskExecutionException" type="org.apache.archiva.redback.components.taskqueue.execution.TaskExecutionException">
+</exception>
+</method>
+</interface>
+<interface name="TaskQueueExecutor"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="cancelTask"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="task" type="org.apache.archiva.redback.components.taskqueue.Task">
+</parameter>
+</method>
+<method name="getCurrentTask"
+ return="org.apache.archiva.redback.components.taskqueue.Task"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</interface>
+<class name="ThreadedTaskQueueExecutor"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.apache.archiva.redback.components.taskqueue.execution.TaskQueueExecutor">
+</implements>
+<constructor name="ThreadedTaskQueueExecutor"
+ type="org.apache.archiva.redback.components.taskqueue.execution.ThreadedTaskQueueExecutor"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="cancelTask"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="task" type="org.apache.archiva.redback.components.taskqueue.Task">
+</parameter>
+</method>
+<method name="getCurrentTask"
+ return="org.apache.archiva.redback.components.taskqueue.Task"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getExecutor"
+ return="org.apache.archiva.redback.components.taskqueue.execution.TaskExecutor"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getQueue"
+ return="org.apache.archiva.redback.components.taskqueue.TaskQueue"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setExecutor"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="executor" type="org.apache.archiva.redback.components.taskqueue.execution.TaskExecutor">
+</parameter>
+</method>
+<method name="setName"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="name" type="java.lang.String">
+</parameter>
+</method>
+<method name="setQueue"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="queue" type="org.apache.archiva.redback.components.taskqueue.TaskQueue">
+</parameter>
+</method>
+<method name="start"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="stop"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+</package>
+</api>
