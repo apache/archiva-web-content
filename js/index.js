@@ -1,6 +1,7 @@
 $(document).ready(function(){
- $('#dialogRelease').modal(({keyboard: true}));
- $('#dialogPreview').modal(({keyboard: true}));
+  $('#screenshots-carousel').carousel({
+    interval: 2000
+  })
   
  $("#openDialogRelease" ).on("click",function(){
    $('#dialogRelease').modal('show');
@@ -9,6 +10,8 @@ $(document).ready(function(){
  $("#openDialogPreview" ).on("click",function(){
     $('#dialogPreview').modal('show');
   })
+
+
 
 
 });
