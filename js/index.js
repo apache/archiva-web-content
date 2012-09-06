@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $('#screenshots-carousel').carousel({
-    interval: 2000
+    interval: 4000
   })
   
  $("#openDialogRelease" ).on("click",function(){
@@ -11,7 +11,7 @@ $(document).ready(function(){
     $('#dialogPreview').modal('show');
   })
 
-
+  $("#carousel-main" ).addClass("bs-docs-example");
 
 
 });
