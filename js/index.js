@@ -11,7 +11,7 @@ $(document).ready(function(){
     $('#dialogPreview').modal('show');
   })
 
-  $("#carousel-main" ).addClass("bs-docs-example");
+  $("#carousel-main" ).addClass("features-preview");
 
 
 });
