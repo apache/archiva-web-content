@@ -88,7 +88,7 @@ pageTracker._trackPageview();</script>
 </li>
                                   <li>      <a href="../jsui/template-loading.html"  title="JS Template loading">JS Template loading</a>
 </li>
-                                  <li>      <a href="../i18n.html"  title="i18n">i18n</a>
+                                  <li>      <a href="../jsui/i18n.html"  title="i18n">i18n</a>
 </li>
                                   <li>      <a href="../jsui/knockout-binding.html"  title="Knockout Binding">Knockout Binding</a>
 </li>
@@ -240,7 +240,7 @@ pageTracker._trackPageview();</script>
             Javascript function:
             </p><div class="source"><pre class="prettyprint">
 displaySuccessMessage($.i18n.prop('managedrepository.added'));
-// the second parameter is optionnal by default user-messages id is used
+// the second parameter is optionnal by default #user-messages id is used
 displaySuccessMessage=function(text,idToAppend){
             </pre></div>
             <a href="../images/success-message.png" class="single_image" title="Success Message">
@@ -255,7 +255,7 @@ displaySuccessMessage=function(text,idToAppend){
             Javascript function:
             </p><div class="source"><pre class="prettyprint">
 displayErrorMessage($.i18n.prop('managedrepository.added'));
-// the second parameter is optionnal by default user-messages id is used
+// the second parameter is optionnal by default #user-messages id is used
 displayErrorMessage=function(text,idToAppend){
             </pre></div>
             <a href="../images/error-message.png" class="single_image" title="Error Message">
@@ -269,12 +269,15 @@ displayErrorMessage=function(text,idToAppend){
         <p>
           Javascript function:
           </p><div class="source"><pre class="prettyprint">
-okFn: function to call in case of ok
-okMessage: message for Ok button
-cancelMessage: message for cancel button
-title: modal title
-bodyText: modal content (can be html)
-openDialogConfirm=function(okFn, okMessage, cancelMessage, title,bodyText)
+  /**
+   * open a confirm dialog based on bootstrap modal
+   * @param okFn callback function to call on ok confirm
+   * @param okMessage message in the ok button
+   * @param cancelMessage message in the cancel button
+   * @param title title of the modal box
+   * @param bodyText html content of the modal box
+   */
+  openDialogConfirm=function(okFn, okMessage, cancelMessage, title,bodyText){
           </pre></div>
           <a href="../images/modal-confirm-dialog.png" class="single_image" title="Modal Confirm dialog">
             <img src="../images/modal-confirm-dialog.png" width="150" height="93" style="border: 1px solid silver; margin-left: 0.25em; margin-bottom: 0.25em" alt="" /><br />
