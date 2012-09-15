@@ -221,7 +221,7 @@
 <a class="jxr_linenumber" name="211" href="#211">211</a>         }
 <a class="jxr_linenumber" name="212" href="#212">212</a>         <em class="jxr_comment">// force flushing</em>
 <a class="jxr_linenumber" name="213" href="#213">213</a>         context.getIndexWriter().commit();
-<a class="jxr_linenumber" name="214" href="#214">214</a>         context.getIndexWriter().close( <strong class="jxr_keyword">true</strong> );
+<a class="jxr_linenumber" name="214" href="#214">214</a>         <em class="jxr_comment">//context.getIndexWriter().close( true );</em>
 <a class="jxr_linenumber" name="215" href="#215">215</a>         <em class="jxr_comment">// wait for io flush ....</em>
 <a class="jxr_linenumber" name="216" href="#216">216</a>         <em class="jxr_comment">//Thread.sleep( 2000 );</em>
 <a class="jxr_linenumber" name="217" href="#217">217</a>         context.setSearchable( <strong class="jxr_keyword">true</strong> );
@@ -245,12 +245,12 @@
 <a class="jxr_linenumber" name="235" href="#235">235</a> 
 <a class="jxr_linenumber" name="236" href="#236">236</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> artifactError( ArtifactContext ac, Exception e )
 <a class="jxr_linenumber" name="237" href="#237">237</a>         {
-<a class="jxr_linenumber" name="238" href="#238">238</a>             log.debug( <span class="jxr_string">"artifactError "</span> + ac.getArtifact().getPath(), e );
+<a class="jxr_linenumber" name="238" href="#238">238</a>             log.debug( <span class="jxr_string">"artifactError {}"</span>, ac.getArtifact().getPath(), e );
 <a class="jxr_linenumber" name="239" href="#239">239</a>         }
 <a class="jxr_linenumber" name="240" href="#240">240</a> 
 <a class="jxr_linenumber" name="241" href="#241">241</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> artifactDiscovered( ArtifactContext ac )
 <a class="jxr_linenumber" name="242" href="#242">242</a>         {
-<a class="jxr_linenumber" name="243" href="#243">243</a>             log.debug( <span class="jxr_string">"artifactDiscovered {}:"</span>, ac.getArtifact().getPath(), ac.getArtifactInfo() );
+<a class="jxr_linenumber" name="243" href="#243">243</a>             log.debug( <span class="jxr_string">"artifactDiscovered {}:{}"</span>, ac.getArtifact().getPath(), ac.getArtifactInfo() );
 <a class="jxr_linenumber" name="244" href="#244">244</a>         }
 <a class="jxr_linenumber" name="245" href="#245">245</a>     }
 <a class="jxr_linenumber" name="246" href="#246">246</a> 

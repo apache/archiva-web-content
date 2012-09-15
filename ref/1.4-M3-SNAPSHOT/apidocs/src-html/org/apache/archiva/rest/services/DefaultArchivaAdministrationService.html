@@ -51,7 +51,7 @@
 <FONT color="green">048</FONT>     * @author Olivier Lamy<a name="line.48"></a>
 <FONT color="green">049</FONT>     * @since 1.4-M1<a name="line.49"></a>
 <FONT color="green">050</FONT>     */<a name="line.50"></a>
-<FONT color="green">051</FONT>    @Service( "archivaAdministrationService#default" )<a name="line.51"></a>
+<FONT color="green">051</FONT>    @Service ( "archivaAdministrationService#default" )<a name="line.51"></a>
 <FONT color="green">052</FONT>    public class DefaultArchivaAdministrationService<a name="line.52"></a>
 <FONT color="green">053</FONT>        extends AbstractRestService<a name="line.53"></a>
 <FONT color="green">054</FONT>        implements ArchivaAdministrationService<a name="line.54"></a>
@@ -60,7 +60,7 @@
 <FONT color="green">057</FONT>        private ArchivaAdministration archivaAdministration;<a name="line.57"></a>
 <FONT color="green">058</FONT>    <a name="line.58"></a>
 <FONT color="green">059</FONT>        @Inject<a name="line.59"></a>
-<FONT color="green">060</FONT>        @Named( value = "managedRepositoryContent#legacy" )<a name="line.60"></a>
+<FONT color="green">060</FONT>        @Named ( value = "managedRepositoryContent#legacy" )<a name="line.60"></a>
 <FONT color="green">061</FONT>        private ManagedRepositoryContent repositoryContent;<a name="line.61"></a>
 <FONT color="green">062</FONT>    <a name="line.62"></a>
 <FONT color="green">063</FONT>        @Inject<a name="line.63"></a>
@@ -345,108 +345,113 @@
 <FONT color="green">342</FONT>            }<a name="line.342"></a>
 <FONT color="green">343</FONT>        }<a name="line.343"></a>
 <FONT color="green">344</FONT>    <a name="line.344"></a>
-<FONT color="green">345</FONT>    <a name="line.345"></a>
-<FONT color="green">346</FONT>        public UiConfiguration getUiConfiguration()<a name="line.346"></a>
-<FONT color="green">347</FONT>            throws ArchivaRestServiceException<a name="line.347"></a>
-<FONT color="green">348</FONT>        {<a name="line.348"></a>
-<FONT color="green">349</FONT>            try<a name="line.349"></a>
-<FONT color="green">350</FONT>            {<a name="line.350"></a>
-<FONT color="green">351</FONT>                return archivaAdministration.getUiConfiguration();<a name="line.351"></a>
-<FONT color="green">352</FONT>            }<a name="line.352"></a>
-<FONT color="green">353</FONT>            catch ( RepositoryAdminException e )<a name="line.353"></a>
-<FONT color="green">354</FONT>            {<a name="line.354"></a>
-<FONT color="green">355</FONT>                throw new ArchivaRestServiceException( e.getMessage(), e );<a name="line.355"></a>
-<FONT color="green">356</FONT>            }<a name="line.356"></a>
-<FONT color="green">357</FONT>        }<a name="line.357"></a>
-<FONT color="green">358</FONT>    <a name="line.358"></a>
-<FONT color="green">359</FONT>        public void setUiConfiguration( UiConfiguration uiConfiguration )<a name="line.359"></a>
-<FONT color="green">360</FONT>            throws ArchivaRestServiceException<a name="line.360"></a>
-<FONT color="green">361</FONT>        {<a name="line.361"></a>
-<FONT color="green">362</FONT>            try<a name="line.362"></a>
-<FONT color="green">363</FONT>            {<a name="line.363"></a>
-<FONT color="green">364</FONT>                archivaAdministration.updateUiConfiguration( uiConfiguration );<a name="line.364"></a>
-<FONT color="green">365</FONT>            }<a name="line.365"></a>
-<FONT color="green">366</FONT>            catch ( RepositoryAdminException e )<a name="line.366"></a>
-<FONT color="green">367</FONT>            {<a name="line.367"></a>
-<FONT color="green">368</FONT>                throw new ArchivaRestServiceException( e.getMessage(), e );<a name="line.368"></a>
-<FONT color="green">369</FONT>            }<a name="line.369"></a>
-<FONT color="green">370</FONT>        }<a name="line.370"></a>
-<FONT color="green">371</FONT>    <a name="line.371"></a>
-<FONT color="green">372</FONT>        public String getApplicationUrl()<a name="line.372"></a>
-<FONT color="green">373</FONT>            throws ArchivaRestServiceException<a name="line.373"></a>
-<FONT color="green">374</FONT>        {<a name="line.374"></a>
-<FONT color="green">375</FONT>            try<a name="line.375"></a>
-<FONT color="green">376</FONT>            {<a name="line.376"></a>
-<FONT color="green">377</FONT>                return archivaAdministration.getUiConfiguration().getApplicationUrl();<a name="line.377"></a>
-<FONT color="green">378</FONT>            }<a name="line.378"></a>
-<FONT color="green">379</FONT>            catch ( RepositoryAdminException e )<a name="line.379"></a>
-<FONT color="green">380</FONT>            {<a name="line.380"></a>
-<FONT color="green">381</FONT>                throw new ArchivaRestServiceException( e.getMessage(), e );<a name="line.381"></a>
-<FONT color="green">382</FONT>            }<a name="line.382"></a>
-<FONT color="green">383</FONT>        }<a name="line.383"></a>
-<FONT color="green">384</FONT>    <a name="line.384"></a>
-<FONT color="green">385</FONT>        public NetworkConfiguration getNetworkConfiguration()<a name="line.385"></a>
-<FONT color="green">386</FONT>            throws ArchivaRestServiceException<a name="line.386"></a>
-<FONT color="green">387</FONT>        {<a name="line.387"></a>
-<FONT color="green">388</FONT>            try<a name="line.388"></a>
-<FONT color="green">389</FONT>            {<a name="line.389"></a>
-<FONT color="green">390</FONT>                return archivaAdministration.getNetworkConfiguration();<a name="line.390"></a>
-<FONT color="green">391</FONT>            }<a name="line.391"></a>
-<FONT color="green">392</FONT>            catch ( RepositoryAdminException e )<a name="line.392"></a>
-<FONT color="green">393</FONT>            {<a name="line.393"></a>
-<FONT color="green">394</FONT>                throw new ArchivaRestServiceException( e.getMessage(), e );<a name="line.394"></a>
-<FONT color="green">395</FONT>            }<a name="line.395"></a>
-<FONT color="green">396</FONT>        }<a name="line.396"></a>
-<FONT color="green">397</FONT>    <a name="line.397"></a>
-<FONT color="green">398</FONT>        public void setNetworkConfiguration( NetworkConfiguration networkConfiguration )<a name="line.398"></a>
-<FONT color="green">399</FONT>            throws ArchivaRestServiceException<a name="line.399"></a>
-<FONT color="green">400</FONT>        {<a name="line.400"></a>
-<FONT color="green">401</FONT>            try<a name="line.401"></a>
-<FONT color="green">402</FONT>            {<a name="line.402"></a>
-<FONT color="green">403</FONT>                archivaAdministration.setNetworkConfiguration( networkConfiguration );<a name="line.403"></a>
-<FONT color="green">404</FONT>            }<a name="line.404"></a>
-<FONT color="green">405</FONT>            catch ( RepositoryAdminException e )<a name="line.405"></a>
-<FONT color="green">406</FONT>            {<a name="line.406"></a>
-<FONT color="green">407</FONT>                throw new ArchivaRestServiceException( e.getMessage(), e );<a name="line.407"></a>
-<FONT color="green">408</FONT>            }<a name="line.408"></a>
-<FONT color="green">409</FONT>        }<a name="line.409"></a>
-<FONT color="green">410</FONT>    <a name="line.410"></a>
-<FONT color="green">411</FONT>        public List&lt;AdminRepositoryConsumer&gt; getKnownContentAdminRepositoryConsumers()<a name="line.411"></a>
-<FONT color="green">412</FONT>            throws ArchivaRestServiceException<a name="line.412"></a>
-<FONT color="green">413</FONT>        {<a name="line.413"></a>
-<FONT color="green">414</FONT>            try<a name="line.414"></a>
-<FONT color="green">415</FONT>            {<a name="line.415"></a>
-<FONT color="green">416</FONT>                AddAdminRepoConsumerClosure addAdminRepoConsumer =<a name="line.416"></a>
-<FONT color="green">417</FONT>                    new AddAdminRepoConsumerClosure( archivaAdministration.getKnownContentConsumers() );<a name="line.417"></a>
-<FONT color="green">418</FONT>                CollectionUtils.forAllDo( repoConsumerUtil.getAvailableKnownConsumers(), addAdminRepoConsumer );<a name="line.418"></a>
-<FONT color="green">419</FONT>                List&lt;AdminRepositoryConsumer&gt; knownContentConsumers = addAdminRepoConsumer.getList();<a name="line.419"></a>
-<FONT color="green">420</FONT>                Collections.sort( knownContentConsumers, AdminRepositoryConsumerComparator.getInstance() );<a name="line.420"></a>
-<FONT color="green">421</FONT>                return knownContentConsumers;<a name="line.421"></a>
-<FONT color="green">422</FONT>            }<a name="line.422"></a>
-<FONT color="green">423</FONT>            catch ( RepositoryAdminException e )<a name="line.423"></a>
-<FONT color="green">424</FONT>            {<a name="line.424"></a>
-<FONT color="green">425</FONT>                throw new ArchivaRestServiceException( e.getMessage(), e );<a name="line.425"></a>
-<FONT color="green">426</FONT>            }<a name="line.426"></a>
-<FONT color="green">427</FONT>        }<a name="line.427"></a>
-<FONT color="green">428</FONT>    <a name="line.428"></a>
-<FONT color="green">429</FONT>        public List&lt;AdminRepositoryConsumer&gt; getInvalidContentAdminRepositoryConsumers()<a name="line.429"></a>
-<FONT color="green">430</FONT>            throws ArchivaRestServiceException<a name="line.430"></a>
-<FONT color="green">431</FONT>        {<a name="line.431"></a>
-<FONT color="green">432</FONT>            try<a name="line.432"></a>
-<FONT color="green">433</FONT>            {<a name="line.433"></a>
-<FONT color="green">434</FONT>                AddAdminRepoConsumerClosure addAdminRepoConsumer =<a name="line.434"></a>
-<FONT color="green">435</FONT>                    new AddAdminRepoConsumerClosure( archivaAdministration.getInvalidContentConsumers() );<a name="line.435"></a>
-<FONT color="green">436</FONT>                CollectionUtils.forAllDo( repoConsumerUtil.getAvailableInvalidConsumers(), addAdminRepoConsumer );<a name="line.436"></a>
-<FONT color="green">437</FONT>                List&lt;AdminRepositoryConsumer&gt; invalidContentConsumers = addAdminRepoConsumer.getList();<a name="line.437"></a>
-<FONT color="green">438</FONT>                Collections.sort( invalidContentConsumers, AdminRepositoryConsumerComparator.getInstance() );<a name="line.438"></a>
-<FONT color="green">439</FONT>                return invalidContentConsumers;<a name="line.439"></a>
-<FONT color="green">440</FONT>            }<a name="line.440"></a>
-<FONT color="green">441</FONT>            catch ( RepositoryAdminException e )<a name="line.441"></a>
-<FONT color="green">442</FONT>            {<a name="line.442"></a>
-<FONT color="green">443</FONT>                throw new ArchivaRestServiceException( e.getMessage(), e );<a name="line.443"></a>
-<FONT color="green">444</FONT>            }<a name="line.444"></a>
-<FONT color="green">445</FONT>        }<a name="line.445"></a>
-<FONT color="green">446</FONT>    }<a name="line.446"></a>
+<FONT color="green">345</FONT>        public Boolean registrationDisabled()<a name="line.345"></a>
+<FONT color="green">346</FONT>            throws ArchivaRestServiceException<a name="line.346"></a>
+<FONT color="green">347</FONT>        {<a name="line.347"></a>
+<FONT color="green">348</FONT>            return getUiConfiguration().isDisableRegistration();<a name="line.348"></a>
+<FONT color="green">349</FONT>        }<a name="line.349"></a>
+<FONT color="green">350</FONT>    <a name="line.350"></a>
+<FONT color="green">351</FONT>        public UiConfiguration getUiConfiguration()<a name="line.351"></a>
+<FONT color="green">352</FONT>            throws ArchivaRestServiceException<a name="line.352"></a>
+<FONT color="green">353</FONT>        {<a name="line.353"></a>
+<FONT color="green">354</FONT>            try<a name="line.354"></a>
+<FONT color="green">355</FONT>            {<a name="line.355"></a>
+<FONT color="green">356</FONT>                return archivaAdministration.getUiConfiguration();<a name="line.356"></a>
+<FONT color="green">357</FONT>            }<a name="line.357"></a>
+<FONT color="green">358</FONT>            catch ( RepositoryAdminException e )<a name="line.358"></a>
+<FONT color="green">359</FONT>            {<a name="line.359"></a>
+<FONT color="green">360</FONT>                throw new ArchivaRestServiceException( e.getMessage(), e );<a name="line.360"></a>
+<FONT color="green">361</FONT>            }<a name="line.361"></a>
+<FONT color="green">362</FONT>        }<a name="line.362"></a>
+<FONT color="green">363</FONT>    <a name="line.363"></a>
+<FONT color="green">364</FONT>        public void setUiConfiguration( UiConfiguration uiConfiguration )<a name="line.364"></a>
+<FONT color="green">365</FONT>            throws ArchivaRestServiceException<a name="line.365"></a>
+<FONT color="green">366</FONT>        {<a name="line.366"></a>
+<FONT color="green">367</FONT>            try<a name="line.367"></a>
+<FONT color="green">368</FONT>            {<a name="line.368"></a>
+<FONT color="green">369</FONT>                archivaAdministration.updateUiConfiguration( uiConfiguration );<a name="line.369"></a>
+<FONT color="green">370</FONT>            }<a name="line.370"></a>
+<FONT color="green">371</FONT>            catch ( RepositoryAdminException e )<a name="line.371"></a>
+<FONT color="green">372</FONT>            {<a name="line.372"></a>
+<FONT color="green">373</FONT>                throw new ArchivaRestServiceException( e.getMessage(), e );<a name="line.373"></a>
+<FONT color="green">374</FONT>            }<a name="line.374"></a>
+<FONT color="green">375</FONT>        }<a name="line.375"></a>
+<FONT color="green">376</FONT>    <a name="line.376"></a>
+<FONT color="green">377</FONT>        public String getApplicationUrl()<a name="line.377"></a>
+<FONT color="green">378</FONT>            throws ArchivaRestServiceException<a name="line.378"></a>
+<FONT color="green">379</FONT>        {<a name="line.379"></a>
+<FONT color="green">380</FONT>            try<a name="line.380"></a>
+<FONT color="green">381</FONT>            {<a name="line.381"></a>
+<FONT color="green">382</FONT>                return archivaAdministration.getUiConfiguration().getApplicationUrl();<a name="line.382"></a>
+<FONT color="green">383</FONT>            }<a name="line.383"></a>
+<FONT color="green">384</FONT>            catch ( RepositoryAdminException e )<a name="line.384"></a>
+<FONT color="green">385</FONT>            {<a name="line.385"></a>
+<FONT color="green">386</FONT>                throw new ArchivaRestServiceException( e.getMessage(), e );<a name="line.386"></a>
+<FONT color="green">387</FONT>            }<a name="line.387"></a>
+<FONT color="green">388</FONT>        }<a name="line.388"></a>
+<FONT color="green">389</FONT>    <a name="line.389"></a>
+<FONT color="green">390</FONT>        public NetworkConfiguration getNetworkConfiguration()<a name="line.390"></a>
+<FONT color="green">391</FONT>            throws ArchivaRestServiceException<a name="line.391"></a>
+<FONT color="green">392</FONT>        {<a name="line.392"></a>
+<FONT color="green">393</FONT>            try<a name="line.393"></a>
+<FONT color="green">394</FONT>            {<a name="line.394"></a>
+<FONT color="green">395</FONT>                return archivaAdministration.getNetworkConfiguration();<a name="line.395"></a>
+<FONT color="green">396</FONT>            }<a name="line.396"></a>
+<FONT color="green">397</FONT>            catch ( RepositoryAdminException e )<a name="line.397"></a>
+<FONT color="green">398</FONT>            {<a name="line.398"></a>
+<FONT color="green">399</FONT>                throw new ArchivaRestServiceException( e.getMessage(), e );<a name="line.399"></a>
+<FONT color="green">400</FONT>            }<a name="line.400"></a>
+<FONT color="green">401</FONT>        }<a name="line.401"></a>
+<FONT color="green">402</FONT>    <a name="line.402"></a>
+<FONT color="green">403</FONT>        public void setNetworkConfiguration( NetworkConfiguration networkConfiguration )<a name="line.403"></a>
+<FONT color="green">404</FONT>            throws ArchivaRestServiceException<a name="line.404"></a>
+<FONT color="green">405</FONT>        {<a name="line.405"></a>
+<FONT color="green">406</FONT>            try<a name="line.406"></a>
+<FONT color="green">407</FONT>            {<a name="line.407"></a>
+<FONT color="green">408</FONT>                archivaAdministration.setNetworkConfiguration( networkConfiguration );<a name="line.408"></a>
+<FONT color="green">409</FONT>            }<a name="line.409"></a>
+<FONT color="green">410</FONT>            catch ( RepositoryAdminException e )<a name="line.410"></a>
+<FONT color="green">411</FONT>            {<a name="line.411"></a>
+<FONT color="green">412</FONT>                throw new ArchivaRestServiceException( e.getMessage(), e );<a name="line.412"></a>
+<FONT color="green">413</FONT>            }<a name="line.413"></a>
+<FONT color="green">414</FONT>        }<a name="line.414"></a>
+<FONT color="green">415</FONT>    <a name="line.415"></a>
+<FONT color="green">416</FONT>        public List&lt;AdminRepositoryConsumer&gt; getKnownContentAdminRepositoryConsumers()<a name="line.416"></a>
+<FONT color="green">417</FONT>            throws ArchivaRestServiceException<a name="line.417"></a>
+<FONT color="green">418</FONT>        {<a name="line.418"></a>
+<FONT color="green">419</FONT>            try<a name="line.419"></a>
+<FONT color="green">420</FONT>            {<a name="line.420"></a>
+<FONT color="green">421</FONT>                AddAdminRepoConsumerClosure addAdminRepoConsumer =<a name="line.421"></a>
+<FONT color="green">422</FONT>                    new AddAdminRepoConsumerClosure( archivaAdministration.getKnownContentConsumers() );<a name="line.422"></a>
+<FONT color="green">423</FONT>                CollectionUtils.forAllDo( repoConsumerUtil.getAvailableKnownConsumers(), addAdminRepoConsumer );<a name="line.423"></a>
+<FONT color="green">424</FONT>                List&lt;AdminRepositoryConsumer&gt; knownContentConsumers = addAdminRepoConsumer.getList();<a name="line.424"></a>
+<FONT color="green">425</FONT>                Collections.sort( knownContentConsumers, AdminRepositoryConsumerComparator.getInstance() );<a name="line.425"></a>
+<FONT color="green">426</FONT>                return knownContentConsumers;<a name="line.426"></a>
+<FONT color="green">427</FONT>            }<a name="line.427"></a>
+<FONT color="green">428</FONT>            catch ( RepositoryAdminException e )<a name="line.428"></a>
+<FONT color="green">429</FONT>            {<a name="line.429"></a>
+<FONT color="green">430</FONT>                throw new ArchivaRestServiceException( e.getMessage(), e );<a name="line.430"></a>
+<FONT color="green">431</FONT>            }<a name="line.431"></a>
+<FONT color="green">432</FONT>        }<a name="line.432"></a>
+<FONT color="green">433</FONT>    <a name="line.433"></a>
+<FONT color="green">434</FONT>        public List&lt;AdminRepositoryConsumer&gt; getInvalidContentAdminRepositoryConsumers()<a name="line.434"></a>
+<FONT color="green">435</FONT>            throws ArchivaRestServiceException<a name="line.435"></a>
+<FONT color="green">436</FONT>        {<a name="line.436"></a>
+<FONT color="green">437</FONT>            try<a name="line.437"></a>
+<FONT color="green">438</FONT>            {<a name="line.438"></a>
+<FONT color="green">439</FONT>                AddAdminRepoConsumerClosure addAdminRepoConsumer =<a name="line.439"></a>
+<FONT color="green">440</FONT>                    new AddAdminRepoConsumerClosure( archivaAdministration.getInvalidContentConsumers() );<a name="line.440"></a>
+<FONT color="green">441</FONT>                CollectionUtils.forAllDo( repoConsumerUtil.getAvailableInvalidConsumers(), addAdminRepoConsumer );<a name="line.441"></a>
+<FONT color="green">442</FONT>                List&lt;AdminRepositoryConsumer&gt; invalidContentConsumers = addAdminRepoConsumer.getList();<a name="line.442"></a>
+<FONT color="green">443</FONT>                Collections.sort( invalidContentConsumers, AdminRepositoryConsumerComparator.getInstance() );<a name="line.443"></a>
+<FONT color="green">444</FONT>                return invalidContentConsumers;<a name="line.444"></a>
+<FONT color="green">445</FONT>            }<a name="line.445"></a>
+<FONT color="green">446</FONT>            catch ( RepositoryAdminException e )<a name="line.446"></a>
+<FONT color="green">447</FONT>            {<a name="line.447"></a>
+<FONT color="green">448</FONT>                throw new ArchivaRestServiceException( e.getMessage(), e );<a name="line.448"></a>
+<FONT color="green">449</FONT>            }<a name="line.449"></a>
+<FONT color="green">450</FONT>        }<a name="line.450"></a>
+<FONT color="green">451</FONT>    }<a name="line.451"></a>
 
 
 

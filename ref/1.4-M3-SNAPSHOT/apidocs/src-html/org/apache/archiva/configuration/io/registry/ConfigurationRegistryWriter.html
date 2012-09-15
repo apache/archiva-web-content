@@ -193,809 +193,851 @@
 <FONT color="green">190</FONT>                    String name = "indexDir";<a name="line.190"></a>
 <FONT color="green">191</FONT>                    registry.setString( prefix + name, value.getIndexDir() );<a name="line.191"></a>
 <FONT color="green">192</FONT>                }<a name="line.192"></a>
-<FONT color="green">193</FONT>            }<a name="line.193"></a>
-<FONT color="green">194</FONT>        }<a name="line.194"></a>
-<FONT color="green">195</FONT>        <a name="line.195"></a>
-<FONT color="green">196</FONT>        private void writeRemoteRepositoryConfiguration( String prefix, RemoteRepositoryConfiguration value, Registry registry )<a name="line.196"></a>
-<FONT color="green">197</FONT>        {<a name="line.197"></a>
-<FONT color="green">198</FONT>            if ( value != null )<a name="line.198"></a>
-<FONT color="green">199</FONT>            {<a name="line.199"></a>
-<FONT color="green">200</FONT>                if ( value.getUrl() != null<a name="line.200"></a>
-<FONT color="green">201</FONT>     )<a name="line.201"></a>
-<FONT color="green">202</FONT>                {<a name="line.202"></a>
-<FONT color="green">203</FONT>                    String name = "url";<a name="line.203"></a>
-<FONT color="green">204</FONT>                    registry.setString( prefix + name, value.getUrl() );<a name="line.204"></a>
-<FONT color="green">205</FONT>                }<a name="line.205"></a>
-<FONT color="green">206</FONT>                if ( value.getUsername() != null<a name="line.206"></a>
+<FONT color="green">193</FONT>                if ( value.getDescription() != null<a name="line.193"></a>
+<FONT color="green">194</FONT>     )<a name="line.194"></a>
+<FONT color="green">195</FONT>                {<a name="line.195"></a>
+<FONT color="green">196</FONT>                    String name = "description";<a name="line.196"></a>
+<FONT color="green">197</FONT>                    registry.setString( prefix + name, value.getDescription() );<a name="line.197"></a>
+<FONT color="green">198</FONT>                }<a name="line.198"></a>
+<FONT color="green">199</FONT>            }<a name="line.199"></a>
+<FONT color="green">200</FONT>        }<a name="line.200"></a>
+<FONT color="green">201</FONT>        <a name="line.201"></a>
+<FONT color="green">202</FONT>        private void writeRemoteRepositoryConfiguration( String prefix, RemoteRepositoryConfiguration value, Registry registry )<a name="line.202"></a>
+<FONT color="green">203</FONT>        {<a name="line.203"></a>
+<FONT color="green">204</FONT>            if ( value != null )<a name="line.204"></a>
+<FONT color="green">205</FONT>            {<a name="line.205"></a>
+<FONT color="green">206</FONT>                if ( value.getUrl() != null<a name="line.206"></a>
 <FONT color="green">207</FONT>     )<a name="line.207"></a>
 <FONT color="green">208</FONT>                {<a name="line.208"></a>
-<FONT color="green">209</FONT>                    String name = "username";<a name="line.209"></a>
-<FONT color="green">210</FONT>                    registry.setString( prefix + name, value.getUsername() );<a name="line.210"></a>
+<FONT color="green">209</FONT>                    String name = "url";<a name="line.209"></a>
+<FONT color="green">210</FONT>                    registry.setString( prefix + name, value.getUrl() );<a name="line.210"></a>
 <FONT color="green">211</FONT>                }<a name="line.211"></a>
-<FONT color="green">212</FONT>                if ( value.getPassword() != null<a name="line.212"></a>
+<FONT color="green">212</FONT>                if ( value.getUsername() != null<a name="line.212"></a>
 <FONT color="green">213</FONT>     )<a name="line.213"></a>
 <FONT color="green">214</FONT>                {<a name="line.214"></a>
-<FONT color="green">215</FONT>                    String name = "password";<a name="line.215"></a>
-<FONT color="green">216</FONT>                    registry.setString( prefix + name, value.getPassword() );<a name="line.216"></a>
+<FONT color="green">215</FONT>                    String name = "username";<a name="line.215"></a>
+<FONT color="green">216</FONT>                    registry.setString( prefix + name, value.getUsername() );<a name="line.216"></a>
 <FONT color="green">217</FONT>                }<a name="line.217"></a>
-<FONT color="green">218</FONT>                if ( value.getTimeout() != 60<a name="line.218"></a>
+<FONT color="green">218</FONT>                if ( value.getPassword() != null<a name="line.218"></a>
 <FONT color="green">219</FONT>     )<a name="line.219"></a>
 <FONT color="green">220</FONT>                {<a name="line.220"></a>
-<FONT color="green">221</FONT>                    String name = "timeout";<a name="line.221"></a>
-<FONT color="green">222</FONT>                    registry.setInt( prefix + name, value.getTimeout() );<a name="line.222"></a>
+<FONT color="green">221</FONT>                    String name = "password";<a name="line.221"></a>
+<FONT color="green">222</FONT>                    registry.setString( prefix + name, value.getPassword() );<a name="line.222"></a>
 <FONT color="green">223</FONT>                }<a name="line.223"></a>
-<FONT color="green">224</FONT>                if ( value.getRefreshCronExpression() != null &amp;&amp; !value.getRefreshCronExpression().equals( "0 0 08 ? * SUN" )<a name="line.224"></a>
+<FONT color="green">224</FONT>                if ( value.getTimeout() != 60<a name="line.224"></a>
 <FONT color="green">225</FONT>     )<a name="line.225"></a>
 <FONT color="green">226</FONT>                {<a name="line.226"></a>
-<FONT color="green">227</FONT>                    String name = "refreshCronExpression";<a name="line.227"></a>
-<FONT color="green">228</FONT>                    registry.setString( prefix + name, value.getRefreshCronExpression() );<a name="line.228"></a>
+<FONT color="green">227</FONT>                    String name = "timeout";<a name="line.227"></a>
+<FONT color="green">228</FONT>                    registry.setInt( prefix + name, value.getTimeout() );<a name="line.228"></a>
 <FONT color="green">229</FONT>                }<a name="line.229"></a>
-<FONT color="green">230</FONT>                if ( value.isDownloadRemoteIndex() != false<a name="line.230"></a>
+<FONT color="green">230</FONT>                if ( value.getRefreshCronExpression() != null &amp;&amp; !value.getRefreshCronExpression().equals( "0 0 08 ? * SUN" )<a name="line.230"></a>
 <FONT color="green">231</FONT>     )<a name="line.231"></a>
 <FONT color="green">232</FONT>                {<a name="line.232"></a>
-<FONT color="green">233</FONT>                    String name = "downloadRemoteIndex";<a name="line.233"></a>
-<FONT color="green">234</FONT>                    registry.setBoolean( prefix + name, value.isDownloadRemoteIndex() );<a name="line.234"></a>
+<FONT color="green">233</FONT>                    String name = "refreshCronExpression";<a name="line.233"></a>
+<FONT color="green">234</FONT>                    registry.setString( prefix + name, value.getRefreshCronExpression() );<a name="line.234"></a>
 <FONT color="green">235</FONT>                }<a name="line.235"></a>
-<FONT color="green">236</FONT>                if ( value.getRemoteIndexUrl() != null<a name="line.236"></a>
+<FONT color="green">236</FONT>                if ( value.isDownloadRemoteIndex() != false<a name="line.236"></a>
 <FONT color="green">237</FONT>     )<a name="line.237"></a>
 <FONT color="green">238</FONT>                {<a name="line.238"></a>
-<FONT color="green">239</FONT>                    String name = "remoteIndexUrl";<a name="line.239"></a>
-<FONT color="green">240</FONT>                    registry.setString( prefix + name, value.getRemoteIndexUrl() );<a name="line.240"></a>
+<FONT color="green">239</FONT>                    String name = "downloadRemoteIndex";<a name="line.239"></a>
+<FONT color="green">240</FONT>                    registry.setBoolean( prefix + name, value.isDownloadRemoteIndex() );<a name="line.240"></a>
 <FONT color="green">241</FONT>                }<a name="line.241"></a>
-<FONT color="green">242</FONT>                if ( value.getRemoteDownloadNetworkProxyId() != null<a name="line.242"></a>
+<FONT color="green">242</FONT>                if ( value.getRemoteIndexUrl() != null<a name="line.242"></a>
 <FONT color="green">243</FONT>     )<a name="line.243"></a>
 <FONT color="green">244</FONT>                {<a name="line.244"></a>
-<FONT color="green">245</FONT>                    String name = "remoteDownloadNetworkProxyId";<a name="line.245"></a>
-<FONT color="green">246</FONT>                    registry.setString( prefix + name, value.getRemoteDownloadNetworkProxyId() );<a name="line.246"></a>
+<FONT color="green">245</FONT>                    String name = "remoteIndexUrl";<a name="line.245"></a>
+<FONT color="green">246</FONT>                    registry.setString( prefix + name, value.getRemoteIndexUrl() );<a name="line.246"></a>
 <FONT color="green">247</FONT>                }<a name="line.247"></a>
-<FONT color="green">248</FONT>                if ( value.getRemoteDownloadTimeout() != 300<a name="line.248"></a>
+<FONT color="green">248</FONT>                if ( value.getRemoteDownloadNetworkProxyId() != null<a name="line.248"></a>
 <FONT color="green">249</FONT>     )<a name="line.249"></a>
 <FONT color="green">250</FONT>                {<a name="line.250"></a>
-<FONT color="green">251</FONT>                    String name = "remoteDownloadTimeout";<a name="line.251"></a>
-<FONT color="green">252</FONT>                    registry.setInt( prefix + name, value.getRemoteDownloadTimeout() );<a name="line.252"></a>
+<FONT color="green">251</FONT>                    String name = "remoteDownloadNetworkProxyId";<a name="line.251"></a>
+<FONT color="green">252</FONT>                    registry.setString( prefix + name, value.getRemoteDownloadNetworkProxyId() );<a name="line.252"></a>
 <FONT color="green">253</FONT>                }<a name="line.253"></a>
-<FONT color="green">254</FONT>                if ( value.isDownloadRemoteIndexOnStartup() != false<a name="line.254"></a>
+<FONT color="green">254</FONT>                if ( value.getRemoteDownloadTimeout() != 300<a name="line.254"></a>
 <FONT color="green">255</FONT>     )<a name="line.255"></a>
 <FONT color="green">256</FONT>                {<a name="line.256"></a>
-<FONT color="green">257</FONT>                    String name = "downloadRemoteIndexOnStartup";<a name="line.257"></a>
-<FONT color="green">258</FONT>                    registry.setBoolean( prefix + name, value.isDownloadRemoteIndexOnStartup() );<a name="line.258"></a>
+<FONT color="green">257</FONT>                    String name = "remoteDownloadTimeout";<a name="line.257"></a>
+<FONT color="green">258</FONT>                    registry.setInt( prefix + name, value.getRemoteDownloadTimeout() );<a name="line.258"></a>
 <FONT color="green">259</FONT>                }<a name="line.259"></a>
-<FONT color="green">260</FONT>                if ( value.getId() != null<a name="line.260"></a>
+<FONT color="green">260</FONT>                if ( value.isDownloadRemoteIndexOnStartup() != false<a name="line.260"></a>
 <FONT color="green">261</FONT>     )<a name="line.261"></a>
 <FONT color="green">262</FONT>                {<a name="line.262"></a>
-<FONT color="green">263</FONT>                    String name = "id";<a name="line.263"></a>
-<FONT color="green">264</FONT>                    registry.setString( prefix + name, value.getId() );<a name="line.264"></a>
+<FONT color="green">263</FONT>                    String name = "downloadRemoteIndexOnStartup";<a name="line.263"></a>
+<FONT color="green">264</FONT>                    registry.setBoolean( prefix + name, value.isDownloadRemoteIndexOnStartup() );<a name="line.264"></a>
 <FONT color="green">265</FONT>                }<a name="line.265"></a>
-<FONT color="green">266</FONT>                if ( value.getName() != null<a name="line.266"></a>
+<FONT color="green">266</FONT>                if ( value.getId() != null<a name="line.266"></a>
 <FONT color="green">267</FONT>     )<a name="line.267"></a>
 <FONT color="green">268</FONT>                {<a name="line.268"></a>
-<FONT color="green">269</FONT>                    String name = "name";<a name="line.269"></a>
-<FONT color="green">270</FONT>                    registry.setString( prefix + name, value.getName() );<a name="line.270"></a>
+<FONT color="green">269</FONT>                    String name = "id";<a name="line.269"></a>
+<FONT color="green">270</FONT>                    registry.setString( prefix + name, value.getId() );<a name="line.270"></a>
 <FONT color="green">271</FONT>                }<a name="line.271"></a>
-<FONT color="green">272</FONT>                if ( value.getLayout() != null &amp;&amp; !value.getLayout().equals( "default" )<a name="line.272"></a>
+<FONT color="green">272</FONT>                if ( value.getName() != null<a name="line.272"></a>
 <FONT color="green">273</FONT>     )<a name="line.273"></a>
 <FONT color="green">274</FONT>                {<a name="line.274"></a>
-<FONT color="green">275</FONT>                    String name = "layout";<a name="line.275"></a>
-<FONT color="green">276</FONT>                    registry.setString( prefix + name, value.getLayout() );<a name="line.276"></a>
+<FONT color="green">275</FONT>                    String name = "name";<a name="line.275"></a>
+<FONT color="green">276</FONT>                    registry.setString( prefix + name, value.getName() );<a name="line.276"></a>
 <FONT color="green">277</FONT>                }<a name="line.277"></a>
-<FONT color="green">278</FONT>                if ( value.getIndexDir() != null<a name="line.278"></a>
+<FONT color="green">278</FONT>                if ( value.getLayout() != null &amp;&amp; !value.getLayout().equals( "default" )<a name="line.278"></a>
 <FONT color="green">279</FONT>     )<a name="line.279"></a>
 <FONT color="green">280</FONT>                {<a name="line.280"></a>
-<FONT color="green">281</FONT>                    String name = "indexDir";<a name="line.281"></a>
-<FONT color="green">282</FONT>                    registry.setString( prefix + name, value.getIndexDir() );<a name="line.282"></a>
+<FONT color="green">281</FONT>                    String name = "layout";<a name="line.281"></a>
+<FONT color="green">282</FONT>                    registry.setString( prefix + name, value.getLayout() );<a name="line.282"></a>
 <FONT color="green">283</FONT>                }<a name="line.283"></a>
-<FONT color="green">284</FONT>            }<a name="line.284"></a>
-<FONT color="green">285</FONT>        }<a name="line.285"></a>
-<FONT color="green">286</FONT>        <a name="line.286"></a>
-<FONT color="green">287</FONT>        private void writeManagedRepositoryConfiguration( String prefix, ManagedRepositoryConfiguration value, Registry registry )<a name="line.287"></a>
-<FONT color="green">288</FONT>        {<a name="line.288"></a>
-<FONT color="green">289</FONT>            if ( value != null )<a name="line.289"></a>
-<FONT color="green">290</FONT>            {<a name="line.290"></a>
-<FONT color="green">291</FONT>                if ( value.getLocation() != null<a name="line.291"></a>
-<FONT color="green">292</FONT>     )<a name="line.292"></a>
-<FONT color="green">293</FONT>                {<a name="line.293"></a>
-<FONT color="green">294</FONT>                    String name = "location";<a name="line.294"></a>
-<FONT color="green">295</FONT>                    registry.setString( prefix + name, value.getLocation() );<a name="line.295"></a>
-<FONT color="green">296</FONT>                }<a name="line.296"></a>
-<FONT color="green">297</FONT>                if ( value.isReleases() != true<a name="line.297"></a>
-<FONT color="green">298</FONT>     )<a name="line.298"></a>
-<FONT color="green">299</FONT>                {<a name="line.299"></a>
-<FONT color="green">300</FONT>                    String name = "releases";<a name="line.300"></a>
-<FONT color="green">301</FONT>                    registry.setBoolean( prefix + name, value.isReleases() );<a name="line.301"></a>
-<FONT color="green">302</FONT>                }<a name="line.302"></a>
-<FONT color="green">303</FONT>                if ( value.isBlockRedeployments() != false<a name="line.303"></a>
+<FONT color="green">284</FONT>                if ( value.getIndexDir() != null<a name="line.284"></a>
+<FONT color="green">285</FONT>     )<a name="line.285"></a>
+<FONT color="green">286</FONT>                {<a name="line.286"></a>
+<FONT color="green">287</FONT>                    String name = "indexDir";<a name="line.287"></a>
+<FONT color="green">288</FONT>                    registry.setString( prefix + name, value.getIndexDir() );<a name="line.288"></a>
+<FONT color="green">289</FONT>                }<a name="line.289"></a>
+<FONT color="green">290</FONT>                if ( value.getDescription() != null<a name="line.290"></a>
+<FONT color="green">291</FONT>     )<a name="line.291"></a>
+<FONT color="green">292</FONT>                {<a name="line.292"></a>
+<FONT color="green">293</FONT>                    String name = "description";<a name="line.293"></a>
+<FONT color="green">294</FONT>                    registry.setString( prefix + name, value.getDescription() );<a name="line.294"></a>
+<FONT color="green">295</FONT>                }<a name="line.295"></a>
+<FONT color="green">296</FONT>            }<a name="line.296"></a>
+<FONT color="green">297</FONT>        }<a name="line.297"></a>
+<FONT color="green">298</FONT>        <a name="line.298"></a>
+<FONT color="green">299</FONT>        private void writeManagedRepositoryConfiguration( String prefix, ManagedRepositoryConfiguration value, Registry registry )<a name="line.299"></a>
+<FONT color="green">300</FONT>        {<a name="line.300"></a>
+<FONT color="green">301</FONT>            if ( value != null )<a name="line.301"></a>
+<FONT color="green">302</FONT>            {<a name="line.302"></a>
+<FONT color="green">303</FONT>                if ( value.getLocation() != null<a name="line.303"></a>
 <FONT color="green">304</FONT>     )<a name="line.304"></a>
 <FONT color="green">305</FONT>                {<a name="line.305"></a>
-<FONT color="green">306</FONT>                    String name = "blockRedeployments";<a name="line.306"></a>
-<FONT color="green">307</FONT>                    registry.setBoolean( prefix + name, value.isBlockRedeployments() );<a name="line.307"></a>
+<FONT color="green">306</FONT>                    String name = "location";<a name="line.306"></a>
+<FONT color="green">307</FONT>                    registry.setString( prefix + name, value.getLocation() );<a name="line.307"></a>
 <FONT color="green">308</FONT>                }<a name="line.308"></a>
-<FONT color="green">309</FONT>                if ( value.isSnapshots() != false<a name="line.309"></a>
+<FONT color="green">309</FONT>                if ( value.isReleases() != true<a name="line.309"></a>
 <FONT color="green">310</FONT>     )<a name="line.310"></a>
 <FONT color="green">311</FONT>                {<a name="line.311"></a>
-<FONT color="green">312</FONT>                    String name = "snapshots";<a name="line.312"></a>
-<FONT color="green">313</FONT>                    registry.setBoolean( prefix + name, value.isSnapshots() );<a name="line.313"></a>
+<FONT color="green">312</FONT>                    String name = "releases";<a name="line.312"></a>
+<FONT color="green">313</FONT>                    registry.setBoolean( prefix + name, value.isReleases() );<a name="line.313"></a>
 <FONT color="green">314</FONT>                }<a name="line.314"></a>
-<FONT color="green">315</FONT>                if ( value.isScanned() != true<a name="line.315"></a>
+<FONT color="green">315</FONT>                if ( value.isBlockRedeployments() != false<a name="line.315"></a>
 <FONT color="green">316</FONT>     )<a name="line.316"></a>
 <FONT color="green">317</FONT>                {<a name="line.317"></a>
-<FONT color="green">318</FONT>                    String name = "scanned";<a name="line.318"></a>
-<FONT color="green">319</FONT>                    registry.setBoolean( prefix + name, value.isScanned() );<a name="line.319"></a>
+<FONT color="green">318</FONT>                    String name = "blockRedeployments";<a name="line.318"></a>
+<FONT color="green">319</FONT>                    registry.setBoolean( prefix + name, value.isBlockRedeployments() );<a name="line.319"></a>
 <FONT color="green">320</FONT>                }<a name="line.320"></a>
-<FONT color="green">321</FONT>                if ( value.getRefreshCronExpression() != null &amp;&amp; !value.getRefreshCronExpression().equals( "0 0 * * * ?" )<a name="line.321"></a>
+<FONT color="green">321</FONT>                if ( value.isSnapshots() != false<a name="line.321"></a>
 <FONT color="green">322</FONT>     )<a name="line.322"></a>
 <FONT color="green">323</FONT>                {<a name="line.323"></a>
-<FONT color="green">324</FONT>                    String name = "refreshCronExpression";<a name="line.324"></a>
-<FONT color="green">325</FONT>                    registry.setString( prefix + name, value.getRefreshCronExpression() );<a name="line.325"></a>
+<FONT color="green">324</FONT>                    String name = "snapshots";<a name="line.324"></a>
+<FONT color="green">325</FONT>                    registry.setBoolean( prefix + name, value.isSnapshots() );<a name="line.325"></a>
 <FONT color="green">326</FONT>                }<a name="line.326"></a>
-<FONT color="green">327</FONT>                if ( value.getRetentionCount() != 2<a name="line.327"></a>
+<FONT color="green">327</FONT>                if ( value.isScanned() != true<a name="line.327"></a>
 <FONT color="green">328</FONT>     )<a name="line.328"></a>
 <FONT color="green">329</FONT>                {<a name="line.329"></a>
-<FONT color="green">330</FONT>                    String name = "retentionCount";<a name="line.330"></a>
-<FONT color="green">331</FONT>                    registry.setInt( prefix + name, value.getRetentionCount() );<a name="line.331"></a>
+<FONT color="green">330</FONT>                    String name = "scanned";<a name="line.330"></a>
+<FONT color="green">331</FONT>                    registry.setBoolean( prefix + name, value.isScanned() );<a name="line.331"></a>
 <FONT color="green">332</FONT>                }<a name="line.332"></a>
-<FONT color="green">333</FONT>                if ( value.getDaysOlder() != 100<a name="line.333"></a>
+<FONT color="green">333</FONT>                if ( value.getRefreshCronExpression() != null &amp;&amp; !value.getRefreshCronExpression().equals( "0 0 * * * ?" )<a name="line.333"></a>
 <FONT color="green">334</FONT>     )<a name="line.334"></a>
 <FONT color="green">335</FONT>                {<a name="line.335"></a>
-<FONT color="green">336</FONT>                    String name = "daysOlder";<a name="line.336"></a>
-<FONT color="green">337</FONT>                    registry.setInt( prefix + name, value.getDaysOlder() );<a name="line.337"></a>
+<FONT color="green">336</FONT>                    String name = "refreshCronExpression";<a name="line.336"></a>
+<FONT color="green">337</FONT>                    registry.setString( prefix + name, value.getRefreshCronExpression() );<a name="line.337"></a>
 <FONT color="green">338</FONT>                }<a name="line.338"></a>
-<FONT color="green">339</FONT>                if ( value.isDeleteReleasedSnapshots() != false<a name="line.339"></a>
+<FONT color="green">339</FONT>                if ( value.getRetentionCount() != 2<a name="line.339"></a>
 <FONT color="green">340</FONT>     )<a name="line.340"></a>
 <FONT color="green">341</FONT>                {<a name="line.341"></a>
-<FONT color="green">342</FONT>                    String name = "deleteReleasedSnapshots";<a name="line.342"></a>
-<FONT color="green">343</FONT>                    registry.setBoolean( prefix + name, value.isDeleteReleasedSnapshots() );<a name="line.343"></a>
+<FONT color="green">342</FONT>                    String name = "retentionCount";<a name="line.342"></a>
+<FONT color="green">343</FONT>                    registry.setInt( prefix + name, value.getRetentionCount() );<a name="line.343"></a>
 <FONT color="green">344</FONT>                }<a name="line.344"></a>
-<FONT color="green">345</FONT>                if ( value.getId() != null<a name="line.345"></a>
+<FONT color="green">345</FONT>                if ( value.getDaysOlder() != 100<a name="line.345"></a>
 <FONT color="green">346</FONT>     )<a name="line.346"></a>
 <FONT color="green">347</FONT>                {<a name="line.347"></a>
-<FONT color="green">348</FONT>                    String name = "id";<a name="line.348"></a>
-<FONT color="green">349</FONT>                    registry.setString( prefix + name, value.getId() );<a name="line.349"></a>
+<FONT color="green">348</FONT>                    String name = "daysOlder";<a name="line.348"></a>
+<FONT color="green">349</FONT>                    registry.setInt( prefix + name, value.getDaysOlder() );<a name="line.349"></a>
 <FONT color="green">350</FONT>                }<a name="line.350"></a>
-<FONT color="green">351</FONT>                if ( value.getName() != null<a name="line.351"></a>
+<FONT color="green">351</FONT>                if ( value.isDeleteReleasedSnapshots() != false<a name="line.351"></a>
 <FONT color="green">352</FONT>     )<a name="line.352"></a>
 <FONT color="green">353</FONT>                {<a name="line.353"></a>
-<FONT color="green">354</FONT>                    String name = "name";<a name="line.354"></a>
-<FONT color="green">355</FONT>                    registry.setString( prefix + name, value.getName() );<a name="line.355"></a>
+<FONT color="green">354</FONT>                    String name = "deleteReleasedSnapshots";<a name="line.354"></a>
+<FONT color="green">355</FONT>                    registry.setBoolean( prefix + name, value.isDeleteReleasedSnapshots() );<a name="line.355"></a>
 <FONT color="green">356</FONT>                }<a name="line.356"></a>
-<FONT color="green">357</FONT>                if ( value.getLayout() != null &amp;&amp; !value.getLayout().equals( "default" )<a name="line.357"></a>
+<FONT color="green">357</FONT>                if ( value.isSkipPackedIndexCreation() != false<a name="line.357"></a>
 <FONT color="green">358</FONT>     )<a name="line.358"></a>
 <FONT color="green">359</FONT>                {<a name="line.359"></a>
-<FONT color="green">360</FONT>                    String name = "layout";<a name="line.360"></a>
-<FONT color="green">361</FONT>                    registry.setString( prefix + name, value.getLayout() );<a name="line.361"></a>
+<FONT color="green">360</FONT>                    String name = "skipPackedIndexCreation";<a name="line.360"></a>
+<FONT color="green">361</FONT>                    registry.setBoolean( prefix + name, value.isSkipPackedIndexCreation() );<a name="line.361"></a>
 <FONT color="green">362</FONT>                }<a name="line.362"></a>
-<FONT color="green">363</FONT>                if ( value.getIndexDir() != null<a name="line.363"></a>
+<FONT color="green">363</FONT>                if ( value.getId() != null<a name="line.363"></a>
 <FONT color="green">364</FONT>     )<a name="line.364"></a>
 <FONT color="green">365</FONT>                {<a name="line.365"></a>
-<FONT color="green">366</FONT>                    String name = "indexDir";<a name="line.366"></a>
-<FONT color="green">367</FONT>                    registry.setString( prefix + name, value.getIndexDir() );<a name="line.367"></a>
+<FONT color="green">366</FONT>                    String name = "id";<a name="line.366"></a>
+<FONT color="green">367</FONT>                    registry.setString( prefix + name, value.getId() );<a name="line.367"></a>
 <FONT color="green">368</FONT>                }<a name="line.368"></a>
-<FONT color="green">369</FONT>            }<a name="line.369"></a>
-<FONT color="green">370</FONT>        }<a name="line.370"></a>
-<FONT color="green">371</FONT>        <a name="line.371"></a>
-<FONT color="green">372</FONT>        private void writeV1RepositoryConfiguration( String prefix, V1RepositoryConfiguration value, Registry registry )<a name="line.372"></a>
-<FONT color="green">373</FONT>        {<a name="line.373"></a>
-<FONT color="green">374</FONT>            if ( value != null )<a name="line.374"></a>
-<FONT color="green">375</FONT>            {<a name="line.375"></a>
-<FONT color="green">376</FONT>                if ( value.getUrl() != null<a name="line.376"></a>
-<FONT color="green">377</FONT>     )<a name="line.377"></a>
-<FONT color="green">378</FONT>                {<a name="line.378"></a>
-<FONT color="green">379</FONT>                    String name = "url";<a name="line.379"></a>
-<FONT color="green">380</FONT>                    registry.setString( prefix + name, value.getUrl() );<a name="line.380"></a>
-<FONT color="green">381</FONT>                }<a name="line.381"></a>
-<FONT color="green">382</FONT>                if ( value.isIndexed() != false<a name="line.382"></a>
-<FONT color="green">383</FONT>     )<a name="line.383"></a>
-<FONT color="green">384</FONT>                {<a name="line.384"></a>
-<FONT color="green">385</FONT>                    String name = "indexed";<a name="line.385"></a>
-<FONT color="green">386</FONT>                    registry.setBoolean( prefix + name, value.isIndexed() );<a name="line.386"></a>
-<FONT color="green">387</FONT>                }<a name="line.387"></a>
-<FONT color="green">388</FONT>                if ( value.getLocation() != null<a name="line.388"></a>
-<FONT color="green">389</FONT>     )<a name="line.389"></a>
-<FONT color="green">390</FONT>                {<a name="line.390"></a>
-<FONT color="green">391</FONT>                    String name = "location";<a name="line.391"></a>
-<FONT color="green">392</FONT>                    registry.setString( prefix + name, value.getLocation() );<a name="line.392"></a>
-<FONT color="green">393</FONT>                }<a name="line.393"></a>
-<FONT color="green">394</FONT>                if ( value.isReleases() != true<a name="line.394"></a>
-<FONT color="green">395</FONT>     )<a name="line.395"></a>
-<FONT color="green">396</FONT>                {<a name="line.396"></a>
-<FONT color="green">397</FONT>                    String name = "releases";<a name="line.397"></a>
-<FONT color="green">398</FONT>                    registry.setBoolean( prefix + name, value.isReleases() );<a name="line.398"></a>
-<FONT color="green">399</FONT>                }<a name="line.399"></a>
-<FONT color="green">400</FONT>                if ( value.isBlockRedeployments() != false<a name="line.400"></a>
+<FONT color="green">369</FONT>                if ( value.getName() != null<a name="line.369"></a>
+<FONT color="green">370</FONT>     )<a name="line.370"></a>
+<FONT color="green">371</FONT>                {<a name="line.371"></a>
+<FONT color="green">372</FONT>                    String name = "name";<a name="line.372"></a>
+<FONT color="green">373</FONT>                    registry.setString( prefix + name, value.getName() );<a name="line.373"></a>
+<FONT color="green">374</FONT>                }<a name="line.374"></a>
+<FONT color="green">375</FONT>                if ( value.getLayout() != null &amp;&amp; !value.getLayout().equals( "default" )<a name="line.375"></a>
+<FONT color="green">376</FONT>     )<a name="line.376"></a>
+<FONT color="green">377</FONT>                {<a name="line.377"></a>
+<FONT color="green">378</FONT>                    String name = "layout";<a name="line.378"></a>
+<FONT color="green">379</FONT>                    registry.setString( prefix + name, value.getLayout() );<a name="line.379"></a>
+<FONT color="green">380</FONT>                }<a name="line.380"></a>
+<FONT color="green">381</FONT>                if ( value.getIndexDir() != null<a name="line.381"></a>
+<FONT color="green">382</FONT>     )<a name="line.382"></a>
+<FONT color="green">383</FONT>                {<a name="line.383"></a>
+<FONT color="green">384</FONT>                    String name = "indexDir";<a name="line.384"></a>
+<FONT color="green">385</FONT>                    registry.setString( prefix + name, value.getIndexDir() );<a name="line.385"></a>
+<FONT color="green">386</FONT>                }<a name="line.386"></a>
+<FONT color="green">387</FONT>                if ( value.getDescription() != null<a name="line.387"></a>
+<FONT color="green">388</FONT>     )<a name="line.388"></a>
+<FONT color="green">389</FONT>                {<a name="line.389"></a>
+<FONT color="green">390</FONT>                    String name = "description";<a name="line.390"></a>
+<FONT color="green">391</FONT>                    registry.setString( prefix + name, value.getDescription() );<a name="line.391"></a>
+<FONT color="green">392</FONT>                }<a name="line.392"></a>
+<FONT color="green">393</FONT>            }<a name="line.393"></a>
+<FONT color="green">394</FONT>        }<a name="line.394"></a>
+<FONT color="green">395</FONT>        <a name="line.395"></a>
+<FONT color="green">396</FONT>        private void writeV1RepositoryConfiguration( String prefix, V1RepositoryConfiguration value, Registry registry )<a name="line.396"></a>
+<FONT color="green">397</FONT>        {<a name="line.397"></a>
+<FONT color="green">398</FONT>            if ( value != null )<a name="line.398"></a>
+<FONT color="green">399</FONT>            {<a name="line.399"></a>
+<FONT color="green">400</FONT>                if ( value.getUrl() != null<a name="line.400"></a>
 <FONT color="green">401</FONT>     )<a name="line.401"></a>
 <FONT color="green">402</FONT>                {<a name="line.402"></a>
-<FONT color="green">403</FONT>                    String name = "blockRedeployments";<a name="line.403"></a>
-<FONT color="green">404</FONT>                    registry.setBoolean( prefix + name, value.isBlockRedeployments() );<a name="line.404"></a>
+<FONT color="green">403</FONT>                    String name = "url";<a name="line.403"></a>
+<FONT color="green">404</FONT>                    registry.setString( prefix + name, value.getUrl() );<a name="line.404"></a>
 <FONT color="green">405</FONT>                }<a name="line.405"></a>
-<FONT color="green">406</FONT>                if ( value.isSnapshots() != false<a name="line.406"></a>
+<FONT color="green">406</FONT>                if ( value.isIndexed() != false<a name="line.406"></a>
 <FONT color="green">407</FONT>     )<a name="line.407"></a>
 <FONT color="green">408</FONT>                {<a name="line.408"></a>
-<FONT color="green">409</FONT>                    String name = "snapshots";<a name="line.409"></a>
-<FONT color="green">410</FONT>                    registry.setBoolean( prefix + name, value.isSnapshots() );<a name="line.410"></a>
+<FONT color="green">409</FONT>                    String name = "indexed";<a name="line.409"></a>
+<FONT color="green">410</FONT>                    registry.setBoolean( prefix + name, value.isIndexed() );<a name="line.410"></a>
 <FONT color="green">411</FONT>                }<a name="line.411"></a>
-<FONT color="green">412</FONT>                if ( value.isScanned() != true<a name="line.412"></a>
+<FONT color="green">412</FONT>                if ( value.getLocation() != null<a name="line.412"></a>
 <FONT color="green">413</FONT>     )<a name="line.413"></a>
 <FONT color="green">414</FONT>                {<a name="line.414"></a>
-<FONT color="green">415</FONT>                    String name = "scanned";<a name="line.415"></a>
-<FONT color="green">416</FONT>                    registry.setBoolean( prefix + name, value.isScanned() );<a name="line.416"></a>
+<FONT color="green">415</FONT>                    String name = "location";<a name="line.415"></a>
+<FONT color="green">416</FONT>                    registry.setString( prefix + name, value.getLocation() );<a name="line.416"></a>
 <FONT color="green">417</FONT>                }<a name="line.417"></a>
-<FONT color="green">418</FONT>                if ( value.getRefreshCronExpression() != null &amp;&amp; !value.getRefreshCronExpression().equals( "0 0 * * * ?" )<a name="line.418"></a>
+<FONT color="green">418</FONT>                if ( value.isReleases() != true<a name="line.418"></a>
 <FONT color="green">419</FONT>     )<a name="line.419"></a>
 <FONT color="green">420</FONT>                {<a name="line.420"></a>
-<FONT color="green">421</FONT>                    String name = "refreshCronExpression";<a name="line.421"></a>
-<FONT color="green">422</FONT>                    registry.setString( prefix + name, value.getRefreshCronExpression() );<a name="line.422"></a>
+<FONT color="green">421</FONT>                    String name = "releases";<a name="line.421"></a>
+<FONT color="green">422</FONT>                    registry.setBoolean( prefix + name, value.isReleases() );<a name="line.422"></a>
 <FONT color="green">423</FONT>                }<a name="line.423"></a>
-<FONT color="green">424</FONT>                if ( value.getRetentionCount() != 2<a name="line.424"></a>
+<FONT color="green">424</FONT>                if ( value.isBlockRedeployments() != false<a name="line.424"></a>
 <FONT color="green">425</FONT>     )<a name="line.425"></a>
 <FONT color="green">426</FONT>                {<a name="line.426"></a>
-<FONT color="green">427</FONT>                    String name = "retentionCount";<a name="line.427"></a>
-<FONT color="green">428</FONT>                    registry.setInt( prefix + name, value.getRetentionCount() );<a name="line.428"></a>
+<FONT color="green">427</FONT>                    String name = "blockRedeployments";<a name="line.427"></a>
+<FONT color="green">428</FONT>                    registry.setBoolean( prefix + name, value.isBlockRedeployments() );<a name="line.428"></a>
 <FONT color="green">429</FONT>                }<a name="line.429"></a>
-<FONT color="green">430</FONT>                if ( value.getDaysOlder() != 100<a name="line.430"></a>
+<FONT color="green">430</FONT>                if ( value.isSnapshots() != false<a name="line.430"></a>
 <FONT color="green">431</FONT>     )<a name="line.431"></a>
 <FONT color="green">432</FONT>                {<a name="line.432"></a>
-<FONT color="green">433</FONT>                    String name = "daysOlder";<a name="line.433"></a>
-<FONT color="green">434</FONT>                    registry.setInt( prefix + name, value.getDaysOlder() );<a name="line.434"></a>
+<FONT color="green">433</FONT>                    String name = "snapshots";<a name="line.433"></a>
+<FONT color="green">434</FONT>                    registry.setBoolean( prefix + name, value.isSnapshots() );<a name="line.434"></a>
 <FONT color="green">435</FONT>                }<a name="line.435"></a>
-<FONT color="green">436</FONT>                if ( value.isDeleteReleasedSnapshots() != false<a name="line.436"></a>
+<FONT color="green">436</FONT>                if ( value.isScanned() != true<a name="line.436"></a>
 <FONT color="green">437</FONT>     )<a name="line.437"></a>
 <FONT color="green">438</FONT>                {<a name="line.438"></a>
-<FONT color="green">439</FONT>                    String name = "deleteReleasedSnapshots";<a name="line.439"></a>
-<FONT color="green">440</FONT>                    registry.setBoolean( prefix + name, value.isDeleteReleasedSnapshots() );<a name="line.440"></a>
+<FONT color="green">439</FONT>                    String name = "scanned";<a name="line.439"></a>
+<FONT color="green">440</FONT>                    registry.setBoolean( prefix + name, value.isScanned() );<a name="line.440"></a>
 <FONT color="green">441</FONT>                }<a name="line.441"></a>
-<FONT color="green">442</FONT>                if ( value.getId() != null<a name="line.442"></a>
+<FONT color="green">442</FONT>                if ( value.getRefreshCronExpression() != null &amp;&amp; !value.getRefreshCronExpression().equals( "0 0 * * * ?" )<a name="line.442"></a>
 <FONT color="green">443</FONT>     )<a name="line.443"></a>
 <FONT color="green">444</FONT>                {<a name="line.444"></a>
-<FONT color="green">445</FONT>                    String name = "id";<a name="line.445"></a>
-<FONT color="green">446</FONT>                    registry.setString( prefix + name, value.getId() );<a name="line.446"></a>
+<FONT color="green">445</FONT>                    String name = "refreshCronExpression";<a name="line.445"></a>
+<FONT color="green">446</FONT>                    registry.setString( prefix + name, value.getRefreshCronExpression() );<a name="line.446"></a>
 <FONT color="green">447</FONT>                }<a name="line.447"></a>
-<FONT color="green">448</FONT>                if ( value.getName() != null<a name="line.448"></a>
+<FONT color="green">448</FONT>                if ( value.getRetentionCount() != 2<a name="line.448"></a>
 <FONT color="green">449</FONT>     )<a name="line.449"></a>
 <FONT color="green">450</FONT>                {<a name="line.450"></a>
-<FONT color="green">451</FONT>                    String name = "name";<a name="line.451"></a>
-<FONT color="green">452</FONT>                    registry.setString( prefix + name, value.getName() );<a name="line.452"></a>
+<FONT color="green">451</FONT>                    String name = "retentionCount";<a name="line.451"></a>
+<FONT color="green">452</FONT>                    registry.setInt( prefix + name, value.getRetentionCount() );<a name="line.452"></a>
 <FONT color="green">453</FONT>                }<a name="line.453"></a>
-<FONT color="green">454</FONT>                if ( value.getLayout() != null &amp;&amp; !value.getLayout().equals( "default" )<a name="line.454"></a>
+<FONT color="green">454</FONT>                if ( value.getDaysOlder() != 100<a name="line.454"></a>
 <FONT color="green">455</FONT>     )<a name="line.455"></a>
 <FONT color="green">456</FONT>                {<a name="line.456"></a>
-<FONT color="green">457</FONT>                    String name = "layout";<a name="line.457"></a>
-<FONT color="green">458</FONT>                    registry.setString( prefix + name, value.getLayout() );<a name="line.458"></a>
+<FONT color="green">457</FONT>                    String name = "daysOlder";<a name="line.457"></a>
+<FONT color="green">458</FONT>                    registry.setInt( prefix + name, value.getDaysOlder() );<a name="line.458"></a>
 <FONT color="green">459</FONT>                }<a name="line.459"></a>
-<FONT color="green">460</FONT>                if ( value.getIndexDir() != null<a name="line.460"></a>
+<FONT color="green">460</FONT>                if ( value.isDeleteReleasedSnapshots() != false<a name="line.460"></a>
 <FONT color="green">461</FONT>     )<a name="line.461"></a>
 <FONT color="green">462</FONT>                {<a name="line.462"></a>
-<FONT color="green">463</FONT>                    String name = "indexDir";<a name="line.463"></a>
-<FONT color="green">464</FONT>                    registry.setString( prefix + name, value.getIndexDir() );<a name="line.464"></a>
+<FONT color="green">463</FONT>                    String name = "deleteReleasedSnapshots";<a name="line.463"></a>
+<FONT color="green">464</FONT>                    registry.setBoolean( prefix + name, value.isDeleteReleasedSnapshots() );<a name="line.464"></a>
 <FONT color="green">465</FONT>                }<a name="line.465"></a>
-<FONT color="green">466</FONT>            }<a name="line.466"></a>
-<FONT color="green">467</FONT>        }<a name="line.467"></a>
-<FONT color="green">468</FONT>        <a name="line.468"></a>
-<FONT color="green">469</FONT>        private void writeLegacyArtifactPath( String prefix, LegacyArtifactPath value, Registry registry )<a name="line.469"></a>
-<FONT color="green">470</FONT>        {<a name="line.470"></a>
-<FONT color="green">471</FONT>            if ( value != null )<a name="line.471"></a>
-<FONT color="green">472</FONT>            {<a name="line.472"></a>
-<FONT color="green">473</FONT>                if ( value.getPath() != null<a name="line.473"></a>
-<FONT color="green">474</FONT>     )<a name="line.474"></a>
-<FONT color="green">475</FONT>                {<a name="line.475"></a>
-<FONT color="green">476</FONT>                    String name = "path";<a name="line.476"></a>
-<FONT color="green">477</FONT>                    registry.setString( prefix + name, value.getPath() );<a name="line.477"></a>
-<FONT color="green">478</FONT>                }<a name="line.478"></a>
-<FONT color="green">479</FONT>                if ( value.getArtifact() != null<a name="line.479"></a>
-<FONT color="green">480</FONT>     )<a name="line.480"></a>
-<FONT color="green">481</FONT>                {<a name="line.481"></a>
-<FONT color="green">482</FONT>                    String name = "artifact";<a name="line.482"></a>
-<FONT color="green">483</FONT>                    registry.setString( prefix + name, value.getArtifact() );<a name="line.483"></a>
-<FONT color="green">484</FONT>                }<a name="line.484"></a>
-<FONT color="green">485</FONT>            }<a name="line.485"></a>
-<FONT color="green">486</FONT>        }<a name="line.486"></a>
-<FONT color="green">487</FONT>        <a name="line.487"></a>
-<FONT color="green">488</FONT>        private void writeRepositoryGroupConfiguration( String prefix, RepositoryGroupConfiguration value, Registry registry )<a name="line.488"></a>
-<FONT color="green">489</FONT>        {<a name="line.489"></a>
-<FONT color="green">490</FONT>            if ( value != null )<a name="line.490"></a>
-<FONT color="green">491</FONT>            {<a name="line.491"></a>
-<FONT color="green">492</FONT>                if ( value.getId() != null<a name="line.492"></a>
-<FONT color="green">493</FONT>     )<a name="line.493"></a>
-<FONT color="green">494</FONT>                {<a name="line.494"></a>
-<FONT color="green">495</FONT>                    String name = "id";<a name="line.495"></a>
-<FONT color="green">496</FONT>                    registry.setString( prefix + name, value.getId() );<a name="line.496"></a>
-<FONT color="green">497</FONT>                }<a name="line.497"></a>
-<FONT color="green">498</FONT>                if ( value.getRepositories() != null &amp;&amp; value.getRepositories().size() &gt; 0<a name="line.498"></a>
-<FONT color="green">499</FONT>     )<a name="line.499"></a>
-<FONT color="green">500</FONT>                {<a name="line.500"></a>
-<FONT color="green">501</FONT>                    registry.removeSubset( prefix + "repositories" );<a name="line.501"></a>
-<FONT color="green">502</FONT>    <a name="line.502"></a>
-<FONT color="green">503</FONT>                    int count = 0;<a name="line.503"></a>
-<FONT color="green">504</FONT>                    for ( Iterator iter = value.getRepositories().iterator(); iter.hasNext(); count++ )<a name="line.504"></a>
-<FONT color="green">505</FONT>                    {<a name="line.505"></a>
-<FONT color="green">506</FONT>                        String name = "repositories.repository(" + count + ")";<a name="line.506"></a>
-<FONT color="green">507</FONT>                        String repository = ( String ) iter.next();<a name="line.507"></a>
-<FONT color="green">508</FONT>                        registry.setString( prefix + name, repository );<a name="line.508"></a>
-<FONT color="green">509</FONT>                    }<a name="line.509"></a>
-<FONT color="green">510</FONT>                }<a name="line.510"></a>
-<FONT color="green">511</FONT>            }<a name="line.511"></a>
-<FONT color="green">512</FONT>        }<a name="line.512"></a>
-<FONT color="green">513</FONT>        <a name="line.513"></a>
-<FONT color="green">514</FONT>        private void writeAbstractRepositoryConnectorConfiguration( String prefix, AbstractRepositoryConnectorConfiguration value, Registry registry )<a name="line.514"></a>
-<FONT color="green">515</FONT>        {<a name="line.515"></a>
-<FONT color="green">516</FONT>            if ( value != null )<a name="line.516"></a>
-<FONT color="green">517</FONT>            {<a name="line.517"></a>
-<FONT color="green">518</FONT>                if ( value.getSourceRepoId() != null<a name="line.518"></a>
-<FONT color="green">519</FONT>     )<a name="line.519"></a>
-<FONT color="green">520</FONT>                {<a name="line.520"></a>
-<FONT color="green">521</FONT>                    String name = "sourceRepoId";<a name="line.521"></a>
-<FONT color="green">522</FONT>                    registry.setString( prefix + name, value.getSourceRepoId() );<a name="line.522"></a>
-<FONT color="green">523</FONT>                }<a name="line.523"></a>
-<FONT color="green">524</FONT>                if ( value.getTargetRepoId() != null<a name="line.524"></a>
-<FONT color="green">525</FONT>     )<a name="line.525"></a>
-<FONT color="green">526</FONT>                {<a name="line.526"></a>
-<FONT color="green">527</FONT>                    String name = "targetRepoId";<a name="line.527"></a>
-<FONT color="green">528</FONT>                    registry.setString( prefix + name, value.getTargetRepoId() );<a name="line.528"></a>
-<FONT color="green">529</FONT>                }<a name="line.529"></a>
-<FONT color="green">530</FONT>                if ( value.getProxyId() != null<a name="line.530"></a>
-<FONT color="green">531</FONT>     )<a name="line.531"></a>
-<FONT color="green">532</FONT>                {<a name="line.532"></a>
-<FONT color="green">533</FONT>                    String name = "proxyId";<a name="line.533"></a>
-<FONT color="green">534</FONT>                    registry.setString( prefix + name, value.getProxyId() );<a name="line.534"></a>
-<FONT color="green">535</FONT>                }<a name="line.535"></a>
-<FONT color="green">536</FONT>                if ( value.getBlackListPatterns() != null &amp;&amp; value.getBlackListPatterns().size() &gt; 0<a name="line.536"></a>
-<FONT color="green">537</FONT>     )<a name="line.537"></a>
-<FONT color="green">538</FONT>                {<a name="line.538"></a>
-<FONT color="green">539</FONT>                    registry.removeSubset( prefix + "blackListPatterns" );<a name="line.539"></a>
-<FONT color="green">540</FONT>    <a name="line.540"></a>
-<FONT color="green">541</FONT>                    int count = 0;<a name="line.541"></a>
-<FONT color="green">542</FONT>                    for ( Iterator iter = value.getBlackListPatterns().iterator(); iter.hasNext(); count++ )<a name="line.542"></a>
-<FONT color="green">543</FONT>                    {<a name="line.543"></a>
-<FONT color="green">544</FONT>                        String name = "blackListPatterns.blackListPattern(" + count + ")";<a name="line.544"></a>
-<FONT color="green">545</FONT>                        String blackListPattern = ( String ) iter.next();<a name="line.545"></a>
-<FONT color="green">546</FONT>                        registry.setString( prefix + name, blackListPattern );<a name="line.546"></a>
-<FONT color="green">547</FONT>                    }<a name="line.547"></a>
-<FONT color="green">548</FONT>                }<a name="line.548"></a>
-<FONT color="green">549</FONT>                if ( value.getWhiteListPatterns() != null &amp;&amp; value.getWhiteListPatterns().size() &gt; 0<a name="line.549"></a>
-<FONT color="green">550</FONT>     )<a name="line.550"></a>
-<FONT color="green">551</FONT>                {<a name="line.551"></a>
-<FONT color="green">552</FONT>                    registry.removeSubset( prefix + "whiteListPatterns" );<a name="line.552"></a>
-<FONT color="green">553</FONT>    <a name="line.553"></a>
-<FONT color="green">554</FONT>                    int count = 0;<a name="line.554"></a>
-<FONT color="green">555</FONT>                    for ( Iterator iter = value.getWhiteListPatterns().iterator(); iter.hasNext(); count++ )<a name="line.555"></a>
-<FONT color="green">556</FONT>                    {<a name="line.556"></a>
-<FONT color="green">557</FONT>                        String name = "whiteListPatterns.whiteListPattern(" + count + ")";<a name="line.557"></a>
-<FONT color="green">558</FONT>                        String whiteListPattern = ( String ) iter.next();<a name="line.558"></a>
-<FONT color="green">559</FONT>                        registry.setString( prefix + name, whiteListPattern );<a name="line.559"></a>
-<FONT color="green">560</FONT>                    }<a name="line.560"></a>
-<FONT color="green">561</FONT>                }<a name="line.561"></a>
-<FONT color="green">562</FONT>                if ( value.getPolicies() != null &amp;&amp; value.getPolicies().size() &gt; 0<a name="line.562"></a>
-<FONT color="green">563</FONT>     )<a name="line.563"></a>
-<FONT color="green">564</FONT>                {<a name="line.564"></a>
-<FONT color="green">565</FONT>                    registry.removeSubset( prefix + "policies" );<a name="line.565"></a>
-<FONT color="green">566</FONT>                    <a name="line.566"></a>
-<FONT color="green">567</FONT>                    for ( Iterator iter = value.getPolicies().keySet().iterator(); iter.hasNext(); )<a name="line.567"></a>
-<FONT color="green">568</FONT>                    {<a name="line.568"></a>
-<FONT color="green">569</FONT>                        String key = (String) iter.next();<a name="line.569"></a>
-<FONT color="green">570</FONT>                        String v = (String) value.getPolicies().get( key );<a name="line.570"></a>
-<FONT color="green">571</FONT>    <a name="line.571"></a>
-<FONT color="green">572</FONT>                        registry.setString( prefix + "policies." + key, v );<a name="line.572"></a>
-<FONT color="green">573</FONT>                    }<a name="line.573"></a>
-<FONT color="green">574</FONT>                }<a name="line.574"></a>
-<FONT color="green">575</FONT>                if ( value.getProperties() != null &amp;&amp; value.getProperties().size() &gt; 0<a name="line.575"></a>
-<FONT color="green">576</FONT>     )<a name="line.576"></a>
-<FONT color="green">577</FONT>                {<a name="line.577"></a>
-<FONT color="green">578</FONT>                    registry.removeSubset( prefix + "properties" );<a name="line.578"></a>
-<FONT color="green">579</FONT>                    <a name="line.579"></a>
-<FONT color="green">580</FONT>                    for ( Iterator iter = value.getProperties().keySet().iterator(); iter.hasNext(); )<a name="line.580"></a>
-<FONT color="green">581</FONT>                    {<a name="line.581"></a>
-<FONT color="green">582</FONT>                        String key = (String) iter.next();<a name="line.582"></a>
-<FONT color="green">583</FONT>                        String v = (String) value.getProperties().get( key );<a name="line.583"></a>
-<FONT color="green">584</FONT>    <a name="line.584"></a>
-<FONT color="green">585</FONT>                        registry.setString( prefix + "properties." + key, v );<a name="line.585"></a>
-<FONT color="green">586</FONT>                    }<a name="line.586"></a>
-<FONT color="green">587</FONT>                }<a name="line.587"></a>
-<FONT color="green">588</FONT>                if ( value.isDisabled() != false<a name="line.588"></a>
-<FONT color="green">589</FONT>     )<a name="line.589"></a>
-<FONT color="green">590</FONT>                {<a name="line.590"></a>
-<FONT color="green">591</FONT>                    String name = "disabled";<a name="line.591"></a>
-<FONT color="green">592</FONT>                    registry.setBoolean( prefix + name, value.isDisabled() );<a name="line.592"></a>
-<FONT color="green">593</FONT>                }<a name="line.593"></a>
-<FONT color="green">594</FONT>            }<a name="line.594"></a>
-<FONT color="green">595</FONT>        }<a name="line.595"></a>
-<FONT color="green">596</FONT>        <a name="line.596"></a>
-<FONT color="green">597</FONT>        private void writeProxyConnectorConfiguration( String prefix, ProxyConnectorConfiguration value, Registry registry )<a name="line.597"></a>
-<FONT color="green">598</FONT>        {<a name="line.598"></a>
-<FONT color="green">599</FONT>            if ( value != null )<a name="line.599"></a>
-<FONT color="green">600</FONT>            {<a name="line.600"></a>
-<FONT color="green">601</FONT>                if ( value.getOrder() != 0<a name="line.601"></a>
-<FONT color="green">602</FONT>     )<a name="line.602"></a>
-<FONT color="green">603</FONT>                {<a name="line.603"></a>
-<FONT color="green">604</FONT>                    String name = "order";<a name="line.604"></a>
-<FONT color="green">605</FONT>                    registry.setInt( prefix + name, value.getOrder() );<a name="line.605"></a>
-<FONT color="green">606</FONT>                }<a name="line.606"></a>
-<FONT color="green">607</FONT>                if ( value.getSourceRepoId() != null<a name="line.607"></a>
-<FONT color="green">608</FONT>     )<a name="line.608"></a>
-<FONT color="green">609</FONT>                {<a name="line.609"></a>
-<FONT color="green">610</FONT>                    String name = "sourceRepoId";<a name="line.610"></a>
-<FONT color="green">611</FONT>                    registry.setString( prefix + name, value.getSourceRepoId() );<a name="line.611"></a>
-<FONT color="green">612</FONT>                }<a name="line.612"></a>
-<FONT color="green">613</FONT>                if ( value.getTargetRepoId() != null<a name="line.613"></a>
-<FONT color="green">614</FONT>     )<a name="line.614"></a>
-<FONT color="green">615</FONT>                {<a name="line.615"></a>
-<FONT color="green">616</FONT>                    String name = "targetRepoId";<a name="line.616"></a>
-<FONT color="green">617</FONT>                    registry.setString( prefix + name, value.getTargetRepoId() );<a name="line.617"></a>
-<FONT color="green">618</FONT>                }<a name="line.618"></a>
-<FONT color="green">619</FONT>                if ( value.getProxyId() != null<a name="line.619"></a>
-<FONT color="green">620</FONT>     )<a name="line.620"></a>
-<FONT color="green">621</FONT>                {<a name="line.621"></a>
-<FONT color="green">622</FONT>                    String name = "proxyId";<a name="line.622"></a>
-<FONT color="green">623</FONT>                    registry.setString( prefix + name, value.getProxyId() );<a name="line.623"></a>
-<FONT color="green">624</FONT>                }<a name="line.624"></a>
-<FONT color="green">625</FONT>                if ( value.getBlackListPatterns() != null &amp;&amp; value.getBlackListPatterns().size() &gt; 0<a name="line.625"></a>
-<FONT color="green">626</FONT>     )<a name="line.626"></a>
-<FONT color="green">627</FONT>                {<a name="line.627"></a>
-<FONT color="green">628</FONT>                    registry.removeSubset( prefix + "blackListPatterns" );<a name="line.628"></a>
-<FONT color="green">629</FONT>    <a name="line.629"></a>
-<FONT color="green">630</FONT>                    int count = 0;<a name="line.630"></a>
-<FONT color="green">631</FONT>                    for ( Iterator iter = value.getBlackListPatterns().iterator(); iter.hasNext(); count++ )<a name="line.631"></a>
-<FONT color="green">632</FONT>                    {<a name="line.632"></a>
-<FONT color="green">633</FONT>                        String name = "blackListPatterns.blackListPattern(" + count + ")";<a name="line.633"></a>
-<FONT color="green">634</FONT>                        String blackListPattern = ( String ) iter.next();<a name="line.634"></a>
-<FONT color="green">635</FONT>                        registry.setString( prefix + name, blackListPattern );<a name="line.635"></a>
-<FONT color="green">636</FONT>                    }<a name="line.636"></a>
-<FONT color="green">637</FONT>                }<a name="line.637"></a>
-<FONT color="green">638</FONT>                if ( value.getWhiteListPatterns() != null &amp;&amp; value.getWhiteListPatterns().size() &gt; 0<a name="line.638"></a>
-<FONT color="green">639</FONT>     )<a name="line.639"></a>
-<FONT color="green">640</FONT>                {<a name="line.640"></a>
-<FONT color="green">641</FONT>                    registry.removeSubset( prefix + "whiteListPatterns" );<a name="line.641"></a>
-<FONT color="green">642</FONT>    <a name="line.642"></a>
-<FONT color="green">643</FONT>                    int count = 0;<a name="line.643"></a>
-<FONT color="green">644</FONT>                    for ( Iterator iter = value.getWhiteListPatterns().iterator(); iter.hasNext(); count++ )<a name="line.644"></a>
-<FONT color="green">645</FONT>                    {<a name="line.645"></a>
-<FONT color="green">646</FONT>                        String name = "whiteListPatterns.whiteListPattern(" + count + ")";<a name="line.646"></a>
-<FONT color="green">647</FONT>                        String whiteListPattern = ( String ) iter.next();<a name="line.647"></a>
-<FONT color="green">648</FONT>                        registry.setString( prefix + name, whiteListPattern );<a name="line.648"></a>
-<FONT color="green">649</FONT>                    }<a name="line.649"></a>
-<FONT color="green">650</FONT>                }<a name="line.650"></a>
-<FONT color="green">651</FONT>                if ( value.getPolicies() != null &amp;&amp; value.getPolicies().size() &gt; 0<a name="line.651"></a>
-<FONT color="green">652</FONT>     )<a name="line.652"></a>
-<FONT color="green">653</FONT>                {<a name="line.653"></a>
-<FONT color="green">654</FONT>                    registry.removeSubset( prefix + "policies" );<a name="line.654"></a>
-<FONT color="green">655</FONT>                    <a name="line.655"></a>
-<FONT color="green">656</FONT>                    for ( Iterator iter = value.getPolicies().keySet().iterator(); iter.hasNext(); )<a name="line.656"></a>
-<FONT color="green">657</FONT>                    {<a name="line.657"></a>
-<FONT color="green">658</FONT>                        String key = (String) iter.next();<a name="line.658"></a>
-<FONT color="green">659</FONT>                        String v = (String) value.getPolicies().get( key );<a name="line.659"></a>
-<FONT color="green">660</FONT>    <a name="line.660"></a>
-<FONT color="green">661</FONT>                        registry.setString( prefix + "policies." + key, v );<a name="line.661"></a>
-<FONT color="green">662</FONT>                    }<a name="line.662"></a>
-<FONT color="green">663</FONT>                }<a name="line.663"></a>
-<FONT color="green">664</FONT>                if ( value.getProperties() != null &amp;&amp; value.getProperties().size() &gt; 0<a name="line.664"></a>
-<FONT color="green">665</FONT>     )<a name="line.665"></a>
-<FONT color="green">666</FONT>                {<a name="line.666"></a>
-<FONT color="green">667</FONT>                    registry.removeSubset( prefix + "properties" );<a name="line.667"></a>
-<FONT color="green">668</FONT>                    <a name="line.668"></a>
-<FONT color="green">669</FONT>                    for ( Iterator iter = value.getProperties().keySet().iterator(); iter.hasNext(); )<a name="line.669"></a>
-<FONT color="green">670</FONT>                    {<a name="line.670"></a>
-<FONT color="green">671</FONT>                        String key = (String) iter.next();<a name="line.671"></a>
-<FONT color="green">672</FONT>                        String v = (String) value.getProperties().get( key );<a name="line.672"></a>
-<FONT color="green">673</FONT>    <a name="line.673"></a>
-<FONT color="green">674</FONT>                        registry.setString( prefix + "properties." + key, v );<a name="line.674"></a>
-<FONT color="green">675</FONT>                    }<a name="line.675"></a>
-<FONT color="green">676</FONT>                }<a name="line.676"></a>
-<FONT color="green">677</FONT>                if ( value.isDisabled() != false<a name="line.677"></a>
-<FONT color="green">678</FONT>     )<a name="line.678"></a>
-<FONT color="green">679</FONT>                {<a name="line.679"></a>
-<FONT color="green">680</FONT>                    String name = "disabled";<a name="line.680"></a>
-<FONT color="green">681</FONT>                    registry.setBoolean( prefix + name, value.isDisabled() );<a name="line.681"></a>
-<FONT color="green">682</FONT>                }<a name="line.682"></a>
-<FONT color="green">683</FONT>            }<a name="line.683"></a>
-<FONT color="green">684</FONT>        }<a name="line.684"></a>
-<FONT color="green">685</FONT>        <a name="line.685"></a>
-<FONT color="green">686</FONT>        private void writeSyncConnectorConfiguration( String prefix, SyncConnectorConfiguration value, Registry registry )<a name="line.686"></a>
-<FONT color="green">687</FONT>        {<a name="line.687"></a>
-<FONT color="green">688</FONT>            if ( value != null )<a name="line.688"></a>
-<FONT color="green">689</FONT>            {<a name="line.689"></a>
-<FONT color="green">690</FONT>                if ( value.getCronExpression() != null &amp;&amp; !value.getCronExpression().equals( "0 0 * * * ?" )<a name="line.690"></a>
-<FONT color="green">691</FONT>     )<a name="line.691"></a>
-<FONT color="green">692</FONT>                {<a name="line.692"></a>
-<FONT color="green">693</FONT>                    String name = "cronExpression";<a name="line.693"></a>
-<FONT color="green">694</FONT>                    registry.setString( prefix + name, value.getCronExpression() );<a name="line.694"></a>
-<FONT color="green">695</FONT>                }<a name="line.695"></a>
-<FONT color="green">696</FONT>                if ( value.getMethod() != null &amp;&amp; !value.getMethod().equals( "rsync" )<a name="line.696"></a>
-<FONT color="green">697</FONT>     )<a name="line.697"></a>
-<FONT color="green">698</FONT>                {<a name="line.698"></a>
-<FONT color="green">699</FONT>                    String name = "method";<a name="line.699"></a>
-<FONT color="green">700</FONT>                    registry.setString( prefix + name, value.getMethod() );<a name="line.700"></a>
-<FONT color="green">701</FONT>                }<a name="line.701"></a>
-<FONT color="green">702</FONT>                if ( value.getSourceRepoId() != null<a name="line.702"></a>
-<FONT color="green">703</FONT>     )<a name="line.703"></a>
-<FONT color="green">704</FONT>                {<a name="line.704"></a>
-<FONT color="green">705</FONT>                    String name = "sourceRepoId";<a name="line.705"></a>
-<FONT color="green">706</FONT>                    registry.setString( prefix + name, value.getSourceRepoId() );<a name="line.706"></a>
-<FONT color="green">707</FONT>                }<a name="line.707"></a>
-<FONT color="green">708</FONT>                if ( value.getTargetRepoId() != null<a name="line.708"></a>
-<FONT color="green">709</FONT>     )<a name="line.709"></a>
-<FONT color="green">710</FONT>                {<a name="line.710"></a>
-<FONT color="green">711</FONT>                    String name = "targetRepoId";<a name="line.711"></a>
-<FONT color="green">712</FONT>                    registry.setString( prefix + name, value.getTargetRepoId() );<a name="line.712"></a>
-<FONT color="green">713</FONT>                }<a name="line.713"></a>
-<FONT color="green">714</FONT>                if ( value.getProxyId() != null<a name="line.714"></a>
-<FONT color="green">715</FONT>     )<a name="line.715"></a>
-<FONT color="green">716</FONT>                {<a name="line.716"></a>
-<FONT color="green">717</FONT>                    String name = "proxyId";<a name="line.717"></a>
-<FONT color="green">718</FONT>                    registry.setString( prefix + name, value.getProxyId() );<a name="line.718"></a>
-<FONT color="green">719</FONT>                }<a name="line.719"></a>
-<FONT color="green">720</FONT>                if ( value.getBlackListPatterns() != null &amp;&amp; value.getBlackListPatterns().size() &gt; 0<a name="line.720"></a>
-<FONT color="green">721</FONT>     )<a name="line.721"></a>
-<FONT color="green">722</FONT>                {<a name="line.722"></a>
-<FONT color="green">723</FONT>                    registry.removeSubset( prefix + "blackListPatterns" );<a name="line.723"></a>
-<FONT color="green">724</FONT>    <a name="line.724"></a>
-<FONT color="green">725</FONT>                    int count = 0;<a name="line.725"></a>
-<FONT color="green">726</FONT>                    for ( Iterator iter = value.getBlackListPatterns().iterator(); iter.hasNext(); count++ )<a name="line.726"></a>
-<FONT color="green">727</FONT>                    {<a name="line.727"></a>
-<FONT color="green">728</FONT>                        String name = "blackListPatterns.blackListPattern(" + count + ")";<a name="line.728"></a>
-<FONT color="green">729</FONT>                        String blackListPattern = ( String ) iter.next();<a name="line.729"></a>
-<FONT color="green">730</FONT>                        registry.setString( prefix + name, blackListPattern );<a name="line.730"></a>
-<FONT color="green">731</FONT>                    }<a name="line.731"></a>
-<FONT color="green">732</FONT>                }<a name="line.732"></a>
-<FONT color="green">733</FONT>                if ( value.getWhiteListPatterns() != null &amp;&amp; value.getWhiteListPatterns().size() &gt; 0<a name="line.733"></a>
-<FONT color="green">734</FONT>     )<a name="line.734"></a>
-<FONT color="green">735</FONT>                {<a name="line.735"></a>
-<FONT color="green">736</FONT>                    registry.removeSubset( prefix + "whiteListPatterns" );<a name="line.736"></a>
-<FONT color="green">737</FONT>    <a name="line.737"></a>
-<FONT color="green">738</FONT>                    int count = 0;<a name="line.738"></a>
-<FONT color="green">739</FONT>                    for ( Iterator iter = value.getWhiteListPatterns().iterator(); iter.hasNext(); count++ )<a name="line.739"></a>
-<FONT color="green">740</FONT>                    {<a name="line.740"></a>
-<FONT color="green">741</FONT>                        String name = "whiteListPatterns.whiteListPattern(" + count + ")";<a name="line.741"></a>
-<FONT color="green">742</FONT>                        String whiteListPattern = ( String ) iter.next();<a name="line.742"></a>
-<FONT color="green">743</FONT>                        registry.setString( prefix + name, whiteListPattern );<a name="line.743"></a>
-<FONT color="green">744</FONT>                    }<a name="line.744"></a>
-<FONT color="green">745</FONT>                }<a name="line.745"></a>
-<FONT color="green">746</FONT>                if ( value.getPolicies() != null &amp;&amp; value.getPolicies().size() &gt; 0<a name="line.746"></a>
-<FONT color="green">747</FONT>     )<a name="line.747"></a>
-<FONT color="green">748</FONT>                {<a name="line.748"></a>
-<FONT color="green">749</FONT>                    registry.removeSubset( prefix + "policies" );<a name="line.749"></a>
-<FONT color="green">750</FONT>                    <a name="line.750"></a>
-<FONT color="green">751</FONT>                    for ( Iterator iter = value.getPolicies().keySet().iterator(); iter.hasNext(); )<a name="line.751"></a>
-<FONT color="green">752</FONT>                    {<a name="line.752"></a>
-<FONT color="green">753</FONT>                        String key = (String) iter.next();<a name="line.753"></a>
-<FONT color="green">754</FONT>                        String v = (String) value.getPolicies().get( key );<a name="line.754"></a>
-<FONT color="green">755</FONT>    <a name="line.755"></a>
-<FONT color="green">756</FONT>                        registry.setString( prefix + "policies." + key, v );<a name="line.756"></a>
-<FONT color="green">757</FONT>                    }<a name="line.757"></a>
-<FONT color="green">758</FONT>                }<a name="line.758"></a>
-<FONT color="green">759</FONT>                if ( value.getProperties() != null &amp;&amp; value.getProperties().size() &gt; 0<a name="line.759"></a>
-<FONT color="green">760</FONT>     )<a name="line.760"></a>
-<FONT color="green">761</FONT>                {<a name="line.761"></a>
-<FONT color="green">762</FONT>                    registry.removeSubset( prefix + "properties" );<a name="line.762"></a>
-<FONT color="green">763</FONT>                    <a name="line.763"></a>
-<FONT color="green">764</FONT>                    for ( Iterator iter = value.getProperties().keySet().iterator(); iter.hasNext(); )<a name="line.764"></a>
-<FONT color="green">765</FONT>                    {<a name="line.765"></a>
-<FONT color="green">766</FONT>                        String key = (String) iter.next();<a name="line.766"></a>
-<FONT color="green">767</FONT>                        String v = (String) value.getProperties().get( key );<a name="line.767"></a>
-<FONT color="green">768</FONT>    <a name="line.768"></a>
-<FONT color="green">769</FONT>                        registry.setString( prefix + "properties." + key, v );<a name="line.769"></a>
-<FONT color="green">770</FONT>                    }<a name="line.770"></a>
-<FONT color="green">771</FONT>                }<a name="line.771"></a>
-<FONT color="green">772</FONT>                if ( value.isDisabled() != false<a name="line.772"></a>
-<FONT color="green">773</FONT>     )<a name="line.773"></a>
-<FONT color="green">774</FONT>                {<a name="line.774"></a>
-<FONT color="green">775</FONT>                    String name = "disabled";<a name="line.775"></a>
-<FONT color="green">776</FONT>                    registry.setBoolean( prefix + name, value.isDisabled() );<a name="line.776"></a>
-<FONT color="green">777</FONT>                }<a name="line.777"></a>
-<FONT color="green">778</FONT>            }<a name="line.778"></a>
-<FONT color="green">779</FONT>        }<a name="line.779"></a>
-<FONT color="green">780</FONT>        <a name="line.780"></a>
-<FONT color="green">781</FONT>        private void writeNetworkProxyConfiguration( String prefix, NetworkProxyConfiguration value, Registry registry )<a name="line.781"></a>
-<FONT color="green">782</FONT>        {<a name="line.782"></a>
-<FONT color="green">783</FONT>            if ( value != null )<a name="line.783"></a>
-<FONT color="green">784</FONT>            {<a name="line.784"></a>
-<FONT color="green">785</FONT>                if ( value.getId() != null<a name="line.785"></a>
-<FONT color="green">786</FONT>     )<a name="line.786"></a>
-<FONT color="green">787</FONT>                {<a name="line.787"></a>
-<FONT color="green">788</FONT>                    String name = "id";<a name="line.788"></a>
-<FONT color="green">789</FONT>                    registry.setString( prefix + name, value.getId() );<a name="line.789"></a>
-<FONT color="green">790</FONT>                }<a name="line.790"></a>
-<FONT color="green">791</FONT>                if ( value.getProtocol() != null &amp;&amp; !value.getProtocol().equals( "http" )<a name="line.791"></a>
-<FONT color="green">792</FONT>     )<a name="line.792"></a>
-<FONT color="green">793</FONT>                {<a name="line.793"></a>
-<FONT color="green">794</FONT>                    String name = "protocol";<a name="line.794"></a>
-<FONT color="green">795</FONT>                    registry.setString( prefix + name, value.getProtocol() );<a name="line.795"></a>
-<FONT color="green">796</FONT>                }<a name="line.796"></a>
-<FONT color="green">797</FONT>                if ( value.getHost() != null<a name="line.797"></a>
-<FONT color="green">798</FONT>     )<a name="line.798"></a>
-<FONT color="green">799</FONT>                {<a name="line.799"></a>
-<FONT color="green">800</FONT>                    String name = "host";<a name="line.800"></a>
-<FONT color="green">801</FONT>                    registry.setString( prefix + name, value.getHost() );<a name="line.801"></a>
-<FONT color="green">802</FONT>                }<a name="line.802"></a>
-<FONT color="green">803</FONT>                if ( value.getPort() != 8080<a name="line.803"></a>
-<FONT color="green">804</FONT>     )<a name="line.804"></a>
-<FONT color="green">805</FONT>                {<a name="line.805"></a>
-<FONT color="green">806</FONT>                    String name = "port";<a name="line.806"></a>
-<FONT color="green">807</FONT>                    registry.setInt( prefix + name, value.getPort() );<a name="line.807"></a>
-<FONT color="green">808</FONT>                }<a name="line.808"></a>
-<FONT color="green">809</FONT>                if ( value.getUsername() != null<a name="line.809"></a>
-<FONT color="green">810</FONT>     )<a name="line.810"></a>
-<FONT color="green">811</FONT>                {<a name="line.811"></a>
-<FONT color="green">812</FONT>                    String name = "username";<a name="line.812"></a>
-<FONT color="green">813</FONT>                    registry.setString( prefix + name, value.getUsername() );<a name="line.813"></a>
-<FONT color="green">814</FONT>                }<a name="line.814"></a>
-<FONT color="green">815</FONT>                if ( value.getPassword() != null<a name="line.815"></a>
-<FONT color="green">816</FONT>     )<a name="line.816"></a>
-<FONT color="green">817</FONT>                {<a name="line.817"></a>
-<FONT color="green">818</FONT>                    String name = "password";<a name="line.818"></a>
-<FONT color="green">819</FONT>                    registry.setString( prefix + name, value.getPassword() );<a name="line.819"></a>
-<FONT color="green">820</FONT>                }<a name="line.820"></a>
-<FONT color="green">821</FONT>                if ( value.isUseNtlm() != false<a name="line.821"></a>
+<FONT color="green">466</FONT>                if ( value.isSkipPackedIndexCreation() != false<a name="line.466"></a>
+<FONT color="green">467</FONT>     )<a name="line.467"></a>
+<FONT color="green">468</FONT>                {<a name="line.468"></a>
+<FONT color="green">469</FONT>                    String name = "skipPackedIndexCreation";<a name="line.469"></a>
+<FONT color="green">470</FONT>                    registry.setBoolean( prefix + name, value.isSkipPackedIndexCreation() );<a name="line.470"></a>
+<FONT color="green">471</FONT>                }<a name="line.471"></a>
+<FONT color="green">472</FONT>                if ( value.getId() != null<a name="line.472"></a>
+<FONT color="green">473</FONT>     )<a name="line.473"></a>
+<FONT color="green">474</FONT>                {<a name="line.474"></a>
+<FONT color="green">475</FONT>                    String name = "id";<a name="line.475"></a>
+<FONT color="green">476</FONT>                    registry.setString( prefix + name, value.getId() );<a name="line.476"></a>
+<FONT color="green">477</FONT>                }<a name="line.477"></a>
+<FONT color="green">478</FONT>                if ( value.getName() != null<a name="line.478"></a>
+<FONT color="green">479</FONT>     )<a name="line.479"></a>
+<FONT color="green">480</FONT>                {<a name="line.480"></a>
+<FONT color="green">481</FONT>                    String name = "name";<a name="line.481"></a>
+<FONT color="green">482</FONT>                    registry.setString( prefix + name, value.getName() );<a name="line.482"></a>
+<FONT color="green">483</FONT>                }<a name="line.483"></a>
+<FONT color="green">484</FONT>                if ( value.getLayout() != null &amp;&amp; !value.getLayout().equals( "default" )<a name="line.484"></a>
+<FONT color="green">485</FONT>     )<a name="line.485"></a>
+<FONT color="green">486</FONT>                {<a name="line.486"></a>
+<FONT color="green">487</FONT>                    String name = "layout";<a name="line.487"></a>
+<FONT color="green">488</FONT>                    registry.setString( prefix + name, value.getLayout() );<a name="line.488"></a>
+<FONT color="green">489</FONT>                }<a name="line.489"></a>
+<FONT color="green">490</FONT>                if ( value.getIndexDir() != null<a name="line.490"></a>
+<FONT color="green">491</FONT>     )<a name="line.491"></a>
+<FONT color="green">492</FONT>                {<a name="line.492"></a>
+<FONT color="green">493</FONT>                    String name = "indexDir";<a name="line.493"></a>
+<FONT color="green">494</FONT>                    registry.setString( prefix + name, value.getIndexDir() );<a name="line.494"></a>
+<FONT color="green">495</FONT>                }<a name="line.495"></a>
+<FONT color="green">496</FONT>                if ( value.getDescription() != null<a name="line.496"></a>
+<FONT color="green">497</FONT>     )<a name="line.497"></a>
+<FONT color="green">498</FONT>                {<a name="line.498"></a>
+<FONT color="green">499</FONT>                    String name = "description";<a name="line.499"></a>
+<FONT color="green">500</FONT>                    registry.setString( prefix + name, value.getDescription() );<a name="line.500"></a>
+<FONT color="green">501</FONT>                }<a name="line.501"></a>
+<FONT color="green">502</FONT>            }<a name="line.502"></a>
+<FONT color="green">503</FONT>        }<a name="line.503"></a>
+<FONT color="green">504</FONT>        <a name="line.504"></a>
+<FONT color="green">505</FONT>        private void writeLegacyArtifactPath( String prefix, LegacyArtifactPath value, Registry registry )<a name="line.505"></a>
+<FONT color="green">506</FONT>        {<a name="line.506"></a>
+<FONT color="green">507</FONT>            if ( value != null )<a name="line.507"></a>
+<FONT color="green">508</FONT>            {<a name="line.508"></a>
+<FONT color="green">509</FONT>                if ( value.getPath() != null<a name="line.509"></a>
+<FONT color="green">510</FONT>     )<a name="line.510"></a>
+<FONT color="green">511</FONT>                {<a name="line.511"></a>
+<FONT color="green">512</FONT>                    String name = "path";<a name="line.512"></a>
+<FONT color="green">513</FONT>                    registry.setString( prefix + name, value.getPath() );<a name="line.513"></a>
+<FONT color="green">514</FONT>                }<a name="line.514"></a>
+<FONT color="green">515</FONT>                if ( value.getArtifact() != null<a name="line.515"></a>
+<FONT color="green">516</FONT>     )<a name="line.516"></a>
+<FONT color="green">517</FONT>                {<a name="line.517"></a>
+<FONT color="green">518</FONT>                    String name = "artifact";<a name="line.518"></a>
+<FONT color="green">519</FONT>                    registry.setString( prefix + name, value.getArtifact() );<a name="line.519"></a>
+<FONT color="green">520</FONT>                }<a name="line.520"></a>
+<FONT color="green">521</FONT>            }<a name="line.521"></a>
+<FONT color="green">522</FONT>        }<a name="line.522"></a>
+<FONT color="green">523</FONT>        <a name="line.523"></a>
+<FONT color="green">524</FONT>        private void writeRepositoryGroupConfiguration( String prefix, RepositoryGroupConfiguration value, Registry registry )<a name="line.524"></a>
+<FONT color="green">525</FONT>        {<a name="line.525"></a>
+<FONT color="green">526</FONT>            if ( value != null )<a name="line.526"></a>
+<FONT color="green">527</FONT>            {<a name="line.527"></a>
+<FONT color="green">528</FONT>                if ( value.getId() != null<a name="line.528"></a>
+<FONT color="green">529</FONT>     )<a name="line.529"></a>
+<FONT color="green">530</FONT>                {<a name="line.530"></a>
+<FONT color="green">531</FONT>                    String name = "id";<a name="line.531"></a>
+<FONT color="green">532</FONT>                    registry.setString( prefix + name, value.getId() );<a name="line.532"></a>
+<FONT color="green">533</FONT>                }<a name="line.533"></a>
+<FONT color="green">534</FONT>                if ( value.getRepositories() != null &amp;&amp; value.getRepositories().size() &gt; 0<a name="line.534"></a>
+<FONT color="green">535</FONT>     )<a name="line.535"></a>
+<FONT color="green">536</FONT>                {<a name="line.536"></a>
+<FONT color="green">537</FONT>                    registry.removeSubset( prefix + "repositories" );<a name="line.537"></a>
+<FONT color="green">538</FONT>    <a name="line.538"></a>
+<FONT color="green">539</FONT>                    int count = 0;<a name="line.539"></a>
+<FONT color="green">540</FONT>                    for ( Iterator iter = value.getRepositories().iterator(); iter.hasNext(); count++ )<a name="line.540"></a>
+<FONT color="green">541</FONT>                    {<a name="line.541"></a>
+<FONT color="green">542</FONT>                        String name = "repositories.repository(" + count + ")";<a name="line.542"></a>
+<FONT color="green">543</FONT>                        String repository = ( String ) iter.next();<a name="line.543"></a>
+<FONT color="green">544</FONT>                        registry.setString( prefix + name, repository );<a name="line.544"></a>
+<FONT color="green">545</FONT>                    }<a name="line.545"></a>
+<FONT color="green">546</FONT>                }<a name="line.546"></a>
+<FONT color="green">547</FONT>            }<a name="line.547"></a>
+<FONT color="green">548</FONT>        }<a name="line.548"></a>
+<FONT color="green">549</FONT>        <a name="line.549"></a>
+<FONT color="green">550</FONT>        private void writeAbstractRepositoryConnectorConfiguration( String prefix, AbstractRepositoryConnectorConfiguration value, Registry registry )<a name="line.550"></a>
+<FONT color="green">551</FONT>        {<a name="line.551"></a>
+<FONT color="green">552</FONT>            if ( value != null )<a name="line.552"></a>
+<FONT color="green">553</FONT>            {<a name="line.553"></a>
+<FONT color="green">554</FONT>                if ( value.getSourceRepoId() != null<a name="line.554"></a>
+<FONT color="green">555</FONT>     )<a name="line.555"></a>
+<FONT color="green">556</FONT>                {<a name="line.556"></a>
+<FONT color="green">557</FONT>                    String name = "sourceRepoId";<a name="line.557"></a>
+<FONT color="green">558</FONT>                    registry.setString( prefix + name, value.getSourceRepoId() );<a name="line.558"></a>
+<FONT color="green">559</FONT>                }<a name="line.559"></a>
+<FONT color="green">560</FONT>                if ( value.getTargetRepoId() != null<a name="line.560"></a>
+<FONT color="green">561</FONT>     )<a name="line.561"></a>
+<FONT color="green">562</FONT>                {<a name="line.562"></a>
+<FONT color="green">563</FONT>                    String name = "targetRepoId";<a name="line.563"></a>
+<FONT color="green">564</FONT>                    registry.setString( prefix + name, value.getTargetRepoId() );<a name="line.564"></a>
+<FONT color="green">565</FONT>                }<a name="line.565"></a>
+<FONT color="green">566</FONT>                if ( value.getProxyId() != null<a name="line.566"></a>
+<FONT color="green">567</FONT>     )<a name="line.567"></a>
+<FONT color="green">568</FONT>                {<a name="line.568"></a>
+<FONT color="green">569</FONT>                    String name = "proxyId";<a name="line.569"></a>
+<FONT color="green">570</FONT>                    registry.setString( prefix + name, value.getProxyId() );<a name="line.570"></a>
+<FONT color="green">571</FONT>                }<a name="line.571"></a>
+<FONT color="green">572</FONT>                if ( value.getBlackListPatterns() != null &amp;&amp; value.getBlackListPatterns().size() &gt; 0<a name="line.572"></a>
+<FONT color="green">573</FONT>     )<a name="line.573"></a>
+<FONT color="green">574</FONT>                {<a name="line.574"></a>
+<FONT color="green">575</FONT>                    registry.removeSubset( prefix + "blackListPatterns" );<a name="line.575"></a>
+<FONT color="green">576</FONT>    <a name="line.576"></a>
+<FONT color="green">577</FONT>                    int count = 0;<a name="line.577"></a>
+<FONT color="green">578</FONT>                    for ( Iterator iter = value.getBlackListPatterns().iterator(); iter.hasNext(); count++ )<a name="line.578"></a>
+<FONT color="green">579</FONT>                    {<a name="line.579"></a>
+<FONT color="green">580</FONT>                        String name = "blackListPatterns.blackListPattern(" + count + ")";<a name="line.580"></a>
+<FONT color="green">581</FONT>                        String blackListPattern = ( String ) iter.next();<a name="line.581"></a>
+<FONT color="green">582</FONT>                        registry.setString( prefix + name, blackListPattern );<a name="line.582"></a>
+<FONT color="green">583</FONT>                    }<a name="line.583"></a>
+<FONT color="green">584</FONT>                }<a name="line.584"></a>
+<FONT color="green">585</FONT>                if ( value.getWhiteListPatterns() != null &amp;&amp; value.getWhiteListPatterns().size() &gt; 0<a name="line.585"></a>
+<FONT color="green">586</FONT>     )<a name="line.586"></a>
+<FONT color="green">587</FONT>                {<a name="line.587"></a>
+<FONT color="green">588</FONT>                    registry.removeSubset( prefix + "whiteListPatterns" );<a name="line.588"></a>
+<FONT color="green">589</FONT>    <a name="line.589"></a>
+<FONT color="green">590</FONT>                    int count = 0;<a name="line.590"></a>
+<FONT color="green">591</FONT>                    for ( Iterator iter = value.getWhiteListPatterns().iterator(); iter.hasNext(); count++ )<a name="line.591"></a>
+<FONT color="green">592</FONT>                    {<a name="line.592"></a>
+<FONT color="green">593</FONT>                        String name = "whiteListPatterns.whiteListPattern(" + count + ")";<a name="line.593"></a>
+<FONT color="green">594</FONT>                        String whiteListPattern = ( String ) iter.next();<a name="line.594"></a>
+<FONT color="green">595</FONT>                        registry.setString( prefix + name, whiteListPattern );<a name="line.595"></a>
+<FONT color="green">596</FONT>                    }<a name="line.596"></a>
+<FONT color="green">597</FONT>                }<a name="line.597"></a>
+<FONT color="green">598</FONT>                if ( value.getPolicies() != null &amp;&amp; value.getPolicies().size() &gt; 0<a name="line.598"></a>
+<FONT color="green">599</FONT>     )<a name="line.599"></a>
+<FONT color="green">600</FONT>                {<a name="line.600"></a>
+<FONT color="green">601</FONT>                    registry.removeSubset( prefix + "policies" );<a name="line.601"></a>
+<FONT color="green">602</FONT>                    <a name="line.602"></a>
+<FONT color="green">603</FONT>                    for ( Iterator iter = value.getPolicies().keySet().iterator(); iter.hasNext(); )<a name="line.603"></a>
+<FONT color="green">604</FONT>                    {<a name="line.604"></a>
+<FONT color="green">605</FONT>                        String key = (String) iter.next();<a name="line.605"></a>
+<FONT color="green">606</FONT>                        String v = (String) value.getPolicies().get( key );<a name="line.606"></a>
+<FONT color="green">607</FONT>    <a name="line.607"></a>
+<FONT color="green">608</FONT>                        registry.setString( prefix + "policies." + key, v );<a name="line.608"></a>
+<FONT color="green">609</FONT>                    }<a name="line.609"></a>
+<FONT color="green">610</FONT>                }<a name="line.610"></a>
+<FONT color="green">611</FONT>                if ( value.getProperties() != null &amp;&amp; value.getProperties().size() &gt; 0<a name="line.611"></a>
+<FONT color="green">612</FONT>     )<a name="line.612"></a>
+<FONT color="green">613</FONT>                {<a name="line.613"></a>
+<FONT color="green">614</FONT>                    registry.removeSubset( prefix + "properties" );<a name="line.614"></a>
+<FONT color="green">615</FONT>                    <a name="line.615"></a>
+<FONT color="green">616</FONT>                    for ( Iterator iter = value.getProperties().keySet().iterator(); iter.hasNext(); )<a name="line.616"></a>
+<FONT color="green">617</FONT>                    {<a name="line.617"></a>
+<FONT color="green">618</FONT>                        String key = (String) iter.next();<a name="line.618"></a>
+<FONT color="green">619</FONT>                        String v = (String) value.getProperties().get( key );<a name="line.619"></a>
+<FONT color="green">620</FONT>    <a name="line.620"></a>
+<FONT color="green">621</FONT>                        registry.setString( prefix + "properties." + key, v );<a name="line.621"></a>
+<FONT color="green">622</FONT>                    }<a name="line.622"></a>
+<FONT color="green">623</FONT>                }<a name="line.623"></a>
+<FONT color="green">624</FONT>                if ( value.isDisabled() != false<a name="line.624"></a>
+<FONT color="green">625</FONT>     )<a name="line.625"></a>
+<FONT color="green">626</FONT>                {<a name="line.626"></a>
+<FONT color="green">627</FONT>                    String name = "disabled";<a name="line.627"></a>
+<FONT color="green">628</FONT>                    registry.setBoolean( prefix + name, value.isDisabled() );<a name="line.628"></a>
+<FONT color="green">629</FONT>                }<a name="line.629"></a>
+<FONT color="green">630</FONT>            }<a name="line.630"></a>
+<FONT color="green">631</FONT>        }<a name="line.631"></a>
+<FONT color="green">632</FONT>        <a name="line.632"></a>
+<FONT color="green">633</FONT>        private void writeProxyConnectorConfiguration( String prefix, ProxyConnectorConfiguration value, Registry registry )<a name="line.633"></a>
+<FONT color="green">634</FONT>        {<a name="line.634"></a>
+<FONT color="green">635</FONT>            if ( value != null )<a name="line.635"></a>
+<FONT color="green">636</FONT>            {<a name="line.636"></a>
+<FONT color="green">637</FONT>                if ( value.getOrder() != 0<a name="line.637"></a>
+<FONT color="green">638</FONT>     )<a name="line.638"></a>
+<FONT color="green">639</FONT>                {<a name="line.639"></a>
+<FONT color="green">640</FONT>                    String name = "order";<a name="line.640"></a>
+<FONT color="green">641</FONT>                    registry.setInt( prefix + name, value.getOrder() );<a name="line.641"></a>
+<FONT color="green">642</FONT>                }<a name="line.642"></a>
+<FONT color="green">643</FONT>                if ( value.getSourceRepoId() != null<a name="line.643"></a>
+<FONT color="green">644</FONT>     )<a name="line.644"></a>
+<FONT color="green">645</FONT>                {<a name="line.645"></a>
+<FONT color="green">646</FONT>                    String name = "sourceRepoId";<a name="line.646"></a>
+<FONT color="green">647</FONT>                    registry.setString( prefix + name, value.getSourceRepoId() );<a name="line.647"></a>
+<FONT color="green">648</FONT>                }<a name="line.648"></a>
+<FONT color="green">649</FONT>                if ( value.getTargetRepoId() != null<a name="line.649"></a>
+<FONT color="green">650</FONT>     )<a name="line.650"></a>
+<FONT color="green">651</FONT>                {<a name="line.651"></a>
+<FONT color="green">652</FONT>                    String name = "targetRepoId";<a name="line.652"></a>
+<FONT color="green">653</FONT>                    registry.setString( prefix + name, value.getTargetRepoId() );<a name="line.653"></a>
+<FONT color="green">654</FONT>                }<a name="line.654"></a>
+<FONT color="green">655</FONT>                if ( value.getProxyId() != null<a name="line.655"></a>
+<FONT color="green">656</FONT>     )<a name="line.656"></a>
+<FONT color="green">657</FONT>                {<a name="line.657"></a>
+<FONT color="green">658</FONT>                    String name = "proxyId";<a name="line.658"></a>
+<FONT color="green">659</FONT>                    registry.setString( prefix + name, value.getProxyId() );<a name="line.659"></a>
+<FONT color="green">660</FONT>                }<a name="line.660"></a>
+<FONT color="green">661</FONT>                if ( value.getBlackListPatterns() != null &amp;&amp; value.getBlackListPatterns().size() &gt; 0<a name="line.661"></a>
+<FONT color="green">662</FONT>     )<a name="line.662"></a>
+<FONT color="green">663</FONT>                {<a name="line.663"></a>
+<FONT color="green">664</FONT>                    registry.removeSubset( prefix + "blackListPatterns" );<a name="line.664"></a>
+<FONT color="green">665</FONT>    <a name="line.665"></a>
+<FONT color="green">666</FONT>                    int count = 0;<a name="line.666"></a>
+<FONT color="green">667</FONT>                    for ( Iterator iter = value.getBlackListPatterns().iterator(); iter.hasNext(); count++ )<a name="line.667"></a>
+<FONT color="green">668</FONT>                    {<a name="line.668"></a>
+<FONT color="green">669</FONT>                        String name = "blackListPatterns.blackListPattern(" + count + ")";<a name="line.669"></a>
+<FONT color="green">670</FONT>                        String blackListPattern = ( String ) iter.next();<a name="line.670"></a>
+<FONT color="green">671</FONT>                        registry.setString( prefix + name, blackListPattern );<a name="line.671"></a>
+<FONT color="green">672</FONT>                    }<a name="line.672"></a>
+<FONT color="green">673</FONT>                }<a name="line.673"></a>
+<FONT color="green">674</FONT>                if ( value.getWhiteListPatterns() != null &amp;&amp; value.getWhiteListPatterns().size() &gt; 0<a name="line.674"></a>
+<FONT color="green">675</FONT>     )<a name="line.675"></a>
+<FONT color="green">676</FONT>                {<a name="line.676"></a>
+<FONT color="green">677</FONT>                    registry.removeSubset( prefix + "whiteListPatterns" );<a name="line.677"></a>
+<FONT color="green">678</FONT>    <a name="line.678"></a>
+<FONT color="green">679</FONT>                    int count = 0;<a name="line.679"></a>
+<FONT color="green">680</FONT>                    for ( Iterator iter = value.getWhiteListPatterns().iterator(); iter.hasNext(); count++ )<a name="line.680"></a>
+<FONT color="green">681</FONT>                    {<a name="line.681"></a>
+<FONT color="green">682</FONT>                        String name = "whiteListPatterns.whiteListPattern(" + count + ")";<a name="line.682"></a>
+<FONT color="green">683</FONT>                        String whiteListPattern = ( String ) iter.next();<a name="line.683"></a>
+<FONT color="green">684</FONT>                        registry.setString( prefix + name, whiteListPattern );<a name="line.684"></a>
+<FONT color="green">685</FONT>                    }<a name="line.685"></a>
+<FONT color="green">686</FONT>                }<a name="line.686"></a>
+<FONT color="green">687</FONT>                if ( value.getPolicies() != null &amp;&amp; value.getPolicies().size() &gt; 0<a name="line.687"></a>
+<FONT color="green">688</FONT>     )<a name="line.688"></a>
+<FONT color="green">689</FONT>                {<a name="line.689"></a>
+<FONT color="green">690</FONT>                    registry.removeSubset( prefix + "policies" );<a name="line.690"></a>
+<FONT color="green">691</FONT>                    <a name="line.691"></a>
+<FONT color="green">692</FONT>                    for ( Iterator iter = value.getPolicies().keySet().iterator(); iter.hasNext(); )<a name="line.692"></a>
+<FONT color="green">693</FONT>                    {<a name="line.693"></a>
+<FONT color="green">694</FONT>                        String key = (String) iter.next();<a name="line.694"></a>
+<FONT color="green">695</FONT>                        String v = (String) value.getPolicies().get( key );<a name="line.695"></a>
+<FONT color="green">696</FONT>    <a name="line.696"></a>
+<FONT color="green">697</FONT>                        registry.setString( prefix + "policies." + key, v );<a name="line.697"></a>
+<FONT color="green">698</FONT>                    }<a name="line.698"></a>
+<FONT color="green">699</FONT>                }<a name="line.699"></a>
+<FONT color="green">700</FONT>                if ( value.getProperties() != null &amp;&amp; value.getProperties().size() &gt; 0<a name="line.700"></a>
+<FONT color="green">701</FONT>     )<a name="line.701"></a>
+<FONT color="green">702</FONT>                {<a name="line.702"></a>
+<FONT color="green">703</FONT>                    registry.removeSubset( prefix + "properties" );<a name="line.703"></a>
+<FONT color="green">704</FONT>                    <a name="line.704"></a>
+<FONT color="green">705</FONT>                    for ( Iterator iter = value.getProperties().keySet().iterator(); iter.hasNext(); )<a name="line.705"></a>
+<FONT color="green">706</FONT>                    {<a name="line.706"></a>
+<FONT color="green">707</FONT>                        String key = (String) iter.next();<a name="line.707"></a>
+<FONT color="green">708</FONT>                        String v = (String) value.getProperties().get( key );<a name="line.708"></a>
+<FONT color="green">709</FONT>    <a name="line.709"></a>
+<FONT color="green">710</FONT>                        registry.setString( prefix + "properties." + key, v );<a name="line.710"></a>
+<FONT color="green">711</FONT>                    }<a name="line.711"></a>
+<FONT color="green">712</FONT>                }<a name="line.712"></a>
+<FONT color="green">713</FONT>                if ( value.isDisabled() != false<a name="line.713"></a>
+<FONT color="green">714</FONT>     )<a name="line.714"></a>
+<FONT color="green">715</FONT>                {<a name="line.715"></a>
+<FONT color="green">716</FONT>                    String name = "disabled";<a name="line.716"></a>
+<FONT color="green">717</FONT>                    registry.setBoolean( prefix + name, value.isDisabled() );<a name="line.717"></a>
+<FONT color="green">718</FONT>                }<a name="line.718"></a>
+<FONT color="green">719</FONT>            }<a name="line.719"></a>
+<FONT color="green">720</FONT>        }<a name="line.720"></a>
+<FONT color="green">721</FONT>        <a name="line.721"></a>
+<FONT color="green">722</FONT>        private void writeSyncConnectorConfiguration( String prefix, SyncConnectorConfiguration value, Registry registry )<a name="line.722"></a>
+<FONT color="green">723</FONT>        {<a name="line.723"></a>
+<FONT color="green">724</FONT>            if ( value != null )<a name="line.724"></a>
+<FONT color="green">725</FONT>            {<a name="line.725"></a>
+<FONT color="green">726</FONT>                if ( value.getCronExpression() != null &amp;&amp; !value.getCronExpression().equals( "0 0 * * * ?" )<a name="line.726"></a>
+<FONT color="green">727</FONT>     )<a name="line.727"></a>
+<FONT color="green">728</FONT>                {<a name="line.728"></a>
+<FONT color="green">729</FONT>                    String name = "cronExpression";<a name="line.729"></a>
+<FONT color="green">730</FONT>                    registry.setString( prefix + name, value.getCronExpression() );<a name="line.730"></a>
+<FONT color="green">731</FONT>                }<a name="line.731"></a>
+<FONT color="green">732</FONT>                if ( value.getMethod() != null &amp;&amp; !value.getMethod().equals( "rsync" )<a name="line.732"></a>
+<FONT color="green">733</FONT>     )<a name="line.733"></a>
+<FONT color="green">734</FONT>                {<a name="line.734"></a>
+<FONT color="green">735</FONT>                    String name = "method";<a name="line.735"></a>
+<FONT color="green">736</FONT>                    registry.setString( prefix + name, value.getMethod() );<a name="line.736"></a>
+<FONT color="green">737</FONT>                }<a name="line.737"></a>
+<FONT color="green">738</FONT>                if ( value.getSourceRepoId() != null<a name="line.738"></a>
+<FONT color="green">739</FONT>     )<a name="line.739"></a>
+<FONT color="green">740</FONT>                {<a name="line.740"></a>
+<FONT color="green">741</FONT>                    String name = "sourceRepoId";<a name="line.741"></a>
+<FONT color="green">742</FONT>                    registry.setString( prefix + name, value.getSourceRepoId() );<a name="line.742"></a>
+<FONT color="green">743</FONT>                }<a name="line.743"></a>
+<FONT color="green">744</FONT>                if ( value.getTargetRepoId() != null<a name="line.744"></a>
+<FONT color="green">745</FONT>     )<a name="line.745"></a>
+<FONT color="green">746</FONT>                {<a name="line.746"></a>
+<FONT color="green">747</FONT>                    String name = "targetRepoId";<a name="line.747"></a>
+<FONT color="green">748</FONT>                    registry.setString( prefix + name, value.getTargetRepoId() );<a name="line.748"></a>
+<FONT color="green">749</FONT>                }<a name="line.749"></a>
+<FONT color="green">750</FONT>                if ( value.getProxyId() != null<a name="line.750"></a>
+<FONT color="green">751</FONT>     )<a name="line.751"></a>
+<FONT color="green">752</FONT>                {<a name="line.752"></a>
+<FONT color="green">753</FONT>                    String name = "proxyId";<a name="line.753"></a>
+<FONT color="green">754</FONT>                    registry.setString( prefix + name, value.getProxyId() );<a name="line.754"></a>
+<FONT color="green">755</FONT>                }<a name="line.755"></a>
+<FONT color="green">756</FONT>                if ( value.getBlackListPatterns() != null &amp;&amp; value.getBlackListPatterns().size() &gt; 0<a name="line.756"></a>
+<FONT color="green">757</FONT>     )<a name="line.757"></a>
+<FONT color="green">758</FONT>                {<a name="line.758"></a>
+<FONT color="green">759</FONT>                    registry.removeSubset( prefix + "blackListPatterns" );<a name="line.759"></a>
+<FONT color="green">760</FONT>    <a name="line.760"></a>
+<FONT color="green">761</FONT>                    int count = 0;<a name="line.761"></a>
+<FONT color="green">762</FONT>                    for ( Iterator iter = value.getBlackListPatterns().iterator(); iter.hasNext(); count++ )<a name="line.762"></a>
+<FONT color="green">763</FONT>                    {<a name="line.763"></a>
+<FONT color="green">764</FONT>                        String name = "blackListPatterns.blackListPattern(" + count + ")";<a name="line.764"></a>
+<FONT color="green">765</FONT>                        String blackListPattern = ( String ) iter.next();<a name="line.765"></a>
+<FONT color="green">766</FONT>                        registry.setString( prefix + name, blackListPattern );<a name="line.766"></a>
+<FONT color="green">767</FONT>                    }<a name="line.767"></a>
+<FONT color="green">768</FONT>                }<a name="line.768"></a>
+<FONT color="green">769</FONT>                if ( value.getWhiteListPatterns() != null &amp;&amp; value.getWhiteListPatterns().size() &gt; 0<a name="line.769"></a>
+<FONT color="green">770</FONT>     )<a name="line.770"></a>
+<FONT color="green">771</FONT>                {<a name="line.771"></a>
+<FONT color="green">772</FONT>                    registry.removeSubset( prefix + "whiteListPatterns" );<a name="line.772"></a>
+<FONT color="green">773</FONT>    <a name="line.773"></a>
+<FONT color="green">774</FONT>                    int count = 0;<a name="line.774"></a>
+<FONT color="green">775</FONT>                    for ( Iterator iter = value.getWhiteListPatterns().iterator(); iter.hasNext(); count++ )<a name="line.775"></a>
+<FONT color="green">776</FONT>                    {<a name="line.776"></a>
+<FONT color="green">777</FONT>                        String name = "whiteListPatterns.whiteListPattern(" + count + ")";<a name="line.777"></a>
+<FONT color="green">778</FONT>                        String whiteListPattern = ( String ) iter.next();<a name="line.778"></a>
+<FONT color="green">779</FONT>                        registry.setString( prefix + name, whiteListPattern );<a name="line.779"></a>
+<FONT color="green">780</FONT>                    }<a name="line.780"></a>
+<FONT color="green">781</FONT>                }<a name="line.781"></a>
+<FONT color="green">782</FONT>                if ( value.getPolicies() != null &amp;&amp; value.getPolicies().size() &gt; 0<a name="line.782"></a>
+<FONT color="green">783</FONT>     )<a name="line.783"></a>
+<FONT color="green">784</FONT>                {<a name="line.784"></a>
+<FONT color="green">785</FONT>                    registry.removeSubset( prefix + "policies" );<a name="line.785"></a>
+<FONT color="green">786</FONT>                    <a name="line.786"></a>
+<FONT color="green">787</FONT>                    for ( Iterator iter = value.getPolicies().keySet().iterator(); iter.hasNext(); )<a name="line.787"></a>
+<FONT color="green">788</FONT>                    {<a name="line.788"></a>
+<FONT color="green">789</FONT>                        String key = (String) iter.next();<a name="line.789"></a>
+<FONT color="green">790</FONT>                        String v = (String) value.getPolicies().get( key );<a name="line.790"></a>
+<FONT color="green">791</FONT>    <a name="line.791"></a>
+<FONT color="green">792</FONT>                        registry.setString( prefix + "policies." + key, v );<a name="line.792"></a>
+<FONT color="green">793</FONT>                    }<a name="line.793"></a>
+<FONT color="green">794</FONT>                }<a name="line.794"></a>
+<FONT color="green">795</FONT>                if ( value.getProperties() != null &amp;&amp; value.getProperties().size() &gt; 0<a name="line.795"></a>
+<FONT color="green">796</FONT>     )<a name="line.796"></a>
+<FONT color="green">797</FONT>                {<a name="line.797"></a>
+<FONT color="green">798</FONT>                    registry.removeSubset( prefix + "properties" );<a name="line.798"></a>
+<FONT color="green">799</FONT>                    <a name="line.799"></a>
+<FONT color="green">800</FONT>                    for ( Iterator iter = value.getProperties().keySet().iterator(); iter.hasNext(); )<a name="line.800"></a>
+<FONT color="green">801</FONT>                    {<a name="line.801"></a>
+<FONT color="green">802</FONT>                        String key = (String) iter.next();<a name="line.802"></a>
+<FONT color="green">803</FONT>                        String v = (String) value.getProperties().get( key );<a name="line.803"></a>
+<FONT color="green">804</FONT>    <a name="line.804"></a>
+<FONT color="green">805</FONT>                        registry.setString( prefix + "properties." + key, v );<a name="line.805"></a>
+<FONT color="green">806</FONT>                    }<a name="line.806"></a>
+<FONT color="green">807</FONT>                }<a name="line.807"></a>
+<FONT color="green">808</FONT>                if ( value.isDisabled() != false<a name="line.808"></a>
+<FONT color="green">809</FONT>     )<a name="line.809"></a>
+<FONT color="green">810</FONT>                {<a name="line.810"></a>
+<FONT color="green">811</FONT>                    String name = "disabled";<a name="line.811"></a>
+<FONT color="green">812</FONT>                    registry.setBoolean( prefix + name, value.isDisabled() );<a name="line.812"></a>
+<FONT color="green">813</FONT>                }<a name="line.813"></a>
+<FONT color="green">814</FONT>            }<a name="line.814"></a>
+<FONT color="green">815</FONT>        }<a name="line.815"></a>
+<FONT color="green">816</FONT>        <a name="line.816"></a>
+<FONT color="green">817</FONT>        private void writeNetworkProxyConfiguration( String prefix, NetworkProxyConfiguration value, Registry registry )<a name="line.817"></a>
+<FONT color="green">818</FONT>        {<a name="line.818"></a>
+<FONT color="green">819</FONT>            if ( value != null )<a name="line.819"></a>
+<FONT color="green">820</FONT>            {<a name="line.820"></a>
+<FONT color="green">821</FONT>                if ( value.getId() != null<a name="line.821"></a>
 <FONT color="green">822</FONT>     )<a name="line.822"></a>
 <FONT color="green">823</FONT>                {<a name="line.823"></a>
-<FONT color="green">824</FONT>                    String name = "useNtlm";<a name="line.824"></a>
-<FONT color="green">825</FONT>                    registry.setBoolean( prefix + name, value.isUseNtlm() );<a name="line.825"></a>
+<FONT color="green">824</FONT>                    String name = "id";<a name="line.824"></a>
+<FONT color="green">825</FONT>                    registry.setString( prefix + name, value.getId() );<a name="line.825"></a>
 <FONT color="green">826</FONT>                }<a name="line.826"></a>
-<FONT color="green">827</FONT>            }<a name="line.827"></a>
-<FONT color="green">828</FONT>        }<a name="line.828"></a>
-<FONT color="green">829</FONT>        <a name="line.829"></a>
-<FONT color="green">830</FONT>        private void writeRepositoryScanningConfiguration( String prefix, RepositoryScanningConfiguration value, Registry registry )<a name="line.830"></a>
-<FONT color="green">831</FONT>        {<a name="line.831"></a>
-<FONT color="green">832</FONT>            if ( value != null )<a name="line.832"></a>
-<FONT color="green">833</FONT>            {<a name="line.833"></a>
-<FONT color="green">834</FONT>                if ( value.getFileTypes() != null &amp;&amp; value.getFileTypes().size() &gt; 0<a name="line.834"></a>
-<FONT color="green">835</FONT>     )<a name="line.835"></a>
-<FONT color="green">836</FONT>                {<a name="line.836"></a>
-<FONT color="green">837</FONT>                    registry.removeSubset( prefix + "fileTypes" );<a name="line.837"></a>
-<FONT color="green">838</FONT>    <a name="line.838"></a>
-<FONT color="green">839</FONT>                    int count = 0;<a name="line.839"></a>
-<FONT color="green">840</FONT>                    for ( Iterator iter = value.getFileTypes().iterator(); iter.hasNext(); count++ )<a name="line.840"></a>
-<FONT color="green">841</FONT>                    {<a name="line.841"></a>
-<FONT color="green">842</FONT>                        String name = "fileTypes.fileType(" + count + ")";<a name="line.842"></a>
-<FONT color="green">843</FONT>                        FileType o = ( FileType ) iter.next();<a name="line.843"></a>
-<FONT color="green">844</FONT>                        writeFileType( prefix + name + ".", o, registry );<a name="line.844"></a>
-<FONT color="green">845</FONT>                    }<a name="line.845"></a>
-<FONT color="green">846</FONT>                }<a name="line.846"></a>
-<FONT color="green">847</FONT>                if ( value.getKnownContentConsumers() != null &amp;&amp; value.getKnownContentConsumers().size() &gt; 0<a name="line.847"></a>
-<FONT color="green">848</FONT>     )<a name="line.848"></a>
-<FONT color="green">849</FONT>                {<a name="line.849"></a>
-<FONT color="green">850</FONT>                    registry.removeSubset( prefix + "knownContentConsumers" );<a name="line.850"></a>
-<FONT color="green">851</FONT>    <a name="line.851"></a>
-<FONT color="green">852</FONT>                    int count = 0;<a name="line.852"></a>
-<FONT color="green">853</FONT>                    for ( Iterator iter = value.getKnownContentConsumers().iterator(); iter.hasNext(); count++ )<a name="line.853"></a>
-<FONT color="green">854</FONT>                    {<a name="line.854"></a>
-<FONT color="green">855</FONT>                        String name = "knownContentConsumers.knownContentConsumer(" + count + ")";<a name="line.855"></a>
-<FONT color="green">856</FONT>                        String knownContentConsumer = ( String ) iter.next();<a name="line.856"></a>
-<FONT color="green">857</FONT>                        registry.setString( prefix + name, knownContentConsumer );<a name="line.857"></a>
-<FONT color="green">858</FONT>                    }<a name="line.858"></a>
-<FONT color="green">859</FONT>                }<a name="line.859"></a>
-<FONT color="green">860</FONT>                if ( value.getInvalidContentConsumers() != null &amp;&amp; value.getInvalidContentConsumers().size() &gt; 0<a name="line.860"></a>
-<FONT color="green">861</FONT>     )<a name="line.861"></a>
-<FONT color="green">862</FONT>                {<a name="line.862"></a>
-<FONT color="green">863</FONT>                    registry.removeSubset( prefix + "invalidContentConsumers" );<a name="line.863"></a>
-<FONT color="green">864</FONT>    <a name="line.864"></a>
-<FONT color="green">865</FONT>                    int count = 0;<a name="line.865"></a>
-<FONT color="green">866</FONT>                    for ( Iterator iter = value.getInvalidContentConsumers().iterator(); iter.hasNext(); count++ )<a name="line.866"></a>
-<FONT color="green">867</FONT>                    {<a name="line.867"></a>
-<FONT color="green">868</FONT>                        String name = "invalidContentConsumers.invalidContentConsumer(" + count + ")";<a name="line.868"></a>
-<FONT color="green">869</FONT>                        String invalidContentConsumer = ( String ) iter.next();<a name="line.869"></a>
-<FONT color="green">870</FONT>                        registry.setString( prefix + name, invalidContentConsumer );<a name="line.870"></a>
-<FONT color="green">871</FONT>                    }<a name="line.871"></a>
-<FONT color="green">872</FONT>                }<a name="line.872"></a>
-<FONT color="green">873</FONT>            }<a name="line.873"></a>
-<FONT color="green">874</FONT>        }<a name="line.874"></a>
-<FONT color="green">875</FONT>        <a name="line.875"></a>
-<FONT color="green">876</FONT>        private void writeFileType( String prefix, FileType value, Registry registry )<a name="line.876"></a>
-<FONT color="green">877</FONT>        {<a name="line.877"></a>
-<FONT color="green">878</FONT>            if ( value != null )<a name="line.878"></a>
-<FONT color="green">879</FONT>            {<a name="line.879"></a>
-<FONT color="green">880</FONT>                if ( value.getId() != null<a name="line.880"></a>
-<FONT color="green">881</FONT>     )<a name="line.881"></a>
-<FONT color="green">882</FONT>                {<a name="line.882"></a>
-<FONT color="green">883</FONT>                    String name = "id";<a name="line.883"></a>
-<FONT color="green">884</FONT>                    registry.setString( prefix + name, value.getId() );<a name="line.884"></a>
-<FONT color="green">885</FONT>                }<a name="line.885"></a>
-<FONT color="green">886</FONT>                if ( value.getPatterns() != null &amp;&amp; value.getPatterns().size() &gt; 0<a name="line.886"></a>
-<FONT color="green">887</FONT>     )<a name="line.887"></a>
-<FONT color="green">888</FONT>                {<a name="line.888"></a>
-<FONT color="green">889</FONT>                    registry.removeSubset( prefix + "patterns" );<a name="line.889"></a>
-<FONT color="green">890</FONT>    <a name="line.890"></a>
-<FONT color="green">891</FONT>                    int count = 0;<a name="line.891"></a>
-<FONT color="green">892</FONT>                    for ( Iterator iter = value.getPatterns().iterator(); iter.hasNext(); count++ )<a name="line.892"></a>
-<FONT color="green">893</FONT>                    {<a name="line.893"></a>
-<FONT color="green">894</FONT>                        String name = "patterns.pattern(" + count + ")";<a name="line.894"></a>
-<FONT color="green">895</FONT>                        String pattern = ( String ) iter.next();<a name="line.895"></a>
-<FONT color="green">896</FONT>                        registry.setString( prefix + name, pattern );<a name="line.896"></a>
-<FONT color="green">897</FONT>                    }<a name="line.897"></a>
-<FONT color="green">898</FONT>                }<a name="line.898"></a>
-<FONT color="green">899</FONT>            }<a name="line.899"></a>
-<FONT color="green">900</FONT>        }<a name="line.900"></a>
-<FONT color="green">901</FONT>        <a name="line.901"></a>
-<FONT color="green">902</FONT>        private void writeOrganisationInformation( String prefix, OrganisationInformation value, Registry registry )<a name="line.902"></a>
-<FONT color="green">903</FONT>        {<a name="line.903"></a>
-<FONT color="green">904</FONT>            if ( value != null )<a name="line.904"></a>
-<FONT color="green">905</FONT>            {<a name="line.905"></a>
-<FONT color="green">906</FONT>                if ( value.getName() != null<a name="line.906"></a>
-<FONT color="green">907</FONT>     )<a name="line.907"></a>
-<FONT color="green">908</FONT>                {<a name="line.908"></a>
-<FONT color="green">909</FONT>                    String name = "name";<a name="line.909"></a>
-<FONT color="green">910</FONT>                    registry.setString( prefix + name, value.getName() );<a name="line.910"></a>
-<FONT color="green">911</FONT>                }<a name="line.911"></a>
-<FONT color="green">912</FONT>                if ( value.getUrl() != null<a name="line.912"></a>
-<FONT color="green">913</FONT>     )<a name="line.913"></a>
-<FONT color="green">914</FONT>                {<a name="line.914"></a>
-<FONT color="green">915</FONT>                    String name = "url";<a name="line.915"></a>
-<FONT color="green">916</FONT>                    registry.setString( prefix + name, value.getUrl() );<a name="line.916"></a>
-<FONT color="green">917</FONT>                }<a name="line.917"></a>
-<FONT color="green">918</FONT>                if ( value.getLogoLocation() != null<a name="line.918"></a>
-<FONT color="green">919</FONT>     )<a name="line.919"></a>
-<FONT color="green">920</FONT>                {<a name="line.920"></a>
-<FONT color="green">921</FONT>                    String name = "logoLocation";<a name="line.921"></a>
-<FONT color="green">922</FONT>                    registry.setString( prefix + name, value.getLogoLocation() );<a name="line.922"></a>
-<FONT color="green">923</FONT>                }<a name="line.923"></a>
-<FONT color="green">924</FONT>            }<a name="line.924"></a>
-<FONT color="green">925</FONT>        }<a name="line.925"></a>
-<FONT color="green">926</FONT>        <a name="line.926"></a>
-<FONT color="green">927</FONT>        private void writeWebappConfiguration( String prefix, WebappConfiguration value, Registry registry )<a name="line.927"></a>
-<FONT color="green">928</FONT>        {<a name="line.928"></a>
-<FONT color="green">929</FONT>            if ( value != null )<a name="line.929"></a>
-<FONT color="green">930</FONT>            {<a name="line.930"></a>
-<FONT color="green">931</FONT>                if ( value.getUi() != null<a name="line.931"></a>
-<FONT color="green">932</FONT>     )<a name="line.932"></a>
-<FONT color="green">933</FONT>                {<a name="line.933"></a>
-<FONT color="green">934</FONT>                    writeUserInterfaceOptions( prefix + "ui.", value.getUi(), registry );<a name="line.934"></a>
-<FONT color="green">935</FONT>                }<a name="line.935"></a>
-<FONT color="green">936</FONT>            }<a name="line.936"></a>
-<FONT color="green">937</FONT>        }<a name="line.937"></a>
-<FONT color="green">938</FONT>        <a name="line.938"></a>
-<FONT color="green">939</FONT>        private void writeUserInterfaceOptions( String prefix, UserInterfaceOptions value, Registry registry )<a name="line.939"></a>
-<FONT color="green">940</FONT>        {<a name="line.940"></a>
-<FONT color="green">941</FONT>            if ( value != null )<a name="line.941"></a>
-<FONT color="green">942</FONT>            {<a name="line.942"></a>
-<FONT color="green">943</FONT>                if ( value.isShowFindArtifacts() != true<a name="line.943"></a>
-<FONT color="green">944</FONT>     )<a name="line.944"></a>
-<FONT color="green">945</FONT>                {<a name="line.945"></a>
-<FONT color="green">946</FONT>                    String name = "showFindArtifacts";<a name="line.946"></a>
-<FONT color="green">947</FONT>                    registry.setBoolean( prefix + name, value.isShowFindArtifacts() );<a name="line.947"></a>
-<FONT color="green">948</FONT>                }<a name="line.948"></a>
-<FONT color="green">949</FONT>                if ( value.isAppletFindEnabled() != true<a name="line.949"></a>
-<FONT color="green">950</FONT>     )<a name="line.950"></a>
-<FONT color="green">951</FONT>                {<a name="line.951"></a>
-<FONT color="green">952</FONT>                    String name = "appletFindEnabled";<a name="line.952"></a>
-<FONT color="green">953</FONT>                    registry.setBoolean( prefix + name, value.isAppletFindEnabled() );<a name="line.953"></a>
-<FONT color="green">954</FONT>                }<a name="line.954"></a>
-<FONT color="green">955</FONT>                if ( value.isDisableEasterEggs() != false<a name="line.955"></a>
-<FONT color="green">956</FONT>     )<a name="line.956"></a>
-<FONT color="green">957</FONT>                {<a name="line.957"></a>
-<FONT color="green">958</FONT>                    String name = "disableEasterEggs";<a name="line.958"></a>
-<FONT color="green">959</FONT>                    registry.setBoolean( prefix + name, value.isDisableEasterEggs() );<a name="line.959"></a>
-<FONT color="green">960</FONT>                }<a name="line.960"></a>
-<FONT color="green">961</FONT>                if ( value.getApplicationUrl() != null<a name="line.961"></a>
-<FONT color="green">962</FONT>     )<a name="line.962"></a>
-<FONT color="green">963</FONT>                {<a name="line.963"></a>
-<FONT color="green">964</FONT>                    String name = "applicationUrl";<a name="line.964"></a>
-<FONT color="green">965</FONT>                    registry.setString( prefix + name, value.getApplicationUrl() );<a name="line.965"></a>
-<FONT color="green">966</FONT>                }<a name="line.966"></a>
-<FONT color="green">967</FONT>            }<a name="line.967"></a>
-<FONT color="green">968</FONT>        }<a name="line.968"></a>
-<FONT color="green">969</FONT>        <a name="line.969"></a>
-<FONT color="green">970</FONT>        private void writeNetworkConfiguration( String prefix, NetworkConfiguration value, Registry registry )<a name="line.970"></a>
-<FONT color="green">971</FONT>        {<a name="line.971"></a>
-<FONT color="green">972</FONT>            if ( value != null )<a name="line.972"></a>
-<FONT color="green">973</FONT>            {<a name="line.973"></a>
-<FONT color="green">974</FONT>                if ( value.getMaxTotal() != 30<a name="line.974"></a>
-<FONT color="green">975</FONT>     )<a name="line.975"></a>
-<FONT color="green">976</FONT>                {<a name="line.976"></a>
-<FONT color="green">977</FONT>                    String name = "maxTotal";<a name="line.977"></a>
-<FONT color="green">978</FONT>                    registry.setInt( prefix + name, value.getMaxTotal() );<a name="line.978"></a>
-<FONT color="green">979</FONT>                }<a name="line.979"></a>
-<FONT color="green">980</FONT>                if ( value.getMaxTotalPerHost() != 30<a name="line.980"></a>
-<FONT color="green">981</FONT>     )<a name="line.981"></a>
-<FONT color="green">982</FONT>                {<a name="line.982"></a>
-<FONT color="green">983</FONT>                    String name = "maxTotalPerHost";<a name="line.983"></a>
-<FONT color="green">984</FONT>                    registry.setInt( prefix + name, value.getMaxTotalPerHost() );<a name="line.984"></a>
-<FONT color="green">985</FONT>                }<a name="line.985"></a>
-<FONT color="green">986</FONT>                if ( value.isUsePooling() != true<a name="line.986"></a>
-<FONT color="green">987</FONT>     )<a name="line.987"></a>
-<FONT color="green">988</FONT>                {<a name="line.988"></a>
-<FONT color="green">989</FONT>                    String name = "usePooling";<a name="line.989"></a>
-<FONT color="green">990</FONT>                    registry.setBoolean( prefix + name, value.isUsePooling() );<a name="line.990"></a>
-<FONT color="green">991</FONT>                }<a name="line.991"></a>
-<FONT color="green">992</FONT>            }<a name="line.992"></a>
-<FONT color="green">993</FONT>        }<a name="line.993"></a>
-<FONT color="green">994</FONT>        <a name="line.994"></a>
-<FONT color="green">995</FONT>    }<a name="line.995"></a>
+<FONT color="green">827</FONT>                if ( value.getProtocol() != null &amp;&amp; !value.getProtocol().equals( "http" )<a name="line.827"></a>
+<FONT color="green">828</FONT>     )<a name="line.828"></a>
+<FONT color="green">829</FONT>                {<a name="line.829"></a>
+<FONT color="green">830</FONT>                    String name = "protocol";<a name="line.830"></a>
+<FONT color="green">831</FONT>                    registry.setString( prefix + name, value.getProtocol() );<a name="line.831"></a>
+<FONT color="green">832</FONT>                }<a name="line.832"></a>
+<FONT color="green">833</FONT>                if ( value.getHost() != null<a name="line.833"></a>
+<FONT color="green">834</FONT>     )<a name="line.834"></a>
+<FONT color="green">835</FONT>                {<a name="line.835"></a>
+<FONT color="green">836</FONT>                    String name = "host";<a name="line.836"></a>
+<FONT color="green">837</FONT>                    registry.setString( prefix + name, value.getHost() );<a name="line.837"></a>
+<FONT color="green">838</FONT>                }<a name="line.838"></a>
+<FONT color="green">839</FONT>                if ( value.getPort() != 8080<a name="line.839"></a>
+<FONT color="green">840</FONT>     )<a name="line.840"></a>
+<FONT color="green">841</FONT>                {<a name="line.841"></a>
+<FONT color="green">842</FONT>                    String name = "port";<a name="line.842"></a>
+<FONT color="green">843</FONT>                    registry.setInt( prefix + name, value.getPort() );<a name="line.843"></a>
+<FONT color="green">844</FONT>                }<a name="line.844"></a>
+<FONT color="green">845</FONT>                if ( value.getUsername() != null<a name="line.845"></a>
+<FONT color="green">846</FONT>     )<a name="line.846"></a>
+<FONT color="green">847</FONT>                {<a name="line.847"></a>
+<FONT color="green">848</FONT>                    String name = "username";<a name="line.848"></a>
+<FONT color="green">849</FONT>                    registry.setString( prefix + name, value.getUsername() );<a name="line.849"></a>
+<FONT color="green">850</FONT>                }<a name="line.850"></a>
+<FONT color="green">851</FONT>                if ( value.getPassword() != null<a name="line.851"></a>
+<FONT color="green">852</FONT>     )<a name="line.852"></a>
+<FONT color="green">853</FONT>                {<a name="line.853"></a>
+<FONT color="green">854</FONT>                    String name = "password";<a name="line.854"></a>
+<FONT color="green">855</FONT>                    registry.setString( prefix + name, value.getPassword() );<a name="line.855"></a>
+<FONT color="green">856</FONT>                }<a name="line.856"></a>
+<FONT color="green">857</FONT>                if ( value.isUseNtlm() != false<a name="line.857"></a>
+<FONT color="green">858</FONT>     )<a name="line.858"></a>
+<FONT color="green">859</FONT>                {<a name="line.859"></a>
+<FONT color="green">860</FONT>                    String name = "useNtlm";<a name="line.860"></a>
+<FONT color="green">861</FONT>                    registry.setBoolean( prefix + name, value.isUseNtlm() );<a name="line.861"></a>
+<FONT color="green">862</FONT>                }<a name="line.862"></a>
+<FONT color="green">863</FONT>            }<a name="line.863"></a>
+<FONT color="green">864</FONT>        }<a name="line.864"></a>
+<FONT color="green">865</FONT>        <a name="line.865"></a>
+<FONT color="green">866</FONT>        private void writeRepositoryScanningConfiguration( String prefix, RepositoryScanningConfiguration value, Registry registry )<a name="line.866"></a>
+<FONT color="green">867</FONT>        {<a name="line.867"></a>
+<FONT color="green">868</FONT>            if ( value != null )<a name="line.868"></a>
+<FONT color="green">869</FONT>            {<a name="line.869"></a>
+<FONT color="green">870</FONT>                if ( value.getFileTypes() != null &amp;&amp; value.getFileTypes().size() &gt; 0<a name="line.870"></a>
+<FONT color="green">871</FONT>     )<a name="line.871"></a>
+<FONT color="green">872</FONT>                {<a name="line.872"></a>
+<FONT color="green">873</FONT>                    registry.removeSubset( prefix + "fileTypes" );<a name="line.873"></a>
+<FONT color="green">874</FONT>    <a name="line.874"></a>
+<FONT color="green">875</FONT>                    int count = 0;<a name="line.875"></a>
+<FONT color="green">876</FONT>                    for ( Iterator iter = value.getFileTypes().iterator(); iter.hasNext(); count++ )<a name="line.876"></a>
+<FONT color="green">877</FONT>                    {<a name="line.877"></a>
+<FONT color="green">878</FONT>                        String name = "fileTypes.fileType(" + count + ")";<a name="line.878"></a>
+<FONT color="green">879</FONT>                        FileType o = ( FileType ) iter.next();<a name="line.879"></a>
+<FONT color="green">880</FONT>                        writeFileType( prefix + name + ".", o, registry );<a name="line.880"></a>
+<FONT color="green">881</FONT>                    }<a name="line.881"></a>
+<FONT color="green">882</FONT>                }<a name="line.882"></a>
+<FONT color="green">883</FONT>                if ( value.getKnownContentConsumers() != null &amp;&amp; value.getKnownContentConsumers().size() &gt; 0<a name="line.883"></a>
+<FONT color="green">884</FONT>     )<a name="line.884"></a>
+<FONT color="green">885</FONT>                {<a name="line.885"></a>
+<FONT color="green">886</FONT>                    registry.removeSubset( prefix + "knownContentConsumers" );<a name="line.886"></a>
+<FONT color="green">887</FONT>    <a name="line.887"></a>
+<FONT color="green">888</FONT>                    int count = 0;<a name="line.888"></a>
+<FONT color="green">889</FONT>                    for ( Iterator iter = value.getKnownContentConsumers().iterator(); iter.hasNext(); count++ )<a name="line.889"></a>
+<FONT color="green">890</FONT>                    {<a name="line.890"></a>
+<FONT color="green">891</FONT>                        String name = "knownContentConsumers.knownContentConsumer(" + count + ")";<a name="line.891"></a>
+<FONT color="green">892</FONT>                        String knownContentConsumer = ( String ) iter.next();<a name="line.892"></a>
+<FONT color="green">893</FONT>                        registry.setString( prefix + name, knownContentConsumer );<a name="line.893"></a>
+<FONT color="green">894</FONT>                    }<a name="line.894"></a>
+<FONT color="green">895</FONT>                }<a name="line.895"></a>
+<FONT color="green">896</FONT>                if ( value.getInvalidContentConsumers() != null &amp;&amp; value.getInvalidContentConsumers().size() &gt; 0<a name="line.896"></a>
+<FONT color="green">897</FONT>     )<a name="line.897"></a>
+<FONT color="green">898</FONT>                {<a name="line.898"></a>
+<FONT color="green">899</FONT>                    registry.removeSubset( prefix + "invalidContentConsumers" );<a name="line.899"></a>
+<FONT color="green">900</FONT>    <a name="line.900"></a>
+<FONT color="green">901</FONT>                    int count = 0;<a name="line.901"></a>
+<FONT color="green">902</FONT>                    for ( Iterator iter = value.getInvalidContentConsumers().iterator(); iter.hasNext(); count++ )<a name="line.902"></a>
+<FONT color="green">903</FONT>                    {<a name="line.903"></a>
+<FONT color="green">904</FONT>                        String name = "invalidContentConsumers.invalidContentConsumer(" + count + ")";<a name="line.904"></a>
+<FONT color="green">905</FONT>                        String invalidContentConsumer = ( String ) iter.next();<a name="line.905"></a>
+<FONT color="green">906</FONT>                        registry.setString( prefix + name, invalidContentConsumer );<a name="line.906"></a>
+<FONT color="green">907</FONT>                    }<a name="line.907"></a>
+<FONT color="green">908</FONT>                }<a name="line.908"></a>
+<FONT color="green">909</FONT>            }<a name="line.909"></a>
+<FONT color="green">910</FONT>        }<a name="line.910"></a>
+<FONT color="green">911</FONT>        <a name="line.911"></a>
+<FONT color="green">912</FONT>        private void writeFileType( String prefix, FileType value, Registry registry )<a name="line.912"></a>
+<FONT color="green">913</FONT>        {<a name="line.913"></a>
+<FONT color="green">914</FONT>            if ( value != null )<a name="line.914"></a>
+<FONT color="green">915</FONT>            {<a name="line.915"></a>
+<FONT color="green">916</FONT>                if ( value.getId() != null<a name="line.916"></a>
+<FONT color="green">917</FONT>     )<a name="line.917"></a>
+<FONT color="green">918</FONT>                {<a name="line.918"></a>
+<FONT color="green">919</FONT>                    String name = "id";<a name="line.919"></a>
+<FONT color="green">920</FONT>                    registry.setString( prefix + name, value.getId() );<a name="line.920"></a>
+<FONT color="green">921</FONT>                }<a name="line.921"></a>
+<FONT color="green">922</FONT>                if ( value.getPatterns() != null &amp;&amp; value.getPatterns().size() &gt; 0<a name="line.922"></a>
+<FONT color="green">923</FONT>     )<a name="line.923"></a>
+<FONT color="green">924</FONT>                {<a name="line.924"></a>
+<FONT color="green">925</FONT>                    registry.removeSubset( prefix + "patterns" );<a name="line.925"></a>
+<FONT color="green">926</FONT>    <a name="line.926"></a>
+<FONT color="green">927</FONT>                    int count = 0;<a name="line.927"></a>
+<FONT color="green">928</FONT>                    for ( Iterator iter = value.getPatterns().iterator(); iter.hasNext(); count++ )<a name="line.928"></a>
+<FONT color="green">929</FONT>                    {<a name="line.929"></a>
+<FONT color="green">930</FONT>                        String name = "patterns.pattern(" + count + ")";<a name="line.930"></a>
+<FONT color="green">931</FONT>                        String pattern = ( String ) iter.next();<a name="line.931"></a>
+<FONT color="green">932</FONT>                        registry.setString( prefix + name, pattern );<a name="line.932"></a>
+<FONT color="green">933</FONT>                    }<a name="line.933"></a>
+<FONT color="green">934</FONT>                }<a name="line.934"></a>
+<FONT color="green">935</FONT>            }<a name="line.935"></a>
+<FONT color="green">936</FONT>        }<a name="line.936"></a>
+<FONT color="green">937</FONT>        <a name="line.937"></a>
+<FONT color="green">938</FONT>        private void writeOrganisationInformation( String prefix, OrganisationInformation value, Registry registry )<a name="line.938"></a>
+<FONT color="green">939</FONT>        {<a name="line.939"></a>
+<FONT color="green">940</FONT>            if ( value != null )<a name="line.940"></a>
+<FONT color="green">941</FONT>            {<a name="line.941"></a>
+<FONT color="green">942</FONT>                if ( value.getName() != null<a name="line.942"></a>
+<FONT color="green">943</FONT>     )<a name="line.943"></a>
+<FONT color="green">944</FONT>                {<a name="line.944"></a>
+<FONT color="green">945</FONT>                    String name = "name";<a name="line.945"></a>
+<FONT color="green">946</FONT>                    registry.setString( prefix + name, value.getName() );<a name="line.946"></a>
+<FONT color="green">947</FONT>                }<a name="line.947"></a>
+<FONT color="green">948</FONT>                if ( value.getUrl() != null<a name="line.948"></a>
+<FONT color="green">949</FONT>     )<a name="line.949"></a>
+<FONT color="green">950</FONT>                {<a name="line.950"></a>
+<FONT color="green">951</FONT>                    String name = "url";<a name="line.951"></a>
+<FONT color="green">952</FONT>                    registry.setString( prefix + name, value.getUrl() );<a name="line.952"></a>
+<FONT color="green">953</FONT>                }<a name="line.953"></a>
+<FONT color="green">954</FONT>                if ( value.getLogoLocation() != null<a name="line.954"></a>
+<FONT color="green">955</FONT>     )<a name="line.955"></a>
+<FONT color="green">956</FONT>                {<a name="line.956"></a>
+<FONT color="green">957</FONT>                    String name = "logoLocation";<a name="line.957"></a>
+<FONT color="green">958</FONT>                    registry.setString( prefix + name, value.getLogoLocation() );<a name="line.958"></a>
+<FONT color="green">959</FONT>                }<a name="line.959"></a>
+<FONT color="green">960</FONT>            }<a name="line.960"></a>
+<FONT color="green">961</FONT>        }<a name="line.961"></a>
+<FONT color="green">962</FONT>        <a name="line.962"></a>
+<FONT color="green">963</FONT>        private void writeWebappConfiguration( String prefix, WebappConfiguration value, Registry registry )<a name="line.963"></a>
+<FONT color="green">964</FONT>        {<a name="line.964"></a>
+<FONT color="green">965</FONT>            if ( value != null )<a name="line.965"></a>
+<FONT color="green">966</FONT>            {<a name="line.966"></a>
+<FONT color="green">967</FONT>                if ( value.getUi() != null<a name="line.967"></a>
+<FONT color="green">968</FONT>     )<a name="line.968"></a>
+<FONT color="green">969</FONT>                {<a name="line.969"></a>
+<FONT color="green">970</FONT>                    writeUserInterfaceOptions( prefix + "ui.", value.getUi(), registry );<a name="line.970"></a>
+<FONT color="green">971</FONT>                }<a name="line.971"></a>
+<FONT color="green">972</FONT>            }<a name="line.972"></a>
+<FONT color="green">973</FONT>        }<a name="line.973"></a>
+<FONT color="green">974</FONT>        <a name="line.974"></a>
+<FONT color="green">975</FONT>        private void writeUserInterfaceOptions( String prefix, UserInterfaceOptions value, Registry registry )<a name="line.975"></a>
+<FONT color="green">976</FONT>        {<a name="line.976"></a>
+<FONT color="green">977</FONT>            if ( value != null )<a name="line.977"></a>
+<FONT color="green">978</FONT>            {<a name="line.978"></a>
+<FONT color="green">979</FONT>                if ( value.isShowFindArtifacts() != true<a name="line.979"></a>
+<FONT color="green">980</FONT>     )<a name="line.980"></a>
+<FONT color="green">981</FONT>                {<a name="line.981"></a>
+<FONT color="green">982</FONT>                    String name = "showFindArtifacts";<a name="line.982"></a>
+<FONT color="green">983</FONT>                    registry.setBoolean( prefix + name, value.isShowFindArtifacts() );<a name="line.983"></a>
+<FONT color="green">984</FONT>                }<a name="line.984"></a>
+<FONT color="green">985</FONT>                if ( value.isAppletFindEnabled() != true<a name="line.985"></a>
+<FONT color="green">986</FONT>     )<a name="line.986"></a>
+<FONT color="green">987</FONT>                {<a name="line.987"></a>
+<FONT color="green">988</FONT>                    String name = "appletFindEnabled";<a name="line.988"></a>
+<FONT color="green">989</FONT>                    registry.setBoolean( prefix + name, value.isAppletFindEnabled() );<a name="line.989"></a>
+<FONT color="green">990</FONT>                }<a name="line.990"></a>
+<FONT color="green">991</FONT>                if ( value.isDisableEasterEggs() != false<a name="line.991"></a>
+<FONT color="green">992</FONT>     )<a name="line.992"></a>
+<FONT color="green">993</FONT>                {<a name="line.993"></a>
+<FONT color="green">994</FONT>                    String name = "disableEasterEggs";<a name="line.994"></a>
+<FONT color="green">995</FONT>                    registry.setBoolean( prefix + name, value.isDisableEasterEggs() );<a name="line.995"></a>
+<FONT color="green">996</FONT>                }<a name="line.996"></a>
+<FONT color="green">997</FONT>                if ( value.getApplicationUrl() != null<a name="line.997"></a>
+<FONT color="green">998</FONT>     )<a name="line.998"></a>
+<FONT color="green">999</FONT>                {<a name="line.999"></a>
+<FONT color="green">1000</FONT>                    String name = "applicationUrl";<a name="line.1000"></a>
+<FONT color="green">1001</FONT>                    registry.setString( prefix + name, value.getApplicationUrl() );<a name="line.1001"></a>
+<FONT color="green">1002</FONT>                }<a name="line.1002"></a>
+<FONT color="green">1003</FONT>                if ( value.isDisableRegistration() != false<a name="line.1003"></a>
+<FONT color="green">1004</FONT>     )<a name="line.1004"></a>
+<FONT color="green">1005</FONT>                {<a name="line.1005"></a>
+<FONT color="green">1006</FONT>                    String name = "disableRegistration";<a name="line.1006"></a>
+<FONT color="green">1007</FONT>                    registry.setBoolean( prefix + name, value.isDisableRegistration() );<a name="line.1007"></a>
+<FONT color="green">1008</FONT>                }<a name="line.1008"></a>
+<FONT color="green">1009</FONT>            }<a name="line.1009"></a>
+<FONT color="green">1010</FONT>        }<a name="line.1010"></a>
+<FONT color="green">1011</FONT>        <a name="line.1011"></a>
+<FONT color="green">1012</FONT>        private void writeNetworkConfiguration( String prefix, NetworkConfiguration value, Registry registry )<a name="line.1012"></a>
+<FONT color="green">1013</FONT>        {<a name="line.1013"></a>
+<FONT color="green">1014</FONT>            if ( value != null )<a name="line.1014"></a>
+<FONT color="green">1015</FONT>            {<a name="line.1015"></a>
+<FONT color="green">1016</FONT>                if ( value.getMaxTotal() != 30<a name="line.1016"></a>
+<FONT color="green">1017</FONT>     )<a name="line.1017"></a>
+<FONT color="green">1018</FONT>                {<a name="line.1018"></a>
+<FONT color="green">1019</FONT>                    String name = "maxTotal";<a name="line.1019"></a>
+<FONT color="green">1020</FONT>                    registry.setInt( prefix + name, value.getMaxTotal() );<a name="line.1020"></a>
+<FONT color="green">1021</FONT>                }<a name="line.1021"></a>
+<FONT color="green">1022</FONT>                if ( value.getMaxTotalPerHost() != 30<a name="line.1022"></a>
+<FONT color="green">1023</FONT>     )<a name="line.1023"></a>
+<FONT color="green">1024</FONT>                {<a name="line.1024"></a>
+<FONT color="green">1025</FONT>                    String name = "maxTotalPerHost";<a name="line.1025"></a>
+<FONT color="green">1026</FONT>                    registry.setInt( prefix + name, value.getMaxTotalPerHost() );<a name="line.1026"></a>
+<FONT color="green">1027</FONT>                }<a name="line.1027"></a>
+<FONT color="green">1028</FONT>                if ( value.isUsePooling() != true<a name="line.1028"></a>
+<FONT color="green">1029</FONT>     )<a name="line.1029"></a>
+<FONT color="green">1030</FONT>                {<a name="line.1030"></a>
+<FONT color="green">1031</FONT>                    String name = "usePooling";<a name="line.1031"></a>
+<FONT color="green">1032</FONT>                    registry.setBoolean( prefix + name, value.isUsePooling() );<a name="line.1032"></a>
+<FONT color="green">1033</FONT>                }<a name="line.1033"></a>
+<FONT color="green">1034</FONT>            }<a name="line.1034"></a>
+<FONT color="green">1035</FONT>        }<a name="line.1035"></a>
+<FONT color="green">1036</FONT>        <a name="line.1036"></a>
+<FONT color="green">1037</FONT>    }<a name="line.1037"></a>
 
 
 

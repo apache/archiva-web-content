@@ -34,37 +34,37 @@
 <FONT color="green">031</FONT>    import org.apache.archiva.common.utils.VersionComparator;<a name="line.31"></a>
 <FONT color="green">032</FONT>    import org.apache.archiva.common.utils.VersionUtil;<a name="line.32"></a>
 <FONT color="green">033</FONT>    import org.apache.archiva.maven2.metadata.MavenMetadataReader;<a name="line.33"></a>
-<FONT color="green">034</FONT>    import org.apache.archiva.metadata.model.ArtifactMetadata;<a name="line.34"></a>
-<FONT color="green">035</FONT>    import org.apache.archiva.metadata.repository.MetadataRepository;<a name="line.35"></a>
-<FONT color="green">036</FONT>    import org.apache.archiva.metadata.repository.MetadataRepositoryException;<a name="line.36"></a>
-<FONT color="green">037</FONT>    import org.apache.archiva.metadata.repository.MetadataResolutionException;<a name="line.37"></a>
-<FONT color="green">038</FONT>    import org.apache.archiva.metadata.repository.RepositorySession;<a name="line.38"></a>
-<FONT color="green">039</FONT>    import org.apache.archiva.metadata.repository.RepositorySessionFactory;<a name="line.39"></a>
-<FONT color="green">040</FONT>    import org.apache.archiva.metadata.repository.storage.maven2.MavenArtifactFacet;<a name="line.40"></a>
-<FONT color="green">041</FONT>    import org.apache.archiva.model.ArchivaRepositoryMetadata;<a name="line.41"></a>
-<FONT color="green">042</FONT>    import org.apache.archiva.model.ArtifactReference;<a name="line.42"></a>
-<FONT color="green">043</FONT>    import org.apache.archiva.model.VersionedReference;<a name="line.43"></a>
-<FONT color="green">044</FONT>    import org.apache.archiva.redback.authentication.AuthenticationResult;<a name="line.44"></a>
-<FONT color="green">045</FONT>    import org.apache.archiva.redback.authorization.AuthorizationException;<a name="line.45"></a>
-<FONT color="green">046</FONT>    import org.apache.archiva.redback.components.taskqueue.TaskQueueException;<a name="line.46"></a>
-<FONT color="green">047</FONT>    import org.apache.archiva.redback.system.DefaultSecuritySession;<a name="line.47"></a>
-<FONT color="green">048</FONT>    import org.apache.archiva.redback.system.SecuritySession;<a name="line.48"></a>
-<FONT color="green">049</FONT>    import org.apache.archiva.redback.system.SecuritySystem;<a name="line.49"></a>
-<FONT color="green">050</FONT>    import org.apache.archiva.redback.users.User;<a name="line.50"></a>
-<FONT color="green">051</FONT>    import org.apache.archiva.redback.users.UserNotFoundException;<a name="line.51"></a>
-<FONT color="green">052</FONT>    import org.apache.archiva.repository.ContentNotFoundException;<a name="line.52"></a>
-<FONT color="green">053</FONT>    import org.apache.archiva.repository.ManagedRepositoryContent;<a name="line.53"></a>
-<FONT color="green">054</FONT>    import org.apache.archiva.repository.RepositoryContentFactory;<a name="line.54"></a>
-<FONT color="green">055</FONT>    import org.apache.archiva.repository.RepositoryException;<a name="line.55"></a>
-<FONT color="green">056</FONT>    import org.apache.archiva.repository.RepositoryNotFoundException;<a name="line.56"></a>
-<FONT color="green">057</FONT>    import org.apache.archiva.repository.events.RepositoryListener;<a name="line.57"></a>
-<FONT color="green">058</FONT>    import org.apache.archiva.repository.metadata.MetadataTools;<a name="line.58"></a>
-<FONT color="green">059</FONT>    import org.apache.archiva.repository.metadata.RepositoryMetadataException;<a name="line.59"></a>
-<FONT color="green">060</FONT>    import org.apache.archiva.repository.metadata.RepositoryMetadataWriter;<a name="line.60"></a>
-<FONT color="green">061</FONT>    import org.apache.archiva.repository.scanner.RepositoryScanStatistics;<a name="line.61"></a>
-<FONT color="green">062</FONT>    import org.apache.archiva.repository.scanner.RepositoryScanner;<a name="line.62"></a>
-<FONT color="green">063</FONT>    import org.apache.archiva.repository.scanner.RepositoryScannerException;<a name="line.63"></a>
-<FONT color="green">064</FONT>    import org.apache.archiva.maven2.model.Artifact;<a name="line.64"></a>
+<FONT color="green">034</FONT>    import org.apache.archiva.maven2.model.Artifact;<a name="line.34"></a>
+<FONT color="green">035</FONT>    import org.apache.archiva.metadata.model.ArtifactMetadata;<a name="line.35"></a>
+<FONT color="green">036</FONT>    import org.apache.archiva.metadata.repository.MetadataRepository;<a name="line.36"></a>
+<FONT color="green">037</FONT>    import org.apache.archiva.metadata.repository.MetadataRepositoryException;<a name="line.37"></a>
+<FONT color="green">038</FONT>    import org.apache.archiva.metadata.repository.MetadataResolutionException;<a name="line.38"></a>
+<FONT color="green">039</FONT>    import org.apache.archiva.metadata.repository.RepositorySession;<a name="line.39"></a>
+<FONT color="green">040</FONT>    import org.apache.archiva.metadata.repository.RepositorySessionFactory;<a name="line.40"></a>
+<FONT color="green">041</FONT>    import org.apache.archiva.metadata.repository.storage.maven2.MavenArtifactFacet;<a name="line.41"></a>
+<FONT color="green">042</FONT>    import org.apache.archiva.model.ArchivaRepositoryMetadata;<a name="line.42"></a>
+<FONT color="green">043</FONT>    import org.apache.archiva.model.ArtifactReference;<a name="line.43"></a>
+<FONT color="green">044</FONT>    import org.apache.archiva.model.VersionedReference;<a name="line.44"></a>
+<FONT color="green">045</FONT>    import org.apache.archiva.redback.authentication.AuthenticationResult;<a name="line.45"></a>
+<FONT color="green">046</FONT>    import org.apache.archiva.redback.authorization.AuthorizationException;<a name="line.46"></a>
+<FONT color="green">047</FONT>    import org.apache.archiva.redback.components.taskqueue.TaskQueueException;<a name="line.47"></a>
+<FONT color="green">048</FONT>    import org.apache.archiva.redback.system.DefaultSecuritySession;<a name="line.48"></a>
+<FONT color="green">049</FONT>    import org.apache.archiva.redback.system.SecuritySession;<a name="line.49"></a>
+<FONT color="green">050</FONT>    import org.apache.archiva.redback.system.SecuritySystem;<a name="line.50"></a>
+<FONT color="green">051</FONT>    import org.apache.archiva.redback.users.User;<a name="line.51"></a>
+<FONT color="green">052</FONT>    import org.apache.archiva.redback.users.UserNotFoundException;<a name="line.52"></a>
+<FONT color="green">053</FONT>    import org.apache.archiva.repository.ContentNotFoundException;<a name="line.53"></a>
+<FONT color="green">054</FONT>    import org.apache.archiva.repository.ManagedRepositoryContent;<a name="line.54"></a>
+<FONT color="green">055</FONT>    import org.apache.archiva.repository.RepositoryContentFactory;<a name="line.55"></a>
+<FONT color="green">056</FONT>    import org.apache.archiva.repository.RepositoryException;<a name="line.56"></a>
+<FONT color="green">057</FONT>    import org.apache.archiva.repository.RepositoryNotFoundException;<a name="line.57"></a>
+<FONT color="green">058</FONT>    import org.apache.archiva.repository.events.RepositoryListener;<a name="line.58"></a>
+<FONT color="green">059</FONT>    import org.apache.archiva.repository.metadata.MetadataTools;<a name="line.59"></a>
+<FONT color="green">060</FONT>    import org.apache.archiva.repository.metadata.RepositoryMetadataException;<a name="line.60"></a>
+<FONT color="green">061</FONT>    import org.apache.archiva.repository.metadata.RepositoryMetadataWriter;<a name="line.61"></a>
+<FONT color="green">062</FONT>    import org.apache.archiva.repository.scanner.RepositoryScanStatistics;<a name="line.62"></a>
+<FONT color="green">063</FONT>    import org.apache.archiva.repository.scanner.RepositoryScanner;<a name="line.63"></a>
+<FONT color="green">064</FONT>    import org.apache.archiva.repository.scanner.RepositoryScannerException;<a name="line.64"></a>
 <FONT color="green">065</FONT>    import org.apache.archiva.rest.api.model.ArtifactTransferRequest;<a name="line.65"></a>
 <FONT color="green">066</FONT>    import org.apache.archiva.rest.api.services.ArchivaRestServiceException;<a name="line.66"></a>
 <FONT color="green">067</FONT>    import org.apache.archiva.rest.api.services.RepositoriesService;<a name="line.67"></a>
@@ -108,7 +108,7 @@
 <FONT color="green">105</FONT>     * @author Olivier Lamy<a name="line.105"></a>
 <FONT color="green">106</FONT>     * @since 1.4-M1<a name="line.106"></a>
 <FONT color="green">107</FONT>     */<a name="line.107"></a>
-<FONT color="green">108</FONT>    @Service( "repositoriesService#rest" )<a name="line.108"></a>
+<FONT color="green">108</FONT>    @Service ( "repositoriesService#rest" )<a name="line.108"></a>
 <FONT color="green">109</FONT>    public class DefaultRepositoriesService<a name="line.109"></a>
 <FONT color="green">110</FONT>        extends AbstractRestService<a name="line.110"></a>
 <FONT color="green">111</FONT>        implements RepositoriesService<a name="line.111"></a>
@@ -116,11 +116,11 @@
 <FONT color="green">113</FONT>        private Logger log = LoggerFactory.getLogger( getClass() );<a name="line.113"></a>
 <FONT color="green">114</FONT>    <a name="line.114"></a>
 <FONT color="green">115</FONT>        @Inject<a name="line.115"></a>
-<FONT color="green">116</FONT>        @Named( value = "archivaTaskScheduler#repository" )<a name="line.116"></a>
+<FONT color="green">116</FONT>        @Named ( value = "archivaTaskScheduler#repository" )<a name="line.116"></a>
 <FONT color="green">117</FONT>        private RepositoryArchivaTaskScheduler repositoryTaskScheduler;<a name="line.117"></a>
 <FONT color="green">118</FONT>    <a name="line.118"></a>
 <FONT color="green">119</FONT>        @Inject<a name="line.119"></a>
-<FONT color="green">120</FONT>        @Named( value = "taskExecutor#indexing" )<a name="line.120"></a>
+<FONT color="green">120</FONT>        @Named ( value = "taskExecutor#indexing" )<a name="line.120"></a>
 <FONT color="green">121</FONT>        private ArchivaIndexingTaskExecutor archivaIndexingTaskExecutor;<a name="line.121"></a>
 <FONT color="green">122</FONT>    <a name="line.122"></a>
 <FONT color="green">123</FONT>        @Inject<a name="line.123"></a>
@@ -139,14 +139,14 @@
 <FONT color="green">136</FONT>        private RepositoryContentFactory repositoryFactory;<a name="line.136"></a>
 <FONT color="green">137</FONT>    <a name="line.137"></a>
 <FONT color="green">138</FONT>        @Inject<a name="line.138"></a>
-<FONT color="green">139</FONT>        @Named( value = "archivaTaskScheduler#repository" )<a name="line.139"></a>
+<FONT color="green">139</FONT>        @Named ( value = "archivaTaskScheduler#repository" )<a name="line.139"></a>
 <FONT color="green">140</FONT>        private ArchivaTaskScheduler scheduler;<a name="line.140"></a>
 <FONT color="green">141</FONT>    <a name="line.141"></a>
 <FONT color="green">142</FONT>        @Inject<a name="line.142"></a>
 <FONT color="green">143</FONT>        private DownloadRemoteIndexScheduler downloadRemoteIndexScheduler;<a name="line.143"></a>
 <FONT color="green">144</FONT>    <a name="line.144"></a>
 <FONT color="green">145</FONT>        @Inject<a name="line.145"></a>
-<FONT color="green">146</FONT>        @Named( value = "repositorySessionFactory" )<a name="line.146"></a>
+<FONT color="green">146</FONT>        @Named ( value = "repositorySessionFactory" )<a name="line.146"></a>
 <FONT color="green">147</FONT>        protected RepositorySessionFactory repositorySessionFactory;<a name="line.147"></a>
 <FONT color="green">148</FONT>    <a name="line.148"></a>
 <FONT color="green">149</FONT>        @Inject<a name="line.149"></a>
@@ -864,172 +864,189 @@
 <FONT color="green">861</FONT>                throw new ArchivaRestServiceException( "artifact.groupId cannot be null", 400, null );<a name="line.861"></a>
 <FONT color="green">862</FONT>            }<a name="line.862"></a>
 <FONT color="green">863</FONT>    <a name="line.863"></a>
-<FONT color="green">864</FONT>            try<a name="line.864"></a>
-<FONT color="green">865</FONT>            {<a name="line.865"></a>
-<FONT color="green">866</FONT>                ManagedRepositoryContent repository = repositoryFactory.getManagedRepositoryContent( repositoryId );<a name="line.866"></a>
-<FONT color="green">867</FONT>    <a name="line.867"></a>
-<FONT color="green">868</FONT>                repository.deleteGroupId( groupId );<a name="line.868"></a>
+<FONT color="green">864</FONT>            RepositorySession repositorySession = repositorySessionFactory.createSession();<a name="line.864"></a>
+<FONT color="green">865</FONT>    <a name="line.865"></a>
+<FONT color="green">866</FONT>            try<a name="line.866"></a>
+<FONT color="green">867</FONT>            {<a name="line.867"></a>
+<FONT color="green">868</FONT>                ManagedRepositoryContent repository = repositoryFactory.getManagedRepositoryContent( repositoryId );<a name="line.868"></a>
 <FONT color="green">869</FONT>    <a name="line.869"></a>
-<FONT color="green">870</FONT>            }<a name="line.870"></a>
-<FONT color="green">871</FONT>            catch ( RepositoryException e )<a name="line.871"></a>
-<FONT color="green">872</FONT>            {<a name="line.872"></a>
-<FONT color="green">873</FONT>                log.error( e.getMessage(), e );<a name="line.873"></a>
-<FONT color="green">874</FONT>                throw new ArchivaRestServiceException( "Repository exception: " + e.getMessage(), 500, e );<a name="line.874"></a>
-<FONT color="green">875</FONT>            }<a name="line.875"></a>
-<FONT color="green">876</FONT>            return true;<a name="line.876"></a>
-<FONT color="green">877</FONT>        }<a name="line.877"></a>
-<FONT color="green">878</FONT>    <a name="line.878"></a>
-<FONT color="green">879</FONT>        public Boolean isAuthorizedToDeleteArtifacts( String repoId )<a name="line.879"></a>
-<FONT color="green">880</FONT>            throws ArchivaRestServiceException<a name="line.880"></a>
-<FONT color="green">881</FONT>        {<a name="line.881"></a>
-<FONT color="green">882</FONT>            String userName =<a name="line.882"></a>
-<FONT color="green">883</FONT>                getAuditInformation().getUser() == null ? "guest" : getAuditInformation().getUser().getUsername();<a name="line.883"></a>
-<FONT color="green">884</FONT>    <a name="line.884"></a>
-<FONT color="green">885</FONT>            try<a name="line.885"></a>
-<FONT color="green">886</FONT>            {<a name="line.886"></a>
-<FONT color="green">887</FONT>                boolean res = userRepositories.isAuthorizedToDeleteArtifacts( userName, repoId );<a name="line.887"></a>
-<FONT color="green">888</FONT>                return res;<a name="line.888"></a>
-<FONT color="green">889</FONT>            }<a name="line.889"></a>
-<FONT color="green">890</FONT>            catch ( ArchivaSecurityException e )<a name="line.890"></a>
-<FONT color="green">891</FONT>            {<a name="line.891"></a>
-<FONT color="green">892</FONT>                throw new ArchivaRestServiceException( e.getMessage(),<a name="line.892"></a>
-<FONT color="green">893</FONT>                                                       Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), e );<a name="line.893"></a>
-<FONT color="green">894</FONT>            }<a name="line.894"></a>
-<FONT color="green">895</FONT>        }<a name="line.895"></a>
-<FONT color="green">896</FONT>    <a name="line.896"></a>
-<FONT color="green">897</FONT>        public RepositoryScanStatistics scanRepositoryDirectoriesNow( String repositoryId )<a name="line.897"></a>
-<FONT color="green">898</FONT>            throws ArchivaRestServiceException<a name="line.898"></a>
-<FONT color="green">899</FONT>        {<a name="line.899"></a>
-<FONT color="green">900</FONT>            long sinceWhen = RepositoryScanner.FRESH_SCAN;<a name="line.900"></a>
-<FONT color="green">901</FONT>            try<a name="line.901"></a>
-<FONT color="green">902</FONT>            {<a name="line.902"></a>
-<FONT color="green">903</FONT>                return repoScanner.scan( getManagedRepositoryAdmin().getManagedRepository( repositoryId ), sinceWhen );<a name="line.903"></a>
-<FONT color="green">904</FONT>            }<a name="line.904"></a>
-<FONT color="green">905</FONT>            catch ( RepositoryScannerException e )<a name="line.905"></a>
-<FONT color="green">906</FONT>            {<a name="line.906"></a>
-<FONT color="green">907</FONT>                log.error( e.getMessage(), e );<a name="line.907"></a>
-<FONT color="green">908</FONT>                throw new ArchivaRestServiceException( "RepositoryScannerException exception: " + e.getMessage(), 500, e );<a name="line.908"></a>
-<FONT color="green">909</FONT>            }<a name="line.909"></a>
-<FONT color="green">910</FONT>            catch ( RepositoryAdminException e )<a name="line.910"></a>
-<FONT color="green">911</FONT>            {<a name="line.911"></a>
-<FONT color="green">912</FONT>                log.error( e.getMessage(), e );<a name="line.912"></a>
-<FONT color="green">913</FONT>                throw new ArchivaRestServiceException( "RepositoryScannerException exception: " + e.getMessage(), 500, e );<a name="line.913"></a>
-<FONT color="green">914</FONT>            }<a name="line.914"></a>
-<FONT color="green">915</FONT>        }<a name="line.915"></a>
-<FONT color="green">916</FONT>    <a name="line.916"></a>
-<FONT color="green">917</FONT>        /**<a name="line.917"></a>
-<FONT color="green">918</FONT>         * Update artifact level metadata. Creates one if metadata does not exist after artifact deletion.<a name="line.918"></a>
-<FONT color="green">919</FONT>         *<a name="line.919"></a>
-<FONT color="green">920</FONT>         * @param metadata<a name="line.920"></a>
-<FONT color="green">921</FONT>         */<a name="line.921"></a>
-<FONT color="green">922</FONT>        private void updateMetadata( ArchivaRepositoryMetadata metadata, File metadataFile, Date lastUpdatedTimestamp,<a name="line.922"></a>
-<FONT color="green">923</FONT>                                     Artifact artifact )<a name="line.923"></a>
-<FONT color="green">924</FONT>            throws RepositoryMetadataException<a name="line.924"></a>
-<FONT color="green">925</FONT>        {<a name="line.925"></a>
-<FONT color="green">926</FONT>            List&lt;String&gt; availableVersions = new ArrayList&lt;String&gt;();<a name="line.926"></a>
-<FONT color="green">927</FONT>            String latestVersion = "";<a name="line.927"></a>
-<FONT color="green">928</FONT>    <a name="line.928"></a>
-<FONT color="green">929</FONT>            if ( metadataFile.exists() )<a name="line.929"></a>
-<FONT color="green">930</FONT>            {<a name="line.930"></a>
-<FONT color="green">931</FONT>                if ( metadata.getAvailableVersions() != null )<a name="line.931"></a>
-<FONT color="green">932</FONT>                {<a name="line.932"></a>
-<FONT color="green">933</FONT>                    availableVersions = metadata.getAvailableVersions();<a name="line.933"></a>
-<FONT color="green">934</FONT>    <a name="line.934"></a>
-<FONT color="green">935</FONT>                    if ( availableVersions.size() &gt; 0 )<a name="line.935"></a>
-<FONT color="green">936</FONT>                    {<a name="line.936"></a>
-<FONT color="green">937</FONT>                        Collections.sort( availableVersions, VersionComparator.getInstance() );<a name="line.937"></a>
-<FONT color="green">938</FONT>    <a name="line.938"></a>
-<FONT color="green">939</FONT>                        if ( availableVersions.contains( artifact.getVersion() ) )<a name="line.939"></a>
-<FONT color="green">940</FONT>                        {<a name="line.940"></a>
-<FONT color="green">941</FONT>                            availableVersions.remove( availableVersions.indexOf( artifact.getVersion() ) );<a name="line.941"></a>
-<FONT color="green">942</FONT>                        }<a name="line.942"></a>
-<FONT color="green">943</FONT>                        if ( availableVersions.size() &gt; 0 )<a name="line.943"></a>
-<FONT color="green">944</FONT>                        {<a name="line.944"></a>
-<FONT color="green">945</FONT>                            latestVersion = availableVersions.get( availableVersions.size() - 1 );<a name="line.945"></a>
-<FONT color="green">946</FONT>                        }<a name="line.946"></a>
-<FONT color="green">947</FONT>                    }<a name="line.947"></a>
-<FONT color="green">948</FONT>                }<a name="line.948"></a>
-<FONT color="green">949</FONT>            }<a name="line.949"></a>
-<FONT color="green">950</FONT>    <a name="line.950"></a>
-<FONT color="green">951</FONT>            if ( metadata.getGroupId() == null )<a name="line.951"></a>
-<FONT color="green">952</FONT>            {<a name="line.952"></a>
-<FONT color="green">953</FONT>                metadata.setGroupId( artifact.getGroupId() );<a name="line.953"></a>
-<FONT color="green">954</FONT>            }<a name="line.954"></a>
-<FONT color="green">955</FONT>            if ( metadata.getArtifactId() == null )<a name="line.955"></a>
-<FONT color="green">956</FONT>            {<a name="line.956"></a>
-<FONT color="green">957</FONT>                metadata.setArtifactId( artifact.getArtifactId() );<a name="line.957"></a>
-<FONT color="green">958</FONT>            }<a name="line.958"></a>
-<FONT color="green">959</FONT>    <a name="line.959"></a>
-<FONT color="green">960</FONT>            if ( !VersionUtil.isSnapshot( artifact.getVersion() ) )<a name="line.960"></a>
-<FONT color="green">961</FONT>            {<a name="line.961"></a>
-<FONT color="green">962</FONT>                if ( metadata.getReleasedVersion() != null &amp;&amp; metadata.getReleasedVersion().equals(<a name="line.962"></a>
-<FONT color="green">963</FONT>                    artifact.getVersion() ) )<a name="line.963"></a>
-<FONT color="green">964</FONT>                {<a name="line.964"></a>
-<FONT color="green">965</FONT>                    metadata.setReleasedVersion( latestVersion );<a name="line.965"></a>
-<FONT color="green">966</FONT>                }<a name="line.966"></a>
-<FONT color="green">967</FONT>            }<a name="line.967"></a>
-<FONT color="green">968</FONT>    <a name="line.968"></a>
-<FONT color="green">969</FONT>            metadata.setLatestVersion( latestVersion );<a name="line.969"></a>
-<FONT color="green">970</FONT>            metadata.setLastUpdatedTimestamp( lastUpdatedTimestamp );<a name="line.970"></a>
-<FONT color="green">971</FONT>            metadata.setAvailableVersions( availableVersions );<a name="line.971"></a>
-<FONT color="green">972</FONT>    <a name="line.972"></a>
-<FONT color="green">973</FONT>            RepositoryMetadataWriter.write( metadata, metadataFile );<a name="line.973"></a>
-<FONT color="green">974</FONT>            ChecksummedFile checksum = new ChecksummedFile( metadataFile );<a name="line.974"></a>
-<FONT color="green">975</FONT>            checksum.fixChecksums( algorithms );<a name="line.975"></a>
-<FONT color="green">976</FONT>        }<a name="line.976"></a>
-<FONT color="green">977</FONT>    <a name="line.977"></a>
-<FONT color="green">978</FONT>        public ManagedRepositoryAdmin getManagedRepositoryAdmin()<a name="line.978"></a>
-<FONT color="green">979</FONT>        {<a name="line.979"></a>
-<FONT color="green">980</FONT>            return managedRepositoryAdmin;<a name="line.980"></a>
-<FONT color="green">981</FONT>        }<a name="line.981"></a>
-<FONT color="green">982</FONT>    <a name="line.982"></a>
-<FONT color="green">983</FONT>        public void setManagedRepositoryAdmin( ManagedRepositoryAdmin managedRepositoryAdmin )<a name="line.983"></a>
-<FONT color="green">984</FONT>        {<a name="line.984"></a>
-<FONT color="green">985</FONT>            this.managedRepositoryAdmin = managedRepositoryAdmin;<a name="line.985"></a>
-<FONT color="green">986</FONT>        }<a name="line.986"></a>
-<FONT color="green">987</FONT>    <a name="line.987"></a>
-<FONT color="green">988</FONT>        public RepositoryContentFactory getRepositoryFactory()<a name="line.988"></a>
-<FONT color="green">989</FONT>        {<a name="line.989"></a>
-<FONT color="green">990</FONT>            return repositoryFactory;<a name="line.990"></a>
-<FONT color="green">991</FONT>        }<a name="line.991"></a>
-<FONT color="green">992</FONT>    <a name="line.992"></a>
-<FONT color="green">993</FONT>        public void setRepositoryFactory( RepositoryContentFactory repositoryFactory )<a name="line.993"></a>
-<FONT color="green">994</FONT>        {<a name="line.994"></a>
-<FONT color="green">995</FONT>            this.repositoryFactory = repositoryFactory;<a name="line.995"></a>
-<FONT color="green">996</FONT>        }<a name="line.996"></a>
-<FONT color="green">997</FONT>    <a name="line.997"></a>
-<FONT color="green">998</FONT>        public RepositorySessionFactory getRepositorySessionFactory()<a name="line.998"></a>
-<FONT color="green">999</FONT>        {<a name="line.999"></a>
-<FONT color="green">1000</FONT>            return repositorySessionFactory;<a name="line.1000"></a>
-<FONT color="green">1001</FONT>        }<a name="line.1001"></a>
-<FONT color="green">1002</FONT>    <a name="line.1002"></a>
-<FONT color="green">1003</FONT>        public void setRepositorySessionFactory( RepositorySessionFactory repositorySessionFactory )<a name="line.1003"></a>
-<FONT color="green">1004</FONT>        {<a name="line.1004"></a>
-<FONT color="green">1005</FONT>            this.repositorySessionFactory = repositorySessionFactory;<a name="line.1005"></a>
-<FONT color="green">1006</FONT>        }<a name="line.1006"></a>
-<FONT color="green">1007</FONT>    <a name="line.1007"></a>
-<FONT color="green">1008</FONT>        public List&lt;RepositoryListener&gt; getListeners()<a name="line.1008"></a>
-<FONT color="green">1009</FONT>        {<a name="line.1009"></a>
-<FONT color="green">1010</FONT>            return listeners;<a name="line.1010"></a>
-<FONT color="green">1011</FONT>        }<a name="line.1011"></a>
-<FONT color="green">1012</FONT>    <a name="line.1012"></a>
-<FONT color="green">1013</FONT>        public void setListeners( List&lt;RepositoryListener&gt; listeners )<a name="line.1013"></a>
-<FONT color="green">1014</FONT>        {<a name="line.1014"></a>
-<FONT color="green">1015</FONT>            this.listeners = listeners;<a name="line.1015"></a>
-<FONT color="green">1016</FONT>        }<a name="line.1016"></a>
-<FONT color="green">1017</FONT>    <a name="line.1017"></a>
-<FONT color="green">1018</FONT>        public ArchivaAdministration getArchivaAdministration()<a name="line.1018"></a>
-<FONT color="green">1019</FONT>        {<a name="line.1019"></a>
-<FONT color="green">1020</FONT>            return archivaAdministration;<a name="line.1020"></a>
-<FONT color="green">1021</FONT>        }<a name="line.1021"></a>
-<FONT color="green">1022</FONT>    <a name="line.1022"></a>
-<FONT color="green">1023</FONT>        public void setArchivaAdministration( ArchivaAdministration archivaAdministration )<a name="line.1023"></a>
-<FONT color="green">1024</FONT>        {<a name="line.1024"></a>
-<FONT color="green">1025</FONT>            this.archivaAdministration = archivaAdministration;<a name="line.1025"></a>
-<FONT color="green">1026</FONT>        }<a name="line.1026"></a>
-<FONT color="green">1027</FONT>    }<a name="line.1027"></a>
-<FONT color="green">1028</FONT>    <a name="line.1028"></a>
+<FONT color="green">870</FONT>                repository.deleteGroupId( groupId );<a name="line.870"></a>
+<FONT color="green">871</FONT>    <a name="line.871"></a>
+<FONT color="green">872</FONT>                MetadataRepository metadataRepository = repositorySession.getRepository();<a name="line.872"></a>
+<FONT color="green">873</FONT>    <a name="line.873"></a>
+<FONT color="green">874</FONT>                metadataRepository.removeNamespace( repositoryId, groupId );<a name="line.874"></a>
+<FONT color="green">875</FONT>    <a name="line.875"></a>
+<FONT color="green">876</FONT>                metadataRepository.save();<a name="line.876"></a>
+<FONT color="green">877</FONT>            }<a name="line.877"></a>
+<FONT color="green">878</FONT>            catch ( MetadataRepositoryException e )<a name="line.878"></a>
+<FONT color="green">879</FONT>            {<a name="line.879"></a>
+<FONT color="green">880</FONT>                log.error( e.getMessage(), e );<a name="line.880"></a>
+<FONT color="green">881</FONT>                throw new ArchivaRestServiceException( "Repository exception: " + e.getMessage(), 500, e );<a name="line.881"></a>
+<FONT color="green">882</FONT>            }<a name="line.882"></a>
+<FONT color="green">883</FONT>            catch ( RepositoryException e )<a name="line.883"></a>
+<FONT color="green">884</FONT>            {<a name="line.884"></a>
+<FONT color="green">885</FONT>                log.error( e.getMessage(), e );<a name="line.885"></a>
+<FONT color="green">886</FONT>                throw new ArchivaRestServiceException( "Repository exception: " + e.getMessage(), 500, e );<a name="line.886"></a>
+<FONT color="green">887</FONT>            }<a name="line.887"></a>
+<FONT color="green">888</FONT>            finally<a name="line.888"></a>
+<FONT color="green">889</FONT>            {<a name="line.889"></a>
+<FONT color="green">890</FONT>    <a name="line.890"></a>
+<FONT color="green">891</FONT>                repositorySession.close();<a name="line.891"></a>
+<FONT color="green">892</FONT>            }<a name="line.892"></a>
+<FONT color="green">893</FONT>            return true;<a name="line.893"></a>
+<FONT color="green">894</FONT>        }<a name="line.894"></a>
+<FONT color="green">895</FONT>    <a name="line.895"></a>
+<FONT color="green">896</FONT>        public Boolean isAuthorizedToDeleteArtifacts( String repoId )<a name="line.896"></a>
+<FONT color="green">897</FONT>            throws ArchivaRestServiceException<a name="line.897"></a>
+<FONT color="green">898</FONT>        {<a name="line.898"></a>
+<FONT color="green">899</FONT>            String userName =<a name="line.899"></a>
+<FONT color="green">900</FONT>                getAuditInformation().getUser() == null ? "guest" : getAuditInformation().getUser().getUsername();<a name="line.900"></a>
+<FONT color="green">901</FONT>    <a name="line.901"></a>
+<FONT color="green">902</FONT>            try<a name="line.902"></a>
+<FONT color="green">903</FONT>            {<a name="line.903"></a>
+<FONT color="green">904</FONT>                boolean res = userRepositories.isAuthorizedToDeleteArtifacts( userName, repoId );<a name="line.904"></a>
+<FONT color="green">905</FONT>                return res;<a name="line.905"></a>
+<FONT color="green">906</FONT>            }<a name="line.906"></a>
+<FONT color="green">907</FONT>            catch ( ArchivaSecurityException e )<a name="line.907"></a>
+<FONT color="green">908</FONT>            {<a name="line.908"></a>
+<FONT color="green">909</FONT>                throw new ArchivaRestServiceException( e.getMessage(),<a name="line.909"></a>
+<FONT color="green">910</FONT>                                                       Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), e );<a name="line.910"></a>
+<FONT color="green">911</FONT>            }<a name="line.911"></a>
+<FONT color="green">912</FONT>        }<a name="line.912"></a>
+<FONT color="green">913</FONT>    <a name="line.913"></a>
+<FONT color="green">914</FONT>        public RepositoryScanStatistics scanRepositoryDirectoriesNow( String repositoryId )<a name="line.914"></a>
+<FONT color="green">915</FONT>            throws ArchivaRestServiceException<a name="line.915"></a>
+<FONT color="green">916</FONT>        {<a name="line.916"></a>
+<FONT color="green">917</FONT>            long sinceWhen = RepositoryScanner.FRESH_SCAN;<a name="line.917"></a>
+<FONT color="green">918</FONT>            try<a name="line.918"></a>
+<FONT color="green">919</FONT>            {<a name="line.919"></a>
+<FONT color="green">920</FONT>                return repoScanner.scan( getManagedRepositoryAdmin().getManagedRepository( repositoryId ), sinceWhen );<a name="line.920"></a>
+<FONT color="green">921</FONT>            }<a name="line.921"></a>
+<FONT color="green">922</FONT>            catch ( RepositoryScannerException e )<a name="line.922"></a>
+<FONT color="green">923</FONT>            {<a name="line.923"></a>
+<FONT color="green">924</FONT>                log.error( e.getMessage(), e );<a name="line.924"></a>
+<FONT color="green">925</FONT>                throw new ArchivaRestServiceException( "RepositoryScannerException exception: " + e.getMessage(), 500, e );<a name="line.925"></a>
+<FONT color="green">926</FONT>            }<a name="line.926"></a>
+<FONT color="green">927</FONT>            catch ( RepositoryAdminException e )<a name="line.927"></a>
+<FONT color="green">928</FONT>            {<a name="line.928"></a>
+<FONT color="green">929</FONT>                log.error( e.getMessage(), e );<a name="line.929"></a>
+<FONT color="green">930</FONT>                throw new ArchivaRestServiceException( "RepositoryScannerException exception: " + e.getMessage(), 500, e );<a name="line.930"></a>
+<FONT color="green">931</FONT>            }<a name="line.931"></a>
+<FONT color="green">932</FONT>        }<a name="line.932"></a>
+<FONT color="green">933</FONT>    <a name="line.933"></a>
+<FONT color="green">934</FONT>        /**<a name="line.934"></a>
+<FONT color="green">935</FONT>         * Update artifact level metadata. Creates one if metadata does not exist after artifact deletion.<a name="line.935"></a>
+<FONT color="green">936</FONT>         *<a name="line.936"></a>
+<FONT color="green">937</FONT>         * @param metadata<a name="line.937"></a>
+<FONT color="green">938</FONT>         */<a name="line.938"></a>
+<FONT color="green">939</FONT>        private void updateMetadata( ArchivaRepositoryMetadata metadata, File metadataFile, Date lastUpdatedTimestamp,<a name="line.939"></a>
+<FONT color="green">940</FONT>                                     Artifact artifact )<a name="line.940"></a>
+<FONT color="green">941</FONT>            throws RepositoryMetadataException<a name="line.941"></a>
+<FONT color="green">942</FONT>        {<a name="line.942"></a>
+<FONT color="green">943</FONT>            List&lt;String&gt; availableVersions = new ArrayList&lt;String&gt;();<a name="line.943"></a>
+<FONT color="green">944</FONT>            String latestVersion = "";<a name="line.944"></a>
+<FONT color="green">945</FONT>    <a name="line.945"></a>
+<FONT color="green">946</FONT>            if ( metadataFile.exists() )<a name="line.946"></a>
+<FONT color="green">947</FONT>            {<a name="line.947"></a>
+<FONT color="green">948</FONT>                if ( metadata.getAvailableVersions() != null )<a name="line.948"></a>
+<FONT color="green">949</FONT>                {<a name="line.949"></a>
+<FONT color="green">950</FONT>                    availableVersions = metadata.getAvailableVersions();<a name="line.950"></a>
+<FONT color="green">951</FONT>    <a name="line.951"></a>
+<FONT color="green">952</FONT>                    if ( availableVersions.size() &gt; 0 )<a name="line.952"></a>
+<FONT color="green">953</FONT>                    {<a name="line.953"></a>
+<FONT color="green">954</FONT>                        Collections.sort( availableVersions, VersionComparator.getInstance() );<a name="line.954"></a>
+<FONT color="green">955</FONT>    <a name="line.955"></a>
+<FONT color="green">956</FONT>                        if ( availableVersions.contains( artifact.getVersion() ) )<a name="line.956"></a>
+<FONT color="green">957</FONT>                        {<a name="line.957"></a>
+<FONT color="green">958</FONT>                            availableVersions.remove( availableVersions.indexOf( artifact.getVersion() ) );<a name="line.958"></a>
+<FONT color="green">959</FONT>                        }<a name="line.959"></a>
+<FONT color="green">960</FONT>                        if ( availableVersions.size() &gt; 0 )<a name="line.960"></a>
+<FONT color="green">961</FONT>                        {<a name="line.961"></a>
+<FONT color="green">962</FONT>                            latestVersion = availableVersions.get( availableVersions.size() - 1 );<a name="line.962"></a>
+<FONT color="green">963</FONT>                        }<a name="line.963"></a>
+<FONT color="green">964</FONT>                    }<a name="line.964"></a>
+<FONT color="green">965</FONT>                }<a name="line.965"></a>
+<FONT color="green">966</FONT>            }<a name="line.966"></a>
+<FONT color="green">967</FONT>    <a name="line.967"></a>
+<FONT color="green">968</FONT>            if ( metadata.getGroupId() == null )<a name="line.968"></a>
+<FONT color="green">969</FONT>            {<a name="line.969"></a>
+<FONT color="green">970</FONT>                metadata.setGroupId( artifact.getGroupId() );<a name="line.970"></a>
+<FONT color="green">971</FONT>            }<a name="line.971"></a>
+<FONT color="green">972</FONT>            if ( metadata.getArtifactId() == null )<a name="line.972"></a>
+<FONT color="green">973</FONT>            {<a name="line.973"></a>
+<FONT color="green">974</FONT>                metadata.setArtifactId( artifact.getArtifactId() );<a name="line.974"></a>
+<FONT color="green">975</FONT>            }<a name="line.975"></a>
+<FONT color="green">976</FONT>    <a name="line.976"></a>
+<FONT color="green">977</FONT>            if ( !VersionUtil.isSnapshot( artifact.getVersion() ) )<a name="line.977"></a>
+<FONT color="green">978</FONT>            {<a name="line.978"></a>
+<FONT color="green">979</FONT>                if ( metadata.getReleasedVersion() != null &amp;&amp; metadata.getReleasedVersion().equals(<a name="line.979"></a>
+<FONT color="green">980</FONT>                    artifact.getVersion() ) )<a name="line.980"></a>
+<FONT color="green">981</FONT>                {<a name="line.981"></a>
+<FONT color="green">982</FONT>                    metadata.setReleasedVersion( latestVersion );<a name="line.982"></a>
+<FONT color="green">983</FONT>                }<a name="line.983"></a>
+<FONT color="green">984</FONT>            }<a name="line.984"></a>
+<FONT color="green">985</FONT>    <a name="line.985"></a>
+<FONT color="green">986</FONT>            metadata.setLatestVersion( latestVersion );<a name="line.986"></a>
+<FONT color="green">987</FONT>            metadata.setLastUpdatedTimestamp( lastUpdatedTimestamp );<a name="line.987"></a>
+<FONT color="green">988</FONT>            metadata.setAvailableVersions( availableVersions );<a name="line.988"></a>
+<FONT color="green">989</FONT>    <a name="line.989"></a>
+<FONT color="green">990</FONT>            RepositoryMetadataWriter.write( metadata, metadataFile );<a name="line.990"></a>
+<FONT color="green">991</FONT>            ChecksummedFile checksum = new ChecksummedFile( metadataFile );<a name="line.991"></a>
+<FONT color="green">992</FONT>            checksum.fixChecksums( algorithms );<a name="line.992"></a>
+<FONT color="green">993</FONT>        }<a name="line.993"></a>
+<FONT color="green">994</FONT>    <a name="line.994"></a>
+<FONT color="green">995</FONT>        public ManagedRepositoryAdmin getManagedRepositoryAdmin()<a name="line.995"></a>
+<FONT color="green">996</FONT>        {<a name="line.996"></a>
+<FONT color="green">997</FONT>            return managedRepositoryAdmin;<a name="line.997"></a>
+<FONT color="green">998</FONT>        }<a name="line.998"></a>
+<FONT color="green">999</FONT>    <a name="line.999"></a>
+<FONT color="green">1000</FONT>        public void setManagedRepositoryAdmin( ManagedRepositoryAdmin managedRepositoryAdmin )<a name="line.1000"></a>
+<FONT color="green">1001</FONT>        {<a name="line.1001"></a>
+<FONT color="green">1002</FONT>            this.managedRepositoryAdmin = managedRepositoryAdmin;<a name="line.1002"></a>
+<FONT color="green">1003</FONT>        }<a name="line.1003"></a>
+<FONT color="green">1004</FONT>    <a name="line.1004"></a>
+<FONT color="green">1005</FONT>        public RepositoryContentFactory getRepositoryFactory()<a name="line.1005"></a>
+<FONT color="green">1006</FONT>        {<a name="line.1006"></a>
+<FONT color="green">1007</FONT>            return repositoryFactory;<a name="line.1007"></a>
+<FONT color="green">1008</FONT>        }<a name="line.1008"></a>
+<FONT color="green">1009</FONT>    <a name="line.1009"></a>
+<FONT color="green">1010</FONT>        public void setRepositoryFactory( RepositoryContentFactory repositoryFactory )<a name="line.1010"></a>
+<FONT color="green">1011</FONT>        {<a name="line.1011"></a>
+<FONT color="green">1012</FONT>            this.repositoryFactory = repositoryFactory;<a name="line.1012"></a>
+<FONT color="green">1013</FONT>        }<a name="line.1013"></a>
+<FONT color="green">1014</FONT>    <a name="line.1014"></a>
+<FONT color="green">1015</FONT>        public RepositorySessionFactory getRepositorySessionFactory()<a name="line.1015"></a>
+<FONT color="green">1016</FONT>        {<a name="line.1016"></a>
+<FONT color="green">1017</FONT>            return repositorySessionFactory;<a name="line.1017"></a>
+<FONT color="green">1018</FONT>        }<a name="line.1018"></a>
+<FONT color="green">1019</FONT>    <a name="line.1019"></a>
+<FONT color="green">1020</FONT>        public void setRepositorySessionFactory( RepositorySessionFactory repositorySessionFactory )<a name="line.1020"></a>
+<FONT color="green">1021</FONT>        {<a name="line.1021"></a>
+<FONT color="green">1022</FONT>            this.repositorySessionFactory = repositorySessionFactory;<a name="line.1022"></a>
+<FONT color="green">1023</FONT>        }<a name="line.1023"></a>
+<FONT color="green">1024</FONT>    <a name="line.1024"></a>
+<FONT color="green">1025</FONT>        public List&lt;RepositoryListener&gt; getListeners()<a name="line.1025"></a>
+<FONT color="green">1026</FONT>        {<a name="line.1026"></a>
+<FONT color="green">1027</FONT>            return listeners;<a name="line.1027"></a>
+<FONT color="green">1028</FONT>        }<a name="line.1028"></a>
 <FONT color="green">1029</FONT>    <a name="line.1029"></a>
+<FONT color="green">1030</FONT>        public void setListeners( List&lt;RepositoryListener&gt; listeners )<a name="line.1030"></a>
+<FONT color="green">1031</FONT>        {<a name="line.1031"></a>
+<FONT color="green">1032</FONT>            this.listeners = listeners;<a name="line.1032"></a>
+<FONT color="green">1033</FONT>        }<a name="line.1033"></a>
+<FONT color="green">1034</FONT>    <a name="line.1034"></a>
+<FONT color="green">1035</FONT>        public ArchivaAdministration getArchivaAdministration()<a name="line.1035"></a>
+<FONT color="green">1036</FONT>        {<a name="line.1036"></a>
+<FONT color="green">1037</FONT>            return archivaAdministration;<a name="line.1037"></a>
+<FONT color="green">1038</FONT>        }<a name="line.1038"></a>
+<FONT color="green">1039</FONT>    <a name="line.1039"></a>
+<FONT color="green">1040</FONT>        public void setArchivaAdministration( ArchivaAdministration archivaAdministration )<a name="line.1040"></a>
+<FONT color="green">1041</FONT>        {<a name="line.1041"></a>
+<FONT color="green">1042</FONT>            this.archivaAdministration = archivaAdministration;<a name="line.1042"></a>
+<FONT color="green">1043</FONT>        }<a name="line.1043"></a>
+<FONT color="green">1044</FONT>    }<a name="line.1044"></a>
+<FONT color="green">1045</FONT>    <a name="line.1045"></a>
+<FONT color="green">1046</FONT>    <a name="line.1046"></a>
 
 
 

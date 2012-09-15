@@ -179,7 +179,7 @@
 <FONT color="green">176</FONT>                }<a name="line.176"></a>
 <FONT color="green">177</FONT>                catch ( RepositoryStorageMetadataNotFoundException e )<a name="line.177"></a>
 <FONT color="green">178</FONT>                {<a name="line.178"></a>
-<FONT color="green">179</FONT>                    log.warn( "Missing or invalid POM for artifact: " + path + "; creating empty metadata" );<a name="line.179"></a>
+<FONT color="green">179</FONT>                    log.warn( "Missing or invalid POM for artifact:{} (repository:{}); creating empty metadata" , path, repoId );<a name="line.179"></a>
 <FONT color="green">180</FONT>    <a name="line.180"></a>
 <FONT color="green">181</FONT>                    versionMetadata = new ProjectVersionMetadata();<a name="line.181"></a>
 <FONT color="green">182</FONT>                    versionMetadata.setId( projectVersion );<a name="line.182"></a>
@@ -188,7 +188,7 @@
 <FONT color="green">185</FONT>                }<a name="line.185"></a>
 <FONT color="green">186</FONT>                catch ( RepositoryStorageMetadataInvalidException e )<a name="line.186"></a>
 <FONT color="green">187</FONT>                {<a name="line.187"></a>
-<FONT color="green">188</FONT>                    log.warn( "Error occurred resolving POM for artifact: " + path + "; message: " + e.getMessage() );<a name="line.188"></a>
+<FONT color="green">188</FONT>                    log.warn( "Error occurred resolving POM for artifact:{} (repository:{}); message: {}" , new Object[] { path, repoId, e.getMessage() } );<a name="line.188"></a>
 <FONT color="green">189</FONT>                }<a name="line.189"></a>
 <FONT color="green">190</FONT>    <a name="line.190"></a>
 <FONT color="green">191</FONT>                // read the metadata and update it if it is newer or doesn't exist<a name="line.191"></a>
@@ -205,12 +205,12 @@
 <FONT color="green">202</FONT>            }<a name="line.202"></a>
 <FONT color="green">203</FONT>            catch ( MetadataRepositoryException e )<a name="line.203"></a>
 <FONT color="green">204</FONT>            {<a name="line.204"></a>
-<FONT color="green">205</FONT>                log.warn( "Error occurred persisting metadata for artifact: " + path + "; message: " + e.getMessage(), e );<a name="line.205"></a>
+<FONT color="green">205</FONT>                log.warn( "Error occurred persisting metadata for artifact:{} (repository:{}); message: {}" + e.getMessage(), new Object[] { path, repoId, e.getMessage() }, e );<a name="line.205"></a>
 <FONT color="green">206</FONT>                repositorySession.revert();<a name="line.206"></a>
 <FONT color="green">207</FONT>            }<a name="line.207"></a>
 <FONT color="green">208</FONT>            catch ( RepositoryStorageRuntimeException e )<a name="line.208"></a>
 <FONT color="green">209</FONT>            {<a name="line.209"></a>
-<FONT color="green">210</FONT>                log.warn( "Error occurred persisting metadata for artifact: " + path + "; message: " + e.getMessage(), e );<a name="line.210"></a>
+<FONT color="green">210</FONT>                log.warn( "Error occurred persisting metadata for artifact:{} (repository:{}); message: {}" + e.getMessage(), new Object[] { path, repoId, e.getMessage() }, e );<a name="line.210"></a>
 <FONT color="green">211</FONT>                repositorySession.revert();<a name="line.211"></a>
 <FONT color="green">212</FONT>            }<a name="line.212"></a>
 <FONT color="green">213</FONT>            finally<a name="line.213"></a>
