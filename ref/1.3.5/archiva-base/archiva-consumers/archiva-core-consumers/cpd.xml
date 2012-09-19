@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+<duplication lines="53" tokens="155">
+<file line="77" path="/Users/Deng/Checkouts/archiva-1.3.x/target/checkout/archiva-modules/archiva-base/archiva-consumers/archiva-core-consumers/src/main/java/org/apache/maven/archiva/consumers/core/AutoRemoveConsumer.java"/>
+<file line="78" path="/Users/Deng/Checkouts/archiva-1.3.x/target/checkout/archiva-modules/archiva-base/archiva-consumers/archiva-core-consumers/src/main/java/org/apache/maven/archiva/consumers/core/AutoRenameConsumer.java"/>
+<codefragment>
+<![CDATA[
+    public String getId()
+    {
+        return this.id;
+    }
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    public boolean isPermanent()
+    {
+        return false;
+    }
+
+    public void beginScan( ManagedRepositoryConfiguration repository, Date whenGathered )
+        throws ConsumerException
+    {
+        this.repositoryDir = new File( repository.getLocation() );
+    }
+
+    public void beginScan( ManagedRepositoryConfiguration repository, Date whenGathered, boolean executeOnEntireRepo )
+        throws ConsumerException
+    {
+        beginScan( repository, whenGathered );
+    }
+
+    public void completeScan()
+    {
+        /* do nothing */
+    }
+
+    public void completeScan( boolean executeOnEntireRepo )
+    {
+        completeScan();
+    }
+
+    public List<String> getExcludes()
+    {
+        return null;
+    }
+
+    public List<String> getIncludes()
+    {
+        return includes;
+    }
+
+    public void processFile( String path )
+        throws ConsumerException
+    {
+        File file = new File( this.repositoryDir, path );
+        if ( file.exists() )
+        {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="49" tokens="139">
+<file line="73" path="/Users/Deng/Checkouts/archiva-1.3.x/target/checkout/archiva-modules/archiva-base/archiva-consumers/archiva-core-consumers/src/main/java/org/apache/maven/archiva/consumers/core/AutoRemoveConsumer.java"/>
+<file line="80" path="/Users/Deng/Checkouts/archiva-1.3.x/target/checkout/archiva-modules/archiva-base/archiva-consumers/archiva-core-consumers/src/main/java/org/apache/maven/archiva/consumers/core/ValidateChecksumConsumer.java"/>
+<codefragment>
+<![CDATA[
+    private File repositoryDir;
+
+    private List<String> includes = new ArrayList<String>();
+
+    public String getId()
+    {
+        return this.id;
+    }
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    public boolean isPermanent()
+    {
+        return false;
+    }
+
+    public void beginScan( ManagedRepositoryConfiguration repository, Date whenGathered )
+        throws ConsumerException
+    {
+        this.repositoryDir = new File( repository.getLocation() );
+    }
+
+    public void beginScan( ManagedRepositoryConfiguration repository, Date whenGathered, boolean executeOnEntireRepo )
+        throws ConsumerException
+    {
+        beginScan( repository, whenGathered );
+    }
+
+    public void completeScan()
+    {
+        /* nothing to do */
+    }
+
+    public void completeScan( boolean executeOnEntireRepo )
+    {
+        completeScan();
+    }
+
+    public List<String> getExcludes()
+    {
+        return null;
+    }
+
+    public List<String> getIncludes()
+    {
+        return this.includes;
+]]>
+</codefragment>
+</duplication>
+<duplication lines="45" tokens="122">
+<file line="78" path="/Users/Deng/Checkouts/archiva-1.3.x/target/checkout/archiva-modules/archiva-base/archiva-consumers/archiva-core-consumers/src/main/java/org/apache/maven/archiva/consumers/core/AutoRenameConsumer.java"/>
+<file line="84" path="/Users/Deng/Checkouts/archiva-1.3.x/target/checkout/archiva-modules/archiva-base/archiva-consumers/archiva-core-consumers/src/main/java/org/apache/maven/archiva/consumers/core/ValidateChecksumConsumer.java"/>
+<codefragment>
+<![CDATA[
+    public String getId()
+    {
+        return this.id;
+    }
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    public boolean isPermanent()
+    {
+        return false;
+    }
+
+    public void beginScan( ManagedRepositoryConfiguration repository, Date whenGathered )
+        throws ConsumerException
+    {
+        this.repositoryDir = new File( repository.getLocation() );
+    }
+
+    public void beginScan( ManagedRepositoryConfiguration repository, Date whenGathered, boolean executeOnEntireRepo )
+        throws ConsumerException
+    {
+        beginScan( repository, whenGathered );
+    }
+
+    public void completeScan()
+    {
+        /* nothing to do */
+    }
+
+    public void completeScan( boolean executeOnEntireRepo )
+    {
+        completeScan();
+    }
+
+    public List<String> getExcludes()
+    {
+        return null;
+    }
+
+    public List<String> getIncludes()
+    {
+        return this.includes;
+]]>
+</codefragment>
+</duplication>
+<duplication lines="23" tokens="109">
+<file line="84" path="/Users/Deng/Checkouts/archiva-1.3.x/target/checkout/archiva-modules/archiva-base/archiva-consumers/archiva-core-consumers/src/main/java/org/apache/maven/archiva/consumers/core/repository/DaysOldRepositoryPurge.java"/>
+<file line="69" path="/Users/Deng/Checkouts/archiva-1.3.x/target/checkout/archiva-modules/archiva-base/archiva-consumers/archiva-core-consumers/src/main/java/org/apache/maven/archiva/consumers/core/repository/RetentionCountRepositoryPurge.java"/>
+<codefragment>
+<![CDATA[
+                VersionedReference reference = new VersionedReference();
+                reference.setGroupId( artifact.getGroupId() );
+                reference.setArtifactId( artifact.getArtifactId() );
+                reference.setVersion( artifact.getVersion() );
+
+                List<String> versions = new ArrayList<String>( repository.getVersions( reference ) );
+
+                Collections.sort( versions, VersionComparator.getInstance() );
+
+                if ( retentionCount > versions.size() )
+                {
+                    // Done. nothing to do here. skip it.
+                    return;
+                }
+
+                int countToPurge = versions.size() - retentionCount;
+
+                for ( String version : versions )
+                {
+                    if ( countToPurge-- <= 0 )
+                    {
+                        break;
+                    }
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

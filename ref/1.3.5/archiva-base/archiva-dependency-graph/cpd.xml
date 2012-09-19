@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+<duplication lines="26" tokens="125">
+<file line="62" path="/Users/Deng/Checkouts/archiva-1.3.x/target/checkout/archiva-modules/archiva-base/archiva-dependency-graph/src/main/java/org/apache/maven/archiva/dependency/graph/walk/WalkBreadthFirstSearch.java"/>
+<file line="69" path="/Users/Deng/Checkouts/archiva-1.3.x/target/checkout/archiva-modules/archiva-base/archiva-dependency-graph/src/main/java/org/apache/maven/archiva/dependency/graph/walk/WalkDepthFirstSearch.java"/>
+<codefragment>
+<![CDATA[
+        return (Integer) nodeVisitStates.get( node.getArtifact() );
+    }
+
+    public Integer getNodeVisitState( ArtifactReference artifact )
+    {
+        return (Integer) nodeVisitStates.get( artifact );
+    }
+
+    public void setNodeVisitState( DependencyGraphNode node, Integer state )
+    {
+        this.nodeVisitStates.put( node.getArtifact(), state );
+    }
+
+    public void setNodeVisitState( ArtifactReference artifact, Integer state )
+    {
+        this.nodeVisitStates.put( artifact, state );
+    }
+
+    private void visitEdge( DependencyGraph graph, DependencyGraphEdge e, DependencyGraphVisitor visitor )
+    {
+        visitor.discoverEdge( e );
+
+        DependencyGraphNode node = graph.getNode( e.getNodeTo() );
+
+        if ( getNodeVisitState( node ) == UNSEEN )
+        {
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+<duplication lines="22" tokens="113">
+<file line="342" path="/Users/Deng/Checkouts/archiva-1.3.x/target/checkout/archiva-modules/archiva-database/src/main/java/org/apache/maven/archiva/database/jdo/JdoAccess.java"/>
+<file line="660" path="/Users/Deng/Checkouts/archiva-1.3.x/target/checkout/archiva-modules/archiva-database/src/main/java/org/apache/maven/archiva/database/jdo/JdoAccess.java"/>
+<codefragment>
+<![CDATA[
+                query.declareVariables( StringUtils.join( constraint.getVariables(), ";  " ) );
+            }
+
+            if ( constraint.getFetchLimits() != null )
+            {
+                pm.getFetchPlan().addGroup( constraint.getFetchLimits() );
+            }
+
+            if ( constraint.getWhereCondition() != null )
+            {
+                query.setFilter( constraint.getWhereCondition() );
+            }
+
+            if ( constraint.getDeclaredImports() != null )
+            {
+                query.declareImports( StringUtils.join( constraint.getDeclaredImports(), ", " ) );
+            }
+
+            if ( constraint.getRange() != null )
+            {
+                query.setRange( constraint.getRange()[0], constraint.getRange()[1] );
+            }
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

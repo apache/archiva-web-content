@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Archiva Consumers :: Core Consumers - CPD Results</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                            <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script>
+                                <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var pageTracker = _gat._getTracker("UA-140879-5");
+pageTracker._initData();
+pageTracker._trackPageview();</script>
+                    </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../../" id="bannerLeft">
+    
+                                            <img src="../../images/archiva.png" alt="" />
+    
+            </a>
+                        <a href="http://www.apache.org/" id="bannerRight">
+    
+                                    <img src="http://www.apache.org/images/asf_logo_wide.png" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+          
+          <a href="http://www.apache.org/">Apache</a>
+              &gt;
+      
+          <a href="../../">Archiva</a>
+              &gt;
+      
+          <a href="../../../">Archiva :: Modules</a>
+                </div>
+            <div class="xright">      
+  
+
+  
+    
+  
+  
+            &nbsp;| Last Published: 27 May 2011
+            </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Project Documentation</h5>
+        <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="project-info.html">Project Information</a>
+              </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+            
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+            <li class="expanded">
+              <a href="project-reports.html">Project Reports</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="changelog.html">changelog</a>
+        </li>
+                  
+    <li class="none">
+              <a href="checkstyle.html">Checkstyle</a>
+        </li>
+                  
+    <li class="none">
+              <a href="clirr-report.html">Clirr</a>
+        </li>
+                  
+    <li class="none">
+              <a href="cobertura/index.html">Cobertura Test Coverage</a>
+        </li>
+                  
+    <li class="none">
+              <strong>CPD Report</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="dev-activity.html">dev-activity</a>
+        </li>
+                  
+    <li class="none">
+              <a href="file-activity.html">file-activity</a>
+        </li>
+                  
+    <li class="none">
+              <a href="surefire-report.html">Maven Surefire Report</a>
+        </li>
+                  
+    <li class="none">
+              <a href="pmd.html">PMD Report</a>
+        </li>
+                  
+    <li class="none">
+              <a href="taglist.html">Tag List</a>
+        </li>
+              </ul>
+        </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy">
+            <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>CPD Results</h2><p>The following document contains the results of PMD's  <a href="http://pmd.sourceforge.net/cpd.html">CPD</a> 4.2.5.</p></div><div class="section"><h2>Duplications</h2><table class="bodyTable"><tr class="a"><th>File</th><th>Line</th></tr><tr class="b"><td>org/apache/maven/archiva/consumers/core/AutoRemoveConsumer.java</td><td><a href="./xref/org/apache/maven/archiva/consumers/core/AutoRemoveConsumer.html#77">77</a></td></tr><tr class="a"><td>org/apache/maven/archiva/consumers/core/AutoRenameConsumer.java</td><td><a href="./xref/org/apache/maven/archiva/consumers/core/AutoRenameConsumer.html#78">78</a></td></tr><tr class="b"><td colspan='2'><div class="source"><pre>    public String getId()
+    {
+        return this.id;
+    }
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    public boolean isPermanent()
+    {
+        return false;
+    }
+
+    public void beginScan( ManagedRepositoryConfiguration repository, Date whenGathered )
+        throws ConsumerException
+    {
+        this.repositoryDir = new File( repository.getLocation() );
+    }
+
+    public void beginScan( ManagedRepositoryConfiguration repository, Date whenGathered, boolean executeOnEntireRepo )
+        throws ConsumerException
+    {
+        beginScan( repository, whenGathered );
+    }
+
+    public void completeScan()
+    {
+        /* do nothing */
+    }
+
+    public void completeScan( boolean executeOnEntireRepo )
+    {
+        completeScan();
+    }
+
+    public List&lt;String&gt; getExcludes()
+    {
+        return null;
+    }
+
+    public List&lt;String&gt; getIncludes()
+    {
+        return includes;
+    }
+
+    public void processFile( String path )
+        throws ConsumerException
+    {
+        File file = new File( this.repositoryDir, path );
+        if ( file.exists() )
+        {</pre></div></td></tr></table><table class="bodyTable"><tr class="a"><th>File</th><th>Line</th></tr><tr class="b"><td>org/apache/maven/archiva/consumers/core/AutoRemoveConsumer.java</td><td><a href="./xref/org/apache/maven/archiva/consumers/core/AutoRemoveConsumer.html#73">73</a></td></tr><tr class="a"><td>org/apache/maven/archiva/consumers/core/ValidateChecksumConsumer.java</td><td><a href="./xref/org/apache/maven/archiva/consumers/core/ValidateChecksumConsumer.html#80">80</a></td></tr><tr class="b"><td colspan='2'><div class="source"><pre>    private File repositoryDir;
+
+    private List&lt;String&gt; includes = new ArrayList&lt;String&gt;();
+
+    public String getId()
+    {
+        return this.id;
+    }
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    public boolean isPermanent()
+    {
+        return false;
+    }
+
+    public void beginScan( ManagedRepositoryConfiguration repository, Date whenGathered )
+        throws ConsumerException
+    {
+        this.repositoryDir = new File( repository.getLocation() );
+    }
+
+    public void beginScan( ManagedRepositoryConfiguration repository, Date whenGathered, boolean executeOnEntireRepo )
+        throws ConsumerException
+    {
+        beginScan( repository, whenGathered );
+    }
+
+    public void completeScan()
+    {
+        /* nothing to do */
+    }
+
+    public void completeScan( boolean executeOnEntireRepo )
+    {
+        completeScan();
+    }
+
+    public List&lt;String&gt; getExcludes()
+    {
+        return null;
+    }
+
+    public List&lt;String&gt; getIncludes()
+    {
+        return this.includes;</pre></div></td></tr></table><table class="bodyTable"><tr class="a"><th>File</th><th>Line</th></tr><tr class="b"><td>org/apache/maven/archiva/consumers/core/AutoRenameConsumer.java</td><td><a href="./xref/org/apache/maven/archiva/consumers/core/AutoRenameConsumer.html#78">78</a></td></tr><tr class="a"><td>org/apache/maven/archiva/consumers/core/ValidateChecksumConsumer.java</td><td><a href="./xref/org/apache/maven/archiva/consumers/core/ValidateChecksumConsumer.html#84">84</a></td></tr><tr class="b"><td colspan='2'><div class="source"><pre>    public String getId()
+    {
+        return this.id;
+    }
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    public boolean isPermanent()
+    {
+        return false;
+    }
+
+    public void beginScan( ManagedRepositoryConfiguration repository, Date whenGathered )
+        throws ConsumerException
+    {
+        this.repositoryDir = new File( repository.getLocation() );
+    }
+
+    public void beginScan( ManagedRepositoryConfiguration repository, Date whenGathered, boolean executeOnEntireRepo )
+        throws ConsumerException
+    {
+        beginScan( repository, whenGathered );
+    }
+
+    public void completeScan()
+    {
+        /* nothing to do */
+    }
+
+    public void completeScan( boolean executeOnEntireRepo )
+    {
+        completeScan();
+    }
+
+    public List&lt;String&gt; getExcludes()
+    {
+        return null;
+    }
+
+    public List&lt;String&gt; getIncludes()
+    {
+        return this.includes;</pre></div></td></tr></table><table class="bodyTable"><tr class="a"><th>File</th><th>Line</th></tr><tr class="b"><td>org/apache/maven/archiva/consumers/core/repository/DaysOldRepositoryPurge.java</td><td><a href="./xref/org/apache/maven/archiva/consumers/core/repository/DaysOldRepositoryPurge.html#84">84</a></td></tr><tr class="a"><td>org/apache/maven/archiva/consumers/core/repository/RetentionCountRepositoryPurge.java</td><td><a href="./xref/org/apache/maven/archiva/consumers/core/repository/RetentionCountRepositoryPurge.html#69">69</a></td></tr><tr class="b"><td colspan='2'><div class="source"><pre>                VersionedReference reference = new VersionedReference();
+                reference.setGroupId( artifact.getGroupId() );
+                reference.setArtifactId( artifact.getArtifactId() );
+                reference.setVersion( artifact.getVersion() );
+
+                List&lt;String&gt; versions = new ArrayList&lt;String&gt;( repository.getVersions( reference ) );
+
+                Collections.sort( versions, VersionComparator.getInstance() );
+
+                if ( retentionCount &gt; versions.size() )
+                {
+                    // Done. nothing to do here. skip it.
+                    return;
+                }
+
+                int countToPurge = versions.size() - retentionCount;
+
+                for ( String version : versions )
+                {
+                    if ( countToPurge-- &lt;= 0 )
+                    {
+                        break;
+                    }</pre></div></td></tr></table></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2006-2011
+    
+          The Apache Software Foundation
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

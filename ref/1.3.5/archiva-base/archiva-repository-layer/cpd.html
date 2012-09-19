@@ -1,0 +1,531 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Archiva Repository Interface Layer - CPD Results</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                            <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script>
+                                <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var pageTracker = _gat._getTracker("UA-140879-5");
+pageTracker._initData();
+pageTracker._trackPageview();</script>
+                    </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../../" id="bannerLeft">
+    
+                                            <img src="../../images/archiva.png" alt="" />
+    
+            </a>
+                        <a href="http://www.apache.org/" id="bannerRight">
+    
+                                    <img src="http://www.apache.org/images/asf_logo_wide.png" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+          
+          <a href="http://www.apache.org/">Apache</a>
+              &gt;
+      
+          <a href="../../">Archiva</a>
+              &gt;
+      
+          <a href="../../">Archiva :: Modules</a>
+                </div>
+            <div class="xright">      
+  
+
+  
+    
+  
+  
+            &nbsp;| Last Published: 27 May 2011
+            </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Project Documentation</h5>
+        <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="project-info.html">Project Information</a>
+              </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+            
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+            <li class="expanded">
+              <a href="project-reports.html">Project Reports</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="changelog.html">changelog</a>
+        </li>
+                  
+    <li class="none">
+              <a href="checkstyle.html">Checkstyle</a>
+        </li>
+                  
+    <li class="none">
+              <a href="clirr-report.html">Clirr</a>
+        </li>
+                  
+    <li class="none">
+              <a href="cobertura/index.html">Cobertura Test Coverage</a>
+        </li>
+                  
+    <li class="none">
+              <strong>CPD Report</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="dev-activity.html">dev-activity</a>
+        </li>
+                  
+    <li class="none">
+              <a href="file-activity.html">file-activity</a>
+        </li>
+                  
+    <li class="none">
+              <a href="surefire-report.html">Maven Surefire Report</a>
+        </li>
+                  
+    <li class="none">
+              <a href="pmd.html">PMD Report</a>
+        </li>
+                  
+    <li class="none">
+              <a href="taglist.html">Tag List</a>
+        </li>
+              </ul>
+        </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy">
+            <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>CPD Results</h2><p>The following document contains the results of PMD's  <a href="http://pmd.sourceforge.net/cpd.html">CPD</a> 4.2.5.</p></div><div class="section"><h2>Duplications</h2><table class="bodyTable"><tr class="a"><th>File</th><th>Line</th></tr><tr class="b"><td>org/apache/maven/archiva/repository/project/readers/ProjectModel300Reader.java</td><td><a href="./xref/org/apache/maven/archiva/repository/project/readers/ProjectModel300Reader.html#205">205</a></td></tr><tr class="a"><td>org/apache/maven/archiva/repository/project/readers/ProjectModel400Reader.java</td><td><a href="./xref/org/apache/maven/archiva/repository/project/readers/ProjectModel400Reader.html#261">261</a></td></tr><tr class="b"><td colspan='2'><div class="source"><pre>    private List&lt;Individual&gt; getIndividuals( XMLReader xml, boolean isCommitor, String xpathExpr )
+        throws XMLException
+    {
+        List&lt;Individual&gt; ret = new ArrayList&lt;Individual&gt;();
+
+        List&lt;Element&gt; modelPersonList = xml.getElementList( xpathExpr );
+
+        Iterator&lt;Element&gt; iter = modelPersonList.iterator();
+        while ( iter.hasNext() )
+        {
+            Element elemPerson = iter.next();
+            Individual individual = new Individual();
+
+            if ( isCommitor )
+            {
+                individual.setPrincipal( elemPerson.elementTextTrim( &quot;id&quot; ) );
+            }
+
+            individual.setCommitor( isCommitor );
+            individual.setEmail( elemPerson.elementTextTrim( &quot;email&quot; ) );
+            individual.setName( elemPerson.elementTextTrim( &quot;name&quot; ) );
+            individual.setOrganization( elemPerson.elementTextTrim( &quot;organization&quot; ) );
+            individual.setOrganizationUrl( elemPerson.elementTextTrim( &quot;organizationUrl&quot; ) );
+            individual.setUrl( elemPerson.elementTextTrim( &quot;url&quot; ) );
+            individual.setTimezone( elemPerson.elementTextTrim( &quot;timezone&quot; ) );
+            individual.setIndividualEmail( elemPerson.elementTextTrim( &quot;email&quot; ) );
+
+            // Roles
+            Element elemRoles = elemPerson.element( &quot;roles&quot; );
+            if ( elemRoles != null )
+            {
+                List&lt;Element&gt; roleNames = elemRoles.elements( &quot;role&quot; );
+                Iterator&lt;Element&gt; itRole = roleNames.iterator();
+                while ( itRole.hasNext() )
+                {
+                    Element role = itRole.next();
+                    individual.addRole( role.getTextTrim() );
+                }
+            }
+
+            // Properties
+            individual.setProperties( getProperties( elemPerson.element( &quot;properties&quot; ) ) );
+
+            ret.add( individual );
+        }
+
+        return ret;
+    }
+
+    private IssueManagement getIssueManagement( XMLReader xml )
+        throws XMLException
+    {
+        Element elemIssueMgmt = xml.getElement( &quot;//project/issueManagement&quot; );</pre></div></td></tr></table><table class="bodyTable"><tr class="a"><th>File</th><th>Line</th></tr><tr class="b"><td>org/apache/maven/archiva/repository/project/readers/ProjectModel300Reader.java</td><td><a href="./xref/org/apache/maven/archiva/repository/project/readers/ProjectModel300Reader.html#306">306</a></td></tr><tr class="a"><td>org/apache/maven/archiva/repository/project/readers/ProjectModel400Reader.java</td><td><a href="./xref/org/apache/maven/archiva/repository/project/readers/ProjectModel400Reader.html#355">355</a></td></tr><tr class="b"><td colspan='2'><div class="source"><pre>    private List&lt;MailingList&gt; getMailingLists( XMLReader xml )
+        throws XMLException
+    {
+        List&lt;MailingList&gt; mailingLists = new ArrayList&lt;MailingList&gt;();
+
+        List&lt;Element&gt; mailingListElems = xml.getElementList( &quot;//project/mailingLists/mailingList&quot; );
+        for ( Element elemMailingList : mailingListElems )
+        {
+            MailingList mlist = new MailingList();
+
+            mlist.setName( elemMailingList.elementTextTrim( &quot;name&quot; ) );
+            mlist.setSubscribeAddress( elemMailingList.elementTextTrim( &quot;subscribe&quot; ) );
+            mlist.setUnsubscribeAddress( elemMailingList.elementTextTrim( &quot;unsubscribe&quot; ) );
+            mlist.setPostAddress( elemMailingList.elementTextTrim( &quot;post&quot; ) );
+            mlist.setMainArchiveUrl( elemMailingList.elementTextTrim( &quot;archive&quot; ) );
+
+            Element elemOtherArchives = elemMailingList.element( &quot;otherArchives&quot; );
+            if ( elemOtherArchives != null )
+            {
+                List&lt;String&gt; otherArchives = new ArrayList&lt;String&gt;();
+                List&lt;Element&gt; others = elemOtherArchives.elements( &quot;otherArchive&quot; );
+                for ( Element other : others )
+                {
+                    String otherArchive = other.getTextTrim();
+                    otherArchives.add( otherArchive );
+                }
+
+                mlist.setOtherArchives( otherArchives );
+            }
+
+            mailingLists.add( mlist );
+        }
+
+        return mailingLists;
+    }
+
+    private Organization getOrganization( XMLReader xml )
+        throws XMLException
+    {
+        Element elemOrg = xml.getElement( &quot;//project/organization&quot; );
+        if ( elemOrg != null )
+        {
+            Organization org = new Organization();
+
+            org.setOrganizationName( elemOrg.elementTextTrim( &quot;name&quot; ) );
+            org.setName( elemOrg.elementTextTrim( &quot;name&quot; ) );
+            org.setUrl( elemOrg.elementTextTrim( &quot;url&quot; ) );
+
+            return org;
+        }
+
+        return null;
+    }</pre></div></td></tr></table><table class="bodyTable"><tr class="a"><th>File</th><th>Line</th></tr><tr class="b"><td>org/apache/maven/archiva/repository/project/readers/ProjectModel300Reader.java</td><td><a href="./xref/org/apache/maven/archiva/repository/project/readers/ProjectModel300Reader.html#91">91</a></td></tr><tr class="a"><td>org/apache/maven/archiva/repository/project/readers/ProjectModel400Reader.java</td><td><a href="./xref/org/apache/maven/archiva/repository/project/readers/ProjectModel400Reader.html#102">102</a></td></tr><tr class="b"><td colspan='2'><div class="source"><pre>        model.setRelocation( getRelocation( xml ) );
+
+        model.setOrigin( &quot;filesystem&quot; );
+
+        return model;
+    }
+
+    private ArtifactReference getArtifactReference( Element elemPlugin, String defaultType )
+    {
+        ArtifactReference reference = new ArtifactReference();
+
+        reference.setGroupId( StringUtils.defaultString( elemPlugin.elementTextTrim( &quot;groupId&quot; ) ) );
+        reference.setArtifactId( elemPlugin.elementTextTrim( &quot;artifactId&quot; ) );
+        reference.setVersion( StringUtils.defaultString( elemPlugin.elementTextTrim( &quot;version&quot; ) ) );
+        reference.setClassifier( StringUtils.defaultString( elemPlugin.elementTextTrim( &quot;classifier&quot; ) ) );
+        reference.setType( StringUtils.defaultIfEmpty( elemPlugin.elementTextTrim( &quot;type&quot; ), defaultType ) );
+
+        return reference;
+    }
+
+    /**
+     * Get List of {@link ArtifactReference} objects from xpath expr.
+     */
+    private List&lt;ArtifactReference&gt; getArtifactReferenceList( XMLReader xml, String xpathExpr, String defaultType )
+        throws XMLException
+    {
+        List&lt;ArtifactReference&gt; refs = new ArrayList&lt;ArtifactReference&gt;();
+
+        Iterator&lt;Element&gt; it = xml.getElementList( xpathExpr ).iterator();
+        while ( it.hasNext() )
+        {
+            Element elemPlugin = it.next();
+
+            refs.add( getArtifactReference( elemPlugin, defaultType ) );
+        }
+
+        return refs;
+    }
+
+    private List&lt;ArtifactReference&gt; getBuildExtensions( XMLReader xml )</pre></div></td></tr></table><table class="bodyTable"><tr class="a"><th>File</th><th>Line</th></tr><tr class="b"><td>org/apache/maven/archiva/repository/project/readers/ProjectModel300Reader.java</td><td><a href="./xref/org/apache/maven/archiva/repository/project/readers/ProjectModel300Reader.html#143">143</a></td></tr><tr class="a"><td>org/apache/maven/archiva/repository/project/readers/ProjectModel400Reader.java</td><td><a href="./xref/org/apache/maven/archiva/repository/project/readers/ProjectModel400Reader.html#169">169</a></td></tr><tr class="b"><td colspan='2'><div class="source"><pre>    private List&lt;Dependency&gt; getDependencyList( XMLReader xml, String parts[] )
+        throws XMLException
+    {
+        List&lt;Dependency&gt; dependencyList = new ArrayList&lt;Dependency&gt;();
+
+        Element project = xml.getElement( &quot;//project&quot; );
+
+        Element depsParent = project;
+
+        for ( String part : parts )
+        {
+            depsParent = depsParent.element( part );
+            if ( depsParent == null )
+            {
+                return dependencyList;
+            }
+        }
+
+        Iterator&lt;Element&gt; it = depsParent.elementIterator( &quot;dependency&quot; );
+        while ( it.hasNext() )
+        {
+            Element elemDependency = it.next();
+            Dependency dependency = new Dependency();
+
+            dependency.setGroupId( elemDependency.elementTextTrim( &quot;groupId&quot; ) );
+            dependency.setArtifactId( elemDependency.elementTextTrim( &quot;artifactId&quot; ) );
+            dependency.setVersion( elemDependency.elementTextTrim( &quot;version&quot; ) );
+
+            dependency.setClassifier( StringUtils.defaultString( elemDependency.elementTextTrim( &quot;classifier&quot; ) ) );</pre></div></td></tr></table><table class="bodyTable"><tr class="a"><th>File</th><th>Line</th></tr><tr class="b"><td>org/apache/maven/archiva/repository/content/ManagedLegacyRepositoryContent.java</td><td><a href="./xref/org/apache/maven/archiva/repository/content/ManagedLegacyRepositoryContent.html#205">205</a></td></tr><tr class="a"><td>org/apache/maven/archiva/repository/content/ManagedLegacyRepositoryContent.java</td><td><a href="./xref/org/apache/maven/archiva/repository/content/ManagedLegacyRepositoryContent.html#245">245</a></td></tr><tr class="b"><td colspan='2'><div class="source"><pre>    public Set&lt;String&gt; getVersions( VersionedReference reference )
+        throws ContentNotFoundException
+    {
+        File groupDir = new File( repository.getLocation(), reference.getGroupId() );
+
+        if ( !groupDir.exists() )
+        {
+            throw new ContentNotFoundException( &quot;Unable to get versions using a non-existant groupId directory: &quot;
+                + groupDir.getAbsolutePath() );
+        }
+
+        if ( !groupDir.isDirectory() )
+        {
+            throw new ContentNotFoundException( &quot;Unable to get versions using a non-directory: &quot;
+                + groupDir.getAbsolutePath() );
+        }
+
+        Set&lt;String&gt; foundVersions = new HashSet&lt;String&gt;();
+
+        // First gather up the versions found as artifacts in the managed repository.
+        File typeDirs[] = groupDir.listFiles();
+        for ( File typeDir : typeDirs )
+        {
+            if ( !typeDir.isDirectory() )
+            {
+                // Skip it, we only care about directories.
+                continue;
+            }
+
+            if ( !typeDir.getName().endsWith( &quot;s&quot; ) )
+            {
+                // Skip it, we only care about directories that end in &quot;s&quot;.
+            }</pre></div></td></tr></table><table class="bodyTable"><tr class="a"><th>File</th><th>Line</th></tr><tr class="b"><td>org/apache/maven/archiva/repository/project/readers/ProjectModel300Reader.java</td><td><a href="./xref/org/apache/maven/archiva/repository/project/readers/ProjectModel300Reader.html#278">278</a></td></tr><tr class="a"><td>org/apache/maven/archiva/repository/project/readers/ProjectModel400Reader.java</td><td><a href="./xref/org/apache/maven/archiva/repository/project/readers/ProjectModel400Reader.html#328">328</a></td></tr><tr class="b"><td colspan='2'><div class="source"><pre>    private List&lt;License&gt; getLicenses( XMLReader xml )
+        throws XMLException
+    {
+        List&lt;License&gt; licenses = new ArrayList&lt;License&gt;();
+
+        Element elemLicenses = xml.getElement( &quot;//project/licenses&quot; );
+
+        if ( elemLicenses != null )
+        {
+            List&lt;Element&gt; licenseList = elemLicenses.elements( &quot;license&quot; );
+            for ( Element elemLicense : licenseList )
+            {
+                License license = new License();
+
+                // TODO: Create LicenseIdentity class to managed license ids.
+                // license.setId( elemLicense.elementTextTrim(&quot;id&quot;) );
+                license.setName( elemLicense.elementTextTrim( &quot;name&quot; ) );
+                license.setUrl( elemLicense.elementTextTrim( &quot;url&quot; ) );
+                license.setComments( elemLicense.elementTextTrim( &quot;comments&quot; ) );
+
+                licenses.add( license );
+            }
+        }
+
+        return licenses;
+    }</pre></div></td></tr></table><table class="bodyTable"><tr class="a"><th>File</th><th>Line</th></tr><tr class="b"><td>org/apache/maven/archiva/repository/content/ManagedLegacyRepositoryContent.java</td><td><a href="./xref/org/apache/maven/archiva/repository/content/ManagedLegacyRepositoryContent.html#393">393</a></td></tr><tr class="a"><td>org/apache/maven/archiva/repository/content/ManagedLegacyRepositoryContent.java</td><td><a href="./xref/org/apache/maven/archiva/repository/content/ManagedLegacyRepositoryContent.html#425">425</a></td></tr><tr class="b"><td colspan='2'><div class="source"><pre>    private void getVersionedVersions( File typeDir, VersionedReference reference, Set&lt;String&gt; foundVersions )
+    {
+        File repoFiles[] = typeDir.listFiles();
+        for ( int i = 0; i &lt; repoFiles.length; i++ )
+        {
+            if ( repoFiles[i].isDirectory() )
+            {
+                // Skip it. it's a directory.
+                continue;
+            }
+
+            String relativePath = PathUtil.getRelative( repository.getLocation(), repoFiles[i] );
+
+            if ( filetypes.matchesArtifactPattern( relativePath ) )
+            {
+                try
+                {
+                    ArtifactReference artifact = toArtifactReference( relativePath );
+                    if ( StringUtils.equals( artifact.getArtifactId(), reference.getArtifactId() )
+                        &amp;&amp; artifact.getVersion().startsWith( reference.getVersion() ) )
+                    {</pre></div></td></tr></table><table class="bodyTable"><tr class="a"><th>File</th><th>Line</th></tr><tr class="b"><td>org/apache/maven/archiva/repository/project/ProjectModelMerge.java</td><td><a href="./xref/org/apache/maven/archiva/repository/project/ProjectModelMerge.html#441">441</a></td></tr><tr class="a"><td>org/apache/maven/archiva/repository/project/ProjectModelMerge.java</td><td><a href="./xref/org/apache/maven/archiva/repository/project/ProjectModelMerge.html#491">491</a></td></tr><tr class="b"><td colspan='2'><div class="source"><pre>        Map&lt;String, Dependency&gt; parentDepMap = createDependencyMap( parentDepMgmt );
+        Set&lt;String&gt; uniqueKeys = new HashSet&lt;String&gt;();
+        uniqueKeys.addAll( mainDepMap.keySet() );
+        uniqueKeys.addAll( parentDepMap.keySet() );
+
+        Iterator&lt;String&gt; it = uniqueKeys.iterator();
+        while ( it.hasNext() )
+        {
+            String key = it.next();
+            Dependency parentDep = parentDepMap.get( key );
+            Dependency mainDep = mainDepMap.get( key );
+
+            if ( parentDep == null )
+            {
+                // Means there is no parent depMan entry to override main depMan.
+                merged.add( mainDep );
+            }
+            else
+            {
+                // Parent depMan entry exists (main doesn't have to).
+                // Merge the parent over the main depMan entry.
+                merged.add( merge( mainDep, parentDep ) );
+            }
+        }
+
+        return merged;
+    }</pre></div></td></tr></table><table class="bodyTable"><tr class="a"><th>File</th><th>Line</th></tr><tr class="b"><td>org/apache/maven/archiva/repository/content/ManagedDefaultRepositoryContent.java</td><td><a href="./xref/org/apache/maven/archiva/repository/content/ManagedDefaultRepositoryContent.html#82">82</a></td></tr><tr class="a"><td>org/apache/maven/archiva/repository/content/ManagedLegacyRepositoryContent.java</td><td><a href="./xref/org/apache/maven/archiva/repository/content/ManagedLegacyRepositoryContent.html#144">144</a></td></tr><tr class="b"><td colspan='2'><div class="source"><pre>            supportFile.delete();
+        }
+    }
+
+    public String getId()
+    {
+        return repository.getId();
+    }
+
+    public Set&lt;ArtifactReference&gt; getRelatedArtifacts( ArtifactReference reference )
+        throws ContentNotFoundException
+    {
+        File artifactFile = toFile( reference );
+        File repoDir = artifactFile.getParentFile();
+
+        if ( !repoDir.exists() )
+        {
+            throw new ContentNotFoundException( &quot;Unable to get related artifacts using a non-existant directory: &quot;
+                + repoDir.getAbsolutePath() );
+        }
+
+        if ( !repoDir.isDirectory() )
+        {
+            throw new ContentNotFoundException( &quot;Unable to get related artifacts using a non-directory: &quot;
+                + repoDir.getAbsolutePath() );
+        }
+
+        Set&lt;ArtifactReference&gt; foundArtifacts = new HashSet&lt;ArtifactReference&gt;();
+
+        // First gather up the versions found as artifacts in the managed repository.
+        File projectParentDir = repoDir.getParentFile();</pre></div></td></tr></table></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2006-2011
+    
+          The Apache Software Foundation
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

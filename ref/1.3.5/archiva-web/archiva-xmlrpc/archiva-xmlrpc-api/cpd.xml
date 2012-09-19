@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+<duplication lines="32" tokens="117">
+<file line="70" path="/Users/Deng/Checkouts/archiva-1.3.x/target/checkout/archiva-modules/archiva-web/archiva-xmlrpc/archiva-xmlrpc-api/src/main/java/org/apache/archiva/web/xmlrpc/api/beans/ManagedRepository.java"/>
+<file line="64" path="/Users/Deng/Checkouts/archiva-1.3.x/target/checkout/archiva-modules/archiva-web/archiva-xmlrpc/archiva-xmlrpc-api/src/main/java/org/apache/archiva/web/xmlrpc/api/beans/RemoteRepository.java"/>
+<codefragment>
+<![CDATA[
+        RemoteRepository that = (RemoteRepository) other;
+        boolean result = true;
+        result = result && ( getId() == null ? that.getId() == null : getId().equals( that.getId() ) );
+        return result;
+    } 
+    
+    public String getId()
+    {
+        return this.id;
+    } 
+    
+    public String getLayout()
+    {
+        return this.layout;
+    } 
+    
+    public String getName()
+    {
+        return this.name;
+    } 
+    
+    public String getUrl()
+    {
+        return this.url;
+    }
+    
+    public int hashCode()
+    {
+        int result = 17;
+        result = 37 * result + ( id != null ? id.hashCode() : 0 );
+        return result;
+    }
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>
