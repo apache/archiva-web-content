@@ -7,11 +7,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Olivier Lamy" />
-    <meta name="Date-Creation-yyyymmdd" content="20111006" />
     <meta name="Date-Revision-yyyymmdd" content="20120925" />
     <meta http-equiv="Content-Language" content="en" />
-    <title>Archiva :: Documentation - Repositories Content Storage</title>
+    <title>Archiva :: Documentation - UI configuration</title>
     <link rel="stylesheet" href="../css/apache-maven-fluido-1.3.0.min.css" />
     <link rel="stylesheet" href="../css/site.css" />
     <link rel="stylesheet" href="../css/print.css" media="print" />
@@ -68,7 +66,7 @@ pageTracker._trackPageview();</script>
         1.4-M3-SNAPSHOT</a>
         </li>
       <li class="divider ">/</li>
-        <li class="">Repositories Content Storage</li>
+        <li class="">UI configuration</li>
         
                 
                     
@@ -180,10 +178,12 @@ pageTracker._trackPageview();</script>
         Databases</a>
             </li>
                   
-      <li class="active">
+      <li>
     
-            <a href="#"><i class="none"></i>Repositories Content Storage</a>
-          </li>
+                          <a href="../adminguide/repositories-content-storage.html" title="Repositories Content Storage">
+          <i class="none"></i>
+        Repositories Content Storage</a>
+            </li>
                                                                                       
       <li>
     
@@ -191,13 +191,76 @@ pageTracker._trackPageview();</script>
           <i class="icon-chevron-right"></i>
         Security</a>
                   </li>
-                                                                                                                                                                                                                    
+                                                                                                                                                                                                                              
       <li>
     
                           <a href="../adminguide/configuration.html" title="Runtime Configuration">
-          <i class="icon-chevron-right"></i>
+          <i class="icon-chevron-down"></i>
         Runtime Configuration</a>
-                  </li>
+                    <ul class="nav nav-list">
+                      
+      <li>
+    
+                          <a href="../adminguide/repositories.html" title="Repositories">
+          <i class="none"></i>
+        Repositories</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../adminguide/proxy-connectors.html" title="Proxy Connectors">
+          <i class="none"></i>
+        Proxy Connectors</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../adminguide/network-proxies.html" title="Network Proxies">
+          <i class="none"></i>
+        Network Proxies</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../adminguide/network-configuration.html" title="Network Configuration">
+          <i class="none"></i>
+        Network Configuration</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../adminguide/legacy.html" title="Legacy (Maven 1) Support">
+          <i class="none"></i>
+        Legacy (Maven 1) Support</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../adminguide/consumers.html" title="Consumers">
+          <i class="none"></i>
+        Consumers</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../adminguide/staging-repositories.html" title="Staging Repositories">
+          <i class="none"></i>
+        Staging Repositories</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../adminguide/appearance-configuration.html" title="Appearance Configuration">
+          <i class="none"></i>
+        Appearance Configuration</a>
+            </li>
+                      
+      <li class="active">
+    
+            <a href="#"><i class="none"></i>UI Configuration</a>
+          </li>
+              </ul>
+        </li>
                                                                     
       <li>
     
@@ -314,39 +377,7 @@ pageTracker._trackPageview();</script>
                         
         <div id="bodyColumn"  class="span10" >
                                   
-            <!-- Licensed to the Apache Software Foundation (ASF) under one --><!-- or more contributor license agreements.  See the NOTICE file --><!-- distributed with this work for additional information --><!-- regarding copyright ownership.  The ASF licenses this file --><!-- to you under the Apache License, Version 2.0 (the --><!-- "License"); you may not use this file except in compliance --><!-- with the License.  You may obtain a copy of the License at --><!--  --><!-- http://www.apache.org/licenses/LICENSE-2.0 --><!--  --><!-- Unless required by applicable law or agreed to in writing, --><!-- software distributed under the License is distributed on an --><!-- "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY --><!-- KIND, either express or implied.  See the License for the --><!-- specific language governing permissions and limitations --><!-- under the License. --><!-- NOTE: For help with the syntax of this file, see: --><!-- http://maven.apache.org/guides/mini/guide-apt-format.html --><div class="section"><h2>Repositories Content Storage<a name="Repositories_Content_Storage"></a></h2><p>Prior to version 1.4-M1, repository content is now stored in a jcr repository (based on Apache Jackrabbit implementation).</p><p>A default Jackrabbit configuration is provided :</p><div class="source"><pre class="prettyprint">&lt;Repository&gt;
-  &lt;FileSystem class=&quot;org.apache.jackrabbit.core.fs.local.LocalFileSystem&quot;&gt;
-    &lt;param name=&quot;path&quot; value=&quot;${rep.home}/repository&quot;/&gt;
-  &lt;/FileSystem&gt;
-  &lt;Security appName=&quot;Jackrabbit&quot;&gt;
-    &lt;SecurityManager class=&quot;org.apache.jackrabbit.core.security.simple.SimpleSecurityManager&quot; workspaceName=&quot;security&quot;/&gt;
-    &lt;AccessManager class=&quot;org.apache.jackrabbit.core.security.simple.SimpleAccessManager&quot;/&gt;
-    &lt;LoginModule class=&quot;org.apache.jackrabbit.core.security.simple.SimpleLoginModule&quot;/&gt;
-  &lt;/Security&gt;
-  &lt;Workspaces rootPath=&quot;${rep.home}/workspaces&quot; defaultWorkspace=&quot;default&quot;/&gt;
-  &lt;Workspace name=&quot;${wsp.name}&quot;&gt;
-    &lt;FileSystem class=&quot;org.apache.jackrabbit.core.fs.local.LocalFileSystem&quot;&gt;
-      &lt;param name=&quot;path&quot; value=&quot;${wsp.home}&quot;/&gt;
-    &lt;/FileSystem&gt;
-    &lt;PersistenceManager class=&quot;org.apache.jackrabbit.core.persistence.bundle.BundleFsPersistenceManager&quot;/&gt;
-    &lt;SearchIndex class=&quot;org.apache.jackrabbit.core.query.lucene.SearchIndex&quot;&gt;
-      &lt;param name=&quot;path&quot; value=&quot;${wsp.home}/index&quot;/&gt;
-    &lt;/SearchIndex&gt;
-  &lt;/Workspace&gt;
-  &lt;Versioning rootPath=&quot;${rep.home}/version&quot;&gt;
-    &lt;FileSystem class=&quot;org.apache.jackrabbit.core.fs.local.LocalFileSystem&quot;&gt;
-      &lt;param name=&quot;path&quot; value=&quot;${rep.home}/version&quot;/&gt;
-    &lt;/FileSystem&gt;
-    &lt;PersistenceManager class=&quot;org.apache.jackrabbit.core.persistence.bundle.BundleFsPersistenceManager&quot;/&gt;
-  &lt;/Versioning&gt;
-&lt;/Repository&gt;
-</pre></div><p>You can use your own configuration by adding a file repository.xml in ${appserver.base}/conf.</p><p>By default, the Jcr repository is stored ${appserver.base}/data/jcr.</p><p>If you want to change this default location, you must edit the file WEB-INF/applicationContext.xml, uncomment/edit lines and change with your values:</p><div class="source"><pre class="prettyprint">&lt;!--
-&lt;bean id=&quot;jcr-config&quot; class=&quot;org.apache.archiva.metadata.repository.jcr.ArchivaJcrRepositoryConfig&quot; factory-method=&quot;create&quot;&gt;
-  &lt;constructor-arg value=&quot;${appserver.base}/conf/repository.xml&quot;/&gt;
-  &lt;constructor-arg value=&quot;${appserver.base}/data/jcr&quot;/&gt;
-&lt;/bean&gt;
---&gt;
-</pre></div></div>
+            <!-- Licensed to the Apache Software Foundation (ASF) under one --><!-- or more contributor license agreements.  See the NOTICE file --><!-- distributed with this work for additional information --><!-- regarding copyright ownership.  The ASF licenses this file --><!-- to you under the Apache License, Version 2.0 (the --><!-- "License"); you may not use this file except in compliance --><!-- with the License.  You may obtain a copy of the License at --><!--  --><!-- http://www.apache.org/licenses/LICENSE-2.0 --><!--  --><!-- Unless required by applicable law or agreed to in writing, --><!-- software distributed under the License is distributed on an --><!-- "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY --><!-- KIND, either express or implied.  See the License for the --><!-- specific language governing permissions and limitations --><!-- under the License. --><!-- NOTE: For help with the syntax of this file, see: --><!-- http://maven.apache.org/guides/mini/guide-apt-format.html --><div class="section"><h2>Configuring your UI<a name="Configuring_your_UI"></a></h2><p>By default when returning links (registration, artifacts download etc), localhost with current running port.</p><p>So if you are running Archiva behind an http server with a host that can be confusing for users.</p><p>The other option allows you to disable the register link.</p><img src="../images/ui-configuration.png" alt="" /></div>
                   </div>
             </div>
           </div>
