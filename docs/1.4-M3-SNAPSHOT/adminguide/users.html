@@ -7,10 +7,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="2012-09-15" />
     <meta name="Date-Revision-yyyymmdd" content="20120927" />
     <meta http-equiv="Content-Language" content="en" />
-    <title>Archiva Documentation - Deploying to Repository</title>
+    <title>Archiva Documentation - Manage Archiva Users</title>
     <link rel="stylesheet" href="../css/apache-maven-fluido-1.3.0.min.css" />
     <link rel="stylesheet" href="../css/site.css" />
     <link rel="stylesheet" href="../css/print.css" media="print" />
@@ -67,7 +66,7 @@ pageTracker._trackPageview();</script>
         Apache Archiva</a>
         </li>
       <li class="divider ">/</li>
-        <li class="">Deploying to Repository</li>
+        <li class="">Manage Archiva Users</li>
         
                 
                     
@@ -143,10 +142,12 @@ pageTracker._trackPageview();</script>
         Using as a repository</a>
             </li>
                   
-      <li class="active">
+      <li>
     
-            <a href="#"><i class="none"></i>Deploying to repository</a>
-          </li>
+                          <a href="../userguide/deploy.html" title="Deploying to repository">
+          <i class="none"></i>
+        Deploying to repository</a>
+            </li>
                   
       <li>
     
@@ -183,13 +184,34 @@ pageTracker._trackPageview();</script>
           <i class="none"></i>
         Repositories Content Storage</a>
             </li>
-                                                                                                        
+                                                                                                                  
       <li>
     
                           <a href="../adminguide/security.html" title="Security">
-          <i class="icon-chevron-right"></i>
+          <i class="icon-chevron-down"></i>
         Security</a>
-                  </li>
+                    <ul class="nav nav-list">
+                      
+      <li class="active">
+    
+            <a href="#"><i class="none"></i>Users</a>
+          </li>
+                      
+      <li>
+    
+                          <a href="../adminguide/roles.html" title="Roles">
+          <i class="none"></i>
+        Roles</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../adminguide/customising-security.html" title="Customising">
+          <i class="none"></i>
+        Customising</a>
+            </li>
+              </ul>
+        </li>
                                                                                                                                                                                                                     
       <li>
     
@@ -313,84 +335,7 @@ pageTracker._trackPageview();</script>
                         
         <div id="bodyColumn"  class="span10" >
                                   
-            <!-- Licensed to the Apache Software Foundation (ASF) under one --><!-- or more contributor license agreements.  See the NOTICE file --><!-- distributed with this work for additional information --><!-- regarding copyright ownership.  The ASF licenses this file --><!-- to you under the Apache License, Version 2.0 (the --><!-- "License"); you may not use this file except in compliance --><!-- with the License.  You may obtain a copy of the License at --><!--  --><!-- http://www.apache.org/licenses/LICENSE-2.0 --><!--  --><!-- Unless required by applicable law or agreed to in writing, --><!-- software distributed under the License is distributed on an --><!-- "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY --><!-- KIND, either express or implied.  See the License for the --><!-- specific language governing permissions and limitations --><!-- under the License. --><!-- NOTE: For help with the syntax of this file, see: --><!-- http://maven.apache.org/guides/mini/guide-apt-format.html --><div class="section"><h2>Deploying to Repository<a name="Deploying_to_Repository"></a></h2><p>There are different ways on how you can deploy artifacts in an Archiva repository. </p><ul><li><a href="#Maven">Maven</a> Configuring Maven to deploy to an Archiva repository}}</li><li><a href="#Web_UI">Web UI</a> Deploying via the Web UI Form}}</li></ul><p>Starting with Archiva 1.2.3, it is possible to block re-deployment of released artifacts to a specific repository. This can be configured through the repository configuration page by ticking the <tt>Block Re-deployment of Released Artifacts</tt> checkbox.</p><p><b>WARNING</b> The deployed artifact may not appear immediately in the search results. The execution of the <tt>index-content</tt> repository consumer and other scanning consumers are queued for execution to prevent concurrent updates to the index.</p><div class="section"><h3>Configuring <a name="Maven">Maven</a> to deploy to an Archiva repository<a name="Configuring_Maven_to_deploy_to_an_Archiva_repository"></a></h3><ol style="list-style-type: decimal"><li>Create a user in Archiva to use for deployment (or use guest if you wish to deploy without a username and password)</li><li>The deployment user needs the Role 'Repository Manager' for each repository that you want to deploy to</li><li>Define the server for deployment inside your 'settings.xml', use the newly created user for authentication<div class="source"><pre class="prettyprint">&lt;settings&gt;
-  &lt;!-- omitted xml --&gt;
-  &lt;servers&gt;
-    &lt;server&gt;
-      &lt;id&gt;archiva.internal&lt;/id&gt;
-      &lt;username&gt;{archiva-deployment-user}&lt;/username&gt;
-      &lt;password&gt;{archiva-deployment-pwd}&lt;/password&gt;
-    &lt;/server&gt;
-    &lt;server&gt;
-      &lt;id&gt;archiva.snapshots&lt;/id&gt;
-      &lt;username&gt;{archiva-deployment-user}&lt;/username&gt;
-      &lt;password&gt;{archiva-deployment-pwd}&lt;/password&gt;
-    &lt;/server&gt;
-    &lt;!-- omitted xml --&gt;
-  &lt;/servers&gt;
-  &lt;!-- omitted xml --&gt;
-&lt;/settings&gt;</pre></div></li></ol><div class="section"><h4>Deploying to Archiva using HTTP<a name="Deploying_to_Archiva_using_HTTP"></a></h4><p>Configure the <tt>distributionManagement</tt> part of your <tt>pom.xml</tt> (customising the URLs as needed). The <tt>id</tt> of the repository in <tt>distributionManagement</tt> <b>must</b> match the <tt>id</tt> of the <tt>server</tt> element in <tt>settings.xml</tt>.</p><div class="source"><pre class="prettyprint">&lt;project&gt;
-  &lt;!-- omitted xml --&gt;
-  &lt;distributionManagement&gt;
-    &lt;repository&gt;
-      &lt;id&gt;archiva.internal&lt;/id&gt;
-      &lt;name&gt;Internal Release Repository&lt;/name&gt;
-      &lt;url&gt;http://reposerver.mycompany.com:8080/archiva/repository/internal/&lt;/url&gt;
-    &lt;/repository&gt;
-    &lt;snapshotRepository&gt;
-      &lt;id&gt;archiva.snapshots&lt;/id&gt;
-      &lt;name&gt;Internal Snapshot Repository&lt;/name&gt;
-      &lt;url&gt;http://reposerver.mycompany.com:8080/archiva/repository/snapshots/&lt;/url&gt;
-    &lt;/snapshotRepository&gt;
-  &lt;/distributionManagement&gt;
-  &lt;!-- omitted xml --&gt;
-&lt;/project&gt;</pre></div></div><div class="section"><h4>Deploying to Archiva using WebDAV<a name="Deploying_to_Archiva_using_WebDAV"></a></h4><p>In some cases, you may want to use WebDAV to deploy instead of HTTP. If you find this is necessary, follow the same process as for HTTP, with these additional steps:</p><ol style="list-style-type: decimal"><li>Add <tt>dav:</tt> to the front of the deployment URLs:<div class="source"><pre class="prettyprint">&lt;project&gt;
-  &lt;!-- omitted xml --&gt;
-  &lt;distributionManagement&gt;
-    &lt;repository&gt;
-      &lt;id&gt;archiva.internal&lt;/id&gt;
-      &lt;name&gt;Internal Release Repository&lt;/name&gt;
-      &lt;url&gt;dav:http://reposerver.mycompany.com:8080/archiva/repository/internal/&lt;/url&gt;
-    &lt;/repository&gt;
-    &lt;snapshotRepository&gt;
-      &lt;id&gt;archiva.snapshots&lt;/id&gt;
-      &lt;name&gt;Internal Snapshot Repository&lt;/name&gt;
-      &lt;url&gt;dav:http://reposerver.mycompany.com:8080/archiva/repository/snapshots/&lt;/url&gt;
-    &lt;/snapshotRepository&gt;
-  &lt;/distributionManagement&gt;
-  &lt;!-- omitted xml --&gt;
-&lt;/project&gt;</pre></div></li><li>Add a build extension to your <tt>pom.xml</tt> (not required in Maven 2.0.9 and above)<div class="source"><pre class="prettyprint">&lt;project&gt;
-  &lt;!-- omitted xml --&gt;
-  &lt;build&gt;
-    &lt;extensions&gt;
-      &lt;extension&gt;
-        &lt;groupId&gt;org.apache.maven.wagon&lt;/groupId&gt;
-        &lt;artifactId&gt;wagon-webdav-jackrabbit&lt;/artifactId&gt;
-        &lt;version&gt;2.2&lt;/version&gt;
-      &lt;/extension&gt;
-    &lt;/extensions&gt;
-  &lt;/build&gt;
-  &lt;!-- omitted xml --&gt;
-&lt;/project&gt;</pre></div></li></ol></div><div class="section"><h4>Deploying using other protocols<a name="Deploying_using_other_protocols"></a></h4><p>You can also deploy to the Archiva server using traditional means such as SCP, FTP, etc. For more information on these deployment techniques, refer to the Maven documentation.</p><p>Once the files are deployed into the location of the Archiva managed repository, they should appear in the Browse page. The artifacts should also be searcheable as long as the <tt>index-content</tt> repository consumer is enabled.</p></div><div class="section"><h4>Deploying Third-Party Artifacts to Archiva using Maven<a name="Deploying_Third-Party_Artifacts_to_Archiva_using_Maven"></a></h4><p>You can use <tt>mvn deploy:deploy-file</tt> to deploy single artifacts to Archiva. Once you have the settings file in place as described above, you can deploy the artifact using this type of command:</p><div class="source"><pre class="prettyprint">mvn deploy:deploy-file -Dfile=filename.jar -DpomFile=filename.pom
-    -DrepositoryId=archiva.internal
-    -Durl=http://repo.mycompany.com:8080/repository/internal/</pre></div><p>For more information, consult the <a class="externalLink" href="http://maven.apache.org/plugins/maven-deploy-plugin/deploy-file-mojo.html"> documentation for the <tt>deploy:deploy-file</tt> goal</a></p><p>If you wish to use WebDAV to deploy the file, add <tt>dav:</tt> to the start of the URL as in the previous instructions.</p><p>However, on versions of Maven prior to 2.0.9, you will also need to create a file called <tt>pom.xml</tt> in the directory from which you intend to execute &quot;<tt>mvn deploy:deploy-file</tt>&quot;:</p><div class="source"><pre class="prettyprint">&lt;project&gt;
-  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-  &lt;groupId&gt;com.example&lt;/groupId&gt;
-  &lt;artifactId&gt;webdav-deploy&lt;/artifactId&gt;
-  &lt;packaging&gt;pom&lt;/packaging&gt;
-  &lt;version&gt;1&lt;/version&gt;
-  &lt;name&gt;Webdav Deployment POM&lt;/name&gt;
-
-  &lt;build&gt;
-    &lt;extensions&gt;
-      &lt;extension&gt;
-        &lt;groupId&gt;org.apache.maven.wagon&lt;/groupId&gt;
-        &lt;artifactId&gt;wagon-webdav-jackrabbit&lt;/artifactId&gt;
-        &lt;version&gt;2.2&lt;/version&gt;
-      &lt;/extension&gt;
-    &lt;/extensions&gt;
-  &lt;/build&gt;
-&lt;/project&gt;</pre></div><p>This pom will not be deployed with the artifact, it simply serves to make the WebDAV protocol available to the build process.</p><p>Alternately, you can save this file somewhere else, and use &quot;<tt>mvn ... -f /path/to/filename</tt>&quot; to force the use of an alternate POM file.</p></div></div><div class="section"><h3>Deploying via the <a name="Web_UI">Web UI</a> Form<a name="Deploying_via_the_Web_UI_Form"></a></h3><p>The easiest way to deploy in the repository is via the Web UI form, which can be accessed in the <b>Upload Artifact</b> section. Just follow these steps:</p><ol style="list-style-type: decimal"><li>In Archiva, click the <b>Upload Artifact</b> option in the left menu. You should see a form similar to the one at the end of this section.</li><li>Fill in the following required fields:<ul><li>Group Id - the groupId of the artifact to be deployed.</li><li>Artifact Id - the artifactId of the artifact to be deployed.</li><li>Version - the version of the artifact to be deployed.</li><li>Packaging - the packaging of the artifact to be deployed. (ex. jar, war, ear, etc.)</li><li>Drag and drop files to be deployed.</li></ul></li><li>Select the repository you want to deploy to. Please note that if you do not have write permission to the repository, you will not be allowed to deploy on it.</li><li>Now, if you want Archiva to generate a pom for the artifact, check the Generate Maven 2 POM field. (Right now, only Maven 2 poms can be generated.) Alternately, supply a POM file to be deployed alongside the artifact.</li><li>Click Saves files and a message will be displayed notifying you if the upload/deployment was successful or not.</li></ol><p>These are the files that will be in your repository after deployment:</p><ul><li>artifact </li><li>POM file (if you supplied one or checked Generate Maven 2 POM)</li><li>maven-metadata.xml (this will be created if none exists in the artifact level yet, otherwise it will just be updated)</li><li>maven-metadata.xml.sha1 and maven-metadata.xml.md5 (these will be generated for newly created maven-metadata.xml files, otherwise they will just be updated)</li></ul><img src="../images/upload-artifact.jpg" alt="Upload Artifact" /><!-- TODO: information for Maven 1, ant tasks, ivy, etc. --></div></div>
+            <!-- Licensed to the Apache Software Foundation (ASF) under one --><!-- or more contributor license agreements.  See the NOTICE file --><!-- distributed with this work for additional information --><!-- regarding copyright ownership.  The ASF licenses this file --><!-- to you under the Apache License, Version 2.0 (the --><!-- "License"); you may not use this file except in compliance --><!-- with the License.  You may obtain a copy of the License at --><!--  --><!-- http://www.apache.org/licenses/LICENSE-2.0 --><!--  --><!-- Unless required by applicable law or agreed to in writing, --><!-- software distributed under the License is distributed on an --><!-- "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY --><!-- KIND, either express or implied.  See the License for the --><!-- specific language governing permissions and limitations --><!-- under the License. --><div class="section"><h2>Manage Archiva Users<a name="Manage_Archiva_Users"></a></h2><p>Archiva uses the <a class="externalLink" href="http://archiva.apache.org/redback/"> Redback</a> security framework for managing repository security. When the server is first started, you will be prompted to create an administration user. This user will be given permission to administer all aspects of the system (as well as access to all of the repositories). This user can then be used to grant permissions to other users.</p><p>A guest user is also created by default, and given read access to the default repositories (<tt>internal</tt> and <tt>snapshots</tt>). Repositories with guest user access can be accessed without the use of a username and password (or without being logged in to the web interface).</p><div class="section"><h3>Manage Users<a name="Manage_Users"></a></h3><p>The ui provide a screen to manage your users. You can:</p><ul><li>Delete user</li><li>Edit user</li><li>Block user</li><li>Force user to change password on next login</li></ul><img src="../images/users-list.png" alt="" /></div><div class="section"><h3>User edition<a name="User_edition"></a></h3><div class="section"><h4>Screen to manage a user<a name="Screen_to_manage_a_user"></a></h4><img src="../images/user-edit.png" alt="" /></div><div class="section"><h4>Screen to manage user roles<a name="Screen_to_manage_user_roles"></a></h4><img src="../images/user-edit-roles.png" alt="" /></div></div></div>
                   </div>
             </div>
           </div>
