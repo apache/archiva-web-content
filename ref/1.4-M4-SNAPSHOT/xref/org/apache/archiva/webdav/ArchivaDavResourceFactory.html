@@ -368,8 +368,8 @@
 <a class="jxr_linenumber" name="358" href="#358">358</a>                         <strong class="jxr_keyword">new</strong> File( filePath + <span class="jxr_string">"."</span> + StringUtils.substringAfterLast( requestedResource, <span class="jxr_string">"."</span> ) );
 <a class="jxr_linenumber" name="359" href="#359">359</a>                     <strong class="jxr_keyword">if</strong> ( metadataChecksum.exists() )
 <a class="jxr_linenumber" name="360" href="#360">360</a>                     {
-<a class="jxr_linenumber" name="361" href="#361">361</a>                         <a href="../../../../org/apache/archiva/webdav/LogicalResource.html">LogicalResource</a> logicalResource =
-<a class="jxr_linenumber" name="362" href="#362">362</a>                             <strong class="jxr_keyword">new</strong> <a href="../../../../org/apache/archiva/webdav/LogicalResource.html">LogicalResource</a>( RepositoryPathUtil.getLogicalResource( locator.getResourcePath() ) );
+<a class="jxr_linenumber" name="361" href="#361">361</a>                         <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html">LogicalResource</a> logicalResource =
+<a class="jxr_linenumber" name="362" href="#362">362</a>                             <strong class="jxr_keyword">new</strong> <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html">LogicalResource</a>( RepositoryPathUtil.getLogicalResource( locator.getResourcePath() ) );
 <a class="jxr_linenumber" name="363" href="#363">363</a> 
 <a class="jxr_linenumber" name="364" href="#364">364</a>                         resource =
 <a class="jxr_linenumber" name="365" href="#365">365</a>                             <strong class="jxr_keyword">new</strong> <a href="../../../../org/apache/archiva/webdav/ArchivaDavResource.html">ArchivaDavResource</a>( metadataChecksum.getAbsolutePath(), logicalResource.getPath(), <strong class="jxr_keyword">null</strong>,
@@ -407,7 +407,7 @@
 <a class="jxr_linenumber" name="397" href="#397">397</a>                         {
 <a class="jxr_linenumber" name="398" href="#398">398</a>                             File resourceFile = writeMergedMetadataToFile( mergedMetadata, filePath );
 <a class="jxr_linenumber" name="399" href="#399">399</a> 
-<a class="jxr_linenumber" name="400" href="#400">400</a>                             <a href="../../../../org/apache/archiva/webdav/LogicalResource.html">LogicalResource</a> logicalResource = <strong class="jxr_keyword">new</strong> <a href="../../../../org/apache/archiva/webdav/LogicalResource.html">LogicalResource</a>(
+<a class="jxr_linenumber" name="400" href="#400">400</a>                             <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html">LogicalResource</a> logicalResource = <strong class="jxr_keyword">new</strong> <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html">LogicalResource</a>(
 <a class="jxr_linenumber" name="401" href="#401">401</a>                                 RepositoryPathUtil.getLogicalResource( locator.getResourcePath() ) );
 <a class="jxr_linenumber" name="402" href="#402">402</a> 
 <a class="jxr_linenumber" name="403" href="#403">403</a>                             resource =
@@ -549,7 +549,7 @@
 <a class="jxr_linenumber" name="539" href="#539">539</a>             {
 <a class="jxr_linenumber" name="540" href="#540">540</a>                 path = path.substring( 1 );
 <a class="jxr_linenumber" name="541" href="#541">541</a>             }
-<a class="jxr_linenumber" name="542" href="#542">542</a>             <a href="../../../../org/apache/archiva/webdav/LogicalResource.html">LogicalResource</a> logicalResource = <strong class="jxr_keyword">new</strong> <a href="../../../../org/apache/archiva/webdav/LogicalResource.html">LogicalResource</a>( path );
+<a class="jxr_linenumber" name="542" href="#542">542</a>             <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html">LogicalResource</a> logicalResource = <strong class="jxr_keyword">new</strong> <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html">LogicalResource</a>( path );
 <a class="jxr_linenumber" name="543" href="#543">543</a>             File resourceFile = <strong class="jxr_keyword">new</strong> File( managedRepository.getRepoRoot(), path );
 <a class="jxr_linenumber" name="544" href="#544">544</a>             resource = <strong class="jxr_keyword">new</strong> <a href="../../../../org/apache/archiva/webdav/ArchivaDavResource.html">ArchivaDavResource</a>( resourceFile.getAbsolutePath(), path, managedRepository.getRepository(),
 <a class="jxr_linenumber" name="545" href="#545">545</a>                                                request.getRemoteAddr(), activePrincipal, request.getDavSession(),
@@ -708,7 +708,7 @@
 <a class="jxr_linenumber" name="698" href="#698">698</a>     }
 <a class="jxr_linenumber" name="699" href="#699">699</a> 
 <a class="jxr_linenumber" name="700" href="#700">700</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> fetchContentFromProxies( ManagedRepositoryContent managedRepository, DavServletRequest request,
-<a class="jxr_linenumber" name="701" href="#701">701</a>                                              <a href="../../../../org/apache/archiva/webdav/LogicalResource.html">LogicalResource</a> resource )
+<a class="jxr_linenumber" name="701" href="#701">701</a>                                              <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html">LogicalResource</a> resource )
 <a class="jxr_linenumber" name="702" href="#702">702</a>         <strong class="jxr_keyword">throws</strong> DavException
 <a class="jxr_linenumber" name="703" href="#703">703</a>     {
 <a class="jxr_linenumber" name="704" href="#704">704</a>         String path = resource.getPath();
@@ -929,11 +929,11 @@
 <a class="jxr_linenumber" name="919" href="#919">919</a>         <strong class="jxr_keyword">return</strong> archivaLocator;
 <a class="jxr_linenumber" name="920" href="#920">920</a>     }
 <a class="jxr_linenumber" name="921" href="#921">921</a> 
-<a class="jxr_linenumber" name="922" href="#922">922</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/apache/archiva/webdav/LogicalResource.html">LogicalResource</a>
+<a class="jxr_linenumber" name="922" href="#922">922</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html">LogicalResource</a>
 <a class="jxr_linenumber" name="923" href="#923">923</a>     {
 <a class="jxr_linenumber" name="924" href="#924">924</a>         <strong class="jxr_keyword">private</strong> String path;
 <a class="jxr_linenumber" name="925" href="#925">925</a> 
-<a class="jxr_linenumber" name="926" href="#926">926</a>         <strong class="jxr_keyword">public</strong> <a href="../../../../org/apache/archiva/webdav/LogicalResource.html">LogicalResource</a>( String path )
+<a class="jxr_linenumber" name="926" href="#926">926</a>         <strong class="jxr_keyword">public</strong> <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html">LogicalResource</a>( String path )
 <a class="jxr_linenumber" name="927" href="#927">927</a>         {
 <a class="jxr_linenumber" name="928" href="#928">928</a>             <strong class="jxr_keyword">this</strong>.path = path;
 <a class="jxr_linenumber" name="929" href="#929">929</a>         }
@@ -1012,7 +1012,7 @@
 <a class="jxr_linenumber" name="1002" href="#1002">1002</a>         {
 <a class="jxr_linenumber" name="1003" href="#1003">1003</a>             path = path.substring( 1 );
 <a class="jxr_linenumber" name="1004" href="#1004">1004</a>         }
-<a class="jxr_linenumber" name="1005" href="#1005">1005</a>         <a href="../../../../org/apache/archiva/webdav/LogicalResource.html">LogicalResource</a> logicalResource = <strong class="jxr_keyword">new</strong> <a href="../../../../org/apache/archiva/webdav/LogicalResource.html">LogicalResource</a>( path );
+<a class="jxr_linenumber" name="1005" href="#1005">1005</a>         <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html">LogicalResource</a> logicalResource = <strong class="jxr_keyword">new</strong> <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html">LogicalResource</a>( path );
 <a class="jxr_linenumber" name="1006" href="#1006">1006</a> 
 <a class="jxr_linenumber" name="1007" href="#1007">1007</a>         <em class="jxr_comment">// flow:</em>
 <a class="jxr_linenumber" name="1008" href="#1008">1008</a>         <em class="jxr_comment">// if the current user logged in has permission to any of the repositories, allow user to</em>
