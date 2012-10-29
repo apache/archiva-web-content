@@ -48,8 +48,8 @@
 <a class="jxr_linenumber" name="38" href="#38">38</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.repository.RepositoryException;
 <a class="jxr_linenumber" name="39" href="#39">39</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.<strong class="jxr_keyword">rest</strong>.api.services.ArchivaRestServiceException;
 <a class="jxr_linenumber" name="40" href="#40">40</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.<strong class="jxr_keyword">rest</strong>.services.utils.ArtifactBuilder;
-<a class="jxr_linenumber" name="41" href="#41">41</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.repository.RepositoryArchivaTaskScheduler;
-<a class="jxr_linenumber" name="42" href="#42">42</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.repository.RepositoryTask;
+<a class="jxr_linenumber" name="41" href="#41">41</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.repository.DefaultRepositoryArchivaTaskScheduler;
+<a class="jxr_linenumber" name="42" href="#42">42</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.repository.model.RepositoryTask;
 <a class="jxr_linenumber" name="43" href="#43">43</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.security.AccessDeniedException;
 <a class="jxr_linenumber" name="44" href="#44">44</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.security.ArchivaSecurityException;
 <a class="jxr_linenumber" name="45" href="#45">45</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.security.PrincipalNotFoundException;
@@ -103,7 +103,7 @@
 <a class="jxr_linenumber" name="93" href="#93">93</a>  
 <a class="jxr_linenumber" name="94" href="#94">94</a>      @Inject
 <a class="jxr_linenumber" name="95" href="#95">95</a>      @Named ( value = <span class="jxr_string">"archivaTaskScheduler#repository"</span> )
-<a class="jxr_linenumber" name="96" href="#96">96</a>      <strong class="jxr_keyword">protected</strong> <a href="../../../../../org/apache/archiva/scheduler/repository/RepositoryArchivaTaskScheduler.html">RepositoryArchivaTaskScheduler</a> repositoryTaskScheduler;
+<a class="jxr_linenumber" name="96" href="#96">96</a>      <strong class="jxr_keyword">protected</strong> <a href="../../../../../org/apache/archiva/scheduler/repository/DefaultRepositoryArchivaTaskScheduler.html">DefaultRepositoryArchivaTaskScheduler</a> repositoryTaskScheduler;
 <a class="jxr_linenumber" name="97" href="#97">97</a>  
 <a class="jxr_linenumber" name="98" href="#98">98</a>      @Context
 <a class="jxr_linenumber" name="99" href="#99">99</a>      <strong class="jxr_keyword">protected</strong> HttpServletRequest httpServletRequest;
@@ -297,7 +297,7 @@
 <a class="jxr_linenumber" name="287" href="#287">287</a>             log.info( <span class="jxr_string">"scanning of repository with id {} already scheduled"</span>, repositoryId );
 <a class="jxr_linenumber" name="288" href="#288">288</a>             <strong class="jxr_keyword">return</strong> Boolean.FALSE;
 <a class="jxr_linenumber" name="289" href="#289">289</a>         }
-<a class="jxr_linenumber" name="290" href="#290">290</a>         <a href="../../../../../org/apache/archiva/scheduler/repository/RepositoryTask.html">RepositoryTask</a> task = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/scheduler/repository/RepositoryTask.html">RepositoryTask</a>();
+<a class="jxr_linenumber" name="290" href="#290">290</a>         <a href="../../../../../org/apache/archiva/scheduler/repository/model/RepositoryTask.html">RepositoryTask</a> task = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/scheduler/repository/model/RepositoryTask.html">RepositoryTask</a>();
 <a class="jxr_linenumber" name="291" href="#291">291</a>         task.setRepositoryId( repositoryId );
 <a class="jxr_linenumber" name="292" href="#292">292</a>         task.setScanAll( fullScan );
 <a class="jxr_linenumber" name="293" href="#293">293</a>         <strong class="jxr_keyword">try</strong>

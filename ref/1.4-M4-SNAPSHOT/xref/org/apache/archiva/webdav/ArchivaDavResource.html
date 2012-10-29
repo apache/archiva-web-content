@@ -34,8 +34,8 @@
 <a class="jxr_linenumber" name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.audit.AuditListener;
 <a class="jxr_linenumber" name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.components.taskqueue.TaskQueueException;
 <a class="jxr_linenumber" name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.ArchivaTaskScheduler;
-<a class="jxr_linenumber" name="27" href="#27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.repository.RepositoryArchivaTaskScheduler;
-<a class="jxr_linenumber" name="28" href="#28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.repository.RepositoryTask;
+<a class="jxr_linenumber" name="27" href="#27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.repository.model.RepositoryArchivaTaskScheduler;
+<a class="jxr_linenumber" name="28" href="#28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.repository.model.RepositoryTask;
 <a class="jxr_linenumber" name="29" href="#29">29</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.webdav.util.IndexWriter;
 <a class="jxr_linenumber" name="30" href="#30">30</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.webdav.util.MimeTypes;
 <a class="jxr_linenumber" name="31" href="#31">31</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.io.FileUtils;
@@ -117,7 +117,7 @@
 <a class="jxr_linenumber" name="107" href="#107">107</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../org/apache/archiva/webdav/ArchivaDavResource.html">ArchivaDavResource</a>( String localResource, String logicalResource, ManagedRepository repository,
 <a class="jxr_linenumber" name="108" href="#108">108</a>                                DavSession session, <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html">ArchivaDavResourceLocator</a> locator, DavResourceFactory factory,
 <a class="jxr_linenumber" name="109" href="#109">109</a>                                <a href="../../../../org/apache/archiva/webdav/util/MimeTypes.html">MimeTypes</a> mimeTypes, List&lt;AuditListener&gt; auditListeners,
-<a class="jxr_linenumber" name="110" href="#110">110</a>                                <a href="../../../../org/apache/archiva/scheduler/repository/RepositoryArchivaTaskScheduler.html">RepositoryArchivaTaskScheduler</a> scheduler )
+<a class="jxr_linenumber" name="110" href="#110">110</a>                                <a href="../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html">RepositoryArchivaTaskScheduler</a> scheduler )
 <a class="jxr_linenumber" name="111" href="#111">111</a>     {
 <a class="jxr_linenumber" name="112" href="#112">112</a>         <strong class="jxr_keyword">this</strong>.localResource = <strong class="jxr_keyword">new</strong> File( localResource );
 <a class="jxr_linenumber" name="113" href="#113">113</a>         <strong class="jxr_keyword">this</strong>.logicalResource = logicalResource;
@@ -137,7 +137,7 @@
 <a class="jxr_linenumber" name="127" href="#127">127</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../org/apache/archiva/webdav/ArchivaDavResource.html">ArchivaDavResource</a>( String localResource, String logicalResource, ManagedRepository repository,
 <a class="jxr_linenumber" name="128" href="#128">128</a>                                String remoteAddr, String principal, DavSession session,
 <a class="jxr_linenumber" name="129" href="#129">129</a>                                <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html">ArchivaDavResourceLocator</a> locator, DavResourceFactory factory, <a href="../../../../org/apache/archiva/webdav/util/MimeTypes.html">MimeTypes</a> mimeTypes,
-<a class="jxr_linenumber" name="130" href="#130">130</a>                                List&lt;AuditListener&gt; auditListeners, <a href="../../../../org/apache/archiva/scheduler/repository/RepositoryArchivaTaskScheduler.html">RepositoryArchivaTaskScheduler</a> scheduler )
+<a class="jxr_linenumber" name="130" href="#130">130</a>                                List&lt;AuditListener&gt; auditListeners, <a href="../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html">RepositoryArchivaTaskScheduler</a> scheduler )
 <a class="jxr_linenumber" name="131" href="#131">131</a>     {
 <a class="jxr_linenumber" name="132" href="#132">132</a>         <strong class="jxr_keyword">this</strong>( localResource, logicalResource, repository, session, locator, factory, mimeTypes, auditListeners,
 <a class="jxr_linenumber" name="133" href="#133">133</a>               scheduler );
@@ -681,7 +681,7 @@
 <a class="jxr_linenumber" name="671" href="#671">671</a> 
 <a class="jxr_linenumber" name="672" href="#672">672</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> queueRepositoryTask( File localFile )
 <a class="jxr_linenumber" name="673" href="#673">673</a>     {
-<a class="jxr_linenumber" name="674" href="#674">674</a>         <a href="../../../../org/apache/archiva/scheduler/repository/RepositoryTask.html">RepositoryTask</a> task = <strong class="jxr_keyword">new</strong> <a href="../../../../org/apache/archiva/scheduler/repository/RepositoryTask.html">RepositoryTask</a>();
+<a class="jxr_linenumber" name="674" href="#674">674</a>         <a href="../../../../org/apache/archiva/scheduler/repository/model/RepositoryTask.html">RepositoryTask</a> task = <strong class="jxr_keyword">new</strong> <a href="../../../../org/apache/archiva/scheduler/repository/model/RepositoryTask.html">RepositoryTask</a>();
 <a class="jxr_linenumber" name="675" href="#675">675</a>         task.setRepositoryId( repository.getId() );
 <a class="jxr_linenumber" name="676" href="#676">676</a>         task.setResourceFile( localFile );
 <a class="jxr_linenumber" name="677" href="#677">677</a>         task.setUpdateRelatedArtifacts( false );

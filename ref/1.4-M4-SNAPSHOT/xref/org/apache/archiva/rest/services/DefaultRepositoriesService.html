@@ -43,12 +43,12 @@
 <a class="jxr_linenumber" name="33" href="#33">33</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.maven2.metadata.MavenMetadataReader;
 <a class="jxr_linenumber" name="34" href="#34">34</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.maven2.model.Artifact;
 <a class="jxr_linenumber" name="35" href="#35">35</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.metadata.model.ArtifactMetadata;
-<a class="jxr_linenumber" name="36" href="#36">36</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.metadata.repository.MetadataRepository;
-<a class="jxr_linenumber" name="37" href="#37">37</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.metadata.repository.MetadataRepositoryException;
-<a class="jxr_linenumber" name="38" href="#38">38</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.metadata.repository.MetadataResolutionException;
-<a class="jxr_linenumber" name="39" href="#39">39</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.metadata.repository.RepositorySession;
-<a class="jxr_linenumber" name="40" href="#40">40</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.metadata.repository.RepositorySessionFactory;
-<a class="jxr_linenumber" name="41" href="#41">41</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.metadata.repository.storage.maven2.MavenArtifactFacet;
+<a class="jxr_linenumber" name="36" href="#36">36</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.metadata.model.maven2.MavenArtifactFacet;
+<a class="jxr_linenumber" name="37" href="#37">37</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.metadata.repository.MetadataRepository;
+<a class="jxr_linenumber" name="38" href="#38">38</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.metadata.repository.MetadataRepositoryException;
+<a class="jxr_linenumber" name="39" href="#39">39</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.metadata.repository.MetadataResolutionException;
+<a class="jxr_linenumber" name="40" href="#40">40</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.metadata.repository.RepositorySession;
+<a class="jxr_linenumber" name="41" href="#41">41</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.metadata.repository.RepositorySessionFactory;
 <a class="jxr_linenumber" name="42" href="#42">42</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.model.ArchivaRepositoryMetadata;
 <a class="jxr_linenumber" name="43" href="#43">43</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.model.ArtifactReference;
 <a class="jxr_linenumber" name="44" href="#44">44</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.model.VersionedReference;
@@ -80,7 +80,7 @@
 <a class="jxr_linenumber" name="70" href="#70">70</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.indexing.ArtifactIndexingTask;
 <a class="jxr_linenumber" name="71" href="#71">71</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.indexing.DownloadRemoteIndexException;
 <a class="jxr_linenumber" name="72" href="#72">72</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.indexing.DownloadRemoteIndexScheduler;
-<a class="jxr_linenumber" name="73" href="#73">73</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.repository.RepositoryTask;
+<a class="jxr_linenumber" name="73" href="#73">73</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.repository.model.RepositoryTask;
 <a class="jxr_linenumber" name="74" href="#74">74</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.security.ArchivaSecurityException;
 <a class="jxr_linenumber" name="75" href="#75">75</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.security.common.ArchivaRoleConstants;
 <a class="jxr_linenumber" name="76" href="#76">76</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.xml.XMLException;
@@ -171,7 +171,7 @@
 <a class="jxr_linenumber" name="161" href="#161">161</a> 
 <a class="jxr_linenumber" name="162" href="#162">162</a>     <strong class="jxr_keyword">public</strong> Boolean removeScanningTaskFromQueue( String repositoryId )
 <a class="jxr_linenumber" name="163" href="#163">163</a>     {
-<a class="jxr_linenumber" name="164" href="#164">164</a>         <a href="../../../../../org/apache/archiva/scheduler/repository/RepositoryTask.html">RepositoryTask</a> task = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/scheduler/repository/RepositoryTask.html">RepositoryTask</a>();
+<a class="jxr_linenumber" name="164" href="#164">164</a>         <a href="../../../../../org/apache/archiva/scheduler/repository/model/RepositoryTask.html">RepositoryTask</a> task = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/scheduler/repository/model/RepositoryTask.html">RepositoryTask</a>();
 <a class="jxr_linenumber" name="165" href="#165">165</a>         task.setRepositoryId( repositoryId );
 <a class="jxr_linenumber" name="166" href="#166">166</a>         <strong class="jxr_keyword">try</strong>
 <a class="jxr_linenumber" name="167" href="#167">167</a>         {
@@ -480,7 +480,7 @@
 <a class="jxr_linenumber" name="470" href="#470">470</a> 
 <a class="jxr_linenumber" name="471" href="#471">471</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> queueRepositoryTask( String repositoryId, File localFile )
 <a class="jxr_linenumber" name="472" href="#472">472</a>     {
-<a class="jxr_linenumber" name="473" href="#473">473</a>         <a href="../../../../../org/apache/archiva/scheduler/repository/RepositoryTask.html">RepositoryTask</a> task = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/scheduler/repository/RepositoryTask.html">RepositoryTask</a>();
+<a class="jxr_linenumber" name="473" href="#473">473</a>         <a href="../../../../../org/apache/archiva/scheduler/repository/model/RepositoryTask.html">RepositoryTask</a> task = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/scheduler/repository/model/RepositoryTask.html">RepositoryTask</a>();
 <a class="jxr_linenumber" name="474" href="#474">474</a>         task.setRepositoryId( repositoryId );
 <a class="jxr_linenumber" name="475" href="#475">475</a>         task.setResourceFile( localFile );
 <a class="jxr_linenumber" name="476" href="#476">476</a>         task.setUpdateRelatedArtifacts( <strong class="jxr_keyword">true</strong> );
@@ -872,15 +872,15 @@
 <a class="jxr_linenumber" name="862" href="#862">862</a>                                 <span class="jxr_string">"You must configure a type/packaging when using classifier"</span>, 400, <strong class="jxr_keyword">null</strong> );
 <a class="jxr_linenumber" name="863" href="#863">863</a>                         }
 <a class="jxr_linenumber" name="864" href="#864">864</a>                         <em class="jxr_comment">// cleanup facet which contains classifier information</em>
-<a class="jxr_linenumber" name="865" href="#865">865</a>                         <a href="../../../../../org/apache/archiva/metadata/repository/storage/maven2/MavenArtifactFacet.html">MavenArtifactFacet</a> mavenArtifactFacet =
-<a class="jxr_linenumber" name="866" href="#866">866</a>                             (<a href="../../../../../org/apache/archiva/metadata/repository/storage/maven2/MavenArtifactFacet.html">MavenArtifactFacet</a>) artifactMetadata.getFacet( MavenArtifactFacet.FACET_ID );
+<a class="jxr_linenumber" name="865" href="#865">865</a>                         <a href="../../../../../org/apache/archiva/metadata/model/maven2/MavenArtifactFacet.html">MavenArtifactFacet</a> mavenArtifactFacet =
+<a class="jxr_linenumber" name="866" href="#866">866</a>                             (<a href="../../../../../org/apache/archiva/metadata/model/maven2/MavenArtifactFacet.html">MavenArtifactFacet</a>) artifactMetadata.getFacet( MavenArtifactFacet.FACET_ID );
 <a class="jxr_linenumber" name="867" href="#867">867</a> 
 <a class="jxr_linenumber" name="868" href="#868">868</a>                         <strong class="jxr_keyword">if</strong> ( StringUtils.equals( artifact.getClassifier(), mavenArtifactFacet.getClassifier() ) )
 <a class="jxr_linenumber" name="869" href="#869">869</a>                         {
 <a class="jxr_linenumber" name="870" href="#870">870</a>                             artifactMetadata.removeFacet( MavenArtifactFacet.FACET_ID );
 <a class="jxr_linenumber" name="871" href="#871">871</a>                             String groupId = artifact.getGroupId(), artifactId = artifact.getArtifactId(), version =
 <a class="jxr_linenumber" name="872" href="#872">872</a>                                 artifact.getVersion();
-<a class="jxr_linenumber" name="873" href="#873">873</a>                             <a href="../../../../../org/apache/archiva/metadata/repository/storage/maven2/MavenArtifactFacet.html">MavenArtifactFacet</a> mavenArtifactFacetToCompare = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/metadata/repository/storage/maven2/MavenArtifactFacet.html">MavenArtifactFacet</a>();
+<a class="jxr_linenumber" name="873" href="#873">873</a>                             <a href="../../../../../org/apache/archiva/metadata/model/maven2/MavenArtifactFacet.html">MavenArtifactFacet</a> mavenArtifactFacetToCompare = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/metadata/model/maven2/MavenArtifactFacet.html">MavenArtifactFacet</a>();
 <a class="jxr_linenumber" name="874" href="#874">874</a>                             mavenArtifactFacetToCompare.setClassifier( artifact.getClassifier() );
 <a class="jxr_linenumber" name="875" href="#875">875</a>                             metadataRepository.removeArtifact( repositoryId, groupId, artifactId, version,
 <a class="jxr_linenumber" name="876" href="#876">876</a>                                                                mavenArtifactFacetToCompare );

@@ -142,10 +142,10 @@
 <a class="jxr_linenumber" name="132" href="#132">132</a>             Iterator&lt;String&gt; itExtensions = <strong class="jxr_keyword">this</strong>.extensionRenameMap.keySet().iterator();
 <a class="jxr_linenumber" name="133" href="#133">133</a>             <strong class="jxr_keyword">while</strong> ( itExtensions.hasNext() )
 <a class="jxr_linenumber" name="134" href="#134">134</a>             {
-<a class="jxr_linenumber" name="135" href="#135">135</a>                 String extension = (String) itExtensions.next();
+<a class="jxr_linenumber" name="135" href="#135">135</a>                 String extension = itExtensions.next();
 <a class="jxr_linenumber" name="136" href="#136">136</a>                 <strong class="jxr_keyword">if</strong> ( path.endsWith( extension ) )
 <a class="jxr_linenumber" name="137" href="#137">137</a>                 {
-<a class="jxr_linenumber" name="138" href="#138">138</a>                     String fixedExtension = (String) <strong class="jxr_keyword">this</strong>.extensionRenameMap.get( extension );
+<a class="jxr_linenumber" name="138" href="#138">138</a>                     String fixedExtension = <strong class="jxr_keyword">this</strong>.extensionRenameMap.get( extension );
 <a class="jxr_linenumber" name="139" href="#139">139</a>                     String correctedPath = path.substring( 0, path.length() - extension.length() ) + fixedExtension;
 <a class="jxr_linenumber" name="140" href="#140">140</a>                     File to = <strong class="jxr_keyword">new</strong> File( <strong class="jxr_keyword">this</strong>.repositoryDir, correctedPath );
 <a class="jxr_linenumber" name="141" href="#141">141</a>                     <strong class="jxr_keyword">try</strong>

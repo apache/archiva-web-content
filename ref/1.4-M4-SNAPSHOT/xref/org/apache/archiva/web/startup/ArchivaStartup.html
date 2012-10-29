@@ -33,7 +33,7 @@
 <a class="jxr_linenumber" name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.common.plexusbridge.PlexusSisuBridge;
 <a class="jxr_linenumber" name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.common.plexusbridge.PlexusSisuBridgeException;
 <a class="jxr_linenumber" name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.components.scheduler.DefaultScheduler;
-<a class="jxr_linenumber" name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.repository.RepositoryArchivaTaskScheduler;
+<a class="jxr_linenumber" name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.repository.DefaultRepositoryArchivaTaskScheduler;
 <a class="jxr_linenumber" name="27" href="#27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.maven.index.NexusIndexer;
 <a class="jxr_linenumber" name="28" href="#28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.maven.index.context.IndexingContext;
 <a class="jxr_linenumber" name="29" href="#29">29</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.components.taskqueue.Task;
@@ -62,7 +62,7 @@
 <a class="jxr_linenumber" name="52" href="#52">52</a>  
 <a class="jxr_linenumber" name="53" href="#53">53</a>      <strong class="jxr_keyword">private</strong> ThreadedTaskQueueExecutor tqeIndexing;
 <a class="jxr_linenumber" name="54" href="#54">54</a>  
-<a class="jxr_linenumber" name="55" href="#55">55</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../org/apache/archiva/scheduler/repository/RepositoryArchivaTaskScheduler.html">RepositoryArchivaTaskScheduler</a> repositoryTaskScheduler;
+<a class="jxr_linenumber" name="55" href="#55">55</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../org/apache/archiva/scheduler/repository/DefaultRepositoryArchivaTaskScheduler.html">DefaultRepositoryArchivaTaskScheduler</a> repositoryTaskScheduler;
 <a class="jxr_linenumber" name="56" href="#56">56</a>  
 <a class="jxr_linenumber" name="57" href="#57">57</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridge.html">PlexusSisuBridge</a> plexusSisuBridge;
 <a class="jxr_linenumber" name="58" href="#58">58</a>  
@@ -76,7 +76,7 @@
 <a class="jxr_linenumber" name="66" href="#66">66</a>          <a href="../../../../../org/apache/archiva/web/startup/SecuritySynchronization.html">SecuritySynchronization</a> securitySync = wac.getBean( SecuritySynchronization.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="67" href="#67">67</a>  
 <a class="jxr_linenumber" name="68" href="#68">68</a>          repositoryTaskScheduler =
-<a class="jxr_linenumber" name="69" href="#69">69</a>              wac.getBean( <span class="jxr_string">"archivaTaskScheduler#repository"</span>, RepositoryArchivaTaskScheduler.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="69" href="#69">69</a>              wac.getBean( <span class="jxr_string">"archivaTaskScheduler#repository"</span>, DefaultRepositoryArchivaTaskScheduler.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="70" href="#70">70</a>  
 <a class="jxr_linenumber" name="71" href="#71">71</a>          Properties archivaRuntimeProperties = wac.getBean( <span class="jxr_string">"archivaRuntimeProperties"</span>, Properties.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="72" href="#72">72</a>  

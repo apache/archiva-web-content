@@ -49,8 +49,8 @@
 <a class="jxr_linenumber" name="39" href="#39">39</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.components.taskqueue.TaskQueueException;
 <a class="jxr_linenumber" name="40" href="#40">40</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.role.RoleManager;
 <a class="jxr_linenumber" name="41" href="#41">41</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.role.RoleManagerException;
-<a class="jxr_linenumber" name="42" href="#42">42</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.repository.RepositoryArchivaTaskScheduler;
-<a class="jxr_linenumber" name="43" href="#43">43</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.repository.RepositoryTask;
+<a class="jxr_linenumber" name="42" href="#42">42</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.repository.model.RepositoryArchivaTaskScheduler;
+<a class="jxr_linenumber" name="43" href="#43">43</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.repository.model.RepositoryTask;
 <a class="jxr_linenumber" name="44" href="#44">44</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.security.common.ArchivaRoleConstants;
 <a class="jxr_linenumber" name="45" href="#45">45</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.io.FileUtils;
 <a class="jxr_linenumber" name="46" href="#46">46</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.lang.StringUtils;
@@ -92,7 +92,7 @@
 <a class="jxr_linenumber" name="82" href="#82">82</a>  
 <a class="jxr_linenumber" name="83" href="#83">83</a>      @Inject
 <a class="jxr_linenumber" name="84" href="#84">84</a>      @Named ( value = <span class="jxr_string">"archivaTaskScheduler#repository"</span> )
-<a class="jxr_linenumber" name="85" href="#85">85</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../../org/apache/archiva/scheduler/repository/RepositoryArchivaTaskScheduler.html">RepositoryArchivaTaskScheduler</a> repositoryTaskScheduler;
+<a class="jxr_linenumber" name="85" href="#85">85</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html">RepositoryArchivaTaskScheduler</a> repositoryTaskScheduler;
 <a class="jxr_linenumber" name="86" href="#86">86</a>  
 <a class="jxr_linenumber" name="87" href="#87">87</a>      @Inject
 <a class="jxr_linenumber" name="88" href="#88">88</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html">RepositorySessionFactory</a> repositorySessionFactory;
@@ -692,7 +692,7 @@
 <a class="jxr_linenumber" name="682" href="#682">682</a>         {
 <a class="jxr_linenumber" name="683" href="#683">683</a>             log.info( <span class="jxr_string">"scanning of repository with id {} already scheduled"</span>, repositoryId );
 <a class="jxr_linenumber" name="684" href="#684">684</a>         }
-<a class="jxr_linenumber" name="685" href="#685">685</a>         <a href="../../../../../../org/apache/archiva/scheduler/repository/RepositoryTask.html">RepositoryTask</a> task = <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/apache/archiva/scheduler/repository/RepositoryTask.html">RepositoryTask</a>();
+<a class="jxr_linenumber" name="685" href="#685">685</a>         <a href="../../../../../../org/apache/archiva/scheduler/repository/model/RepositoryTask.html">RepositoryTask</a> task = <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/apache/archiva/scheduler/repository/model/RepositoryTask.html">RepositoryTask</a>();
 <a class="jxr_linenumber" name="686" href="#686">686</a>         task.setRepositoryId( repositoryId );
 <a class="jxr_linenumber" name="687" href="#687">687</a>         task.setScanAll( fullScan );
 <a class="jxr_linenumber" name="688" href="#688">688</a>         <strong class="jxr_keyword">try</strong>
@@ -780,7 +780,7 @@
 <a class="jxr_linenumber" name="770" href="#770">770</a>     }
 <a class="jxr_linenumber" name="771" href="#771">771</a> 
 <a class="jxr_linenumber" name="772" href="#772">772</a> 
-<a class="jxr_linenumber" name="773" href="#773">773</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/apache/archiva/scheduler/repository/RepositoryArchivaTaskScheduler.html">RepositoryArchivaTaskScheduler</a> getRepositoryTaskScheduler()
+<a class="jxr_linenumber" name="773" href="#773">773</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html">RepositoryArchivaTaskScheduler</a> getRepositoryTaskScheduler()
 <a class="jxr_linenumber" name="774" href="#774">774</a>     {
 <a class="jxr_linenumber" name="775" href="#775">775</a>         <strong class="jxr_keyword">return</strong> repositoryTaskScheduler;
 <a class="jxr_linenumber" name="776" href="#776">776</a>     }
