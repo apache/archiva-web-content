@@ -40351,8 +40351,35 @@
 <parameter name="targetPath" type="java.lang.String">
 </parameter>
 </method>
+<method name="transferArtifact"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+<parameter name="wagon" type="org.apache.maven.wagon.Wagon">
+</parameter>
+<parameter name="remoteRepository" type="org.apache.archiva.repository.RemoteRepositoryContent">
+</parameter>
+<parameter name="remotePath" type="java.lang.String">
+</parameter>
+<parameter name="repository" type="org.apache.archiva.repository.ManagedRepositoryContent">
+</parameter>
+<parameter name="resource" type="java.io.File">
+</parameter>
+<parameter name="tmpDirectory" type="java.io.File">
+</parameter>
+<parameter name="destFile" type="java.io.File">
+</parameter>
+<exception name="ProxyException" type="org.apache.archiva.proxy.ProxyException">
+</exception>
+</method>
 <method name="transferChecksum"
- return="java.io.File"
+ return="void"
  abstract="false"
  native="false"
  synchronized="false"
@@ -40374,6 +40401,8 @@
 <parameter name="tmpDirectory" type="java.io.File">
 </parameter>
 <parameter name="ext" type="java.lang.String">
+</parameter>
+<parameter name="destFile" type="java.io.File">
 </parameter>
 <exception name="ProxyException" type="org.apache.archiva.proxy.ProxyException">
 </exception>
@@ -40401,6 +40430,43 @@
 <parameter name="requestProperties" type="java.util.Properties">
 </parameter>
 <parameter name="executeConsumers" type="boolean">
+</parameter>
+<exception name="NotModifiedException" type="org.apache.archiva.proxy.NotModifiedException">
+</exception>
+<exception name="ProxyException" type="org.apache.archiva.proxy.ProxyException">
+</exception>
+<exception name="RepositoryAdminException" type="org.apache.archiva.admin.model.RepositoryAdminException">
+</exception>
+</method>
+<method name="transferResources"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+<parameter name="connector" type="org.apache.archiva.proxy.model.ProxyConnector">
+</parameter>
+<parameter name="remoteRepository" type="org.apache.archiva.repository.RemoteRepositoryContent">
+</parameter>
+<parameter name="tmpMd5" type="java.io.File">
+</parameter>
+<parameter name="tmpSha1" type="java.io.File">
+</parameter>
+<parameter name="tmpResource" type="java.io.File">
+</parameter>
+<parameter name="url" type="java.lang.String">
+</parameter>
+<parameter name="remotePath" type="java.lang.String">
+</parameter>
+<parameter name="resource" type="java.io.File">
+</parameter>
+<parameter name="workingDirectory" type="java.io.File">
+</parameter>
+<parameter name="repository" type="org.apache.archiva.repository.ManagedRepositoryContent">
 </parameter>
 <exception name="NotModifiedException" type="org.apache.archiva.proxy.NotModifiedException">
 </exception>
@@ -41041,6 +41107,17 @@
  visibility="public"
 >
 </method>
+<method name="getNetworkProxy"
+ return="org.apache.archiva.admin.model.beans.NetworkProxy"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getProtocol"
  return="java.lang.String"
  abstract="false"
@@ -41076,6 +41153,19 @@
 <parameter name="headers" type="java.util.Map&lt;java.lang.String, java.lang.String&gt;">
 </parameter>
 </method>
+<method name="networkProxy"
+ return="org.apache.archiva.proxy.common.WagonFactoryRequest"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="networkProxy" type="org.apache.archiva.admin.model.beans.NetworkProxy">
+</parameter>
+</method>
 <method name="protocol"
  return="org.apache.archiva.proxy.common.WagonFactoryRequest"
  abstract="false"
@@ -41100,6 +41190,19 @@
  visibility="public"
 >
 <parameter name="headers" type="java.util.Map&lt;java.lang.String, java.lang.String&gt;">
+</parameter>
+</method>
+<method name="setNetworkProxy"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="networkProxy" type="org.apache.archiva.admin.model.beans.NetworkProxy">
 </parameter>
 </method>
 <method name="setProtocol"
@@ -41143,6 +41246,16 @@
 </method>
 <field name="headers"
  type="java.util.Map"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="networkProxy"
+ type="org.apache.archiva.admin.model.beans.NetworkProxy"
  transient="false"
  volatile="false"
  static="false"
@@ -63823,86 +63936,6 @@
 </field>
 </class>
 </package>
-<package name="org.apache.archiva.web.spring"
->
-<class name="RepositoryListenerFactoryBean"
- extends="java.lang.Object"
- abstract="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<constructor name="RepositoryListenerFactoryBean"
- type="org.apache.archiva.web.spring.RepositoryListenerFactoryBean"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</constructor>
-<method name="getObject"
- return="java.lang.Object"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<exception name="Exception" type="java.lang.Exception">
-</exception>
-</method>
-<method name="getObjectType"
- return="java.lang.Class&lt;java.util.List&gt;"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
-<method name="isSingleton"
- return="boolean"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
-<method name="setApplicationContext"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="applicationContext" type="org.springframework.context.ApplicationContext">
-</parameter>
-<exception name="BeansException" type="org.springframework.beans.BeansException">
-</exception>
-</method>
-<field name="applicationContext"
- type="org.springframework.context.ApplicationContext"
- transient="false"
- volatile="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="private"
->
-</field>
-</class>
-</package>
 <package name="org.apache.archiva.web.startup"
 >
 <class name="ArchivaStartup"
@@ -65207,23 +65240,6 @@
 <parameter name="listener" type="org.apache.archiva.audit.AuditListener">
 </parameter>
 </method>
-<method name="applyServerSideRelocation"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="protected"
->
-<parameter name="managedRepository" type="org.apache.archiva.repository.ManagedRepositoryContent">
-</parameter>
-<parameter name="artifact" type="org.apache.archiva.model.ArtifactReference">
-</parameter>
-<exception name="ProxyDownloadException" type="org.apache.archiva.policies.ProxyDownloadException">
-</exception>
-</method>
 <method name="buildMergedIndexDirectory"
  return="java.io.File"
  abstract="false"
@@ -65675,16 +65691,6 @@
  transient="false"
  volatile="false"
  value="&quot;PUT&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="private"
->
-</field>
-<field name="MAVEN_XPP_3_READER"
- type="org.apache.maven.model.io.xpp3.MavenXpp3Reader"
- transient="false"
- volatile="false"
  static="true"
  final="true"
  deprecated="not deprecated"
@@ -66255,7 +66261,7 @@
 </parameter>
 </method>
 <field name="lockTokens"
- type="java.util.HashSet"
+ type="java.util.Set"
  transient="false"
  volatile="false"
  static="false"

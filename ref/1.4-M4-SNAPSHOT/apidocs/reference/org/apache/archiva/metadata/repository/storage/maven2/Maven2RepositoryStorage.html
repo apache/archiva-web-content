@@ -331,8 +331,6 @@
     <li class="api apilevel-">
   <a href="../../../../../../../org/apache/archiva/web/runtime/package-summary.html">org.apache.archiva.web.runtime</a></li>
     <li class="api apilevel-">
-  <a href="../../../../../../../org/apache/archiva/web/spring/package-summary.html">org.apache.archiva.web.spring</a></li>
-    <li class="api apilevel-">
   <a href="../../../../../../../org/apache/archiva/web/startup/package-summary.html">org.apache.archiva.web.startup</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../../org/apache/archiva/webdav/package-summary.html">org.apache.archiva.webdav</a></li>
@@ -839,6 +837,9 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../../org/apache/archiva/metadata/repository/storage/maven2/Maven2RepositoryStorage.html#applyServerSideRelocation(org.apache.archiva.repository.ManagedRepositoryContent, org.apache.archiva.model.ArtifactReference)">applyServerSideRelocation</a></span>(<a href="../../../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html">ManagedRepositoryContent</a> managedRepository, <a href="../../../../../../../org/apache/archiva/model/ArtifactReference.html">ArtifactReference</a> artifact)</nobr>
         
+        <div class="jd-descrdiv">A relocation capable client will request the POM prior to the artifact, and will then read meta-data and do
+ client side relocation.</div>
+  
   </td></tr>
 
 
@@ -1917,7 +1918,13 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>A relocation capable client will request the POM prior to the artifact, and will then read meta-data and do
+ client side relocation. A simplier client (like maven 1) will only request the artifact and not use the
+ metadatas.
+ <p/>
+ For such clients, archiva does server-side relocation by reading itself the &lt;relocation&gt; element in
+ metadatas and serving the expected artifact.
+</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  

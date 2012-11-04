@@ -244,8 +244,6 @@ var NAVTREE_DATA =
 , "" ] ]
 , "" ], [ "org.apache.archiva.web.runtime", "org/apache/archiva/web/runtime/package-summary.html", [ [ "Classes", null, [ [ "ArchivaRuntimeInfo", "org/apache/archiva/web/runtime/ArchivaRuntimeInfo.html", null, "" ] ]
 , "" ] ]
-, "" ], [ "org.apache.archiva.web.spring", "org/apache/archiva/web/spring/package-summary.html", [ [ "Classes", null, [ [ "RepositoryListenerFactoryBean", "org/apache/archiva/web/spring/RepositoryListenerFactoryBean.html", null, "" ] ]
-, "" ] ]
 , "" ], [ "org.apache.archiva.web.startup", "org/apache/archiva/web/startup/package-summary.html", [ [ "Classes", null, [ [ "ArchivaStartup", "org/apache/archiva/web/startup/ArchivaStartup.html", null, "" ], [ "Banner", "org/apache/archiva/web/startup/Banner.html", null, "" ], [ "SecuritySynchronization", "org/apache/archiva/web/startup/SecuritySynchronization.html", null, "" ] ]
 , "" ] ]
 , "" ], [ "org.apache.archiva.webdav", "org/apache/archiva/webdav/package-summary.html", [ [ "Interfaces", null, [ [ "RepositoryLocator", "org/apache/archiva/webdav/RepositoryLocator.html", null, "" ] ]
