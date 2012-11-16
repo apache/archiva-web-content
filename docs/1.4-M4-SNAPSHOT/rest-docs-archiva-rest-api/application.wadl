@@ -1200,6 +1200,19 @@
         <wadl:request/>
       </wadl:method>
     </wadl:resource>
+    <wadl:resource path="/restServices/repositoriesService/project/{repositoryId}/{groupId}/{projectId}">
+      <wadl:param name="groupId" style="template"/>
+      <wadl:param name="projectId" style="template"/>
+      <wadl:param name="repositoryId" style="template"/>
+      <wadl:method name="DELETE">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
     <wadl:resource path="/restServices/browseService/metadata/{g}/{a}/{v}/{key}">
       <wadl:param name="g" style="template"/>
       <wadl:param name="a" style="template"/>
@@ -1211,6 +1224,20 @@
         </wadl:request>
         <wadl:response>
           <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoriesService/projectVersion/{repositoryId}/{namespace}/{projectId}/{version}">
+      <wadl:param name="repositoryId" style="template"/>
+      <wadl:param name="namespace" style="template"/>
+      <wadl:param name="projectId" style="template"/>
+      <wadl:param name="version" style="template"/>
+      <wadl:method name="DELETE">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
           <wadl:representation mediaType="application/json"/>
         </wadl:response>
       </wadl:method>
