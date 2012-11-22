@@ -182,7 +182,7 @@
 >
 <parameter name="authenticated" type="boolean">
 </parameter>
-<parameter name="principal" type="java.lang.Object">
+<parameter name="principal" type="java.lang.String">
 </parameter>
 <parameter name="exception" type="java.lang.Exception">
 </parameter>
@@ -196,7 +196,7 @@
 >
 <parameter name="authenticated" type="boolean">
 </parameter>
-<parameter name="principal" type="java.lang.Object">
+<parameter name="principal" type="java.lang.String">
 </parameter>
 <parameter name="exception" type="java.lang.Exception">
 </parameter>
@@ -226,7 +226,18 @@
 >
 </method>
 <method name="getPrincipal"
- return="java.lang.Object"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getUser"
+ return="org.apache.archiva.redback.users.User"
  abstract="false"
  native="false"
  synchronized="false"
@@ -246,6 +257,32 @@
  deprecated="not deprecated"
  visibility="public"
 >
+</method>
+<method name="setUser"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="user" type="org.apache.archiva.redback.users.User">
+</parameter>
+</method>
+<method name="user"
+ return="org.apache.archiva.redback.authentication.AuthenticationResult"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="user" type="org.apache.archiva.redback.users.User">
+</parameter>
 </method>
 </class>
 <interface name="Authenticator"
@@ -28277,6 +28314,16 @@
 <exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
 </exception>
 </method>
+<field name="logger"
+ type="org.slf4j.Logger"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
 </class>
 <class name="AbstractRbacManagerTestCase"
  extends="junit.framework.TestCase"
@@ -28844,6 +28891,16 @@
  final="false"
  deprecated="not deprecated"
  visibility="public"
+>
+</field>
+<field name="logger"
+ type="org.slf4j.Logger"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
 >
 </field>
 <field name="removedPermissionNames"
