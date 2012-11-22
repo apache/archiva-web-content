@@ -110,7 +110,7 @@
 <a class="jxr_linenumber" name="100" href="#100">100</a> 
 <a class="jxr_linenumber" name="101" href="#101">101</a>             <em class="jxr_comment">// Lookup password for presented username</em>
 <a class="jxr_linenumber" name="102" href="#102">102</a>             <a href="../../../../../../../../org/apache/archiva/redback/users/User.html">User</a> user = findUser( digestHeader.username );
-<a class="jxr_linenumber" name="103" href="#103">103</a>             authDataSource.setPrincipal( user.getPrincipal().toString() );
+<a class="jxr_linenumber" name="103" href="#103">103</a>             authDataSource.setPrincipal( user.getUsername() );
 <a class="jxr_linenumber" name="104" href="#104">104</a> 
 <a class="jxr_linenumber" name="105" href="#105">105</a>             String serverSideHash = generateDigestHash( digestHeader, user.getPassword(), request.getMethod() );
 <a class="jxr_linenumber" name="106" href="#106">106</a> 

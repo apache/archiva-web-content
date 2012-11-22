@@ -207,7 +207,7 @@
 <a class="jxr_linenumber" name="197" href="#197">197</a>         }
 <a class="jxr_linenumber" name="198" href="#198">198</a>         <strong class="jxr_keyword">try</strong>
 <a class="jxr_linenumber" name="199" href="#199">199</a>         {
-<a class="jxr_linenumber" name="200" href="#200">200</a>             roleManager.assignRole( RedbackRoleConstants.REGISTERED_USER_ROLE_ID, u.getPrincipal().toString() );
+<a class="jxr_linenumber" name="200" href="#200">200</a>             roleManager.assignRole( RedbackRoleConstants.REGISTERED_USER_ROLE_ID, u.getUsername() );
 <a class="jxr_linenumber" name="201" href="#201">201</a>         }
 <a class="jxr_linenumber" name="202" href="#202">202</a>         <strong class="jxr_keyword">catch</strong> ( RoleManagerException rpe )
 <a class="jxr_linenumber" name="203" href="#203">203</a>         {
@@ -427,7 +427,7 @@
 <a class="jxr_linenumber" name="417" href="#417">417</a>             org.apache.archiva.redback.users.User user = userManager.createGuestUser();
 <a class="jxr_linenumber" name="418" href="#418">418</a>             user.setPasswordChangeRequired( false );
 <a class="jxr_linenumber" name="419" href="#419">419</a>             user = userManager.updateUser( user, false );
-<a class="jxr_linenumber" name="420" href="#420">420</a>             roleManager.assignRole( <span class="jxr_string">"guest"</span>, user.getPrincipal().toString() );
+<a class="jxr_linenumber" name="420" href="#420">420</a>             roleManager.assignRole( <span class="jxr_string">"guest"</span>, user.getUsername() );
 <a class="jxr_linenumber" name="421" href="#421">421</a>             <strong class="jxr_keyword">return</strong> getSimpleUser( user );
 <a class="jxr_linenumber" name="422" href="#422">422</a>         }
 <a class="jxr_linenumber" name="423" href="#423">423</a>         <strong class="jxr_keyword">catch</strong> ( RoleManagerException e )
@@ -488,7 +488,7 @@
 <a class="jxr_linenumber" name="478" href="#478">478</a> 
 <a class="jxr_linenumber" name="479" href="#479">479</a>         <strong class="jxr_keyword">try</strong>
 <a class="jxr_linenumber" name="480" href="#480">480</a>         {
-<a class="jxr_linenumber" name="481" href="#481">481</a>             roleManager.assignRole( <span class="jxr_string">"system-administrator"</span>, user.getPrincipal().toString() );
+<a class="jxr_linenumber" name="481" href="#481">481</a>             roleManager.assignRole( <span class="jxr_string">"system-administrator"</span>, user.getUsername() );
 <a class="jxr_linenumber" name="482" href="#482">482</a>         }
 <a class="jxr_linenumber" name="483" href="#483">483</a>         <strong class="jxr_keyword">catch</strong> ( RoleManagerException e )
 <a class="jxr_linenumber" name="484" href="#484">484</a>         {
@@ -594,7 +594,7 @@
 <a class="jxr_linenumber" name="584" href="#584">584</a> 
 <a class="jxr_linenumber" name="585" href="#585">585</a>         <strong class="jxr_keyword">try</strong>
 <a class="jxr_linenumber" name="586" href="#586">586</a>         {
-<a class="jxr_linenumber" name="587" href="#587">587</a>             roleManager.assignRole( RedbackRoleConstants.REGISTERED_USER_ROLE_ID, u.getPrincipal().toString() );
+<a class="jxr_linenumber" name="587" href="#587">587</a>             roleManager.assignRole( RedbackRoleConstants.REGISTERED_USER_ROLE_ID, u.getUsername() );
 <a class="jxr_linenumber" name="588" href="#588">588</a>         }
 <a class="jxr_linenumber" name="589" href="#589">589</a>         <strong class="jxr_keyword">catch</strong> ( RoleManagerException rpe )
 <a class="jxr_linenumber" name="590" href="#590">590</a>         {
@@ -609,7 +609,7 @@
 <a class="jxr_linenumber" name="599" href="#599">599</a>             <strong class="jxr_keyword">try</strong>
 <a class="jxr_linenumber" name="600" href="#600">600</a>             {
 <a class="jxr_linenumber" name="601" href="#601">601</a>                 <a href="../../../../../../org/apache/archiva/redback/keys/AuthenticationKey.html">AuthenticationKey</a> authkey =
-<a class="jxr_linenumber" name="602" href="#602">602</a>                     securitySystem.getKeyManager().createKey( u.getPrincipal().toString(), <span class="jxr_string">"New User Email Validation"</span>,
+<a class="jxr_linenumber" name="602" href="#602">602</a>                     securitySystem.getKeyManager().createKey( u.getUsername(), <span class="jxr_string">"New User Email Validation"</span>,
 <a class="jxr_linenumber" name="603" href="#603">603</a>                                                               securityPolicy.getUserValidationSettings().getEmailValidationTimeout() );
 <a class="jxr_linenumber" name="604" href="#604">604</a> 
 <a class="jxr_linenumber" name="605" href="#605">605</a>                 String baseUrl = userRegistrationRequest.getApplicationUrl();
@@ -668,7 +668,7 @@
 <a class="jxr_linenumber" name="658" href="#658">658</a>             user.setPasswordChangeRequired( <strong class="jxr_keyword">true</strong> );
 <a class="jxr_linenumber" name="659" href="#659">659</a>             user.setEncodedPassword( <span class="jxr_string">""</span> );
 <a class="jxr_linenumber" name="660" href="#660">660</a> 
-<a class="jxr_linenumber" name="661" href="#661">661</a>             principal = user.getPrincipal().toString();
+<a class="jxr_linenumber" name="661" href="#661">661</a>             principal = user.getUsername();
 <a class="jxr_linenumber" name="662" href="#662">662</a> 
 <a class="jxr_linenumber" name="663" href="#663">663</a>             <a href="../../../../../../org/apache/archiva/redback/authentication/TokenBasedAuthenticationDataSource.html">TokenBasedAuthenticationDataSource</a> authsource = <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/apache/archiva/redback/authentication/TokenBasedAuthenticationDataSource.html">TokenBasedAuthenticationDataSource</a>();
 <a class="jxr_linenumber" name="664" href="#664">664</a>             authsource.setPrincipal( principal );

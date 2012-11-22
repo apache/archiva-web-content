@@ -1066,11 +1066,11 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="principal" type="java.lang.Object">
+<parameter name="principal" type="java.lang.String">
 </parameter>
 <parameter name="user" type="org.apache.archiva.redback.users.User">
 </parameter>
-<parameter name="permission" type="java.lang.Object">
+<parameter name="permission" type="java.lang.String">
 </parameter>
 </constructor>
 <constructor name="AuthorizationDataSource"
@@ -1080,17 +1080,17 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="principal" type="java.lang.Object">
+<parameter name="principal" type="java.lang.String">
 </parameter>
 <parameter name="user" type="org.apache.archiva.redback.users.User">
 </parameter>
-<parameter name="permission" type="java.lang.Object">
+<parameter name="permission" type="java.lang.String">
 </parameter>
-<parameter name="resource" type="java.lang.Object">
+<parameter name="resource" type="java.lang.String">
 </parameter>
 </constructor>
 <method name="getPermission"
- return="java.lang.Object"
+ return="java.lang.String"
  abstract="false"
  native="false"
  synchronized="false"
@@ -1101,7 +1101,7 @@
 >
 </method>
 <method name="getPrincipal"
- return="java.lang.Object"
+ return="java.lang.String"
  abstract="false"
  native="false"
  synchronized="false"
@@ -1112,7 +1112,7 @@
 >
 </method>
 <method name="getResource"
- return="java.lang.Object"
+ return="java.lang.String"
  abstract="false"
  native="false"
  synchronized="false"
@@ -1143,7 +1143,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="permission" type="java.lang.Object">
+<parameter name="permission" type="java.lang.String">
 </parameter>
 </method>
 <method name="setPrincipal"
@@ -1169,7 +1169,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="resource" type="java.lang.Object">
+<parameter name="resource" type="java.lang.String">
 </parameter>
 </method>
 <method name="setUser"
@@ -1962,17 +1962,6 @@
 </method>
 <method name="getPreviousEncodedPasswords"
  return="java.util.List&lt;java.lang.String&gt;"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
-<method name="getPrincipal"
- return="java.lang.Object"
  abstract="false"
  native="false"
  synchronized="false"
@@ -6246,202 +6235,6 @@
 <parameter name="username" type="java.lang.String">
 </parameter>
 </method>
-</class>
-</package>
-<package name="org.apache.archiva.redback.integration.role"
->
-<class name="RoleConstants"
- extends="java.lang.Object"
- abstract="false"
- static="false"
- final="false"
- deprecated="deprecated"
- visibility="public"
->
-<constructor name="RoleConstants"
- type="org.apache.archiva.redback.integration.role.RoleConstants"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</constructor>
-<field name="ADMINISTRATOR_ACCOUNT_NAME"
- type="java.lang.String"
- transient="false"
- volatile="false"
- value="&quot;admin&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="public"
->
-</field>
-<field name="CONFIGURATION_EDIT_OPERATION"
- type="java.lang.String"
- transient="false"
- volatile="false"
- value="&quot;configuration-edit&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="public"
->
-</field>
-<field name="GUEST_ACCESS_OPERATION"
- type="java.lang.String"
- transient="false"
- volatile="false"
- value="&quot;guest-access&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="public"
->
-</field>
-<field name="GUEST_ROLE"
- type="java.lang.String"
- transient="false"
- volatile="false"
- value="&quot;Guest&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="public"
->
-</field>
-<field name="REGISTERED_USER_ROLE"
- type="java.lang.String"
- transient="false"
- volatile="false"
- value="&quot;Registered User&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="public"
->
-</field>
-<field name="SYSTEM_ADMINISTRATOR_ROLE"
- type="java.lang.String"
- transient="false"
- volatile="false"
- value="&quot;System Administrator&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="public"
->
-</field>
-<field name="USER_ADMINISTRATOR_ROLE"
- type="java.lang.String"
- transient="false"
- volatile="false"
- value="&quot;User Administrator&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="public"
->
-</field>
-<field name="USER_MANAGEMENT_MANAGE_DATA"
- type="java.lang.String"
- transient="false"
- volatile="false"
- value="&quot;user-management-manage-data&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="public"
->
-</field>
-<field name="USER_MANAGEMENT_RBAC_ADMIN_OPERATION"
- type="java.lang.String"
- transient="false"
- volatile="false"
- value="&quot;user-management-rbac-admin&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="public"
->
-</field>
-<field name="USER_MANAGEMENT_ROLE_DROP_OPERATION"
- type="java.lang.String"
- transient="false"
- volatile="false"
- value="&quot;user-management-role-drop&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="public"
->
-</field>
-<field name="USER_MANAGEMENT_ROLE_GRANT_OPERATION"
- type="java.lang.String"
- transient="false"
- volatile="false"
- value="&quot;user-management-role-grant&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="public"
->
-</field>
-<field name="USER_MANAGEMENT_USER_CREATE_OPERATION"
- type="java.lang.String"
- transient="false"
- volatile="false"
- value="&quot;user-management-user-create&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="public"
->
-</field>
-<field name="USER_MANAGEMENT_USER_DELETE_OPERATION"
- type="java.lang.String"
- transient="false"
- volatile="false"
- value="&quot;user-management-user-delete&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="public"
->
-</field>
-<field name="USER_MANAGEMENT_USER_EDIT_OPERATION"
- type="java.lang.String"
- transient="false"
- volatile="false"
- value="&quot;user-management-user-edit&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="public"
->
-</field>
-<field name="USER_MANAGEMENT_USER_LIST_OPERATION"
- type="java.lang.String"
- transient="false"
- volatile="false"
- value="&quot;user-management-user-list&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="public"
->
-</field>
-<field name="USER_MANAGEMENT_USER_ROLE_OPERATION"
- type="java.lang.String"
- transient="false"
- volatile="false"
- value="&quot;user-management-user-role&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="public"
->
-</field>
 </class>
 </package>
 <package name="org.apache.archiva.redback.integration.security.role"
@@ -27607,7 +27400,7 @@
 >
 <parameter name="session" type="org.apache.archiva.redback.system.SecuritySession">
 </parameter>
-<parameter name="permission" type="java.lang.Object">
+<parameter name="permission" type="java.lang.String">
 </parameter>
 <exception name="AuthorizationException" type="org.apache.archiva.redback.authorization.AuthorizationException">
 </exception>
@@ -27624,9 +27417,9 @@
 >
 <parameter name="session" type="org.apache.archiva.redback.system.SecuritySession">
 </parameter>
-<parameter name="permission" type="java.lang.Object">
+<parameter name="permission" type="java.lang.String">
 </parameter>
-<parameter name="resource" type="java.lang.Object">
+<parameter name="resource" type="java.lang.String">
 </parameter>
 <exception name="AuthorizationException" type="org.apache.archiva.redback.authorization.AuthorizationException">
 </exception>
@@ -27785,7 +27578,7 @@
 >
 <parameter name="session" type="org.apache.archiva.redback.system.SecuritySession">
 </parameter>
-<parameter name="permission" type="java.lang.Object">
+<parameter name="permission" type="java.lang.String">
 </parameter>
 <exception name="AuthorizationException" type="org.apache.archiva.redback.authorization.AuthorizationException">
 </exception>
@@ -27802,9 +27595,9 @@
 >
 <parameter name="session" type="org.apache.archiva.redback.system.SecuritySession">
 </parameter>
-<parameter name="permission" type="java.lang.Object">
+<parameter name="permission" type="java.lang.String">
 </parameter>
-<parameter name="resource" type="java.lang.Object">
+<parameter name="resource" type="java.lang.String">
 </parameter>
 <exception name="AuthorizationException" type="org.apache.archiva.redback.authorization.AuthorizationException">
 </exception>
@@ -27978,7 +27771,7 @@
 >
 <parameter name="session" type="org.apache.archiva.redback.system.SecuritySession">
 </parameter>
-<parameter name="permission" type="java.lang.Object">
+<parameter name="permission" type="java.lang.String">
 </parameter>
 <exception name="AuthorizationException" type="org.apache.archiva.redback.authorization.AuthorizationException">
 </exception>
@@ -27995,9 +27788,9 @@
 >
 <parameter name="session" type="org.apache.archiva.redback.system.SecuritySession">
 </parameter>
-<parameter name="permission" type="java.lang.Object">
+<parameter name="permission" type="java.lang.String">
 </parameter>
-<parameter name="resource" type="java.lang.Object">
+<parameter name="resource" type="java.lang.String">
 </parameter>
 <exception name="AuthorizationException" type="org.apache.archiva.redback.authorization.AuthorizationException">
 </exception>
@@ -28101,7 +27894,7 @@
 >
 <parameter name="session" type="org.apache.archiva.redback.system.SecuritySession">
 </parameter>
-<parameter name="permission" type="java.lang.Object">
+<parameter name="permission" type="java.lang.String">
 </parameter>
 <exception name="AuthorizationException" type="org.apache.archiva.redback.authorization.AuthorizationException">
 </exception>
@@ -28118,9 +27911,9 @@
 >
 <parameter name="session" type="org.apache.archiva.redback.system.SecuritySession">
 </parameter>
-<parameter name="permission" type="java.lang.Object">
+<parameter name="permission" type="java.lang.String">
 </parameter>
-<parameter name="resource" type="java.lang.Object">
+<parameter name="resource" type="java.lang.String">
 </parameter>
 <exception name="AuthorizationException" type="org.apache.archiva.redback.authorization.AuthorizationException">
 </exception>
@@ -29491,17 +29284,6 @@
 </method>
 <method name="getPreviousEncodedPasswords"
  return="java.util.List&lt;java.lang.String&gt;"
- abstract="true"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
-<method name="getPrincipal"
- return="java.lang.Object"
  abstract="true"
  native="false"
  synchronized="false"
@@ -31361,17 +31143,6 @@
 </method>
 <method name="getPreviousEncodedPasswords"
  return="java.util.List"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
-<method name="getPrincipal"
- return="java.lang.Object"
  abstract="false"
  native="false"
  synchronized="false"
@@ -33972,17 +33743,6 @@
 </method>
 <method name="getPreviousEncodedPasswords"
  return="java.util.List&lt;java.lang.String&gt;"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
-<method name="getPrincipal"
- return="java.lang.Object"
  abstract="false"
  native="false"
  synchronized="false"

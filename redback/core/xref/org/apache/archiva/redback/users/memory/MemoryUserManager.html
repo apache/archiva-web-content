@@ -144,7 +144,7 @@
 <a class="jxr_linenumber" name="134" href="#134">134</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> saveUser( User user )
 <a class="jxr_linenumber" name="135" href="#135">135</a>     {
 <a class="jxr_linenumber" name="136" href="#136">136</a>         triggerInit();
-<a class="jxr_linenumber" name="137" href="#137">137</a>         users.put( user.getPrincipal(), user );
+<a class="jxr_linenumber" name="137" href="#137">137</a>         users.put( user.getUsername(), user );
 <a class="jxr_linenumber" name="138" href="#138">138</a>     }
 <a class="jxr_linenumber" name="139" href="#139">139</a> 
 <a class="jxr_linenumber" name="140" href="#140">140</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/apache/archiva/redback/users/User.html">User</a> updateUser( User user )
@@ -219,7 +219,7 @@
 <a class="jxr_linenumber" name="209" href="#209">209</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/apache/archiva/redback/users/PermanentUserException.html">PermanentUserException</a>( <span class="jxr_string">"Cannot delete permanent user."</span> );
 <a class="jxr_linenumber" name="210" href="#210">210</a>         }
 <a class="jxr_linenumber" name="211" href="#211">211</a> 
-<a class="jxr_linenumber" name="212" href="#212">212</a>         users.remove( user.getPrincipal() );
+<a class="jxr_linenumber" name="212" href="#212">212</a>         users.remove( user.getUsername() );
 <a class="jxr_linenumber" name="213" href="#213">213</a> 
 <a class="jxr_linenumber" name="214" href="#214">214</a>         fireUserManagerUserRemoved( user );
 <a class="jxr_linenumber" name="215" href="#215">215</a>     }

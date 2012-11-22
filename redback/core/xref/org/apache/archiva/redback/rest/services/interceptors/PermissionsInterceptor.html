@@ -29,16 +29,16 @@
 <a class="jxr_linenumber" name="19" href="#19">19</a>  <em class="jxr_comment"> * under the License.</em>
 <a class="jxr_linenumber" name="20" href="#20">20</a>  <em class="jxr_comment"> */</em>
 <a class="jxr_linenumber" name="21" href="#21">21</a>  
-<a class="jxr_linenumber" name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.lang.StringUtils;
-<a class="jxr_linenumber" name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.cxf.jaxrs.ext.RequestHandler;
-<a class="jxr_linenumber" name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> org.apache.cxf.jaxrs.model.ClassResourceInfo;
-<a class="jxr_linenumber" name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.cxf.message.Message;
-<a class="jxr_linenumber" name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.authentication.AuthenticationResult;
-<a class="jxr_linenumber" name="27" href="#27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.authorization.AuthorizationException;
-<a class="jxr_linenumber" name="28" href="#28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.authorization.RedbackAuthorization;
-<a class="jxr_linenumber" name="29" href="#29">29</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.system.SecuritySession;
-<a class="jxr_linenumber" name="30" href="#30">30</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.system.SecuritySystem;
-<a class="jxr_linenumber" name="31" href="#31">31</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.integration.filter.authentication.basic.HttpBasicAuthentication;
+<a class="jxr_linenumber" name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.authentication.AuthenticationResult;
+<a class="jxr_linenumber" name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.authorization.AuthorizationException;
+<a class="jxr_linenumber" name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.authorization.RedbackAuthorization;
+<a class="jxr_linenumber" name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.integration.filter.authentication.basic.HttpBasicAuthentication;
+<a class="jxr_linenumber" name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.system.SecuritySession;
+<a class="jxr_linenumber" name="27" href="#27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.system.SecuritySystem;
+<a class="jxr_linenumber" name="28" href="#28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.lang.StringUtils;
+<a class="jxr_linenumber" name="29" href="#29">29</a>  <strong class="jxr_keyword">import</strong> org.apache.cxf.jaxrs.ext.RequestHandler;
+<a class="jxr_linenumber" name="30" href="#30">30</a>  <strong class="jxr_keyword">import</strong> org.apache.cxf.jaxrs.model.ClassResourceInfo;
+<a class="jxr_linenumber" name="31" href="#31">31</a>  <strong class="jxr_keyword">import</strong> org.apache.cxf.message.Message;
 <a class="jxr_linenumber" name="32" href="#32">32</a>  <strong class="jxr_keyword">import</strong> org.slf4j.Logger;
 <a class="jxr_linenumber" name="33" href="#33">33</a>  <strong class="jxr_keyword">import</strong> org.slf4j.LoggerFactory;
 <a class="jxr_linenumber" name="34" href="#34">34</a>  <strong class="jxr_keyword">import</strong> org.springframework.stereotype.Service;
@@ -52,18 +52,18 @@
 <a class="jxr_linenumber" name="42" href="#42">42</a>  <em class="jxr_javadoccomment"> * @author Olivier Lamy</em>
 <a class="jxr_linenumber" name="43" href="#43">43</a>  <em class="jxr_javadoccomment"> * @since 1.3</em>
 <a class="jxr_linenumber" name="44" href="#44">44</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="45" href="#45">45</a>  @Service( <span class="jxr_string">"permissionInterceptor#rest"</span> )
+<a class="jxr_linenumber" name="45" href="#45">45</a>  @Service (<span class="jxr_string">"permissionInterceptor#rest"</span>)
 <a class="jxr_linenumber" name="46" href="#46">46</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../../org/apache/archiva/redback/rest/services/interceptors/PermissionsInterceptor.html">PermissionsInterceptor</a>
 <a class="jxr_linenumber" name="47" href="#47">47</a>      <strong class="jxr_keyword">extends</strong> <a href="../../../../../../../org/apache/archiva/redback/rest/services/interceptors/AbstractInterceptor.html">AbstractInterceptor</a>
 <a class="jxr_linenumber" name="48" href="#48">48</a>      <strong class="jxr_keyword">implements</strong> RequestHandler
 <a class="jxr_linenumber" name="49" href="#49">49</a>  {
 <a class="jxr_linenumber" name="50" href="#50">50</a>  
 <a class="jxr_linenumber" name="51" href="#51">51</a>      @Inject
-<a class="jxr_linenumber" name="52" href="#52">52</a>      @Named( value = <span class="jxr_string">"securitySystem"</span> )
+<a class="jxr_linenumber" name="52" href="#52">52</a>      @Named (value = <span class="jxr_string">"securitySystem"</span>)
 <a class="jxr_linenumber" name="53" href="#53">53</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../../../org/apache/archiva/redback/system/SecuritySystem.html">SecuritySystem</a> securitySystem;
 <a class="jxr_linenumber" name="54" href="#54">54</a>  
 <a class="jxr_linenumber" name="55" href="#55">55</a>      @Inject
-<a class="jxr_linenumber" name="56" href="#56">56</a>      @Named( value = <span class="jxr_string">"httpAuthenticator#basic"</span> )
+<a class="jxr_linenumber" name="56" href="#56">56</a>      @Named (value = <span class="jxr_string">"httpAuthenticator#basic"</span>)
 <a class="jxr_linenumber" name="57" href="#57">57</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../../../org/apache/archiva/redback/integration/filter/authentication/basic/HttpBasicAuthentication.html">HttpBasicAuthentication</a> httpAuthenticator;
 <a class="jxr_linenumber" name="58" href="#58">58</a>  
 <a class="jxr_linenumber" name="59" href="#59">59</a>      <strong class="jxr_keyword">private</strong> Logger log = LoggerFactory.getLogger( getClass() );
@@ -106,7 +106,7 @@
 <a class="jxr_linenumber" name="96" href="#96">96</a>                              }
 <a class="jxr_linenumber" name="97" href="#97">97</a>                              <strong class="jxr_keyword">else</strong>
 <a class="jxr_linenumber" name="98" href="#98">98</a>                              {
-<a class="jxr_linenumber" name="99" href="#99">99</a>                                  log.debug( <span class="jxr_string">"user {} not authorized for permission {}"</span>, session.getUser().getPrincipal(),
+<a class="jxr_linenumber" name="99" href="#99">99</a>                                  log.debug( <span class="jxr_string">"user {} not authorized for permission {}"</span>, session.getUser().getUsername(),
 <a class="jxr_linenumber" name="100" href="#100">100</a>                                            permission );
 <a class="jxr_linenumber" name="101" href="#101">101</a>                             }
 <a class="jxr_linenumber" name="102" href="#102">102</a>                         }
