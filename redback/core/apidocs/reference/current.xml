@@ -21277,6 +21277,17 @@
  visibility="public"
 >
 </method>
+<method name="isReadOnly"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="isValidated"
  return="boolean"
  abstract="false"
@@ -21403,6 +21414,19 @@
  visibility="public"
 >
 <parameter name="previousPassword" type="java.lang.String">
+</parameter>
+</method>
+<method name="setReadOnly"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="readOnly" type="boolean">
 </parameter>
 </method>
 <method name="setTimestampAccountCreation"
@@ -27667,6 +27691,17 @@
 <parameter name="userManager" type="org.apache.archiva.redback.users.UserManager">
 </parameter>
 </method>
+<method name="userManagerReadOnly"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 </class>
 <interface name="SecuritySession"
  abstract="true"
@@ -27917,6 +27952,17 @@
 </parameter>
 <exception name="AuthorizationException" type="org.apache.archiva.redback.authorization.AuthorizationException">
 </exception>
+</method>
+<method name="userManagerReadOnly"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
 </method>
 </interface>
 <class name="SecuritySystemConstants"
@@ -28862,6 +28908,17 @@
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
+<method name="initialize"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="removeUserManagerListener"
  return="void"
  abstract="false"
@@ -29793,6 +29850,17 @@
 <parameter name="orderAscending" type="boolean">
 </parameter>
 </method>
+<method name="initialize"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="isReadOnly"
  return="boolean"
  abstract="true"
@@ -30544,6 +30612,17 @@
  visibility="public"
 >
 </method>
+<method name="initialize"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="isReadOnly"
  return="boolean"
  abstract="false"
@@ -30703,6 +30782,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<implements name="org.apache.archiva.redback.users.UserManager">
+</implements>
 <constructor name="ConfigurableUserManager"
  type="org.apache.archiva.redback.users.configurable.ConfigurableUserManager"
  static="false"
@@ -30928,17 +31009,6 @@
 >
 <parameter name="orderAscending" type="boolean">
 </parameter>
-</method>
-<method name="initialize"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
 </method>
 <method name="isReadOnly"
  return="boolean"
@@ -31679,17 +31749,6 @@
 <parameter name="orderAscending" type="boolean">
 </parameter>
 </method>
-<method name="initialize"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
 <method name="isReadOnly"
  return="boolean"
  abstract="false"
@@ -32385,6 +32444,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<implements name="org.apache.archiva.redback.users.UserManager">
+</implements>
 <constructor name="LdapUserManager"
  type="org.apache.archiva.redback.users.ldap.LdapUserManager"
  static="false"

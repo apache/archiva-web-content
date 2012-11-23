@@ -154,7 +154,7 @@
 <a class="jxr_linenumber" name="144" href="#144">144</a>         String finalFilter = <span class="jxr_string">"(&amp;(objectClass="</span> + mapper.getUserObjectClass() + <span class="jxr_string">")"</span> +
 <a class="jxr_linenumber" name="145" href="#145">145</a>             ( mapper.getUserFilter() != <strong class="jxr_keyword">null</strong> ? mapper.getUserFilter() : <span class="jxr_string">""</span> ) + query.getLdapFilter(mapper) + <span class="jxr_string">")"</span>;
 <a class="jxr_linenumber" name="146" href="#146">146</a> 
-<a class="jxr_linenumber" name="147" href="#147">147</a>         log.info( <span class="jxr_string">"Searching for users with filter: \'{}\'"</span> + <span class="jxr_string">" from base dn: {}"</span>,finalFilter, mapper.getUserBaseDn() );
+<a class="jxr_linenumber" name="147" href="#147">147</a>         log.debug( <span class="jxr_string">"Searching for users with filter: '{}'"</span> + <span class="jxr_string">" from base dn: {}"</span>,finalFilter, mapper.getUserBaseDn() );
 <a class="jxr_linenumber" name="148" href="#148">148</a> 
 <a class="jxr_linenumber" name="149" href="#149">149</a>         <strong class="jxr_keyword">return</strong> context.search( mapper.getUserBaseDn(), finalFilter, ctls );
 <a class="jxr_linenumber" name="150" href="#150">150</a>     }
@@ -267,47 +267,50 @@
 <a class="jxr_linenumber" name="257" href="#257">257</a>     {
 <a class="jxr_linenumber" name="258" href="#258">258</a>         String username = key.toString();
 <a class="jxr_linenumber" name="259" href="#259">259</a> 
-<a class="jxr_linenumber" name="260" href="#260">260</a>         log.info( <span class="jxr_string">"Searching for user: {}"</span>, username );
-<a class="jxr_linenumber" name="261" href="#261">261</a>         <a href="../../../../../../../org/apache/archiva/redback/users/ldap/LdapUserQuery.html">LdapUserQuery</a> query = <strong class="jxr_keyword">new</strong> <a href="../../../../../../../org/apache/archiva/redback/users/ldap/LdapUserQuery.html">LdapUserQuery</a>();
-<a class="jxr_linenumber" name="262" href="#262">262</a>         query.setUsername( username );
-<a class="jxr_linenumber" name="263" href="#263">263</a> 
-<a class="jxr_linenumber" name="264" href="#264">264</a>         NamingEnumeration&lt;SearchResult&gt; result = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="265" href="#265">265</a>         <strong class="jxr_keyword">try</strong>
-<a class="jxr_linenumber" name="266" href="#266">266</a>         {
-<a class="jxr_linenumber" name="267" href="#267">267</a>             result = searchUsers( context, <strong class="jxr_keyword">null</strong>, query );
-<a class="jxr_linenumber" name="268" href="#268">268</a> 
-<a class="jxr_linenumber" name="269" href="#269">269</a>             <strong class="jxr_keyword">if</strong> ( result.hasMoreElements() )
-<a class="jxr_linenumber" name="270" href="#270">270</a>             {
-<a class="jxr_linenumber" name="271" href="#271">271</a>                 SearchResult next = result.nextElement();
-<a class="jxr_linenumber" name="272" href="#272">272</a> 
-<a class="jxr_linenumber" name="273" href="#273">273</a>                 <strong class="jxr_keyword">return</strong> mapper.getUser( next.getAttributes() );
-<a class="jxr_linenumber" name="274" href="#274">274</a>             }
-<a class="jxr_linenumber" name="275" href="#275">275</a>             <strong class="jxr_keyword">else</strong>
-<a class="jxr_linenumber" name="276" href="#276">276</a>             {
-<a class="jxr_linenumber" name="277" href="#277">277</a>                 <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="278" href="#278">278</a>             }
-<a class="jxr_linenumber" name="279" href="#279">279</a>         }
-<a class="jxr_linenumber" name="280" href="#280">280</a>         <strong class="jxr_keyword">catch</strong> ( NamingException e )
-<a class="jxr_linenumber" name="281" href="#281">281</a>         {
-<a class="jxr_linenumber" name="282" href="#282">282</a>             String message = <span class="jxr_string">"Failed to retrieve information for user: "</span> + username;
-<a class="jxr_linenumber" name="283" href="#283">283</a> 
-<a class="jxr_linenumber" name="284" href="#284">284</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../../org/apache/archiva/redback/users/ldap/ctl/LdapControllerException.html">LdapControllerException</a>( message, e );
-<a class="jxr_linenumber" name="285" href="#285">285</a>         }
-<a class="jxr_linenumber" name="286" href="#286">286</a>         <strong class="jxr_keyword">finally</strong>
-<a class="jxr_linenumber" name="287" href="#287">287</a>         {
-<a class="jxr_linenumber" name="288" href="#288">288</a>             <strong class="jxr_keyword">if</strong> ( result != <strong class="jxr_keyword">null</strong> )
-<a class="jxr_linenumber" name="289" href="#289">289</a>                 <strong class="jxr_keyword">try</strong>
-<a class="jxr_linenumber" name="290" href="#290">290</a>                 {
-<a class="jxr_linenumber" name="291" href="#291">291</a>                     result.close();
-<a class="jxr_linenumber" name="292" href="#292">292</a>                 }
-<a class="jxr_linenumber" name="293" href="#293">293</a>                 <strong class="jxr_keyword">catch</strong> ( NamingException e )
-<a class="jxr_linenumber" name="294" href="#294">294</a>                 {
-<a class="jxr_linenumber" name="295" href="#295">295</a>                     log.warn( <span class="jxr_string">"failed to close search results"</span>, e );
-<a class="jxr_linenumber" name="296" href="#296">296</a>                 }
-<a class="jxr_linenumber" name="297" href="#297">297</a>         }
-<a class="jxr_linenumber" name="298" href="#298">298</a>     }
-<a class="jxr_linenumber" name="299" href="#299">299</a> 
-<a class="jxr_linenumber" name="300" href="#300">300</a> }
+<a class="jxr_linenumber" name="260" href="#260">260</a>         log.debug( <span class="jxr_string">"Searching for user: {}"</span>, username );
+<a class="jxr_linenumber" name="261" href="#261">261</a> 
+<a class="jxr_linenumber" name="262" href="#262">262</a>         <a href="../../../../../../../org/apache/archiva/redback/users/ldap/LdapUserQuery.html">LdapUserQuery</a> query = <strong class="jxr_keyword">new</strong> <a href="../../../../../../../org/apache/archiva/redback/users/ldap/LdapUserQuery.html">LdapUserQuery</a>();
+<a class="jxr_linenumber" name="263" href="#263">263</a>         query.setUsername( username );
+<a class="jxr_linenumber" name="264" href="#264">264</a> 
+<a class="jxr_linenumber" name="265" href="#265">265</a>         NamingEnumeration&lt;SearchResult&gt; result = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="266" href="#266">266</a>         <strong class="jxr_keyword">try</strong>
+<a class="jxr_linenumber" name="267" href="#267">267</a>         {
+<a class="jxr_linenumber" name="268" href="#268">268</a>             result = searchUsers( context, <strong class="jxr_keyword">null</strong>, query );
+<a class="jxr_linenumber" name="269" href="#269">269</a> 
+<a class="jxr_linenumber" name="270" href="#270">270</a>             <strong class="jxr_keyword">if</strong> ( result.hasMoreElements() )
+<a class="jxr_linenumber" name="271" href="#271">271</a>             {
+<a class="jxr_linenumber" name="272" href="#272">272</a>                 SearchResult next = result.nextElement();
+<a class="jxr_linenumber" name="273" href="#273">273</a> 
+<a class="jxr_linenumber" name="274" href="#274">274</a>                 log.info( <span class="jxr_string">"Found user: {}"</span>, username );
+<a class="jxr_linenumber" name="275" href="#275">275</a> 
+<a class="jxr_linenumber" name="276" href="#276">276</a>                 <strong class="jxr_keyword">return</strong> mapper.getUser( next.getAttributes() );
+<a class="jxr_linenumber" name="277" href="#277">277</a>             }
+<a class="jxr_linenumber" name="278" href="#278">278</a>             <strong class="jxr_keyword">else</strong>
+<a class="jxr_linenumber" name="279" href="#279">279</a>             {
+<a class="jxr_linenumber" name="280" href="#280">280</a>                 <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="281" href="#281">281</a>             }
+<a class="jxr_linenumber" name="282" href="#282">282</a>         }
+<a class="jxr_linenumber" name="283" href="#283">283</a>         <strong class="jxr_keyword">catch</strong> ( NamingException e )
+<a class="jxr_linenumber" name="284" href="#284">284</a>         {
+<a class="jxr_linenumber" name="285" href="#285">285</a>             String message = <span class="jxr_string">"Failed to retrieve information for user: "</span> + username;
+<a class="jxr_linenumber" name="286" href="#286">286</a> 
+<a class="jxr_linenumber" name="287" href="#287">287</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../../org/apache/archiva/redback/users/ldap/ctl/LdapControllerException.html">LdapControllerException</a>( message, e );
+<a class="jxr_linenumber" name="288" href="#288">288</a>         }
+<a class="jxr_linenumber" name="289" href="#289">289</a>         <strong class="jxr_keyword">finally</strong>
+<a class="jxr_linenumber" name="290" href="#290">290</a>         {
+<a class="jxr_linenumber" name="291" href="#291">291</a>             <strong class="jxr_keyword">if</strong> ( result != <strong class="jxr_keyword">null</strong> )
+<a class="jxr_linenumber" name="292" href="#292">292</a>                 <strong class="jxr_keyword">try</strong>
+<a class="jxr_linenumber" name="293" href="#293">293</a>                 {
+<a class="jxr_linenumber" name="294" href="#294">294</a>                     result.close();
+<a class="jxr_linenumber" name="295" href="#295">295</a>                 }
+<a class="jxr_linenumber" name="296" href="#296">296</a>                 <strong class="jxr_keyword">catch</strong> ( NamingException e )
+<a class="jxr_linenumber" name="297" href="#297">297</a>                 {
+<a class="jxr_linenumber" name="298" href="#298">298</a>                     log.warn( <span class="jxr_string">"failed to close search results"</span>, e );
+<a class="jxr_linenumber" name="299" href="#299">299</a>                 }
+<a class="jxr_linenumber" name="300" href="#300">300</a>         }
+<a class="jxr_linenumber" name="301" href="#301">301</a>     }
+<a class="jxr_linenumber" name="302" href="#302">302</a> 
+<a class="jxr_linenumber" name="303" href="#303">303</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>
