@@ -61,14 +61,14 @@
                 <li><a href="el_ns0_metadataAddRequest.html">metadataAddRequest element</a></li>
                 <li><a href="el_ns0_mailingList.html">mailingList element</a></li>
                 <li><a href="el_ns0_cacheEntry.html">cacheEntry element</a></li>
-                <li><a href="el_ns0_stringList.html">stringList element</a></li>
                 <li><a href="el_ns0_managedRepository.html">managedRepository element</a></li>
+                <li><a href="el_ns0_stringList.html">stringList element</a></li>
                 <li><a href="el_ns0_ciManagement.html">ciManagement element</a></li>
                 <li><a href="el_ns0_versionsList.html">versionsList element</a></li>
                 <li><a href="el_ns0_organisationInformation.html">organisationInformation element</a></li>
+                <li><a href="el_ns0_searchRequest.html">searchRequest element</a></li>
                 <li><a href="el_ns0_groupIdList.html">groupIdList element</a></li>
                 <li><a href="el_ns0_networkConfiguration.html">networkConfiguration element</a></li>
-                <li><a href="el_ns0_searchRequest.html">searchRequest element</a></li>
                 <li><a href="el_ns0_issueManagement.html">issueManagement element</a></li>
                 <li><a href="el_ns0_uiConfiguration.html">uiConfiguration element</a></li>
                 <li><a href="el_ns0_policyInformation.html">policyInformation element</a></li>
@@ -91,9 +91,11 @@
                 <li><a href="el_ns0_projectVersionMetadata.html">projectVersionMetadata element</a></li>
                 <li><a href="el_ns0_adminRepositoryConsumer.html">adminRepositoryConsumer element</a></li>
                 <li><a href="el_ns0_dependency.html">dependency element</a></li>
+                <li><a href="el_ns0_userManagerImplementationInformation.html">userManagerImplementationInformation element</a></li>
                 <li><a href="el_ns0_queueEntry.html">queueEntry element</a></li>
                 <li><a href="el_ns0_browseResult.html">browseResult element</a></li>
                 <li><a href="el_ns0_artifactContentEntry.html">artifactContentEntry element</a></li>
+                <li><a href="el_ns0_archivaRuntimeConfiguration.html">archivaRuntimeConfiguration element</a></li>
                 <li><a href="el_ns0_license.html">license element</a></li>
                 <li><a href="el_ns0_organization.html">organization element</a></li>
                 <li><a href="el_ns0_remoteRepository.html">remoteRepository element</a></li>
@@ -137,11 +139,6 @@
     &lt;/entry&gt;
     &lt;!--...more entries...--&gt;
   &lt;/extraParameters&gt;
-  &lt;downloadRemoteIndexOnStartup&gt;...&lt;/downloadRemoteIndexOnStartup&gt;
-  &lt;downloadRemoteIndex&gt;...&lt;/downloadRemoteIndex&gt;
-  &lt;cronExpression&gt;...&lt;/cronExpression&gt;
-  &lt;url&gt;...&lt;/url&gt;
-  &lt;remoteDownloadTimeout&gt;...&lt;/remoteDownloadTimeout&gt;
   &lt;extraHeadersEntries&gt;
     &lt;value&gt;...&lt;/value&gt;
     &lt;key&gt;...&lt;/key&gt;
@@ -150,7 +147,6 @@
     &lt;!--...--&gt;
   &lt;/extraHeadersEntries&gt;
   &lt;!--...more &quot;extraHeadersEntries&quot; elements...--&gt;
-  &lt;remoteIndexUrl&gt;...&lt;/remoteIndexUrl&gt;
   &lt;extraParametersEntries&gt;
     &lt;value&gt;...&lt;/value&gt;
     &lt;key&gt;...&lt;/key&gt;
@@ -159,10 +155,11 @@
     &lt;!--...--&gt;
   &lt;/extraParametersEntries&gt;
   &lt;!--...more &quot;extraParametersEntries&quot; elements...--&gt;
-  &lt;password&gt;...&lt;/password&gt;
-  &lt;remoteDownloadNetworkProxyId&gt;...&lt;/remoteDownloadNetworkProxyId&gt;
+  &lt;url&gt;...&lt;/url&gt;
   &lt;userName&gt;...&lt;/userName&gt;
+  &lt;downloadRemoteIndexOnStartup&gt;...&lt;/downloadRemoteIndexOnStartup&gt;
   &lt;timeout&gt;...&lt;/timeout&gt;
+  &lt;remoteDownloadTimeout&gt;...&lt;/remoteDownloadTimeout&gt;
   &lt;extraHeaders&gt;
     &lt;entry&gt;
       &lt;key&gt;...&lt;/key&gt;
@@ -178,11 +175,16 @@
     &lt;/entry&gt;
     &lt;!--...more entries...--&gt;
   &lt;/extraHeaders&gt;
+  &lt;remoteDownloadNetworkProxyId&gt;...&lt;/remoteDownloadNetworkProxyId&gt;
+  &lt;downloadRemoteIndex&gt;...&lt;/downloadRemoteIndex&gt;
+  &lt;remoteIndexUrl&gt;...&lt;/remoteIndexUrl&gt;
+  &lt;password&gt;...&lt;/password&gt;
+  &lt;cronExpression&gt;...&lt;/cronExpression&gt;
+  &lt;description&gt;...&lt;/description&gt;
   &lt;layout&gt;...&lt;/layout&gt;
   &lt;name&gt;...&lt;/name&gt;
-  &lt;indexDirectory&gt;...&lt;/indexDirectory&gt;
   &lt;id&gt;...&lt;/id&gt;
-  &lt;description&gt;...&lt;/description&gt;
+  &lt;indexDirectory&gt;...&lt;/indexDirectory&gt;
 &lt;/remoteRepository&gt;</code>
       <h2>Example JSON</h2>
       <code class="prettyprint lang-js">{
@@ -190,33 +192,33 @@
     &quot;...&quot; : ...
   }, {
   } ],
-  &quot;downloadRemoteIndexOnStartup&quot; : false,
-  &quot;downloadRemoteIndex&quot; : false,
-  &quot;cronExpression&quot; : &quot;...&quot;,
-  &quot;url&quot; : &quot;...&quot;,
-  &quot;remoteDownloadTimeout&quot; : ...,
   &quot;extraHeadersEntries&quot; : [ {
     &quot;value&quot; : &quot;...&quot;,
     &quot;key&quot; : &quot;...&quot;
   }, ... ],
-  &quot;remoteIndexUrl&quot; : &quot;...&quot;,
   &quot;extraParametersEntries&quot; : [ {
     &quot;value&quot; : &quot;...&quot;,
     &quot;key&quot; : &quot;...&quot;
   }, ... ],
-  &quot;password&quot; : &quot;...&quot;,
-  &quot;remoteDownloadNetworkProxyId&quot; : &quot;...&quot;,
+  &quot;url&quot; : &quot;...&quot;,
   &quot;userName&quot; : &quot;...&quot;,
+  &quot;downloadRemoteIndexOnStartup&quot; : false,
   &quot;timeout&quot; : ...,
+  &quot;remoteDownloadTimeout&quot; : ...,
   &quot;extraHeaders&quot; : [ {
     &quot;...&quot; : ...
   }, {
   } ],
+  &quot;remoteDownloadNetworkProxyId&quot; : &quot;...&quot;,
+  &quot;downloadRemoteIndex&quot; : false,
+  &quot;remoteIndexUrl&quot; : &quot;...&quot;,
+  &quot;password&quot; : &quot;...&quot;,
+  &quot;cronExpression&quot; : &quot;...&quot;,
+  &quot;description&quot; : &quot;...&quot;,
   &quot;layout&quot; : &quot;...&quot;,
   &quot;name&quot; : &quot;...&quot;,
-  &quot;indexDirectory&quot; : &quot;...&quot;,
   &quot;id&quot; : &quot;...&quot;,
-  &quot;description&quot; : &quot;...&quot;
+  &quot;indexDirectory&quot; : &quot;...&quot;
 }</code>
 
       <div class="clear" />
