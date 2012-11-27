@@ -3943,7 +3943,7 @@
 </package>
 <package name="org.apache.archiva.redback.configuration"
 >
-<class name="UserConfiguration"
+<class name="DefaultUserConfiguration"
  extends="java.lang.Object"
  abstract="false"
  static="false"
@@ -3951,8 +3951,10 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<constructor name="UserConfiguration"
- type="org.apache.archiva.redback.configuration.UserConfiguration"
+<implements name="org.apache.archiva.redback.configuration.UserConfiguration">
+</implements>
+<constructor name="DefaultUserConfiguration"
+ type="org.apache.archiva.redback.configuration.DefaultUserConfiguration"
  static="false"
  final="false"
  deprecated="not deprecated"
@@ -4143,6 +4145,139 @@
 >
 </field>
 </class>
+<interface name="UserConfiguration"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="getBoolean"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.String">
+</parameter>
+</method>
+<method name="getBoolean"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.String">
+</parameter>
+<parameter name="defaultValue" type="boolean">
+</parameter>
+</method>
+<method name="getConcatenatedList"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.String">
+</parameter>
+<parameter name="defaultValue" type="java.lang.String">
+</parameter>
+</method>
+<method name="getInt"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.String">
+</parameter>
+</method>
+<method name="getInt"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.String">
+</parameter>
+<parameter name="defaultValue" type="int">
+</parameter>
+</method>
+<method name="getList"
+ return="java.util.List&lt;java.lang.String&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.String">
+</parameter>
+</method>
+<method name="getString"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.String">
+</parameter>
+</method>
+<method name="getString"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.String">
+</parameter>
+<parameter name="defaultValue" type="java.lang.String">
+</parameter>
+</method>
+<method name="initialize"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="RegistryException" type="org.apache.archiva.redback.components.registry.RegistryException">
+</exception>
+</method>
+</interface>
 </package>
 <package name="org.apache.archiva.redback.integration"
 >
