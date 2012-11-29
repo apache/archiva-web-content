@@ -73,7 +73,7 @@
 <a class="jxr_linenumber" name="63" href="#63">63</a>      {
 <a class="jxr_linenumber" name="64" href="#64">64</a>          User user = auditInformation == <strong class="jxr_keyword">null</strong> ? <strong class="jxr_keyword">null</strong> : auditInformation.getUser();
 <a class="jxr_linenumber" name="65" href="#65">65</a>          <a href="../../../../../org/apache/archiva/audit/AuditEvent.html">AuditEvent</a> event =
-<a class="jxr_linenumber" name="66" href="#66">66</a>              <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/audit/AuditEvent.html">AuditEvent</a>( repositoryId, user == <strong class="jxr_keyword">null</strong> ? <span class="jxr_string">"null"</span> : (String) user.getPrincipal(), resource, action );
+<a class="jxr_linenumber" name="66" href="#66">66</a>              <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/audit/AuditEvent.html">AuditEvent</a>( repositoryId, user == <strong class="jxr_keyword">null</strong> ? <span class="jxr_string">"null"</span> : user.getUsername(), resource, action );
 <a class="jxr_linenumber" name="67" href="#67">67</a>          event.setRemoteIP( auditInformation == <strong class="jxr_keyword">null</strong> ? <span class="jxr_string">"null"</span> : auditInformation.getRemoteAddr() );
 <a class="jxr_linenumber" name="68" href="#68">68</a>  
 <a class="jxr_linenumber" name="69" href="#69">69</a>          <strong class="jxr_keyword">for</strong> ( AuditListener listener : getAuditListeners() )
