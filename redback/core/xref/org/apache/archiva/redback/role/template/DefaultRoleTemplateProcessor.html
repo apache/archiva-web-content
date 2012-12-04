@@ -75,9 +75,9 @@
 <a class="jxr_linenumber" name="65" href="#65">65</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> create( RedbackRoleModel model, String templateId, String resource )
 <a class="jxr_linenumber" name="66" href="#66">66</a>          <strong class="jxr_keyword">throws</strong> <a href="../../../../../../org/apache/archiva/redback/role/RoleManagerException.html">RoleManagerException</a>
 <a class="jxr_linenumber" name="67" href="#67">67</a>      {
-<a class="jxr_linenumber" name="68" href="#68">68</a>          <strong class="jxr_keyword">for</strong> ( ModelApplication application : (List&lt;ModelApplication&gt;) model.getApplications() )
+<a class="jxr_linenumber" name="68" href="#68">68</a>          <strong class="jxr_keyword">for</strong> ( ModelApplication application : model.getApplications() )
 <a class="jxr_linenumber" name="69" href="#69">69</a>          {
-<a class="jxr_linenumber" name="70" href="#70">70</a>              <strong class="jxr_keyword">for</strong> ( ModelTemplate template : (List&lt;ModelTemplate&gt;) application.getTemplates() )
+<a class="jxr_linenumber" name="70" href="#70">70</a>              <strong class="jxr_keyword">for</strong> ( ModelTemplate template : application.getTemplates() )
 <a class="jxr_linenumber" name="71" href="#71">71</a>              {
 <a class="jxr_linenumber" name="72" href="#72">72</a>                  <strong class="jxr_keyword">if</strong> ( templateId.equals( template.getId() ) )
 <a class="jxr_linenumber" name="73" href="#73">73</a>                  {
@@ -99,9 +99,9 @@
 <a class="jxr_linenumber" name="89" href="#89">89</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> remove( RedbackRoleModel model, String templateId, String resource )
 <a class="jxr_linenumber" name="90" href="#90">90</a>          <strong class="jxr_keyword">throws</strong> <a href="../../../../../../org/apache/archiva/redback/role/RoleManagerException.html">RoleManagerException</a>
 <a class="jxr_linenumber" name="91" href="#91">91</a>      {
-<a class="jxr_linenumber" name="92" href="#92">92</a>          <strong class="jxr_keyword">for</strong> ( ModelApplication application : (List&lt;ModelApplication&gt;) model.getApplications() )
+<a class="jxr_linenumber" name="92" href="#92">92</a>          <strong class="jxr_keyword">for</strong> ( ModelApplication application : model.getApplications() )
 <a class="jxr_linenumber" name="93" href="#93">93</a>          {
-<a class="jxr_linenumber" name="94" href="#94">94</a>              <strong class="jxr_keyword">for</strong> ( ModelTemplate template : (List&lt;ModelTemplate&gt;) application.getTemplates() )
+<a class="jxr_linenumber" name="94" href="#94">94</a>              <strong class="jxr_keyword">for</strong> ( ModelTemplate template : application.getTemplates() )
 <a class="jxr_linenumber" name="95" href="#95">95</a>              {
 <a class="jxr_linenumber" name="96" href="#96">96</a>                  <strong class="jxr_keyword">if</strong> ( templateId.equals( template.getId() ) )
 <a class="jxr_linenumber" name="97" href="#97">97</a>                  {

@@ -65,7 +65,7 @@
 <a class="jxr_linenumber" name="55" href="#55">55</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.users.jdo.UserDatabase;
 <a class="jxr_linenumber" name="56" href="#56">56</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.users.jdo.io.stax.UsersManagementStaxReader;
 <a class="jxr_linenumber" name="57" href="#57">57</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.users.jdo.io.stax.UsersManagementStaxWriter;
-<a class="jxr_linenumber" name="58" href="#58">58</a>  <strong class="jxr_keyword">import</strong> org.codehaus.plexus.util.IOUtil;
+<a class="jxr_linenumber" name="58" href="#58">58</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.io.IOUtils;
 <a class="jxr_linenumber" name="59" href="#59">59</a>  <strong class="jxr_keyword">import</strong> org.springframework.stereotype.Service;
 <a class="jxr_linenumber" name="60" href="#60">60</a>  
 <a class="jxr_linenumber" name="61" href="#61">61</a>  <em class="jxr_javadoccomment">/**</em>
@@ -102,7 +102,7 @@
 <a class="jxr_linenumber" name="92" href="#92">92</a>          }
 <a class="jxr_linenumber" name="93" href="#93">93</a>          <strong class="jxr_keyword">finally</strong>
 <a class="jxr_linenumber" name="94" href="#94">94</a>          {
-<a class="jxr_linenumber" name="95" href="#95">95</a>              IOUtil.close( fileWriter );
+<a class="jxr_linenumber" name="95" href="#95">95</a>              IOUtils.closeQuietly( fileWriter );
 <a class="jxr_linenumber" name="96" href="#96">96</a>          }
 <a class="jxr_linenumber" name="97" href="#97">97</a>      }
 <a class="jxr_linenumber" name="98" href="#98">98</a>  
@@ -120,7 +120,7 @@
 <a class="jxr_linenumber" name="110" href="#110">110</a>         }
 <a class="jxr_linenumber" name="111" href="#111">111</a>         <strong class="jxr_keyword">finally</strong>
 <a class="jxr_linenumber" name="112" href="#112">112</a>         {
-<a class="jxr_linenumber" name="113" href="#113">113</a>             IOUtil.close( fileWriter );
+<a class="jxr_linenumber" name="113" href="#113">113</a>             IOUtils.closeQuietly( fileWriter );
 <a class="jxr_linenumber" name="114" href="#114">114</a>         }
 <a class="jxr_linenumber" name="115" href="#115">115</a>     }
 <a class="jxr_linenumber" name="116" href="#116">116</a> 
@@ -147,7 +147,7 @@
 <a class="jxr_linenumber" name="137" href="#137">137</a>         }
 <a class="jxr_linenumber" name="138" href="#138">138</a>         <strong class="jxr_keyword">finally</strong>
 <a class="jxr_linenumber" name="139" href="#139">139</a>         {
-<a class="jxr_linenumber" name="140" href="#140">140</a>             IOUtil.close( fileWriter );
+<a class="jxr_linenumber" name="140" href="#140">140</a>             IOUtils.closeQuietly( fileWriter );
 <a class="jxr_linenumber" name="141" href="#141">141</a>         }
 <a class="jxr_linenumber" name="142" href="#142">142</a>     }
 <a class="jxr_linenumber" name="143" href="#143">143</a> 
@@ -166,7 +166,7 @@
 <a class="jxr_linenumber" name="156" href="#156">156</a>         }
 <a class="jxr_linenumber" name="157" href="#157">157</a>         <strong class="jxr_keyword">finally</strong>
 <a class="jxr_linenumber" name="158" href="#158">158</a>         {
-<a class="jxr_linenumber" name="159" href="#159">159</a>             IOUtil.close( fileReader );
+<a class="jxr_linenumber" name="159" href="#159">159</a>             IOUtils.closeQuietly( fileReader );
 <a class="jxr_linenumber" name="160" href="#160">160</a>         }
 <a class="jxr_linenumber" name="161" href="#161">161</a> 
 <a class="jxr_linenumber" name="162" href="#162">162</a>         Map&lt;String, Permission&gt; permissionMap = <strong class="jxr_keyword">new</strong> HashMap&lt;String, Permission&gt;();
@@ -255,7 +255,7 @@
 <a class="jxr_linenumber" name="245" href="#245">245</a>         }
 <a class="jxr_linenumber" name="246" href="#246">246</a>         <strong class="jxr_keyword">finally</strong>
 <a class="jxr_linenumber" name="247" href="#247">247</a>         {
-<a class="jxr_linenumber" name="248" href="#248">248</a>             IOUtil.close( fileReader );
+<a class="jxr_linenumber" name="248" href="#248">248</a>             IOUtils.closeQuietly( fileReader );
 <a class="jxr_linenumber" name="249" href="#249">249</a>         }
 <a class="jxr_linenumber" name="250" href="#250">250</a> 
 <a class="jxr_linenumber" name="251" href="#251">251</a>         <strong class="jxr_keyword">for</strong> ( User user : (List&lt;User&gt;) database.getUsers() )
@@ -279,7 +279,7 @@
 <a class="jxr_linenumber" name="269" href="#269">269</a>         }
 <a class="jxr_linenumber" name="270" href="#270">270</a>         <strong class="jxr_keyword">finally</strong>
 <a class="jxr_linenumber" name="271" href="#271">271</a>         {
-<a class="jxr_linenumber" name="272" href="#272">272</a>             IOUtil.close( fileReader );
+<a class="jxr_linenumber" name="272" href="#272">272</a>             IOUtils.closeQuietly( fileReader );
 <a class="jxr_linenumber" name="273" href="#273">273</a>         }
 <a class="jxr_linenumber" name="274" href="#274">274</a> 
 <a class="jxr_linenumber" name="275" href="#275">275</a>         <strong class="jxr_keyword">for</strong> ( AuthenticationKey key : (List&lt;AuthenticationKey&gt;) database.getKeys() )
