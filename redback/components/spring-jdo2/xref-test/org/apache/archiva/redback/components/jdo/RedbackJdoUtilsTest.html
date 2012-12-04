@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<title>PlexusJdoUtilsTest xref</title>
+<title>RedbackJdoUtilsTest xref</title>
 <link type="text/css" rel="stylesheet" href="../../../../../../stylesheet.css" />
 </head>
 <body>
-<div id="overview"><a href="../../../../../../../testapidocs/org/apache/archiva/redback/components/jdo/PlexusJdoUtilsTest.html">View Javadoc</a></div><pre>
+<div id="overview"><a href="../../../../../../../testapidocs/org/apache/archiva/redback/components/jdo/RedbackJdoUtilsTest.html">View Javadoc</a></div><pre>
 
 <a class="jxr_linenumber" name="1" href="#1">1</a>   <strong class="jxr_keyword">package</strong> org.apache.archiva.redback.components.jdo;
 <a class="jxr_linenumber" name="2" href="#2">2</a>   
@@ -47,14 +47,14 @@
 <a class="jxr_linenumber" name="37" href="#37">37</a>  <strong class="jxr_keyword">import</strong> java.util.Properties;
 <a class="jxr_linenumber" name="38" href="#38">38</a>  
 <a class="jxr_linenumber" name="39" href="#39">39</a>  <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="40" href="#40">40</a>  <em class="jxr_javadoccomment"> * Tests for PlexusJdoUtilsTest </em>
+<a class="jxr_linenumber" name="40" href="#40">40</a>  <em class="jxr_javadoccomment"> * Tests for RedbackJdoUtilsTest</em>
 <a class="jxr_linenumber" name="41" href="#41">41</a>  <em class="jxr_javadoccomment"> *</em>
 <a class="jxr_linenumber" name="42" href="#42">42</a>  <em class="jxr_javadoccomment"> * @author &lt;a href="<a href="mailto:joakim@erdfelt.com" target="alexandria_uri">mailto:joakim@erdfelt.com</a>"&gt;Joakim Erdfelt&lt;/a&gt;</em>
 <a class="jxr_linenumber" name="43" href="#43">43</a>  <em class="jxr_javadoccomment"> *</em>
 <a class="jxr_linenumber" name="44" href="#44">44</a>  <em class="jxr_javadoccomment"> */</em>
 <a class="jxr_linenumber" name="45" href="#45">45</a>  @RunWith( SpringJUnit4ClassRunner.<strong class="jxr_keyword">class</strong> )
 <a class="jxr_linenumber" name="46" href="#46">46</a>  @ContextConfiguration( locations = { <span class="jxr_string">"classpath*:/META-INF/spring-context.xml"</span>, <span class="jxr_string">"classpath*:/spring-context.xml"</span> } )
-<a class="jxr_linenumber" name="47" href="#47">47</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/apache/archiva/redback/components/jdo/PlexusJdoUtilsTest.html">PlexusJdoUtilsTest</a>
+<a class="jxr_linenumber" name="47" href="#47">47</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/apache/archiva/redback/components/jdo/RedbackJdoUtilsTest.html">RedbackJdoUtilsTest</a>
 <a class="jxr_linenumber" name="48" href="#48">48</a>      <strong class="jxr_keyword">extends</strong> TestCase
 <a class="jxr_linenumber" name="49" href="#49">49</a>  {
 <a class="jxr_linenumber" name="50" href="#50">50</a>      <strong class="jxr_keyword">private</strong> PersistenceManagerFactory pmf;
@@ -120,24 +120,24 @@
 <a class="jxr_linenumber" name="110" href="#110">110</a>         basic.setName( <span class="jxr_string">"Fry"</span> );
 <a class="jxr_linenumber" name="111" href="#111">111</a>         basic.setDescription( <span class="jxr_string">"Addicted to Slurm"</span> );
 <a class="jxr_linenumber" name="112" href="#112">112</a> 
-<a class="jxr_linenumber" name="113" href="#113">113</a>         <a href="../../../../../../org/apache/archiva/redback/components/jdo/Basic.html">Basic</a> added = (Basic) PlexusJdoUtils.addObject( getPersistenceManager(), basic );
+<a class="jxr_linenumber" name="113" href="#113">113</a>         <a href="../../../../../../org/apache/archiva/redback/components/jdo/Basic.html">Basic</a> added = (Basic) RedbackJdoUtils.addObject( getPersistenceManager(), basic );
 <a class="jxr_linenumber" name="114" href="#114">114</a> 
 <a class="jxr_linenumber" name="115" href="#115">115</a>         <em class="jxr_comment">// Ensure that only 1 entry exists.</em>
-<a class="jxr_linenumber" name="116" href="#116">116</a>         assertEquals( 1, PlexusJdoUtils.getAllObjectsDetached( getPersistenceManager(), Basic.<strong class="jxr_keyword">class</strong> ).size() );
+<a class="jxr_linenumber" name="116" href="#116">116</a>         assertEquals( 1, RedbackJdoUtils.getAllObjectsDetached( getPersistenceManager(), Basic.<strong class="jxr_keyword">class</strong> ).size() );
 <a class="jxr_linenumber" name="117" href="#117">117</a> 
-<a class="jxr_linenumber" name="118" href="#118">118</a>         <a href="../../../../../../org/apache/archiva/redback/components/jdo/Basic.html">Basic</a> fetched = (Basic) PlexusJdoUtils.getObjectById( getPersistenceManager(), Basic.<strong class="jxr_keyword">class</strong>, added.getId() );
+<a class="jxr_linenumber" name="118" href="#118">118</a>         <a href="../../../../../../org/apache/archiva/redback/components/jdo/Basic.html">Basic</a> fetched = (Basic) RedbackJdoUtils.getObjectById( getPersistenceManager(), Basic.<strong class="jxr_keyword">class</strong>, added.getId() );
 <a class="jxr_linenumber" name="119" href="#119">119</a> 
 <a class="jxr_linenumber" name="120" href="#120">120</a>         <strong class="jxr_keyword">long</strong> id = fetched.getId();
 <a class="jxr_linenumber" name="121" href="#121">121</a>         String BRAINSLUG = <span class="jxr_string">"Starved a Brain Slug"</span>;
 <a class="jxr_linenumber" name="122" href="#122">122</a> 
 <a class="jxr_linenumber" name="123" href="#123">123</a>         fetched.setDescription( BRAINSLUG );
 <a class="jxr_linenumber" name="124" href="#124">124</a> 
-<a class="jxr_linenumber" name="125" href="#125">125</a>         PlexusJdoUtils.updateObject( getPersistenceManager(), fetched );
+<a class="jxr_linenumber" name="125" href="#125">125</a>         RedbackJdoUtils.updateObject( getPersistenceManager(), fetched );
 <a class="jxr_linenumber" name="126" href="#126">126</a> 
 <a class="jxr_linenumber" name="127" href="#127">127</a>         <em class="jxr_comment">// Ensure that only 1 still entry exists.</em>
-<a class="jxr_linenumber" name="128" href="#128">128</a>         assertEquals( 1, PlexusJdoUtils.getAllObjectsDetached( getPersistenceManager(), Basic.<strong class="jxr_keyword">class</strong> ).size() );
+<a class="jxr_linenumber" name="128" href="#128">128</a>         assertEquals( 1, RedbackJdoUtils.getAllObjectsDetached( getPersistenceManager(), Basic.<strong class="jxr_keyword">class</strong> ).size() );
 <a class="jxr_linenumber" name="129" href="#129">129</a> 
-<a class="jxr_linenumber" name="130" href="#130">130</a>         <a href="../../../../../../org/apache/archiva/redback/components/jdo/Basic.html">Basic</a> actual = (Basic) PlexusJdoUtils.getObjectById( getPersistenceManager(), Basic.<strong class="jxr_keyword">class</strong>, id );
+<a class="jxr_linenumber" name="130" href="#130">130</a>         <a href="../../../../../../org/apache/archiva/redback/components/jdo/Basic.html">Basic</a> actual = (Basic) RedbackJdoUtils.getObjectById( getPersistenceManager(), Basic.<strong class="jxr_keyword">class</strong>, id );
 <a class="jxr_linenumber" name="131" href="#131">131</a>         assertEquals( BRAINSLUG, actual.getDescription() );
 <a class="jxr_linenumber" name="132" href="#132">132</a>     }
 <a class="jxr_linenumber" name="133" href="#133">133</a> 
@@ -156,12 +156,12 @@
 <a class="jxr_linenumber" name="146" href="#146">146</a>         
 <a class="jxr_linenumber" name="147" href="#147">147</a>         parent.addChildren( cubert );
 <a class="jxr_linenumber" name="148" href="#148">148</a> 
-<a class="jxr_linenumber" name="149" href="#149">149</a>         <a href="../../../../../../org/apache/archiva/redback/components/jdo/Parent.html">Parent</a> added = (Parent) PlexusJdoUtils.addObject( getPersistenceManager(), parent );
+<a class="jxr_linenumber" name="149" href="#149">149</a>         <a href="../../../../../../org/apache/archiva/redback/components/jdo/Parent.html">Parent</a> added = (Parent) RedbackJdoUtils.addObject( getPersistenceManager(), parent );
 <a class="jxr_linenumber" name="150" href="#150">150</a> 
 <a class="jxr_linenumber" name="151" href="#151">151</a>         <em class="jxr_comment">// Ensure that only 1 entry exists.</em>
-<a class="jxr_linenumber" name="152" href="#152">152</a>         assertEquals( 1, PlexusJdoUtils.getAllObjectsDetached( getPersistenceManager(), Parent.<strong class="jxr_keyword">class</strong> ).size() );
+<a class="jxr_linenumber" name="152" href="#152">152</a>         assertEquals( 1, RedbackJdoUtils.getAllObjectsDetached( getPersistenceManager(), Parent.<strong class="jxr_keyword">class</strong> ).size() );
 <a class="jxr_linenumber" name="153" href="#153">153</a> 
-<a class="jxr_linenumber" name="154" href="#154">154</a>         <a href="../../../../../../org/apache/archiva/redback/components/jdo/Parent.html">Parent</a> fetched = (Parent) PlexusJdoUtils.getObjectById( getPersistenceManager(), Parent.<strong class="jxr_keyword">class</strong>, added.getId() );
+<a class="jxr_linenumber" name="154" href="#154">154</a>         <a href="../../../../../../org/apache/archiva/redback/components/jdo/Parent.html">Parent</a> fetched = (Parent) RedbackJdoUtils.getObjectById( getPersistenceManager(), Parent.<strong class="jxr_keyword">class</strong>, added.getId() );
 <a class="jxr_linenumber" name="155" href="#155">155</a>         assertNotNull( fetched );
 <a class="jxr_linenumber" name="156" href="#156">156</a>         assertNotNull( fetched.getChildren() );
 <a class="jxr_linenumber" name="157" href="#157">157</a>         assertEquals( 1, fetched.getChildren().size() );
@@ -171,12 +171,12 @@
 <a class="jxr_linenumber" name="161" href="#161">161</a> 
 <a class="jxr_linenumber" name="162" href="#162">162</a>         fetched.setDescription( PLANETEXPRESS );
 <a class="jxr_linenumber" name="163" href="#163">163</a> 
-<a class="jxr_linenumber" name="164" href="#164">164</a>         PlexusJdoUtils.updateObject( getPersistenceManager(), fetched );
+<a class="jxr_linenumber" name="164" href="#164">164</a>         RedbackJdoUtils.updateObject( getPersistenceManager(), fetched );
 <a class="jxr_linenumber" name="165" href="#165">165</a> 
 <a class="jxr_linenumber" name="166" href="#166">166</a>         <em class="jxr_comment">// Ensure that only 1 still entry exists.</em>
-<a class="jxr_linenumber" name="167" href="#167">167</a>         assertEquals( 1, PlexusJdoUtils.getAllObjectsDetached( getPersistenceManager(), Parent.<strong class="jxr_keyword">class</strong> ).size() );
+<a class="jxr_linenumber" name="167" href="#167">167</a>         assertEquals( 1, RedbackJdoUtils.getAllObjectsDetached( getPersistenceManager(), Parent.<strong class="jxr_keyword">class</strong> ).size() );
 <a class="jxr_linenumber" name="168" href="#168">168</a> 
-<a class="jxr_linenumber" name="169" href="#169">169</a>         <a href="../../../../../../org/apache/archiva/redback/components/jdo/Parent.html">Parent</a> actual = (Parent) PlexusJdoUtils.getObjectById( getPersistenceManager(), Parent.<strong class="jxr_keyword">class</strong>, id );
+<a class="jxr_linenumber" name="169" href="#169">169</a>         <a href="../../../../../../org/apache/archiva/redback/components/jdo/Parent.html">Parent</a> actual = (Parent) RedbackJdoUtils.getObjectById( getPersistenceManager(), Parent.<strong class="jxr_keyword">class</strong>, id );
 <a class="jxr_linenumber" name="170" href="#170">170</a>         assertEquals( PLANETEXPRESS, actual.getDescription() );
 <a class="jxr_linenumber" name="171" href="#171">171</a>     }
 <a class="jxr_linenumber" name="172" href="#172">172</a>     
