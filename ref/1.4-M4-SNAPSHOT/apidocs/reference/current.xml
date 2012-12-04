@@ -1382,7 +1382,18 @@
 >
 </method>
 <method name="getPort"
- return="java.lang.String"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isBindAuthenticatorEnabled"
+ return="boolean"
  abstract="false"
  native="false"
  synchronized="false"
@@ -1427,6 +1438,19 @@
  visibility="public"
 >
 <parameter name="baseDn" type="java.lang.String">
+</parameter>
+</method>
+<method name="setBindAuthenticatorEnabled"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="bindAuthenticatorEnabled" type="boolean">
 </parameter>
 </method>
 <method name="setBindDn"
@@ -1504,7 +1528,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="port" type="java.lang.String">
+<parameter name="port" type="int">
 </parameter>
 </method>
 <method name="setSsl"
@@ -1532,6 +1556,16 @@
 </field>
 <field name="baseDn"
  type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="bindAuthenticatorEnabled"
+ type="boolean"
  transient="false"
  volatile="false"
  static="false"
@@ -1591,7 +1625,7 @@
 >
 </field>
 <field name="port"
- type="java.lang.String"
+ type="int"
  transient="false"
  volatile="false"
  static="false"
@@ -1651,6 +1685,17 @@
  visibility="public"
 >
 </method>
+<method name="isMigratedFromRedbackConfiguration"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="setArchivaLdapConfiguration"
  return="void"
  abstract="false"
@@ -1662,6 +1707,19 @@
  visibility="public"
 >
 <parameter name="archivaLdapConfiguration" type="org.apache.archiva.admin.model.beans.ArchivaLdapConfiguration">
+</parameter>
+</method>
+<method name="setMigratedFromRedbackConfiguration"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="migratedFromRedbackConfiguration" type="boolean">
 </parameter>
 </method>
 <method name="setUserManagerImpl"
@@ -1679,6 +1737,16 @@
 </method>
 <field name="archivaLdapConfiguration"
  type="org.apache.archiva.admin.model.beans.ArchivaLdapConfiguration"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="migratedFromRedbackConfiguration"
+ type="boolean"
  transient="false"
  volatile="false"
  static="false"
@@ -5312,7 +5380,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<method name="getArchivaRuntimeConfigurationAdmin"
+<method name="getArchivaRuntimeConfiguration"
  return="org.apache.archiva.admin.model.beans.ArchivaRuntimeConfiguration"
  abstract="true"
  native="false"
@@ -7750,8 +7818,21 @@
 <parameter name="archivaRuntimeConfiguration" type="org.apache.archiva.admin.model.beans.ArchivaRuntimeConfiguration">
 </parameter>
 </method>
-<method name="getArchivaRuntimeConfigurationAdmin"
+<method name="getArchivaRuntimeConfiguration"
  return="org.apache.archiva.admin.model.beans.ArchivaRuntimeConfiguration"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="RepositoryAdminException" type="org.apache.archiva.admin.model.RepositoryAdminException">
+</exception>
+</method>
+<method name="initialize"
+ return="void"
  abstract="false"
  native="false"
  synchronized="false"
@@ -7778,6 +7859,16 @@
 <exception name="RepositoryAdminException" type="org.apache.archiva.admin.model.RepositoryAdminException">
 </exception>
 </method>
+<field name="userConfiguration"
+ type="org.apache.archiva.redback.configuration.UserConfiguration"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility=""
+>
+</field>
 </class>
 </package>
 <package name="org.apache.archiva.admin.repository.utils"
@@ -13837,7 +13928,18 @@
 >
 </method>
 <method name="getPort"
- return="java.lang.String"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isBindAuthenticatorEnabled"
+ return="boolean"
  abstract="false"
  native="false"
  synchronized="false"
@@ -13882,6 +13984,19 @@
  visibility="public"
 >
 <parameter name="baseDn" type="java.lang.String">
+</parameter>
+</method>
+<method name="setBindAuthenticatorEnabled"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="bindAuthenticatorEnabled" type="boolean">
 </parameter>
 </method>
 <method name="setBindDn"
@@ -13959,7 +14074,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="port" type="java.lang.String">
+<parameter name="port" type="int">
 </parameter>
 </method>
 <method name="setSsl"
@@ -13987,6 +14102,16 @@
 </field>
 <field name="baseDn"
  type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="bindAuthenticatorEnabled"
+ type="boolean"
  transient="false"
  volatile="false"
  static="false"
@@ -14046,7 +14171,7 @@
 >
 </field>
 <field name="port"
- type="java.lang.String"
+ type="int"
  transient="false"
  volatile="false"
  static="false"
@@ -16317,6 +16442,17 @@
  visibility="public"
 >
 </method>
+<method name="isMigratedFromRedbackConfiguration"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="setLdapConfiguration"
  return="void"
  abstract="false"
@@ -16328,6 +16464,19 @@
  visibility="public"
 >
 <parameter name="ldapConfiguration" type="org.apache.archiva.configuration.LdapConfiguration">
+</parameter>
+</method>
+<method name="setMigratedFromRedbackConfiguration"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="migratedFromRedbackConfiguration" type="boolean">
 </parameter>
 </method>
 <method name="setUserManagerImpl"
@@ -16345,6 +16494,16 @@
 </method>
 <field name="ldapConfiguration"
  type="org.apache.archiva.configuration.LdapConfiguration"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="migratedFromRedbackConfiguration"
+ type="boolean"
  transient="false"
  volatile="false"
  static="false"
@@ -23931,7 +24090,7 @@
 </parameter>
 </method>
 </interface>
-<class name="NexusRepositorySearch"
+<class name="MavenRepositorySearch"
  extends="java.lang.Object"
  abstract="false"
  static="false"
@@ -23941,16 +24100,16 @@
 >
 <implements name="org.apache.archiva.indexer.search.RepositorySearch">
 </implements>
-<constructor name="NexusRepositorySearch"
- type="org.apache.archiva.indexer.search.NexusRepositorySearch"
+<constructor name="MavenRepositorySearch"
+ type="org.apache.archiva.indexer.search.MavenRepositorySearch"
  static="false"
  final="false"
  deprecated="not deprecated"
  visibility="protected"
 >
 </constructor>
-<constructor name="NexusRepositorySearch"
- type="org.apache.archiva.indexer.search.NexusRepositorySearch"
+<constructor name="MavenRepositorySearch"
+ type="org.apache.archiva.indexer.search.MavenRepositorySearch"
  static="false"
  final="false"
  deprecated="not deprecated"
@@ -65304,6 +65463,36 @@
 </field>
 <field name="version"
  type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+</class>
+</package>
+<package name="org.apache.archiva.web.runtime.ldap"
+>
+<class name="ArchivaLdapConnectionFactory"
+ extends="org.apache.archiva.redback.common.ldap.connection.ConfigurableLdapConnectionFactory"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="ArchivaLdapConnectionFactory"
+ type="org.apache.archiva.web.runtime.ldap.ArchivaLdapConnectionFactory"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<field name="archivaRuntimeConfigurationAdmin"
+ type="org.apache.archiva.admin.model.runtime.ArchivaRuntimeConfigurationAdmin"
  transient="false"
  volatile="false"
  static="false"

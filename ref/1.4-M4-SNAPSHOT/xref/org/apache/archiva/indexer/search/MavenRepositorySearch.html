@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<title>NexusRepositorySearch xref</title>
+<title>MavenRepositorySearch xref</title>
 <link type="text/css" rel="stylesheet" href="../../../../../stylesheet.css" />
 </head>
 <body>
-<div id="overview"><a href="../../../../../../apidocs/org/apache/archiva/indexer/search/NexusRepositorySearch.html">View Javadoc</a></div><pre>
+<div id="overview"><a href="../../../../../../apidocs/org/apache/archiva/indexer/search/MavenRepositorySearch.html">View Javadoc</a></div><pre>
 
 <a class="jxr_linenumber" name="1" href="#1">1</a>   <strong class="jxr_keyword">package</strong> org.apache.archiva.indexer.search;
 <a class="jxr_linenumber" name="2" href="#2">2</a>   
@@ -68,10 +68,10 @@
 <a class="jxr_linenumber" name="58" href="#58">58</a>  <strong class="jxr_keyword">import</strong> java.util.Set;
 <a class="jxr_linenumber" name="59" href="#59">59</a>  
 <a class="jxr_linenumber" name="60" href="#60">60</a>  <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="61" href="#61">61</a>  <em class="jxr_javadoccomment"> * RepositorySearch implementation which uses the Nexus Indexer for searching.</em>
+<a class="jxr_linenumber" name="61" href="#61">61</a>  <em class="jxr_javadoccomment"> * RepositorySearch implementation which uses the Maven Indexer for searching.</em>
 <a class="jxr_linenumber" name="62" href="#62">62</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="63" href="#63">63</a>  @Service (<span class="jxr_string">"nexusSearch"</span>)
-<a class="jxr_linenumber" name="64" href="#64">64</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/apache/archiva/indexer/search/NexusRepositorySearch.html">NexusRepositorySearch</a>
+<a class="jxr_linenumber" name="63" href="#63">63</a>  @Service (<span class="jxr_string">"repositorySearch#maven"</span>)
+<a class="jxr_linenumber" name="64" href="#64">64</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/apache/archiva/indexer/search/MavenRepositorySearch.html">MavenRepositorySearch</a>
 <a class="jxr_linenumber" name="65" href="#65">65</a>      <strong class="jxr_keyword">implements</strong> <a href="../../../../../org/apache/archiva/indexer/search/RepositorySearch.html">RepositorySearch</a>
 <a class="jxr_linenumber" name="66" href="#66">66</a>  {
 <a class="jxr_linenumber" name="67" href="#67">67</a>      <strong class="jxr_keyword">private</strong> Logger log = LoggerFactory.getLogger( getClass() );
@@ -84,13 +84,13 @@
 <a class="jxr_linenumber" name="74" href="#74">74</a>  
 <a class="jxr_linenumber" name="75" href="#75">75</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../org/apache/archiva/common/plexusbridge/MavenIndexerUtils.html">MavenIndexerUtils</a> mavenIndexerUtils;
 <a class="jxr_linenumber" name="76" href="#76">76</a>  
-<a class="jxr_linenumber" name="77" href="#77">77</a>      <strong class="jxr_keyword">protected</strong> <a href="../../../../../org/apache/archiva/indexer/search/NexusRepositorySearch.html">NexusRepositorySearch</a>()
+<a class="jxr_linenumber" name="77" href="#77">77</a>      <strong class="jxr_keyword">protected</strong> <a href="../../../../../org/apache/archiva/indexer/search/MavenRepositorySearch.html">MavenRepositorySearch</a>()
 <a class="jxr_linenumber" name="78" href="#78">78</a>      {
 <a class="jxr_linenumber" name="79" href="#79">79</a>          <em class="jxr_comment">// for test purpose</em>
 <a class="jxr_linenumber" name="80" href="#80">80</a>      }
 <a class="jxr_linenumber" name="81" href="#81">81</a>  
 <a class="jxr_linenumber" name="82" href="#82">82</a>      @Inject
-<a class="jxr_linenumber" name="83" href="#83">83</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../org/apache/archiva/indexer/search/NexusRepositorySearch.html">NexusRepositorySearch</a>( PlexusSisuBridge plexusSisuBridge, ManagedRepositoryAdmin managedRepositoryAdmin,
+<a class="jxr_linenumber" name="83" href="#83">83</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../org/apache/archiva/indexer/search/MavenRepositorySearch.html">MavenRepositorySearch</a>( PlexusSisuBridge plexusSisuBridge, ManagedRepositoryAdmin managedRepositoryAdmin,
 <a class="jxr_linenumber" name="84" href="#84">84</a>                                    <a href="../../../../../org/apache/archiva/common/plexusbridge/MavenIndexerUtils.html">MavenIndexerUtils</a> mavenIndexerUtils, <a href="../../../../../org/apache/archiva/admin/model/proxyconnector/ProxyConnectorAdmin.html">ProxyConnectorAdmin</a> proxyConnectorAdmin )
 <a class="jxr_linenumber" name="85" href="#85">85</a>          <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridgeException.html">PlexusSisuBridgeException</a>
 <a class="jxr_linenumber" name="86" href="#86">86</a>      {
