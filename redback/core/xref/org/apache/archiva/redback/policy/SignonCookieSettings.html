@@ -29,18 +29,18 @@
 <a class="jxr_linenumber" name="19" href="#19">19</a>  <em class="jxr_comment"> * under the License.</em>
 <a class="jxr_linenumber" name="20" href="#20">20</a>  <em class="jxr_comment"> */</em>
 <a class="jxr_linenumber" name="21" href="#21">21</a>  
-<a class="jxr_linenumber" name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.policy.AbstractCookieSettings;
-<a class="jxr_linenumber" name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.springframework.stereotype.Service;
-<a class="jxr_linenumber" name="24" href="#24">24</a>  
-<a class="jxr_linenumber" name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> javax.annotation.PostConstruct;
-<a class="jxr_linenumber" name="26" href="#26">26</a>  
-<a class="jxr_linenumber" name="27" href="#27">27</a>  <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="28" href="#28">28</a>  <em class="jxr_javadoccomment"> * SignonCookieSettings</em>
-<a class="jxr_linenumber" name="29" href="#29">29</a>  <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="30" href="#30">30</a>  <em class="jxr_javadoccomment"> * @author &lt;a href="<a href="mailto:joakim@erdfelt.com" target="alexandria_uri">mailto:joakim@erdfelt.com</a>"&gt;Joakim Erdfelt&lt;/a&gt;</em>
-<a class="jxr_linenumber" name="31" href="#31">31</a>  <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.configuration.UserConfigurationKeys;
+<a class="jxr_linenumber" name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.policy.AbstractCookieSettings;
+<a class="jxr_linenumber" name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> org.springframework.stereotype.Service;
+<a class="jxr_linenumber" name="25" href="#25">25</a>  
+<a class="jxr_linenumber" name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> javax.annotation.PostConstruct;
+<a class="jxr_linenumber" name="27" href="#27">27</a>  
+<a class="jxr_linenumber" name="28" href="#28">28</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="29" href="#29">29</a>  <em class="jxr_javadoccomment"> * SignonCookieSettings</em>
+<a class="jxr_linenumber" name="30" href="#30">30</a>  <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="31" href="#31">31</a>  <em class="jxr_javadoccomment"> * @author &lt;a href="<a href="mailto:joakim@erdfelt.com" target="alexandria_uri">mailto:joakim@erdfelt.com</a>"&gt;Joakim Erdfelt&lt;/a&gt;</em>
 <a class="jxr_linenumber" name="32" href="#32">32</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="33" href="#33">33</a>  @Service(<span class="jxr_string">"cookieSettings#signon"</span>)
+<a class="jxr_linenumber" name="33" href="#33">33</a>  @Service( <span class="jxr_string">"cookieSettings#signon"</span> )
 <a class="jxr_linenumber" name="34" href="#34">34</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/apache/archiva/redback/policy/SignonCookieSettings.html">SignonCookieSettings</a>
 <a class="jxr_linenumber" name="35" href="#35">35</a>      <strong class="jxr_keyword">extends</strong> <a href="../../../../../org/apache/archiva/redback/policy/AbstractCookieSettings.html">AbstractCookieSettings</a>
 <a class="jxr_linenumber" name="36" href="#36">36</a>  {
@@ -49,8 +49,8 @@
 <a class="jxr_linenumber" name="39" href="#39">39</a>      {
 <a class="jxr_linenumber" name="40" href="#40">40</a>          <em class="jxr_comment">// cookie timeouts in the configuration settings is labeled to be in minutes, so adjust to minutes</em>
 <a class="jxr_linenumber" name="41" href="#41">41</a>          cookieTimeout = config.getInt( <span class="jxr_string">"security.signon.timeout"</span> ) * 60;
-<a class="jxr_linenumber" name="42" href="#42">42</a>          domain = config.getString( <span class="jxr_string">"security.signon.domain"</span> );
-<a class="jxr_linenumber" name="43" href="#43">43</a>          path = config.getString( <span class="jxr_string">"security.signon.path"</span> );
+<a class="jxr_linenumber" name="42" href="#42">42</a>          domain = config.getString( UserConfigurationKeys.SIGNON_DOMAIN );
+<a class="jxr_linenumber" name="43" href="#43">43</a>          path = config.getString( UserConfigurationKeys.SIGNON_PATH );
 <a class="jxr_linenumber" name="44" href="#44">44</a>      }
 <a class="jxr_linenumber" name="45" href="#45">45</a>  
 <a class="jxr_linenumber" name="46" href="#46">46</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> isEnabled()

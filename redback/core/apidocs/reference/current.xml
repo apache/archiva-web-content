@@ -4090,7 +4090,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<exception name="RegistryException" type="org.apache.archiva.redback.components.registry.RegistryException">
+<exception name="UserConfigurationException" type="org.apache.archiva.redback.configuration.UserConfigurationException">
 </exception>
 </method>
 <method name="setConfigs"
@@ -4259,9 +4259,302 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<exception name="RegistryException" type="org.apache.archiva.redback.components.registry.RegistryException">
+<exception name="UserConfigurationException" type="org.apache.archiva.redback.configuration.UserConfigurationException">
 </exception>
 </method>
+</interface>
+<class name="UserConfigurationException"
+ extends="java.lang.Exception"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="UserConfigurationException"
+ type="org.apache.archiva.redback.configuration.UserConfigurationException"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="java.lang.String">
+</parameter>
+<parameter name="t" type="java.lang.Throwable">
+</parameter>
+</constructor>
+</class>
+<interface name="UserConfigurationKeys"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<field name="APPLICATION_TIMESTAMP"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;application.timestamp&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="APPLICATION_URL"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;application.url&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="DEFAULT_ADMIN"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;redback.default.admin&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="EMAIL_FEEDBACK_PATH"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;email.feedback.path&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="EMAIL_FROM_ADDRESS"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;email.from.address&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="EMAIL_FROM_NAME"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;email.from.name&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="EMAIL_URL_PATH"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;email.url.path&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="EMAIL_VALIDATION_SUBJECT"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;email.validation.subject&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="LDAP_AUTHENTICATION_METHOD"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;ldap.config.authentication.method&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="LDAP_CONTEX_FACTORY"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;ldap.config.context.factory&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="LDAP_HOSTNAME"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;ldap.config.hostname&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="LDAP_MAPPER_USER_ATTRIBUTE_EMAIL"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;ldap.config.mapper.attribute.email&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="LDAP_MAPPER_USER_ATTRIBUTE_FILTER"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;ldap.config.mapper.attribute.user.filter&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="LDAP_MAPPER_USER_ATTRIBUTE_FULLNAME"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;ldap.config.mapper.attribute.fullname&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="LDAP_MAPPER_USER_ATTRIBUTE_ID"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;ldap.config.mapper.attribute.user.id&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="LDAP_MAPPER_USER_ATTRIBUTE_OBJECT_CLASS"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;ldap.config.mapper.attribute.user.object.class&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="LDAP_MAPPER_USER_ATTRIBUTE_PASSWORD"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;ldap.config.mapper.attribute.password&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="LDAP_PASSWORD"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;ldap.config.password&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="PASSWORD_ENCODER"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;security.policy.password.encoder&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="REMEMBER_ME_DOMAIN"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;security.rememberme.domain&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="REMEMBER_ME_PATH"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;security.rememberme.path&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="SIGNON_DOMAIN"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;security.signon.domain&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="SIGNON_PATH"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;security.signon.path&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="USER_MANAGER_IMPL"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;user.manager.impl&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
 </interface>
 </package>
 <package name="org.apache.archiva.redback.integration"
@@ -9770,17 +10063,6 @@
  transient="false"
  volatile="false"
  value="&quot;security.policy.allowed.login.attempt&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="public"
->
-</field>
-<field name="PASSWORD_ENCODER"
- type="java.lang.String"
- transient="false"
- volatile="false"
- value="&quot;security.policy.password.encoder&quot;"
  static="true"
  final="true"
  deprecated="not deprecated"
@@ -30950,17 +31232,6 @@
 <parameter name="principal" type="java.lang.Object">
 </parameter>
 </method>
-<field name="USER_MANAGER_IMPL"
- type="java.lang.String"
- transient="false"
- volatile="false"
- value="&quot;user.manager.impl&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="public"
->
-</field>
 </class>
 </package>
 <package name="org.apache.archiva.redback.users.jdo"

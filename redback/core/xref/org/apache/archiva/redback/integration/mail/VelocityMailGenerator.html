@@ -30,41 +30,41 @@
 <a class="jxr_linenumber" name="20" href="#20">20</a>  <em class="jxr_comment"> */</em>
 <a class="jxr_linenumber" name="21" href="#21">21</a>  
 <a class="jxr_linenumber" name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.configuration.UserConfiguration;
-<a class="jxr_linenumber" name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.keys.AuthenticationKey;
-<a class="jxr_linenumber" name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> org.apache.velocity.VelocityContext;
-<a class="jxr_linenumber" name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.velocity.app.VelocityEngine;
-<a class="jxr_linenumber" name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.velocity.exception.MethodInvocationException;
-<a class="jxr_linenumber" name="27" href="#27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.velocity.exception.ParseErrorException;
-<a class="jxr_linenumber" name="28" href="#28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.velocity.exception.ResourceNotFoundException;
-<a class="jxr_linenumber" name="29" href="#29">29</a>  <strong class="jxr_keyword">import</strong> org.slf4j.Logger;
-<a class="jxr_linenumber" name="30" href="#30">30</a>  <strong class="jxr_keyword">import</strong> org.slf4j.LoggerFactory;
-<a class="jxr_linenumber" name="31" href="#31">31</a>  <strong class="jxr_keyword">import</strong> org.springframework.stereotype.Service;
-<a class="jxr_linenumber" name="32" href="#32">32</a>  
-<a class="jxr_linenumber" name="33" href="#33">33</a>  <strong class="jxr_keyword">import</strong> javax.inject.Inject;
-<a class="jxr_linenumber" name="34" href="#34">34</a>  <strong class="jxr_keyword">import</strong> javax.inject.Named;
-<a class="jxr_linenumber" name="35" href="#35">35</a>  <strong class="jxr_keyword">import</strong> java.io.StringWriter;
-<a class="jxr_linenumber" name="36" href="#36">36</a>  <strong class="jxr_keyword">import</strong> java.text.SimpleDateFormat;
-<a class="jxr_linenumber" name="37" href="#37">37</a>  <strong class="jxr_keyword">import</strong> java.util.Locale;
-<a class="jxr_linenumber" name="38" href="#38">38</a>  
-<a class="jxr_linenumber" name="39" href="#39">39</a>  <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="40" href="#40">40</a>  <em class="jxr_javadoccomment"> * Mail generator component implementation using velocity.</em>
-<a class="jxr_linenumber" name="41" href="#41">41</a>  <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="42" href="#42">42</a>  <em class="jxr_javadoccomment"> * @author &lt;a href="<a href="mailto:brett@apache.org" target="alexandria_uri">mailto:brett@apache.org</a>"&gt;Brett Porter&lt;/a&gt;</em>
-<a class="jxr_linenumber" name="43" href="#43">43</a>  <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.configuration.UserConfigurationKeys;
+<a class="jxr_linenumber" name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.keys.AuthenticationKey;
+<a class="jxr_linenumber" name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.velocity.VelocityContext;
+<a class="jxr_linenumber" name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.velocity.app.VelocityEngine;
+<a class="jxr_linenumber" name="27" href="#27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.velocity.exception.MethodInvocationException;
+<a class="jxr_linenumber" name="28" href="#28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.velocity.exception.ParseErrorException;
+<a class="jxr_linenumber" name="29" href="#29">29</a>  <strong class="jxr_keyword">import</strong> org.apache.velocity.exception.ResourceNotFoundException;
+<a class="jxr_linenumber" name="30" href="#30">30</a>  <strong class="jxr_keyword">import</strong> org.slf4j.Logger;
+<a class="jxr_linenumber" name="31" href="#31">31</a>  <strong class="jxr_keyword">import</strong> org.slf4j.LoggerFactory;
+<a class="jxr_linenumber" name="32" href="#32">32</a>  <strong class="jxr_keyword">import</strong> org.springframework.stereotype.Service;
+<a class="jxr_linenumber" name="33" href="#33">33</a>  
+<a class="jxr_linenumber" name="34" href="#34">34</a>  <strong class="jxr_keyword">import</strong> javax.inject.Inject;
+<a class="jxr_linenumber" name="35" href="#35">35</a>  <strong class="jxr_keyword">import</strong> javax.inject.Named;
+<a class="jxr_linenumber" name="36" href="#36">36</a>  <strong class="jxr_keyword">import</strong> java.io.StringWriter;
+<a class="jxr_linenumber" name="37" href="#37">37</a>  <strong class="jxr_keyword">import</strong> java.text.SimpleDateFormat;
+<a class="jxr_linenumber" name="38" href="#38">38</a>  <strong class="jxr_keyword">import</strong> java.util.Locale;
+<a class="jxr_linenumber" name="39" href="#39">39</a>  
+<a class="jxr_linenumber" name="40" href="#40">40</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="41" href="#41">41</a>  <em class="jxr_javadoccomment"> * Mail generator component implementation using velocity.</em>
+<a class="jxr_linenumber" name="42" href="#42">42</a>  <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="43" href="#43">43</a>  <em class="jxr_javadoccomment"> * @author &lt;a href="<a href="mailto:brett@apache.org" target="alexandria_uri">mailto:brett@apache.org</a>"&gt;Brett Porter&lt;/a&gt;</em>
 <a class="jxr_linenumber" name="44" href="#44">44</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="45" href="#45">45</a>  @Service( <span class="jxr_string">"mailGenerator#velocity"</span> )
+<a class="jxr_linenumber" name="45" href="#45">45</a>  @Service(<span class="jxr_string">"mailGenerator#velocity"</span>)
 <a class="jxr_linenumber" name="46" href="#46">46</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/apache/archiva/redback/integration/mail/VelocityMailGenerator.html">VelocityMailGenerator</a>
 <a class="jxr_linenumber" name="47" href="#47">47</a>      <strong class="jxr_keyword">implements</strong> <a href="../../../../../../org/apache/archiva/redback/integration/mail/MailGenerator.html">MailGenerator</a>
 <a class="jxr_linenumber" name="48" href="#48">48</a>  {
 <a class="jxr_linenumber" name="49" href="#49">49</a>      <strong class="jxr_keyword">private</strong> Logger log = LoggerFactory.getLogger( VelocityMailGenerator.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="50" href="#50">50</a>  
 <a class="jxr_linenumber" name="51" href="#51">51</a>      @Inject
-<a class="jxr_linenumber" name="52" href="#52">52</a>      @Named( value = <span class="jxr_string">"userConfiguration"</span> )
+<a class="jxr_linenumber" name="52" href="#52">52</a>      @Named(value = <span class="jxr_string">"userConfiguration"</span>)
 <a class="jxr_linenumber" name="53" href="#53">53</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../../org/apache/archiva/redback/configuration/UserConfiguration.html">UserConfiguration</a> config;
 <a class="jxr_linenumber" name="54" href="#54">54</a>  
 <a class="jxr_linenumber" name="55" href="#55">55</a>      <em class="jxr_comment">// FIXME use the spring directly </em>
 <a class="jxr_linenumber" name="56" href="#56">56</a>      @Inject
-<a class="jxr_linenumber" name="57" href="#57">57</a>      @Named( value = <span class="jxr_string">"velocityEngine#redback"</span> )
+<a class="jxr_linenumber" name="57" href="#57">57</a>      @Named(value = <span class="jxr_string">"velocityEngine#redback"</span>)
 <a class="jxr_linenumber" name="58" href="#58">58</a>      <strong class="jxr_keyword">private</strong> VelocityEngine velocityEngine;
 <a class="jxr_linenumber" name="59" href="#59">59</a>  
 <a class="jxr_linenumber" name="60" href="#60">60</a>      <strong class="jxr_keyword">public</strong> String generateMail( String templateName, AuthenticationKey authkey, String baseUrl )
@@ -104,9 +104,9 @@
 <a class="jxr_linenumber" name="94" href="#94">94</a>      {
 <a class="jxr_linenumber" name="95" href="#95">95</a>          VelocityContext context = <strong class="jxr_keyword">new</strong> VelocityContext();
 <a class="jxr_linenumber" name="96" href="#96">96</a>  
-<a class="jxr_linenumber" name="97" href="#97">97</a>          context.put( <span class="jxr_string">"applicationUrl"</span>, config.getString( <span class="jxr_string">"application.url"</span>, appUrl ) );
+<a class="jxr_linenumber" name="97" href="#97">97</a>          context.put( <span class="jxr_string">"applicationUrl"</span>, config.getString( UserConfigurationKeys.APPLICATION_URL, appUrl ) );
 <a class="jxr_linenumber" name="98" href="#98">98</a>  
-<a class="jxr_linenumber" name="99" href="#99">99</a>          String feedback = config.getString( <span class="jxr_string">"email.feedback.path"</span> );
+<a class="jxr_linenumber" name="99" href="#99">99</a>          String feedback = config.getString( UserConfigurationKeys.EMAIL_FEEDBACK_PATH );
 <a class="jxr_linenumber" name="100" href="#100">100</a> 
 <a class="jxr_linenumber" name="101" href="#101">101</a>         <strong class="jxr_keyword">if</strong> ( feedback != <strong class="jxr_keyword">null</strong> )
 <a class="jxr_linenumber" name="102" href="#102">102</a>         {
@@ -118,48 +118,50 @@
 <a class="jxr_linenumber" name="108" href="#108">108</a>             context.put( <span class="jxr_string">"feedback"</span>, feedback );
 <a class="jxr_linenumber" name="109" href="#109">109</a>         }
 <a class="jxr_linenumber" name="110" href="#110">110</a> 
-<a class="jxr_linenumber" name="111" href="#111">111</a>         context.put( <span class="jxr_string">"urlPath"</span>, config.getString( <span class="jxr_string">"email.url.path"</span>, <span class="jxr_string">"security/login!login.action"</span> ) );
-<a class="jxr_linenumber" name="112" href="#112">112</a> 
-<a class="jxr_linenumber" name="113" href="#113">113</a>         context.put( <span class="jxr_string">"authkey"</span>, authkey.getKey() );
-<a class="jxr_linenumber" name="114" href="#114">114</a> 
-<a class="jxr_linenumber" name="115" href="#115">115</a>         context.put( <span class="jxr_string">"accountId"</span>, authkey.getForPrincipal() );
-<a class="jxr_linenumber" name="116" href="#116">116</a> 
-<a class="jxr_linenumber" name="117" href="#117">117</a>         SimpleDateFormat dateformatter = <strong class="jxr_keyword">new</strong> SimpleDateFormat( config.getString( <span class="jxr_string">"application.timestamp"</span> ), Locale.US );
-<a class="jxr_linenumber" name="118" href="#118">118</a> 
-<a class="jxr_linenumber" name="119" href="#119">119</a>         context.put( <span class="jxr_string">"requestedOn"</span>, dateformatter.format( authkey.getDateCreated() ) );
+<a class="jxr_linenumber" name="111" href="#111">111</a>         context.put( <span class="jxr_string">"urlPath"</span>,
+<a class="jxr_linenumber" name="112" href="#112">112</a>                      config.getString( UserConfigurationKeys.EMAIL_URL_PATH, <span class="jxr_string">"security/login!login.action"</span> ) );
+<a class="jxr_linenumber" name="113" href="#113">113</a> 
+<a class="jxr_linenumber" name="114" href="#114">114</a>         context.put( <span class="jxr_string">"authkey"</span>, authkey.getKey() );
+<a class="jxr_linenumber" name="115" href="#115">115</a> 
+<a class="jxr_linenumber" name="116" href="#116">116</a>         context.put( <span class="jxr_string">"accountId"</span>, authkey.getForPrincipal() );
+<a class="jxr_linenumber" name="117" href="#117">117</a> 
+<a class="jxr_linenumber" name="118" href="#118">118</a>         SimpleDateFormat dateformatter =
+<a class="jxr_linenumber" name="119" href="#119">119</a>             <strong class="jxr_keyword">new</strong> SimpleDateFormat( config.getString( UserConfigurationKeys.APPLICATION_TIMESTAMP ), Locale.US );
 <a class="jxr_linenumber" name="120" href="#120">120</a> 
-<a class="jxr_linenumber" name="121" href="#121">121</a>         <strong class="jxr_keyword">if</strong> ( authkey.getDateExpires() != <strong class="jxr_keyword">null</strong> )
-<a class="jxr_linenumber" name="122" href="#122">122</a>         {
-<a class="jxr_linenumber" name="123" href="#123">123</a>             context.put( <span class="jxr_string">"expiresOn"</span>, dateformatter.format( authkey.getDateExpires() ) );
-<a class="jxr_linenumber" name="124" href="#124">124</a>         }
-<a class="jxr_linenumber" name="125" href="#125">125</a>         <strong class="jxr_keyword">else</strong>
-<a class="jxr_linenumber" name="126" href="#126">126</a>         {
-<a class="jxr_linenumber" name="127" href="#127">127</a>             context.put( <span class="jxr_string">"expiresOn"</span>, <span class="jxr_string">"(does not expire)"</span> );
-<a class="jxr_linenumber" name="128" href="#128">128</a>         }
-<a class="jxr_linenumber" name="129" href="#129">129</a>         <strong class="jxr_keyword">return</strong> context;
-<a class="jxr_linenumber" name="130" href="#130">130</a>     }
-<a class="jxr_linenumber" name="131" href="#131">131</a> 
-<a class="jxr_linenumber" name="132" href="#132">132</a> 
-<a class="jxr_linenumber" name="133" href="#133">133</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/apache/archiva/redback/configuration/UserConfiguration.html">UserConfiguration</a> getConfig()
-<a class="jxr_linenumber" name="134" href="#134">134</a>     {
-<a class="jxr_linenumber" name="135" href="#135">135</a>         <strong class="jxr_keyword">return</strong> config;
-<a class="jxr_linenumber" name="136" href="#136">136</a>     }
-<a class="jxr_linenumber" name="137" href="#137">137</a> 
-<a class="jxr_linenumber" name="138" href="#138">138</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setConfig( UserConfiguration config )
-<a class="jxr_linenumber" name="139" href="#139">139</a>     {
-<a class="jxr_linenumber" name="140" href="#140">140</a>         <strong class="jxr_keyword">this</strong>.config = config;
-<a class="jxr_linenumber" name="141" href="#141">141</a>     }
-<a class="jxr_linenumber" name="142" href="#142">142</a> 
-<a class="jxr_linenumber" name="143" href="#143">143</a>     <strong class="jxr_keyword">public</strong> VelocityEngine getVelocityEngine()
-<a class="jxr_linenumber" name="144" href="#144">144</a>     {
-<a class="jxr_linenumber" name="145" href="#145">145</a>         <strong class="jxr_keyword">return</strong> velocityEngine;
-<a class="jxr_linenumber" name="146" href="#146">146</a>     }
-<a class="jxr_linenumber" name="147" href="#147">147</a> 
-<a class="jxr_linenumber" name="148" href="#148">148</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setVelocityEngine( VelocityEngine velocityEngine )
-<a class="jxr_linenumber" name="149" href="#149">149</a>     {
-<a class="jxr_linenumber" name="150" href="#150">150</a>         <strong class="jxr_keyword">this</strong>.velocityEngine = velocityEngine;
-<a class="jxr_linenumber" name="151" href="#151">151</a>     }
-<a class="jxr_linenumber" name="152" href="#152">152</a> }
+<a class="jxr_linenumber" name="121" href="#121">121</a>         context.put( <span class="jxr_string">"requestedOn"</span>, dateformatter.format( authkey.getDateCreated() ) );
+<a class="jxr_linenumber" name="122" href="#122">122</a> 
+<a class="jxr_linenumber" name="123" href="#123">123</a>         <strong class="jxr_keyword">if</strong> ( authkey.getDateExpires() != <strong class="jxr_keyword">null</strong> )
+<a class="jxr_linenumber" name="124" href="#124">124</a>         {
+<a class="jxr_linenumber" name="125" href="#125">125</a>             context.put( <span class="jxr_string">"expiresOn"</span>, dateformatter.format( authkey.getDateExpires() ) );
+<a class="jxr_linenumber" name="126" href="#126">126</a>         }
+<a class="jxr_linenumber" name="127" href="#127">127</a>         <strong class="jxr_keyword">else</strong>
+<a class="jxr_linenumber" name="128" href="#128">128</a>         {
+<a class="jxr_linenumber" name="129" href="#129">129</a>             context.put( <span class="jxr_string">"expiresOn"</span>, <span class="jxr_string">"(does not expire)"</span> );
+<a class="jxr_linenumber" name="130" href="#130">130</a>         }
+<a class="jxr_linenumber" name="131" href="#131">131</a>         <strong class="jxr_keyword">return</strong> context;
+<a class="jxr_linenumber" name="132" href="#132">132</a>     }
+<a class="jxr_linenumber" name="133" href="#133">133</a> 
+<a class="jxr_linenumber" name="134" href="#134">134</a> 
+<a class="jxr_linenumber" name="135" href="#135">135</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/apache/archiva/redback/configuration/UserConfiguration.html">UserConfiguration</a> getConfig()
+<a class="jxr_linenumber" name="136" href="#136">136</a>     {
+<a class="jxr_linenumber" name="137" href="#137">137</a>         <strong class="jxr_keyword">return</strong> config;
+<a class="jxr_linenumber" name="138" href="#138">138</a>     }
+<a class="jxr_linenumber" name="139" href="#139">139</a> 
+<a class="jxr_linenumber" name="140" href="#140">140</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setConfig( UserConfiguration config )
+<a class="jxr_linenumber" name="141" href="#141">141</a>     {
+<a class="jxr_linenumber" name="142" href="#142">142</a>         <strong class="jxr_keyword">this</strong>.config = config;
+<a class="jxr_linenumber" name="143" href="#143">143</a>     }
+<a class="jxr_linenumber" name="144" href="#144">144</a> 
+<a class="jxr_linenumber" name="145" href="#145">145</a>     <strong class="jxr_keyword">public</strong> VelocityEngine getVelocityEngine()
+<a class="jxr_linenumber" name="146" href="#146">146</a>     {
+<a class="jxr_linenumber" name="147" href="#147">147</a>         <strong class="jxr_keyword">return</strong> velocityEngine;
+<a class="jxr_linenumber" name="148" href="#148">148</a>     }
+<a class="jxr_linenumber" name="149" href="#149">149</a> 
+<a class="jxr_linenumber" name="150" href="#150">150</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setVelocityEngine( VelocityEngine velocityEngine )
+<a class="jxr_linenumber" name="151" href="#151">151</a>     {
+<a class="jxr_linenumber" name="152" href="#152">152</a>         <strong class="jxr_keyword">this</strong>.velocityEngine = velocityEngine;
+<a class="jxr_linenumber" name="153" href="#153">153</a>     }
+<a class="jxr_linenumber" name="154" href="#154">154</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>
