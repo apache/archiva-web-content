@@ -354,9 +354,9 @@
     <li><h2>Classes</h2>
       <ul>
           <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/admin/model/beans/AbstractRepository.html">AbstractRepository</a></li>
-          <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaLdapConfiguration.html">ArchivaLdapConfiguration</a></li>
           <li class="selected api apilevel-"><a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html">ArchivaRuntimeConfiguration</a></li>
           <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/admin/model/beans/FileType.html">FileType</a></li>
+          <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/admin/model/beans/LdapConfiguration.html">LdapConfiguration</a></li>
           <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/admin/model/beans/LegacyArtifactPath.html">LegacyArtifactPath</a></li>
           <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html">ManagedRepository</a></li>
           <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/admin/model/beans/NetworkConfiguration.html">NetworkConfiguration</a></li>
@@ -585,8 +585,8 @@ Summary:
           private
           
           
-          <a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaLdapConfiguration.html">ArchivaLdapConfiguration</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#archivaLdapConfiguration">archivaLdapConfiguration</a></td>
+          Map&lt;String,&nbsp;String&gt;</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#configurationProperties">configurationProperties</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -596,13 +596,25 @@ Summary:
           private
           
           
-          Map&lt;String,&nbsp;String&gt;</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#configurationProperties">configurationProperties</a></td>
-          <td class="jd-descrcol" width="100%"></td>
+          List&lt;<a href="../../../../../../org/apache/archiva/admin/model/beans/PropertyEntry.html">PropertyEntry</a>&gt;</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#configurationPropertiesEntries">configurationPropertiesEntries</a></td>
+          <td class="jd-descrcol" width="100%">field to ease json mapping wrapper on <code>configurationProperties</code> field
+</td>
       </tr>
       
     
       <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          <a href="../../../../../../org/apache/archiva/admin/model/beans/LdapConfiguration.html">LdapConfiguration</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#ldapConfiguration">ldapConfiguration</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -613,7 +625,7 @@ Summary:
       </tr>
       
     
-      <tr class=" api apilevel-" >
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -675,10 +687,10 @@ Summary:
             
             
             
-            <a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaLdapConfiguration.html">ArchivaLdapConfiguration</a></nobr>
+            Map&lt;String,&nbsp;String&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#getArchivaLdapConfiguration()">getArchivaLdapConfiguration</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#getConfigurationProperties()">getConfigurationProperties</a></span>()</nobr>
         
   </td></tr>
 
@@ -691,16 +703,32 @@ Summary:
             
             
             
-            Map&lt;String,&nbsp;String&gt;</nobr>
+            List&lt;<a href="../../../../../../org/apache/archiva/admin/model/beans/PropertyEntry.html">PropertyEntry</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#getConfigurationProperties()">getConfigurationProperties</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#getConfigurationPropertiesEntries()">getConfigurationPropertiesEntries</a></span>()</nobr>
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../org/apache/archiva/admin/model/beans/LdapConfiguration.html">LdapConfiguration</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#getLdapConfiguration()">getLdapConfiguration</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -716,7 +744,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -727,22 +755,6 @@ Summary:
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#isMigratedFromRedbackConfiguration()">isMigratedFromRedbackConfiguration</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#setArchivaLdapConfiguration(org.apache.archiva.admin.model.beans.ArchivaLdapConfiguration)">setArchivaLdapConfiguration</a></span>(<a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaLdapConfiguration.html">ArchivaLdapConfiguration</a> archivaLdapConfiguration)</nobr>
         
   </td></tr>
 
@@ -759,6 +771,38 @@ Summary:
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#setConfigurationProperties(java.util.Map<java.lang.String, java.lang.String>)">setConfigurationProperties</a></span>(Map&lt;String,&nbsp;String&gt; configurationProperties)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#setConfigurationPropertiesEntries(java.util.List<org.apache.archiva.admin.model.beans.PropertyEntry>)">setConfigurationPropertiesEntries</a></span>(List&lt;<a href="../../../../../../org/apache/archiva/admin/model/beans/PropertyEntry.html">PropertyEntry</a>&gt; configurationPropertiesEntries)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#setLdapConfiguration(org.apache.archiva.admin.model.beans.LdapConfiguration)">setLdapConfiguration</a></span>(<a href="../../../../../../org/apache/archiva/admin/model/beans/LdapConfiguration.html">LdapConfiguration</a> ldapConfiguration)</nobr>
         
   </td></tr>
 
@@ -1093,7 +1137,7 @@ From class
 
 
 
-<A NAME="archivaLdapConfiguration"></A>
+<A NAME="configurationProperties"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1101,9 +1145,9 @@ From class
         private 
          
          
-        <a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaLdapConfiguration.html">ArchivaLdapConfiguration</a>
+        Map&lt;String,&nbsp;String&gt;
       </span>
-        archivaLdapConfiguration
+        configurationProperties
     </h4>
       <div class="api-level">
         
@@ -1123,7 +1167,7 @@ From class
 
 
 
-<A NAME="configurationProperties"></A>
+<A NAME="configurationPropertiesEntries"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1131,9 +1175,40 @@ From class
         private 
          
          
-        Map&lt;String,&nbsp;String&gt;
+        List&lt;<a href="../../../../../../org/apache/archiva/admin/model/beans/PropertyEntry.html">PropertyEntry</a>&gt;
       </span>
-        configurationProperties
+        configurationPropertiesEntries
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>field to ease json mapping wrapper on <code>configurationProperties</code> field
+</p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="ldapConfiguration"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        <a href="../../../../../../org/apache/archiva/admin/model/beans/LdapConfiguration.html">LdapConfiguration</a>
+      </span>
+        ldapConfiguration
     </h4>
       <div class="api-level">
         
@@ -1269,7 +1344,7 @@ From class
 
 
 
-<A NAME="getArchivaLdapConfiguration()"></A>
+<A NAME="getConfigurationProperties()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1279,9 +1354,9 @@ From class
          
          
          
-        <a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaLdapConfiguration.html">ArchivaLdapConfiguration</a>
+        Map&lt;String,&nbsp;String&gt;
       </span>
-      <span class="sympad">getArchivaLdapConfiguration</span>
+      <span class="sympad">getConfigurationProperties</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1300,7 +1375,7 @@ From class
 </div>
 
 
-<A NAME="getConfigurationProperties()"></A>
+<A NAME="getConfigurationPropertiesEntries()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1310,9 +1385,40 @@ From class
          
          
          
-        Map&lt;String,&nbsp;String&gt;
+        List&lt;<a href="../../../../../../org/apache/archiva/admin/model/beans/PropertyEntry.html">PropertyEntry</a>&gt;
       </span>
-      <span class="sympad">getConfigurationProperties</span>
+      <span class="sympad">getConfigurationPropertiesEntries</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getLdapConfiguration()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../../org/apache/archiva/admin/model/beans/LdapConfiguration.html">LdapConfiguration</a>
+      </span>
+      <span class="sympad">getLdapConfiguration</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1393,7 +1499,7 @@ From class
 </div>
 
 
-<A NAME="setArchivaLdapConfiguration(org.apache.archiva.admin.model.beans.ArchivaLdapConfiguration)"></A>
+<A NAME="setConfigurationProperties(java.util.Map<java.lang.String, java.lang.String>)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1405,8 +1511,8 @@ From class
          
         void
       </span>
-      <span class="sympad">setArchivaLdapConfiguration</span>
-      <span class="normal">(<a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaLdapConfiguration.html">ArchivaLdapConfiguration</a> archivaLdapConfiguration)</span>
+      <span class="sympad">setConfigurationProperties</span>
+      <span class="normal">(Map&lt;String,&nbsp;String&gt; configurationProperties)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1424,7 +1530,7 @@ From class
 </div>
 
 
-<A NAME="setConfigurationProperties(java.util.Map<java.lang.String, java.lang.String>)"></A>
+<A NAME="setConfigurationPropertiesEntries(java.util.List<org.apache.archiva.admin.model.beans.PropertyEntry>)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1436,8 +1542,39 @@ From class
          
         void
       </span>
-      <span class="sympad">setConfigurationProperties</span>
-      <span class="normal">(Map&lt;String,&nbsp;String&gt; configurationProperties)</span>
+      <span class="sympad">setConfigurationPropertiesEntries</span>
+      <span class="normal">(List&lt;<a href="../../../../../../org/apache/archiva/admin/model/beans/PropertyEntry.html">PropertyEntry</a>&gt; configurationPropertiesEntries)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="setLdapConfiguration(org.apache.archiva.admin.model.beans.LdapConfiguration)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setLdapConfiguration</span>
+      <span class="normal">(<a href="../../../../../../org/apache/archiva/admin/model/beans/LdapConfiguration.html">LdapConfiguration</a> ldapConfiguration)</span>
     </h4>
       <div class="api-level">
         <div>
