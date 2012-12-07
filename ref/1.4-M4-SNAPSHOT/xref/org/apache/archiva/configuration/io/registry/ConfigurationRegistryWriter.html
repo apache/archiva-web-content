@@ -35,7 +35,7 @@
 <a class="jxr_linenumber" name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.configuration.WebappConfiguration;
 <a class="jxr_linenumber" name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.configuration.UserInterfaceOptions;
 <a class="jxr_linenumber" name="27" href="#27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.configuration.NetworkConfiguration;
-<a class="jxr_linenumber" name="28" href="#28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.configuration.RuntimeConfiguration;
+<a class="jxr_linenumber" name="28" href="#28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.configuration.RedbackRuntimeConfiguration;
 <a class="jxr_linenumber" name="29" href="#29">29</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.configuration.LdapConfiguration;
 <a class="jxr_linenumber" name="30" href="#30">30</a>  
 <a class="jxr_linenumber" name="31" href="#31">31</a>  
@@ -172,10 +172,10 @@
 <a class="jxr_linenumber" name="162" href="#162">162</a>             {
 <a class="jxr_linenumber" name="163" href="#163">163</a>                 writeNetworkConfiguration( prefix + <span class="jxr_string">"networkConfiguration."</span>, value.getNetworkConfiguration(), registry );
 <a class="jxr_linenumber" name="164" href="#164">164</a>             }
-<a class="jxr_linenumber" name="165" href="#165">165</a>             <strong class="jxr_keyword">if</strong> ( value.getRuntimeConfiguration() != <strong class="jxr_keyword">null</strong>
+<a class="jxr_linenumber" name="165" href="#165">165</a>             <strong class="jxr_keyword">if</strong> ( value.getRedbackRuntimeConfiguration() != <strong class="jxr_keyword">null</strong>
 <a class="jxr_linenumber" name="166" href="#166">166</a>  )
 <a class="jxr_linenumber" name="167" href="#167">167</a>             {
-<a class="jxr_linenumber" name="168" href="#168">168</a>                 writeRuntimeConfiguration( prefix + <span class="jxr_string">"runtimeConfiguration."</span>, value.getRuntimeConfiguration(), registry );
+<a class="jxr_linenumber" name="168" href="#168">168</a>                 writeRedbackRuntimeConfiguration( prefix + <span class="jxr_string">"redbackRuntimeConfiguration."</span>, value.getRedbackRuntimeConfiguration(), registry );
 <a class="jxr_linenumber" name="169" href="#169">169</a>             }
 <a class="jxr_linenumber" name="170" href="#170">170</a>             <strong class="jxr_keyword">if</strong> ( value.getProxyConnectorRuleConfigurations() != <strong class="jxr_keyword">null</strong> &amp;&amp; value.getProxyConnectorRuleConfigurations().size() &gt; 0
 <a class="jxr_linenumber" name="171" href="#171">171</a>  )
@@ -1135,7 +1135,7 @@
 <a class="jxr_linenumber" name="1125" href="#1125">1125</a>         }
 <a class="jxr_linenumber" name="1126" href="#1126">1126</a>     }
 <a class="jxr_linenumber" name="1127" href="#1127">1127</a>     
-<a class="jxr_linenumber" name="1128" href="#1128">1128</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> writeRuntimeConfiguration( String prefix, RuntimeConfiguration value, Registry registry )
+<a class="jxr_linenumber" name="1128" href="#1128">1128</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> writeRedbackRuntimeConfiguration( String prefix, RedbackRuntimeConfiguration value, Registry registry )
 <a class="jxr_linenumber" name="1129" href="#1129">1129</a>     {
 <a class="jxr_linenumber" name="1130" href="#1130">1130</a>         <strong class="jxr_keyword">if</strong> ( value != <strong class="jxr_keyword">null</strong> )
 <a class="jxr_linenumber" name="1131" href="#1131">1131</a>         {
@@ -1156,84 +1156,97 @@
 <a class="jxr_linenumber" name="1146" href="#1146">1146</a>             {
 <a class="jxr_linenumber" name="1147" href="#1147">1147</a>                 writeLdapConfiguration( prefix + <span class="jxr_string">"ldapConfiguration."</span>, value.getLdapConfiguration(), registry );
 <a class="jxr_linenumber" name="1148" href="#1148">1148</a>             }
-<a class="jxr_linenumber" name="1149" href="#1149">1149</a>         }
-<a class="jxr_linenumber" name="1150" href="#1150">1150</a>     }
-<a class="jxr_linenumber" name="1151" href="#1151">1151</a>     
-<a class="jxr_linenumber" name="1152" href="#1152">1152</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> writeLdapConfiguration( String prefix, LdapConfiguration value, Registry registry )
-<a class="jxr_linenumber" name="1153" href="#1153">1153</a>     {
-<a class="jxr_linenumber" name="1154" href="#1154">1154</a>         <strong class="jxr_keyword">if</strong> ( value != <strong class="jxr_keyword">null</strong> )
-<a class="jxr_linenumber" name="1155" href="#1155">1155</a>         {
-<a class="jxr_linenumber" name="1156" href="#1156">1156</a>             <strong class="jxr_keyword">if</strong> ( value.getHostName() != <strong class="jxr_keyword">null</strong>
-<a class="jxr_linenumber" name="1157" href="#1157">1157</a>  )
-<a class="jxr_linenumber" name="1158" href="#1158">1158</a>             {
-<a class="jxr_linenumber" name="1159" href="#1159">1159</a>                 String name = <span class="jxr_string">"hostName"</span>;
-<a class="jxr_linenumber" name="1160" href="#1160">1160</a>                 registry.setString( prefix + name, value.getHostName() );
+<a class="jxr_linenumber" name="1149" href="#1149">1149</a>             <strong class="jxr_keyword">if</strong> ( value.getConfigurationProperties() != <strong class="jxr_keyword">null</strong> &amp;&amp; value.getConfigurationProperties().size() &gt; 0
+<a class="jxr_linenumber" name="1150" href="#1150">1150</a>  )
+<a class="jxr_linenumber" name="1151" href="#1151">1151</a>             {
+<a class="jxr_linenumber" name="1152" href="#1152">1152</a>                 registry.removeSubset( prefix + <span class="jxr_string">"configurationProperties"</span> );
+<a class="jxr_linenumber" name="1153" href="#1153">1153</a>                 
+<a class="jxr_linenumber" name="1154" href="#1154">1154</a>                 <strong class="jxr_keyword">for</strong> ( Iterator iter = value.getConfigurationProperties().keySet().iterator(); iter.hasNext(); )
+<a class="jxr_linenumber" name="1155" href="#1155">1155</a>                 {
+<a class="jxr_linenumber" name="1156" href="#1156">1156</a>                     String key = (String) iter.next();
+<a class="jxr_linenumber" name="1157" href="#1157">1157</a>                     String v = (String) value.getConfigurationProperties().get( key );
+<a class="jxr_linenumber" name="1158" href="#1158">1158</a> 
+<a class="jxr_linenumber" name="1159" href="#1159">1159</a>                     registry.setString( prefix + <span class="jxr_string">"configurationProperties."</span> + key, v );
+<a class="jxr_linenumber" name="1160" href="#1160">1160</a>                 }
 <a class="jxr_linenumber" name="1161" href="#1161">1161</a>             }
-<a class="jxr_linenumber" name="1162" href="#1162">1162</a>             <strong class="jxr_keyword">if</strong> ( value.getPort() != 0
-<a class="jxr_linenumber" name="1163" href="#1163">1163</a>  )
-<a class="jxr_linenumber" name="1164" href="#1164">1164</a>             {
-<a class="jxr_linenumber" name="1165" href="#1165">1165</a>                 String name = <span class="jxr_string">"port"</span>;
-<a class="jxr_linenumber" name="1166" href="#1166">1166</a>                 registry.setInt( prefix + name, value.getPort() );
-<a class="jxr_linenumber" name="1167" href="#1167">1167</a>             }
-<a class="jxr_linenumber" name="1168" href="#1168">1168</a>             <strong class="jxr_keyword">if</strong> ( value.isSsl() != false
-<a class="jxr_linenumber" name="1169" href="#1169">1169</a>  )
-<a class="jxr_linenumber" name="1170" href="#1170">1170</a>             {
-<a class="jxr_linenumber" name="1171" href="#1171">1171</a>                 String name = <span class="jxr_string">"ssl"</span>;
-<a class="jxr_linenumber" name="1172" href="#1172">1172</a>                 registry.setBoolean( prefix + name, value.isSsl() );
-<a class="jxr_linenumber" name="1173" href="#1173">1173</a>             }
-<a class="jxr_linenumber" name="1174" href="#1174">1174</a>             <strong class="jxr_keyword">if</strong> ( value.getBaseDn() != <strong class="jxr_keyword">null</strong>
-<a class="jxr_linenumber" name="1175" href="#1175">1175</a>  )
-<a class="jxr_linenumber" name="1176" href="#1176">1176</a>             {
-<a class="jxr_linenumber" name="1177" href="#1177">1177</a>                 String name = <span class="jxr_string">"baseDn"</span>;
-<a class="jxr_linenumber" name="1178" href="#1178">1178</a>                 registry.setString( prefix + name, value.getBaseDn() );
-<a class="jxr_linenumber" name="1179" href="#1179">1179</a>             }
-<a class="jxr_linenumber" name="1180" href="#1180">1180</a>             <strong class="jxr_keyword">if</strong> ( value.getContextFactory() != <strong class="jxr_keyword">null</strong>
-<a class="jxr_linenumber" name="1181" href="#1181">1181</a>  )
-<a class="jxr_linenumber" name="1182" href="#1182">1182</a>             {
-<a class="jxr_linenumber" name="1183" href="#1183">1183</a>                 String name = <span class="jxr_string">"contextFactory"</span>;
-<a class="jxr_linenumber" name="1184" href="#1184">1184</a>                 registry.setString( prefix + name, value.getContextFactory() );
-<a class="jxr_linenumber" name="1185" href="#1185">1185</a>             }
-<a class="jxr_linenumber" name="1186" href="#1186">1186</a>             <strong class="jxr_keyword">if</strong> ( value.getBindDn() != <strong class="jxr_keyword">null</strong>
-<a class="jxr_linenumber" name="1187" href="#1187">1187</a>  )
-<a class="jxr_linenumber" name="1188" href="#1188">1188</a>             {
-<a class="jxr_linenumber" name="1189" href="#1189">1189</a>                 String name = <span class="jxr_string">"bindDn"</span>;
-<a class="jxr_linenumber" name="1190" href="#1190">1190</a>                 registry.setString( prefix + name, value.getBindDn() );
-<a class="jxr_linenumber" name="1191" href="#1191">1191</a>             }
-<a class="jxr_linenumber" name="1192" href="#1192">1192</a>             <strong class="jxr_keyword">if</strong> ( value.getPassword() != <strong class="jxr_keyword">null</strong>
-<a class="jxr_linenumber" name="1193" href="#1193">1193</a>  )
-<a class="jxr_linenumber" name="1194" href="#1194">1194</a>             {
-<a class="jxr_linenumber" name="1195" href="#1195">1195</a>                 String name = <span class="jxr_string">"password"</span>;
-<a class="jxr_linenumber" name="1196" href="#1196">1196</a>                 registry.setString( prefix + name, value.getPassword() );
-<a class="jxr_linenumber" name="1197" href="#1197">1197</a>             }
-<a class="jxr_linenumber" name="1198" href="#1198">1198</a>             <strong class="jxr_keyword">if</strong> ( value.getAuthenticationMethod() != <strong class="jxr_keyword">null</strong>
-<a class="jxr_linenumber" name="1199" href="#1199">1199</a>  )
-<a class="jxr_linenumber" name="1200" href="#1200">1200</a>             {
-<a class="jxr_linenumber" name="1201" href="#1201">1201</a>                 String name = <span class="jxr_string">"authenticationMethod"</span>;
-<a class="jxr_linenumber" name="1202" href="#1202">1202</a>                 registry.setString( prefix + name, value.getAuthenticationMethod() );
-<a class="jxr_linenumber" name="1203" href="#1203">1203</a>             }
-<a class="jxr_linenumber" name="1204" href="#1204">1204</a>             <strong class="jxr_keyword">if</strong> ( value.isBindAuthenticatorEnabled() != false
-<a class="jxr_linenumber" name="1205" href="#1205">1205</a>  )
-<a class="jxr_linenumber" name="1206" href="#1206">1206</a>             {
-<a class="jxr_linenumber" name="1207" href="#1207">1207</a>                 String name = <span class="jxr_string">"bindAuthenticatorEnabled"</span>;
-<a class="jxr_linenumber" name="1208" href="#1208">1208</a>                 registry.setBoolean( prefix + name, value.isBindAuthenticatorEnabled() );
-<a class="jxr_linenumber" name="1209" href="#1209">1209</a>             }
-<a class="jxr_linenumber" name="1210" href="#1210">1210</a>             <strong class="jxr_keyword">if</strong> ( value.getExtraProperties() != <strong class="jxr_keyword">null</strong> &amp;&amp; value.getExtraProperties().size() &gt; 0
-<a class="jxr_linenumber" name="1211" href="#1211">1211</a>  )
-<a class="jxr_linenumber" name="1212" href="#1212">1212</a>             {
-<a class="jxr_linenumber" name="1213" href="#1213">1213</a>                 registry.removeSubset( prefix + <span class="jxr_string">"extraProperties"</span> );
-<a class="jxr_linenumber" name="1214" href="#1214">1214</a>                 
-<a class="jxr_linenumber" name="1215" href="#1215">1215</a>                 <strong class="jxr_keyword">for</strong> ( Iterator iter = value.getExtraProperties().keySet().iterator(); iter.hasNext(); )
-<a class="jxr_linenumber" name="1216" href="#1216">1216</a>                 {
-<a class="jxr_linenumber" name="1217" href="#1217">1217</a>                     String key = (String) iter.next();
-<a class="jxr_linenumber" name="1218" href="#1218">1218</a>                     String v = (String) value.getExtraProperties().get( key );
-<a class="jxr_linenumber" name="1219" href="#1219">1219</a> 
-<a class="jxr_linenumber" name="1220" href="#1220">1220</a>                     registry.setString( prefix + <span class="jxr_string">"extraProperties."</span> + key, v );
-<a class="jxr_linenumber" name="1221" href="#1221">1221</a>                 }
+<a class="jxr_linenumber" name="1162" href="#1162">1162</a>         }
+<a class="jxr_linenumber" name="1163" href="#1163">1163</a>     }
+<a class="jxr_linenumber" name="1164" href="#1164">1164</a>     
+<a class="jxr_linenumber" name="1165" href="#1165">1165</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> writeLdapConfiguration( String prefix, LdapConfiguration value, Registry registry )
+<a class="jxr_linenumber" name="1166" href="#1166">1166</a>     {
+<a class="jxr_linenumber" name="1167" href="#1167">1167</a>         <strong class="jxr_keyword">if</strong> ( value != <strong class="jxr_keyword">null</strong> )
+<a class="jxr_linenumber" name="1168" href="#1168">1168</a>         {
+<a class="jxr_linenumber" name="1169" href="#1169">1169</a>             <strong class="jxr_keyword">if</strong> ( value.getHostName() != <strong class="jxr_keyword">null</strong>
+<a class="jxr_linenumber" name="1170" href="#1170">1170</a>  )
+<a class="jxr_linenumber" name="1171" href="#1171">1171</a>             {
+<a class="jxr_linenumber" name="1172" href="#1172">1172</a>                 String name = <span class="jxr_string">"hostName"</span>;
+<a class="jxr_linenumber" name="1173" href="#1173">1173</a>                 registry.setString( prefix + name, value.getHostName() );
+<a class="jxr_linenumber" name="1174" href="#1174">1174</a>             }
+<a class="jxr_linenumber" name="1175" href="#1175">1175</a>             <strong class="jxr_keyword">if</strong> ( value.getPort() != 0
+<a class="jxr_linenumber" name="1176" href="#1176">1176</a>  )
+<a class="jxr_linenumber" name="1177" href="#1177">1177</a>             {
+<a class="jxr_linenumber" name="1178" href="#1178">1178</a>                 String name = <span class="jxr_string">"port"</span>;
+<a class="jxr_linenumber" name="1179" href="#1179">1179</a>                 registry.setInt( prefix + name, value.getPort() );
+<a class="jxr_linenumber" name="1180" href="#1180">1180</a>             }
+<a class="jxr_linenumber" name="1181" href="#1181">1181</a>             <strong class="jxr_keyword">if</strong> ( value.isSsl() != false
+<a class="jxr_linenumber" name="1182" href="#1182">1182</a>  )
+<a class="jxr_linenumber" name="1183" href="#1183">1183</a>             {
+<a class="jxr_linenumber" name="1184" href="#1184">1184</a>                 String name = <span class="jxr_string">"ssl"</span>;
+<a class="jxr_linenumber" name="1185" href="#1185">1185</a>                 registry.setBoolean( prefix + name, value.isSsl() );
+<a class="jxr_linenumber" name="1186" href="#1186">1186</a>             }
+<a class="jxr_linenumber" name="1187" href="#1187">1187</a>             <strong class="jxr_keyword">if</strong> ( value.getBaseDn() != <strong class="jxr_keyword">null</strong>
+<a class="jxr_linenumber" name="1188" href="#1188">1188</a>  )
+<a class="jxr_linenumber" name="1189" href="#1189">1189</a>             {
+<a class="jxr_linenumber" name="1190" href="#1190">1190</a>                 String name = <span class="jxr_string">"baseDn"</span>;
+<a class="jxr_linenumber" name="1191" href="#1191">1191</a>                 registry.setString( prefix + name, value.getBaseDn() );
+<a class="jxr_linenumber" name="1192" href="#1192">1192</a>             }
+<a class="jxr_linenumber" name="1193" href="#1193">1193</a>             <strong class="jxr_keyword">if</strong> ( value.getContextFactory() != <strong class="jxr_keyword">null</strong>
+<a class="jxr_linenumber" name="1194" href="#1194">1194</a>  )
+<a class="jxr_linenumber" name="1195" href="#1195">1195</a>             {
+<a class="jxr_linenumber" name="1196" href="#1196">1196</a>                 String name = <span class="jxr_string">"contextFactory"</span>;
+<a class="jxr_linenumber" name="1197" href="#1197">1197</a>                 registry.setString( prefix + name, value.getContextFactory() );
+<a class="jxr_linenumber" name="1198" href="#1198">1198</a>             }
+<a class="jxr_linenumber" name="1199" href="#1199">1199</a>             <strong class="jxr_keyword">if</strong> ( value.getBindDn() != <strong class="jxr_keyword">null</strong>
+<a class="jxr_linenumber" name="1200" href="#1200">1200</a>  )
+<a class="jxr_linenumber" name="1201" href="#1201">1201</a>             {
+<a class="jxr_linenumber" name="1202" href="#1202">1202</a>                 String name = <span class="jxr_string">"bindDn"</span>;
+<a class="jxr_linenumber" name="1203" href="#1203">1203</a>                 registry.setString( prefix + name, value.getBindDn() );
+<a class="jxr_linenumber" name="1204" href="#1204">1204</a>             }
+<a class="jxr_linenumber" name="1205" href="#1205">1205</a>             <strong class="jxr_keyword">if</strong> ( value.getPassword() != <strong class="jxr_keyword">null</strong>
+<a class="jxr_linenumber" name="1206" href="#1206">1206</a>  )
+<a class="jxr_linenumber" name="1207" href="#1207">1207</a>             {
+<a class="jxr_linenumber" name="1208" href="#1208">1208</a>                 String name = <span class="jxr_string">"password"</span>;
+<a class="jxr_linenumber" name="1209" href="#1209">1209</a>                 registry.setString( prefix + name, value.getPassword() );
+<a class="jxr_linenumber" name="1210" href="#1210">1210</a>             }
+<a class="jxr_linenumber" name="1211" href="#1211">1211</a>             <strong class="jxr_keyword">if</strong> ( value.getAuthenticationMethod() != <strong class="jxr_keyword">null</strong>
+<a class="jxr_linenumber" name="1212" href="#1212">1212</a>  )
+<a class="jxr_linenumber" name="1213" href="#1213">1213</a>             {
+<a class="jxr_linenumber" name="1214" href="#1214">1214</a>                 String name = <span class="jxr_string">"authenticationMethod"</span>;
+<a class="jxr_linenumber" name="1215" href="#1215">1215</a>                 registry.setString( prefix + name, value.getAuthenticationMethod() );
+<a class="jxr_linenumber" name="1216" href="#1216">1216</a>             }
+<a class="jxr_linenumber" name="1217" href="#1217">1217</a>             <strong class="jxr_keyword">if</strong> ( value.isBindAuthenticatorEnabled() != false
+<a class="jxr_linenumber" name="1218" href="#1218">1218</a>  )
+<a class="jxr_linenumber" name="1219" href="#1219">1219</a>             {
+<a class="jxr_linenumber" name="1220" href="#1220">1220</a>                 String name = <span class="jxr_string">"bindAuthenticatorEnabled"</span>;
+<a class="jxr_linenumber" name="1221" href="#1221">1221</a>                 registry.setBoolean( prefix + name, value.isBindAuthenticatorEnabled() );
 <a class="jxr_linenumber" name="1222" href="#1222">1222</a>             }
-<a class="jxr_linenumber" name="1223" href="#1223">1223</a>         }
-<a class="jxr_linenumber" name="1224" href="#1224">1224</a>     }
-<a class="jxr_linenumber" name="1225" href="#1225">1225</a>     
-<a class="jxr_linenumber" name="1226" href="#1226">1226</a> }
+<a class="jxr_linenumber" name="1223" href="#1223">1223</a>             <strong class="jxr_keyword">if</strong> ( value.getExtraProperties() != <strong class="jxr_keyword">null</strong> &amp;&amp; value.getExtraProperties().size() &gt; 0
+<a class="jxr_linenumber" name="1224" href="#1224">1224</a>  )
+<a class="jxr_linenumber" name="1225" href="#1225">1225</a>             {
+<a class="jxr_linenumber" name="1226" href="#1226">1226</a>                 registry.removeSubset( prefix + <span class="jxr_string">"extraProperties"</span> );
+<a class="jxr_linenumber" name="1227" href="#1227">1227</a>                 
+<a class="jxr_linenumber" name="1228" href="#1228">1228</a>                 <strong class="jxr_keyword">for</strong> ( Iterator iter = value.getExtraProperties().keySet().iterator(); iter.hasNext(); )
+<a class="jxr_linenumber" name="1229" href="#1229">1229</a>                 {
+<a class="jxr_linenumber" name="1230" href="#1230">1230</a>                     String key = (String) iter.next();
+<a class="jxr_linenumber" name="1231" href="#1231">1231</a>                     String v = (String) value.getExtraProperties().get( key );
+<a class="jxr_linenumber" name="1232" href="#1232">1232</a> 
+<a class="jxr_linenumber" name="1233" href="#1233">1233</a>                     registry.setString( prefix + <span class="jxr_string">"extraProperties."</span> + key, v );
+<a class="jxr_linenumber" name="1234" href="#1234">1234</a>                 }
+<a class="jxr_linenumber" name="1235" href="#1235">1235</a>             }
+<a class="jxr_linenumber" name="1236" href="#1236">1236</a>         }
+<a class="jxr_linenumber" name="1237" href="#1237">1237</a>     }
+<a class="jxr_linenumber" name="1238" href="#1238">1238</a>     
+<a class="jxr_linenumber" name="1239" href="#1239">1239</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

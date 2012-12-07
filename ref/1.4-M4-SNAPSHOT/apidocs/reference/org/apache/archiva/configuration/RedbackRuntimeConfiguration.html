@@ -57,7 +57,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
 <title>
 
-  RuntimeConfiguration
+  RedbackRuntimeConfiguration
 
 
 | Archiva :: Modules
@@ -184,8 +184,6 @@
   <a href="../../../../org/apache/archiva/admin/repository/runtime/package-summary.html">org.apache.archiva.admin.repository.runtime</a></li>
     <li class="api apilevel-">
   <a href="../../../../org/apache/archiva/admin/repository/utils/package-summary.html">org.apache.archiva.admin.repository.utils</a></li>
-    <li class="api apilevel-">
-  <a href="../../../../org/apache/archiva/applet/package-summary.html">org.apache.archiva.applet</a></li>
     <li class="api apilevel-">
   <a href="../../../../org/apache/archiva/audit/package-summary.html">org.apache.archiva.audit</a></li>
     <li class="api apilevel-">
@@ -378,10 +376,10 @@
           <li class="api apilevel-"><a href="../../../../org/apache/archiva/configuration/OrganisationInformation.html">OrganisationInformation</a></li>
           <li class="api apilevel-"><a href="../../../../org/apache/archiva/configuration/ProxyConnectorConfiguration.html">ProxyConnectorConfiguration</a></li>
           <li class="api apilevel-"><a href="../../../../org/apache/archiva/configuration/ProxyConnectorRuleConfiguration.html">ProxyConnectorRuleConfiguration</a></li>
+          <li class="selected api apilevel-"><a href="../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html">RedbackRuntimeConfiguration</a></li>
           <li class="api apilevel-"><a href="../../../../org/apache/archiva/configuration/RemoteRepositoryConfiguration.html">RemoteRepositoryConfiguration</a></li>
           <li class="api apilevel-"><a href="../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html">RepositoryGroupConfiguration</a></li>
           <li class="api apilevel-"><a href="../../../../org/apache/archiva/configuration/RepositoryScanningConfiguration.html">RepositoryScanningConfiguration</a></li>
-          <li class="selected api apilevel-"><a href="../../../../org/apache/archiva/configuration/RuntimeConfiguration.html">RuntimeConfiguration</a></li>
           <li class="api apilevel-"><a href="../../../../org/apache/archiva/configuration/SyncConnectorConfiguration.html">SyncConnectorConfiguration</a></li>
           <li class="api apilevel-"><a href="../../../../org/apache/archiva/configuration/UserInterfaceOptions.html">UserInterfaceOptions</a></li>
           <li class="api apilevel-"><a href="../../../../org/apache/archiva/configuration/V1RepositoryConfiguration.html">V1RepositoryConfiguration</a></li>
@@ -499,7 +497,7 @@ Summary:
      
     
     class
-<h1>RuntimeConfiguration</h1>
+<h1>RedbackRuntimeConfiguration</h1>
 
 
 
@@ -537,7 +535,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
          	
-        <td colspan="1" class="jd-inheritance-class-cell">org.apache.archiva.configuration.RuntimeConfiguration</td>
+        <td colspan="1" class="jd-inheritance-class-cell">org.apache.archiva.configuration.RedbackRuntimeConfiguration</td>
     </tr>
     
 
@@ -608,9 +606,9 @@ Summary:
           private
           
           
-          <a href="../../../../org/apache/archiva/configuration/LdapConfiguration.html">LdapConfiguration</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../org/apache/archiva/configuration/RuntimeConfiguration.html#ldapConfiguration">ldapConfiguration</a></td>
-          <td class="jd-descrcol" width="100%">the ldap configuration.</td>
+          Map</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#configurationProperties">configurationProperties</a></td>
+          <td class="jd-descrcol" width="100%">Field configurationProperties.</td>
       </tr>
       
     
@@ -619,10 +617,9 @@ Summary:
           private
           
           
-          boolean</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../org/apache/archiva/configuration/RuntimeConfiguration.html#migratedFromRedbackConfiguration">migratedFromRedbackConfiguration</a></td>
-          <td class="jd-descrcol" width="100%">flag to know if redback configuration has been
- checked/migrated.</td>
+          <a href="../../../../org/apache/archiva/configuration/LdapConfiguration.html">LdapConfiguration</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#ldapConfiguration">ldapConfiguration</a></td>
+          <td class="jd-descrcol" width="100%">the ldap configuration.</td>
       </tr>
       
     
@@ -631,8 +628,20 @@ Summary:
           private
           
           
+          boolean</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#migratedFromRedbackConfiguration">migratedFromRedbackConfiguration</a></td>
+          <td class="jd-descrcol" width="100%">flag to know if redback configuration has been
+ checked/migrated.</td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
           String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../org/apache/archiva/configuration/RuntimeConfiguration.html#userManagerImpl">userManagerImpl</a></td>
+          <td class="jd-linkcol"><a href="../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#userManagerImpl">userManagerImpl</a></td>
           <td class="jd-descrcol" width="100%">The user manager impl to use.</td>
       </tr>
       
@@ -662,7 +671,7 @@ Summary:
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/apache/archiva/configuration/RuntimeConfiguration.html#RuntimeConfiguration()">RuntimeConfiguration</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration()">RedbackRuntimeConfiguration</a></span>()</nobr>
         
   </td></tr>
 
@@ -688,10 +697,46 @@ Summary:
             
             
             
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#addConfigurationProperty(java.lang.Object, java.lang.String)">addConfigurationProperty</a></span>(Object key, String value)</nobr>
+        
+        <div class="jd-descrdiv">Method addConfigurationProperty.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#getConfigurationProperties()">getConfigurationProperties</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Method getConfigurationProperties.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
             <a href="../../../../org/apache/archiva/configuration/LdapConfiguration.html">LdapConfiguration</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/apache/archiva/configuration/RuntimeConfiguration.html#getLdapConfiguration()">getLdapConfiguration</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#getLdapConfiguration()">getLdapConfiguration</a></span>()</nobr>
         
         <div class="jd-descrdiv">Get the ldap configuration.</div>
   
@@ -709,7 +754,7 @@ Summary:
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/apache/archiva/configuration/RuntimeConfiguration.html#getUserManagerImpl()">getUserManagerImpl</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#getUserManagerImpl()">getUserManagerImpl</a></span>()</nobr>
         
         <div class="jd-descrdiv">Get the user manager impl to use.</div>
   
@@ -727,7 +772,7 @@ Summary:
             boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/apache/archiva/configuration/RuntimeConfiguration.html#isMigratedFromRedbackConfiguration()">isMigratedFromRedbackConfiguration</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#isMigratedFromRedbackConfiguration()">isMigratedFromRedbackConfiguration</a></span>()</nobr>
         
         <div class="jd-descrdiv">Get flag to know if redback configuration has been
  checked/migrated.</div>
@@ -746,9 +791,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/apache/archiva/configuration/RuntimeConfiguration.html#setLdapConfiguration(org.apache.archiva.configuration.LdapConfiguration)">setLdapConfiguration</a></span>(<a href="../../../../org/apache/archiva/configuration/LdapConfiguration.html">LdapConfiguration</a> ldapConfiguration)</nobr>
+        <span class="sympad"><a href="../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#setConfigurationProperties(java.util.Map)">setConfigurationProperties</a></span>(Map configurationProperties)</nobr>
         
-        <div class="jd-descrdiv">Set the ldap configuration.</div>
+        <div class="jd-descrdiv">Set extra properties for redback configuration.</div>
   
   </td></tr>
 
@@ -764,10 +809,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/apache/archiva/configuration/RuntimeConfiguration.html#setMigratedFromRedbackConfiguration(boolean)">setMigratedFromRedbackConfiguration</a></span>(boolean migratedFromRedbackConfiguration)</nobr>
+        <span class="sympad"><a href="../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#setLdapConfiguration(org.apache.archiva.configuration.LdapConfiguration)">setLdapConfiguration</a></span>(<a href="../../../../org/apache/archiva/configuration/LdapConfiguration.html">LdapConfiguration</a> ldapConfiguration)</nobr>
         
-        <div class="jd-descrdiv">Set flag to know if redback configuration has been
- checked/migrated.</div>
+        <div class="jd-descrdiv">Set the ldap configuration.</div>
   
   </td></tr>
 
@@ -783,7 +827,26 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/apache/archiva/configuration/RuntimeConfiguration.html#setUserManagerImpl(java.lang.String)">setUserManagerImpl</a></span>(String userManagerImpl)</nobr>
+        <span class="sympad"><a href="../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#setMigratedFromRedbackConfiguration(boolean)">setMigratedFromRedbackConfiguration</a></span>(boolean migratedFromRedbackConfiguration)</nobr>
+        
+        <div class="jd-descrdiv">Set flag to know if redback configuration has been
+ checked/migrated.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#setUserManagerImpl(java.lang.String)">setUserManagerImpl</a></span>(String userManagerImpl)</nobr>
         
         <div class="jd-descrdiv">Set the user manager impl to use.</div>
   
@@ -1072,6 +1135,37 @@ From class
 
 
 
+<A NAME="configurationProperties"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        Map
+      </span>
+        configurationProperties
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Field configurationProperties.
+</p></div>
+
+    
+    </div>
+</div>
+
+
+
 <A NAME="ldapConfiguration"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1175,7 +1269,7 @@ From class
 
 
 
-<A NAME="RuntimeConfiguration()"></A>
+<A NAME="RedbackRuntimeConfiguration()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1187,7 +1281,7 @@ From class
          
         
       </span>
-      <span class="sympad">RuntimeConfiguration</span>
+      <span class="sympad">RedbackRuntimeConfiguration</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1219,6 +1313,73 @@ From class
 
 <h2>Public Methods</h2>
 
+
+
+<A NAME="addConfigurationProperty(java.lang.Object, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">addConfigurationProperty</span>
+      <span class="normal">(Object key, String value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Method addConfigurationProperty.</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getConfigurationProperties()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Map
+      </span>
+      <span class="sympad">getConfigurationProperties</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Method getConfigurationProperties.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Map
+</li></ul>
+  </div>
+
+    </div>
+</div>
 
 
 <A NAME="getLdapConfiguration()"></A>
@@ -1325,6 +1486,38 @@ From class
       <ul class="nolist"><li>boolean
 </li></ul>
   </div>
+
+    </div>
+</div>
+
+
+<A NAME="setConfigurationProperties(java.util.Map)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setConfigurationProperties</span>
+      <span class="normal">(Map configurationProperties)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Set extra properties for redback configuration.
+ String/String.</p></div>
 
     </div>
 </div>
