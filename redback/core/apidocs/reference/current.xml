@@ -1982,6 +1982,17 @@
  visibility="public"
 >
 </method>
+<method name="getUserManagerId"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getUsername"
  return="java.lang.String"
  abstract="false"
@@ -5467,21 +5478,6 @@
 <parameter name="httpSession" type="javax.servlet.http.HttpSession">
 </parameter>
 </method>
-<method name="storeDefaultUser"
- return="java.lang.String"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="principal" type="java.lang.String">
-</parameter>
-<parameter name="httpSession" type="javax.servlet.http.HttpSession">
-</parameter>
-</method>
 <field name="log"
  type="org.slf4j.Logger"
  transient="false"
@@ -6796,6 +6792,8 @@
 >
 <parameter name="um" type="org.apache.archiva.redback.users.UserManager">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="getConfirmPassword"
  return="java.lang.String"
@@ -9533,6 +9531,8 @@
 </parameter>
 <exception name="IOException" type="java.io.IOException">
 </exception>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
 </exception>
 </method>
@@ -9630,6 +9630,8 @@
 <parameter name="backupDirectory" type="java.io.File">
 </parameter>
 <exception name="IOException" type="java.io.IOException">
+</exception>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
 </exception>
 <exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
 </exception>
@@ -9709,6 +9711,8 @@
 </parameter>
 <exception name="IOException" type="java.io.IOException">
 </exception>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
 </exception>
 </method>
@@ -9806,6 +9810,8 @@
 <parameter name="backupDirectory" type="java.io.File">
 </parameter>
 <exception name="IOException" type="java.io.IOException">
+</exception>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
 </exception>
 <exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
 </exception>
@@ -21892,6 +21898,17 @@
  visibility="public"
 >
 </method>
+<method name="getUserManagerId"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getUsername"
  return="java.lang.String"
  abstract="false"
@@ -22125,6 +22142,19 @@
  visibility="public"
 >
 <parameter name="timestampLastPasswordChange" type="java.lang.String">
+</parameter>
+</method>
+<method name="setUserManagerId"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="userManagerId" type="java.lang.String">
 </parameter>
 </method>
 <method name="setUsername"
@@ -27749,6 +27779,8 @@
 </exception>
 <exception name="MustChangePasswordException" type="org.apache.archiva.redback.policy.MustChangePasswordException">
 </exception>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -27926,6 +27958,8 @@
 <exception name="AuthenticationException" type="org.apache.archiva.redback.authentication.AuthenticationException">
 </exception>
 <exception name="MustChangePasswordException" type="org.apache.archiva.redback.policy.MustChangePasswordException">
+</exception>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
 </exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
@@ -28131,6 +28165,8 @@
 </exception>
 <exception name="MustChangePasswordException" type="org.apache.archiva.redback.policy.MustChangePasswordException">
 </exception>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -28220,6 +28256,8 @@
 <exception name="AuthenticationException" type="org.apache.archiva.redback.authentication.AuthenticationException">
 </exception>
 <exception name="MustChangePasswordException" type="org.apache.archiva.redback.policy.MustChangePasswordException">
+</exception>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
 </exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
@@ -29149,6 +29187,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="fireUserManagerInit"
  return="void"
@@ -29212,8 +29252,21 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
+</method>
+<method name="getListeners"
+ return="java.util.List&lt;org.apache.archiva.redback.users.UserManagerListener&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
 </method>
 <method name="initialize"
  return="void"
@@ -29668,6 +29721,17 @@
  visibility="public"
 >
 </method>
+<method name="getUserManagerId"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getUsername"
  return="java.lang.String"
  abstract="true"
@@ -29925,6 +29989,8 @@
 >
 <parameter name="user" type="org.apache.archiva.redback.users.User">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="addUserManagerListener"
  return="void"
@@ -29951,6 +30017,8 @@
 >
 <parameter name="user" type="org.apache.archiva.redback.users.User">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="createGuestUser"
  return="org.apache.archiva.redback.users.User"
@@ -29962,6 +30030,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="createUser"
  return="org.apache.archiva.redback.users.User"
@@ -29979,6 +30049,8 @@
 </parameter>
 <parameter name="emailAddress" type="java.lang.String">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="createUserQuery"
  return="org.apache.archiva.redback.users.UserQuery"
@@ -30001,23 +30073,10 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="principal" type="java.lang.Object">
-</parameter>
-<exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
-</exception>
-</method>
-<method name="deleteUser"
- return="void"
- abstract="true"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
 <parameter name="username" type="java.lang.String">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -30044,21 +30103,8 @@
 >
 <parameter name="username" type="java.lang.String">
 </parameter>
-<exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
 </exception>
-</method>
-<method name="findUser"
- return="org.apache.archiva.redback.users.User"
- abstract="true"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="principal" type="java.lang.Object">
-</parameter>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -30076,6 +30122,8 @@
 </parameter>
 <parameter name="orderAscending" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="findUsersByFullNameKey"
  return="java.util.List&lt;org.apache.archiva.redback.users.User&gt;"
@@ -30091,6 +30139,8 @@
 </parameter>
 <parameter name="orderAscending" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="findUsersByQuery"
  return="java.util.List&lt;org.apache.archiva.redback.users.User&gt;"
@@ -30104,6 +30154,8 @@
 >
 <parameter name="query" type="org.apache.archiva.redback.users.UserQuery">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="findUsersByUsernameKey"
  return="java.util.List&lt;org.apache.archiva.redback.users.User&gt;"
@@ -30119,6 +30171,8 @@
 </parameter>
 <parameter name="orderAscending" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="getDescriptionKey"
  return="java.lang.String"
@@ -30141,6 +30195,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -30165,6 +30221,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="getUsers"
  return="java.util.List&lt;org.apache.archiva.redback.users.User&gt;"
@@ -30178,6 +30236,8 @@
 >
 <parameter name="orderAscending" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="initialize"
  return="void"
@@ -30237,6 +30297,8 @@
 >
 <parameter name="user" type="org.apache.archiva.redback.users.User">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -30254,6 +30316,8 @@
 </parameter>
 <parameter name="passwordChangeRequired" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -30267,8 +30331,10 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="principal" type="java.lang.Object">
+<parameter name="principal" type="java.lang.String">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <field name="GUEST_USERNAME"
  type="java.lang.String"
@@ -30283,7 +30349,7 @@
 </field>
 </interface>
 <class name="UserManagerException"
- extends="java.lang.RuntimeException"
+ extends="java.lang.Exception"
  abstract="false"
  static="false"
  final="false"
@@ -30392,7 +30458,7 @@
 </method>
 </interface>
 <class name="UserNotFoundException"
- extends="java.lang.Exception"
+ extends="org.apache.archiva.redback.users.UserManagerException"
  abstract="false"
  static="false"
  final="false"
@@ -30687,6 +30753,8 @@
 >
 <parameter name="user" type="org.apache.archiva.redback.users.User">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="addUserManagerListener"
  return="void"
@@ -30713,6 +30781,8 @@
 >
 <parameter name="user" type="org.apache.archiva.redback.users.User">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="createGuestUser"
  return="org.apache.archiva.redback.users.User"
@@ -30724,6 +30794,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="createUser"
  return="org.apache.archiva.redback.users.User"
@@ -30741,6 +30813,8 @@
 </parameter>
 <parameter name="emailAddress" type="java.lang.String">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="createUserQuery"
  return="org.apache.archiva.redback.users.UserQuery"
@@ -30763,23 +30837,10 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="principal" type="java.lang.Object">
-</parameter>
-<exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
-</exception>
-</method>
-<method name="deleteUser"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
 <parameter name="username" type="java.lang.String">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -30806,21 +30867,8 @@
 >
 <parameter name="username" type="java.lang.String">
 </parameter>
-<exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
 </exception>
-</method>
-<method name="findUser"
- return="org.apache.archiva.redback.users.User"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="principal" type="java.lang.Object">
-</parameter>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -30838,6 +30886,8 @@
 </parameter>
 <parameter name="orderAscending" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="findUsersByFullNameKey"
  return="java.util.List&lt;org.apache.archiva.redback.users.User&gt;"
@@ -30853,6 +30903,8 @@
 </parameter>
 <parameter name="orderAscending" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="findUsersByQuery"
  return="java.util.List&lt;org.apache.archiva.redback.users.User&gt;"
@@ -30866,6 +30918,8 @@
 >
 <parameter name="query" type="org.apache.archiva.redback.users.UserQuery">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="findUsersByUsernameKey"
  return="java.util.List&lt;org.apache.archiva.redback.users.User&gt;"
@@ -30881,6 +30935,8 @@
 </parameter>
 <parameter name="orderAscending" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="getDescriptionKey"
  return="java.lang.String"
@@ -30903,6 +30959,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -30938,6 +30996,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="getUsers"
  return="java.util.List&lt;org.apache.archiva.redback.users.User&gt;"
@@ -30951,6 +31011,8 @@
 >
 <parameter name="orderAscending" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="getUsersCache"
  return="org.apache.archiva.redback.components.cache.Cache"
@@ -31047,6 +31109,8 @@
 >
 <parameter name="user" type="org.apache.archiva.redback.users.User">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -31064,6 +31128,8 @@
 </parameter>
 <parameter name="passwordChangeRequired" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -31077,8 +31143,10 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="principal" type="java.lang.Object">
+<parameter name="userName" type="java.lang.String">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="userManagerInit"
  return="void"
@@ -31166,6 +31234,8 @@
 >
 <parameter name="user" type="org.apache.archiva.redback.users.User">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="addUserUnchecked"
  return="void"
@@ -31179,6 +31249,8 @@
 >
 <parameter name="user" type="org.apache.archiva.redback.users.User">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="createUser"
  return="org.apache.archiva.redback.users.User"
@@ -31196,6 +31268,8 @@
 </parameter>
 <parameter name="emailAddress" type="java.lang.String">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="createUserQuery"
  return="org.apache.archiva.redback.users.UserQuery"
@@ -31218,23 +31292,10 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="principal" type="java.lang.Object">
-</parameter>
-<exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
-</exception>
-</method>
-<method name="deleteUser"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
 <parameter name="username" type="java.lang.String">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -31261,21 +31322,8 @@
 >
 <parameter name="username" type="java.lang.String">
 </parameter>
-<exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
 </exception>
-</method>
-<method name="findUser"
- return="org.apache.archiva.redback.users.User"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="principal" type="java.lang.Object">
-</parameter>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -31293,6 +31341,8 @@
 </parameter>
 <parameter name="orderAscending" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="findUsersByFullNameKey"
  return="java.util.List&lt;org.apache.archiva.redback.users.User&gt;"
@@ -31308,6 +31358,8 @@
 </parameter>
 <parameter name="orderAscending" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="findUsersByQuery"
  return="java.util.List&lt;org.apache.archiva.redback.users.User&gt;"
@@ -31321,6 +31373,8 @@
 >
 <parameter name="query" type="org.apache.archiva.redback.users.UserQuery">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="findUsersByUsernameKey"
  return="java.util.List&lt;org.apache.archiva.redback.users.User&gt;"
@@ -31336,6 +31390,8 @@
 </parameter>
 <parameter name="orderAscending" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="getDescriptionKey"
  return="java.lang.String"
@@ -31369,6 +31425,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="getUsers"
  return="java.util.List&lt;org.apache.archiva.redback.users.User&gt;"
@@ -31382,6 +31440,8 @@
 >
 <parameter name="orderAscending" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="isReadOnly"
  return="boolean"
@@ -31419,6 +31479,8 @@
 >
 <parameter name="user" type="org.apache.archiva.redback.users.User">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -31436,6 +31498,8 @@
 </parameter>
 <parameter name="passwordChangeRequired" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -31449,8 +31513,10 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="principal" type="java.lang.Object">
+<parameter name="userName" type="java.lang.String">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 </class>
 </package>
@@ -31588,6 +31654,17 @@
 </method>
 <method name="getPreviousEncodedPasswords"
  return="java.util.List"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getUserManagerId"
+ return="java.lang.String"
  abstract="false"
  native="false"
  synchronized="false"
@@ -31889,6 +31966,8 @@
 >
 <parameter name="user" type="org.apache.archiva.redback.users.User">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="addUserUnchecked"
  return="void"
@@ -31902,6 +31981,8 @@
 >
 <parameter name="user" type="org.apache.archiva.redback.users.User">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="createUser"
  return="org.apache.archiva.redback.users.User"
@@ -31941,21 +32022,10 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="principal" type="java.lang.Object">
-</parameter>
-</method>
-<method name="deleteUser"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
 <parameter name="username" type="java.lang.String">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="eraseDatabase"
  return="void"
@@ -31978,23 +32048,10 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="principal" type="java.lang.Object">
-</parameter>
-<exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
-</exception>
-</method>
-<method name="findUser"
- return="org.apache.archiva.redback.users.User"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
 <parameter name="username" type="java.lang.String">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -32182,6 +32239,8 @@
 >
 <parameter name="user" type="org.apache.archiva.redback.users.User">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -32199,6 +32258,8 @@
 </parameter>
 <parameter name="passwordChangeRequired" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -32212,8 +32273,10 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="principal" type="java.lang.Object">
+<parameter name="principal" type="java.lang.String">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 </class>
 <class name="JdoUserQuery"
@@ -32852,6 +32915,8 @@
 >
 <parameter name="user" type="org.apache.archiva.redback.users.User">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="addUserUnchecked"
  return="void"
@@ -32865,6 +32930,8 @@
 >
 <parameter name="user" type="org.apache.archiva.redback.users.User">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="createUser"
  return="org.apache.archiva.redback.users.User"
@@ -32904,23 +32971,10 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="principal" type="java.lang.Object">
-</parameter>
-<exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
-</exception>
-</method>
-<method name="deleteUser"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
 <parameter name="username" type="java.lang.String">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -32947,21 +33001,8 @@
 >
 <parameter name="username" type="java.lang.String">
 </parameter>
-<exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
 </exception>
-</method>
-<method name="findUser"
- return="org.apache.archiva.redback.users.User"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="principal" type="java.lang.Object">
-</parameter>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -32979,6 +33020,8 @@
 </parameter>
 <parameter name="orderAscending" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="findUsersByFullNameKey"
  return="java.util.List&lt;org.apache.archiva.redback.users.User&gt;"
@@ -32994,6 +33037,8 @@
 </parameter>
 <parameter name="orderAscending" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="findUsersByQuery"
  return="java.util.List&lt;org.apache.archiva.redback.users.User&gt;"
@@ -33007,6 +33052,8 @@
 >
 <parameter name="query" type="org.apache.archiva.redback.users.UserQuery">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="findUsersByUsernameKey"
  return="java.util.List&lt;org.apache.archiva.redback.users.User&gt;"
@@ -33022,6 +33069,8 @@
 </parameter>
 <parameter name="orderAscending" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="getDescriptionKey"
  return="java.lang.String"
@@ -33092,6 +33141,8 @@
 >
 <parameter name="user" type="org.apache.archiva.redback.users.User">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -33109,6 +33160,8 @@
 </parameter>
 <parameter name="passwordChangeRequired" type="boolean">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -33122,8 +33175,10 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="principal" type="java.lang.Object">
+<parameter name="principal" type="java.lang.String">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 </class>
 <class name="LdapUserQuery"
@@ -33862,23 +33917,10 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="principal" type="java.lang.Object">
-</parameter>
-<exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
-</exception>
-</method>
-<method name="deleteUser"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
 <parameter name="username" type="java.lang.String">
 </parameter>
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -33892,21 +33934,6 @@
  deprecated="not deprecated"
  visibility="public"
 >
-</method>
-<method name="findUser"
- return="org.apache.archiva.redback.users.User"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="principal" type="java.lang.Object">
-</parameter>
-<exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
-</exception>
 </method>
 <method name="findUser"
  return="org.apache.archiva.redback.users.User"
@@ -34087,7 +34114,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="principal" type="java.lang.Object">
+<parameter name="principal" type="java.lang.String">
 </parameter>
 </method>
 </class>
@@ -34212,6 +34239,17 @@
 </method>
 <method name="getPreviousEncodedPasswords"
  return="java.util.List&lt;java.lang.String&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getUserManagerId"
+ return="java.lang.String"
  abstract="false"
  native="false"
  synchronized="false"
@@ -34600,6 +34638,8 @@
  deprecated="not deprecated"
  visibility="protected"
 >
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="getEventTracker"
  return="org.apache.archiva.redback.users.provider.test.UserManagerEventTracker"
@@ -34685,6 +34725,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -34698,6 +34740,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -34711,6 +34755,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -34750,6 +34796,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 <exception name="UserNotFoundException" type="org.apache.archiva.redback.users.UserNotFoundException">
 </exception>
 </method>
@@ -34789,6 +34837,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="testFindUserByNullPrincipal"
  return="void"
@@ -34800,6 +34850,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="testFindUsersByQuery"
  return="void"
@@ -34811,6 +34863,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<exception name="UserManagerException" type="org.apache.archiva.redback.users.UserManagerException">
+</exception>
 </method>
 <method name="testUpdateUser"
  return="void"
