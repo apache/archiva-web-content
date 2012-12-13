@@ -248,7 +248,7 @@ var NAVTREE_DATA =
 , "" ] ]
 , "" ], [ "org.apache.archiva.web.runtime.ldap", "org/apache/archiva/web/runtime/ldap/package-summary.html", [ [ "Classes", null, [ [ "ArchivaLdapConnectionFactory", "org/apache/archiva/web/runtime/ldap/ArchivaLdapConnectionFactory.html", null, "" ] ]
 , "" ] ]
-, "" ], [ "org.apache.archiva.web.security", "org/apache/archiva/web/security/package-summary.html", [ [ "Classes", null, [ [ "ArchivaConfigurableUsersManager", "org/apache/archiva/web/security/ArchivaConfigurableUsersManager.html", null, "" ] ]
+, "" ], [ "org.apache.archiva.web.security", "org/apache/archiva/web/security/package-summary.html", [ [ "Classes", null, [ [ "ArchivaConfigurableUsersManager", "org/apache/archiva/web/security/ArchivaConfigurableUsersManager.html", null, "" ], [ "ArchivaLockedAdminEnvironmentCheck", "org/apache/archiva/web/security/ArchivaLockedAdminEnvironmentCheck.html", null, "" ], [ "ArchivaUserManagerAuthenticator", "org/apache/archiva/web/security/ArchivaUserManagerAuthenticator.html", null, "" ] ]
 , "" ] ]
 , "" ], [ "org.apache.archiva.web.startup", "org/apache/archiva/web/startup/package-summary.html", [ [ "Classes", null, [ [ "ArchivaStartup", "org/apache/archiva/web/startup/ArchivaStartup.html", null, "" ], [ "Banner", "org/apache/archiva/web/startup/Banner.html", null, "" ], [ "SecuritySynchronization", "org/apache/archiva/web/startup/SecuritySynchronization.html", null, "" ] ]
 , "" ] ]

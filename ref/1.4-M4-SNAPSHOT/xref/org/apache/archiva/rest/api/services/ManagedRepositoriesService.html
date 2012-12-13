@@ -91,35 +91,35 @@
 <a class="jxr_linenumber" name="81" href="#81">81</a>      Boolean updateManagedRepository( ManagedRepository managedRepository )
 <a class="jxr_linenumber" name="82" href="#82">82</a>          <strong class="jxr_keyword">throws</strong> ArchivaRestServiceException;
 <a class="jxr_linenumber" name="83" href="#83">83</a>  
-<a class="jxr_linenumber" name="84" href="#84">84</a>      @Path( <span class="jxr_string">"fileLocationExists"</span> )
-<a class="jxr_linenumber" name="85" href="#85">85</a>      @GET
-<a class="jxr_linenumber" name="86" href="#86">86</a>      @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )
-<a class="jxr_linenumber" name="87" href="#87">87</a>      @RedbackAuthorization( permissions = ArchivaRoleConstants.OPERATION_MANAGE_CONFIGURATION )
-<a class="jxr_linenumber" name="88" href="#88">88</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="89" href="#89">89</a>  <em class="jxr_javadoccomment">     * @since 1.4-M3</em>
-<a class="jxr_linenumber" name="90" href="#90">90</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="84" href="#84">84</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="85" href="#85">85</a>  <em class="jxr_javadoccomment">     * @since 1.4-M3</em>
+<a class="jxr_linenumber" name="86" href="#86">86</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="87" href="#87">87</a>      @Path( <span class="jxr_string">"fileLocationExists"</span> )
+<a class="jxr_linenumber" name="88" href="#88">88</a>      @GET
+<a class="jxr_linenumber" name="89" href="#89">89</a>      @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )
+<a class="jxr_linenumber" name="90" href="#90">90</a>      @RedbackAuthorization( permissions = ArchivaRoleConstants.OPERATION_MANAGE_CONFIGURATION )
 <a class="jxr_linenumber" name="91" href="#91">91</a>      Boolean fileLocationExists( @QueryParam( <span class="jxr_string">"fileLocation"</span> ) String fileLocation )
 <a class="jxr_linenumber" name="92" href="#92">92</a>          <strong class="jxr_keyword">throws</strong> ArchivaRestServiceException;
 <a class="jxr_linenumber" name="93" href="#93">93</a>  
-<a class="jxr_linenumber" name="94" href="#94">94</a>      @Path( <span class="jxr_string">"getManagedRepositoryStatistics/{repositoryId}/{lang}"</span> )
-<a class="jxr_linenumber" name="95" href="#95">95</a>      @GET
-<a class="jxr_linenumber" name="96" href="#96">96</a>      @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
-<a class="jxr_linenumber" name="97" href="#97">97</a>      @RedbackAuthorization( permissions = ArchivaRoleConstants.OPERATION_MANAGE_CONFIGURATION )
-<a class="jxr_linenumber" name="98" href="#98">98</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="99" href="#99">99</a>  <em class="jxr_javadoccomment">     * @since 1.4-M3</em>
-<a class="jxr_linenumber" name="100" href="#100">100</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="94" href="#94">94</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="95" href="#95">95</a>  <em class="jxr_javadoccomment">     * @since 1.4-M3</em>
+<a class="jxr_linenumber" name="96" href="#96">96</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="97" href="#97">97</a>      @Path( <span class="jxr_string">"getManagedRepositoryStatistics/{repositoryId}/{lang}"</span> )
+<a class="jxr_linenumber" name="98" href="#98">98</a>      @GET
+<a class="jxr_linenumber" name="99" href="#99">99</a>      @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
+<a class="jxr_linenumber" name="100" href="#100">100</a>     @RedbackAuthorization( permissions = ArchivaRoleConstants.OPERATION_MANAGE_CONFIGURATION )
 <a class="jxr_linenumber" name="101" href="#101">101</a>     <a href="../../../../../../org/apache/archiva/rest/api/model/ArchivaRepositoryStatistics.html">ArchivaRepositoryStatistics</a> getManagedRepositoryStatistics( @PathParam( <span class="jxr_string">"repositoryId"</span> ) String repositoryId,
 <a class="jxr_linenumber" name="102" href="#102">102</a>                                                                 @PathParam( <span class="jxr_string">"lang"</span> ) String lang )
 <a class="jxr_linenumber" name="103" href="#103">103</a>         <strong class="jxr_keyword">throws</strong> ArchivaRestServiceException;
 <a class="jxr_linenumber" name="104" href="#104">104</a> 
-<a class="jxr_linenumber" name="105" href="#105">105</a>     @Path( <span class="jxr_string">"getPomSnippet/{repositoryId}"</span> )
-<a class="jxr_linenumber" name="106" href="#106">106</a>     @GET
-<a class="jxr_linenumber" name="107" href="#107">107</a>     @Produces( { MediaType.TEXT_PLAIN } )
-<a class="jxr_linenumber" name="108" href="#108">108</a>     @RedbackAuthorization( permissions = ArchivaRoleConstants.OPERATION_MANAGE_CONFIGURATION )
-<a class="jxr_linenumber" name="109" href="#109">109</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="110" href="#110">110</a> <em class="jxr_javadoccomment">     * return a pom snippet to use this repository with entities escaped (&lt; &gt; )</em>
-<a class="jxr_linenumber" name="111" href="#111">111</a> <em class="jxr_javadoccomment">     * @since 1.4-M3</em>
-<a class="jxr_linenumber" name="112" href="#112">112</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="105" href="#105">105</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="106" href="#106">106</a> <em class="jxr_javadoccomment">     * return a pom snippet to use this repository with entities escaped (&lt; &gt; )</em>
+<a class="jxr_linenumber" name="107" href="#107">107</a> <em class="jxr_javadoccomment">     * @since 1.4-M3</em>
+<a class="jxr_linenumber" name="108" href="#108">108</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="109" href="#109">109</a>     @Path( <span class="jxr_string">"getPomSnippet/{repositoryId}"</span> )
+<a class="jxr_linenumber" name="110" href="#110">110</a>     @GET
+<a class="jxr_linenumber" name="111" href="#111">111</a>     @Produces( { MediaType.TEXT_PLAIN } )
+<a class="jxr_linenumber" name="112" href="#112">112</a>     @RedbackAuthorization( permissions = ArchivaRoleConstants.OPERATION_MANAGE_CONFIGURATION )
 <a class="jxr_linenumber" name="113" href="#113">113</a>     String getPomSnippet( @PathParam( <span class="jxr_string">"repositoryId"</span> ) String repositoryId )
 <a class="jxr_linenumber" name="114" href="#114">114</a>         <strong class="jxr_keyword">throws</strong> ArchivaRestServiceException;
 <a class="jxr_linenumber" name="115" href="#115">115</a> 

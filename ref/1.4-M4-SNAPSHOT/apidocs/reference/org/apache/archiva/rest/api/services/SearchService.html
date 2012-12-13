@@ -595,6 +595,9 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/apache/archiva/rest/api/services/SearchService.html#getAllGroupIds(java.util.List<java.lang.String>)">getAllGroupIds</a></span>(List&lt;String&gt; selectedRepos)</nobr>
         
+        <div class="jd-descrdiv"><b>this method applies on Maven Indexer lucene index, so datas not yet indexed won't be available</b>
+</div>
+  
   </td></tr>
 
 
@@ -611,6 +614,9 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/apache/archiva/rest/api/services/SearchService.html#getArtifactVersions(java.lang.String, java.lang.String, java.lang.String)">getArtifactVersions</a></span>(String groupId, String artifactId, String packaging)</nobr>
         
+        <div class="jd-descrdiv"><b>search will be apply on all repositories the current user has karma</b>
+</div>
+  
   </td></tr>
 
 
@@ -659,6 +665,9 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/apache/archiva/rest/api/services/SearchService.html#quickSearchWithRepositories(org.apache.archiva.rest.api.model.SearchRequest)">quickSearchWithRepositories</a></span>(<a href="../../../../../../org/apache/archiva/rest/api/model/SearchRequest.html">SearchRequest</a> searchRequest)</nobr>
         
+        <div class="jd-descrdiv"><b>if not repositories in SearchRequest: search will be apply on all repositories the current user has karma</b>
+</div>
+  
   </td></tr>
 
 
@@ -675,6 +684,8 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/apache/archiva/rest/api/services/SearchService.html#searchArtifacts(org.apache.archiva.rest.api.model.SearchRequest)">searchArtifacts</a></span>(<a href="../../../../../../org/apache/archiva/rest/api/model/SearchRequest.html">SearchRequest</a> searchRequest)</nobr>
         
+        <div class="jd-descrdiv">If searchRequest contains repositories, the search will be done only on those repositories.</div>
+  
   </td></tr>
 
 
@@ -751,7 +762,8 @@ Summary:
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p><b>this method applies on Maven Indexer lucene index, so datas not yet indexed won't be available</b>
+</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  
@@ -791,7 +803,8 @@ Summary:
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p><b>search will be apply on all repositories the current user has karma</b>
+</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  
@@ -911,7 +924,8 @@ Summary:
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p><b>if not repositories in SearchRequest: search will be apply on all repositories the current user has karma</b>
+</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  
@@ -951,7 +965,9 @@ Summary:
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>If searchRequest contains repositories, the search will be done only on those repositories.
+ <b>if no repositories, the search will be apply on all repositories the current user has karma</b>
+</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  
