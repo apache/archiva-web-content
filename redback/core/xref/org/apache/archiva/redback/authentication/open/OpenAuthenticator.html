@@ -29,24 +29,24 @@
 <a class="jxr_linenumber" name="19" href="#19">19</a>  <em class="jxr_comment"> * under the License.</em>
 <a class="jxr_linenumber" name="20" href="#20">20</a>  <em class="jxr_comment"> */</em>
 <a class="jxr_linenumber" name="21" href="#21">21</a>  
-<a class="jxr_linenumber" name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.authentication.AuthenticationDataSource;
-<a class="jxr_linenumber" name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.authentication.AuthenticationException;
-<a class="jxr_linenumber" name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.authentication.AuthenticationResult;
-<a class="jxr_linenumber" name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.authentication.Authenticator;
-<a class="jxr_linenumber" name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.authentication.PasswordBasedAuthenticationDataSource;
-<a class="jxr_linenumber" name="27" href="#27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.policy.AccountLockedException;
-<a class="jxr_linenumber" name="28" href="#28">28</a>  <strong class="jxr_keyword">import</strong> org.springframework.stereotype.Service;
-<a class="jxr_linenumber" name="29" href="#29">29</a>  
-<a class="jxr_linenumber" name="30" href="#30">30</a>  <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="31" href="#31">31</a>  <em class="jxr_javadoccomment"> * OpenAuthenticator - Does not test user / password.</em>
-<a class="jxr_linenumber" name="32" href="#32">32</a>  <em class="jxr_javadoccomment"> * All attempts result in access. </em>
-<a class="jxr_linenumber" name="33" href="#33">33</a>  <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="34" href="#34">34</a>  <em class="jxr_javadoccomment"> * @author &lt;a href="<a href="mailto:joakim@erdfelt.com" target="alexandria_uri">mailto:joakim@erdfelt.com</a>"&gt;Joakim Erdfelt&lt;/a&gt;</em>
-<a class="jxr_linenumber" name="35" href="#35">35</a>  <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="36" href="#36">36</a>  <em class="jxr_javadoccomment"> * </em>
-<a class="jxr_linenumber" name="37" href="#37">37</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="38" href="#38">38</a>  @Service(<span class="jxr_string">"authenticator#open"</span>)
-<a class="jxr_linenumber" name="39" href="#39">39</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/apache/archiva/redback/authentication/open/OpenAuthenticator.html">OpenAuthenticator</a>
+<a class="jxr_linenumber" name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.authentication.AbstractAuthenticator;
+<a class="jxr_linenumber" name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.authentication.AuthenticationDataSource;
+<a class="jxr_linenumber" name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.authentication.AuthenticationException;
+<a class="jxr_linenumber" name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.authentication.AuthenticationResult;
+<a class="jxr_linenumber" name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.authentication.Authenticator;
+<a class="jxr_linenumber" name="27" href="#27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.authentication.PasswordBasedAuthenticationDataSource;
+<a class="jxr_linenumber" name="28" href="#28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.policy.AccountLockedException;
+<a class="jxr_linenumber" name="29" href="#29">29</a>  <strong class="jxr_keyword">import</strong> org.springframework.stereotype.Service;
+<a class="jxr_linenumber" name="30" href="#30">30</a>  
+<a class="jxr_linenumber" name="31" href="#31">31</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="32" href="#32">32</a>  <em class="jxr_javadoccomment"> * OpenAuthenticator - Does not test user / password.</em>
+<a class="jxr_linenumber" name="33" href="#33">33</a>  <em class="jxr_javadoccomment"> * All attempts result in access.</em>
+<a class="jxr_linenumber" name="34" href="#34">34</a>  <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="35" href="#35">35</a>  <em class="jxr_javadoccomment"> * @author &lt;a href="<a href="mailto:joakim@erdfelt.com" target="alexandria_uri">mailto:joakim@erdfelt.com</a>"&gt;Joakim Erdfelt&lt;/a&gt;</em>
+<a class="jxr_linenumber" name="36" href="#36">36</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="37" href="#37">37</a>  @Service(<span class="jxr_string">"authenticator#open"</span>)
+<a class="jxr_linenumber" name="38" href="#38">38</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/apache/archiva/redback/authentication/open/OpenAuthenticator.html">OpenAuthenticator</a>
+<a class="jxr_linenumber" name="39" href="#39">39</a>      <strong class="jxr_keyword">extends</strong> <a href="../../../../../../org/apache/archiva/redback/authentication/AbstractAuthenticator.html">AbstractAuthenticator</a>
 <a class="jxr_linenumber" name="40" href="#40">40</a>      <strong class="jxr_keyword">implements</strong> <a href="../../../../../../org/apache/archiva/redback/authentication/Authenticator.html">Authenticator</a>
 <a class="jxr_linenumber" name="41" href="#41">41</a>  {
 <a class="jxr_linenumber" name="42" href="#42">42</a>  

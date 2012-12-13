@@ -1,6 +1,38 @@
 <api>
 <package name="org.apache.archiva.redback.authentication"
 >
+<class name="AbstractAuthenticator"
+ extends="java.lang.Object"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.apache.archiva.redback.authentication.Authenticator">
+</implements>
+<constructor name="AbstractAuthenticator"
+ type="org.apache.archiva.redback.authentication.AbstractAuthenticator"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="initialize"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="AuthenticationException" type="org.apache.archiva.redback.authentication.AuthenticationException">
+</exception>
+</method>
+</class>
 <class name="AuthenticationConstants"
  extends="java.lang.Object"
  abstract="false"
@@ -355,6 +387,19 @@
  visibility="public"
 >
 </method>
+<method name="initialize"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="AuthenticationException" type="org.apache.archiva.redback.authentication.AuthenticationException">
+</exception>
+</method>
 <method name="supportsDataSource"
  return="boolean"
  abstract="true"
@@ -674,7 +719,7 @@
 <package name="org.apache.archiva.redback.authentication.keystore"
 >
 <class name="KeyStoreAuthenticator"
- extends="java.lang.Object"
+ extends="org.apache.archiva.redback.authentication.AbstractAuthenticator"
  abstract="false"
  static="false"
  final="false"
@@ -739,7 +784,7 @@
 <package name="org.apache.archiva.redback.authentication.ldap"
 >
 <class name="LdapBindAuthenticator"
- extends="java.lang.Object"
+ extends="org.apache.archiva.redback.authentication.AbstractAuthenticator"
  abstract="false"
  static="false"
  final="false"
@@ -800,7 +845,7 @@
 <package name="org.apache.archiva.redback.authentication.memory"
 >
 <class name="MemoryAuthenticator"
- extends="java.lang.Object"
+ extends="org.apache.archiva.redback.authentication.AbstractAuthenticator"
  abstract="false"
  static="false"
  final="false"
@@ -909,7 +954,7 @@
 <package name="org.apache.archiva.redback.authentication.open"
 >
 <class name="OpenAuthenticator"
- extends="java.lang.Object"
+ extends="org.apache.archiva.redback.authentication.AbstractAuthenticator"
  abstract="false"
  static="false"
  final="false"
@@ -972,7 +1017,7 @@
 <package name="org.apache.archiva.redback.authentication.users"
 >
 <class name="UserManagerAuthenticator"
- extends="java.lang.Object"
+ extends="org.apache.archiva.redback.authentication.AbstractAuthenticator"
  abstract="false"
  static="false"
  final="false"
@@ -3139,6 +3184,21 @@
 <exception name="LdapException" type="org.apache.archiva.redback.common.ldap.connection.LdapException">
 </exception>
 </method>
+<method name="getConnection"
+ return="org.apache.archiva.redback.common.ldap.connection.LdapConnection"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ldapConnectionConfiguration" type="org.apache.archiva.redback.common.ldap.connection.LdapConnectionConfiguration">
+</parameter>
+<exception name="LdapException" type="org.apache.archiva.redback.common.ldap.connection.LdapException">
+</exception>
+</method>
 <method name="getContextFactory"
  return="java.lang.String"
  abstract="false"
@@ -3904,6 +3964,21 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<exception name="LdapException" type="org.apache.archiva.redback.common.ldap.connection.LdapException">
+</exception>
+</method>
+<method name="getConnection"
+ return="org.apache.archiva.redback.common.ldap.connection.LdapConnection"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ldapConnectionConfiguration" type="org.apache.archiva.redback.common.ldap.connection.LdapConnectionConfiguration">
+</parameter>
 <exception name="LdapException" type="org.apache.archiva.redback.common.ldap.connection.LdapException">
 </exception>
 </method>

@@ -57,7 +57,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico" />
 <title>
 
-  AuthenticationManager
+  AbstractAuthenticator
 
 
 | Apache Archiva Redback
@@ -287,14 +287,14 @@
     <li><h2>Interfaces</h2>
       <ul>
           <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/authentication/AuthenticationDataSource.html">AuthenticationDataSource</a></li>
-          <li class="selected api apilevel-"><a href="../../../../../org/apache/archiva/redback/authentication/AuthenticationManager.html">AuthenticationManager</a></li>
+          <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/authentication/AuthenticationManager.html">AuthenticationManager</a></li>
           <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/authentication/Authenticator.html">Authenticator</a></li>
       </ul>
     </li>
               
     <li><h2>Classes</h2>
       <ul>
-          <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/authentication/AbstractAuthenticator.html">AbstractAuthenticator</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../org/apache/archiva/redback/authentication/AbstractAuthenticator.html">AbstractAuthenticator</a></li>
           <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/authentication/AuthenticationConstants.html">AuthenticationConstants</a></li>
           <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/authentication/AuthenticationResult.html">AuthenticationResult</a></li>
           <li class="api apilevel-"><a href="../../../../../org/apache/archiva/redback/authentication/DefaultAuthenticationManager.html">DefaultAuthenticationManager</a></li>
@@ -349,6 +349,20 @@
 
 
 
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
 
 <div class="sum-details-links">
 
@@ -363,12 +377,17 @@ Summary:
 
 
 
-
-
-  <a href="#pubmethods">Methods</a>
+  <a href="#pubctors">Ctors</a>
   
 
 
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+
+  &#124; <a href="#inhmethods">Inherited Methods</a>
 
 &#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
 
@@ -390,13 +409,24 @@ Summary:
     public
      
      
-    
-    interface
-<h1>AuthenticationManager</h1>
+    abstract
+    class
+<h1>AbstractAuthenticator</h1>
 
 
 
   
+    extends Object<br/>
+  
+  
+  
+
+  
+  
+      implements 
+      
+        <a href="../../../../../org/apache/archiva/redback/authentication/Authenticator.html">Authenticator</a> 
+      
   
   
 
@@ -411,7 +441,15 @@ Summary:
 
     <tr>
          	
-        <td colspan="1" class="jd-inheritance-class-cell">org.apache.archiva.redback.authentication.AuthenticationManager</td>
+        <td colspan="2" class="jd-inheritance-class-cell">java.lang.Object</td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+         	
+        <td colspan="1" class="jd-inheritance-class-cell">org.apache.archiva.redback.authentication.AbstractAuthenticator</td>
     </tr>
     
 
@@ -420,37 +458,55 @@ Summary:
 
 
 
-
-
 <table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
 
-  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-indirect" class="jd-expando-trigger closed"
-          ><img id="subclasses-indirect-trigger"
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-direct" class="jd-expando-trigger closed"
+          ><img id="subclasses-direct-trigger"
           src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>Known Indirect Subclasses
+          class="jd-expando-trigger-img" /></a>Known Direct Subclasses
 
-  <div id="subclasses-indirect">
-      <div id="subclasses-indirect-list"
+  <div id="subclasses-direct">
+      <div id="subclasses-direct-list"
               class="jd-inheritedlinks"
               
               >
           
             
-              <a href="../../../../../org/apache/archiva/redback/authentication/DefaultAuthenticationManager.html">DefaultAuthenticationManager</a>
+              <a href="../../../../../org/apache/archiva/redback/authentication/keystore/KeyStoreAuthenticator.html">KeyStoreAuthenticator</a>,
+            
+              <a href="../../../../../org/apache/archiva/redback/authentication/ldap/LdapBindAuthenticator.html">LdapBindAuthenticator</a>,
+            
+              <a href="../../../../../org/apache/archiva/redback/authentication/memory/MemoryAuthenticator.html">MemoryAuthenticator</a>,
+            
+              <a href="../../../../../org/apache/archiva/redback/authentication/open/OpenAuthenticator.html">OpenAuthenticator</a>,
+            
+              <a href="../../../../../org/apache/archiva/redback/authentication/users/UserManagerAuthenticator.html">UserManagerAuthenticator</a>
             
           
       </div>
-      <div id="subclasses-indirect-summary"
+      <div id="subclasses-direct-summary"
               style="display: none;"
               >
   <table class="jd-sumtable-expando">
         <tr class="alt-color api apilevel-" >
-              <td class="jd-linkcol"><a href="../../../../../org/apache/archiva/redback/authentication/DefaultAuthenticationManager.html">DefaultAuthenticationManager</a></td>
-              <td class="jd-descrcol" width="100%">DefaultAuthenticationManager: the goal of the authentication manager is to act as a conduit for
- authentication requests into different authentication schemes
- <p/>
- For example, the default implementation can be configured with any number of authenticators and will
- sequentially try them for an authenticated result.&nbsp;</td>
+              <td class="jd-linkcol"><a href="../../../../../org/apache/archiva/redback/authentication/keystore/KeyStoreAuthenticator.html">KeyStoreAuthenticator</a></td>
+              <td class="jd-descrcol" width="100%">KeyStoreAuthenticator:&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../org/apache/archiva/redback/authentication/ldap/LdapBindAuthenticator.html">LdapBindAuthenticator</a></td>
+              <td class="jd-descrcol" width="100%">LdapBindAuthenticator:&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../org/apache/archiva/redback/authentication/memory/MemoryAuthenticator.html">MemoryAuthenticator</a></td>
+              <td class="jd-descrcol" width="100%">MemoryAuthenticator:&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../org/apache/archiva/redback/authentication/open/OpenAuthenticator.html">OpenAuthenticator</a></td>
+              <td class="jd-descrcol" width="100%">OpenAuthenticator - Does not test user / password.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../org/apache/archiva/redback/authentication/users/UserManagerAuthenticator.html">UserManagerAuthenticator</a></td>
+              <td class="jd-descrcol" width="100%"><code><a href="../../../../../org/apache/archiva/redback/authentication/Authenticator.html">Authenticator</a></code> implementation that uses a wrapped <code><a href="../../../../../org/apache/archiva/redback/users/UserManager.html">UserManager</a></code> to authenticate.&nbsp;</td>
           </tr>
   </table>
       </div>
@@ -458,11 +514,10 @@ Summary:
 </td></tr></table>
 
 
+
+
 <div class="jd-descr">
 
-
-<h2>Class Overview</h2>
-<p>AuthenticationManager:</p>
 
 
 
@@ -512,6 +567,31 @@ Summary:
 
 
 
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<table id="pubctors" class="jd-sumtable"><tr><th colspan="12">Public Constructors</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/authentication/AbstractAuthenticator.html#AbstractAuthenticator()">AbstractAuthenticator</a></span>()</nobr>
+        
+  </td></tr>
+
+
+
+</table>
+
+
 
 
 
@@ -519,6 +599,258 @@ Summary:
 <!-- ========== METHOD SUMMARY =========== -->
 <table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
 
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/authentication/AbstractAuthenticator.html#initialize()">initialize</a></span>()</nobr>
+        
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="inhmethods" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Object" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.lang.Object-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  java.lang.Object
+
+<div id="inherited-methods-java.lang.Object">
+  <div id="inherited-methods-java.lang.Object-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.lang.Object-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">clone</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">equals</span>(Object arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">finalize</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            Class&lt;?&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getClass</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">hashCode</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notify</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notifyAll</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">toString</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.apache.archiva.redback.authentication.Authenticator" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.apache.archiva.redback.authentication.Authenticator-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  <a href="../../../../../org/apache/archiva/redback/authentication/Authenticator.html">org.apache.archiva.redback.authentication.Authenticator</a>
+
+<div id="inherited-methods-org.apache.archiva.redback.authentication.Authenticator">
+  <div id="inherited-methods-org.apache.archiva.redback.authentication.Authenticator-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.apache.archiva.redback.authentication.Authenticator-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
 
 
 	 
@@ -532,7 +864,7 @@ Summary:
             <a href="../../../../../org/apache/archiva/redback/authentication/AuthenticationResult.html">AuthenticationResult</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/authentication/AuthenticationManager.html#authenticate(org.apache.archiva.redback.authentication.AuthenticationDataSource)">authenticate</a></span>(<a href="../../../../../org/apache/archiva/redback/authentication/AuthenticationDataSource.html">AuthenticationDataSource</a> source)</nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/authentication/Authenticator.html#authenticate(org.apache.archiva.redback.authentication.AuthenticationDataSource)">authenticate</a></span>(<a href="../../../../../org/apache/archiva/redback/authentication/AuthenticationDataSource.html">AuthenticationDataSource</a> source)</nobr>
         
   </td></tr>
 
@@ -545,10 +877,10 @@ Summary:
             
             
             
-            List&lt;<a href="../../../../../org/apache/archiva/redback/authentication/Authenticator.html">Authenticator</a>&gt;</nobr>
+            String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/authentication/AuthenticationManager.html#getAuthenticators()">getAuthenticators</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/authentication/Authenticator.html#getId()">getId</a></span>()</nobr>
         
   </td></tr>
 
@@ -561,21 +893,37 @@ Summary:
             
             
             
-            String</nobr>
+            void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/authentication/AuthenticationManager.html#getId()">getId</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/authentication/Authenticator.html#initialize()">initialize</a></span>()</nobr>
         
   </td></tr>
 
 
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/apache/archiva/redback/authentication/Authenticator.html#supportsDataSource(org.apache.archiva.redback.authentication.AuthenticationDataSource)">supportsDataSource</a></span>(<a href="../../../../../org/apache/archiva/redback/authentication/AuthenticationDataSource.html">AuthenticationDataSource</a> source)</nobr>
+        
+  </td></tr>
+
 
 </table>
+  </div>
+</div>
+</td></tr>
 
 
-
-
-
+</table>
 
 
 </div><!-- jd-descr (summary) -->
@@ -604,6 +952,44 @@ Summary:
 <!-- Public ctors -->
 
 
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<h2>Public Constructors</h2>
+
+
+
+<A NAME="AbstractAuthenticator()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">AbstractAuthenticator</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+
+
 
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <!-- Protected ctors -->
@@ -617,7 +1003,7 @@ Summary:
 
 
 
-<A NAME="authenticate(org.apache.archiva.redback.authentication.AuthenticationDataSource)"></A>
+<A NAME="initialize()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -625,12 +1011,12 @@ Summary:
         public 
          
          
-        abstract 
          
-        <a href="../../../../../org/apache/archiva/redback/authentication/AuthenticationResult.html">AuthenticationResult</a>
+         
+        void
       </span>
-      <span class="sympad">authenticate</span>
-      <span class="normal">(<a href="../../../../../org/apache/archiva/redback/authentication/AuthenticationDataSource.html">AuthenticationDataSource</a> source)</span>
+      <span class="sympad">initialize</span>
+      <span class="normal">()</span>
     </h4>
       <div class="api-level">
         <div>
@@ -647,81 +1033,11 @@ Summary:
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  
         <tr>
-            <th><a href="../../../../../org/apache/archiva/redback/policy/AccountLockedException.html">AccountLockedException</a></td>
-            <td></td>
-        </tr>  
-        <tr>
             <th><a href="../../../../../org/apache/archiva/redback/authentication/AuthenticationException.html">AuthenticationException</a></td>
-            <td></td>
-        </tr>  
-        <tr>
-            <th><a href="../../../../../org/apache/archiva/redback/policy/MustChangePasswordException.html">MustChangePasswordException</a></td>
             <td></td>
         </tr>
       </table>
   </div>
-
-    </div>
-</div>
-
-
-<A NAME="getAuthenticators()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-        abstract 
-         
-        List&lt;<a href="../../../../../org/apache/archiva/redback/authentication/Authenticator.html">Authenticator</a>&gt;
-      </span>
-      <span class="sympad">getAuthenticators</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getId()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-        abstract 
-         
-        String
-      </span>
-      <span class="sympad">getId</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     </div>
 </div>
