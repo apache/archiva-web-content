@@ -17,6 +17,28 @@
  visibility="public"
 >
 </constructor>
+<field name="AUTHN_LOCKED_USER_EXCEPTION"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;3&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="AUTHN_MUST_CHANGE_PASSWORD_EXCEPTION"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;4&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
 <field name="AUTHN_NO_SUCH_USER"
  type="java.lang.String"
  transient="false"
@@ -3072,17 +3094,6 @@
  visibility="public"
 >
 </method>
-<method name="getConfiguration"
- return="org.apache.archiva.redback.common.ldap.connection.LdapConnectionConfiguration"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
 <method name="getConnection"
  return="org.apache.archiva.redback.common.ldap.connection.LdapConnection"
  abstract="false"
@@ -3152,6 +3163,17 @@
 </method>
 <method name="getHostname"
  return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getLdapConnectionConfiguration"
+ return="org.apache.archiva.redback.common.ldap.connection.LdapConnectionConfiguration"
  abstract="false"
  native="false"
  synchronized="false"
@@ -3292,6 +3314,19 @@
  visibility="public"
 >
 <parameter name="hostname" type="java.lang.String">
+</parameter>
+</method>
+<method name="setLdapConnectionConfiguration"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ldapConnectionConfiguration" type="org.apache.archiva.redback.common.ldap.connection.LdapConnectionConfiguration">
 </parameter>
 </method>
 <method name="setPassword"
@@ -3903,6 +3938,17 @@
 </parameter>
 <exception name="LdapException" type="org.apache.archiva.redback.common.ldap.connection.LdapException">
 </exception>
+</method>
+<method name="initialize"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
 </method>
 </interface>
 <class name="LdapException"
@@ -9975,6 +10021,17 @@
 </method>
 <method name="getPath"
  return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="initialize"
+ return="void"
  abstract="true"
  native="false"
  synchronized="false"

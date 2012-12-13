@@ -777,6 +777,8 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/rest/api/services/UserService.html#registerUser(org.apache.archiva.redback.rest.api.model.UserRegistrationRequest)">registerUser</a></span>(<a href="../../../../../../../org/apache/archiva/redback/rest/api/model/UserRegistrationRequest.html">UserRegistrationRequest</a> userRegistrationRequest)</nobr>
         
+        <div class="jd-descrdiv">if redback is not configured for email validation is required, -1 is returned as key</div>
+  
   </td></tr>
 
 
@@ -841,6 +843,8 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/rest/api/services/UserService.html#updateMe(org.apache.archiva.redback.rest.api.model.User)">updateMe</a></span>(<a href="../../../../../../../org/apache/archiva/redback/rest/api/model/User.html">User</a> user)</nobr>
         
+        <div class="jd-descrdiv">update only the current user and this fields: fullname, email, password.</div>
+  
   </td></tr>
 
 
@@ -873,6 +877,8 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/rest/api/services/UserService.html#validateUserFromKey(java.lang.String)">validateUserFromKey</a></span>(String key)</nobr>
         
+        <div class="jd-descrdiv">validate the key and the user with forcing a password change for next login.</div>
+  
   </td></tr>
 
 
@@ -1112,6 +1118,10 @@ Summary:
       
   <div class="jd-tagdata jd-tagdescr"><p></p></div>
   <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the current logged user operations, if no logged user guest operations are returned</li></ul>
+  </div>
+  <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  
         <tr>
@@ -1151,6 +1161,10 @@ Summary:
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the current logged user permissions, if no logged user guest permissions are returned</li></ul>
+  </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  
@@ -1590,7 +1604,7 @@ Summary:
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>if redback is not configured for email validation is required, -1 is returned as key</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  
@@ -1672,6 +1686,15 @@ Summary:
       
   <div class="jd-tagdata jd-tagdescr"><p></p></div>
   <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>resetPasswordRequest</td>
+          <td>contains username for send a password reset email</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  
         <tr>
@@ -1750,7 +1773,8 @@ Summary:
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>update only the current user and this fields: fullname, email, password.
+ the service verify the curent logged user with the one passed in the method</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  
@@ -1830,7 +1854,17 @@ Summary:
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>validate the key and the user with forcing a password change for next login.
+ http session is created.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>key</td>
+          <td>authentication key</td>
+        </tr>
+      </table>
+  </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  
