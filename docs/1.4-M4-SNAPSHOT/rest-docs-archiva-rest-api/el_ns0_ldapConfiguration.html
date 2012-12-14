@@ -11,7 +11,7 @@
        Remove this if you use the .htaccess -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>archivaRuntimeConfiguration</title>
+  <title>ldapConfiguration</title>
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +30,7 @@
   <div class="container">
     <header>
       <div id="header" class="column first last span-20">
-        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">archivaRuntimeConfiguration</a></div>
+        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">ldapConfiguration</a></div>
         <div id="primary" class="column span-18 append-1 prepend-1 first last">
           <ul class="navigation">
             <li id="nav-rest"><a href="rest.html">REST</a></li>
@@ -56,9 +56,10 @@
               </ul>
             </li>
             <li class="current">
-              <a href="el_ns0_archivaRuntimeConfiguration.html">archivaRuntimeConfiguration element</a>
+              <a href="el_ns0_ldapConfiguration.html">ldapConfiguration element</a>
               <ul>
                 <li><a href="el_ns0_metadataAddRequest.html">metadataAddRequest element</a></li>
+                <li><a href="el_ns0_ldapConfiguration.html">ldapConfiguration element</a></li>
                 <li><a href="el_ns0_mailingList.html">mailingList element</a></li>
                 <li><a href="el_ns0_cacheEntry.html">cacheEntry element</a></li>
                 <li><a href="el_ns0_managedRepository.html">managedRepository element</a></li>
@@ -67,11 +68,12 @@
                 <li><a href="el_ns0_versionsList.html">versionsList element</a></li>
                 <li><a href="el_ns0_organisationInformation.html">organisationInformation element</a></li>
                 <li><a href="el_ns0_searchRequest.html">searchRequest element</a></li>
-                <li><a href="el_ns0_groupIdList.html">groupIdList element</a></li>
                 <li><a href="el_ns0_networkConfiguration.html">networkConfiguration element</a></li>
+                <li><a href="el_ns0_groupIdList.html">groupIdList element</a></li>
                 <li><a href="el_ns0_issueManagement.html">issueManagement element</a></li>
                 <li><a href="el_ns0_uiConfiguration.html">uiConfiguration element</a></li>
                 <li><a href="el_ns0_policyInformation.html">policyInformation element</a></li>
+                <li><a href="el_ns0_redbackRuntimeConfiguration.html">redbackRuntimeConfiguration element</a></li>
                 <li><a href="el_ns0_artifactTransferRequest.html">artifactTransferRequest element</a></li>
                 <li><a href="el_ns0_archivaRepositoryStatistics.html">archivaRepositoryStatistics element</a></li>
                 <li><a href="el_ns0_browseResultEntry.html">browseResultEntry element</a></li>
@@ -85,17 +87,16 @@
                 <li><a href="el_ns0_repositoryScannerStatistics.html">repositoryScannerStatistics element</a></li>
                 <li><a href="el_ns0_proxyConnectorRule.html">proxyConnectorRule element</a></li>
                 <li><a href="el_ns0_fileType.html">fileType element</a></li>
-                <li><a href="el_ns0_artifactContent.html">artifactContent element</a></li>
                 <li><a href="el_ns0_legacyArtifactPath.html">legacyArtifactPath element</a></li>
+                <li><a href="el_ns0_artifactContent.html">artifactContent element</a></li>
                 <li><a href="el_ns0_propertyEntry.html">propertyEntry element</a></li>
                 <li><a href="el_ns0_projectVersionMetadata.html">projectVersionMetadata element</a></li>
-                <li><a href="el_ns0_adminRepositoryConsumer.html">adminRepositoryConsumer element</a></li>
                 <li><a href="el_ns0_dependency.html">dependency element</a></li>
+                <li><a href="el_ns0_adminRepositoryConsumer.html">adminRepositoryConsumer element</a></li>
                 <li><a href="el_ns0_userManagerImplementationInformation.html">userManagerImplementationInformation element</a></li>
                 <li><a href="el_ns0_queueEntry.html">queueEntry element</a></li>
-                <li><a href="el_ns0_browseResult.html">browseResult element</a></li>
                 <li><a href="el_ns0_artifactContentEntry.html">artifactContentEntry element</a></li>
-                <li><a href="el_ns0_archivaRuntimeConfiguration.html">archivaRuntimeConfiguration element</a></li>
+                <li><a href="el_ns0_browseResult.html">browseResult element</a></li>
                 <li><a href="el_ns0_license.html">license element</a></li>
                 <li><a href="el_ns0_organization.html">organization element</a></li>
                 <li><a href="el_ns0_remoteRepository.html">remoteRepository element</a></li>
@@ -106,11 +107,11 @@
       </div>
     </header>
     <div id="main" class="column first last span-20">
-      <h1>archivaRuntimeConfiguration element</h1>
+      <h1>ldapConfiguration element</h1>
       <table>
         <tr>
           <td align="right">Type:</td>
-          <td><a href="ns0_archivaRuntimeConfiguration.html">archivaRuntimeConfiguration</a></td>
+          <td><a href="ns0_ldapConfiguration.html">ldapConfiguration</a></td>
         </tr>
         <tr>
           <td align="right">Namespace:</td>
@@ -123,12 +124,59 @@
       </table>
       <h2>Example XML</h2>
       <code class="prettyprint lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;archivaRuntimeConfiguration&gt;
-  &lt;userManagerImpl&gt;...&lt;/userManagerImpl&gt;
-&lt;/archivaRuntimeConfiguration&gt;</code>
+&lt;ldapConfiguration&gt;
+  &lt;password&gt;...&lt;/password&gt;
+  &lt;extraProperties&gt;
+    &lt;entry&gt;
+      &lt;key&gt;...&lt;/key&gt;
+      &lt;value&gt;...&lt;/value&gt;
+    &lt;/entry&gt;
+    &lt;entry&gt;
+      &lt;key&gt;
+        &lt;!--(another &#39;string&#39; type)--&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;!--(another &#39;string&#39; type)--&gt;
+      &lt;/value&gt;
+    &lt;/entry&gt;
+    &lt;!--...more entries...--&gt;
+  &lt;/extraProperties&gt;
+  &lt;ssl&gt;...&lt;/ssl&gt;
+  &lt;bindDn&gt;...&lt;/bindDn&gt;
+  &lt;port&gt;...&lt;/port&gt;
+  &lt;contextFactory&gt;...&lt;/contextFactory&gt;
+  &lt;hostName&gt;...&lt;/hostName&gt;
+  &lt;authenticationMethod&gt;...&lt;/authenticationMethod&gt;
+  &lt;baseDn&gt;...&lt;/baseDn&gt;
+  &lt;bindAuthenticatorEnabled&gt;...&lt;/bindAuthenticatorEnabled&gt;
+  &lt;extraPropertiesEntries&gt;
+    &lt;key&gt;...&lt;/key&gt;
+    &lt;value&gt;...&lt;/value&gt;
+  &lt;/extraPropertiesEntries&gt;
+  &lt;extraPropertiesEntries&gt;
+    &lt;!--...--&gt;
+  &lt;/extraPropertiesEntries&gt;
+  &lt;!--...more &quot;extraPropertiesEntries&quot; elements...--&gt;
+&lt;/ldapConfiguration&gt;</code>
       <h2>Example JSON</h2>
       <code class="prettyprint lang-js">{
-  &quot;userManagerImpl&quot; : &quot;...&quot;
+  &quot;password&quot; : &quot;...&quot;,
+  &quot;extraProperties&quot; : [ {
+    &quot;...&quot; : ...
+  }, {
+  } ],
+  &quot;ssl&quot; : false,
+  &quot;bindDn&quot; : &quot;...&quot;,
+  &quot;port&quot; : ...,
+  &quot;contextFactory&quot; : &quot;...&quot;,
+  &quot;hostName&quot; : &quot;...&quot;,
+  &quot;authenticationMethod&quot; : &quot;...&quot;,
+  &quot;baseDn&quot; : &quot;...&quot;,
+  &quot;bindAuthenticatorEnabled&quot; : false,
+  &quot;extraPropertiesEntries&quot; : [ {
+    &quot;key&quot; : &quot;...&quot;,
+    &quot;value&quot; : &quot;...&quot;
+  }, ... ]
 }</code>
 
       <div class="clear" />

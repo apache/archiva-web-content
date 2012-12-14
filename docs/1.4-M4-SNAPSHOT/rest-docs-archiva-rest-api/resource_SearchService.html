@@ -92,6 +92,9 @@
       <p class="note">Mount Point: <a href="../restServices/searchService/getAllGroupIds">/restServices/searchService/getAllGroupIds</a></p>
       <a name="GET"></a>
       <h2>GET</h2>
+      <p>
+            <b>this method applies on Maven Indexer lucene index, so datas not yet indexed won't be available</b>
+          </p>
       <h3>Parameters</h3>
       <table>
         <tr>
@@ -126,6 +129,9 @@
       <p class="note">Mount Point: <a href="../restServices/searchService/getArtifactVersions">/restServices/searchService/getArtifactVersions</a></p>
       <a name="GET"></a>
       <h2>GET</h2>
+      <p>
+            <b>search will be apply on all repositories the current user has karma</b>
+          </p>
       <h3>Parameters</h3>
       <table>
         <tr>
@@ -174,8 +180,10 @@
       <a name="path__searchService_observableRepoIds.html"></a>
       <h1>/searchService/observableRepoIds</h1>
       <p class="note">Mount Point: <a href="../restServices/searchService/observableRepoIds">/restServices/searchService/observableRepoIds</a></p>
+      <p class="note">Available Since: 1.4-M3</p>
       <a name="GET"></a>
       <h2>GET</h2>
+      <p class="note">Available Since: 1.4-M3</p>
       <h3>Response Body</h3>
       <table>
         <tr>
@@ -227,6 +235,9 @@
       <p class="note">Mount Point: <a href="../restServices/searchService/quickSearchWithRepositories">/restServices/searchService/quickSearchWithRepositories</a></p>
       <a name="POST"></a>
       <h2>POST</h2>
+      <p>
+            <b>if not repositories in SearchRequest: search will be apply on all repositories the current user has karma</b>
+          </p>
       <h3>Request Body</h3>
       <table>
         <tr>
@@ -256,6 +267,10 @@
       <p class="note">Mount Point: <a href="../restServices/searchService/searchArtifacts">/restServices/searchService/searchArtifacts</a></p>
       <a name="POST"></a>
       <h2>POST</h2>
+      <p>
+            If searchRequest contains repositories, the search will be done only on those repositories.
+<b>if no repositories, the search will be apply on all repositories the current user has karma</b>
+          </p>
       <h3>Request Body</h3>
       <table>
         <tr>

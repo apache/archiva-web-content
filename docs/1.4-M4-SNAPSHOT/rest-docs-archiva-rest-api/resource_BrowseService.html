@@ -200,14 +200,16 @@
           <td>application/xml<br/>application/json</td>
         </tr>
       </table>
-      <p>(no documentation provided)</p>
+      <p>List of managed repositories current user can read</p>
       <a name="path__browseService_artifacts_-r-.html"></a>
       <h1>/browseService/artifacts/{r}</h1>
       <p class="note">Mount Point: <a href="../restServices/browseService/artifacts/{r}">/restServices/browseService/artifacts/{r}</a></p>
-      <p class="note">Available Since: 1.4-M3</p>
       <a name="GET"></a>
       <h2>GET</h2>
       <p class="note">Available Since: 1.4-M3</p>
+      <p>
+            return List of all artifacts from this repository
+          </p>
       <h3>Parameters</h3>
       <table>
         <tr>
@@ -255,7 +257,7 @@
         <tr>
           <td>groupId</td>
           <td>
-            (no documentation provided)
+            groupId to browse
           </td>
           <td>path</td>
           <td></td>
@@ -263,7 +265,7 @@
         <tr>
           <td>repositoryId</td>
           <td>
-            (no documentation provided)
+            optionnal (repository to browse if <tt>null</tt> all available user repositories are used)
           </td>
           <td>query</td>
           <td></td>
@@ -388,10 +390,12 @@
       <a name="path__browseService_artifactAvailable_-g-_-a-_-v-.html"></a>
       <h1>/browseService/artifactAvailable/{g}/{a}/{v}</h1>
       <p class="note">Mount Point: <a href="../restServices/browseService/artifactAvailable/{g}/{a}/{v}">/restServices/browseService/artifactAvailable/{g}/{a}/{v}</a></p>
-      <p class="note">Available Since: 1.4-M3</p>
       <a name="GET"></a>
       <h2>GET</h2>
       <p class="note">Available Since: 1.4-M3</p>
+      <p>
+            verify if an artifact is available locally if not download from proxies will be try
+          </p>
       <h3>Parameters</h3>
       <table>
         <tr>
@@ -536,6 +540,9 @@
       <a name="GET"></a>
       <h2>GET</h2>
       <p class="note">Available Since: 1.4-M3</p>
+      <p>
+            if path is empty content of the file is returned (for pom view)
+          </p>
       <h3>Parameters</h3>
       <table>
         <tr>
@@ -680,6 +687,9 @@
       <a name="GET"></a>
       <h2>GET</h2>
       <p class="note">Available Since: 1.4-M3</p>
+      <p>
+            List of artifacts using the artifact passed in parameter.
+          </p>
       <h3>Parameters</h3>
       <table>
         <tr>
@@ -860,6 +870,10 @@
       <a name="GET"></a>
       <h2>GET</h2>
       <p class="note">Available Since: 1.4-M3</p>
+      <p>
+            return the dependency Tree for an artifacts
+<b>the List result has only one entry</b>
+          </p>
       <h3>Parameters</h3>
       <table>
         <tr>

@@ -213,13 +213,31 @@
     <wadl:resource path="/restServices/archivaRuntimeConfigurationService/archivaRuntimeConfiguration">
       <wadl:method name="GET">
         <wadl:response>
-          <wadl:representation mediaType="application/xml" element="archivaRuntimeConfiguration"/>
+          <wadl:representation mediaType="application/xml" element="redbackRuntimeConfiguration"/>
           <wadl:representation mediaType="application/json"/>
         </wadl:response>
       </wadl:method>
       <wadl:method name="PUT">
         <wadl:request>
-          <wadl:representation mediaType="application/xml" element="archivaRuntimeConfiguration"/>
+          <wadl:representation mediaType="application/xml" element="redbackRuntimeConfiguration"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaRuntimeConfigurationService/checkLdapConnection">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="ldapConfiguration"/>
           <wadl:representation mediaType="application/json"/>
         </wadl:request>
         <wadl:response>
@@ -263,6 +281,9 @@
     <wadl:resource path="/restServices/browseService/userRepositories">
       <wadl:method name="GET">
         <wadl:response>
+          <wadl:doc>
+            <![CDATA[List of managed repositories current user can read]]>
+          </wadl:doc>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="application/json"/>
         </wadl:response>
@@ -270,6 +291,12 @@
     </wadl:resource>
     <wadl:resource path="/restServices/commonServices/getAllI18nResources">
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[will return properties available in org/apache/archiva/i18n/default.properties
+load default (en) then override with locale used so at least en are returned if no
+translation in the locale asked.
+This method will add redback resources too. note Archva wins]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:param name="locale" style="query"/>
         </wadl:request>
@@ -280,6 +307,11 @@
     </wadl:resource>
     <wadl:resource path="/restServices/commonServices/getI18nResources">
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[will return properties available in org/apache/archiva/i18n/default.properties
+load default (en) then override with locale used so at least en are returned if no
+translation in the locale asked.]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:param name="locale" style="query"/>
         </wadl:request>
@@ -587,6 +619,10 @@
     </wadl:resource>
     <wadl:resource path="/restServices/repositoriesService/copyArtifact">
       <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[permissions are checked in impl
+will copy an artifact from the source repository to the target repository]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:representation mediaType="application/xml" element="artifactTransferRequest"/>
           <wadl:representation mediaType="application/json"/>
@@ -600,6 +636,9 @@
     </wadl:resource>
     <wadl:resource path="/restServices/repositoriesService/deleteArtifact">
       <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[<b>permissions are checked in impl</b>]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:representation mediaType="application/xml" element="artifact"/>
           <wadl:representation mediaType="application/json"/>
@@ -613,6 +652,9 @@
     </wadl:resource>
     <wadl:resource path="/restServices/repositoriesService/deleteGroupId">
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[<b>permissions are checked in impl</b>]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:param name="groupId" style="query"/>
           <wadl:param name="repositoryId" style="query"/>
@@ -626,6 +668,9 @@
     </wadl:resource>
     <wadl:resource path="/restServices/repositoriesService/scanRepository">
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[index repository]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:param name="repositoryId" style="query"/>
           <wadl:param name="fullScan" style="query"/>
@@ -724,6 +769,9 @@
     </wadl:resource>
     <wadl:resource path="/restServices/searchService/getAllGroupIds">
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[<b>this method applies on Maven Indexer lucene index, so datas not yet indexed won't be available</b>]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:param name="selectedRepos" style="query"/>
         </wadl:request>
@@ -735,6 +783,9 @@
     </wadl:resource>
     <wadl:resource path="/restServices/searchService/getArtifactVersions">
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[<b>search will be apply on all repositories the current user has karma</b>]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:param name="groupId" style="query"/>
           <wadl:param name="artifactId" style="query"/>
@@ -767,6 +818,9 @@
     </wadl:resource>
     <wadl:resource path="/restServices/searchService/quickSearchWithRepositories">
       <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[<b>if not repositories in SearchRequest: search will be apply on all repositories the current user has karma</b>]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:representation mediaType="*/*" element="searchRequest"/>
           <wadl:representation mediaType="application/xml" element="searchRequest"/>
@@ -779,6 +833,10 @@
     </wadl:resource>
     <wadl:resource path="/restServices/searchService/searchArtifacts">
       <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[If searchRequest contains repositories, the search will be done only on those repositories.
+<b>if no repositories, the search will be apply on all repositories the current user has karma</b>]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:representation mediaType="*/*" element="searchRequest"/>
           <wadl:representation mediaType="application/xml" element="searchRequest"/>
@@ -875,6 +933,9 @@
     <wadl:resource path="/restServices/browseService/artifacts/{r}">
       <wadl:param name="r" style="template"/>
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[return List of all artifacts from this repository]]>
+        </wadl:doc>
         <wadl:request/>
         <wadl:response>
           <wadl:representation mediaType="application/xml"/>
@@ -883,10 +944,18 @@
       </wadl:method>
     </wadl:resource>
     <wadl:resource path="/restServices/browseService/browseGroupId/{groupId}">
-      <wadl:param name="groupId" style="template"/>
+      <wadl:param name="groupId" style="template">
+        <wadl:doc>
+          <![CDATA[groupId to browse]]>
+        </wadl:doc>
+      </wadl:param>
       <wadl:method name="GET">
         <wadl:request>
-          <wadl:param name="repositoryId" style="query"/>
+          <wadl:param name="repositoryId" style="query">
+            <wadl:doc>
+              <![CDATA[optionnal (repository to browse if <tt>null</tt> all available user repositories are used)]]>
+            </wadl:doc>
+          </wadl:param>
         </wadl:request>
         <wadl:response>
           <wadl:representation mediaType="application/xml" element="browseResult"/>
@@ -907,6 +976,9 @@
     <wadl:resource path="/restServices/managedRepositoriesService/getPomSnippet/{repositoryId}">
       <wadl:param name="repositoryId" style="template"/>
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[return a pom snippet to use this repository with entities escaped (< > )]]>
+        </wadl:doc>
         <wadl:request/>
         <wadl:response>
           <wadl:representation mediaType="text/plain"/>
@@ -991,6 +1063,9 @@
     <wadl:resource path="/restServices/repositoriesService/scanRepositoryDirectoriesNow/{repositoryId}">
       <wadl:param name="repositoryId" style="template"/>
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[scan directories]]>
+        </wadl:doc>
         <wadl:request/>
         <wadl:response>
           <wadl:representation mediaType="application/xml" element="repositoryScanStatistics"/>
@@ -1080,6 +1155,9 @@
       <wadl:param name="sourceRepositoryId" style="template"/>
       <wadl:param name="targetRepositoryId" style="template"/>
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[<b>permissions are checked in impl</b>]]>
+        </wadl:doc>
         <wadl:request/>
         <wadl:response>
           <wadl:representation mediaType="application/xml"/>
@@ -1105,6 +1183,9 @@
       <wadl:param name="a" style="template"/>
       <wadl:param name="v" style="template"/>
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[verify if an artifact is available locally if not download from proxies will be try]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:param name="repositoryId" style="query"/>
         </wadl:request>
@@ -1136,6 +1217,9 @@
       <wadl:param name="a" style="template"/>
       <wadl:param name="v" style="template"/>
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[if path is empty content of the file is returned (for pom view)]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:param name="c" style="query"/>
           <wadl:param name="t" style="query"/>
@@ -1167,6 +1251,9 @@
       <wadl:param name="a" style="template"/>
       <wadl:param name="v" style="template"/>
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[List of artifacts using the artifact passed in parameter.]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:param name="repositoryId" style="query"/>
         </wadl:request>
@@ -1209,6 +1296,10 @@
       <wadl:param name="a" style="template"/>
       <wadl:param name="v" style="template"/>
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[return the dependency Tree for an artifacts
+<b>the List result has only one entry</b>]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:param name="repositoryId" style="query"/>
         </wadl:request>
@@ -1223,6 +1314,9 @@
       <wadl:param name="targetRepositoryId" style="template"/>
       <wadl:param name="skipConflicts" style="template"/>
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[<b>permissions are checked in impl</b>]]>
+        </wadl:doc>
         <wadl:request/>
       </wadl:method>
     </wadl:resource>
@@ -1231,6 +1325,9 @@
       <wadl:param name="projectId" style="template"/>
       <wadl:param name="repositoryId" style="template"/>
       <wadl:method name="DELETE">
+        <wadl:doc>
+          <![CDATA[<b>permissions are checked in impl</b>]]>
+        </wadl:doc>
         <wadl:request/>
         <wadl:response>
           <wadl:representation mediaType="application/xml"/>
@@ -1260,6 +1357,9 @@
       <wadl:param name="projectId" style="template"/>
       <wadl:param name="version" style="template"/>
       <wadl:method name="DELETE">
+        <wadl:doc>
+          <![CDATA[<b>permissions are checked in impl</b>]]>
+        </wadl:doc>
         <wadl:request/>
         <wadl:response>
           <wadl:representation mediaType="application/xml"/>

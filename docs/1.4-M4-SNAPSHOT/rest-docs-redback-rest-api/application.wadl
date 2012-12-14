@@ -22,6 +22,9 @@
     </wadl:resource>
     <wadl:resource path="/redbackServices/loginService/isLogged">
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[simply check if current user has an http session opened with authz passed]]>
+        </wadl:doc>
         <wadl:response>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -31,6 +34,10 @@
     </wadl:resource>
     <wadl:resource path="/redbackServices/loginService/logIn">
       <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[check username/password and create a http session.
+So no more need of reuse username/password for all ajaxRequest]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:representation mediaType="*/*" element="loginRequest"/>
           <wadl:representation mediaType="application/xml" element="loginRequest"/>
@@ -44,6 +51,9 @@
     </wadl:resource>
     <wadl:resource path="/redbackServices/loginService/logout">
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[clear user http session]]>
+        </wadl:doc>
         <wadl:response>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -71,6 +81,9 @@
     </wadl:resource>
     <wadl:resource path="/redbackServices/passwordService/changePassword">
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[used to change the password on passwordChangeRequired state.]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:param name="userName" style="query"/>
           <wadl:param name="previousPassword" style="query"/>
@@ -86,12 +99,20 @@
     </wadl:resource>
     <wadl:resource path="/redbackServices/passwordService/changePasswordWithKey">
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[used to change the password on first user connection after registration use.
+the key is mandatory and a control will be done on the username provided.
+<b>need to be logged by UserService#validateUserFromKey(String)</b>]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:param name="password" style="query"/>
           <wadl:param name="passwordConfirmation" style="query"/>
           <wadl:param name="key" style="query"/>
         </wadl:request>
         <wadl:response>
+          <wadl:doc>
+            <![CDATA[username]]>
+          </wadl:doc>
           <wadl:representation mediaType="application/xml" element="user"/>
           <wadl:representation mediaType="text/plain"/>
           <wadl:representation mediaType="application/json"/>
@@ -296,6 +317,9 @@ it also manages any user assignments for that role]]>
     </wadl:resource>
     <wadl:resource path="/redbackServices/roleManagementService/updateRoleUsers">
       <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[update users assigned to a role]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:representation mediaType="application/xml" element="role"/>
           <wadl:representation mediaType="application/json"/>
@@ -308,6 +332,9 @@ it also manages any user assignments for that role]]>
     </wadl:resource>
     <wadl:resource path="/redbackServices/roleManagementService/updateUserRoles">
       <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[update roles assigned to a user]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:representation mediaType="application/xml" element="user"/>
           <wadl:representation mediaType="application/json"/>
@@ -383,6 +410,9 @@ it also manages any user assignments for that role]]>
     <wadl:resource path="/redbackServices/userService/getCurrentUserOperations">
       <wadl:method name="GET">
         <wadl:response>
+          <wadl:doc>
+            <![CDATA[the current logged user operations, if no logged user guest operations are returned]]>
+          </wadl:doc>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
           <wadl:representation mediaType="application/json"/>
@@ -392,6 +422,9 @@ it also manages any user assignments for that role]]>
     <wadl:resource path="/redbackServices/userService/getCurrentUserPermissions">
       <wadl:method name="GET">
         <wadl:response>
+          <wadl:doc>
+            <![CDATA[the current logged user permissions, if no logged user guest permissions are returned]]>
+          </wadl:doc>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
           <wadl:representation mediaType="application/json"/>
@@ -435,6 +468,9 @@ it also manages any user assignments for that role]]>
     </wadl:resource>
     <wadl:resource path="/redbackServices/userService/registerUser">
       <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[if redback is not configured for email validation is required, -1 is returned as key]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:representation mediaType="*/*" element="userRegistrationRequest"/>
           <wadl:representation mediaType="application/xml" element="userRegistrationRequest"/>
@@ -448,6 +484,9 @@ it also manages any user assignments for that role]]>
     <wadl:resource path="/redbackServices/userService/resetPassword">
       <wadl:method name="POST">
         <wadl:request>
+          <wadl:doc>
+            <![CDATA[contains username for send a password reset email]]>
+          </wadl:doc>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="application/json"/>
         </wadl:request>
@@ -460,6 +499,10 @@ it also manages any user assignments for that role]]>
     </wadl:resource>
     <wadl:resource path="/redbackServices/userService/updateMe">
       <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[update only the current user and this fields: fullname, email, password.
+the service verify the curent logged user with the one passed in the method]]>
+        </wadl:doc>
         <wadl:request>
           <wadl:representation mediaType="*/*" element="user"/>
           <wadl:representation mediaType="application/xml" element="user"/>
@@ -636,8 +679,16 @@ it also manages any user assignments for that role]]>
       </wadl:method>
     </wadl:resource>
     <wadl:resource path="/redbackServices/userService/validateKey/{key}">
-      <wadl:param name="key" style="template"/>
+      <wadl:param name="key" style="template">
+        <wadl:doc>
+          <![CDATA[authentication key]]>
+        </wadl:doc>
+      </wadl:param>
       <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[validate the key and the user with forcing a password change for next login.
+http session is created.]]>
+        </wadl:doc>
         <wadl:request/>
         <wadl:response>
           <wadl:representation mediaType="application/xml"/>
