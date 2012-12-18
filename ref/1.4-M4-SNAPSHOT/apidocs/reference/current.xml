@@ -52868,6 +52868,34 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<method name="checkLdapConnection"
+ return="java.lang.Boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
+<method name="checkLdapConnection"
+ return="java.lang.Boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ldapConfiguration" type="org.apache.archiva.admin.model.beans.LdapConfiguration">
+</parameter>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
 <method name="getArchivaRuntimeConfigurationAdmin"
  return="org.apache.archiva.admin.model.beans.ArchivaRuntimeConfiguration"
  abstract="true"
@@ -55275,6 +55303,34 @@
  visibility="public"
 >
 </constructor>
+<method name="checkLdapConnection"
+ return="java.lang.Boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
+<method name="checkLdapConnection"
+ return="java.lang.Boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ldapConfiguration" type="org.apache.archiva.admin.model.beans.LdapConfiguration">
+</parameter>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
 <method name="getArchivaRuntimeConfigurationAdmin"
  return="org.apache.archiva.admin.model.beans.ArchivaRuntimeConfiguration"
  abstract="false"
@@ -55300,6 +55356,19 @@
 >
 <exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
 </exception>
+</method>
+<method name="toProperties"
+ return="java.util.Properties"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+<parameter name="map" type="java.util.Map&lt;java.lang.String, java.lang.String&gt;">
+</parameter>
 </method>
 <method name="updateArchivaRuntimeConfiguration"
  return="java.lang.Boolean"
@@ -65958,7 +66027,7 @@
 </field>
 </class>
 <class name="ArchivaUserManagerAuthenticator"
- extends="java.lang.Object"
+ extends="org.apache.archiva.redback.authentication.AbstractAuthenticator"
  abstract="false"
  static="false"
  final="false"
@@ -66002,19 +66071,6 @@
  deprecated="not deprecated"
  visibility="public"
 >
-</method>
-<method name="initialize"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="protected"
->
-<exception name="RepositoryAdminException" type="org.apache.archiva.admin.model.RepositoryAdminException">
-</exception>
 </method>
 <method name="supportsDataSource"
  return="boolean"
