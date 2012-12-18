@@ -26141,6 +26141,18 @@
 <parameter name="selectedPage" type="int">
 </parameter>
 </constructor>
+<constructor name="SearchResultLimits"
+ type="org.apache.archiva.indexer.search.SearchResultLimits"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="pageSize" type="int">
+</parameter>
+<parameter name="selectedPage" type="int">
+</parameter>
+</constructor>
 <method name="getPageSize"
  return="int"
  abstract="false"
@@ -51645,6 +51657,17 @@
  visibility="public"
 >
 </method>
+<method name="getPageSize"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getQueryTerms"
  return="java.lang.String"
  abstract="false"
@@ -51658,6 +51681,17 @@
 </method>
 <method name="getRepositories"
  return="java.util.List&lt;java.lang.String&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getSelectedPage"
+ return="int"
  abstract="false"
  native="false"
  synchronized="false"
@@ -51845,6 +51879,19 @@
 <parameter name="packaging" type="java.lang.String">
 </parameter>
 </method>
+<method name="setPageSize"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="pageSize" type="int">
+</parameter>
+</method>
 <method name="setQueryTerms"
  return="void"
  abstract="false"
@@ -51869,6 +51916,19 @@
  visibility="public"
 >
 <parameter name="repositories" type="java.util.List&lt;java.lang.String&gt;">
+</parameter>
+</method>
+<method name="setSelectedPage"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="selectedPage" type="int">
 </parameter>
 </method>
 <method name="setVersion"
@@ -52004,6 +52064,16 @@
  visibility="private"
 >
 </field>
+<field name="pageSize"
+ type="int"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
 <field name="queryTerms"
  type="java.lang.String"
  transient="false"
@@ -52016,6 +52086,16 @@
 </field>
 <field name="repositories"
  type="java.util.List"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="selectedPage"
+ type="int"
  transient="false"
  volatile="false"
  static="false"
@@ -52985,6 +53065,29 @@
 <parameter name="artifactId" type="java.lang.String">
 </parameter>
 <parameter name="version" type="java.lang.String">
+</parameter>
+<parameter name="repositoryId" type="java.lang.String">
+</parameter>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
+<method name="artifactAvailable"
+ return="java.lang.Boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="groupId" type="java.lang.String">
+</parameter>
+<parameter name="artifactId" type="java.lang.String">
+</parameter>
+<parameter name="version" type="java.lang.String">
+</parameter>
+<parameter name="classifier" type="java.lang.String">
 </parameter>
 <parameter name="repositoryId" type="java.lang.String">
 </parameter>
@@ -55463,6 +55566,29 @@
 <parameter name="key" type="java.lang.String">
 </parameter>
 <parameter name="value" type="java.lang.String">
+</parameter>
+<parameter name="repositoryId" type="java.lang.String">
+</parameter>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
+<method name="artifactAvailable"
+ return="java.lang.Boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="groupId" type="java.lang.String">
+</parameter>
+<parameter name="artifactId" type="java.lang.String">
+</parameter>
+<parameter name="version" type="java.lang.String">
+</parameter>
+<parameter name="classifier" type="java.lang.String">
 </parameter>
 <parameter name="repositoryId" type="java.lang.String">
 </parameter>
