@@ -53071,7 +53071,7 @@
 <exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
 </exception>
 </method>
-<method name="getRedbackRuntimeConfigurationAdmin"
+<method name="getRedbackRuntimeConfiguration"
  return="org.apache.archiva.admin.model.beans.RedbackRuntimeConfiguration"
  abstract="true"
  native="false"
@@ -55529,7 +55529,7 @@
 <exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
 </exception>
 </method>
-<method name="getRedbackRuntimeConfigurationAdmin"
+<method name="getRedbackRuntimeConfiguration"
  return="org.apache.archiva.admin.model.beans.RedbackRuntimeConfiguration"
  abstract="false"
  native="false"
@@ -64562,6 +64562,8 @@
 >
 <parameter name="locale" type="java.lang.String">
 </parameter>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
 </method>
 <method name="getBaseUrl"
  return="java.lang.String"
@@ -64589,6 +64591,16 @@
 <parameter name="key" type="java.lang.String">
 </parameter>
 </method>
+<field name="archivaRuntimeConfigurationService"
+ type="org.apache.archiva.rest.api.services.ArchivaRuntimeConfigurationService"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
 <field name="archivaRuntimeInfo"
  type="org.apache.archiva.web.runtime.ArchivaRuntimeInfo"
  transient="false"
@@ -64739,6 +64751,8 @@
 >
 <parameter name="locale" type="java.lang.String">
 </parameter>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
 </method>
 <method name="logMissingI18n"
  return="java.lang.Boolean"
@@ -65042,6 +65056,17 @@
  visibility="public"
 >
 </method>
+<method name="getRedbackRuntimeConfiguration"
+ return="org.apache.archiva.admin.model.beans.RedbackRuntimeConfiguration"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getTimestamp"
  return="long"
  abstract="false"
@@ -65186,6 +65211,19 @@
 <parameter name="logMissingI18n" type="boolean">
 </parameter>
 </method>
+<method name="setRedbackRuntimeConfiguration"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="redbackRuntimeConfiguration" type="org.apache.archiva.admin.model.beans.RedbackRuntimeConfiguration">
+</parameter>
+</method>
 <method name="setTimestamp"
  return="void"
  abstract="false"
@@ -65277,6 +65315,16 @@
 </field>
 <field name="logMissingI18n"
  type="boolean"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="redbackRuntimeConfiguration"
+ type="org.apache.archiva.admin.model.beans.RedbackRuntimeConfiguration"
  transient="false"
  volatile="false"
  static="false"
