@@ -210,24 +210,6 @@
         </wadl:request>
       </wadl:method>
     </wadl:resource>
-    <wadl:resource path="/restServices/archivaRuntimeConfigurationService/archivaRuntimeConfiguration">
-      <wadl:method name="GET">
-        <wadl:response>
-          <wadl:representation mediaType="application/xml" element="redbackRuntimeConfiguration"/>
-          <wadl:representation mediaType="application/json"/>
-        </wadl:response>
-      </wadl:method>
-      <wadl:method name="PUT">
-        <wadl:request>
-          <wadl:representation mediaType="application/xml" element="redbackRuntimeConfiguration"/>
-          <wadl:representation mediaType="application/json"/>
-        </wadl:request>
-        <wadl:response>
-          <wadl:representation mediaType="application/xml"/>
-          <wadl:representation mediaType="application/json"/>
-        </wadl:response>
-      </wadl:method>
-    </wadl:resource>
     <wadl:resource path="/restServices/archivaRuntimeConfigurationService/checkLdapConnection">
       <wadl:method name="GET">
         <wadl:response>
@@ -238,6 +220,24 @@
       <wadl:method name="POST">
         <wadl:request>
           <wadl:representation mediaType="application/xml" element="ldapConfiguration"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaRuntimeConfigurationService/redbackRuntimeConfiguration">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="redbackRuntimeConfiguration"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+      <wadl:method name="PUT">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="redbackRuntimeConfiguration"/>
           <wadl:representation mediaType="application/json"/>
         </wadl:request>
         <wadl:response>
@@ -1332,6 +1332,24 @@ will copy an artifact from the source repository to the target repository]]>
         <wadl:response>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/browseService/artifactAvailable/{g}/{a}/{v}/{c}">
+      <wadl:param name="g" style="template"/>
+      <wadl:param name="a" style="template"/>
+      <wadl:param name="v" style="template"/>
+      <wadl:param name="c" style="template"/>
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[verify if an artifact is available locally if not download from proxies will be try]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="repositoryId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="application/json"/>
         </wadl:response>
       </wadl:method>
