@@ -1032,54 +1032,53 @@
 <a class="jxr_linenumber" name="1022" href="#1022">1022</a> 
 <a class="jxr_linenumber" name="1023" href="#1023">1023</a>         <strong class="jxr_keyword">if</strong> ( CollectionUtils.isEmpty( selectedRepos ) )
 <a class="jxr_linenumber" name="1024" href="#1024">1024</a>         {
-<a class="jxr_linenumber" name="1025" href="#1025">1025</a>             <em class="jxr_comment">// FIXME 403 ???</em>
-<a class="jxr_linenumber" name="1026" href="#1026">1026</a>             <strong class="jxr_keyword">return</strong> Collections.emptyList();
-<a class="jxr_linenumber" name="1027" href="#1027">1027</a>         }
-<a class="jxr_linenumber" name="1028" href="#1028">1028</a> 
-<a class="jxr_linenumber" name="1029" href="#1029">1029</a>         <strong class="jxr_keyword">if</strong> ( StringUtils.isNotEmpty( repositoryId ) )
-<a class="jxr_linenumber" name="1030" href="#1030">1030</a>         {
-<a class="jxr_linenumber" name="1031" href="#1031">1031</a>             <em class="jxr_comment">// check user has karma on the repository</em>
-<a class="jxr_linenumber" name="1032" href="#1032">1032</a>             <strong class="jxr_keyword">if</strong> ( !selectedRepos.contains( repositoryId ) )
-<a class="jxr_linenumber" name="1033" href="#1033">1033</a>             {
-<a class="jxr_linenumber" name="1034" href="#1034">1034</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>( <span class="jxr_string">"browse.root.groups.repositoy.denied"</span>,
-<a class="jxr_linenumber" name="1035" href="#1035">1035</a>                                                        Response.Status.FORBIDDEN.getStatusCode(), <strong class="jxr_keyword">null</strong> );
-<a class="jxr_linenumber" name="1036" href="#1036">1036</a>             }
-<a class="jxr_linenumber" name="1037" href="#1037">1037</a>             selectedRepos = Collections.singletonList( repositoryId );
-<a class="jxr_linenumber" name="1038" href="#1038">1038</a>         }
-<a class="jxr_linenumber" name="1039" href="#1039">1039</a>         <strong class="jxr_keyword">return</strong> selectedRepos;
-<a class="jxr_linenumber" name="1040" href="#1040">1040</a>     }
+<a class="jxr_linenumber" name="1025" href="#1025">1025</a>             <strong class="jxr_keyword">return</strong> Collections.emptyList();
+<a class="jxr_linenumber" name="1026" href="#1026">1026</a>         }
+<a class="jxr_linenumber" name="1027" href="#1027">1027</a> 
+<a class="jxr_linenumber" name="1028" href="#1028">1028</a>         <strong class="jxr_keyword">if</strong> ( StringUtils.isNotEmpty( repositoryId ) )
+<a class="jxr_linenumber" name="1029" href="#1029">1029</a>         {
+<a class="jxr_linenumber" name="1030" href="#1030">1030</a>             <em class="jxr_comment">// check user has karma on the repository</em>
+<a class="jxr_linenumber" name="1031" href="#1031">1031</a>             <strong class="jxr_keyword">if</strong> ( !selectedRepos.contains( repositoryId ) )
+<a class="jxr_linenumber" name="1032" href="#1032">1032</a>             {
+<a class="jxr_linenumber" name="1033" href="#1033">1033</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>( <span class="jxr_string">"browse.root.groups.repositoy.denied"</span>,
+<a class="jxr_linenumber" name="1034" href="#1034">1034</a>                                                        Response.Status.FORBIDDEN.getStatusCode(), <strong class="jxr_keyword">null</strong> );
+<a class="jxr_linenumber" name="1035" href="#1035">1035</a>             }
+<a class="jxr_linenumber" name="1036" href="#1036">1036</a>             selectedRepos = Collections.singletonList( repositoryId );
+<a class="jxr_linenumber" name="1037" href="#1037">1037</a>         }
+<a class="jxr_linenumber" name="1038" href="#1038">1038</a>         <strong class="jxr_keyword">return</strong> selectedRepos;
+<a class="jxr_linenumber" name="1039" href="#1039">1039</a>     }
+<a class="jxr_linenumber" name="1040" href="#1040">1040</a> 
 <a class="jxr_linenumber" name="1041" href="#1041">1041</a> 
-<a class="jxr_linenumber" name="1042" href="#1042">1042</a> 
-<a class="jxr_linenumber" name="1043" href="#1043">1043</a>     <strong class="jxr_keyword">private</strong> String collapseNamespaces( RepositorySession repositorySession, MetadataResolver metadataResolver,
-<a class="jxr_linenumber" name="1044" href="#1044">1044</a>                                        Collection&lt;String&gt; repoIds, String n )
-<a class="jxr_linenumber" name="1045" href="#1045">1045</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html">MetadataResolutionException</a>
-<a class="jxr_linenumber" name="1046" href="#1046">1046</a>     {
-<a class="jxr_linenumber" name="1047" href="#1047">1047</a>         Set&lt;String&gt; subNamespaces = <strong class="jxr_keyword">new</strong> LinkedHashSet&lt;String&gt;();
-<a class="jxr_linenumber" name="1048" href="#1048">1048</a>         <strong class="jxr_keyword">for</strong> ( String repoId : repoIds )
-<a class="jxr_linenumber" name="1049" href="#1049">1049</a>         {
-<a class="jxr_linenumber" name="1050" href="#1050">1050</a>             subNamespaces.addAll( metadataResolver.resolveNamespaces( repositorySession, repoId, n ) );
-<a class="jxr_linenumber" name="1051" href="#1051">1051</a>         }
-<a class="jxr_linenumber" name="1052" href="#1052">1052</a>         <strong class="jxr_keyword">if</strong> ( subNamespaces.size() != 1 )
-<a class="jxr_linenumber" name="1053" href="#1053">1053</a>         {
-<a class="jxr_linenumber" name="1054" href="#1054">1054</a>             log.debug( <span class="jxr_string">"{} is not collapsible as it has sub-namespaces: {}"</span>, n, subNamespaces );
-<a class="jxr_linenumber" name="1055" href="#1055">1055</a>             <strong class="jxr_keyword">return</strong> n;
-<a class="jxr_linenumber" name="1056" href="#1056">1056</a>         }
-<a class="jxr_linenumber" name="1057" href="#1057">1057</a>         <strong class="jxr_keyword">else</strong>
-<a class="jxr_linenumber" name="1058" href="#1058">1058</a>         {
-<a class="jxr_linenumber" name="1059" href="#1059">1059</a>             <strong class="jxr_keyword">for</strong> ( String repoId : repoIds )
-<a class="jxr_linenumber" name="1060" href="#1060">1060</a>             {
-<a class="jxr_linenumber" name="1061" href="#1061">1061</a>                 Collection&lt;String&gt; projects = metadataResolver.resolveProjects( repositorySession, repoId, n );
-<a class="jxr_linenumber" name="1062" href="#1062">1062</a>                 <strong class="jxr_keyword">if</strong> ( projects != <strong class="jxr_keyword">null</strong> &amp;&amp; !projects.isEmpty() )
-<a class="jxr_linenumber" name="1063" href="#1063">1063</a>                 {
-<a class="jxr_linenumber" name="1064" href="#1064">1064</a>                     log.debug( <span class="jxr_string">"{} is not collapsible as it has projects"</span>, n );
-<a class="jxr_linenumber" name="1065" href="#1065">1065</a>                     <strong class="jxr_keyword">return</strong> n;
-<a class="jxr_linenumber" name="1066" href="#1066">1066</a>                 }
-<a class="jxr_linenumber" name="1067" href="#1067">1067</a>             }
-<a class="jxr_linenumber" name="1068" href="#1068">1068</a>             <strong class="jxr_keyword">return</strong> collapseNamespaces( repositorySession, metadataResolver, repoIds,
-<a class="jxr_linenumber" name="1069" href="#1069">1069</a>                                        n + <span class="jxr_string">"."</span> + subNamespaces.iterator().next() );
-<a class="jxr_linenumber" name="1070" href="#1070">1070</a>         }
-<a class="jxr_linenumber" name="1071" href="#1071">1071</a>     }
-<a class="jxr_linenumber" name="1072" href="#1072">1072</a> }
+<a class="jxr_linenumber" name="1042" href="#1042">1042</a>     <strong class="jxr_keyword">private</strong> String collapseNamespaces( RepositorySession repositorySession, MetadataResolver metadataResolver,
+<a class="jxr_linenumber" name="1043" href="#1043">1043</a>                                        Collection&lt;String&gt; repoIds, String n )
+<a class="jxr_linenumber" name="1044" href="#1044">1044</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html">MetadataResolutionException</a>
+<a class="jxr_linenumber" name="1045" href="#1045">1045</a>     {
+<a class="jxr_linenumber" name="1046" href="#1046">1046</a>         Set&lt;String&gt; subNamespaces = <strong class="jxr_keyword">new</strong> LinkedHashSet&lt;String&gt;();
+<a class="jxr_linenumber" name="1047" href="#1047">1047</a>         <strong class="jxr_keyword">for</strong> ( String repoId : repoIds )
+<a class="jxr_linenumber" name="1048" href="#1048">1048</a>         {
+<a class="jxr_linenumber" name="1049" href="#1049">1049</a>             subNamespaces.addAll( metadataResolver.resolveNamespaces( repositorySession, repoId, n ) );
+<a class="jxr_linenumber" name="1050" href="#1050">1050</a>         }
+<a class="jxr_linenumber" name="1051" href="#1051">1051</a>         <strong class="jxr_keyword">if</strong> ( subNamespaces.size() != 1 )
+<a class="jxr_linenumber" name="1052" href="#1052">1052</a>         {
+<a class="jxr_linenumber" name="1053" href="#1053">1053</a>             log.debug( <span class="jxr_string">"{} is not collapsible as it has sub-namespaces: {}"</span>, n, subNamespaces );
+<a class="jxr_linenumber" name="1054" href="#1054">1054</a>             <strong class="jxr_keyword">return</strong> n;
+<a class="jxr_linenumber" name="1055" href="#1055">1055</a>         }
+<a class="jxr_linenumber" name="1056" href="#1056">1056</a>         <strong class="jxr_keyword">else</strong>
+<a class="jxr_linenumber" name="1057" href="#1057">1057</a>         {
+<a class="jxr_linenumber" name="1058" href="#1058">1058</a>             <strong class="jxr_keyword">for</strong> ( String repoId : repoIds )
+<a class="jxr_linenumber" name="1059" href="#1059">1059</a>             {
+<a class="jxr_linenumber" name="1060" href="#1060">1060</a>                 Collection&lt;String&gt; projects = metadataResolver.resolveProjects( repositorySession, repoId, n );
+<a class="jxr_linenumber" name="1061" href="#1061">1061</a>                 <strong class="jxr_keyword">if</strong> ( projects != <strong class="jxr_keyword">null</strong> &amp;&amp; !projects.isEmpty() )
+<a class="jxr_linenumber" name="1062" href="#1062">1062</a>                 {
+<a class="jxr_linenumber" name="1063" href="#1063">1063</a>                     log.debug( <span class="jxr_string">"{} is not collapsible as it has projects"</span>, n );
+<a class="jxr_linenumber" name="1064" href="#1064">1064</a>                     <strong class="jxr_keyword">return</strong> n;
+<a class="jxr_linenumber" name="1065" href="#1065">1065</a>                 }
+<a class="jxr_linenumber" name="1066" href="#1066">1066</a>             }
+<a class="jxr_linenumber" name="1067" href="#1067">1067</a>             <strong class="jxr_keyword">return</strong> collapseNamespaces( repositorySession, metadataResolver, repoIds,
+<a class="jxr_linenumber" name="1068" href="#1068">1068</a>                                        n + <span class="jxr_string">"."</span> + subNamespaces.iterator().next() );
+<a class="jxr_linenumber" name="1069" href="#1069">1069</a>         }
+<a class="jxr_linenumber" name="1070" href="#1070">1070</a>     }
+<a class="jxr_linenumber" name="1071" href="#1071">1071</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

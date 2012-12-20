@@ -33,7 +33,7 @@
 <a class="jxr_linenumber" name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.common.utils.FileUtil;
 <a class="jxr_linenumber" name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.<strong class="jxr_keyword">rest</strong>.services.AbstractRestServicesTest;
 <a class="jxr_linenumber" name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.<strong class="jxr_keyword">rest</strong>.api.services.ArchivaAdministrationService;
-<a class="jxr_linenumber" name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.<strong class="jxr_keyword">rest</strong>.api.services.ArchivaRuntimeConfigurationService;
+<a class="jxr_linenumber" name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.<strong class="jxr_keyword">rest</strong>.api.services.RedbackRuntimeConfigurationService;
 <a class="jxr_linenumber" name="27" href="#27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.<strong class="jxr_keyword">rest</strong>.api.services.BrowseService;
 <a class="jxr_linenumber" name="28" href="#28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.<strong class="jxr_keyword">rest</strong>.api.services.CommonServices;
 <a class="jxr_linenumber" name="29" href="#29">29</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.<strong class="jxr_keyword">rest</strong>.api.services.ManagedRepositoriesService;
@@ -233,11 +233,11 @@
 <a class="jxr_linenumber" name="223" href="#223">223</a>         <strong class="jxr_keyword">return</strong> service;
 <a class="jxr_linenumber" name="224" href="#224">224</a>     }
 <a class="jxr_linenumber" name="225" href="#225">225</a> 
-<a class="jxr_linenumber" name="226" href="#226">226</a>     <strong class="jxr_keyword">protected</strong> ArchivaRuntimeConfigurationService getArchivaRuntimeConfigurationService()
+<a class="jxr_linenumber" name="226" href="#226">226</a>     <strong class="jxr_keyword">protected</strong> RedbackRuntimeConfigurationService getArchivaRuntimeConfigurationService()
 <a class="jxr_linenumber" name="227" href="#227">227</a>     {
-<a class="jxr_linenumber" name="228" href="#228">228</a>         ArchivaRuntimeConfigurationService service = JAXRSClientFactory.create(
+<a class="jxr_linenumber" name="228" href="#228">228</a>         RedbackRuntimeConfigurationService service = JAXRSClientFactory.create(
 <a class="jxr_linenumber" name="229" href="#229">229</a>             getBaseUrl() + <span class="jxr_string">"/"</span> + getRestServicesPath() + <span class="jxr_string">"/archivaServices/"</span>,
-<a class="jxr_linenumber" name="230" href="#230">230</a>             ArchivaRuntimeConfigurationService.<strong class="jxr_keyword">class</strong>, Collections.singletonList( <strong class="jxr_keyword">new</strong> JacksonJaxbJsonProvider() ) );
+<a class="jxr_linenumber" name="230" href="#230">230</a>             RedbackRuntimeConfigurationService.<strong class="jxr_keyword">class</strong>, Collections.singletonList( <strong class="jxr_keyword">new</strong> JacksonJaxbJsonProvider() ) );
 <a class="jxr_linenumber" name="231" href="#231">231</a> 
 <a class="jxr_linenumber" name="232" href="#232">232</a>         WebClient.client( service ).accept( MediaType.APPLICATION_JSON_TYPE );
 <a class="jxr_linenumber" name="233" href="#233">233</a>         WebClient.client( service ).type( MediaType.APPLICATION_JSON_TYPE );

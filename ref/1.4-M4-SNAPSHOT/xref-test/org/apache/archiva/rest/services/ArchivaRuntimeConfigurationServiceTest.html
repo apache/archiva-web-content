@@ -30,7 +30,7 @@
 <a class="jxr_linenumber" name="20" href="#20">20</a>  
 <a class="jxr_linenumber" name="21" href="#21">21</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.admin.model.beans.RedbackRuntimeConfiguration;
 <a class="jxr_linenumber" name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.<strong class="jxr_keyword">rest</strong>.api.model.UserManagerImplementationInformation;
-<a class="jxr_linenumber" name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.<strong class="jxr_keyword">rest</strong>.api.services.ArchivaRuntimeConfigurationService;
+<a class="jxr_linenumber" name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.<strong class="jxr_keyword">rest</strong>.api.services.RedbackRuntimeConfigurationService;
 <a class="jxr_linenumber" name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> org.fest.assertions.api.Assertions;
 <a class="jxr_linenumber" name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> org.junit.Test;
 <a class="jxr_linenumber" name="26" href="#26">26</a>  
@@ -74,7 +74,7 @@
 <a class="jxr_linenumber" name="64" href="#64">64</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> usermanagersinformations()
 <a class="jxr_linenumber" name="65" href="#65">65</a>          <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="66" href="#66">66</a>      {
-<a class="jxr_linenumber" name="67" href="#67">67</a>          ArchivaRuntimeConfigurationService service = getArchivaRuntimeConfigurationService();
+<a class="jxr_linenumber" name="67" href="#67">67</a>          RedbackRuntimeConfigurationService service = getArchivaRuntimeConfigurationService();
 <a class="jxr_linenumber" name="68" href="#68">68</a>          List&lt;UserManagerImplementationInformation&gt; infos = service.getUserManagerImplementationInformations();
 <a class="jxr_linenumber" name="69" href="#69">69</a>          Assertions.assertThat( infos ).isNotNull().isNotEmpty().contains(
 <a class="jxr_linenumber" name="70" href="#70">70</a>              <strong class="jxr_keyword">new</strong> UserManagerImplementationInformation( <span class="jxr_string">"jdo"</span>, <strong class="jxr_keyword">null</strong>, false ) );

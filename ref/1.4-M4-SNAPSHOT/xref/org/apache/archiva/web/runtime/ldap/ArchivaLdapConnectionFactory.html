@@ -30,7 +30,7 @@
 <a class="jxr_linenumber" name="20" href="#20">20</a>  
 <a class="jxr_linenumber" name="21" href="#21">21</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.admin.model.RepositoryAdminException;
 <a class="jxr_linenumber" name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.admin.model.beans.LdapConfiguration;
-<a class="jxr_linenumber" name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.admin.model.runtime.ArchivaRuntimeConfigurationAdmin;
+<a class="jxr_linenumber" name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.admin.model.runtime.RedbackRuntimeConfigurationAdmin;
 <a class="jxr_linenumber" name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.common.ldap.connection.ConfigurableLdapConnectionFactory;
 <a class="jxr_linenumber" name="25" href="#25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.common.ldap.connection.LdapConnectionConfiguration;
 <a class="jxr_linenumber" name="26" href="#26">26</a>  <strong class="jxr_keyword">import</strong> org.springframework.stereotype.Service;
@@ -51,7 +51,7 @@
 <a class="jxr_linenumber" name="41" href="#41">41</a>  {
 <a class="jxr_linenumber" name="42" href="#42">42</a>  
 <a class="jxr_linenumber" name="43" href="#43">43</a>      @Inject
-<a class="jxr_linenumber" name="44" href="#44">44</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../../org/apache/archiva/admin/model/runtime/ArchivaRuntimeConfigurationAdmin.html">ArchivaRuntimeConfigurationAdmin</a> archivaRuntimeConfigurationAdmin;
+<a class="jxr_linenumber" name="44" href="#44">44</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../../org/apache/archiva/admin/model/runtime/RedbackRuntimeConfigurationAdmin.html">RedbackRuntimeConfigurationAdmin</a> redbackRuntimeConfigurationAdmin;
 <a class="jxr_linenumber" name="45" href="#45">45</a>  
 <a class="jxr_linenumber" name="46" href="#46">46</a>      <strong class="jxr_keyword">private</strong> LdapConnectionConfiguration ldapConnectionConfiguration;
 <a class="jxr_linenumber" name="47" href="#47">47</a>  
@@ -61,7 +61,7 @@
 <a class="jxr_linenumber" name="51" href="#51">51</a>          <strong class="jxr_keyword">try</strong>
 <a class="jxr_linenumber" name="52" href="#52">52</a>          {
 <a class="jxr_linenumber" name="53" href="#53">53</a>              <a href="../../../../../../org/apache/archiva/admin/model/beans/LdapConfiguration.html">LdapConfiguration</a> ldapConfiguration =
-<a class="jxr_linenumber" name="54" href="#54">54</a>                  archivaRuntimeConfigurationAdmin.getArchivaRuntimeConfiguration().getLdapConfiguration();
+<a class="jxr_linenumber" name="54" href="#54">54</a>                  redbackRuntimeConfigurationAdmin.getRedbackRuntimeConfiguration().getLdapConfiguration();
 <a class="jxr_linenumber" name="55" href="#55">55</a>              ldapConnectionConfiguration = <strong class="jxr_keyword">new</strong> LdapConnectionConfiguration();
 <a class="jxr_linenumber" name="56" href="#56">56</a>              ldapConnectionConfiguration.setHostname( ldapConfiguration.getHostName() );
 <a class="jxr_linenumber" name="57" href="#57">57</a>              ldapConnectionConfiguration.setPort( ldapConfiguration.getPort() );

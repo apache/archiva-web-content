@@ -3656,6 +3656,17 @@
  visibility="public"
 >
 </method>
+<method name="isUseUsersCache"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="setConfigurationProperties"
  return="void"
  abstract="false"
@@ -3708,6 +3719,19 @@
 <parameter name="migratedFromRedbackConfiguration" type="boolean">
 </parameter>
 </method>
+<method name="setUseUsersCache"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="useUsersCache" type="boolean">
+</parameter>
+</method>
 <method name="setUserManagerImpls"
  return="void"
  abstract="false"
@@ -3752,6 +3776,16 @@
 >
 </field>
 <field name="migratedFromRedbackConfiguration"
+ type="boolean"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="useUsersCache"
  type="boolean"
  transient="false"
  volatile="false"
@@ -5475,14 +5509,14 @@
 </package>
 <package name="org.apache.archiva.admin.model.runtime"
 >
-<interface name="ArchivaRuntimeConfigurationAdmin"
+<interface name="RedbackRuntimeConfigurationAdmin"
  abstract="true"
  static="false"
  final="false"
  deprecated="not deprecated"
  visibility="public"
 >
-<method name="getArchivaRuntimeConfiguration"
+<method name="getRedbackRuntimeConfiguration"
  return="org.apache.archiva.admin.model.beans.RedbackRuntimeConfiguration"
  abstract="true"
  native="false"
@@ -5495,7 +5529,7 @@
 <exception name="RepositoryAdminException" type="org.apache.archiva.admin.model.RepositoryAdminException">
 </exception>
 </method>
-<method name="updateArchivaRuntimeConfiguration"
+<method name="updateRedbackRuntimeConfiguration"
  return="void"
  abstract="true"
  native="false"
@@ -7876,7 +7910,7 @@
 </package>
 <package name="org.apache.archiva.admin.repository.runtime"
 >
-<class name="DefaultArchivaRuntimeConfigurationAdmin"
+<class name="DefaultRedbackRuntimeConfigurationAdmin"
  extends="java.lang.Object"
  abstract="false"
  static="false"
@@ -7884,12 +7918,12 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<implements name="org.apache.archiva.admin.model.runtime.ArchivaRuntimeConfigurationAdmin">
+<implements name="org.apache.archiva.admin.model.runtime.RedbackRuntimeConfigurationAdmin">
 </implements>
 <implements name="org.apache.archiva.redback.configuration.UserConfiguration">
 </implements>
-<constructor name="DefaultArchivaRuntimeConfigurationAdmin"
- type="org.apache.archiva.admin.repository.runtime.DefaultArchivaRuntimeConfigurationAdmin"
+<constructor name="DefaultRedbackRuntimeConfigurationAdmin"
+ type="org.apache.archiva.admin.repository.runtime.DefaultRedbackRuntimeConfigurationAdmin"
  static="false"
  final="false"
  deprecated="not deprecated"
@@ -7921,17 +7955,6 @@
 >
 <parameter name="archivaRuntimeConfiguration" type="org.apache.archiva.admin.model.beans.RedbackRuntimeConfiguration">
 </parameter>
-</method>
-<method name="getArchivaRuntimeConfiguration"
- return="org.apache.archiva.admin.model.beans.RedbackRuntimeConfiguration"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
 </method>
 <method name="getBoolean"
  return="boolean"
@@ -8017,6 +8040,17 @@
 <parameter name="key" type="java.lang.String">
 </parameter>
 </method>
+<method name="getRedbackRuntimeConfiguration"
+ return="org.apache.archiva.admin.model.beans.RedbackRuntimeConfiguration"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getString"
  return="java.lang.String"
  abstract="false"
@@ -8058,7 +8092,7 @@
 <exception name="UserConfigurationException" type="org.apache.archiva.redback.configuration.UserConfigurationException">
 </exception>
 </method>
-<method name="updateArchivaRuntimeConfiguration"
+<method name="updateRedbackRuntimeConfiguration"
  return="void"
  abstract="false"
  native="false"
@@ -15858,6 +15892,17 @@
  visibility="public"
 >
 </method>
+<method name="isUseUsersCache"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="removeUserManagerImpl"
  return="void"
  abstract="false"
@@ -15910,6 +15955,19 @@
 <parameter name="migratedFromRedbackConfiguration" type="boolean">
 </parameter>
 </method>
+<method name="setUseUsersCache"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="useUsersCache" type="boolean">
+</parameter>
+</method>
 <method name="setUserManagerImpls"
  return="void"
  abstract="false"
@@ -15944,6 +16002,16 @@
 >
 </field>
 <field name="migratedFromRedbackConfiguration"
+ type="boolean"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="useUsersCache"
  type="boolean"
  transient="false"
  volatile="false"
@@ -53036,83 +53104,6 @@
 >
 </field>
 </class>
-<interface name="ArchivaRuntimeConfigurationService"
- abstract="true"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<method name="checkLdapConnection"
- return="java.lang.Boolean"
- abstract="true"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
-</exception>
-</method>
-<method name="checkLdapConnection"
- return="java.lang.Boolean"
- abstract="true"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="ldapConfiguration" type="org.apache.archiva.admin.model.beans.LdapConfiguration">
-</parameter>
-<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
-</exception>
-</method>
-<method name="getRedbackRuntimeConfiguration"
- return="org.apache.archiva.admin.model.beans.RedbackRuntimeConfiguration"
- abstract="true"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
-</exception>
-</method>
-<method name="getUserManagerImplementationInformations"
- return="java.util.List&lt;org.apache.archiva.rest.api.model.UserManagerImplementationInformation&gt;"
- abstract="true"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
-</exception>
-</method>
-<method name="updateRedbackRuntimeConfiguration"
- return="java.lang.Boolean"
- abstract="true"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="redbackRuntimeConfiguration" type="org.apache.archiva.admin.model.beans.RedbackRuntimeConfiguration">
-</parameter>
-<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
-</exception>
-</method>
-</interface>
 <interface name="BrowseService"
  abstract="true"
  static="false"
@@ -53999,6 +53990,83 @@
  visibility="public"
 >
 <parameter name="proxyConnector" type="org.apache.archiva.admin.model.beans.ProxyConnector">
+</parameter>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
+</interface>
+<interface name="RedbackRuntimeConfigurationService"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="checkLdapConnection"
+ return="java.lang.Boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
+<method name="checkLdapConnection"
+ return="java.lang.Boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ldapConfiguration" type="org.apache.archiva.admin.model.beans.LdapConfiguration">
+</parameter>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
+<method name="getRedbackRuntimeConfiguration"
+ return="org.apache.archiva.admin.model.beans.RedbackRuntimeConfiguration"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
+<method name="getUserManagerImplementationInformations"
+ return="java.util.List&lt;org.apache.archiva.rest.api.model.UserManagerImplementationInformation&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
+<method name="updateRedbackRuntimeConfiguration"
+ return="java.lang.Boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="redbackRuntimeConfiguration" type="org.apache.archiva.admin.model.beans.RedbackRuntimeConfiguration">
 </parameter>
 <exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
 </exception>
@@ -55483,147 +55551,6 @@
 >
 </field>
 </class>
-<class name="DefaultArchivaRuntimeConfigurationService"
- extends="org.apache.archiva.rest.services.AbstractRestService"
- abstract="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<implements name="org.apache.archiva.rest.api.services.ArchivaRuntimeConfigurationService">
-</implements>
-<constructor name="DefaultArchivaRuntimeConfigurationService"
- type="org.apache.archiva.rest.services.DefaultArchivaRuntimeConfigurationService"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</constructor>
-<method name="checkLdapConnection"
- return="java.lang.Boolean"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
-</exception>
-</method>
-<method name="checkLdapConnection"
- return="java.lang.Boolean"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="ldapConfiguration" type="org.apache.archiva.admin.model.beans.LdapConfiguration">
-</parameter>
-<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
-</exception>
-</method>
-<method name="getRedbackRuntimeConfiguration"
- return="org.apache.archiva.admin.model.beans.RedbackRuntimeConfiguration"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
-</exception>
-</method>
-<method name="getUserManagerImplementationInformations"
- return="java.util.List&lt;org.apache.archiva.rest.api.model.UserManagerImplementationInformation&gt;"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
-</exception>
-</method>
-<method name="toProperties"
- return="java.util.Properties"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="private"
->
-<parameter name="map" type="java.util.Map&lt;java.lang.String, java.lang.String&gt;">
-</parameter>
-</method>
-<method name="updateRedbackRuntimeConfiguration"
- return="java.lang.Boolean"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="redbackRuntimeConfiguration" type="org.apache.archiva.admin.model.beans.RedbackRuntimeConfiguration">
-</parameter>
-<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
-</exception>
-</method>
-<field name="applicationContext"
- type="org.springframework.context.ApplicationContext"
- transient="false"
- volatile="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="private"
->
-</field>
-<field name="archivaRuntimeConfigurationAdmin"
- type="org.apache.archiva.admin.model.runtime.ArchivaRuntimeConfigurationAdmin"
- transient="false"
- volatile="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="private"
->
-</field>
-<field name="ldapConnectionFactory"
- type="org.apache.archiva.redback.common.ldap.connection.LdapConnectionFactory"
- transient="false"
- volatile="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="private"
->
-</field>
-<field name="userManager"
- type="org.apache.archiva.redback.users.UserManager"
- transient="false"
- volatile="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="private"
->
-</field>
-</class>
 <class name="DefaultBrowseService"
  extends="org.apache.archiva.rest.services.AbstractRestService"
  abstract="false"
@@ -57078,6 +57005,147 @@
 </field>
 <field name="proxyConnectorAdmin"
  type="org.apache.archiva.admin.model.proxyconnector.ProxyConnectorAdmin"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+</class>
+<class name="DefaultRedbackRuntimeConfigurationService"
+ extends="org.apache.archiva.rest.services.AbstractRestService"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.apache.archiva.rest.api.services.RedbackRuntimeConfigurationService">
+</implements>
+<constructor name="DefaultRedbackRuntimeConfigurationService"
+ type="org.apache.archiva.rest.services.DefaultRedbackRuntimeConfigurationService"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="checkLdapConnection"
+ return="java.lang.Boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
+<method name="checkLdapConnection"
+ return="java.lang.Boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ldapConfiguration" type="org.apache.archiva.admin.model.beans.LdapConfiguration">
+</parameter>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
+<method name="getRedbackRuntimeConfiguration"
+ return="org.apache.archiva.admin.model.beans.RedbackRuntimeConfiguration"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
+<method name="getUserManagerImplementationInformations"
+ return="java.util.List&lt;org.apache.archiva.rest.api.model.UserManagerImplementationInformation&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
+<method name="toProperties"
+ return="java.util.Properties"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+<parameter name="map" type="java.util.Map&lt;java.lang.String, java.lang.String&gt;">
+</parameter>
+</method>
+<method name="updateRedbackRuntimeConfiguration"
+ return="java.lang.Boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="redbackRuntimeConfiguration" type="org.apache.archiva.admin.model.beans.RedbackRuntimeConfiguration">
+</parameter>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
+<field name="applicationContext"
+ type="org.springframework.context.ApplicationContext"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="ldapConnectionFactory"
+ type="org.apache.archiva.redback.common.ldap.connection.LdapConnectionFactory"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="redbackRuntimeConfigurationAdmin"
+ type="org.apache.archiva.admin.model.runtime.RedbackRuntimeConfigurationAdmin"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="userManager"
+ type="org.apache.archiva.redback.users.UserManager"
  transient="false"
  volatile="false"
  static="false"
@@ -64591,16 +64659,6 @@
 <parameter name="key" type="java.lang.String">
 </parameter>
 </method>
-<field name="archivaRuntimeConfigurationService"
- type="org.apache.archiva.rest.api.services.ArchivaRuntimeConfigurationService"
- transient="false"
- volatile="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="private"
->
-</field>
 <field name="archivaRuntimeInfo"
  type="org.apache.archiva.web.runtime.ArchivaRuntimeInfo"
  transient="false"
@@ -64623,6 +64681,16 @@
 </field>
 <field name="i18nLogger"
  type="org.slf4j.Logger"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="redbackRuntimeConfigurationService"
+ type="org.apache.archiva.rest.api.services.RedbackRuntimeConfigurationService"
  transient="false"
  volatile="false"
  static="false"
@@ -66098,8 +66166,8 @@
 <parameter name="map" type="java.util.Map&lt;java.lang.String, java.lang.String&gt;">
 </parameter>
 </method>
-<field name="archivaRuntimeConfigurationAdmin"
- type="org.apache.archiva.admin.model.runtime.ArchivaRuntimeConfigurationAdmin"
+<field name="ldapConnectionConfiguration"
+ type="org.apache.archiva.redback.common.ldap.connection.LdapConnectionConfiguration"
  transient="false"
  volatile="false"
  static="false"
@@ -66108,8 +66176,8 @@
  visibility="private"
 >
 </field>
-<field name="ldapConnectionConfiguration"
- type="org.apache.archiva.redback.common.ldap.connection.LdapConnectionConfiguration"
+<field name="redbackRuntimeConfigurationAdmin"
+ type="org.apache.archiva.admin.model.runtime.RedbackRuntimeConfigurationAdmin"
  transient="false"
  volatile="false"
  static="false"
@@ -66149,18 +66217,19 @@
  visibility="protected"
 >
 </method>
-<field name="applicationContext"
- type="org.springframework.context.ApplicationContext"
- transient="false"
- volatile="false"
+<method name="useUsersCache"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
  static="false"
  final="false"
  deprecated="not deprecated"
- visibility="private"
+ visibility="protected"
 >
-</field>
-<field name="archivaRuntimeConfigurationAdmin"
- type="org.apache.archiva.admin.model.runtime.ArchivaRuntimeConfigurationAdmin"
+</method>
+<field name="applicationContext"
+ type="org.springframework.context.ApplicationContext"
  transient="false"
  volatile="false"
  static="false"
@@ -66179,8 +66248,28 @@
  visibility="private"
 >
 </field>
+<field name="redbackRuntimeConfigurationAdmin"
+ type="org.apache.archiva.admin.model.runtime.RedbackRuntimeConfigurationAdmin"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
 <field name="userManagerPerId"
  type="java.util.Map"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="usersCache"
+ type="org.apache.archiva.redback.components.cache.Cache"
  transient="false"
  volatile="false"
  static="false"
@@ -66244,16 +66333,6 @@
  visibility="private"
 >
 </field>
-<field name="archivaRuntimeConfigurationAdmin"
- type="org.apache.archiva.admin.model.runtime.ArchivaRuntimeConfigurationAdmin"
- transient="false"
- volatile="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="private"
->
-</field>
 <field name="checked"
  type="boolean"
  transient="false"
@@ -66276,6 +66355,16 @@
 </field>
 <field name="rbacManager"
  type="org.apache.archiva.redback.rbac.RBACManager"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="redbackRuntimeConfigurationAdmin"
+ type="org.apache.archiva.admin.model.runtime.RedbackRuntimeConfigurationAdmin"
  transient="false"
  volatile="false"
  static="false"
@@ -66364,8 +66453,8 @@
  visibility="private"
 >
 </field>
-<field name="archivaRuntimeConfigurationAdmin"
- type="org.apache.archiva.admin.model.runtime.ArchivaRuntimeConfigurationAdmin"
+<field name="log"
+ type="org.slf4j.Logger"
  transient="false"
  volatile="false"
  static="false"
@@ -66374,8 +66463,8 @@
  visibility="private"
 >
 </field>
-<field name="log"
- type="org.slf4j.Logger"
+<field name="redbackRuntimeConfigurationAdmin"
+ type="org.apache.archiva.admin.model.runtime.RedbackRuntimeConfigurationAdmin"
  transient="false"
  volatile="false"
  static="false"
