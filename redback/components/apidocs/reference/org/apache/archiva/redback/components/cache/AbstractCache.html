@@ -57,7 +57,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
 <title>
 
-  CacheableWrapper
+  AbstractCache
 
 
 | Apache Archiva Redback Components
@@ -203,9 +203,9 @@
               
     <li><h2>Classes</h2>
       <ul>
-          <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/redback/components/cache/AbstractCache.html">AbstractCache</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../../org/apache/archiva/redback/components/cache/AbstractCache.html">AbstractCache</a></li>
           <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/redback/components/cache/AbstractCacheStatistics.html">AbstractCacheStatistics</a></li>
-          <li class="selected api apilevel-"><a href="../../../../../../org/apache/archiva/redback/components/cache/CacheableWrapper.html">CacheableWrapper</a></li>
+          <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/redback/components/cache/CacheableWrapper.html">CacheableWrapper</a></li>
           <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/redback/components/cache/CacheHints.html">CacheHints</a></li>
       </ul>
     </li>
@@ -263,6 +263,8 @@
   
 
   
+   
+  
   
   
   
@@ -313,9 +315,9 @@ Summary:
     public
      
      
-    
+    abstract
     class
-<h1>CacheableWrapper</h1>
+<h1>AbstractCache</h1>
 
 
 
@@ -329,7 +331,7 @@ Summary:
   
       implements 
       
-        Serializable 
+        <a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html">Cache</a> 
       
   
   
@@ -353,7 +355,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
          	
-        <td colspan="1" class="jd-inheritance-class-cell">org.apache.archiva.redback.components.cache.CacheableWrapper</td>
+        <td colspan="1" class="jd-inheritance-class-cell">org.apache.archiva.redback.components.cache.AbstractCache</td>
     </tr>
     
 
@@ -362,14 +364,55 @@ Summary:
 
 
 
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-direct" class="jd-expando-trigger closed"
+          ><img id="subclasses-direct-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Direct Subclasses
+
+  <div id="subclasses-direct">
+      <div id="subclasses-direct-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../../../org/apache/archiva/redback/components/cache/hashmap/HashMapCache.html">HashMapCache</a>,
+            
+              <a href="../../../../../../org/apache/archiva/redback/components/cache/impl/NoCacheCache.html">NoCacheCache</a>,
+            
+              <a href="../../../../../../org/apache/archiva/redback/components/cache/oscache/OsCacheCache.html">OsCacheCache</a>
+            
+          
+      </div>
+      <div id="subclasses-direct-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../org/apache/archiva/redback/components/cache/hashmap/HashMapCache.html">HashMapCache</a></td>
+              <td class="jd-descrcol" width="100%"><p>
+ HashMapCache - this is a Cache implementation taken from the Archiva project.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../org/apache/archiva/redback/components/cache/impl/NoCacheCache.html">NoCacheCache</a></td>
+              <td class="jd-descrcol" width="100%">Simple no-op provider of a Cache.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../org/apache/archiva/redback/components/cache/oscache/OsCacheCache.html">OsCacheCache</a></td>
+              <td class="jd-descrcol" width="100%">For configuration see documentation : http://opensymphony.com/oscache/wiki/Configuration.html&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
 
 
 
 <div class="jd-descr">
 
-
-<h2>Class Overview</h2>
-<p>CacheableWrapper </p>
 
 
 
@@ -435,7 +478,7 @@ Summary:
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/CacheableWrapper.html#CacheableWrapper(java.lang.Object, long)">CacheableWrapper</a></span>(Object value, long storedTime)</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/AbstractCache.html#AbstractCache()">AbstractCache</a></span>()</nobr>
         
   </td></tr>
 
@@ -461,10 +504,10 @@ Summary:
             
             
             
-            long</nobr>
+            int</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/CacheableWrapper.html#getStoredTime()">getStoredTime</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/AbstractCache.html#getTimeToIdleSeconds()">getTimeToIdleSeconds</a></span>()</nobr>
         
   </td></tr>
 
@@ -477,10 +520,10 @@ Summary:
             
             
             
-            Object</nobr>
+            int</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/CacheableWrapper.html#getValue()">getValue</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/AbstractCache.html#getTimeToLiveSeconds()">getTimeToLiveSeconds</a></span>()</nobr>
         
   </td></tr>
 
@@ -496,7 +539,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/CacheableWrapper.html#setStoredTime(long)">setStoredTime</a></span>(long storedTime)</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/AbstractCache.html#setTimeToIdleSeconds(int)">setTimeToIdleSeconds</a></span>(int timeToIdleSeconds)</nobr>
         
   </td></tr>
 
@@ -512,7 +555,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/CacheableWrapper.html#setValue(java.lang.Object)">setValue</a></span>(Object value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/AbstractCache.html#setTimeToLiveSeconds(int)">setTimeToLiveSeconds</a></span>(int timeToLiveSeconds)</nobr>
         
   </td></tr>
 
@@ -734,6 +777,256 @@ From class
 
 
 
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.apache.archiva.redback.components.cache.Cache" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.apache.archiva.redback.components.cache.Cache-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  <a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html">org.apache.archiva.redback.components.cache.Cache</a>
+
+<div id="inherited-methods-org.apache.archiva.redback.components.cache.Cache">
+  <div id="inherited-methods-org.apache.archiva.redback.components.cache.Cache-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.apache.archiva.redback.components.cache.Cache-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#clear()">clear</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Clear the cache of all entries.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#get(java.lang.Object)">get</a></span>(Object key)</nobr>
+        
+        <div class="jd-descrdiv">Get the value of the specified key, if it exists in the cache.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            &lt;T&gt;
+            T</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#get(java.lang.Object, java.lang.Class<T>)">get</a></span>(Object key, Class&lt;T&gt; clazz)</nobr>
+        
+        <div class="jd-descrdiv">Get the value of the specified key, if it exists in the cache.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../../org/apache/archiva/redback/components/cache/CacheStatistics.html">CacheStatistics</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#getStatistics()">getStatistics</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Obtain a set of Statistics about the performance of the cache.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#getTimeToIdleSeconds()">getTimeToIdleSeconds</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#getTimeToLiveSeconds()">getTimeToLiveSeconds</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#hasKey(java.lang.Object)">hasKey</a></span>(Object key)</nobr>
+        
+        <div class="jd-descrdiv">Tests to see if the provided key exists within the cache.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#put(java.lang.Object, java.lang.Object)">put</a></span>(Object key, Object value)</nobr>
+        
+        <div class="jd-descrdiv">Put the specified value into the cache under the provided key.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            &lt;T&gt;
+            T</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#put(java.lang.Object, java.lang.Object, java.lang.Class<T>)">put</a></span>(Object key, Object value, Class&lt;T&gt; clazz)</nobr>
+        
+        <div class="jd-descrdiv">Put the specified value into the cache under the provided key.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#register(java.lang.Object, java.lang.Object)">register</a></span>(Object key, Object value)</nobr>
+        
+        <div class="jd-descrdiv">Register the specified value into the cache under the provided key.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#remove(java.lang.Object)">remove</a></span>(Object key)</nobr>
+        
+        <div class="jd-descrdiv">Remove the specified key and value from the cache.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#setTimeToIdleSeconds(int)">setTimeToIdleSeconds</a></span>(int timeToIdleSeconds)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#setTimeToLiveSeconds(int)">setTimeToLiveSeconds</a></span>(int timeToLiveSeconds)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
 
 </table>
 
@@ -769,7 +1062,7 @@ From class
 
 
 
-<A NAME="CacheableWrapper(java.lang.Object, long)"></A>
+<A NAME="AbstractCache()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -781,8 +1074,8 @@ From class
          
         
       </span>
-      <span class="sympad">CacheableWrapper</span>
-      <span class="normal">(Object value, long storedTime)</span>
+      <span class="sympad">AbstractCache</span>
+      <span class="normal">()</span>
     </h4>
       <div class="api-level">
         <div>
@@ -815,7 +1108,7 @@ From class
 
 
 
-<A NAME="getStoredTime()"></A>
+<A NAME="getTimeToIdleSeconds()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -825,9 +1118,9 @@ From class
          
          
          
-        long
+        int
       </span>
-      <span class="sympad">getStoredTime</span>
+      <span class="sympad">getTimeToIdleSeconds</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -846,7 +1139,7 @@ From class
 </div>
 
 
-<A NAME="getValue()"></A>
+<A NAME="getTimeToLiveSeconds()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -856,9 +1149,9 @@ From class
          
          
          
-        Object
+        int
       </span>
-      <span class="sympad">getValue</span>
+      <span class="sympad">getTimeToLiveSeconds</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -877,7 +1170,7 @@ From class
 </div>
 
 
-<A NAME="setStoredTime(long)"></A>
+<A NAME="setTimeToIdleSeconds(int)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -889,8 +1182,8 @@ From class
          
         void
       </span>
-      <span class="sympad">setStoredTime</span>
-      <span class="normal">(long storedTime)</span>
+      <span class="sympad">setTimeToIdleSeconds</span>
+      <span class="normal">(int timeToIdleSeconds)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -908,7 +1201,7 @@ From class
 </div>
 
 
-<A NAME="setValue(java.lang.Object)"></A>
+<A NAME="setTimeToLiveSeconds(int)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -920,8 +1213,8 @@ From class
          
         void
       </span>
-      <span class="sympad">setValue</span>
-      <span class="normal">(Object value)</span>
+      <span class="sympad">setTimeToLiveSeconds</span>
+      <span class="normal">(int timeToLiveSeconds)</span>
     </h4>
       <div class="api-level">
         <div>

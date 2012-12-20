@@ -537,6 +537,73 @@
 </package>
 <package name="org.apache.archiva.redback.components.cache"
 >
+<class name="AbstractCache"
+ extends="java.lang.Object"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.apache.archiva.redback.components.cache.Cache">
+</implements>
+<constructor name="AbstractCache"
+ type="org.apache.archiva.redback.components.cache.AbstractCache"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getTimeToIdleSeconds"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getTimeToLiveSeconds"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setTimeToIdleSeconds"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="timeToIdleSeconds" type="int">
+</parameter>
+</method>
+<method name="setTimeToLiveSeconds"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="timeToLiveSeconds" type="int">
+</parameter>
+</method>
+</class>
 <class name="AbstractCacheStatistics"
  extends="java.lang.Object"
  abstract="true"
@@ -675,8 +742,45 @@
 <parameter name="key" type="java.lang.Object">
 </parameter>
 </method>
+<method name="get"
+ return="T"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.Object">
+</parameter>
+<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
+</parameter>
+</method>
 <method name="getStatistics"
  return="org.apache.archiva.redback.components.cache.CacheStatistics"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getTimeToIdleSeconds"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getTimeToLiveSeconds"
+ return="int"
  abstract="true"
  native="false"
  synchronized="false"
@@ -714,6 +818,23 @@
 <parameter name="value" type="java.lang.Object">
 </parameter>
 </method>
+<method name="put"
+ return="T"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.Object">
+</parameter>
+<parameter name="value" type="java.lang.Object">
+</parameter>
+<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
+</parameter>
+</method>
 <method name="register"
  return="void"
  abstract="true"
@@ -740,6 +861,32 @@
  visibility="public"
 >
 <parameter name="key" type="java.lang.Object">
+</parameter>
+</method>
+<method name="setTimeToIdleSeconds"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="timeToIdleSeconds" type="int">
+</parameter>
+</method>
+<method name="setTimeToLiveSeconds"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="timeToLiveSeconds" type="int">
 </parameter>
 </method>
 </interface>
@@ -1267,6 +1414,21 @@
 <parameter name="key" type="java.lang.Object">
 </parameter>
 </method>
+<method name="get"
+ return="T"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.Object">
+</parameter>
+<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
+</parameter>
+</method>
 <method name="getDiskExpiryThreadIntervalSeconds"
  return="long"
  abstract="false"
@@ -1477,6 +1639,23 @@
  deprecated="not deprecated"
  visibility="public"
 >
+</method>
+<method name="put"
+ return="T"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.Object">
+</parameter>
+<parameter name="value" type="java.lang.Object">
+</parameter>
+<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
+</parameter>
 </method>
 <method name="put"
  return="java.lang.Object"
@@ -1831,7 +2010,7 @@
 <package name="org.apache.archiva.redback.components.cache.hashmap"
 >
 <class name="HashMapCache"
- extends="java.lang.Object"
+ extends="org.apache.archiva.redback.components.cache.AbstractCache"
  abstract="false"
  static="false"
  final="false"
@@ -1870,6 +2049,21 @@
  visibility="public"
 >
 <parameter name="key" type="java.lang.Object">
+</parameter>
+</method>
+<method name="get"
+ return="T"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.Object">
+</parameter>
+<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
 </parameter>
 </method>
 <method name="getCacheHitRatio"
@@ -1973,6 +2167,23 @@
  visibility="protected"
 >
 <parameter name="cacheableWrapper" type="org.apache.archiva.redback.components.cache.CacheableWrapper">
+</parameter>
+</method>
+<method name="put"
+ return="T"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.Object">
+</parameter>
+<parameter name="value" type="java.lang.Object">
+</parameter>
+<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
 </parameter>
 </method>
 <method name="put"
@@ -2096,7 +2307,7 @@
 <package name="org.apache.archiva.redback.components.cache.impl"
 >
 <class name="NoCacheCache"
- extends="java.lang.Object"
+ extends="org.apache.archiva.redback.components.cache.AbstractCache"
  abstract="false"
  static="false"
  final="false"
@@ -2135,6 +2346,21 @@
  visibility="public"
 >
 <parameter name="key" type="java.lang.Object">
+</parameter>
+</method>
+<method name="get"
+ return="T"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.Object">
+</parameter>
+<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
 </parameter>
 </method>
 <method name="getStatistics"
@@ -2176,6 +2402,23 @@
 <parameter name="value" type="java.lang.Object">
 </parameter>
 </method>
+<method name="put"
+ return="T"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.Object">
+</parameter>
+<parameter name="value" type="java.lang.Object">
+</parameter>
+<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
+</parameter>
+</method>
 <method name="register"
  return="void"
  abstract="false"
@@ -2209,7 +2452,7 @@
 <package name="org.apache.archiva.redback.components.cache.oscache"
 >
 <class name="OsCacheCache"
- extends="java.lang.Object"
+ extends="org.apache.archiva.redback.components.cache.AbstractCache"
  abstract="false"
  static="false"
  final="false"
@@ -2248,6 +2491,21 @@
  visibility="public"
 >
 <parameter name="key" type="java.lang.Object">
+</parameter>
+</method>
+<method name="get"
+ return="T"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.Object">
+</parameter>
+<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
 </parameter>
 </method>
 <method name="getAdditionnalProperties"
@@ -2438,6 +2696,23 @@
  deprecated="not deprecated"
  visibility="public"
 >
+</method>
+<method name="put"
+ return="T"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.Object">
+</parameter>
+<parameter name="value" type="java.lang.Object">
+</parameter>
+<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
+</parameter>
 </method>
 <method name="put"
  return="java.lang.Object"
