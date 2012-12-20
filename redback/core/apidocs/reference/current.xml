@@ -50,10 +50,10 @@
 >
 </constructor>
 <field name="AUTHN_LOCKED_USER_EXCEPTION"
- type="java.lang.String"
+ type="int"
  transient="false"
  volatile="false"
- value="&quot;3&quot;"
+ value="3"
  static="true"
  final="true"
  deprecated="not deprecated"
@@ -61,10 +61,10 @@
 >
 </field>
 <field name="AUTHN_MUST_CHANGE_PASSWORD_EXCEPTION"
- type="java.lang.String"
+ type="int"
  transient="false"
  volatile="false"
- value="&quot;4&quot;"
+ value="4"
  static="true"
  final="true"
  deprecated="not deprecated"
@@ -72,10 +72,10 @@
 >
 </field>
 <field name="AUTHN_NO_SUCH_USER"
- type="java.lang.String"
+ type="int"
  transient="false"
  volatile="false"
- value="&quot;1&quot;"
+ value="1"
  static="true"
  final="true"
  deprecated="not deprecated"
@@ -83,10 +83,10 @@
 >
 </field>
 <field name="AUTHN_RUNTIME_EXCEPTION"
- type="java.lang.String"
+ type="int"
  transient="false"
  volatile="false"
- value="&quot;2&quot;"
+ value="2"
  static="true"
  final="true"
  deprecated="not deprecated"
@@ -172,6 +172,75 @@
 <parameter name="cause" type="java.lang.Throwable">
 </parameter>
 </constructor>
+</class>
+<class name="AuthenticationFailureCause"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="AuthenticationFailureCause"
+ type="org.apache.archiva.redback.authentication.AuthenticationFailureCause"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="cause" type="int">
+</parameter>
+<parameter name="message" type="java.lang.String">
+</parameter>
+</constructor>
+<method name="getCause"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getMessage"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setCause"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="cause" type="int">
+</parameter>
+</method>
+<method name="setMessage"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="java.lang.String">
+</parameter>
+</method>
 </class>
 <interface name="AuthenticationManager"
  abstract="true"
@@ -265,11 +334,11 @@
 </parameter>
 <parameter name="exception" type="java.lang.Exception">
 </parameter>
-<parameter name="exceptionsMap" type="java.util.Map&lt;java.lang.String, java.lang.String&gt;">
+<parameter name="authenticationFailureCauses" type="java.util.List&lt;org.apache.archiva.redback.authentication.AuthenticationFailureCause&gt;">
 </parameter>
 </constructor>
-<method name="getException"
- return="java.lang.Exception"
+<method name="getAuthenticationFailureCauses"
+ return="java.util.List&lt;org.apache.archiva.redback.authentication.AuthenticationFailureCause&gt;"
  abstract="false"
  native="false"
  synchronized="false"
@@ -279,8 +348,8 @@
  visibility="public"
 >
 </method>
-<method name="getExceptionsMap"
- return="java.util.Map&lt;java.lang.String, java.lang.String&gt;"
+<method name="getException"
+ return="java.lang.Exception"
  abstract="false"
  native="false"
  synchronized="false"
@@ -4934,6 +5003,17 @@
  transient="false"
  volatile="false"
  value="&quot;security.policy.password.rule.reuse.enabled&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="REMEMBERME_SECURE"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;security.rememberme.secure&quot;"
  static="true"
  final="true"
  deprecated="not deprecated"
