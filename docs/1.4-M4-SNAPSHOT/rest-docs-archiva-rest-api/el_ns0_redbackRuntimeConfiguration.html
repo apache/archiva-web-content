@@ -125,52 +125,6 @@
       <h2>Example XML</h2>
       <code class="prettyprint lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;redbackRuntimeConfiguration&gt;
-  &lt;ldapConfiguration&gt;
-    &lt;port&gt;...&lt;/port&gt;
-    &lt;extraPropertiesEntries&gt;
-      &lt;key&gt;...&lt;/key&gt;
-      &lt;value&gt;...&lt;/value&gt;
-    &lt;/extraPropertiesEntries&gt;
-    &lt;extraPropertiesEntries&gt;
-      &lt;!--...--&gt;
-    &lt;/extraPropertiesEntries&gt;
-    &lt;!--...more &quot;extraPropertiesEntries&quot; elements...--&gt;
-    &lt;ssl&gt;...&lt;/ssl&gt;
-    &lt;password&gt;...&lt;/password&gt;
-    &lt;bindDn&gt;...&lt;/bindDn&gt;
-    &lt;baseDn&gt;...&lt;/baseDn&gt;
-    &lt;bindAuthenticatorEnabled&gt;...&lt;/bindAuthenticatorEnabled&gt;
-    &lt;authenticationMethod&gt;...&lt;/authenticationMethod&gt;
-    &lt;hostName&gt;...&lt;/hostName&gt;
-    &lt;extraProperties&gt;
-      &lt;entry&gt;
-        &lt;key&gt;...&lt;/key&gt;
-        &lt;value&gt;...&lt;/value&gt;
-      &lt;/entry&gt;
-      &lt;entry&gt;
-        &lt;key&gt;
-          &lt;!--(another &#39;string&#39; type)--&gt;
-        &lt;/key&gt;
-        &lt;value&gt;
-          &lt;!--(another &#39;string&#39; type)--&gt;
-        &lt;/value&gt;
-      &lt;/entry&gt;
-      &lt;!--...more entries...--&gt;
-    &lt;/extraProperties&gt;
-    &lt;contextFactory&gt;...&lt;/contextFactory&gt;
-  &lt;/ldapConfiguration&gt;
-  &lt;configurationPropertiesEntries&gt;
-    &lt;key&gt;...&lt;/key&gt;
-    &lt;value&gt;...&lt;/value&gt;
-  &lt;/configurationPropertiesEntries&gt;
-  &lt;configurationPropertiesEntries&gt;
-    &lt;!--...--&gt;
-  &lt;/configurationPropertiesEntries&gt;
-  &lt;!--...more &quot;configurationPropertiesEntries&quot; elements...--&gt;
-  &lt;migratedFromRedbackConfiguration&gt;...&lt;/migratedFromRedbackConfiguration&gt;
-  &lt;userManagerImpls&gt;...&lt;/userManagerImpls&gt;
-  &lt;userManagerImpls&gt;...&lt;/userManagerImpls&gt;
-  &lt;!--...more &quot;userManagerImpls&quot; elements...--&gt;
   &lt;configurationProperties&gt;
     &lt;entry&gt;
       &lt;key&gt;...&lt;/key&gt;
@@ -186,38 +140,86 @@
     &lt;/entry&gt;
     &lt;!--...more entries...--&gt;
   &lt;/configurationProperties&gt;
+  &lt;migratedFromRedbackConfiguration&gt;...&lt;/migratedFromRedbackConfiguration&gt;
+  &lt;useUsersCache&gt;...&lt;/useUsersCache&gt;
+  &lt;userManagerImpls&gt;...&lt;/userManagerImpls&gt;
+  &lt;userManagerImpls&gt;...&lt;/userManagerImpls&gt;
+  &lt;!--...more &quot;userManagerImpls&quot; elements...--&gt;
+  &lt;ldapConfiguration&gt;
+    &lt;port&gt;...&lt;/port&gt;
+    &lt;extraPropertiesEntries&gt;
+      &lt;value&gt;...&lt;/value&gt;
+      &lt;key&gt;...&lt;/key&gt;
+    &lt;/extraPropertiesEntries&gt;
+    &lt;extraPropertiesEntries&gt;
+      &lt;!--...--&gt;
+    &lt;/extraPropertiesEntries&gt;
+    &lt;!--...more &quot;extraPropertiesEntries&quot; elements...--&gt;
+    &lt;baseDn&gt;...&lt;/baseDn&gt;
+    &lt;bindDn&gt;...&lt;/bindDn&gt;
+    &lt;extraProperties&gt;
+      &lt;entry&gt;
+        &lt;key&gt;...&lt;/key&gt;
+        &lt;value&gt;...&lt;/value&gt;
+      &lt;/entry&gt;
+      &lt;entry&gt;
+        &lt;key&gt;
+          &lt;!--(another &#39;string&#39; type)--&gt;
+        &lt;/key&gt;
+        &lt;value&gt;
+          &lt;!--(another &#39;string&#39; type)--&gt;
+        &lt;/value&gt;
+      &lt;/entry&gt;
+      &lt;!--...more entries...--&gt;
+    &lt;/extraProperties&gt;
+    &lt;bindAuthenticatorEnabled&gt;...&lt;/bindAuthenticatorEnabled&gt;
+    &lt;ssl&gt;...&lt;/ssl&gt;
+    &lt;hostName&gt;...&lt;/hostName&gt;
+    &lt;password&gt;...&lt;/password&gt;
+    &lt;authenticationMethod&gt;...&lt;/authenticationMethod&gt;
+    &lt;contextFactory&gt;...&lt;/contextFactory&gt;
+  &lt;/ldapConfiguration&gt;
+  &lt;configurationPropertiesEntries&gt;
+    &lt;value&gt;...&lt;/value&gt;
+    &lt;key&gt;...&lt;/key&gt;
+  &lt;/configurationPropertiesEntries&gt;
+  &lt;configurationPropertiesEntries&gt;
+    &lt;!--...--&gt;
+  &lt;/configurationPropertiesEntries&gt;
+  &lt;!--...more &quot;configurationPropertiesEntries&quot; elements...--&gt;
 &lt;/redbackRuntimeConfiguration&gt;</code>
       <h2>Example JSON</h2>
       <code class="prettyprint lang-js">{
+  &quot;configurationProperties&quot; : [ {
+    &quot;...&quot; : ...
+  }, {
+  } ],
+  &quot;migratedFromRedbackConfiguration&quot; : false,
+  &quot;useUsersCache&quot; : false,
+  &quot;userManagerImpls&quot; : [ &quot;...&quot;, ... ],
   &quot;ldapConfiguration&quot; : {
     &quot;port&quot; : ...,
     &quot;extraPropertiesEntries&quot; : [ {
-      &quot;key&quot; : &quot;...&quot;,
-      &quot;value&quot; : &quot;...&quot;
+      &quot;value&quot; : &quot;...&quot;,
+      &quot;key&quot; : &quot;...&quot;
     }, ... ],
-    &quot;ssl&quot; : false,
-    &quot;password&quot; : &quot;...&quot;,
-    &quot;bindDn&quot; : &quot;...&quot;,
     &quot;baseDn&quot; : &quot;...&quot;,
-    &quot;bindAuthenticatorEnabled&quot; : false,
-    &quot;authenticationMethod&quot; : &quot;...&quot;,
-    &quot;hostName&quot; : &quot;...&quot;,
+    &quot;bindDn&quot; : &quot;...&quot;,
     &quot;extraProperties&quot; : [ {
       &quot;...&quot; : ...
     }, {
     } ],
+    &quot;bindAuthenticatorEnabled&quot; : false,
+    &quot;ssl&quot; : false,
+    &quot;hostName&quot; : &quot;...&quot;,
+    &quot;password&quot; : &quot;...&quot;,
+    &quot;authenticationMethod&quot; : &quot;...&quot;,
     &quot;contextFactory&quot; : &quot;...&quot;
   },
   &quot;configurationPropertiesEntries&quot; : [ {
-    &quot;key&quot; : &quot;...&quot;,
-    &quot;value&quot; : &quot;...&quot;
-  }, ... ],
-  &quot;migratedFromRedbackConfiguration&quot; : false,
-  &quot;userManagerImpls&quot; : [ &quot;...&quot;, ... ],
-  &quot;configurationProperties&quot; : [ {
-    &quot;...&quot; : ...
-  }, {
-  } ]
+    &quot;value&quot; : &quot;...&quot;,
+    &quot;key&quot; : &quot;...&quot;
+  }, ... ]
 }</code>
 
       <div class="clear" />

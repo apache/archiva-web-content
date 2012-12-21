@@ -11,7 +11,7 @@
        Remove this if you use the .htaccess -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>fileMetadata</title>
+  <title>redbackRuntimeConfiguration</title>
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +30,7 @@
   <div class="container">
     <header>
       <div id="header" class="column first last span-20">
-        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">fileMetadata</a></div>
+        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">redbackRuntimeConfiguration</a></div>
         <div id="primary" class="column span-18 append-1 prepend-1 first last">
           <ul class="navigation">
             <li id="nav-rest"><a href="rest.html">REST</a></li>
@@ -56,13 +56,13 @@
               </ul>
             </li>
             <li class="current">
-              <a href="el_ns0_fileMetadata.html">fileMetadata element</a>
+              <a href="ns0_redbackRuntimeConfiguration.html">redbackRuntimeConfiguration</a>
               <ul>
-                <li><a href="el_ns0_propertyEntry.html">propertyEntry element</a></li>
-                <li><a href="el_ns0_ldapConfiguration.html">ldapConfiguration element</a></li>
-                <li><a href="el_ns0_redbackRuntimeConfiguration.html">redbackRuntimeConfiguration element</a></li>
-                <li><a href="el_ns0_fileMetadata.html">fileMetadata element</a></li>
-                <li><a href="el_ns0_applicationRuntimeInfo.html">applicationRuntimeInfo element</a></li>
+                <li><a href="ns0_redbackRuntimeConfiguration.html">redbackRuntimeConfiguration</a></li>
+                <li><a href="ns0_propertyEntry.html">propertyEntry</a></li>
+                <li><a href="ns0_applicationRuntimeInfo.html">applicationRuntimeInfo</a></li>
+                <li><a href="ns0_fileMetadata.html">fileMetadata</a></li>
+                <li><a href="ns0_ldapConfiguration.html">ldapConfiguration</a></li>
               </ul>
             </li>
           </ul>
@@ -70,12 +70,8 @@
       </div>
     </header>
     <div id="main" class="column first last span-20">
-      <h1>fileMetadata element</h1>
+      <h1>redbackRuntimeConfiguration</h1>
       <table>
-        <tr>
-          <td align="right">Type:</td>
-          <td><a href="ns0_fileMetadata.html">fileMetadata</a></td>
-        </tr>
         <tr>
           <td align="right">Namespace:</td>
           <td>(default namespace)</td>
@@ -84,36 +80,122 @@
           <td align="right">XML Schema:</td>
           <td><a href="ns0.xsd">ns0.xsd</a></td>
         </tr>
+      </table>
+
+      <h2>XML</h2>
+      <h3>Elements</h3>
+      <table>
         <tr>
-          <td align="right">Available Since:</td>
-          <td>1.4-M3</td>
+          <th>name (type)</th>
+          <th>min/max<br/>occurs</th>
+          <th>description</th>
+        </tr>
+        <tr>
+          <td>
+            userManagerImpls (string)
+          </td>
+          <td>0/unbounded</td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            ldapConfiguration (<a href="ns0_ldapConfiguration.html">ldapConfiguration</a>)
+          </td>
+          <td>0/1</td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            configurationProperties (<a href="ns0_(anonymous).html">(anonymous)</a>)
+          </td>
+          <td>0/1</td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            configurationPropertiesEntries (<a href="ns0_propertyEntry.html">propertyEntry</a>)
+          </td>
+          <td>0/unbounded</td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            useUsersCache (boolean)
+          </td>
+          <td>1/1</td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            migratedFromRedbackConfiguration (boolean)
+          </td>
+          <td>1/1</td>
+          <td>
+          </td>
         </tr>
       </table>
-      <h2>Example XML</h2>
-      <code class="prettyprint lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;fileMetadata&gt;
-  &lt;name&gt;...&lt;/name&gt;
-  &lt;size&gt;...&lt;/size&gt;
-  &lt;url&gt;...&lt;/url&gt;
-  &lt;deleteUrl&gt;...&lt;/deleteUrl&gt;
-  &lt;deleteType&gt;...&lt;/deleteType&gt;
-  &lt;errorKey&gt;...&lt;/errorKey&gt;
-  &lt;classifier&gt;...&lt;/classifier&gt;
-  &lt;pomFile&gt;...&lt;/pomFile&gt;
-  &lt;serverFileName&gt;...&lt;/serverFileName&gt;
-&lt;/fileMetadata&gt;</code>
-      <h2>Example JSON</h2>
-      <code class="prettyprint lang-js">{
-  &quot;name&quot; : &quot;...&quot;,
-  &quot;size&quot; : ...,
-  &quot;url&quot; : &quot;...&quot;,
-  &quot;deleteUrl&quot; : &quot;...&quot;,
-  &quot;deleteType&quot; : &quot;...&quot;,
-  &quot;errorKey&quot; : &quot;...&quot;,
-  &quot;classifier&quot; : &quot;...&quot;,
-  &quot;pomFile&quot; : false,
-  &quot;serverFileName&quot; : &quot;...&quot;
-}</code>
+
+      <h2>JSON</h2>
+      <table>
+        <tr>
+          <th>property</th>
+          <th>type</th>
+          <th>description</th>
+        </tr>
+        <tr>
+          <td>userManagerImpls</td>
+          <td>
+              array of userManagerImpls (string)
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>ldapConfiguration</td>
+          <td>
+              ldapConfiguration (<a href="ns0_ldapConfiguration.html">ldapConfiguration</a>)
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>configurationProperties</td>
+          <td>
+              configurationProperties (<a href="ns0_(anonymous).html">(anonymous)</a>)
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>configurationPropertiesEntries</td>
+          <td>
+              array of configurationPropertiesEntries (<a href="ns0_propertyEntry.html">propertyEntry</a>)
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>useUsersCache</td>
+          <td>
+              useUsersCache (boolean)
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>migratedFromRedbackConfiguration</td>
+          <td>
+              migratedFromRedbackConfiguration (boolean)
+          </td>
+          <td>
+          </td>
+        </tr>
+      </table>
 
       <div class="clear" />
     </div>

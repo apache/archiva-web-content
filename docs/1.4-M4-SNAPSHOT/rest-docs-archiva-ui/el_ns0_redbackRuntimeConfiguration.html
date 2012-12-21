@@ -11,7 +11,7 @@
        Remove this if you use the .htaccess -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>fileMetadata</title>
+  <title>redbackRuntimeConfiguration</title>
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +30,7 @@
   <div class="container">
     <header>
       <div id="header" class="column first last span-20">
-        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">fileMetadata</a></div>
+        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">redbackRuntimeConfiguration</a></div>
         <div id="primary" class="column span-18 append-1 prepend-1 first last">
           <ul class="navigation">
             <li id="nav-rest"><a href="rest.html">REST</a></li>
@@ -56,7 +56,7 @@
               </ul>
             </li>
             <li class="current">
-              <a href="el_ns0_fileMetadata.html">fileMetadata element</a>
+              <a href="el_ns0_redbackRuntimeConfiguration.html">redbackRuntimeConfiguration element</a>
               <ul>
                 <li><a href="el_ns0_propertyEntry.html">propertyEntry element</a></li>
                 <li><a href="el_ns0_ldapConfiguration.html">ldapConfiguration element</a></li>
@@ -70,11 +70,11 @@
       </div>
     </header>
     <div id="main" class="column first last span-20">
-      <h1>fileMetadata element</h1>
+      <h1>redbackRuntimeConfiguration element</h1>
       <table>
         <tr>
           <td align="right">Type:</td>
-          <td><a href="ns0_fileMetadata.html">fileMetadata</a></td>
+          <td><a href="ns0_redbackRuntimeConfiguration.html">redbackRuntimeConfiguration</a></td>
         </tr>
         <tr>
           <td align="right">Namespace:</td>
@@ -84,35 +84,105 @@
           <td align="right">XML Schema:</td>
           <td><a href="ns0.xsd">ns0.xsd</a></td>
         </tr>
-        <tr>
-          <td align="right">Available Since:</td>
-          <td>1.4-M3</td>
-        </tr>
       </table>
       <h2>Example XML</h2>
       <code class="prettyprint lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;fileMetadata&gt;
-  &lt;name&gt;...&lt;/name&gt;
-  &lt;size&gt;...&lt;/size&gt;
-  &lt;url&gt;...&lt;/url&gt;
-  &lt;deleteUrl&gt;...&lt;/deleteUrl&gt;
-  &lt;deleteType&gt;...&lt;/deleteType&gt;
-  &lt;errorKey&gt;...&lt;/errorKey&gt;
-  &lt;classifier&gt;...&lt;/classifier&gt;
-  &lt;pomFile&gt;...&lt;/pomFile&gt;
-  &lt;serverFileName&gt;...&lt;/serverFileName&gt;
-&lt;/fileMetadata&gt;</code>
+&lt;redbackRuntimeConfiguration&gt;
+  &lt;userManagerImpls&gt;...&lt;/userManagerImpls&gt;
+  &lt;userManagerImpls&gt;...&lt;/userManagerImpls&gt;
+  &lt;!--...more &quot;userManagerImpls&quot; elements...--&gt;
+  &lt;ldapConfiguration&gt;
+    &lt;bindAuthenticatorEnabled&gt;...&lt;/bindAuthenticatorEnabled&gt;
+    &lt;extraPropertiesEntries&gt;
+      &lt;value&gt;...&lt;/value&gt;
+      &lt;key&gt;...&lt;/key&gt;
+    &lt;/extraPropertiesEntries&gt;
+    &lt;extraPropertiesEntries&gt;
+      &lt;!--...--&gt;
+    &lt;/extraPropertiesEntries&gt;
+    &lt;!--...more &quot;extraPropertiesEntries&quot; elements...--&gt;
+    &lt;extraProperties&gt;
+      &lt;entry&gt;
+        &lt;key&gt;...&lt;/key&gt;
+        &lt;value&gt;...&lt;/value&gt;
+      &lt;/entry&gt;
+      &lt;entry&gt;
+        &lt;key&gt;
+          &lt;!--(another &#39;string&#39; type)--&gt;
+        &lt;/key&gt;
+        &lt;value&gt;
+          &lt;!--(another &#39;string&#39; type)--&gt;
+        &lt;/value&gt;
+      &lt;/entry&gt;
+      &lt;!--...more entries...--&gt;
+    &lt;/extraProperties&gt;
+    &lt;ssl&gt;...&lt;/ssl&gt;
+    &lt;baseDn&gt;...&lt;/baseDn&gt;
+    &lt;bindDn&gt;...&lt;/bindDn&gt;
+    &lt;password&gt;...&lt;/password&gt;
+    &lt;port&gt;...&lt;/port&gt;
+    &lt;authenticationMethod&gt;...&lt;/authenticationMethod&gt;
+    &lt;contextFactory&gt;...&lt;/contextFactory&gt;
+    &lt;hostName&gt;...&lt;/hostName&gt;
+  &lt;/ldapConfiguration&gt;
+  &lt;configurationProperties&gt;
+    &lt;entry&gt;
+      &lt;key&gt;...&lt;/key&gt;
+      &lt;value&gt;...&lt;/value&gt;
+    &lt;/entry&gt;
+    &lt;entry&gt;
+      &lt;key&gt;
+        &lt;!--(another &#39;string&#39; type)--&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;!--(another &#39;string&#39; type)--&gt;
+      &lt;/value&gt;
+    &lt;/entry&gt;
+    &lt;!--...more entries...--&gt;
+  &lt;/configurationProperties&gt;
+  &lt;configurationPropertiesEntries&gt;
+    &lt;value&gt;...&lt;/value&gt;
+    &lt;key&gt;...&lt;/key&gt;
+  &lt;/configurationPropertiesEntries&gt;
+  &lt;configurationPropertiesEntries&gt;
+    &lt;!--...--&gt;
+  &lt;/configurationPropertiesEntries&gt;
+  &lt;!--...more &quot;configurationPropertiesEntries&quot; elements...--&gt;
+  &lt;useUsersCache&gt;...&lt;/useUsersCache&gt;
+  &lt;migratedFromRedbackConfiguration&gt;...&lt;/migratedFromRedbackConfiguration&gt;
+&lt;/redbackRuntimeConfiguration&gt;</code>
       <h2>Example JSON</h2>
       <code class="prettyprint lang-js">{
-  &quot;name&quot; : &quot;...&quot;,
-  &quot;size&quot; : ...,
-  &quot;url&quot; : &quot;...&quot;,
-  &quot;deleteUrl&quot; : &quot;...&quot;,
-  &quot;deleteType&quot; : &quot;...&quot;,
-  &quot;errorKey&quot; : &quot;...&quot;,
-  &quot;classifier&quot; : &quot;...&quot;,
-  &quot;pomFile&quot; : false,
-  &quot;serverFileName&quot; : &quot;...&quot;
+  &quot;userManagerImpls&quot; : [ &quot;...&quot;, ... ],
+  &quot;ldapConfiguration&quot; : {
+    &quot;bindAuthenticatorEnabled&quot; : false,
+    &quot;extraPropertiesEntries&quot; : [ {
+      &quot;value&quot; : &quot;...&quot;,
+      &quot;key&quot; : &quot;...&quot;
+    }, ... ],
+    &quot;extraProperties&quot; : [ {
+      &quot;...&quot; : ...
+    }, {
+    } ],
+    &quot;ssl&quot; : false,
+    &quot;baseDn&quot; : &quot;...&quot;,
+    &quot;bindDn&quot; : &quot;...&quot;,
+    &quot;password&quot; : &quot;...&quot;,
+    &quot;port&quot; : ...,
+    &quot;authenticationMethod&quot; : &quot;...&quot;,
+    &quot;contextFactory&quot; : &quot;...&quot;,
+    &quot;hostName&quot; : &quot;...&quot;
+  },
+  &quot;configurationProperties&quot; : [ {
+    &quot;...&quot; : ...
+  }, {
+  } ],
+  &quot;configurationPropertiesEntries&quot; : [ {
+    &quot;value&quot; : &quot;...&quot;,
+    &quot;key&quot; : &quot;...&quot;
+  }, ... ],
+  &quot;useUsersCache&quot; : false,
+  &quot;migratedFromRedbackConfiguration&quot; : false
 }</code>
 
       <div class="clear" />
