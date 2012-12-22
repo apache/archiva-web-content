@@ -7,8 +7,15 @@
   <xs:element name="fileMetadata" type="fileMetadata"/>
   <xs:complexType name="ldapConfiguration">
     <xs:sequence>
-      <xs:element name="bindAuthenticatorEnabled" type="xs:boolean" minOccurs="1"/>
+      <xs:element name="ssl" type="xs:boolean" minOccurs="1"/>
+      <xs:element name="port" type="xs:int" minOccurs="1"/>
+      <xs:element name="password" type="xs:string" minOccurs="0"/>
       <xs:element name="extraPropertiesEntries" type="propertyEntry" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="hostName" type="xs:string" minOccurs="0"/>
+      <xs:element name="bindDn" type="xs:string" minOccurs="0"/>
+      <xs:element name="baseDn" type="xs:string" minOccurs="0"/>
+      <xs:element name="contextFactory" type="xs:string" minOccurs="0"/>
+      <xs:element name="bindAuthenticatorEnabled" type="xs:boolean" minOccurs="1"/>
       <xs:element name="extraProperties" minOccurs="0">
         <xs:complexType>
           <xs:sequence>
@@ -23,14 +30,7 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="ssl" type="xs:boolean" minOccurs="1"/>
-      <xs:element name="baseDn" type="xs:string" minOccurs="0"/>
-      <xs:element name="bindDn" type="xs:string" minOccurs="0"/>
-      <xs:element name="password" type="xs:string" minOccurs="0"/>
-      <xs:element name="port" type="xs:int" minOccurs="1"/>
       <xs:element name="authenticationMethod" type="xs:string" minOccurs="0"/>
-      <xs:element name="contextFactory" type="xs:string" minOccurs="0"/>
-      <xs:element name="hostName" type="xs:string" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="propertyEntry">
@@ -41,8 +41,10 @@
   </xs:complexType>
   <xs:complexType name="redbackRuntimeConfiguration">
     <xs:sequence>
+      <xs:element name="configurationPropertiesEntries" type="propertyEntry" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="userManagerImpls" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="ldapConfiguration" type="ldapConfiguration" minOccurs="0"/>
+      <xs:element name="migratedFromRedbackConfiguration" type="xs:boolean" minOccurs="1"/>
       <xs:element name="configurationProperties" minOccurs="0">
         <xs:complexType>
           <xs:sequence>
@@ -57,9 +59,9 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="configurationPropertiesEntries" type="propertyEntry" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="useUsersCache" type="xs:boolean" minOccurs="1"/>
-      <xs:element name="migratedFromRedbackConfiguration" type="xs:boolean" minOccurs="1"/>
+      <xs:element name="usersCacheTimeToLiveSeconds" type="xs:int" minOccurs="1"/>
+      <xs:element name="usersCacheTimeToIdleSeconds" type="xs:int" minOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="applicationRuntimeInfo">

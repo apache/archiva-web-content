@@ -126,16 +126,8 @@
       <code class="prettyprint lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;proxyConnectorRule&gt;
   &lt;proxyConnectorRuleType&gt;...&lt;/proxyConnectorRuleType&gt;
-  &lt;pattern&gt;...&lt;/pattern&gt;
   &lt;proxyConnectors&gt;
     &lt;order&gt;...&lt;/order&gt;
-    &lt;proxyId&gt;...&lt;/proxyId&gt;
-    &lt;blackListPatterns&gt;...&lt;/blackListPatterns&gt;
-    &lt;blackListPatterns&gt;...&lt;/blackListPatterns&gt;
-    &lt;!--...more &quot;blackListPatterns&quot; elements...--&gt;
-    &lt;whiteListPatterns&gt;...&lt;/whiteListPatterns&gt;
-    &lt;whiteListPatterns&gt;...&lt;/whiteListPatterns&gt;
-    &lt;!--...more &quot;whiteListPatterns&quot; elements...--&gt;
     &lt;properties&gt;
       &lt;entry&gt;
         &lt;key&gt;...&lt;/key&gt;
@@ -151,15 +143,20 @@
       &lt;/entry&gt;
       &lt;!--...more entries...--&gt;
     &lt;/properties&gt;
-    &lt;propertiesEntries&gt;
+    &lt;blackListPatterns&gt;...&lt;/blackListPatterns&gt;
+    &lt;blackListPatterns&gt;...&lt;/blackListPatterns&gt;
+    &lt;!--...more &quot;blackListPatterns&quot; elements...--&gt;
+    &lt;disabled&gt;...&lt;/disabled&gt;
+    &lt;targetRepoId&gt;...&lt;/targetRepoId&gt;
+    &lt;policiesEntries&gt;
       &lt;value&gt;...&lt;/value&gt;
       &lt;key&gt;...&lt;/key&gt;
-    &lt;/propertiesEntries&gt;
-    &lt;propertiesEntries&gt;
+    &lt;/policiesEntries&gt;
+    &lt;policiesEntries&gt;
       &lt;!--...--&gt;
-    &lt;/propertiesEntries&gt;
-    &lt;!--...more &quot;propertiesEntries&quot; elements...--&gt;
-    &lt;targetRepoId&gt;...&lt;/targetRepoId&gt;
+    &lt;/policiesEntries&gt;
+    &lt;!--...more &quot;policiesEntries&quot; elements...--&gt;
+    &lt;sourceRepoId&gt;...&lt;/sourceRepoId&gt;
     &lt;policies&gt;
       &lt;entry&gt;
         &lt;key&gt;...&lt;/key&gt;
@@ -175,32 +172,43 @@
       &lt;/entry&gt;
       &lt;!--...more entries...--&gt;
     &lt;/policies&gt;
-    &lt;sourceRepoId&gt;...&lt;/sourceRepoId&gt;
-    &lt;policiesEntries&gt;
+    &lt;propertiesEntries&gt;
       &lt;value&gt;...&lt;/value&gt;
       &lt;key&gt;...&lt;/key&gt;
-    &lt;/policiesEntries&gt;
-    &lt;policiesEntries&gt;
+    &lt;/propertiesEntries&gt;
+    &lt;propertiesEntries&gt;
       &lt;!--...--&gt;
-    &lt;/policiesEntries&gt;
-    &lt;!--...more &quot;policiesEntries&quot; elements...--&gt;
-    &lt;disabled&gt;...&lt;/disabled&gt;
+    &lt;/propertiesEntries&gt;
+    &lt;!--...more &quot;propertiesEntries&quot; elements...--&gt;
+    &lt;whiteListPatterns&gt;...&lt;/whiteListPatterns&gt;
+    &lt;whiteListPatterns&gt;...&lt;/whiteListPatterns&gt;
+    &lt;!--...more &quot;whiteListPatterns&quot; elements...--&gt;
+    &lt;proxyId&gt;...&lt;/proxyId&gt;
   &lt;/proxyConnectors&gt;
   &lt;proxyConnectors&gt;
     &lt;!--...--&gt;
   &lt;/proxyConnectors&gt;
   &lt;!--...more &quot;proxyConnectors&quot; elements...--&gt;
+  &lt;pattern&gt;...&lt;/pattern&gt;
 &lt;/proxyConnectorRule&gt;</code>
       <h2>Example JSON</h2>
       <code class="prettyprint lang-js">{
   &quot;proxyConnectorRuleType&quot; : &quot;WHITE_LIST&quot;,
-  &quot;pattern&quot; : &quot;...&quot;,
   &quot;proxyConnectors&quot; : [ {
     &quot;order&quot; : ...,
-    &quot;proxyId&quot; : &quot;...&quot;,
-    &quot;blackListPatterns&quot; : [ &quot;...&quot;, ... ],
-    &quot;whiteListPatterns&quot; : [ &quot;...&quot;, ... ],
     &quot;properties&quot; : [ {
+      &quot;...&quot; : ...
+    }, {
+    } ],
+    &quot;blackListPatterns&quot; : [ &quot;...&quot;, ... ],
+    &quot;disabled&quot; : false,
+    &quot;targetRepoId&quot; : &quot;...&quot;,
+    &quot;policiesEntries&quot; : [ {
+      &quot;value&quot; : &quot;...&quot;,
+      &quot;key&quot; : &quot;...&quot;
+    }, ... ],
+    &quot;sourceRepoId&quot; : &quot;...&quot;,
+    &quot;policies&quot; : [ {
       &quot;...&quot; : ...
     }, {
     } ],
@@ -208,18 +216,10 @@
       &quot;value&quot; : &quot;...&quot;,
       &quot;key&quot; : &quot;...&quot;
     }, ... ],
-    &quot;targetRepoId&quot; : &quot;...&quot;,
-    &quot;policies&quot; : [ {
-      &quot;...&quot; : ...
-    }, {
-    } ],
-    &quot;sourceRepoId&quot; : &quot;...&quot;,
-    &quot;policiesEntries&quot; : [ {
-      &quot;value&quot; : &quot;...&quot;,
-      &quot;key&quot; : &quot;...&quot;
-    }, ... ],
-    &quot;disabled&quot; : false
-  }, ... ]
+    &quot;whiteListPatterns&quot; : [ &quot;...&quot;, ... ],
+    &quot;proxyId&quot; : &quot;...&quot;
+  }, ... ],
+  &quot;pattern&quot; : &quot;...&quot;
 }</code>
 
       <div class="clear" />
