@@ -21,10 +21,10 @@ $(document).ready(function(){
 
   $("#carousel-main" ).addClass("features-preview");
 
-  $.ajax("dialog-release.cgi")
+  /**$.ajax("dialog-release.cgi")
     .done(function(data){
       $("#dialogRelease" ).html(data);
     }
-  );
+  );**/
 
 });
