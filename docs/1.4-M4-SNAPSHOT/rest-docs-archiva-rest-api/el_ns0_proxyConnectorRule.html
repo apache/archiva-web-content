@@ -58,8 +58,8 @@
             <li class="current">
               <a href="el_ns0_proxyConnectorRule.html">proxyConnectorRule element</a>
               <ul>
-                <li><a href="el_ns0_metadataAddRequest.html">metadataAddRequest element</a></li>
                 <li><a href="el_ns0_ldapConfiguration.html">ldapConfiguration element</a></li>
+                <li><a href="el_ns0_metadataAddRequest.html">metadataAddRequest element</a></li>
                 <li><a href="el_ns0_mailingList.html">mailingList element</a></li>
                 <li><a href="el_ns0_cacheEntry.html">cacheEntry element</a></li>
                 <li><a href="el_ns0_managedRepository.html">managedRepository element</a></li>
@@ -68,10 +68,11 @@
                 <li><a href="el_ns0_versionsList.html">versionsList element</a></li>
                 <li><a href="el_ns0_organisationInformation.html">organisationInformation element</a></li>
                 <li><a href="el_ns0_searchRequest.html">searchRequest element</a></li>
-                <li><a href="el_ns0_networkConfiguration.html">networkConfiguration element</a></li>
                 <li><a href="el_ns0_groupIdList.html">groupIdList element</a></li>
+                <li><a href="el_ns0_networkConfiguration.html">networkConfiguration element</a></li>
                 <li><a href="el_ns0_issueManagement.html">issueManagement element</a></li>
                 <li><a href="el_ns0_uiConfiguration.html">uiConfiguration element</a></li>
+                <li><a href="el_ns0_cacheConfiguration.html">cacheConfiguration element</a></li>
                 <li><a href="el_ns0_policyInformation.html">policyInformation element</a></li>
                 <li><a href="el_ns0_redbackRuntimeConfiguration.html">redbackRuntimeConfiguration element</a></li>
                 <li><a href="el_ns0_artifactTransferRequest.html">artifactTransferRequest element</a></li>
@@ -83,12 +84,12 @@
                 <li><a href="el_ns0_proxyConnector.html">proxyConnector element</a></li>
                 <li><a href="el_ns0_networkProxy.html">networkProxy element</a></li>
                 <li><a href="el_ns0_artifact.html">artifact element</a></li>
-                <li><a href="el_ns0_repositoryScanStatistics.html">repositoryScanStatistics element</a></li>
                 <li><a href="el_ns0_repositoryScannerStatistics.html">repositoryScannerStatistics element</a></li>
+                <li><a href="el_ns0_repositoryScanStatistics.html">repositoryScanStatistics element</a></li>
                 <li><a href="el_ns0_proxyConnectorRule.html">proxyConnectorRule element</a></li>
                 <li><a href="el_ns0_fileType.html">fileType element</a></li>
-                <li><a href="el_ns0_legacyArtifactPath.html">legacyArtifactPath element</a></li>
                 <li><a href="el_ns0_artifactContent.html">artifactContent element</a></li>
+                <li><a href="el_ns0_legacyArtifactPath.html">legacyArtifactPath element</a></li>
                 <li><a href="el_ns0_propertyEntry.html">propertyEntry element</a></li>
                 <li><a href="el_ns0_projectVersionMetadata.html">projectVersionMetadata element</a></li>
                 <li><a href="el_ns0_dependency.html">dependency element</a></li>
@@ -126,37 +127,34 @@
       <code class="prettyprint lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;proxyConnectorRule&gt;
   &lt;proxyConnectorRuleType&gt;...&lt;/proxyConnectorRuleType&gt;
+  &lt;pattern&gt;...&lt;/pattern&gt;
   &lt;proxyConnectors&gt;
     &lt;order&gt;...&lt;/order&gt;
-    &lt;properties&gt;
-      &lt;entry&gt;
-        &lt;key&gt;...&lt;/key&gt;
-        &lt;value&gt;...&lt;/value&gt;
-      &lt;/entry&gt;
-      &lt;entry&gt;
-        &lt;key&gt;
-          &lt;!--(another &#39;string&#39; type)--&gt;
-        &lt;/key&gt;
-        &lt;value&gt;
-          &lt;!--(another &#39;string&#39; type)--&gt;
-        &lt;/value&gt;
-      &lt;/entry&gt;
-      &lt;!--...more entries...--&gt;
-    &lt;/properties&gt;
+    &lt;whiteListPatterns&gt;...&lt;/whiteListPatterns&gt;
+    &lt;whiteListPatterns&gt;...&lt;/whiteListPatterns&gt;
+    &lt;!--...more &quot;whiteListPatterns&quot; elements...--&gt;
+    &lt;sourceRepoId&gt;...&lt;/sourceRepoId&gt;
     &lt;blackListPatterns&gt;...&lt;/blackListPatterns&gt;
     &lt;blackListPatterns&gt;...&lt;/blackListPatterns&gt;
     &lt;!--...more &quot;blackListPatterns&quot; elements...--&gt;
-    &lt;disabled&gt;...&lt;/disabled&gt;
-    &lt;targetRepoId&gt;...&lt;/targetRepoId&gt;
-    &lt;policiesEntries&gt;
-      &lt;value&gt;...&lt;/value&gt;
+    &lt;propertiesEntries&gt;
       &lt;key&gt;...&lt;/key&gt;
+      &lt;value&gt;...&lt;/value&gt;
+    &lt;/propertiesEntries&gt;
+    &lt;propertiesEntries&gt;
+      &lt;!--...--&gt;
+    &lt;/propertiesEntries&gt;
+    &lt;!--...more &quot;propertiesEntries&quot; elements...--&gt;
+    &lt;disabled&gt;...&lt;/disabled&gt;
+    &lt;policiesEntries&gt;
+      &lt;key&gt;...&lt;/key&gt;
+      &lt;value&gt;...&lt;/value&gt;
     &lt;/policiesEntries&gt;
     &lt;policiesEntries&gt;
       &lt;!--...--&gt;
     &lt;/policiesEntries&gt;
     &lt;!--...more &quot;policiesEntries&quot; elements...--&gt;
-    &lt;sourceRepoId&gt;...&lt;/sourceRepoId&gt;
+    &lt;proxyId&gt;...&lt;/proxyId&gt;
     &lt;policies&gt;
       &lt;entry&gt;
         &lt;key&gt;...&lt;/key&gt;
@@ -172,54 +170,57 @@
       &lt;/entry&gt;
       &lt;!--...more entries...--&gt;
     &lt;/policies&gt;
-    &lt;propertiesEntries&gt;
-      &lt;value&gt;...&lt;/value&gt;
-      &lt;key&gt;...&lt;/key&gt;
-    &lt;/propertiesEntries&gt;
-    &lt;propertiesEntries&gt;
-      &lt;!--...--&gt;
-    &lt;/propertiesEntries&gt;
-    &lt;!--...more &quot;propertiesEntries&quot; elements...--&gt;
-    &lt;whiteListPatterns&gt;...&lt;/whiteListPatterns&gt;
-    &lt;whiteListPatterns&gt;...&lt;/whiteListPatterns&gt;
-    &lt;!--...more &quot;whiteListPatterns&quot; elements...--&gt;
-    &lt;proxyId&gt;...&lt;/proxyId&gt;
+    &lt;targetRepoId&gt;...&lt;/targetRepoId&gt;
+    &lt;properties&gt;
+      &lt;entry&gt;
+        &lt;key&gt;...&lt;/key&gt;
+        &lt;value&gt;...&lt;/value&gt;
+      &lt;/entry&gt;
+      &lt;entry&gt;
+        &lt;key&gt;
+          &lt;!--(another &#39;string&#39; type)--&gt;
+        &lt;/key&gt;
+        &lt;value&gt;
+          &lt;!--(another &#39;string&#39; type)--&gt;
+        &lt;/value&gt;
+      &lt;/entry&gt;
+      &lt;!--...more entries...--&gt;
+    &lt;/properties&gt;
   &lt;/proxyConnectors&gt;
   &lt;proxyConnectors&gt;
     &lt;!--...--&gt;
   &lt;/proxyConnectors&gt;
   &lt;!--...more &quot;proxyConnectors&quot; elements...--&gt;
-  &lt;pattern&gt;...&lt;/pattern&gt;
 &lt;/proxyConnectorRule&gt;</code>
       <h2>Example JSON</h2>
       <code class="prettyprint lang-js">{
   &quot;proxyConnectorRuleType&quot; : &quot;WHITE_LIST&quot;,
+  &quot;pattern&quot; : &quot;...&quot;,
   &quot;proxyConnectors&quot; : [ {
     &quot;order&quot; : ...,
-    &quot;properties&quot; : [ {
-      &quot;...&quot; : ...
-    }, {
-    } ],
-    &quot;blackListPatterns&quot; : [ &quot;...&quot;, ... ],
-    &quot;disabled&quot; : false,
-    &quot;targetRepoId&quot; : &quot;...&quot;,
-    &quot;policiesEntries&quot; : [ {
-      &quot;value&quot; : &quot;...&quot;,
-      &quot;key&quot; : &quot;...&quot;
-    }, ... ],
+    &quot;whiteListPatterns&quot; : [ &quot;...&quot;, ... ],
     &quot;sourceRepoId&quot; : &quot;...&quot;,
+    &quot;blackListPatterns&quot; : [ &quot;...&quot;, ... ],
+    &quot;propertiesEntries&quot; : [ {
+      &quot;key&quot; : &quot;...&quot;,
+      &quot;value&quot; : &quot;...&quot;
+    }, ... ],
+    &quot;disabled&quot; : false,
+    &quot;policiesEntries&quot; : [ {
+      &quot;key&quot; : &quot;...&quot;,
+      &quot;value&quot; : &quot;...&quot;
+    }, ... ],
+    &quot;proxyId&quot; : &quot;...&quot;,
     &quot;policies&quot; : [ {
       &quot;...&quot; : ...
     }, {
     } ],
-    &quot;propertiesEntries&quot; : [ {
-      &quot;value&quot; : &quot;...&quot;,
-      &quot;key&quot; : &quot;...&quot;
-    }, ... ],
-    &quot;whiteListPatterns&quot; : [ &quot;...&quot;, ... ],
-    &quot;proxyId&quot; : &quot;...&quot;
-  }, ... ],
-  &quot;pattern&quot; : &quot;...&quot;
+    &quot;targetRepoId&quot; : &quot;...&quot;,
+    &quot;properties&quot; : [ {
+      &quot;...&quot; : ...
+    }, {
+    } ]
+  }, ... ]
 }</code>
 
       <div class="clear" />

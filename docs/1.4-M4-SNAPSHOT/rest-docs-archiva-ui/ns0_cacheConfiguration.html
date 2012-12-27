@@ -11,7 +11,7 @@
        Remove this if you use the .htaccess -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>ldapConfiguration</title>
+  <title>cacheConfiguration</title>
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +30,7 @@
   <div class="container">
     <header>
       <div id="header" class="column first last span-20">
-        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">ldapConfiguration</a></div>
+        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">cacheConfiguration</a></div>
         <div id="primary" class="column span-18 append-1 prepend-1 first last">
           <ul class="navigation">
             <li id="nav-rest"><a href="rest.html">REST</a></li>
@@ -56,14 +56,14 @@
               </ul>
             </li>
             <li class="current">
-              <a href="el_ns0_ldapConfiguration.html">ldapConfiguration element</a>
+              <a href="ns0_cacheConfiguration.html">cacheConfiguration</a>
               <ul>
-                <li><a href="el_ns0_propertyEntry.html">propertyEntry element</a></li>
-                <li><a href="el_ns0_ldapConfiguration.html">ldapConfiguration element</a></li>
-                <li><a href="el_ns0_redbackRuntimeConfiguration.html">redbackRuntimeConfiguration element</a></li>
-                <li><a href="el_ns0_fileMetadata.html">fileMetadata element</a></li>
-                <li><a href="el_ns0_applicationRuntimeInfo.html">applicationRuntimeInfo element</a></li>
-                <li><a href="el_ns0_cacheConfiguration.html">cacheConfiguration element</a></li>
+                <li><a href="ns0_redbackRuntimeConfiguration.html">redbackRuntimeConfiguration</a></li>
+                <li><a href="ns0_propertyEntry.html">propertyEntry</a></li>
+                <li><a href="ns0_applicationRuntimeInfo.html">applicationRuntimeInfo</a></li>
+                <li><a href="ns0_fileMetadata.html">fileMetadata</a></li>
+                <li><a href="ns0_ldapConfiguration.html">ldapConfiguration</a></li>
+                <li><a href="ns0_cacheConfiguration.html">cacheConfiguration</a></li>
               </ul>
             </li>
           </ul>
@@ -71,12 +71,8 @@
       </div>
     </header>
     <div id="main" class="column first last span-20">
-      <h1>ldapConfiguration element</h1>
+      <h1>cacheConfiguration</h1>
       <table>
-        <tr>
-          <td align="right">Type:</td>
-          <td><a href="ns0_ldapConfiguration.html">ldapConfiguration</a></td>
-        </tr>
         <tr>
           <td align="right">Namespace:</td>
           <td>(default namespace)</td>
@@ -86,62 +82,57 @@
           <td><a href="ns0.xsd">ns0.xsd</a></td>
         </tr>
       </table>
-      <h2>Example XML</h2>
-      <code class="prettyprint lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;ldapConfiguration&gt;
-  &lt;bindAuthenticatorEnabled&gt;...&lt;/bindAuthenticatorEnabled&gt;
-  &lt;port&gt;...&lt;/port&gt;
-  &lt;contextFactory&gt;...&lt;/contextFactory&gt;
-  &lt;extraProperties&gt;
-    &lt;entry&gt;
-      &lt;key&gt;...&lt;/key&gt;
-      &lt;value&gt;...&lt;/value&gt;
-    &lt;/entry&gt;
-    &lt;entry&gt;
-      &lt;key&gt;
-        &lt;!--(another &#39;string&#39; type)--&gt;
-      &lt;/key&gt;
-      &lt;value&gt;
-        &lt;!--(another &#39;string&#39; type)--&gt;
-      &lt;/value&gt;
-    &lt;/entry&gt;
-    &lt;!--...more entries...--&gt;
-  &lt;/extraProperties&gt;
-  &lt;authenticationMethod&gt;...&lt;/authenticationMethod&gt;
-  &lt;hostName&gt;...&lt;/hostName&gt;
-  &lt;bindDn&gt;...&lt;/bindDn&gt;
-  &lt;ssl&gt;...&lt;/ssl&gt;
-  &lt;baseDn&gt;...&lt;/baseDn&gt;
-  &lt;password&gt;...&lt;/password&gt;
-  &lt;extraPropertiesEntries&gt;
-    &lt;value&gt;...&lt;/value&gt;
-    &lt;key&gt;...&lt;/key&gt;
-  &lt;/extraPropertiesEntries&gt;
-  &lt;extraPropertiesEntries&gt;
-    &lt;!--...--&gt;
-  &lt;/extraPropertiesEntries&gt;
-  &lt;!--...more &quot;extraPropertiesEntries&quot; elements...--&gt;
-&lt;/ldapConfiguration&gt;</code>
-      <h2>Example JSON</h2>
-      <code class="prettyprint lang-js">{
-  &quot;bindAuthenticatorEnabled&quot; : false,
-  &quot;port&quot; : ...,
-  &quot;contextFactory&quot; : &quot;...&quot;,
-  &quot;extraProperties&quot; : [ {
-    &quot;...&quot; : ...
-  }, {
-  } ],
-  &quot;authenticationMethod&quot; : &quot;...&quot;,
-  &quot;hostName&quot; : &quot;...&quot;,
-  &quot;bindDn&quot; : &quot;...&quot;,
-  &quot;ssl&quot; : false,
-  &quot;baseDn&quot; : &quot;...&quot;,
-  &quot;password&quot; : &quot;...&quot;,
-  &quot;extraPropertiesEntries&quot; : [ {
-    &quot;value&quot; : &quot;...&quot;,
-    &quot;key&quot; : &quot;...&quot;
-  }, ... ]
-}</code>
+
+      <h2>XML</h2>
+      <h3>Elements</h3>
+      <table>
+        <tr>
+          <th>name (type)</th>
+          <th>min/max<br/>occurs</th>
+          <th>description</th>
+        </tr>
+        <tr>
+          <td>
+            timeToIdleSeconds (int)
+          </td>
+          <td>1/1</td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            timeToLiveSeconds (int)
+          </td>
+          <td>1/1</td>
+          <td>
+          </td>
+        </tr>
+      </table>
+
+      <h2>JSON</h2>
+      <table>
+        <tr>
+          <th>property</th>
+          <th>type</th>
+          <th>description</th>
+        </tr>
+        <tr>
+          <td>timeToIdleSeconds</td>
+          <td>
+              timeToIdleSeconds (int)
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>timeToLiveSeconds</td>
+          <td>
+              timeToLiveSeconds (int)
+          </td>
+          <td>
+          </td>
+        </tr>
+      </table>
 
       <div class="clear" />
     </div>

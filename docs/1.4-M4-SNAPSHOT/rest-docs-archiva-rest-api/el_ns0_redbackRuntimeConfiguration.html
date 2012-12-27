@@ -58,8 +58,8 @@
             <li class="current">
               <a href="el_ns0_redbackRuntimeConfiguration.html">redbackRuntimeConfiguration element</a>
               <ul>
-                <li><a href="el_ns0_metadataAddRequest.html">metadataAddRequest element</a></li>
                 <li><a href="el_ns0_ldapConfiguration.html">ldapConfiguration element</a></li>
+                <li><a href="el_ns0_metadataAddRequest.html">metadataAddRequest element</a></li>
                 <li><a href="el_ns0_mailingList.html">mailingList element</a></li>
                 <li><a href="el_ns0_cacheEntry.html">cacheEntry element</a></li>
                 <li><a href="el_ns0_managedRepository.html">managedRepository element</a></li>
@@ -68,10 +68,11 @@
                 <li><a href="el_ns0_versionsList.html">versionsList element</a></li>
                 <li><a href="el_ns0_organisationInformation.html">organisationInformation element</a></li>
                 <li><a href="el_ns0_searchRequest.html">searchRequest element</a></li>
-                <li><a href="el_ns0_networkConfiguration.html">networkConfiguration element</a></li>
                 <li><a href="el_ns0_groupIdList.html">groupIdList element</a></li>
+                <li><a href="el_ns0_networkConfiguration.html">networkConfiguration element</a></li>
                 <li><a href="el_ns0_issueManagement.html">issueManagement element</a></li>
                 <li><a href="el_ns0_uiConfiguration.html">uiConfiguration element</a></li>
+                <li><a href="el_ns0_cacheConfiguration.html">cacheConfiguration element</a></li>
                 <li><a href="el_ns0_policyInformation.html">policyInformation element</a></li>
                 <li><a href="el_ns0_redbackRuntimeConfiguration.html">redbackRuntimeConfiguration element</a></li>
                 <li><a href="el_ns0_artifactTransferRequest.html">artifactTransferRequest element</a></li>
@@ -83,12 +84,12 @@
                 <li><a href="el_ns0_proxyConnector.html">proxyConnector element</a></li>
                 <li><a href="el_ns0_networkProxy.html">networkProxy element</a></li>
                 <li><a href="el_ns0_artifact.html">artifact element</a></li>
-                <li><a href="el_ns0_repositoryScanStatistics.html">repositoryScanStatistics element</a></li>
                 <li><a href="el_ns0_repositoryScannerStatistics.html">repositoryScannerStatistics element</a></li>
+                <li><a href="el_ns0_repositoryScanStatistics.html">repositoryScanStatistics element</a></li>
                 <li><a href="el_ns0_proxyConnectorRule.html">proxyConnectorRule element</a></li>
                 <li><a href="el_ns0_fileType.html">fileType element</a></li>
-                <li><a href="el_ns0_legacyArtifactPath.html">legacyArtifactPath element</a></li>
                 <li><a href="el_ns0_artifactContent.html">artifactContent element</a></li>
+                <li><a href="el_ns0_legacyArtifactPath.html">legacyArtifactPath element</a></li>
                 <li><a href="el_ns0_propertyEntry.html">propertyEntry element</a></li>
                 <li><a href="el_ns0_projectVersionMetadata.html">projectVersionMetadata element</a></li>
                 <li><a href="el_ns0_dependency.html">dependency element</a></li>
@@ -125,18 +126,6 @@
       <h2>Example XML</h2>
       <code class="prettyprint lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;redbackRuntimeConfiguration&gt;
-  &lt;migratedFromRedbackConfiguration&gt;...&lt;/migratedFromRedbackConfiguration&gt;
-  &lt;configurationPropertiesEntries&gt;
-    &lt;value&gt;...&lt;/value&gt;
-    &lt;key&gt;...&lt;/key&gt;
-  &lt;/configurationPropertiesEntries&gt;
-  &lt;configurationPropertiesEntries&gt;
-    &lt;!--...--&gt;
-  &lt;/configurationPropertiesEntries&gt;
-  &lt;!--...more &quot;configurationPropertiesEntries&quot; elements...--&gt;
-  &lt;usersCacheTimeToIdleSeconds&gt;...&lt;/usersCacheTimeToIdleSeconds&gt;
-  &lt;useUsersCache&gt;...&lt;/useUsersCache&gt;
-  &lt;usersCacheTimeToLiveSeconds&gt;...&lt;/usersCacheTimeToLiveSeconds&gt;
   &lt;configurationProperties&gt;
     &lt;entry&gt;
       &lt;key&gt;...&lt;/key&gt;
@@ -155,8 +144,22 @@
   &lt;userManagerImpls&gt;...&lt;/userManagerImpls&gt;
   &lt;userManagerImpls&gt;...&lt;/userManagerImpls&gt;
   &lt;!--...more &quot;userManagerImpls&quot; elements...--&gt;
+  &lt;useUsersCache&gt;...&lt;/useUsersCache&gt;
+  &lt;usersCacheConfiguration&gt;
+    &lt;timeToLiveSeconds&gt;...&lt;/timeToLiveSeconds&gt;
+    &lt;timeToIdleSeconds&gt;...&lt;/timeToIdleSeconds&gt;
+  &lt;/usersCacheConfiguration&gt;
+  &lt;migratedFromRedbackConfiguration&gt;...&lt;/migratedFromRedbackConfiguration&gt;
   &lt;ldapConfiguration&gt;
-    &lt;bindAuthenticatorEnabled&gt;...&lt;/bindAuthenticatorEnabled&gt;
+    &lt;authenticationMethod&gt;...&lt;/authenticationMethod&gt;
+    &lt;extraPropertiesEntries&gt;
+      &lt;key&gt;...&lt;/key&gt;
+      &lt;value&gt;...&lt;/value&gt;
+    &lt;/extraPropertiesEntries&gt;
+    &lt;extraPropertiesEntries&gt;
+      &lt;!--...--&gt;
+    &lt;/extraPropertiesEntries&gt;
+    &lt;!--...more &quot;extraPropertiesEntries&quot; elements...--&gt;
     &lt;extraProperties&gt;
       &lt;entry&gt;
         &lt;key&gt;...&lt;/key&gt;
@@ -172,58 +175,60 @@
       &lt;/entry&gt;
       &lt;!--...more entries...--&gt;
     &lt;/extraProperties&gt;
-    &lt;hostName&gt;...&lt;/hostName&gt;
     &lt;password&gt;...&lt;/password&gt;
-    &lt;port&gt;...&lt;/port&gt;
-    &lt;extraPropertiesEntries&gt;
-      &lt;value&gt;...&lt;/value&gt;
-      &lt;key&gt;...&lt;/key&gt;
-    &lt;/extraPropertiesEntries&gt;
-    &lt;extraPropertiesEntries&gt;
-      &lt;!--...--&gt;
-    &lt;/extraPropertiesEntries&gt;
-    &lt;!--...more &quot;extraPropertiesEntries&quot; elements...--&gt;
+    &lt;bindDn&gt;...&lt;/bindDn&gt;
     &lt;baseDn&gt;...&lt;/baseDn&gt;
-    &lt;authenticationMethod&gt;...&lt;/authenticationMethod&gt;
     &lt;contextFactory&gt;...&lt;/contextFactory&gt;
     &lt;ssl&gt;...&lt;/ssl&gt;
-    &lt;bindDn&gt;...&lt;/bindDn&gt;
+    &lt;port&gt;...&lt;/port&gt;
+    &lt;bindAuthenticatorEnabled&gt;...&lt;/bindAuthenticatorEnabled&gt;
+    &lt;hostName&gt;...&lt;/hostName&gt;
   &lt;/ldapConfiguration&gt;
+  &lt;configurationPropertiesEntries&gt;
+    &lt;key&gt;...&lt;/key&gt;
+    &lt;value&gt;...&lt;/value&gt;
+  &lt;/configurationPropertiesEntries&gt;
+  &lt;configurationPropertiesEntries&gt;
+    &lt;!--...--&gt;
+  &lt;/configurationPropertiesEntries&gt;
+  &lt;!--...more &quot;configurationPropertiesEntries&quot; elements...--&gt;
 &lt;/redbackRuntimeConfiguration&gt;</code>
       <h2>Example JSON</h2>
       <code class="prettyprint lang-js">{
-  &quot;migratedFromRedbackConfiguration&quot; : false,
-  &quot;configurationPropertiesEntries&quot; : [ {
-    &quot;value&quot; : &quot;...&quot;,
-    &quot;key&quot; : &quot;...&quot;
-  }, ... ],
-  &quot;usersCacheTimeToIdleSeconds&quot; : ...,
-  &quot;useUsersCache&quot; : false,
-  &quot;usersCacheTimeToLiveSeconds&quot; : ...,
   &quot;configurationProperties&quot; : [ {
     &quot;...&quot; : ...
   }, {
   } ],
   &quot;userManagerImpls&quot; : [ &quot;...&quot;, ... ],
+  &quot;useUsersCache&quot; : false,
+  &quot;usersCacheConfiguration&quot; : {
+    &quot;timeToLiveSeconds&quot; : ...,
+    &quot;timeToIdleSeconds&quot; : ...
+  },
+  &quot;migratedFromRedbackConfiguration&quot; : false,
   &quot;ldapConfiguration&quot; : {
-    &quot;bindAuthenticatorEnabled&quot; : false,
+    &quot;authenticationMethod&quot; : &quot;...&quot;,
+    &quot;extraPropertiesEntries&quot; : [ {
+      &quot;key&quot; : &quot;...&quot;,
+      &quot;value&quot; : &quot;...&quot;
+    }, ... ],
     &quot;extraProperties&quot; : [ {
       &quot;...&quot; : ...
     }, {
     } ],
-    &quot;hostName&quot; : &quot;...&quot;,
     &quot;password&quot; : &quot;...&quot;,
-    &quot;port&quot; : ...,
-    &quot;extraPropertiesEntries&quot; : [ {
-      &quot;value&quot; : &quot;...&quot;,
-      &quot;key&quot; : &quot;...&quot;
-    }, ... ],
+    &quot;bindDn&quot; : &quot;...&quot;,
     &quot;baseDn&quot; : &quot;...&quot;,
-    &quot;authenticationMethod&quot; : &quot;...&quot;,
     &quot;contextFactory&quot; : &quot;...&quot;,
     &quot;ssl&quot; : false,
-    &quot;bindDn&quot; : &quot;...&quot;
-  }
+    &quot;port&quot; : ...,
+    &quot;bindAuthenticatorEnabled&quot; : false,
+    &quot;hostName&quot; : &quot;...&quot;
+  },
+  &quot;configurationPropertiesEntries&quot; : [ {
+    &quot;key&quot; : &quot;...&quot;,
+    &quot;value&quot; : &quot;...&quot;
+  }, ... ]
 }</code>
 
       <div class="clear" />
