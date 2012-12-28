@@ -1288,6 +1288,57 @@
 >
 </field>
 </class>
+<class name="ArchivaRuntimeConfiguration"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="ArchivaRuntimeConfiguration"
+ type="org.apache.archiva.admin.model.beans.ArchivaRuntimeConfiguration"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getUrlFailureCacheConfiguration"
+ return="org.apache.archiva.admin.model.beans.CacheConfiguration"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setUrlFailureCacheConfiguration"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="urlFailureCacheConfiguration" type="org.apache.archiva.admin.model.beans.CacheConfiguration">
+</parameter>
+</method>
+<field name="urlFailureCacheConfiguration"
+ type="org.apache.archiva.admin.model.beans.CacheConfiguration"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+</class>
 <class name="CacheConfiguration"
  extends="java.lang.Object"
  abstract="false"
@@ -1306,6 +1357,28 @@
  visibility="public"
 >
 </constructor>
+<method name="getMaxElementsInMemory"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getMaxElementsOnDisk"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getTimeToIdleSeconds"
  return="int"
  abstract="false"
@@ -1327,6 +1400,32 @@
  deprecated="not deprecated"
  visibility="public"
 >
+</method>
+<method name="setMaxElementsInMemory"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="maxElementsInMemory" type="int">
+</parameter>
+</method>
+<method name="setMaxElementsOnDisk"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="maxElementsOnDisk" type="int">
+</parameter>
 </method>
 <method name="setTimeToIdleSeconds"
  return="void"
@@ -1354,6 +1453,26 @@
 <parameter name="timeToLiveSeconds" type="int">
 </parameter>
 </method>
+<field name="maxElementsInMemory"
+ type="int"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="maxElementsOnDisk"
+ type="int"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
 <field name="timeToIdleSeconds"
  type="int"
  transient="false"
@@ -5630,6 +5749,42 @@
 </package>
 <package name="org.apache.archiva.admin.model.runtime"
 >
+<interface name="ArchivaRuntimeConfigurationAdmin"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="getArchivaRuntimeConfiguration"
+ return="org.apache.archiva.admin.model.beans.ArchivaRuntimeConfiguration"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="RepositoryAdminException" type="org.apache.archiva.admin.model.RepositoryAdminException">
+</exception>
+</method>
+<method name="updateArchivaRuntimeConfiguration"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="archivaRuntimeConfiguration" type="org.apache.archiva.admin.model.beans.ArchivaRuntimeConfiguration">
+</parameter>
+<exception name="RepositoryAdminException" type="org.apache.archiva.admin.model.RepositoryAdminException">
+</exception>
+</method>
+</interface>
 <interface name="RedbackRuntimeConfigurationAdmin"
  abstract="true"
  static="false"
@@ -8031,6 +8186,99 @@
 </package>
 <package name="org.apache.archiva.admin.repository.runtime"
 >
+<class name="DefaultArchivaRuntimeConfigurationAdmin"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.apache.archiva.admin.model.runtime.ArchivaRuntimeConfigurationAdmin">
+</implements>
+<constructor name="DefaultArchivaRuntimeConfigurationAdmin"
+ type="org.apache.archiva.admin.repository.runtime.DefaultArchivaRuntimeConfigurationAdmin"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="build"
+ return="org.apache.archiva.admin.model.beans.ArchivaRuntimeConfiguration"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+<parameter name="archivaRuntimeConfiguration" type="org.apache.archiva.configuration.ArchivaRuntimeConfiguration">
+</parameter>
+</method>
+<method name="getArchivaRuntimeConfiguration"
+ return="org.apache.archiva.admin.model.beans.ArchivaRuntimeConfiguration"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="RepositoryAdminException" type="org.apache.archiva.admin.model.RepositoryAdminException">
+</exception>
+</method>
+<method name="initialize"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="RepositoryAdminException" type="org.apache.archiva.admin.model.RepositoryAdminException">
+</exception>
+</method>
+<method name="updateArchivaRuntimeConfiguration"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="archivaRuntimeConfiguration" type="org.apache.archiva.admin.model.beans.ArchivaRuntimeConfiguration">
+</parameter>
+<exception name="RepositoryAdminException" type="org.apache.archiva.admin.model.RepositoryAdminException">
+</exception>
+</method>
+<field name="archivaConfiguration"
+ type="org.apache.archiva.configuration.ArchivaConfiguration"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="usersCache"
+ type="org.apache.archiva.redback.components.cache.Cache"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+</class>
 <class name="DefaultRedbackRuntimeConfigurationAdmin"
  extends="java.lang.Object"
  abstract="false"
@@ -12102,6 +12350,59 @@
 </exception>
 </method>
 </interface>
+<class name="ArchivaRuntimeConfiguration"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="java.io.Serializable">
+</implements>
+<constructor name="ArchivaRuntimeConfiguration"
+ type="org.apache.archiva.configuration.ArchivaRuntimeConfiguration"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getUrlFailureCacheConfiguration"
+ return="org.apache.archiva.configuration.CacheConfiguration"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setUrlFailureCacheConfiguration"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="urlFailureCacheConfiguration" type="org.apache.archiva.configuration.CacheConfiguration">
+</parameter>
+</method>
+<field name="urlFailureCacheConfiguration"
+ type="org.apache.archiva.configuration.CacheConfiguration"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+</class>
 <class name="CacheConfiguration"
  extends="java.lang.Object"
  abstract="false"
@@ -12120,6 +12421,28 @@
  visibility="public"
 >
 </constructor>
+<method name="getMaxElementsInMemory"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getMaxElementsOnDisk"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getTimeToIdleSeconds"
  return="int"
  abstract="false"
@@ -12141,6 +12464,32 @@
  deprecated="not deprecated"
  visibility="public"
 >
+</method>
+<method name="setMaxElementsInMemory"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="maxElementsInMemory" type="int">
+</parameter>
+</method>
+<method name="setMaxElementsOnDisk"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="maxElementsOnDisk" type="int">
+</parameter>
 </method>
 <method name="setTimeToIdleSeconds"
  return="void"
@@ -12168,6 +12517,26 @@
 <parameter name="timeToLiveSeconds" type="int">
 </parameter>
 </method>
+<field name="maxElementsInMemory"
+ type="int"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="maxElementsOnDisk"
+ type="int"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
 <field name="timeToIdleSeconds"
  type="int"
  transient="false"
@@ -12336,6 +12705,17 @@
 >
 <parameter name="id" type="java.lang.String">
 </parameter>
+</method>
+<method name="getArchivaRuntimeConfiguration"
+ return="org.apache.archiva.configuration.ArchivaRuntimeConfiguration"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
 </method>
 <method name="getGroupToRepositoryMap"
  return="java.util.Map&lt;java.lang.String, java.util.List&lt;java.lang.String&gt;&gt;"
@@ -12670,6 +13050,19 @@
 <parameter name="repositoryGroupConfiguration" type="org.apache.archiva.configuration.RepositoryGroupConfiguration">
 </parameter>
 </method>
+<method name="setArchivaRuntimeConfiguration"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="archivaRuntimeConfiguration" type="org.apache.archiva.configuration.ArchivaRuntimeConfiguration">
+</parameter>
+</method>
 <method name="setLegacyArtifactPaths"
  return="void"
  abstract="false"
@@ -12865,6 +13258,16 @@
 <parameter name="webapp" type="org.apache.archiva.configuration.WebappConfiguration">
 </parameter>
 </method>
+<field name="archivaRuntimeConfiguration"
+ type="org.apache.archiva.configuration.ArchivaRuntimeConfiguration"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
 <field name="groupToRepositoryMap"
  type="java.util.Map"
  transient="false"
@@ -17846,6 +18249,21 @@
 <parameter name="registry" type="org.apache.archiva.redback.components.registry.Registry">
 </parameter>
 </method>
+<method name="readArchivaRuntimeConfiguration"
+ return="org.apache.archiva.configuration.ArchivaRuntimeConfiguration"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+<parameter name="prefix" type="java.lang.String">
+</parameter>
+<parameter name="registry" type="org.apache.archiva.redback.components.registry.Registry">
+</parameter>
+</method>
 <method name="readCacheConfiguration"
  return="org.apache.archiva.configuration.CacheConfiguration"
  abstract="false"
@@ -18193,6 +18611,23 @@
 <parameter name="prefix" type="java.lang.String">
 </parameter>
 <parameter name="value" type="org.apache.archiva.configuration.AbstractRepositoryConnectorConfiguration">
+</parameter>
+<parameter name="registry" type="org.apache.archiva.redback.components.registry.Registry">
+</parameter>
+</method>
+<method name="writeArchivaRuntimeConfiguration"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+<parameter name="prefix" type="java.lang.String">
+</parameter>
+<parameter name="value" type="org.apache.archiva.configuration.ArchivaRuntimeConfiguration">
 </parameter>
 <parameter name="registry" type="org.apache.archiva.redback.components.registry.Registry">
 </parameter>
@@ -53401,6 +53836,42 @@
 >
 </field>
 </class>
+<interface name="ArchivaRuntimeConfigurationService"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="getArchivaRuntimeConfiguration"
+ return="org.apache.archiva.admin.model.beans.ArchivaRuntimeConfiguration"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
+<method name="updateArchivaRuntimeConfiguration"
+ return="java.lang.Boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="archivaRuntimeConfiguration" type="org.apache.archiva.admin.model.beans.ArchivaRuntimeConfiguration">
+</parameter>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
+</interface>
 <interface name="BrowseService"
  abstract="true"
  static="false"
@@ -55839,6 +56310,73 @@
 </field>
 <field name="repositoryContent"
  type="org.apache.archiva.repository.ManagedRepositoryContent"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+</class>
+<class name="DefaultArchivaRuntimeConfigurationService"
+ extends="org.apache.archiva.rest.services.AbstractRestService"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.apache.archiva.rest.api.services.ArchivaRuntimeConfigurationService">
+</implements>
+<constructor name="DefaultArchivaRuntimeConfigurationService"
+ type="org.apache.archiva.rest.services.DefaultArchivaRuntimeConfigurationService"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getArchivaRuntimeConfiguration"
+ return="org.apache.archiva.admin.model.beans.ArchivaRuntimeConfiguration"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
+<method name="updateArchivaRuntimeConfiguration"
+ return="java.lang.Boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="archivaRuntimeConfiguration" type="org.apache.archiva.admin.model.beans.ArchivaRuntimeConfiguration">
+</parameter>
+<exception name="ArchivaRestServiceException" type="org.apache.archiva.rest.api.services.ArchivaRestServiceException">
+</exception>
+</method>
+<field name="archivaRuntimeConfigurationAdmin"
+ type="org.apache.archiva.admin.model.runtime.ArchivaRuntimeConfigurationAdmin"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="usersCache"
+ type="org.apache.archiva.redback.components.cache.Cache"
  transient="false"
  volatile="false"
  static="false"
