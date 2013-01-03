@@ -262,7 +262,25 @@ user.setLocked( false );
 user.setValidated( true );
 UserService userService = getUserService( authorizationHeader );
 userService.createUser( user );
-</pre></div><div class="source"><pre class="prettyprint"></pre></div></div></div>
+</pre></div><div class="source"><pre class="prettyprint">    protected UserService getUserService( String authzHeader )
+    {
+        UserService service =
+            JAXRSClientFactory.create( &quot;http://localhost:&quot; + port + &quot;/&quot; + getRestServicesPath() + &quot;/redbackServices/&quot;,
+                                       UserService.class, Collections.singletonList( new JacksonJaxbJsonProvider() ) );
+
+        // time out for debuging purpose
+        WebClient.getConfig( service ).getHttpConduit().getClient().setReceiveTimeout( 100000 );
+
+        if ( authzHeader != null )
+        {
+            WebClient.client( service ).header( &quot;Authorization&quot;, authzHeader );
+        }
+        WebClient.client( service ).accept( MediaType.APPLICATION_JSON_TYPE );
+        WebClient.client( service ).type( MediaType.APPLICATION_JSON_TYPE );
+
+        return service;
+    }
+</pre></div></div></div>
                   </div>
           </div>
 
