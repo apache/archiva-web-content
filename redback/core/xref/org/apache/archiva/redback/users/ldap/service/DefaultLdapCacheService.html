@@ -29,7 +29,7 @@
 <a class="jxr_linenumber" name="19" href="#19">19</a>  <em class="jxr_comment"> * under the License.</em>
 <a class="jxr_linenumber" name="20" href="#20">20</a>  <em class="jxr_comment"> */</em>
 <a class="jxr_linenumber" name="21" href="#21">21</a>  
-<a class="jxr_linenumber" name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.common.ldap.LdapUser;
+<a class="jxr_linenumber" name="22" href="#22">22</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.common.ldap.user.LdapUser;
 <a class="jxr_linenumber" name="23" href="#23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.components.cache.builder.CacheBuilder;
 <a class="jxr_linenumber" name="24" href="#24">24</a>  <strong class="jxr_keyword">import</strong> org.springframework.stereotype.Service;
 <a class="jxr_linenumber" name="25" href="#25">25</a>  
@@ -53,7 +53,7 @@
 <a class="jxr_linenumber" name="43" href="#43">43</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="44" href="#44">44</a>  <em class="jxr_javadoccomment">     * @see LdapCacheService#getUser(String)</em>
 <a class="jxr_linenumber" name="45" href="#45">45</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="46" href="#46">46</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../../../org/apache/archiva/redback/common/ldap/LdapUser.html">LdapUser</a> getUser( String username )
+<a class="jxr_linenumber" name="46" href="#46">46</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../../../org/apache/archiva/redback/common/ldap/user/LdapUser.html">LdapUser</a> getUser( String username )
 <a class="jxr_linenumber" name="47" href="#47">47</a>      {
 <a class="jxr_linenumber" name="48" href="#48">48</a>          <strong class="jxr_keyword">return</strong> (LdapUser) cacheBuilder.getCache( <span class="jxr_string">"ldapUser"</span> ).get( username );
 <a class="jxr_linenumber" name="49" href="#49">49</a>      }
@@ -75,11 +75,11 @@
 <a class="jxr_linenumber" name="65" href="#65">65</a>      }
 <a class="jxr_linenumber" name="66" href="#66">66</a>  
 <a class="jxr_linenumber" name="67" href="#67">67</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="68" href="#68">68</a>  <em class="jxr_javadoccomment">     * @see LdapCacheService#addUser(org.apache.archiva.redback.common.ldap.LdapUser)</em>
+<a class="jxr_linenumber" name="68" href="#68">68</a>  <em class="jxr_javadoccomment">     * @see LdapCacheService#addUser(org.apache.archiva.redback.common.ldap.user.LdapUser)</em>
 <a class="jxr_linenumber" name="69" href="#69">69</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="70" href="#70">70</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> addUser( LdapUser user )
 <a class="jxr_linenumber" name="71" href="#71">71</a>      {
-<a class="jxr_linenumber" name="72" href="#72">72</a>          <a href="../../../../../../../org/apache/archiva/redback/common/ldap/LdapUser.html">LdapUser</a> existingUser = (LdapUser) cacheBuilder.getCache( <span class="jxr_string">"ldapUser"</span> ).get( user.getUsername() );
+<a class="jxr_linenumber" name="72" href="#72">72</a>          <a href="../../../../../../../org/apache/archiva/redback/common/ldap/user/LdapUser.html">LdapUser</a> existingUser = (LdapUser) cacheBuilder.getCache( <span class="jxr_string">"ldapUser"</span> ).get( user.getUsername() );
 <a class="jxr_linenumber" name="73" href="#73">73</a>          <strong class="jxr_keyword">if</strong>( existingUser != <strong class="jxr_keyword">null</strong> )
 <a class="jxr_linenumber" name="74" href="#74">74</a>          {
 <a class="jxr_linenumber" name="75" href="#75">75</a>              removeUser( user.getUsername() );

@@ -57,7 +57,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
 <title>
 
-  LdapUserMapper
+  DefaultLdapRoleMapper
 
 
 | Apache Archiva Redback
@@ -168,10 +168,12 @@
   <a href="../../../../../../org/apache/archiva/redback/common/jdo/package-summary.html">org.apache.archiva.redback.common.jdo</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../org/apache/archiva/redback/common/jdo/test/package-summary.html">org.apache.archiva.redback.common.jdo.test</a></li>
-    <li class="selected api apilevel-">
+    <li class="api apilevel-">
   <a href="../../../../../../org/apache/archiva/redback/common/ldap/package-summary.html">org.apache.archiva.redback.common.ldap</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../org/apache/archiva/redback/common/ldap/connection/package-summary.html">org.apache.archiva.redback.common.ldap.connection</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../org/apache/archiva/redback/common/ldap/user/package-summary.html">org.apache.archiva.redback.common.ldap.user</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../org/apache/archiva/redback/configuration/package-summary.html">org.apache.archiva.redback.configuration</a></li>
     <li class="api apilevel-">
@@ -222,6 +224,8 @@
   <a href="../../../../../../org/apache/archiva/redback/rbac/jdo/package-summary.html">org.apache.archiva.redback.rbac.jdo</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../org/apache/archiva/redback/rbac/jdo/io/stax/package-summary.html">org.apache.archiva.redback.rbac.jdo.io.stax</a></li>
+    <li class="selected api apilevel-">
+  <a href="../../../../../../org/apache/archiva/redback/rbac/ldap/package-summary.html">org.apache.archiva.redback.rbac.ldap</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../org/apache/archiva/redback/rbac/memory/package-summary.html">org.apache.archiva.redback.rbac.memory</a></li>
     <li class="api apilevel-">
@@ -286,26 +290,19 @@
               
     <li><h2>Interfaces</h2>
       <ul>
-          <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/redback/common/ldap/UserMapper.html">UserMapper</a></li>
+          <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/LdapRoleMapper.html">LdapRoleMapper</a></li>
       </ul>
     </li>
               
     <li><h2>Classes</h2>
       <ul>
-          <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUser.html">LdapUser</a></li>
-          <li class="selected api apilevel-"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html">LdapUserMapper</a></li>
-          <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUtils.html">LdapUtils</a></li>
-          <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/redback/common/ldap/UserUpdate.html">UserUpdate</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/DefaultLdapRoleMapper.html">DefaultLdapRoleMapper</a></li>
+          <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/LdapRbacManager.html">LdapRbacManager</a></li>
       </ul>
     </li>
               
               
               
-    <li><h2>Exceptions</h2>
-      <ul>
-          <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/redback/common/ldap/MappingException.html">MappingException</a></li>
-      </ul>
-    </li>
               
             </ul><br/>
           </div><!-- end classes -->
@@ -406,7 +403,7 @@ Summary:
      
     
     class
-<h1>LdapUserMapper</h1>
+<h1>DefaultLdapRoleMapper</h1>
 
 
 
@@ -420,7 +417,7 @@ Summary:
   
       implements 
       
-        <a href="../../../../../../org/apache/archiva/redback/common/ldap/UserMapper.html">UserMapper</a> 
+        <a href="../../../../../../org/apache/archiva/redback/rbac/ldap/LdapRoleMapper.html">LdapRoleMapper</a> 
       
   
   
@@ -444,7 +441,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
          	
-        <td colspan="1" class="jd-inheritance-class-cell">org.apache.archiva.redback.common.ldap.LdapUserMapper</td>
+        <td colspan="1" class="jd-inheritance-class-cell">org.apache.archiva.redback.rbac.ldap.DefaultLdapRoleMapper</td>
     </tr>
     
 
@@ -523,7 +520,7 @@ Summary:
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#LdapUserMapper()">LdapUserMapper</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/DefaultLdapRoleMapper.html#DefaultLdapRoleMapper()">DefaultLdapRoleMapper</a></span>()</nobr>
         
   </td></tr>
 
@@ -549,10 +546,44 @@ Summary:
             
             
             
-            Attributes</nobr>
+            void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#getCreationAttributes(org.apache.archiva.redback.users.User, boolean)">getCreationAttributes</a></span>(<a href="../../../../../../org/apache/archiva/redback/users/User.html">User</a> user, boolean encodePasswordIfChanged)</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/DefaultLdapRoleMapper.html#addLdapMapping(java.lang.String, java.lang.String)">addLdapMapping</a></span>(String role, String ldapGroup)</nobr>
+        
+        <div class="jd-descrdiv">add mapping redback role <-> ldap group</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;String&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/DefaultLdapRoleMapper.html#getAllGroups()">getAllGroups</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;String&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/DefaultLdapRoleMapper.html#getGroups(java.lang.String)">getGroups</a></span>(String username)</nobr>
         
   </td></tr>
 
@@ -568,7 +599,7 @@ Summary:
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#getEmailAddressAttribute()">getEmailAddressAttribute</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/DefaultLdapRoleMapper.html#getGroupsDn()">getGroupsDn</a></span>()</nobr>
         
   </td></tr>
 
@@ -581,10 +612,10 @@ Summary:
             
             
             
-            String</nobr>
+            List&lt;String&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#getEmailAttribute()">getEmailAttribute</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/DefaultLdapRoleMapper.html#getGroupsMember(java.lang.String)">getGroupsMember</a></span>(String group)</nobr>
         
   </td></tr>
 
@@ -600,103 +631,7 @@ Summary:
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#getFullNameAttribute()">getFullNameAttribute</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            int</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#getMaxResultCount()">getMaxResultCount</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#getPasswordAttribute()">getPasswordAttribute</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            String[]</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#getReturningAttributes()">getReturningAttributes</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../../../org/apache/archiva/redback/common/ldap/UserUpdate.html">UserUpdate</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#getUpdate(org.apache.archiva.redback.common.ldap.LdapUser)">getUpdate</a></span>(<a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUser.html">LdapUser</a> user)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUser.html">LdapUser</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#getUser(javax.naming.directory.Attributes)">getUser</a></span>(Attributes attributes)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            String[]</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#getUserAttributeNames()">getUserAttributeNames</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/DefaultLdapRoleMapper.html#getLdapGroup(java.lang.String)">getLdapGroup</a></span>(String role)</nobr>
         
   </td></tr>
 
@@ -712,7 +647,7 @@ Summary:
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#getUserBaseDn()">getUserBaseDn</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/DefaultLdapRoleMapper.html#getLdapGroupClass()">getLdapGroupClass</a></span>()</nobr>
         
   </td></tr>
 
@@ -725,74 +660,10 @@ Summary:
             
             
             
-            <a href="../../../../../../org/apache/archiva/redback/configuration/UserConfiguration.html">UserConfiguration</a></nobr>
+            Map&lt;String,&nbsp;String&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#getUserConf()">getUserConf</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#getUserFilter()">getUserFilter</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#getUserFullNameAttribute()">getUserFullNameAttribute</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#getUserIdAttribute()">getUserIdAttribute</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#getUserObjectClass()">getUserObjectClass</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/DefaultLdapRoleMapper.html#getLdapGroupMappings()">getLdapGroupMappings</a></span>()</nobr>
         
   </td></tr>
 
@@ -808,39 +679,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#initialize()">initialize</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUser.html">LdapUser</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#newTemplateUserInstance()">newTemplateUserInstance</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            <a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUser.html">LdapUser</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#newUserInstance(java.lang.String, java.lang.String, java.lang.String)">newUserInstance</a></span>(String username, String fullName, String email)</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/DefaultLdapRoleMapper.html#initialize()">initialize</a></span>()</nobr>
         
   </td></tr>
 
@@ -856,8 +695,10 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#setEmailAttribute(java.lang.String)">setEmailAttribute</a></span>(String emailAttribute)</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/DefaultLdapRoleMapper.html#removeLdapMapping(java.lang.String)">removeLdapMapping</a></span>(String role)</nobr>
         
+        <div class="jd-descrdiv">remove a mapping</div>
+  
   </td></tr>
 
 
@@ -872,7 +713,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#setFullNameAttribute(java.lang.String)">setFullNameAttribute</a></span>(String fullNameAttribute)</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/DefaultLdapRoleMapper.html#setGroupsDn(java.lang.String)">setGroupsDn</a></span>(String groupsDn)</nobr>
         
   </td></tr>
 
@@ -888,7 +729,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#setMaxResultCount(int)">setMaxResultCount</a></span>(int maxResultCount)</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/DefaultLdapRoleMapper.html#setLdapConnectionFactory(org.apache.archiva.redback.common.ldap.connection.LdapConnectionFactory)">setLdapConnectionFactory</a></span>(<a href="../../../../../../org/apache/archiva/redback/common/ldap/connection/LdapConnectionFactory.html">LdapConnectionFactory</a> ldapConnectionFactory)</nobr>
         
   </td></tr>
 
@@ -904,7 +745,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#setPasswordAttribute(java.lang.String)">setPasswordAttribute</a></span>(String passwordAttribute)</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/DefaultLdapRoleMapper.html#setLdapGroupClass(java.lang.String)">setLdapGroupClass</a></span>(String ldapGroupClass)</nobr>
         
   </td></tr>
 
@@ -920,71 +761,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#setUserBaseDn(java.lang.String)">setUserBaseDn</a></span>(String userBaseDn)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#setUserConf(org.apache.archiva.redback.configuration.UserConfiguration)">setUserConf</a></span>(<a href="../../../../../../org/apache/archiva/redback/configuration/UserConfiguration.html">UserConfiguration</a> userConf)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#setUserFilter(java.lang.String)">setUserFilter</a></span>(String userFilter)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#setUserIdAttribute(java.lang.String)">setUserIdAttribute</a></span>(String userIdAttribute)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUserMapper.html#setUserObjectClass(java.lang.String)">setUserObjectClass</a></span>(String userObjectClass)</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/DefaultLdapRoleMapper.html#setUserConf(org.apache.archiva.redback.configuration.UserConfiguration)">setUserConf</a></span>(<a href="../../../../../../org/apache/archiva/redback/configuration/UserConfiguration.html">UserConfiguration</a> userConf)</nobr>
         
   </td></tr>
 
@@ -1208,19 +985,19 @@ From class
 
 <tr class="api apilevel-" >
 <td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.apache.archiva.redback.common.ldap.UserMapper" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.apache.archiva.redback.common.ldap.UserMapper-trigger"
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.apache.archiva.redback.rbac.ldap.LdapRoleMapper" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.apache.archiva.redback.rbac.ldap.LdapRoleMapper-trigger"
           src="../../../../../../../assets/images/triangle-closed.png"
           class="jd-expando-trigger-img" /></a>
 From interface
 
-  <a href="../../../../../../org/apache/archiva/redback/common/ldap/UserMapper.html">org.apache.archiva.redback.common.ldap.UserMapper</a>
+  <a href="../../../../../../org/apache/archiva/redback/rbac/ldap/LdapRoleMapper.html">org.apache.archiva.redback.rbac.ldap.LdapRoleMapper</a>
 
-<div id="inherited-methods-org.apache.archiva.redback.common.ldap.UserMapper">
-  <div id="inherited-methods-org.apache.archiva.redback.common.ldap.UserMapper-list"
+<div id="inherited-methods-org.apache.archiva.redback.rbac.ldap.LdapRoleMapper">
+  <div id="inherited-methods-org.apache.archiva.redback.rbac.ldap.LdapRoleMapper-list"
         class="jd-inheritedlinks">
   </div>
-  <div id="inherited-methods-org.apache.archiva.redback.common.ldap.UserMapper-summary" style="display: none;">
+  <div id="inherited-methods-org.apache.archiva.redback.rbac.ldap.LdapRoleMapper-summary" style="display: none;">
     <table class="jd-sumtable-expando">
     
 
@@ -1233,10 +1010,44 @@ From interface
             
             
             
-            Attributes</nobr>
+            void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/UserMapper.html#getCreationAttributes(org.apache.archiva.redback.users.User, boolean)">getCreationAttributes</a></span>(<a href="../../../../../../org/apache/archiva/redback/users/User.html">User</a> user, boolean encodePasswordIfChanged)</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/LdapRoleMapper.html#addLdapMapping(java.lang.String, java.lang.String)">addLdapMapping</a></span>(String role, String ldapGroup)</nobr>
+        
+        <div class="jd-descrdiv">add mapping redback role <-> ldap group</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            List&lt;String&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/LdapRoleMapper.html#getAllGroups()">getAllGroups</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            List&lt;String&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/LdapRoleMapper.html#getGroups(java.lang.String)">getGroups</a></span>(String username)</nobr>
         
   </td></tr>
 
@@ -1252,7 +1063,39 @@ From interface
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/UserMapper.html#getEmailAddressAttribute()">getEmailAddressAttribute</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/LdapRoleMapper.html#getGroupsDn()">getGroupsDn</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            List&lt;String&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/LdapRoleMapper.html#getGroupsMember(java.lang.String)">getGroupsMember</a></span>(String group)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/LdapRoleMapper.html#getLdapGroup(java.lang.String)">getLdapGroup</a></span>(String role)</nobr>
         
   </td></tr>
 
@@ -1268,7 +1111,7 @@ From interface
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/UserMapper.html#getEmailAttribute()">getEmailAttribute</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/LdapRoleMapper.html#getLdapGroupClass()">getLdapGroupClass</a></span>()</nobr>
         
   </td></tr>
 
@@ -1281,160 +1124,16 @@ From interface
             
             
             
-            String</nobr>
+            Map&lt;String,&nbsp;String&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/UserMapper.html#getPasswordAttribute()">getPasswordAttribute</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/LdapRoleMapper.html#getLdapGroupMappings()">getLdapGroupMappings</a></span>()</nobr>
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            String[]</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/UserMapper.html#getReturningAttributes()">getReturningAttributes</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            <a href="../../../../../../org/apache/archiva/redback/common/ldap/UserUpdate.html">UserUpdate</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/UserMapper.html#getUpdate(org.apache.archiva.redback.common.ldap.LdapUser)">getUpdate</a></span>(<a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUser.html">LdapUser</a> user)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            <a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUser.html">LdapUser</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/UserMapper.html#getUser(javax.naming.directory.Attributes)">getUser</a></span>(Attributes attributes)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            String[]</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/UserMapper.html#getUserAttributeNames()">getUserAttributeNames</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/UserMapper.html#getUserBaseDn()">getUserBaseDn</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/UserMapper.html#getUserFilter()">getUserFilter</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/UserMapper.html#getUserFullNameAttribute()">getUserFullNameAttribute</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/UserMapper.html#getUserIdAttribute()">getUserIdAttribute</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/UserMapper.html#getUserObjectClass()">getUserObjectClass</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -1444,40 +1143,10 @@ From interface
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/UserMapper.html#initialize()">initialize</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/rbac/ldap/LdapRoleMapper.html#removeLdapMapping(java.lang.String)">removeLdapMapping</a></span>(String role)</nobr>
         
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            <a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUser.html">LdapUser</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/UserMapper.html#newTemplateUserInstance()">newTemplateUserInstance</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            <a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUser.html">LdapUser</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/common/ldap/UserMapper.html#newUserInstance(java.lang.String, java.lang.String, java.lang.String)">newUserInstance</a></span>(String username, String fullName, String email)</nobr>
-        
+        <div class="jd-descrdiv">remove a mapping</div>
+  
   </td></tr>
 
 
@@ -1521,7 +1190,7 @@ From interface
 
 
 
-<A NAME="LdapUserMapper()"></A>
+<A NAME="DefaultLdapRoleMapper()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1533,7 +1202,7 @@ From interface
          
         
       </span>
-      <span class="sympad">LdapUserMapper</span>
+      <span class="sympad">DefaultLdapRoleMapper</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1567,7 +1236,7 @@ From interface
 
 
 
-<A NAME="getCreationAttributes(org.apache.archiva.redback.users.User, boolean)"></A>
+<A NAME="addLdapMapping(java.lang.String, java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1577,10 +1246,55 @@ From interface
          
          
          
-        Attributes
+        void
       </span>
-      <span class="sympad">getCreationAttributes</span>
-      <span class="normal">(<a href="../../../../../../org/apache/archiva/redback/users/User.html">User</a> user, boolean encodePasswordIfChanged)</span>
+      <span class="sympad">addLdapMapping</span>
+      <span class="normal">(String role, String ldapGroup)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>add mapping redback role <-> ldap group</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>role</td>
+          <td>redback role</td>
+        </tr>
+        <tr>
+          <th>ldapGroup</td>
+          <td>ldap group
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAllGroups()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;String&gt;
+      </span>
+      <span class="sympad">getAllGroups</span>
+      <span class="normal">()</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1607,7 +1321,7 @@ From interface
 </div>
 
 
-<A NAME="getEmailAddressAttribute()"></A>
+<A NAME="getGroups(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1617,196 +1331,10 @@ From interface
          
          
          
-        String
+        List&lt;String&gt;
       </span>
-      <span class="sympad">getEmailAddressAttribute</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getEmailAttribute()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        String
-      </span>
-      <span class="sympad">getEmailAttribute</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getFullNameAttribute()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        String
-      </span>
-      <span class="sympad">getFullNameAttribute</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getMaxResultCount()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        int
-      </span>
-      <span class="sympad">getMaxResultCount</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getPasswordAttribute()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        String
-      </span>
-      <span class="sympad">getPasswordAttribute</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getReturningAttributes()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        String[]
-      </span>
-      <span class="sympad">getReturningAttributes</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getUpdate(org.apache.archiva.redback.common.ldap.LdapUser)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../../org/apache/archiva/redback/common/ldap/UserUpdate.html">UserUpdate</a>
-      </span>
-      <span class="sympad">getUpdate</span>
-      <span class="normal">(<a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUser.html">LdapUser</a> user)</span>
+      <span class="sympad">getGroups</span>
+      <span class="normal">(String username)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1833,7 +1361,7 @@ From interface
 </div>
 
 
-<A NAME="getUser(javax.naming.directory.Attributes)"></A>
+<A NAME="getGroupsDn()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1843,10 +1371,41 @@ From interface
          
          
          
-        <a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUser.html">LdapUser</a>
+        String
       </span>
-      <span class="sympad">getUser</span>
-      <span class="normal">(Attributes attributes)</span>
+      <span class="sympad">getGroupsDn</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getGroupsMember(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;String&gt;
+      </span>
+      <span class="sympad">getGroupsMember</span>
+      <span class="normal">(String group)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1873,38 +1432,7 @@ From interface
 </div>
 
 
-<A NAME="getUserAttributeNames()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        String[]
-      </span>
-      <span class="sympad">getUserAttributeNames</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getUserBaseDn()"></A>
+<A NAME="getLdapGroup(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1916,8 +1444,8 @@ From interface
          
         String
       </span>
-      <span class="sympad">getUserBaseDn</span>
-      <span class="normal">()</span>
+      <span class="sympad">getLdapGroup</span>
+      <span class="normal">(String role)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1935,38 +1463,7 @@ From interface
 </div>
 
 
-<A NAME="getUserConf()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../../org/apache/archiva/redback/configuration/UserConfiguration.html">UserConfiguration</a>
-      </span>
-      <span class="sympad">getUserConf</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getUserFilter()"></A>
+<A NAME="getLdapGroupClass()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1978,7 +1475,7 @@ From interface
          
         String
       </span>
-      <span class="sympad">getUserFilter</span>
+      <span class="sympad">getLdapGroupClass</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1997,7 +1494,7 @@ From interface
 </div>
 
 
-<A NAME="getUserFullNameAttribute()"></A>
+<A NAME="getLdapGroupMappings()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2007,71 +1504,9 @@ From interface
          
          
          
-        String
+        Map&lt;String,&nbsp;String&gt;
       </span>
-      <span class="sympad">getUserFullNameAttribute</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getUserIdAttribute()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        String
-      </span>
-      <span class="sympad">getUserIdAttribute</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getUserObjectClass()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        String
-      </span>
-      <span class="sympad">getUserObjectClass</span>
+      <span class="sympad">getLdapGroupMappings</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -2121,69 +1556,7 @@ From interface
 </div>
 
 
-<A NAME="newTemplateUserInstance()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUser.html">LdapUser</a>
-      </span>
-      <span class="sympad">newTemplateUserInstance</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="newUserInstance(java.lang.String, java.lang.String, java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../../org/apache/archiva/redback/common/ldap/LdapUser.html">LdapUser</a>
-      </span>
-      <span class="sympad">newUserInstance</span>
-      <span class="normal">(String username, String fullName, String email)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="setEmailAttribute(java.lang.String)"></A>
+<A NAME="removeLdapMapping(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2195,8 +1568,49 @@ From interface
          
         void
       </span>
-      <span class="sympad">setEmailAttribute</span>
-      <span class="normal">(String emailAttribute)</span>
+      <span class="sympad">removeLdapMapping</span>
+      <span class="normal">(String role)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>remove a mapping</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>role</td>
+          <td>redback role
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setGroupsDn(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setGroupsDn</span>
+      <span class="normal">(String groupsDn)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2214,7 +1628,7 @@ From interface
 </div>
 
 
-<A NAME="setFullNameAttribute(java.lang.String)"></A>
+<A NAME="setLdapConnectionFactory(org.apache.archiva.redback.common.ldap.connection.LdapConnectionFactory)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2226,8 +1640,8 @@ From interface
          
         void
       </span>
-      <span class="sympad">setFullNameAttribute</span>
-      <span class="normal">(String fullNameAttribute)</span>
+      <span class="sympad">setLdapConnectionFactory</span>
+      <span class="normal">(<a href="../../../../../../org/apache/archiva/redback/common/ldap/connection/LdapConnectionFactory.html">LdapConnectionFactory</a> ldapConnectionFactory)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2245,7 +1659,7 @@ From interface
 </div>
 
 
-<A NAME="setMaxResultCount(int)"></A>
+<A NAME="setLdapGroupClass(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2257,70 +1671,8 @@ From interface
          
         void
       </span>
-      <span class="sympad">setMaxResultCount</span>
-      <span class="normal">(int maxResultCount)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="setPasswordAttribute(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setPasswordAttribute</span>
-      <span class="normal">(String passwordAttribute)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="setUserBaseDn(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setUserBaseDn</span>
-      <span class="normal">(String userBaseDn)</span>
+      <span class="sympad">setLdapGroupClass</span>
+      <span class="normal">(String ldapGroupClass)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2352,99 +1704,6 @@ From interface
       </span>
       <span class="sympad">setUserConf</span>
       <span class="normal">(<a href="../../../../../../org/apache/archiva/redback/configuration/UserConfiguration.html">UserConfiguration</a> userConf)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="setUserFilter(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setUserFilter</span>
-      <span class="normal">(String userFilter)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="setUserIdAttribute(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setUserIdAttribute</span>
-      <span class="normal">(String userIdAttribute)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="setUserObjectClass(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setUserObjectClass</span>
-      <span class="normal">(String userObjectClass)</span>
     </h4>
       <div class="api-level">
         <div>
