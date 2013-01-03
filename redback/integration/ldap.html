@@ -205,7 +205,7 @@ pageTracker._trackPageview();</script>
     &lt;property name=&quot;userConf&quot; ref=&quot;userConfiguration&quot;/&gt;
   &lt;/bean&gt;
     </pre></div><p>In security.properties files</p><ul><li>ldap.config.hostname - The hostname of the ldap server</li><li>ldap.config.port - The port of the ldap server</li><li>ldap.config.base.dn - The baseDn of the ldap system</li><li>ldap.config.context.factory - context factory for ldap connections (com.sun.jndi.ldap.LdapCtxFactory)</li><li>ldap.config.password - password for the bindDn for the root ldap connection</li><li>ldap.config.bind.dn - the core user used for authentication the ldap server, must be able to perform the necessary searches, etc.</li></ul></div><div class="section"><h5>user mapper<a name="user_mapper"></a></h5><div class="source"><pre class="prettyprint">        
-    &lt;bean name=&quot;ldapUserMapper&quot; class=&quot;org.apache.archiva.redback.common.ldap.LdapUserMapper&quot;&gt;
+    &lt;bean name=&quot;ldapUserMapper&quot; class=&quot;org.apache.archiva.redback.common.ldap.user.LdapUserMapper&quot;&gt;
       &lt;property name=&quot;emailAttribute&quot; value=&quot;email&quot;/&gt;
       &lt;property name=&quot;fullNameAttribute&quot; value=&quot;givenName&quot;/&gt;
       &lt;property name=&quot;passwordAttribute&quot; value=&quot;userPassword&quot;/&gt;
