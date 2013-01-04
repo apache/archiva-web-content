@@ -1736,11 +1736,11 @@
 >
 <parameter name="permission" type="org.apache.archiva.redback.rbac.Permission">
 </parameter>
-<parameter name="operation" type="java.lang.Object">
+<parameter name="operation" type="java.lang.String">
 </parameter>
-<parameter name="resource" type="java.lang.Object">
+<parameter name="resource" type="java.lang.String">
 </parameter>
-<parameter name="principal" type="java.lang.Object">
+<parameter name="principal" type="java.lang.String">
 </parameter>
 <exception name="PermissionEvaluationException" type="org.apache.archiva.redback.authorization.rbac.evaluator.PermissionEvaluationException">
 </exception>
@@ -1820,11 +1820,11 @@
 >
 <parameter name="permission" type="org.apache.archiva.redback.rbac.Permission">
 </parameter>
-<parameter name="operation" type="java.lang.Object">
+<parameter name="operation" type="java.lang.String">
 </parameter>
-<parameter name="resource" type="java.lang.Object">
+<parameter name="resource" type="java.lang.String">
 </parameter>
-<parameter name="principal" type="java.lang.Object">
+<parameter name="principal" type="java.lang.String">
 </parameter>
 <exception name="PermissionEvaluationException" type="org.apache.archiva.redback.authorization.rbac.evaluator.PermissionEvaluationException">
 </exception>
@@ -19353,6 +19353,17 @@
 <exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
 </exception>
 </method>
+<method name="getBaseDn"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getGroups"
  return="java.util.List&lt;java.lang.String&gt;"
  abstract="false"
@@ -19451,6 +19462,19 @@
  visibility="public"
 >
 <parameter name="role" type="java.lang.String">
+</parameter>
+</method>
+<method name="setBaseDn"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="baseDn" type="java.lang.String">
 </parameter>
 </method>
 <method name="setGroupsDn"
