@@ -113,7 +113,7 @@
 <a class="jxr_linenumber" name="103" href="#103">103</a>     {
 <a class="jxr_linenumber" name="104" href="#104">104</a>         RBACObjectAssertions.assertValid( role );
 <a class="jxr_linenumber" name="105" href="#105">105</a> 
-<a class="jxr_linenumber" name="106" href="#106">106</a>         <strong class="jxr_keyword">return</strong> (Role) jdo.saveObject( role, <strong class="jxr_keyword">new</strong> String[]{ ROLE_DETAIL } );
+<a class="jxr_linenumber" name="106" href="#106">106</a>         <strong class="jxr_keyword">return</strong> jdo.saveObject( role, <strong class="jxr_keyword">new</strong> String[]{ ROLE_DETAIL } );
 <a class="jxr_linenumber" name="107" href="#107">107</a>     }
 <a class="jxr_linenumber" name="108" href="#108">108</a> 
 <a class="jxr_linenumber" name="109" href="#109">109</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> roleExists( Role role )
@@ -142,7 +142,7 @@
 <a class="jxr_linenumber" name="132" href="#132">132</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/apache/archiva/redback/rbac/Role.html">Role</a> getRole( String roleName )
 <a class="jxr_linenumber" name="133" href="#133">133</a>         <strong class="jxr_keyword">throws</strong> RbacObjectNotFoundException, <a href="../../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a>
 <a class="jxr_linenumber" name="134" href="#134">134</a>     {
-<a class="jxr_linenumber" name="135" href="#135">135</a>         <strong class="jxr_keyword">return</strong> (Role) jdo.getObjectById( JdoRole.<strong class="jxr_keyword">class</strong>, roleName, ROLE_DETAIL );
+<a class="jxr_linenumber" name="135" href="#135">135</a>         <strong class="jxr_keyword">return</strong> jdo.getObjectById( JdoRole.<strong class="jxr_keyword">class</strong>, roleName, ROLE_DETAIL );
 <a class="jxr_linenumber" name="136" href="#136">136</a>     }
 <a class="jxr_linenumber" name="137" href="#137">137</a> 
 <a class="jxr_linenumber" name="138" href="#138">138</a>     <em class="jxr_javadoccomment">/**</em>
@@ -296,7 +296,7 @@
 <a class="jxr_linenumber" name="286" href="#286">286</a>     {
 <a class="jxr_linenumber" name="287" href="#287">287</a>         RBACObjectAssertions.assertValid( permission );
 <a class="jxr_linenumber" name="288" href="#288">288</a> 
-<a class="jxr_linenumber" name="289" href="#289">289</a>         <strong class="jxr_keyword">return</strong> (Permission) jdo.saveObject( permission, <strong class="jxr_keyword">null</strong> );
+<a class="jxr_linenumber" name="289" href="#289">289</a>         <strong class="jxr_keyword">return</strong> jdo.saveObject( permission, <strong class="jxr_keyword">null</strong> );
 <a class="jxr_linenumber" name="290" href="#290">290</a>     }
 <a class="jxr_linenumber" name="291" href="#291">291</a> 
 <a class="jxr_linenumber" name="292" href="#292">292</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> permissionExists( Permission permission )
@@ -319,7 +319,7 @@
 <a class="jxr_linenumber" name="309" href="#309">309</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/apache/archiva/redback/rbac/Permission.html">Permission</a> getPermission( String permissionName )
 <a class="jxr_linenumber" name="310" href="#310">310</a>         <strong class="jxr_keyword">throws</strong> RbacObjectNotFoundException, <a href="../../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a>
 <a class="jxr_linenumber" name="311" href="#311">311</a>     {
-<a class="jxr_linenumber" name="312" href="#312">312</a>         <strong class="jxr_keyword">return</strong> (Permission) jdo.getObjectById( JdoPermission.<strong class="jxr_keyword">class</strong>, permissionName, <strong class="jxr_keyword">null</strong> );
+<a class="jxr_linenumber" name="312" href="#312">312</a>         <strong class="jxr_keyword">return</strong> jdo.getObjectById( JdoPermission.<strong class="jxr_keyword">class</strong>, permissionName, <strong class="jxr_keyword">null</strong> );
 <a class="jxr_linenumber" name="313" href="#313">313</a>     }
 <a class="jxr_linenumber" name="314" href="#314">314</a> 
 <a class="jxr_linenumber" name="315" href="#315">315</a>     @SuppressWarnings( <span class="jxr_string">"unchecked"</span> )
@@ -379,7 +379,7 @@
 <a class="jxr_linenumber" name="369" href="#369">369</a>         <strong class="jxr_keyword">throws</strong> RbacObjectInvalidException, <a href="../../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a>
 <a class="jxr_linenumber" name="370" href="#370">370</a>     {
 <a class="jxr_linenumber" name="371" href="#371">371</a>         RBACObjectAssertions.assertValid( operation );
-<a class="jxr_linenumber" name="372" href="#372">372</a>         <strong class="jxr_keyword">return</strong> (Operation) jdo.saveObject( operation, <strong class="jxr_keyword">null</strong> );
+<a class="jxr_linenumber" name="372" href="#372">372</a>         <strong class="jxr_keyword">return</strong> jdo.saveObject( operation, <strong class="jxr_keyword">null</strong> );
 <a class="jxr_linenumber" name="373" href="#373">373</a>     }
 <a class="jxr_linenumber" name="374" href="#374">374</a> 
 <a class="jxr_linenumber" name="375" href="#375">375</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> operationExists( Operation operation )
@@ -402,7 +402,7 @@
 <a class="jxr_linenumber" name="392" href="#392">392</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/apache/archiva/redback/rbac/Operation.html">Operation</a> getOperation( String operationName )
 <a class="jxr_linenumber" name="393" href="#393">393</a>         <strong class="jxr_keyword">throws</strong> RbacObjectNotFoundException, <a href="../../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a>
 <a class="jxr_linenumber" name="394" href="#394">394</a>     {
-<a class="jxr_linenumber" name="395" href="#395">395</a>         <strong class="jxr_keyword">return</strong> (Operation) jdo.getObjectById( JdoOperation.<strong class="jxr_keyword">class</strong>, operationName, <strong class="jxr_keyword">null</strong> );
+<a class="jxr_linenumber" name="395" href="#395">395</a>         <strong class="jxr_keyword">return</strong> jdo.getObjectById( JdoOperation.<strong class="jxr_keyword">class</strong>, operationName, <strong class="jxr_keyword">null</strong> );
 <a class="jxr_linenumber" name="396" href="#396">396</a>     }
 <a class="jxr_linenumber" name="397" href="#397">397</a> 
 <a class="jxr_linenumber" name="398" href="#398">398</a>     @SuppressWarnings( <span class="jxr_string">"unchecked"</span> )
@@ -464,7 +464,7 @@
 <a class="jxr_linenumber" name="454" href="#454">454</a>         <strong class="jxr_keyword">throws</strong> RbacObjectInvalidException, <a href="../../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a>
 <a class="jxr_linenumber" name="455" href="#455">455</a>     {
 <a class="jxr_linenumber" name="456" href="#456">456</a>         RBACObjectAssertions.assertValid( resource );
-<a class="jxr_linenumber" name="457" href="#457">457</a>         <strong class="jxr_keyword">return</strong> (Resource) jdo.saveObject( resource, <strong class="jxr_keyword">null</strong> );
+<a class="jxr_linenumber" name="457" href="#457">457</a>         <strong class="jxr_keyword">return</strong> jdo.saveObject( resource, <strong class="jxr_keyword">null</strong> );
 <a class="jxr_linenumber" name="458" href="#458">458</a>     }
 <a class="jxr_linenumber" name="459" href="#459">459</a> 
 <a class="jxr_linenumber" name="460" href="#460">460</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> resourceExists( Resource resource )
@@ -487,7 +487,7 @@
 <a class="jxr_linenumber" name="477" href="#477">477</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/apache/archiva/redback/rbac/Resource.html">Resource</a> getResource( String resourceIdentifier )
 <a class="jxr_linenumber" name="478" href="#478">478</a>         <strong class="jxr_keyword">throws</strong> RbacObjectNotFoundException, <a href="../../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a>
 <a class="jxr_linenumber" name="479" href="#479">479</a>     {
-<a class="jxr_linenumber" name="480" href="#480">480</a>         <strong class="jxr_keyword">return</strong> (Resource) jdo.getObjectById( JdoResource.<strong class="jxr_keyword">class</strong>, resourceIdentifier, <strong class="jxr_keyword">null</strong> );
+<a class="jxr_linenumber" name="480" href="#480">480</a>         <strong class="jxr_keyword">return</strong> jdo.getObjectById( JdoResource.<strong class="jxr_keyword">class</strong>, resourceIdentifier, <strong class="jxr_keyword">null</strong> );
 <a class="jxr_linenumber" name="481" href="#481">481</a>     }
 <a class="jxr_linenumber" name="482" href="#482">482</a> 
 <a class="jxr_linenumber" name="483" href="#483">483</a>     @SuppressWarnings( <span class="jxr_string">"unchecked"</span> )
@@ -555,7 +555,7 @@
 <a class="jxr_linenumber" name="545" href="#545">545</a> 
 <a class="jxr_linenumber" name="546" href="#546">546</a>         fireRbacUserAssignmentSaved( userAssignment );
 <a class="jxr_linenumber" name="547" href="#547">547</a> 
-<a class="jxr_linenumber" name="548" href="#548">548</a>         <strong class="jxr_keyword">return</strong> (UserAssignment) jdo.saveObject( userAssignment, <strong class="jxr_keyword">new</strong> String[]{ ROLE_DETAIL } );
+<a class="jxr_linenumber" name="548" href="#548">548</a>         <strong class="jxr_keyword">return</strong> jdo.saveObject( userAssignment, <strong class="jxr_keyword">new</strong> String[]{ ROLE_DETAIL } );
 <a class="jxr_linenumber" name="549" href="#549">549</a>     }
 <a class="jxr_linenumber" name="550" href="#550">550</a> 
 <a class="jxr_linenumber" name="551" href="#551">551</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> userAssignmentExists( String principal )
@@ -578,7 +578,7 @@
 <a class="jxr_linenumber" name="568" href="#568">568</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/apache/archiva/redback/rbac/UserAssignment.html">UserAssignment</a> getUserAssignment( String principal )
 <a class="jxr_linenumber" name="569" href="#569">569</a>         <strong class="jxr_keyword">throws</strong> RbacObjectNotFoundException, <a href="../../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a>
 <a class="jxr_linenumber" name="570" href="#570">570</a>     {
-<a class="jxr_linenumber" name="571" href="#571">571</a>         <strong class="jxr_keyword">return</strong> (UserAssignment) jdo.getObjectById( JdoUserAssignment.<strong class="jxr_keyword">class</strong>, principal, ROLE_DETAIL );
+<a class="jxr_linenumber" name="571" href="#571">571</a>         <strong class="jxr_keyword">return</strong> jdo.getObjectById( JdoUserAssignment.<strong class="jxr_keyword">class</strong>, principal, ROLE_DETAIL );
 <a class="jxr_linenumber" name="572" href="#572">572</a>     }
 <a class="jxr_linenumber" name="573" href="#573">573</a> 
 <a class="jxr_linenumber" name="574" href="#574">574</a>     <em class="jxr_javadoccomment">/**</em>

@@ -1578,6 +1578,74 @@
  visibility="public"
 >
 </constructor>
+<method name="evaluate"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="permission" type="org.apache.archiva.redback.rbac.Permission">
+</parameter>
+<parameter name="operation" type="java.lang.String">
+</parameter>
+<parameter name="resource" type="java.lang.String">
+</parameter>
+<parameter name="principal" type="java.lang.String">
+</parameter>
+</method>
+<method name="getAssignedPermissionMap"
+ return="java.util.Map&lt;java.lang.String, java.util.List&lt;org.apache.archiva.redback.rbac.Permission&gt;&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="roles" type="java.util.List&lt;java.lang.String&gt;">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+<exception name="RbacObjectNotFoundException" type="org.apache.archiva.redback.rbac.RbacObjectNotFoundException">
+</exception>
+</method>
+<method name="getAssignedPermissions"
+ return="java.util.Set&lt;org.apache.archiva.redback.rbac.Permission&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="roles" type="java.util.List&lt;java.lang.String&gt;">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+<exception name="RbacObjectNotFoundException" type="org.apache.archiva.redback.rbac.RbacObjectNotFoundException">
+</exception>
+</method>
+<method name="getChildRoles"
+ return="java.util.Map&lt;java.lang.String, org.apache.archiva.redback.rbac.Role&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="role" type="org.apache.archiva.redback.rbac.Role">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
 <method name="getDescriptionKey"
  return="java.lang.String"
  abstract="false"
@@ -1625,6 +1693,21 @@
  deprecated="not deprecated"
  visibility="public"
 >
+</method>
+<method name="mapLdapGroups"
+ return="java.util.List&lt;java.lang.String&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+<parameter name="groups" type="java.util.List&lt;java.lang.String&gt;">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
 </method>
 </class>
 </package>
@@ -4738,6 +4821,17 @@
 <parameter name="defaultValue" type="int">
 </parameter>
 </method>
+<method name="getKeys"
+ return="java.util.Collection&lt;java.lang.String&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getList"
  return="java.util.List&lt;java.lang.String&gt;"
  abstract="false"
@@ -4918,6 +5012,17 @@
 <parameter name="defaultValue" type="int">
 </parameter>
 </method>
+<method name="getKeys"
+ return="java.util.Collection&lt;java.lang.String&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getList"
  return="java.util.List&lt;java.lang.String&gt;"
  abstract="true"
@@ -5045,6 +5150,17 @@
  visibility="public"
 >
 </field>
+<field name="AUTHORIZER_IMPL"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;authorizer.impl&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
 <field name="CHARACTER_LENGTH_MAX"
  type="java.lang.String"
  transient="false"
@@ -5094,6 +5210,17 @@
  transient="false"
  volatile="false"
  value="&quot;redback.default.admin&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="DEFAULT_GUEST"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;redback.default.guest&quot;"
  static="true"
  final="true"
  deprecated="not deprecated"
@@ -18722,7 +18849,7 @@
 >
 </method>
 <method name="getObjectById"
- return="java.lang.Object"
+ return="T"
  abstract="false"
  native="false"
  synchronized="false"
@@ -18731,7 +18858,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="clazz" type="java.lang.Class&lt;?&gt;">
+<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
 </parameter>
 <parameter name="id" type="java.lang.String">
 </parameter>
@@ -18877,7 +19004,7 @@
 </parameter>
 </method>
 <method name="removeObject"
- return="java.lang.Object"
+ return="T"
  abstract="false"
  native="false"
  synchronized="false"
@@ -18886,7 +19013,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="o" type="java.lang.Object">
+<parameter name="o" type="T">
 </parameter>
 <exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
 </exception>
@@ -18905,7 +19032,7 @@
 </parameter>
 </method>
 <method name="saveObject"
- return="java.lang.Object"
+ return="T"
  abstract="false"
  native="false"
  synchronized="false"
@@ -18914,11 +19041,11 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="object" type="java.lang.Object">
+<parameter name="object" type="T">
 </parameter>
 </method>
 <method name="saveObject"
- return="java.lang.Object"
+ return="T"
  abstract="false"
  native="false"
  synchronized="false"
@@ -18927,7 +19054,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="object" type="java.lang.Object">
+<parameter name="object" type="T">
 </parameter>
 <parameter name="fetchGroups" type="java.lang.String[]">
 </parameter>
@@ -34049,7 +34176,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="username" type="java.lang.String">
 </parameter>
 <parameter name="context" type="javax.naming.directory.DirContext">
 </parameter>
@@ -34104,7 +34231,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="principal" type="java.lang.Object">
+<parameter name="principal" type="java.lang.String">
 </parameter>
 <parameter name="context" type="javax.naming.directory.DirContext">
 </parameter>
@@ -34121,7 +34248,7 @@
  deprecated="not deprecated"
  visibility="protected"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="java.lang.String">
 </parameter>
 <parameter name="context" type="javax.naming.directory.DirContext">
 </parameter>
@@ -34208,7 +34335,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="java.lang.String">
 </parameter>
 <parameter name="context" type="javax.naming.directory.DirContext">
 </parameter>
@@ -34254,7 +34381,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="java.lang.String">
 </parameter>
 <parameter name="context" type="javax.naming.directory.DirContext">
 </parameter>
@@ -34309,7 +34436,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="principal" type="java.lang.Object">
+<parameter name="principal" type="java.lang.String">
 </parameter>
 <parameter name="context" type="javax.naming.directory.DirContext">
 </parameter>
@@ -34345,7 +34472,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="java.lang.String">
 </parameter>
 <parameter name="context" type="javax.naming.directory.DirContext">
 </parameter>

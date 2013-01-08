@@ -159,12 +159,12 @@
 <a class="jxr_linenumber" name="149" href="#149">149</a>         cache.pinAll( clazz, false ); <em class="jxr_comment">// Pin all objects of type clazz from now on</em>
 <a class="jxr_linenumber" name="150" href="#150">150</a>     }
 <a class="jxr_linenumber" name="151" href="#151">151</a> 
-<a class="jxr_linenumber" name="152" href="#152">152</a>     <strong class="jxr_keyword">public</strong> Object saveObject( Object object )
+<a class="jxr_linenumber" name="152" href="#152">152</a>     <strong class="jxr_keyword">public</strong> &lt;T&gt;T saveObject( T object )
 <a class="jxr_linenumber" name="153" href="#153">153</a>     {
-<a class="jxr_linenumber" name="154" href="#154">154</a>         <strong class="jxr_keyword">return</strong> saveObject( object, <strong class="jxr_keyword">null</strong> );
+<a class="jxr_linenumber" name="154" href="#154">154</a>         <strong class="jxr_keyword">return</strong> (T) saveObject( object, <strong class="jxr_keyword">null</strong> );
 <a class="jxr_linenumber" name="155" href="#155">155</a>     }
 <a class="jxr_linenumber" name="156" href="#156">156</a> 
-<a class="jxr_linenumber" name="157" href="#157">157</a>     <strong class="jxr_keyword">public</strong> Object saveObject( Object object, String[] fetchGroups )
+<a class="jxr_linenumber" name="157" href="#157">157</a>     <strong class="jxr_keyword">public</strong> &lt;T&gt;T saveObject( T object, String[] fetchGroups )
 <a class="jxr_linenumber" name="158" href="#158">158</a>     {
 <a class="jxr_linenumber" name="159" href="#159">159</a>         PersistenceManager pm = getPersistenceManager();
 <a class="jxr_linenumber" name="160" href="#160">160</a>         Transaction tx = pm.currentTransaction();
@@ -190,7 +190,7 @@
 <a class="jxr_linenumber" name="180" href="#180">180</a> 
 <a class="jxr_linenumber" name="181" href="#181">181</a>             pm.makePersistent( object );
 <a class="jxr_linenumber" name="182" href="#182">182</a> 
-<a class="jxr_linenumber" name="183" href="#183">183</a>             object = pm.detachCopy( object );
+<a class="jxr_linenumber" name="183" href="#183">183</a>             object = (T) pm.detachCopy( object );
 <a class="jxr_linenumber" name="184" href="#184">184</a> 
 <a class="jxr_linenumber" name="185" href="#185">185</a>             tx.commit();
 <a class="jxr_linenumber" name="186" href="#186">186</a> 
@@ -299,7 +299,7 @@
 <a class="jxr_linenumber" name="289" href="#289">289</a>         }
 <a class="jxr_linenumber" name="290" href="#290">290</a>     }
 <a class="jxr_linenumber" name="291" href="#291">291</a> 
-<a class="jxr_linenumber" name="292" href="#292">292</a>     <strong class="jxr_keyword">public</strong> Object getObjectById( Class&lt;?&gt; clazz, String id, String fetchGroup )
+<a class="jxr_linenumber" name="292" href="#292">292</a>     <strong class="jxr_keyword">public</strong> &lt;T&gt;T getObjectById( Class&lt;T&gt; clazz, String id, String fetchGroup )
 <a class="jxr_linenumber" name="293" href="#293">293</a>         <strong class="jxr_keyword">throws</strong> RbacObjectNotFoundException, <a href="../../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a>
 <a class="jxr_linenumber" name="294" href="#294">294</a>     {
 <a class="jxr_linenumber" name="295" href="#295">295</a>         <strong class="jxr_keyword">if</strong> ( StringUtils.isEmpty( id ) )
@@ -328,7 +328,7 @@
 <a class="jxr_linenumber" name="318" href="#318">318</a> 
 <a class="jxr_linenumber" name="319" href="#319">319</a>             tx.commit();
 <a class="jxr_linenumber" name="320" href="#320">320</a> 
-<a class="jxr_linenumber" name="321" href="#321">321</a>             <strong class="jxr_keyword">return</strong> object;
+<a class="jxr_linenumber" name="321" href="#321">321</a>             <strong class="jxr_keyword">return</strong> (T) object;
 <a class="jxr_linenumber" name="322" href="#322">322</a>         }
 <a class="jxr_linenumber" name="323" href="#323">323</a>         <strong class="jxr_keyword">catch</strong> ( JDOObjectNotFoundException e )
 <a class="jxr_linenumber" name="324" href="#324">324</a>         {
@@ -365,7 +365,7 @@
 <a class="jxr_linenumber" name="355" href="#355">355</a>         }
 <a class="jxr_linenumber" name="356" href="#356">356</a>     }
 <a class="jxr_linenumber" name="357" href="#357">357</a> 
-<a class="jxr_linenumber" name="358" href="#358">358</a>     <strong class="jxr_keyword">public</strong> Object removeObject( Object o )
+<a class="jxr_linenumber" name="358" href="#358">358</a>     <strong class="jxr_keyword">public</strong> &lt;T&gt;T removeObject( T o )
 <a class="jxr_linenumber" name="359" href="#359">359</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../../org/apache/archiva/redback/rbac/RbacManagerException.html">RbacManagerException</a>
 <a class="jxr_linenumber" name="360" href="#360">360</a>     {
 <a class="jxr_linenumber" name="361" href="#361">361</a>         <strong class="jxr_keyword">if</strong> ( o == <strong class="jxr_keyword">null</strong> )
@@ -380,7 +380,7 @@
 <a class="jxr_linenumber" name="370" href="#370">370</a>         {
 <a class="jxr_linenumber" name="371" href="#371">371</a>             tx.begin();
 <a class="jxr_linenumber" name="372" href="#372">372</a> 
-<a class="jxr_linenumber" name="373" href="#373">373</a>             o = pm.getObjectById( pm.getObjectId( o ) );
+<a class="jxr_linenumber" name="373" href="#373">373</a>             o = (T) pm.getObjectById( pm.getObjectId( o ) );
 <a class="jxr_linenumber" name="374" href="#374">374</a> 
 <a class="jxr_linenumber" name="375" href="#375">375</a>             pm.deletePersistent( o );
 <a class="jxr_linenumber" name="376" href="#376">376</a> 
