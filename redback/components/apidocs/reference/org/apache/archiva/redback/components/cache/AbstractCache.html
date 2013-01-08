@@ -52,7 +52,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-  <meta name="description" content="Javadoc API documentation for Apache Archiva Redback Components." />
+  <meta name="description" content="Javadoc API documentation for Apache Archiva Redback Components Aggregator." />
 
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
 <title>
@@ -60,7 +60,7 @@
   AbstractCache
 
 
-| Apache Archiva Redback Components
+| Apache Archiva Redback Components Aggregator
 
 </title>
 <link href="../../../../../../../assets/doclava-developer-docs.css" rel="stylesheet" type="text/css" />
@@ -92,7 +92,7 @@
 <div id="header">
     <div id="headerLeft">
     
-      <span id="masthead-title">Apache Archiva Redback Components</span>
+      <span id="masthead-title">Apache Archiva Redback Components Aggregator</span>
     
     </div>
     <div id="headerRight">
@@ -196,16 +196,16 @@
               
     <li><h2>Interfaces</h2>
       <ul>
-          <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html">Cache</a></li>
+          <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html">Cache</a>&lt;V,&nbsp;T&gt;</li>
           <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/redback/components/cache/CacheStatistics.html">CacheStatistics</a></li>
       </ul>
     </li>
               
     <li><h2>Classes</h2>
       <ul>
-          <li class="selected api apilevel-"><a href="../../../../../../org/apache/archiva/redback/components/cache/AbstractCache.html">AbstractCache</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../../org/apache/archiva/redback/components/cache/AbstractCache.html">AbstractCache</a>&lt;V,&nbsp;T&gt;</li>
           <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/redback/components/cache/AbstractCacheStatistics.html">AbstractCacheStatistics</a></li>
-          <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/redback/components/cache/CacheableWrapper.html">CacheableWrapper</a></li>
+          <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/redback/components/cache/CacheableWrapper.html">CacheableWrapper</a>&lt;T&gt;</li>
           <li class="api apilevel-"><a href="../../../../../../org/apache/archiva/redback/components/cache/CacheHints.html">CacheHints</a></li>
       </ul>
     </li>
@@ -331,7 +331,7 @@ Summary:
   
       implements 
       
-        <a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html">Cache</a> 
+        <a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html">Cache</a>&lt;V,&nbsp;T&gt; 
       
   
   
@@ -355,7 +355,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
          	
-        <td colspan="1" class="jd-inheritance-class-cell">org.apache.archiva.redback.components.cache.AbstractCache</td>
+        <td colspan="1" class="jd-inheritance-class-cell">org.apache.archiva.redback.components.cache.AbstractCache&lt;V,&nbsp;T&gt;</td>
     </tr>
     
 
@@ -378,11 +378,11 @@ Summary:
               >
           
             
-              <a href="../../../../../../org/apache/archiva/redback/components/cache/hashmap/HashMapCache.html">HashMapCache</a>,
+              <a href="../../../../../../org/apache/archiva/redback/components/cache/hashmap/HashMapCache.html">HashMapCache</a>&lt;V,&nbsp;T&gt;,
             
-              <a href="../../../../../../org/apache/archiva/redback/components/cache/impl/NoCacheCache.html">NoCacheCache</a>,
+              <a href="../../../../../../org/apache/archiva/redback/components/cache/impl/NoCacheCache.html">NoCacheCache</a>&lt;V,&nbsp;T&gt;,
             
-              <a href="../../../../../../org/apache/archiva/redback/components/cache/oscache/OsCacheCache.html">OsCacheCache</a>
+              <a href="../../../../../../org/apache/archiva/redback/components/cache/oscache/OsCacheCache.html">OsCacheCache</a>&lt;V,&nbsp;T&gt;
             
           
       </div>
@@ -391,16 +391,16 @@ Summary:
               >
   <table class="jd-sumtable-expando">
         <tr class="alt-color api apilevel-" >
-              <td class="jd-linkcol"><a href="../../../../../../org/apache/archiva/redback/components/cache/hashmap/HashMapCache.html">HashMapCache</a></td>
+              <td class="jd-linkcol"><a href="../../../../../../org/apache/archiva/redback/components/cache/hashmap/HashMapCache.html">HashMapCache</a>&lt;V,&nbsp;T&gt;</td>
               <td class="jd-descrcol" width="100%"><p>
  HashMapCache - this is a Cache implementation taken from the Archiva project.&nbsp;</td>
           </tr>
         <tr class=" api apilevel-" >
-              <td class="jd-linkcol"><a href="../../../../../../org/apache/archiva/redback/components/cache/impl/NoCacheCache.html">NoCacheCache</a></td>
+              <td class="jd-linkcol"><a href="../../../../../../org/apache/archiva/redback/components/cache/impl/NoCacheCache.html">NoCacheCache</a>&lt;V,&nbsp;T&gt;</td>
               <td class="jd-descrcol" width="100%">Simple no-op provider of a Cache.&nbsp;</td>
           </tr>
         <tr class="alt-color api apilevel-" >
-              <td class="jd-linkcol"><a href="../../../../../../org/apache/archiva/redback/components/cache/oscache/OsCacheCache.html">OsCacheCache</a></td>
+              <td class="jd-linkcol"><a href="../../../../../../org/apache/archiva/redback/components/cache/oscache/OsCacheCache.html">OsCacheCache</a>&lt;V,&nbsp;T&gt;</td>
               <td class="jd-descrcol" width="100%">For configuration see documentation : http://opensymphony.com/oscache/wiki/Configuration.html&nbsp;</td>
           </tr>
   </table>
@@ -507,6 +507,38 @@ Summary:
             int</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/AbstractCache.html#getMaxElementsInMemory()">getMaxElementsInMemory</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/AbstractCache.html#getMaxElementsOnDisk()">getMaxElementsOnDisk</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/AbstractCache.html#getTimeToIdleSeconds()">getTimeToIdleSeconds</a></span>()</nobr>
         
   </td></tr>
@@ -524,6 +556,38 @@ Summary:
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/AbstractCache.html#getTimeToLiveSeconds()">getTimeToLiveSeconds</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/AbstractCache.html#setMaxElementsInMemory(int)">setMaxElementsInMemory</a></span>(int maxElementsInMemory)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/AbstractCache.html#setMaxElementsOnDisk(int)">setMaxElementsOnDisk</a></span>(int maxElementsOnDisk)</nobr>
         
   </td></tr>
 
@@ -822,10 +886,10 @@ From interface
             
             
             
-            Object</nobr>
+            T</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#get(java.lang.Object)">get</a></span>(Object key)</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#get(V)">get</a></span>(V key)</nobr>
         
         <div class="jd-descrdiv">Get the value of the specified key, if it exists in the cache.</div>
   
@@ -839,19 +903,33 @@ From interface
             
             
             
-            &lt;T&gt;
-            T</nobr>
+            
+            int</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#get(java.lang.Object, java.lang.Class<T>)">get</a></span>(Object key, Class&lt;T&gt; clazz)</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#getMaxElementsInMemory()">getMaxElementsInMemory</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Get the value of the specified key, if it exists in the cache.</div>
-  
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#getMaxElementsOnDisk()">getMaxElementsOnDisk</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -869,7 +947,7 @@ From interface
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -885,7 +963,7 @@ From interface
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -901,7 +979,7 @@ From interface
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -911,27 +989,9 @@ From interface
             boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#hasKey(java.lang.Object)">hasKey</a></span>(Object key)</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#hasKey(V)">hasKey</a></span>(V key)</nobr>
         
         <div class="jd-descrdiv">Tests to see if the provided key exists within the cache.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            Object</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#put(java.lang.Object, java.lang.Object)">put</a></span>(Object key, Object value)</nobr>
-        
-        <div class="jd-descrdiv">Put the specified value into the cache under the provided key.</div>
   
   </td></tr>
 
@@ -943,11 +1003,11 @@ From interface
             
             
             
-            &lt;T&gt;
+            
             T</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#put(java.lang.Object, java.lang.Object, java.lang.Class<T>)">put</a></span>(Object key, Object value, Class&lt;T&gt; clazz)</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#put(V, T)">put</a></span>(V key, T value)</nobr>
         
         <div class="jd-descrdiv">Put the specified value into the cache under the provided key.</div>
   
@@ -965,7 +1025,7 @@ From interface
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#register(java.lang.Object, java.lang.Object)">register</a></span>(Object key, Object value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#register(V, T)">register</a></span>(V key, T value)</nobr>
         
         <div class="jd-descrdiv">Register the specified value into the cache under the provided key.</div>
   
@@ -980,13 +1040,45 @@ From interface
             
             
             
-            Object</nobr>
+            T</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#remove(java.lang.Object)">remove</a></span>(Object key)</nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#remove(V)">remove</a></span>(V key)</nobr>
         
         <div class="jd-descrdiv">Remove the specified key and value from the cache.</div>
   
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#setMaxElementsInMemory(int)">setMaxElementsInMemory</a></span>(int maxElementsInMemory)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/components/cache/Cache.html#setMaxElementsOnDisk(int)">setMaxElementsOnDisk</a></span>(int maxElementsOnDisk)</nobr>
+        
   </td></tr>
 
 
@@ -1108,6 +1200,68 @@ From interface
 
 
 
+<A NAME="getMaxElementsInMemory()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">getMaxElementsInMemory</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getMaxElementsOnDisk()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">getMaxElementsOnDisk</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
 <A NAME="getTimeToIdleSeconds()"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1153,6 +1307,68 @@ From interface
       </span>
       <span class="sympad">getTimeToLiveSeconds</span>
       <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="setMaxElementsInMemory(int)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setMaxElementsInMemory</span>
+      <span class="normal">(int maxElementsInMemory)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="setMaxElementsOnDisk(int)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setMaxElementsOnDisk</span>
+      <span class="normal">(int maxElementsOnDisk)</span>
     </h4>
       <div class="api-level">
         <div>

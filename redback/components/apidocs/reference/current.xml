@@ -555,6 +555,28 @@
  visibility="public"
 >
 </constructor>
+<method name="getMaxElementsInMemory"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getMaxElementsOnDisk"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getTimeToIdleSeconds"
  return="int"
  abstract="false"
@@ -576,6 +598,32 @@
  deprecated="not deprecated"
  visibility="public"
 >
+</method>
+<method name="setMaxElementsInMemory"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="maxElementsInMemory" type="int">
+</parameter>
+</method>
+<method name="setMaxElementsOnDisk"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="maxElementsOnDisk" type="int">
+</parameter>
 </method>
 <method name="setTimeToIdleSeconds"
  return="void"
@@ -730,19 +778,6 @@
 >
 </method>
 <method name="get"
- return="java.lang.Object"
- abstract="true"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="key" type="java.lang.Object">
-</parameter>
-</method>
-<method name="get"
  return="T"
  abstract="true"
  native="false"
@@ -752,10 +787,30 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
-<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
-</parameter>
+</method>
+<method name="getMaxElementsInMemory"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getMaxElementsOnDisk"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
 </method>
 <method name="getStatistics"
  return="org.apache.archiva.redback.components.cache.CacheStatistics"
@@ -800,22 +855,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
-</parameter>
-</method>
-<method name="put"
- return="java.lang.Object"
- abstract="true"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="key" type="java.lang.Object">
-</parameter>
-<parameter name="value" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
 </method>
 <method name="put"
@@ -828,11 +868,9 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
-<parameter name="value" type="java.lang.Object">
-</parameter>
-<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
+<parameter name="value" type="T">
 </parameter>
 </method>
 <method name="register"
@@ -845,13 +883,13 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
-<parameter name="value" type="java.lang.Object">
+<parameter name="value" type="T">
 </parameter>
 </method>
 <method name="remove"
- return="java.lang.Object"
+ return="T"
  abstract="true"
  native="false"
  synchronized="false"
@@ -860,7 +898,33 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="V">
+</parameter>
+</method>
+<method name="setMaxElementsInMemory"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="maxElementsInMemory" type="int">
+</parameter>
+</method>
+<method name="setMaxElementsOnDisk"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="maxElementsOnDisk" type="int">
 </parameter>
 </method>
 <method name="setTimeToIdleSeconds"
@@ -1189,7 +1253,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="value" type="java.lang.Object">
+<parameter name="value" type="T">
 </parameter>
 <parameter name="storedTime" type="long">
 </parameter>
@@ -1206,7 +1270,7 @@
 >
 </method>
 <method name="getValue"
- return="java.lang.Object"
+ return="T"
  abstract="false"
  native="false"
  synchronized="false"
@@ -1239,7 +1303,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="value" type="java.lang.Object">
+<parameter name="value" type="T">
 </parameter>
 </method>
 </class>
@@ -1254,7 +1318,7 @@
  visibility="public"
 >
 <method name="getCache"
- return="org.apache.archiva.redback.components.cache.Cache"
+ return="org.apache.archiva.redback.components.cache.Cache&lt;V, T&gt;"
  abstract="true"
  native="false"
  synchronized="false"
@@ -1267,7 +1331,7 @@
 </parameter>
 </method>
 <method name="getCache"
- return="org.apache.archiva.redback.components.cache.Cache"
+ return="org.apache.archiva.redback.components.cache.Cache&lt;V, T&gt;"
  abstract="true"
  native="false"
  synchronized="false"
@@ -1310,7 +1374,7 @@
 >
 </method>
 <method name="getCache"
- return="org.apache.archiva.redback.components.cache.Cache"
+ return="org.apache.archiva.redback.components.cache.Cache&lt;V, T&gt;"
  abstract="false"
  native="false"
  synchronized="false"
@@ -1323,7 +1387,7 @@
 </parameter>
 </method>
 <method name="getCache"
- return="org.apache.archiva.redback.components.cache.Cache"
+ return="org.apache.archiva.redback.components.cache.Cache&lt;V, T&gt;"
  abstract="false"
  native="false"
  synchronized="false"
@@ -1336,7 +1400,7 @@
 </parameter>
 </method>
 <method name="getDefaultCache"
- return="org.apache.archiva.redback.components.cache.Cache"
+ return="org.apache.archiva.redback.components.cache.Cache&lt;V, T&gt;"
  abstract="false"
  native="false"
  synchronized="false"
@@ -1402,19 +1466,6 @@
 >
 </method>
 <method name="get"
- return="java.lang.Object"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="key" type="java.lang.Object">
-</parameter>
-</method>
-<method name="get"
  return="T"
  abstract="false"
  native="false"
@@ -1424,9 +1475,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
-</parameter>
-<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
+<parameter name="key" type="V">
 </parameter>
 </method>
 <method name="getDiskExpiryThreadIntervalSeconds"
@@ -1474,6 +1523,17 @@
 >
 </method>
 <method name="getMaxElementsInMemory"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getMaxElementsOnDisk"
  return="int"
  abstract="false"
  native="false"
@@ -1560,7 +1620,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
 </method>
 <method name="initialize"
@@ -1650,26 +1710,9 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
-<parameter name="value" type="java.lang.Object">
-</parameter>
-<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
-</parameter>
-</method>
-<method name="put"
- return="java.lang.Object"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="key" type="java.lang.Object">
-</parameter>
-<parameter name="value" type="java.lang.Object">
+<parameter name="value" type="T">
 </parameter>
 </method>
 <method name="register"
@@ -1682,13 +1725,13 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
-<parameter name="value" type="java.lang.Object">
+<parameter name="value" type="T">
 </parameter>
 </method>
 <method name="remove"
- return="java.lang.Object"
+ return="T"
  abstract="false"
  native="false"
  synchronized="false"
@@ -1697,7 +1740,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
 </method>
 <method name="setDiskExpiryThreadIntervalSeconds"
@@ -1802,6 +1845,19 @@
  visibility="public"
 >
 <parameter name="maxElementsInMemory" type="int">
+</parameter>
+</method>
+<method name="setMaxElementsOnDisk"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="maxElementsOnDisk" type="int">
 </parameter>
 </method>
 <method name="setMemoryEvictionPolicy"
@@ -2039,19 +2095,6 @@
 >
 </method>
 <method name="get"
- return="java.lang.Object"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="key" type="java.lang.Object">
-</parameter>
-</method>
-<method name="get"
  return="T"
  abstract="false"
  native="false"
@@ -2061,9 +2104,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
-</parameter>
-<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
+<parameter name="key" type="V">
 </parameter>
 </method>
 <method name="getCacheHitRatio"
@@ -2131,7 +2172,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
 </method>
 <method name="initialize"
@@ -2179,26 +2220,9 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
-<parameter name="value" type="java.lang.Object">
-</parameter>
-<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
-</parameter>
-</method>
-<method name="put"
- return="java.lang.Object"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="key" type="java.lang.Object">
-</parameter>
-<parameter name="value" type="java.lang.Object">
+<parameter name="value" type="T">
 </parameter>
 </method>
 <method name="register"
@@ -2211,13 +2235,13 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
-<parameter name="value" type="java.lang.Object">
+<parameter name="value" type="T">
 </parameter>
 </method>
 <method name="remove"
- return="java.lang.Object"
+ return="T"
  abstract="false"
  native="false"
  synchronized="false"
@@ -2226,7 +2250,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
 </method>
 <method name="setCacheHitRatio"
@@ -2336,19 +2360,6 @@
 >
 </method>
 <method name="get"
- return="java.lang.Object"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="key" type="java.lang.Object">
-</parameter>
-</method>
-<method name="get"
  return="T"
  abstract="false"
  native="false"
@@ -2358,9 +2369,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
-</parameter>
-<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
+<parameter name="key" type="V">
 </parameter>
 </method>
 <method name="getStatistics"
@@ -2384,22 +2393,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
-</parameter>
-</method>
-<method name="put"
- return="java.lang.Object"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="key" type="java.lang.Object">
-</parameter>
-<parameter name="value" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
 </method>
 <method name="put"
@@ -2412,11 +2406,9 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
-<parameter name="value" type="java.lang.Object">
-</parameter>
-<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
+<parameter name="value" type="T">
 </parameter>
 </method>
 <method name="register"
@@ -2429,13 +2421,13 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
-<parameter name="value" type="java.lang.Object">
+<parameter name="value" type="T">
 </parameter>
 </method>
 <method name="remove"
- return="java.lang.Object"
+ return="T"
  abstract="false"
  native="false"
  synchronized="false"
@@ -2444,7 +2436,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
 </method>
 </class>
@@ -2481,19 +2473,6 @@
 >
 </method>
 <method name="get"
- return="java.lang.Object"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="key" type="java.lang.Object">
-</parameter>
-</method>
-<method name="get"
  return="T"
  abstract="false"
  native="false"
@@ -2503,9 +2482,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
-</parameter>
-<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
+<parameter name="key" type="V">
 </parameter>
 </method>
 <method name="getAdditionnalProperties"
@@ -2628,7 +2605,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
 </method>
 <method name="initialize"
@@ -2707,26 +2684,9 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
-<parameter name="value" type="java.lang.Object">
-</parameter>
-<parameter name="clazz" type="java.lang.Class&lt;T&gt;">
-</parameter>
-</method>
-<method name="put"
- return="java.lang.Object"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="key" type="java.lang.Object">
-</parameter>
-<parameter name="value" type="java.lang.Object">
+<parameter name="value" type="T">
 </parameter>
 </method>
 <method name="register"
@@ -2739,13 +2699,13 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
-<parameter name="value" type="java.lang.Object">
+<parameter name="value" type="T">
 </parameter>
 </method>
 <method name="remove"
- return="java.lang.Object"
+ return="T"
  abstract="false"
  native="false"
  synchronized="false"
@@ -2754,7 +2714,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="key" type="java.lang.Object">
+<parameter name="key" type="V">
 </parameter>
 </method>
 <method name="setAdditionnalProperties"
@@ -3026,7 +2986,7 @@
 >
 </constructor>
 <method name="getAlwaysRefresCache"
- return="org.apache.archiva.redback.components.cache.Cache"
+ return="org.apache.archiva.redback.components.cache.Cache&lt;java.lang.String, org.apache.archiva.redback.components.cache.test.examples.wine.Wine&gt;"
  abstract="true"
  native="false"
  synchronized="false"
@@ -3039,7 +2999,7 @@
 </exception>
 </method>
 <method name="getCache"
- return="org.apache.archiva.redback.components.cache.Cache"
+ return="org.apache.archiva.redback.components.cache.Cache&lt;java.lang.String, java.lang.Integer&gt;"
  abstract="true"
  native="false"
  synchronized="false"
@@ -3061,7 +3021,7 @@
 >
 </method>
 <method name="getNeverRefresCache"
- return="org.apache.archiva.redback.components.cache.Cache"
+ return="org.apache.archiva.redback.components.cache.Cache&lt;java.lang.String, org.apache.archiva.redback.components.cache.test.examples.wine.Wine&gt;"
  abstract="true"
  native="false"
  synchronized="false"
@@ -3074,7 +3034,7 @@
 </exception>
 </method>
 <method name="getOneSecondRefresCache"
- return="org.apache.archiva.redback.components.cache.Cache"
+ return="org.apache.archiva.redback.components.cache.Cache&lt;java.lang.String, org.apache.archiva.redback.components.cache.test.examples.wine.Wine&gt;"
  abstract="true"
  native="false"
  synchronized="false"
@@ -3087,7 +3047,7 @@
 </exception>
 </method>
 <method name="getTwoSecondRefresCache"
- return="org.apache.archiva.redback.components.cache.Cache"
+ return="org.apache.archiva.redback.components.cache.Cache&lt;java.lang.String, org.apache.archiva.redback.components.cache.test.examples.wine.Wine&gt;"
  abstract="true"
  native="false"
  synchronized="false"
@@ -4888,6 +4848,17 @@
 <parameter name="defaultValue" type="boolean">
 </parameter>
 </method>
+<method name="getFullKeys"
+ return="java.util.Collection&lt;java.lang.String&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getInt"
  return="int"
  abstract="true"
@@ -4917,7 +4888,7 @@
 </parameter>
 </method>
 <method name="getKeys"
- return="java.util.Collection"
+ return="java.util.Collection&lt;java.lang.String&gt;"
  abstract="true"
  native="false"
  synchronized="false"
@@ -5351,6 +5322,17 @@
 <parameter name="defaultValue" type="boolean">
 </parameter>
 </method>
+<method name="getFullKeys"
+ return="java.util.Collection"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getInt"
  return="int"
  abstract="false"
@@ -5380,7 +5362,7 @@
 </parameter>
 </method>
 <method name="getKeys"
- return="java.util.Collection"
+ return="java.util.Collection&lt;java.lang.String&gt;"
  abstract="false"
  native="false"
  synchronized="false"
@@ -5415,6 +5397,17 @@
 >
 <parameter name="key" type="java.lang.String">
 </parameter>
+</method>
+<method name="getPropertyDelimiter"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
 </method>
 <method name="getSection"
  return="org.apache.archiva.redback.components.registry.Registry"
@@ -5587,6 +5580,19 @@
  visibility="public"
 >
 <parameter name="properties" type="java.lang.String">
+</parameter>
+</method>
+<method name="setPropertyDelimiter"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="propertyDelimiter" type="java.lang.String">
 </parameter>
 </method>
 <method name="setString"
@@ -6522,70 +6528,6 @@
 </package>
 <package name="org.apache.archiva.redback.components.springutils"
 >
-<class name="CachingByTypeBeanFactory"
- extends="org.springframework.beans.factory.support.DefaultListableBeanFactory"
- abstract="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<constructor name="CachingByTypeBeanFactory"
- type="org.apache.archiva.redback.components.springutils.CachingByTypeBeanFactory"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</constructor>
-<method name="getBeanNamesForType"
- return="java.lang.String[]"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="type" type="java.lang.Class">
-</parameter>
-</method>
-<method name="getBeanNamesForType"
- return="java.lang.String[]"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="type" type="java.lang.Class">
-</parameter>
-<parameter name="includeNonSingletons" type="boolean">
-</parameter>
-<parameter name="allowEagerInit" type="boolean">
-</parameter>
-</method>
-</class>
-<class name="CachingWebApplicationContext"
- extends="org.springframework.web.context.support.XmlWebApplicationContext"
- abstract="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<constructor name="CachingWebApplicationContext"
- type="org.apache.archiva.redback.components.springutils.CachingWebApplicationContext"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</constructor>
-</class>
 <class name="ComponentContainer"
  extends="java.lang.Object"
  abstract="false"
