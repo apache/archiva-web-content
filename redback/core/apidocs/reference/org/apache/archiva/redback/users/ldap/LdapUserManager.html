@@ -159,8 +159,6 @@
     <li class="api apilevel-">
   <a href="../../../../../../org/apache/archiva/redback/authorization/package-summary.html">org.apache.archiva.redback.authorization</a></li>
     <li class="api apilevel-">
-  <a href="../../../../../../org/apache/archiva/redback/authorization/ldap/package-summary.html">org.apache.archiva.redback.authorization.ldap</a></li>
-    <li class="api apilevel-">
   <a href="../../../../../../org/apache/archiva/redback/authorization/open/package-summary.html">org.apache.archiva.redback.authorization.open</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../org/apache/archiva/redback/authorization/rbac/package-summary.html">org.apache.archiva.redback.authorization.rbac</a></li>
@@ -228,6 +226,8 @@
   <a href="../../../../../../org/apache/archiva/redback/rbac/jdo/package-summary.html">org.apache.archiva.redback.rbac.jdo</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../org/apache/archiva/redback/rbac/jdo/io/stax/package-summary.html">org.apache.archiva.redback.rbac.jdo.io.stax</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../org/apache/archiva/redback/rbac/ldap/package-summary.html">org.apache.archiva.redback.rbac.ldap</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../org/apache/archiva/redback/rbac/memory/package-summary.html">org.apache.archiva.redback.rbac.memory</a></li>
     <li class="api apilevel-">
@@ -873,24 +873,6 @@ Summary:
             
             
             
-            <a href="../../../../../../org/apache/archiva/redback/users/User.html">User</a></nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/users/ldap/LdapUserManager.html#getGuestUser()">getGuestUser</a></span>()</nobr>
-        
-        <div class="jd-descrdiv">Get the guest user.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
@@ -902,7 +884,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -920,7 +902,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -932,6 +914,25 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/users/ldap/LdapUserManager.html#getUsers(boolean)">getUsers</a></span>(boolean orderAscending)</nobr>
         
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/apache/archiva/redback/users/ldap/LdapUserManager.html#initialize()">initialize</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">consumer of user manager can use it to reload various configuration
+ with the configurable implementation is possible to change dynamically the real implementation used.</div>
+  
   </td></tr>
 
 
@@ -2545,51 +2546,6 @@ From interface
 </div>
 
 
-<A NAME="getGuestUser()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../../org/apache/archiva/redback/users/User.html">User</a>
-      </span>
-      <span class="sympad">getGuestUser</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Get the guest user.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>the guest user.
-</li></ul>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th><a href="../../../../../../org/apache/archiva/redback/users/UserNotFoundException.html">UserNotFoundException</a></td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="getId()"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -2692,6 +2648,38 @@ From interface
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="initialize()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">initialize</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>consumer of user manager can use it to reload various configuration
+ with the configurable implementation is possible to change dynamically the real implementation used.</p></div>
 
     </div>
 </div>

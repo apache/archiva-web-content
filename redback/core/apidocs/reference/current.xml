@@ -101,7 +101,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<method name="getPrincipal"
+<method name="getUsername"
  return="java.lang.String"
  abstract="true"
  native="false"
@@ -634,7 +634,7 @@
  visibility="public"
 >
 </method>
-<method name="getPrincipal"
+<method name="getUsername"
  return="java.lang.String"
  abstract="false"
  native="false"
@@ -711,7 +711,7 @@
  visibility="public"
 >
 </constructor>
-<method name="getPrincipal"
+<method name="getToken"
  return="java.lang.String"
  abstract="false"
  native="false"
@@ -722,7 +722,7 @@
  visibility="public"
 >
 </method>
-<method name="getToken"
+<method name="getUsername"
  return="java.lang.String"
  abstract="false"
  native="false"
@@ -1556,159 +1556,6 @@
 <parameter name="t" type="java.lang.Throwable">
 </parameter>
 </constructor>
-</class>
-</package>
-<package name="org.apache.archiva.redback.authorization.ldap"
->
-<class name="LdapAuthorizer"
- extends="java.lang.Object"
- abstract="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<implements name="org.apache.archiva.redback.authorization.Authorizer">
-</implements>
-<constructor name="LdapAuthorizer"
- type="org.apache.archiva.redback.authorization.ldap.LdapAuthorizer"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</constructor>
-<method name="evaluate"
- return="boolean"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="permission" type="org.apache.archiva.redback.rbac.Permission">
-</parameter>
-<parameter name="operation" type="java.lang.String">
-</parameter>
-<parameter name="resource" type="java.lang.String">
-</parameter>
-<parameter name="principal" type="java.lang.String">
-</parameter>
-</method>
-<method name="getAssignedPermissionMap"
- return="java.util.Map&lt;java.lang.String, java.util.List&lt;org.apache.archiva.redback.rbac.Permission&gt;&gt;"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="roles" type="java.util.List&lt;java.lang.String&gt;">
-</parameter>
-<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
-</exception>
-<exception name="RbacObjectNotFoundException" type="org.apache.archiva.redback.rbac.RbacObjectNotFoundException">
-</exception>
-</method>
-<method name="getAssignedPermissions"
- return="java.util.Set&lt;org.apache.archiva.redback.rbac.Permission&gt;"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="roles" type="java.util.List&lt;java.lang.String&gt;">
-</parameter>
-<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
-</exception>
-<exception name="RbacObjectNotFoundException" type="org.apache.archiva.redback.rbac.RbacObjectNotFoundException">
-</exception>
-</method>
-<method name="getChildRoles"
- return="java.util.Map&lt;java.lang.String, org.apache.archiva.redback.rbac.Role&gt;"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="role" type="org.apache.archiva.redback.rbac.Role">
-</parameter>
-<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
-</exception>
-</method>
-<method name="getDescriptionKey"
- return="java.lang.String"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
-<method name="getId"
- return="java.lang.String"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
-<method name="isAuthorized"
- return="org.apache.archiva.redback.authorization.AuthorizationResult"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="source" type="org.apache.archiva.redback.authorization.AuthorizationDataSource">
-</parameter>
-<exception name="AuthorizationException" type="org.apache.archiva.redback.authorization.AuthorizationException">
-</exception>
-</method>
-<method name="isFinalImplementation"
- return="boolean"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
-<method name="mapLdapGroups"
- return="java.util.List&lt;java.lang.String&gt;"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="protected"
->
-<parameter name="groups" type="java.util.List&lt;java.lang.String&gt;">
-</parameter>
-<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
-</exception>
-</method>
 </class>
 </package>
 <package name="org.apache.archiva.redback.authorization.open"
@@ -3331,6 +3178,19 @@
 <exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
 </exception>
 </method>
+<method name="getAllRoles"
+ return="java.util.List&lt;java.lang.String&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
 <method name="getBaseDn"
  return="java.lang.String"
  abstract="false"
@@ -3418,6 +3278,21 @@
  visibility="public"
 >
 </method>
+<method name="getRoles"
+ return="java.util.List&lt;java.lang.String&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="username" type="java.lang.String">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
 <method name="initialize"
  return="void"
  abstract="false"
@@ -3428,6 +3303,19 @@
  deprecated="not deprecated"
  visibility="public"
 >
+</method>
+<method name="removeAllRoles"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
 </method>
 <method name="removeLdapMapping"
  return="void"
@@ -3441,6 +3329,70 @@
 >
 <parameter name="role" type="java.lang.String">
 </parameter>
+</method>
+<method name="removeRole"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="roleName" type="java.lang.String">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
+<method name="removeUserRole"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="roleName" type="java.lang.String">
+</parameter>
+<parameter name="username" type="java.lang.String">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
+<method name="saveRole"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="roleName" type="java.lang.String">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
+<method name="saveUserRole"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="roleName" type="java.lang.String">
+</parameter>
+<parameter name="username" type="java.lang.String">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
 </method>
 <method name="setBaseDn"
  return="void"
@@ -3494,6 +3446,21 @@
 <parameter name="ldapGroupClass" type="java.lang.String">
 </parameter>
 </method>
+<method name="setLdapGroupMappings"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="mappings" type="java.util.Map&lt;java.lang.String, java.lang.String&gt;">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
 <method name="setUserConf"
  return="void"
  abstract="false"
@@ -3533,6 +3500,19 @@
 </exception>
 </method>
 <method name="getAllGroups"
+ return="java.util.List&lt;java.lang.String&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
+<method name="getAllRoles"
  return="java.util.List&lt;java.lang.String&gt;"
  abstract="true"
  native="false"
@@ -3625,6 +3605,34 @@
 <exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
 </exception>
 </method>
+<method name="getRoles"
+ return="java.util.List&lt;java.lang.String&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="username" type="java.lang.String">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
+<method name="removeAllRoles"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
 <method name="removeLdapMapping"
  return="void"
  abstract="true"
@@ -3636,6 +3644,85 @@
  visibility="public"
 >
 <parameter name="role" type="java.lang.String">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
+<method name="removeRole"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="roleName" type="java.lang.String">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
+<method name="removeUserRole"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="roleName" type="java.lang.String">
+</parameter>
+<parameter name="username" type="java.lang.String">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
+<method name="saveRole"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="roleName" type="java.lang.String">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
+<method name="saveUserRole"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="roleName" type="java.lang.String">
+</parameter>
+<parameter name="username" type="java.lang.String">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
+<method name="setLdapGroupMappings"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="mappings" type="java.util.Map&lt;java.lang.String, java.lang.String&gt;">
 </parameter>
 <exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
 </exception>
@@ -5150,17 +5237,6 @@
  visibility="public"
 >
 </field>
-<field name="AUTHORIZER_IMPL"
- type="java.lang.String"
- transient="false"
- volatile="false"
- value="&quot;authorizer.impl&quot;"
- static="true"
- final="true"
- deprecated="not deprecated"
- visibility="public"
->
-</field>
 <field name="CHARACTER_LENGTH_MAX"
  type="java.lang.String"
  transient="false"
@@ -5524,6 +5600,17 @@
  visibility="public"
 >
 </field>
+<field name="LDAP_WRITABLE"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;ldap.config.writable&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
 <field name="LOGIN_ATTEMPT_COUNT"
  type="java.lang.String"
  transient="false"
@@ -5672,6 +5759,17 @@
  transient="false"
  volatile="false"
  value="&quot;security.policy.password.rule.reuse.enabled&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="RBAC_MANAGER_IMPL"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;rbac.manager.impl&quot;"
  static="true"
  final="true"
  deprecated="not deprecated"
@@ -13771,6 +13869,8 @@
 >
 <parameter name="role" type="org.apache.archiva.redback.rbac.Role">
 </parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
 </method>
 <method name="roleExists"
  return="boolean"
@@ -13784,6 +13884,8 @@
 >
 <parameter name="name" type="java.lang.String">
 </parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
 </method>
 <method name="userAssignmentExists"
  return="boolean"
@@ -14942,6 +15044,8 @@
 >
 <parameter name="name" type="java.lang.String">
 </parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
 </method>
 <method name="roleExists"
  return="boolean"
@@ -14955,6 +15059,8 @@
 >
 <parameter name="role" type="org.apache.archiva.redback.rbac.Role">
 </parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
 </method>
 <method name="saveOperation"
  return="org.apache.archiva.redback.rbac.Operation"
@@ -17197,6 +17303,8 @@
 >
 <parameter name="role" type="org.apache.archiva.redback.rbac.Role">
 </parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
 </method>
 <method name="roleExists"
  return="boolean"
@@ -17210,6 +17318,8 @@
 >
 <parameter name="name" type="java.lang.String">
 </parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
 </method>
 <method name="saveOperation"
  return="org.apache.archiva.redback.rbac.Operation"
@@ -19924,6 +20034,616 @@
 </parameter>
 <exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
 </exception>
+</method>
+</class>
+</package>
+<package name="org.apache.archiva.redback.rbac.ldap"
+>
+<class name="LdapRbacManager"
+ extends="org.apache.archiva.redback.rbac.AbstractRBACManager"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.apache.archiva.redback.rbac.RBACManager">
+</implements>
+<implements name="org.apache.archiva.redback.rbac.RBACManagerListener">
+</implements>
+<constructor name="LdapRbacManager"
+ type="org.apache.archiva.redback.rbac.ldap.LdapRbacManager"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="createOperation"
+ return="org.apache.archiva.redback.rbac.Operation"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="name" type="java.lang.String">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="createPermission"
+ return="org.apache.archiva.redback.rbac.Permission"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="name" type="java.lang.String">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="createPermission"
+ return="org.apache.archiva.redback.rbac.Permission"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="name" type="java.lang.String">
+</parameter>
+<parameter name="operationName" type="java.lang.String">
+</parameter>
+<parameter name="resourceIdentifier" type="java.lang.String">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="createResource"
+ return="org.apache.archiva.redback.rbac.Resource"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="identifier" type="java.lang.String">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="createRole"
+ return="org.apache.archiva.redback.rbac.Role"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="name" type="java.lang.String">
+</parameter>
+</method>
+<method name="createUserAssignment"
+ return="org.apache.archiva.redback.rbac.UserAssignment"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="username" type="java.lang.String">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="eraseDatabase"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getAllOperations"
+ return="java.util.List&lt;org.apache.archiva.redback.rbac.Operation&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="getAllPermissions"
+ return="java.util.List&lt;org.apache.archiva.redback.rbac.Permission&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="getAllResources"
+ return="java.util.List&lt;org.apache.archiva.redback.rbac.Resource&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="getAllRoles"
+ return="java.util.List&lt;org.apache.archiva.redback.rbac.Role&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="getAllUserAssignments"
+ return="java.util.List&lt;org.apache.archiva.redback.rbac.UserAssignment&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="getLdapRoleMapper"
+ return="org.apache.archiva.redback.common.ldap.role.LdapRoleMapper"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getOperation"
+ return="org.apache.archiva.redback.rbac.Operation"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="operationName" type="java.lang.String">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="getPermission"
+ return="org.apache.archiva.redback.rbac.Permission"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="permissionName" type="java.lang.String">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="getRbacImpl"
+ return="org.apache.archiva.redback.rbac.RBACManager"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getResource"
+ return="org.apache.archiva.redback.rbac.Resource"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="resourceIdentifier" type="java.lang.String">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="getRole"
+ return="org.apache.archiva.redback.rbac.Role"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="roleName" type="java.lang.String">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="getUserAssignment"
+ return="org.apache.archiva.redback.rbac.UserAssignment"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="username" type="java.lang.String">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="getUserAssignmentsForRoles"
+ return="java.util.List&lt;org.apache.archiva.redback.rbac.UserAssignment&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="roleNames" type="java.util.Collection&lt;java.lang.String&gt;">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="isWritableLdap"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="rbacInit"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="freshdb" type="boolean">
+</parameter>
+</method>
+<method name="rbacPermissionRemoved"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="permission" type="org.apache.archiva.redback.rbac.Permission">
+</parameter>
+</method>
+<method name="rbacPermissionSaved"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="permission" type="org.apache.archiva.redback.rbac.Permission">
+</parameter>
+</method>
+<method name="rbacRoleRemoved"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="role" type="org.apache.archiva.redback.rbac.Role">
+</parameter>
+</method>
+<method name="rbacRoleSaved"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="role" type="org.apache.archiva.redback.rbac.Role">
+</parameter>
+</method>
+<method name="rbacUserAssignmentRemoved"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="userAssignment" type="org.apache.archiva.redback.rbac.UserAssignment">
+</parameter>
+</method>
+<method name="rbacUserAssignmentSaved"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="userAssignment" type="org.apache.archiva.redback.rbac.UserAssignment">
+</parameter>
+</method>
+<method name="removeOperation"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="operation" type="org.apache.archiva.redback.rbac.Operation">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="removePermission"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="permission" type="org.apache.archiva.redback.rbac.Permission">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="removeResource"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="resource" type="org.apache.archiva.redback.rbac.Resource">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="removeRole"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="role" type="org.apache.archiva.redback.rbac.Role">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="removeUserAssignment"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="userAssignment" type="org.apache.archiva.redback.rbac.UserAssignment">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="saveOperation"
+ return="org.apache.archiva.redback.rbac.Operation"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="operation" type="org.apache.archiva.redback.rbac.Operation">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="savePermission"
+ return="org.apache.archiva.redback.rbac.Permission"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="permission" type="org.apache.archiva.redback.rbac.Permission">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="saveResource"
+ return="org.apache.archiva.redback.rbac.Resource"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="resource" type="org.apache.archiva.redback.rbac.Resource">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="saveRole"
+ return="org.apache.archiva.redback.rbac.Role"
+ abstract="false"
+ native="false"
+ synchronized="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="role" type="org.apache.archiva.redback.rbac.Role">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="saveRoles"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="roles" type="java.util.Collection&lt;org.apache.archiva.redback.rbac.Role&gt;">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="saveUserAssignment"
+ return="org.apache.archiva.redback.rbac.UserAssignment"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="userAssignment" type="org.apache.archiva.redback.rbac.UserAssignment">
+</parameter>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
+</method>
+<method name="setLdapRoleMapper"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ldapRoleMapper" type="org.apache.archiva.redback.common.ldap.role.LdapRoleMapper">
+</parameter>
+</method>
+<method name="setRbacImpl"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="rbacImpl" type="org.apache.archiva.redback.rbac.RBACManager">
+</parameter>
+</method>
+<method name="setWritableLdap"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="writableLdap" type="boolean">
+</parameter>
 </method>
 </class>
 </package>
@@ -29482,6 +30202,19 @@
  visibility="public"
 >
 </method>
+<method name="incAssignements"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+<parameter name="size" type="int">
+</parameter>
+</method>
 <method name="setRbacManager"
  return="void"
  abstract="false"
@@ -29507,6 +30240,17 @@
 >
 <exception name="Exception" type="java.lang.Exception">
 </exception>
+</method>
+<method name="supportChildRole"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
 </method>
 <method name="tearDown"
  return="void"
@@ -34166,6 +34910,76 @@
 <exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
 </exception>
 </method>
+<method name="findUsersWithRoles"
+ return="java.util.Map&lt;java.lang.String, java.util.Collection&lt;java.lang.String&gt;&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="dirContext" type="javax.naming.directory.DirContext">
+</parameter>
+<exception name="LdapControllerException" type="org.apache.archiva.redback.users.ldap.ctl.LdapControllerException">
+</exception>
+</method>
+<method name="getBaseDn"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getGroupsDn"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getLdapGroupClass"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getMapper"
+ return="org.apache.archiva.redback.common.ldap.user.UserMapper"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getPasswordEncoder"
+ return="org.apache.archiva.redback.policy.PasswordEncoder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getUser"
  return="org.apache.archiva.redback.common.ldap.user.LdapUser"
  abstract="false"
@@ -34184,6 +34998,17 @@
 </exception>
 <exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
 </exception>
+</method>
+<method name="getUserConf"
+ return="org.apache.archiva.redback.configuration.UserConfiguration"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
 </method>
 <method name="getUsers"
  return="java.util.Collection&lt;org.apache.archiva.redback.users.User&gt;"
@@ -34220,6 +35045,28 @@
 </exception>
 <exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
 </exception>
+</method>
+<method name="initialize"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isWritableLdap"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
 </method>
 <method name="removeUser"
  return="void"
@@ -34306,6 +35153,97 @@
 <exception name="NamingException" type="javax.naming.NamingException">
 </exception>
 </method>
+<method name="setBaseDn"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="baseDn" type="java.lang.String">
+</parameter>
+</method>
+<method name="setGroupsDn"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="groupsDn" type="java.lang.String">
+</parameter>
+</method>
+<method name="setLdapGroupClass"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ldapGroupClass" type="java.lang.String">
+</parameter>
+</method>
+<method name="setMapper"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="mapper" type="org.apache.archiva.redback.common.ldap.user.UserMapper">
+</parameter>
+</method>
+<method name="setPasswordEncoder"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="passwordEncoder" type="org.apache.archiva.redback.policy.PasswordEncoder">
+</parameter>
+</method>
+<method name="setUserConf"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="userConf" type="org.apache.archiva.redback.configuration.UserConfiguration">
+</parameter>
+</method>
+<method name="setWritableLdap"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="writableLdap" type="boolean">
+</parameter>
+</method>
 <method name="updateUser"
  return="void"
  abstract="false"
@@ -34371,6 +35309,21 @@
 <exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
 </exception>
 </method>
+<method name="findUsersWithRoles"
+ return="java.util.Map&lt;java.lang.String, java.util.Collection&lt;java.lang.String&gt;&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="dirContext" type="javax.naming.directory.DirContext">
+</parameter>
+<exception name="LdapControllerException" type="org.apache.archiva.redback.users.ldap.ctl.LdapControllerException">
+</exception>
+</method>
 <method name="getUser"
  return="org.apache.archiva.redback.common.ldap.user.LdapUser"
  abstract="true"
@@ -34425,6 +35378,17 @@
 </exception>
 <exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
 </exception>
+</method>
+<method name="initialize"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
 </method>
 <method name="removeUser"
  return="void"

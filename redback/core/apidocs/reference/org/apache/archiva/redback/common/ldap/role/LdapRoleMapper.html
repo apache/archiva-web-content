@@ -159,8 +159,6 @@
     <li class="api apilevel-">
   <a href="../../../../../../../org/apache/archiva/redback/authorization/package-summary.html">org.apache.archiva.redback.authorization</a></li>
     <li class="api apilevel-">
-  <a href="../../../../../../../org/apache/archiva/redback/authorization/ldap/package-summary.html">org.apache.archiva.redback.authorization.ldap</a></li>
-    <li class="api apilevel-">
   <a href="../../../../../../../org/apache/archiva/redback/authorization/open/package-summary.html">org.apache.archiva.redback.authorization.open</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../../org/apache/archiva/redback/authorization/rbac/package-summary.html">org.apache.archiva.redback.authorization.rbac</a></li>
@@ -228,6 +226,8 @@
   <a href="../../../../../../../org/apache/archiva/redback/rbac/jdo/package-summary.html">org.apache.archiva.redback.rbac.jdo</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../../org/apache/archiva/redback/rbac/jdo/io/stax/package-summary.html">org.apache.archiva.redback.rbac.jdo.io.stax</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../org/apache/archiva/redback/rbac/ldap/package-summary.html">org.apache.archiva.redback.rbac.ldap</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../../org/apache/archiva/redback/rbac/memory/package-summary.html">org.apache.archiva.redback.rbac.memory</a></li>
     <li class="api apilevel-">
@@ -541,11 +541,31 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html#getAllGroups()">getAllGroups</a></span>()</nobr>
         
+        <div class="jd-descrdiv">read all groups from ldap</div>
+  
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            List&lt;String&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html#getAllRoles()">getAllRoles</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">read all ldap groups then map to corresponding role (if no mapping found group is ignored)</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -561,7 +581,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -577,7 +597,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -593,7 +613,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -609,7 +629,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -625,7 +645,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -641,7 +661,39 @@ Summary:
 
 
 	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            List&lt;String&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html#getRoles(java.lang.String)">getRoles</a></span>(String username)</nobr>
+        
+  </td></tr>
+
+
+	 
     <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html#removeAllRoles()">removeAllRoles</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -655,6 +707,90 @@ Summary:
         
         <div class="jd-descrdiv">remove a mapping</div>
   
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html#removeRole(java.lang.String)">removeRole</a></span>(String roleName)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html#removeUserRole(java.lang.String, java.lang.String)">removeUserRole</a></span>(String roleName, String username)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html#saveRole(java.lang.String)">saveRole</a></span>(String roleName)</nobr>
+        
+        <div class="jd-descrdiv">will save a ldap group corresponding to the mapping.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html#saveUserRole(java.lang.String, java.lang.String)">saveUserRole</a></span>(String roleName, String username)</nobr>
+        
+        <div class="jd-descrdiv">associate role to user in ldap</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html#setLdapGroupMappings(java.util.Map<java.lang.String, java.lang.String>)">setLdapGroupMappings</a></span>(Map&lt;String,&nbsp;String&gt; mappings)</nobr>
+        
   </td></tr>
 
 
@@ -785,7 +921,7 @@ Summary:
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>read all groups from ldap</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>all LDAP groups
@@ -794,6 +930,54 @@ Summary:
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../../../org/apache/archiva/redback/common/ldap/MappingException.html">MappingException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAllRoles()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        List&lt;String&gt;
+      </span>
+      <span class="sympad">getAllRoles</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>read all ldap groups then map to corresponding role (if no mapping found group is ignored)</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>all roles</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>Exception</td>
+            <td></td>
+        </tr>  
         <tr>
             <th><a href="../../../../../../../org/apache/archiva/redback/common/ldap/MappingException.html">MappingException</a></td>
             <td></td>
@@ -1069,6 +1253,86 @@ Summary:
 </div>
 
 
+<A NAME="getRoles(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        List&lt;String&gt;
+      </span>
+      <span class="sympad">getRoles</span>
+      <span class="normal">(String username)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../../../org/apache/archiva/redback/common/ldap/MappingException.html">MappingException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="removeAllRoles()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">removeAllRoles</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../../../org/apache/archiva/redback/common/ldap/MappingException.html">MappingException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="removeLdapMapping(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1105,6 +1369,215 @@ Summary:
         </tr>
       </table>
   </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../../../org/apache/archiva/redback/common/ldap/MappingException.html">MappingException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="removeRole(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">removeRole</span>
+      <span class="normal">(String roleName)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../../../org/apache/archiva/redback/common/ldap/MappingException.html">MappingException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="removeUserRole(java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">removeUserRole</span>
+      <span class="normal">(String roleName, String username)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../../../org/apache/archiva/redback/common/ldap/MappingException.html">MappingException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="saveRole(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">saveRole</span>
+      <span class="normal">(String roleName)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>will save a ldap group corresponding to the mapping.
+ <b>will do nothing in group already exists.</b></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li><code>true</code> if role was added, <code>false</code> if role already exists</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../../../org/apache/archiva/redback/common/ldap/MappingException.html">MappingException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="saveUserRole(java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">saveUserRole</span>
+      <span class="normal">(String roleName, String username)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>associate role to user in ldap</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li><code>true</code> if role was added to user, <code>false</code> if role already exists for the user</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../../../org/apache/archiva/redback/common/ldap/MappingException.html">MappingException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setLdapGroupMappings(java.util.Map<java.lang.String, java.lang.String>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setLdapGroupMappings</span>
+      <span class="normal">(Map&lt;String,&nbsp;String&gt; mappings)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  

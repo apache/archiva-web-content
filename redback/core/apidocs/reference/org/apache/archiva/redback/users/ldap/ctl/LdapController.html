@@ -159,8 +159,6 @@
     <li class="api apilevel-">
   <a href="../../../../../../../org/apache/archiva/redback/authorization/package-summary.html">org.apache.archiva.redback.authorization</a></li>
     <li class="api apilevel-">
-  <a href="../../../../../../../org/apache/archiva/redback/authorization/ldap/package-summary.html">org.apache.archiva.redback.authorization.ldap</a></li>
-    <li class="api apilevel-">
   <a href="../../../../../../../org/apache/archiva/redback/authorization/open/package-summary.html">org.apache.archiva.redback.authorization.open</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../../org/apache/archiva/redback/authorization/rbac/package-summary.html">org.apache.archiva.redback.authorization.rbac</a></li>
@@ -228,6 +226,8 @@
   <a href="../../../../../../../org/apache/archiva/redback/rbac/jdo/package-summary.html">org.apache.archiva.redback.rbac.jdo</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../../org/apache/archiva/redback/rbac/jdo/io/stax/package-summary.html">org.apache.archiva.redback.rbac.jdo.io.stax</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../org/apache/archiva/redback/rbac/ldap/package-summary.html">org.apache.archiva.redback.rbac.ldap</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../../org/apache/archiva/redback/rbac/memory/package-summary.html">org.apache.archiva.redback.rbac.memory</a></li>
     <li class="api apilevel-">
@@ -536,6 +536,22 @@ Summary:
             
             
             
+            Map&lt;String,&nbsp;Collection&lt;String&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/users/ldap/ctl/LdapController.html#findUsersWithRoles(javax.naming.directory.DirContext)">findUsersWithRoles</a></span>(DirContext dirContext)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
             <a href="../../../../../../../org/apache/archiva/redback/common/ldap/user/LdapUser.html">LdapUser</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
@@ -545,7 +561,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -561,7 +577,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -572,6 +588,22 @@ Summary:
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/users/ldap/ctl/LdapController.html#getUsersByQuery(org.apache.archiva.redback.users.ldap.LdapUserQuery, javax.naming.directory.DirContext)">getUsersByQuery</a></span>(<a href="../../../../../../../org/apache/archiva/redback/users/ldap/LdapUserQuery.html">LdapUserQuery</a> query, DirContext context)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/users/ldap/ctl/LdapController.html#initialize()">initialize</a></span>()</nobr>
         
   </td></tr>
 
@@ -716,6 +748,50 @@ Summary:
 </div>
 
 
+<A NAME="findUsersWithRoles(javax.naming.directory.DirContext)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        Map&lt;String,&nbsp;Collection&lt;String&gt;&gt;
+      </span>
+      <span class="sympad">findUsersWithRoles</span>
+      <span class="normal">(DirContext dirContext)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Map key == username and value == list of role names</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../../../org/apache/archiva/redback/users/ldap/ctl/LdapControllerException.html">LdapControllerException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="getUser(java.lang.String, javax.naming.directory.DirContext)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -843,6 +919,37 @@ Summary:
         </tr>
       </table>
   </div>
+
+    </div>
+</div>
+
+
+<A NAME="initialize()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">initialize</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     </div>
 </div>
