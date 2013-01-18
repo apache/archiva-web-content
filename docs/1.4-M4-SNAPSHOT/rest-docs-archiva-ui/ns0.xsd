@@ -1,77 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="cacheConfiguration" type="cacheConfiguration"/>
-  <xs:element name="ldapConfiguration" type="ldapConfiguration"/>
-  <xs:element name="propertyEntry" type="propertyEntry"/>
-  <xs:element name="redbackRuntimeConfiguration" type="redbackRuntimeConfiguration"/>
   <xs:element name="applicationRuntimeInfo" type="applicationRuntimeInfo"/>
   <xs:element name="fileMetadata" type="fileMetadata"/>
-  <xs:complexType name="cacheConfiguration">
-    <xs:sequence>
-      <xs:element name="maxElementsInMemory" type="xs:int" minOccurs="1"/>
-      <xs:element name="timeToIdleSeconds" type="xs:int" minOccurs="1"/>
-      <xs:element name="timeToLiveSeconds" type="xs:int" minOccurs="1"/>
-      <xs:element name="maxElementsOnDisk" type="xs:int" minOccurs="1"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="ldapConfiguration">
-    <xs:sequence>
-      <xs:element name="port" type="xs:int" minOccurs="1"/>
-      <xs:element name="extraPropertiesEntries" type="propertyEntry" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="bindAuthenticatorEnabled" type="xs:boolean" minOccurs="1"/>
-      <xs:element name="password" type="xs:string" minOccurs="0"/>
-      <xs:element name="extraProperties" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
-              <xs:complexType>
-                <xs:sequence>
-                  <xs:element name="key" minOccurs="1" type="xs:string"/>
-                  <xs:element name="value" minOccurs="1" type="xs:string"/>
-                </xs:sequence>
-              </xs:complexType>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="hostName" type="xs:string" minOccurs="0"/>
-      <xs:element name="ssl" type="xs:boolean" minOccurs="1"/>
-      <xs:element name="authenticationMethod" type="xs:string" minOccurs="0"/>
-      <xs:element name="contextFactory" type="xs:string" minOccurs="0"/>
-      <xs:element name="baseDn" type="xs:string" minOccurs="0"/>
-      <xs:element name="bindDn" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="propertyEntry">
-    <xs:sequence>
-      <xs:element name="value" type="xs:string" minOccurs="0"/>
-      <xs:element name="key" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="redbackRuntimeConfiguration">
-    <xs:sequence>
-      <xs:element name="usersCacheConfiguration" type="cacheConfiguration" minOccurs="0"/>
-      <xs:element name="useUsersCache" type="xs:boolean" minOccurs="1"/>
-      <xs:element name="ldapConfiguration" type="ldapConfiguration" minOccurs="0"/>
-      <xs:element name="userManagerImpls" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="migratedFromRedbackConfiguration" type="xs:boolean" minOccurs="1"/>
-      <xs:element name="configurationProperties" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
-              <xs:complexType>
-                <xs:sequence>
-                  <xs:element name="key" minOccurs="1" type="xs:string"/>
-                  <xs:element name="value" minOccurs="1" type="xs:string"/>
-                </xs:sequence>
-              </xs:complexType>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="configurationPropertiesEntries" type="propertyEntry" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="applicationRuntimeInfo">
     <xs:sequence>
       <xs:element name="devMode" type="xs:boolean" minOccurs="1"/>
@@ -83,7 +13,16 @@
       <xs:element name="logMissingI18n" type="xs:boolean" minOccurs="1"/>
       <xs:element name="baseUrl" type="xs:string" minOccurs="0"/>
       <xs:element name="timestampStr" type="xs:string" minOccurs="0"/>
-      <xs:element name="redbackRuntimeConfiguration" type="redbackRuntimeConfiguration" minOccurs="0"/>
+      <xs:element name="cookieInformation" type="cookieInformation" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cookieInformation">
+    <xs:sequence>
+      <xs:element name="path" type="xs:string" minOccurs="0"/>
+      <xs:element name="domain" type="xs:string" minOccurs="0"/>
+      <xs:element name="secure" type="xs:string" minOccurs="0"/>
+      <xs:element name="timeout" type="xs:string" minOccurs="0"/>
+      <xs:element name="rememberMeEnabled" type="xs:boolean" minOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="fileMetadata">
