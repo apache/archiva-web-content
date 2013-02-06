@@ -5,6 +5,52 @@
     <wadl:include href="ns0.xsd"/>
   </wadl:grammars>
   <wadl:resources base="http://localhost:8080/redback-rest-api">
+    <wadl:resource path="/redbackServices/ldapGroupMappingService">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+      <wadl:method name="PUT">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="ldapGroupMapping"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="ldapGroupMapping"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/ldapGroupMappingService/ldapGroups">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="stringList"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/ldapGroupMappingService/{group}">
+      <wadl:param name="group" style="template"/>
+      <wadl:method name="DELETE">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
     <wadl:resource path="/redbackServices/loginService/addAuthenticationKey">
       <wadl:method name="GET">
         <wadl:request>

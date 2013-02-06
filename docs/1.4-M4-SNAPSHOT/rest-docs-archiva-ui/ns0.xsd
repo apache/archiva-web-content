@@ -2,6 +2,7 @@
 <xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="applicationRuntimeInfo" type="applicationRuntimeInfo"/>
   <xs:element name="fileMetadata" type="fileMetadata"/>
+  <xs:element name="javascriptLog" type="javascriptLog"/>
   <xs:complexType name="applicationRuntimeInfo">
     <xs:sequence>
       <xs:element name="devMode" type="xs:boolean" minOccurs="1"/>
@@ -36,6 +37,12 @@
       <xs:element name="classifier" type="xs:string" minOccurs="0"/>
       <xs:element name="pomFile" type="xs:boolean" minOccurs="1"/>
       <xs:element name="serverFileName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="javascriptLog">
+    <xs:sequence>
+      <xs:element name="loggerName" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 </xs:schema>
