@@ -388,7 +388,7 @@
 <a class="jxr_linenumber" name="378" href="#378">378</a>         }
 <a class="jxr_linenumber" name="379" href="#379">379</a>         <strong class="jxr_keyword">catch</strong> ( RepositoryAdminException e )
 <a class="jxr_linenumber" name="380" href="#380">380</a>         {
-<a class="jxr_linenumber" name="381" href="#381">381</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../../org/apache/archiva/metadata/repository/storage/RepositoryStorageRuntimeException.html">RepositoryStorageRuntimeException</a>( <span class="jxr_string">"repo-admin"</span>, e.getMessage() );
+<a class="jxr_linenumber" name="381" href="#381">381</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../../org/apache/archiva/metadata/repository/storage/RepositoryStorageRuntimeException.html">RepositoryStorageRuntimeException</a>( <span class="jxr_string">"repo-admin"</span>, e.getMessage(), e);
 <a class="jxr_linenumber" name="382" href="#382">382</a>         }
 <a class="jxr_linenumber" name="383" href="#383">383</a>     }
 <a class="jxr_linenumber" name="384" href="#384">384</a> 
@@ -534,7 +534,7 @@
 <a class="jxr_linenumber" name="524" href="#524">524</a>         }
 <a class="jxr_linenumber" name="525" href="#525">525</a>         <strong class="jxr_keyword">catch</strong> ( RepositoryAdminException e )
 <a class="jxr_linenumber" name="526" href="#526">526</a>         {
-<a class="jxr_linenumber" name="527" href="#527">527</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../../org/apache/archiva/metadata/repository/storage/RepositoryStorageRuntimeException.html">RepositoryStorageRuntimeException</a>( <span class="jxr_string">"repo-admin"</span>, e.getMessage() );
+<a class="jxr_linenumber" name="527" href="#527">527</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../../org/apache/archiva/metadata/repository/storage/RepositoryStorageRuntimeException.html">RepositoryStorageRuntimeException</a>( <span class="jxr_string">"repo-admin"</span>, e.getMessage(), e);
 <a class="jxr_linenumber" name="528" href="#528">528</a>         }
 <a class="jxr_linenumber" name="529" href="#529">529</a>     }
 <a class="jxr_linenumber" name="530" href="#530">530</a> 
@@ -857,12 +857,12 @@
 <a class="jxr_linenumber" name="847" href="#847">847</a>         }
 <a class="jxr_linenumber" name="848" href="#848">848</a>     }
 <a class="jxr_linenumber" name="849" href="#849">849</a> 
-<a class="jxr_linenumber" name="850" href="#850">850</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../../org/apache/archiva/metadata/repository/storage/maven2/Maven2RepositoryStorage.html">ArtifactDirectoryFilter</a>
+<a class="jxr_linenumber" name="850" href="#850">850</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../../org/apache/archiva/metadata/repository/storage/maven2/Maven2RepositoryStorage.html">ArtifactDirectoryFilter</a>
 <a class="jxr_linenumber" name="851" href="#851">851</a>         <strong class="jxr_keyword">implements</strong> FilenameFilter
 <a class="jxr_linenumber" name="852" href="#852">852</a>     {
 <a class="jxr_linenumber" name="853" href="#853">853</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Filter&lt;String&gt; filter;
 <a class="jxr_linenumber" name="854" href="#854">854</a> 
-<a class="jxr_linenumber" name="855" href="#855">855</a>         <strong class="jxr_keyword">public</strong> <a href="../../../../../../../org/apache/archiva/metadata/repository/storage/maven2/Maven2RepositoryStorage.html">ArtifactDirectoryFilter</a>( Filter&lt;String&gt; filter )
+<a class="jxr_linenumber" name="855" href="#855">855</a>         <strong class="jxr_keyword">private</strong> <a href="../../../../../../../org/apache/archiva/metadata/repository/storage/maven2/Maven2RepositoryStorage.html">ArtifactDirectoryFilter</a>( Filter&lt;String&gt; filter )
 <a class="jxr_linenumber" name="856" href="#856">856</a>         {
 <a class="jxr_linenumber" name="857" href="#857">857</a>             <strong class="jxr_keyword">this</strong>.filter = filter;
 <a class="jxr_linenumber" name="858" href="#858">858</a>         }
@@ -901,7 +901,7 @@
 <a class="jxr_linenumber" name="891" href="#891">891</a>         }
 <a class="jxr_linenumber" name="892" href="#892">892</a>     }
 <a class="jxr_linenumber" name="893" href="#893">893</a> 
-<a class="jxr_linenumber" name="894" href="#894">894</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../../org/apache/archiva/metadata/repository/storage/maven2/Maven2RepositoryStorage.html">PomFilenameFilter</a>
+<a class="jxr_linenumber" name="894" href="#894">894</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../../org/apache/archiva/metadata/repository/storage/maven2/Maven2RepositoryStorage.html">PomFilenameFilter</a>
 <a class="jxr_linenumber" name="895" href="#895">895</a>         <strong class="jxr_keyword">implements</strong> FilenameFilter
 <a class="jxr_linenumber" name="896" href="#896">896</a>     {
 <a class="jxr_linenumber" name="897" href="#897">897</a> 

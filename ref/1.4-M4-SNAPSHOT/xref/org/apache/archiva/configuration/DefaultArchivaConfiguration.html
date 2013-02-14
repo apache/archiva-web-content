@@ -611,7 +611,7 @@
 <a class="jxr_linenumber" name="601" href="#601">601</a>             <strong class="jxr_keyword">if</strong> ( file.getParentFile() != <strong class="jxr_keyword">null</strong> )
 <a class="jxr_linenumber" name="602" href="#602">602</a>             {
 <a class="jxr_linenumber" name="603" href="#603">603</a>                 <em class="jxr_comment">// Check that directory exists</em>
-<a class="jxr_linenumber" name="604" href="#604">604</a>                 <strong class="jxr_keyword">if</strong> ( ( file.getParentFile().exists() == false ) || ( file.getParentFile().isDirectory() == false ) )
+<a class="jxr_linenumber" name="604" href="#604">604</a>                 <strong class="jxr_keyword">if</strong> ( ! file.getParentFile().isDirectory() )
 <a class="jxr_linenumber" name="605" href="#605">605</a>                 {
 <a class="jxr_linenumber" name="606" href="#606">606</a>                     <em class="jxr_comment">// Directory to file must exist for file to be created</em>
 <a class="jxr_linenumber" name="607" href="#607">607</a>                     <strong class="jxr_keyword">return</strong> false;
@@ -715,7 +715,7 @@
 <a class="jxr_linenumber" name="705" href="#705">705</a>         <strong class="jxr_keyword">catch</strong> ( EvaluatorException e )
 <a class="jxr_linenumber" name="706" href="#706">706</a>         {
 <a class="jxr_linenumber" name="707" href="#707">707</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> RuntimeException(
-<a class="jxr_linenumber" name="708" href="#708">708</a>                 <span class="jxr_string">"Unable to evaluate expressions found in "</span> + <span class="jxr_string">"userConfigFilename or altConfigFilename."</span> );
+<a class="jxr_linenumber" name="708" href="#708">708</a>                 <span class="jxr_string">"Unable to evaluate expressions found in "</span> + <span class="jxr_string">"userConfigFilename or altConfigFilename."</span>, e);
 <a class="jxr_linenumber" name="709" href="#709">709</a>         }
 <a class="jxr_linenumber" name="710" href="#710">710</a>         registry.addChangeListener( <strong class="jxr_keyword">this</strong> );
 <a class="jxr_linenumber" name="711" href="#711">711</a>     }
@@ -729,7 +729,7 @@
 <a class="jxr_linenumber" name="719" href="#719">719</a> 
 <a class="jxr_linenumber" name="720" href="#720">720</a>         List&lt;String&gt; dbConsumers = Arrays.asList( <span class="jxr_string">"update-db-artifact"</span>, <span class="jxr_string">"update-db-repository-metadata"</span> );
 <a class="jxr_linenumber" name="721" href="#721">721</a> 
-<a class="jxr_linenumber" name="722" href="#722">722</a>         <em class="jxr_comment">// remove database consumers  if here</em>
+<a class="jxr_linenumber" name="722" href="#722">722</a>         <em class="jxr_comment">// remove database consumers if here</em>
 <a class="jxr_linenumber" name="723" href="#723">723</a>         List&lt;String&gt; intersec =
 <a class="jxr_linenumber" name="724" href="#724">724</a>             ListUtils.intersection( dbConsumers, configuration.getRepositoryScanning().getKnownContentConsumers() );
 <a class="jxr_linenumber" name="725" href="#725">725</a> 

@@ -1073,149 +1073,148 @@
 <a class="jxr_linenumber" name="1063" href="#1063">1063</a> 
 <a class="jxr_linenumber" name="1064" href="#1064">1064</a>         <strong class="jxr_keyword">try</strong>
 <a class="jxr_linenumber" name="1065" href="#1065">1065</a>         {
-<a class="jxr_linenumber" name="1066" href="#1066">1066</a>             <strong class="jxr_keyword">boolean</strong> res = userRepositories.isAuthorizedToDeleteArtifacts( userName, repoId );
-<a class="jxr_linenumber" name="1067" href="#1067">1067</a>             <strong class="jxr_keyword">return</strong> res;
-<a class="jxr_linenumber" name="1068" href="#1068">1068</a>         }
-<a class="jxr_linenumber" name="1069" href="#1069">1069</a>         <strong class="jxr_keyword">catch</strong> ( ArchivaSecurityException e )
-<a class="jxr_linenumber" name="1070" href="#1070">1070</a>         {
-<a class="jxr_linenumber" name="1071" href="#1071">1071</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>( e.getMessage(),
-<a class="jxr_linenumber" name="1072" href="#1072">1072</a>                                                    Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), e );
-<a class="jxr_linenumber" name="1073" href="#1073">1073</a>         }
-<a class="jxr_linenumber" name="1074" href="#1074">1074</a>     }
-<a class="jxr_linenumber" name="1075" href="#1075">1075</a> 
-<a class="jxr_linenumber" name="1076" href="#1076">1076</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../org/apache/archiva/repository/scanner/RepositoryScanStatistics.html">RepositoryScanStatistics</a> scanRepositoryDirectoriesNow( String repositoryId )
-<a class="jxr_linenumber" name="1077" href="#1077">1077</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>
-<a class="jxr_linenumber" name="1078" href="#1078">1078</a>     {
-<a class="jxr_linenumber" name="1079" href="#1079">1079</a>         <strong class="jxr_keyword">long</strong> sinceWhen = RepositoryScanner.FRESH_SCAN;
-<a class="jxr_linenumber" name="1080" href="#1080">1080</a>         <strong class="jxr_keyword">try</strong>
-<a class="jxr_linenumber" name="1081" href="#1081">1081</a>         {
-<a class="jxr_linenumber" name="1082" href="#1082">1082</a>             <strong class="jxr_keyword">return</strong> repoScanner.scan( getManagedRepositoryAdmin().getManagedRepository( repositoryId ), sinceWhen );
-<a class="jxr_linenumber" name="1083" href="#1083">1083</a>         }
-<a class="jxr_linenumber" name="1084" href="#1084">1084</a>         <strong class="jxr_keyword">catch</strong> ( RepositoryScannerException e )
-<a class="jxr_linenumber" name="1085" href="#1085">1085</a>         {
-<a class="jxr_linenumber" name="1086" href="#1086">1086</a>             log.error( e.getMessage(), e );
-<a class="jxr_linenumber" name="1087" href="#1087">1087</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>( <span class="jxr_string">"RepositoryScannerException exception: "</span> + e.getMessage(), 500, e );
-<a class="jxr_linenumber" name="1088" href="#1088">1088</a>         }
-<a class="jxr_linenumber" name="1089" href="#1089">1089</a>         <strong class="jxr_keyword">catch</strong> ( RepositoryAdminException e )
-<a class="jxr_linenumber" name="1090" href="#1090">1090</a>         {
-<a class="jxr_linenumber" name="1091" href="#1091">1091</a>             log.error( e.getMessage(), e );
-<a class="jxr_linenumber" name="1092" href="#1092">1092</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>( <span class="jxr_string">"RepositoryScannerException exception: "</span> + e.getMessage(), 500, e );
-<a class="jxr_linenumber" name="1093" href="#1093">1093</a>         }
-<a class="jxr_linenumber" name="1094" href="#1094">1094</a>     }
-<a class="jxr_linenumber" name="1095" href="#1095">1095</a> 
-<a class="jxr_linenumber" name="1096" href="#1096">1096</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="1097" href="#1097">1097</a> <em class="jxr_javadoccomment">     * Update artifact level metadata. Creates one if metadata does not exist after artifact deletion.</em>
-<a class="jxr_linenumber" name="1098" href="#1098">1098</a> <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="1099" href="#1099">1099</a> <em class="jxr_javadoccomment">     * @param metadata</em>
-<a class="jxr_linenumber" name="1100" href="#1100">1100</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="1101" href="#1101">1101</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> updateMetadata( ArchivaRepositoryMetadata metadata, File metadataFile, Date lastUpdatedTimestamp,
-<a class="jxr_linenumber" name="1102" href="#1102">1102</a>                                  <a href="../../../../../org/apache/archiva/maven2/model/Artifact.html">Artifact</a> artifact )
-<a class="jxr_linenumber" name="1103" href="#1103">1103</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/repository/metadata/RepositoryMetadataException.html">RepositoryMetadataException</a>
-<a class="jxr_linenumber" name="1104" href="#1104">1104</a>     {
-<a class="jxr_linenumber" name="1105" href="#1105">1105</a>         List&lt;String&gt; availableVersions = <strong class="jxr_keyword">new</strong> ArrayList&lt;String&gt;();
-<a class="jxr_linenumber" name="1106" href="#1106">1106</a>         String latestVersion = <span class="jxr_string">""</span>;
-<a class="jxr_linenumber" name="1107" href="#1107">1107</a> 
-<a class="jxr_linenumber" name="1108" href="#1108">1108</a>         <strong class="jxr_keyword">if</strong> ( metadataFile.exists() )
-<a class="jxr_linenumber" name="1109" href="#1109">1109</a>         {
-<a class="jxr_linenumber" name="1110" href="#1110">1110</a>             <strong class="jxr_keyword">if</strong> ( metadata.getAvailableVersions() != <strong class="jxr_keyword">null</strong> )
-<a class="jxr_linenumber" name="1111" href="#1111">1111</a>             {
-<a class="jxr_linenumber" name="1112" href="#1112">1112</a>                 availableVersions = metadata.getAvailableVersions();
-<a class="jxr_linenumber" name="1113" href="#1113">1113</a> 
-<a class="jxr_linenumber" name="1114" href="#1114">1114</a>                 <strong class="jxr_keyword">if</strong> ( availableVersions.size() &gt; 0 )
-<a class="jxr_linenumber" name="1115" href="#1115">1115</a>                 {
-<a class="jxr_linenumber" name="1116" href="#1116">1116</a>                     Collections.sort( availableVersions, VersionComparator.getInstance() );
-<a class="jxr_linenumber" name="1117" href="#1117">1117</a> 
-<a class="jxr_linenumber" name="1118" href="#1118">1118</a>                     <strong class="jxr_keyword">if</strong> ( availableVersions.contains( artifact.getVersion() ) )
-<a class="jxr_linenumber" name="1119" href="#1119">1119</a>                     {
-<a class="jxr_linenumber" name="1120" href="#1120">1120</a>                         availableVersions.remove( availableVersions.indexOf( artifact.getVersion() ) );
-<a class="jxr_linenumber" name="1121" href="#1121">1121</a>                     }
-<a class="jxr_linenumber" name="1122" href="#1122">1122</a>                     <strong class="jxr_keyword">if</strong> ( availableVersions.size() &gt; 0 )
-<a class="jxr_linenumber" name="1123" href="#1123">1123</a>                     {
-<a class="jxr_linenumber" name="1124" href="#1124">1124</a>                         latestVersion = availableVersions.get( availableVersions.size() - 1 );
-<a class="jxr_linenumber" name="1125" href="#1125">1125</a>                     }
-<a class="jxr_linenumber" name="1126" href="#1126">1126</a>                 }
-<a class="jxr_linenumber" name="1127" href="#1127">1127</a>             }
-<a class="jxr_linenumber" name="1128" href="#1128">1128</a>         }
-<a class="jxr_linenumber" name="1129" href="#1129">1129</a> 
-<a class="jxr_linenumber" name="1130" href="#1130">1130</a>         <strong class="jxr_keyword">if</strong> ( metadata.getGroupId() == <strong class="jxr_keyword">null</strong> )
-<a class="jxr_linenumber" name="1131" href="#1131">1131</a>         {
-<a class="jxr_linenumber" name="1132" href="#1132">1132</a>             metadata.setGroupId( artifact.getGroupId() );
-<a class="jxr_linenumber" name="1133" href="#1133">1133</a>         }
-<a class="jxr_linenumber" name="1134" href="#1134">1134</a>         <strong class="jxr_keyword">if</strong> ( metadata.getArtifactId() == <strong class="jxr_keyword">null</strong> )
-<a class="jxr_linenumber" name="1135" href="#1135">1135</a>         {
-<a class="jxr_linenumber" name="1136" href="#1136">1136</a>             metadata.setArtifactId( artifact.getArtifactId() );
-<a class="jxr_linenumber" name="1137" href="#1137">1137</a>         }
-<a class="jxr_linenumber" name="1138" href="#1138">1138</a> 
-<a class="jxr_linenumber" name="1139" href="#1139">1139</a>         <strong class="jxr_keyword">if</strong> ( !VersionUtil.isSnapshot( artifact.getVersion() ) )
-<a class="jxr_linenumber" name="1140" href="#1140">1140</a>         {
-<a class="jxr_linenumber" name="1141" href="#1141">1141</a>             <strong class="jxr_keyword">if</strong> ( metadata.getReleasedVersion() != <strong class="jxr_keyword">null</strong> &amp;&amp; metadata.getReleasedVersion().equals(
-<a class="jxr_linenumber" name="1142" href="#1142">1142</a>                 artifact.getVersion() ) )
-<a class="jxr_linenumber" name="1143" href="#1143">1143</a>             {
-<a class="jxr_linenumber" name="1144" href="#1144">1144</a>                 metadata.setReleasedVersion( latestVersion );
-<a class="jxr_linenumber" name="1145" href="#1145">1145</a>             }
-<a class="jxr_linenumber" name="1146" href="#1146">1146</a>         }
-<a class="jxr_linenumber" name="1147" href="#1147">1147</a> 
-<a class="jxr_linenumber" name="1148" href="#1148">1148</a>         metadata.setLatestVersion( latestVersion );
-<a class="jxr_linenumber" name="1149" href="#1149">1149</a>         metadata.setLastUpdatedTimestamp( lastUpdatedTimestamp );
-<a class="jxr_linenumber" name="1150" href="#1150">1150</a>         metadata.setAvailableVersions( availableVersions );
-<a class="jxr_linenumber" name="1151" href="#1151">1151</a> 
-<a class="jxr_linenumber" name="1152" href="#1152">1152</a>         RepositoryMetadataWriter.write( metadata, metadataFile );
-<a class="jxr_linenumber" name="1153" href="#1153">1153</a>         <a href="../../../../../org/apache/archiva/checksum/ChecksummedFile.html">ChecksummedFile</a> checksum = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/checksum/ChecksummedFile.html">ChecksummedFile</a>( metadataFile );
-<a class="jxr_linenumber" name="1154" href="#1154">1154</a>         checksum.fixChecksums( algorithms );
-<a class="jxr_linenumber" name="1155" href="#1155">1155</a>     }
-<a class="jxr_linenumber" name="1156" href="#1156">1156</a> 
-<a class="jxr_linenumber" name="1157" href="#1157">1157</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../org/apache/archiva/admin/model/managed/ManagedRepositoryAdmin.html">ManagedRepositoryAdmin</a> getManagedRepositoryAdmin()
-<a class="jxr_linenumber" name="1158" href="#1158">1158</a>     {
-<a class="jxr_linenumber" name="1159" href="#1159">1159</a>         <strong class="jxr_keyword">return</strong> managedRepositoryAdmin;
-<a class="jxr_linenumber" name="1160" href="#1160">1160</a>     }
-<a class="jxr_linenumber" name="1161" href="#1161">1161</a> 
-<a class="jxr_linenumber" name="1162" href="#1162">1162</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setManagedRepositoryAdmin( ManagedRepositoryAdmin managedRepositoryAdmin )
-<a class="jxr_linenumber" name="1163" href="#1163">1163</a>     {
-<a class="jxr_linenumber" name="1164" href="#1164">1164</a>         <strong class="jxr_keyword">this</strong>.managedRepositoryAdmin = managedRepositoryAdmin;
-<a class="jxr_linenumber" name="1165" href="#1165">1165</a>     }
-<a class="jxr_linenumber" name="1166" href="#1166">1166</a> 
-<a class="jxr_linenumber" name="1167" href="#1167">1167</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../org/apache/archiva/repository/RepositoryContentFactory.html">RepositoryContentFactory</a> getRepositoryFactory()
-<a class="jxr_linenumber" name="1168" href="#1168">1168</a>     {
-<a class="jxr_linenumber" name="1169" href="#1169">1169</a>         <strong class="jxr_keyword">return</strong> repositoryFactory;
-<a class="jxr_linenumber" name="1170" href="#1170">1170</a>     }
-<a class="jxr_linenumber" name="1171" href="#1171">1171</a> 
-<a class="jxr_linenumber" name="1172" href="#1172">1172</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setRepositoryFactory( RepositoryContentFactory repositoryFactory )
-<a class="jxr_linenumber" name="1173" href="#1173">1173</a>     {
-<a class="jxr_linenumber" name="1174" href="#1174">1174</a>         <strong class="jxr_keyword">this</strong>.repositoryFactory = repositoryFactory;
-<a class="jxr_linenumber" name="1175" href="#1175">1175</a>     }
-<a class="jxr_linenumber" name="1176" href="#1176">1176</a> 
-<a class="jxr_linenumber" name="1177" href="#1177">1177</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html">RepositorySessionFactory</a> getRepositorySessionFactory()
-<a class="jxr_linenumber" name="1178" href="#1178">1178</a>     {
-<a class="jxr_linenumber" name="1179" href="#1179">1179</a>         <strong class="jxr_keyword">return</strong> repositorySessionFactory;
-<a class="jxr_linenumber" name="1180" href="#1180">1180</a>     }
-<a class="jxr_linenumber" name="1181" href="#1181">1181</a> 
-<a class="jxr_linenumber" name="1182" href="#1182">1182</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setRepositorySessionFactory( RepositorySessionFactory repositorySessionFactory )
-<a class="jxr_linenumber" name="1183" href="#1183">1183</a>     {
-<a class="jxr_linenumber" name="1184" href="#1184">1184</a>         <strong class="jxr_keyword">this</strong>.repositorySessionFactory = repositorySessionFactory;
-<a class="jxr_linenumber" name="1185" href="#1185">1185</a>     }
-<a class="jxr_linenumber" name="1186" href="#1186">1186</a> 
-<a class="jxr_linenumber" name="1187" href="#1187">1187</a>     <strong class="jxr_keyword">public</strong> List&lt;RepositoryListener&gt; getListeners()
-<a class="jxr_linenumber" name="1188" href="#1188">1188</a>     {
-<a class="jxr_linenumber" name="1189" href="#1189">1189</a>         <strong class="jxr_keyword">return</strong> listeners;
-<a class="jxr_linenumber" name="1190" href="#1190">1190</a>     }
-<a class="jxr_linenumber" name="1191" href="#1191">1191</a> 
-<a class="jxr_linenumber" name="1192" href="#1192">1192</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setListeners( List&lt;RepositoryListener&gt; listeners )
-<a class="jxr_linenumber" name="1193" href="#1193">1193</a>     {
-<a class="jxr_linenumber" name="1194" href="#1194">1194</a>         <strong class="jxr_keyword">this</strong>.listeners = listeners;
-<a class="jxr_linenumber" name="1195" href="#1195">1195</a>     }
-<a class="jxr_linenumber" name="1196" href="#1196">1196</a> 
-<a class="jxr_linenumber" name="1197" href="#1197">1197</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html">ArchivaAdministration</a> getArchivaAdministration()
-<a class="jxr_linenumber" name="1198" href="#1198">1198</a>     {
-<a class="jxr_linenumber" name="1199" href="#1199">1199</a>         <strong class="jxr_keyword">return</strong> archivaAdministration;
-<a class="jxr_linenumber" name="1200" href="#1200">1200</a>     }
-<a class="jxr_linenumber" name="1201" href="#1201">1201</a> 
-<a class="jxr_linenumber" name="1202" href="#1202">1202</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setArchivaAdministration( ArchivaAdministration archivaAdministration )
-<a class="jxr_linenumber" name="1203" href="#1203">1203</a>     {
-<a class="jxr_linenumber" name="1204" href="#1204">1204</a>         <strong class="jxr_keyword">this</strong>.archivaAdministration = archivaAdministration;
-<a class="jxr_linenumber" name="1205" href="#1205">1205</a>     }
-<a class="jxr_linenumber" name="1206" href="#1206">1206</a> }
+<a class="jxr_linenumber" name="1066" href="#1066">1066</a>             <strong class="jxr_keyword">return</strong> userRepositories.isAuthorizedToDeleteArtifacts( userName, repoId );
+<a class="jxr_linenumber" name="1067" href="#1067">1067</a>         }
+<a class="jxr_linenumber" name="1068" href="#1068">1068</a>         <strong class="jxr_keyword">catch</strong> ( ArchivaSecurityException e )
+<a class="jxr_linenumber" name="1069" href="#1069">1069</a>         {
+<a class="jxr_linenumber" name="1070" href="#1070">1070</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>( e.getMessage(),
+<a class="jxr_linenumber" name="1071" href="#1071">1071</a>                                                    Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), e );
+<a class="jxr_linenumber" name="1072" href="#1072">1072</a>         }
+<a class="jxr_linenumber" name="1073" href="#1073">1073</a>     }
+<a class="jxr_linenumber" name="1074" href="#1074">1074</a> 
+<a class="jxr_linenumber" name="1075" href="#1075">1075</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../org/apache/archiva/repository/scanner/RepositoryScanStatistics.html">RepositoryScanStatistics</a> scanRepositoryDirectoriesNow( String repositoryId )
+<a class="jxr_linenumber" name="1076" href="#1076">1076</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>
+<a class="jxr_linenumber" name="1077" href="#1077">1077</a>     {
+<a class="jxr_linenumber" name="1078" href="#1078">1078</a>         <strong class="jxr_keyword">long</strong> sinceWhen = RepositoryScanner.FRESH_SCAN;
+<a class="jxr_linenumber" name="1079" href="#1079">1079</a>         <strong class="jxr_keyword">try</strong>
+<a class="jxr_linenumber" name="1080" href="#1080">1080</a>         {
+<a class="jxr_linenumber" name="1081" href="#1081">1081</a>             <strong class="jxr_keyword">return</strong> repoScanner.scan( getManagedRepositoryAdmin().getManagedRepository( repositoryId ), sinceWhen );
+<a class="jxr_linenumber" name="1082" href="#1082">1082</a>         }
+<a class="jxr_linenumber" name="1083" href="#1083">1083</a>         <strong class="jxr_keyword">catch</strong> ( RepositoryScannerException e )
+<a class="jxr_linenumber" name="1084" href="#1084">1084</a>         {
+<a class="jxr_linenumber" name="1085" href="#1085">1085</a>             log.error( e.getMessage(), e );
+<a class="jxr_linenumber" name="1086" href="#1086">1086</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>( <span class="jxr_string">"RepositoryScannerException exception: "</span> + e.getMessage(), 500, e );
+<a class="jxr_linenumber" name="1087" href="#1087">1087</a>         }
+<a class="jxr_linenumber" name="1088" href="#1088">1088</a>         <strong class="jxr_keyword">catch</strong> ( RepositoryAdminException e )
+<a class="jxr_linenumber" name="1089" href="#1089">1089</a>         {
+<a class="jxr_linenumber" name="1090" href="#1090">1090</a>             log.error( e.getMessage(), e );
+<a class="jxr_linenumber" name="1091" href="#1091">1091</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>( <span class="jxr_string">"RepositoryScannerException exception: "</span> + e.getMessage(), 500, e );
+<a class="jxr_linenumber" name="1092" href="#1092">1092</a>         }
+<a class="jxr_linenumber" name="1093" href="#1093">1093</a>     }
+<a class="jxr_linenumber" name="1094" href="#1094">1094</a> 
+<a class="jxr_linenumber" name="1095" href="#1095">1095</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="1096" href="#1096">1096</a> <em class="jxr_javadoccomment">     * Update artifact level metadata. Creates one if metadata does not exist after artifact deletion.</em>
+<a class="jxr_linenumber" name="1097" href="#1097">1097</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="1098" href="#1098">1098</a> <em class="jxr_javadoccomment">     * @param metadata</em>
+<a class="jxr_linenumber" name="1099" href="#1099">1099</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="1100" href="#1100">1100</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> updateMetadata( ArchivaRepositoryMetadata metadata, File metadataFile, Date lastUpdatedTimestamp,
+<a class="jxr_linenumber" name="1101" href="#1101">1101</a>                                  <a href="../../../../../org/apache/archiva/maven2/model/Artifact.html">Artifact</a> artifact )
+<a class="jxr_linenumber" name="1102" href="#1102">1102</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/repository/metadata/RepositoryMetadataException.html">RepositoryMetadataException</a>
+<a class="jxr_linenumber" name="1103" href="#1103">1103</a>     {
+<a class="jxr_linenumber" name="1104" href="#1104">1104</a>         List&lt;String&gt; availableVersions = <strong class="jxr_keyword">new</strong> ArrayList&lt;String&gt;();
+<a class="jxr_linenumber" name="1105" href="#1105">1105</a>         String latestVersion = <span class="jxr_string">""</span>;
+<a class="jxr_linenumber" name="1106" href="#1106">1106</a> 
+<a class="jxr_linenumber" name="1107" href="#1107">1107</a>         <strong class="jxr_keyword">if</strong> ( metadataFile.exists() )
+<a class="jxr_linenumber" name="1108" href="#1108">1108</a>         {
+<a class="jxr_linenumber" name="1109" href="#1109">1109</a>             <strong class="jxr_keyword">if</strong> ( metadata.getAvailableVersions() != <strong class="jxr_keyword">null</strong> )
+<a class="jxr_linenumber" name="1110" href="#1110">1110</a>             {
+<a class="jxr_linenumber" name="1111" href="#1111">1111</a>                 availableVersions = metadata.getAvailableVersions();
+<a class="jxr_linenumber" name="1112" href="#1112">1112</a> 
+<a class="jxr_linenumber" name="1113" href="#1113">1113</a>                 <strong class="jxr_keyword">if</strong> ( availableVersions.size() &gt; 0 )
+<a class="jxr_linenumber" name="1114" href="#1114">1114</a>                 {
+<a class="jxr_linenumber" name="1115" href="#1115">1115</a>                     Collections.sort( availableVersions, VersionComparator.getInstance() );
+<a class="jxr_linenumber" name="1116" href="#1116">1116</a> 
+<a class="jxr_linenumber" name="1117" href="#1117">1117</a>                     <strong class="jxr_keyword">if</strong> ( availableVersions.contains( artifact.getVersion() ) )
+<a class="jxr_linenumber" name="1118" href="#1118">1118</a>                     {
+<a class="jxr_linenumber" name="1119" href="#1119">1119</a>                         availableVersions.remove( availableVersions.indexOf( artifact.getVersion() ) );
+<a class="jxr_linenumber" name="1120" href="#1120">1120</a>                     }
+<a class="jxr_linenumber" name="1121" href="#1121">1121</a>                     <strong class="jxr_keyword">if</strong> ( availableVersions.size() &gt; 0 )
+<a class="jxr_linenumber" name="1122" href="#1122">1122</a>                     {
+<a class="jxr_linenumber" name="1123" href="#1123">1123</a>                         latestVersion = availableVersions.get( availableVersions.size() - 1 );
+<a class="jxr_linenumber" name="1124" href="#1124">1124</a>                     }
+<a class="jxr_linenumber" name="1125" href="#1125">1125</a>                 }
+<a class="jxr_linenumber" name="1126" href="#1126">1126</a>             }
+<a class="jxr_linenumber" name="1127" href="#1127">1127</a>         }
+<a class="jxr_linenumber" name="1128" href="#1128">1128</a> 
+<a class="jxr_linenumber" name="1129" href="#1129">1129</a>         <strong class="jxr_keyword">if</strong> ( metadata.getGroupId() == <strong class="jxr_keyword">null</strong> )
+<a class="jxr_linenumber" name="1130" href="#1130">1130</a>         {
+<a class="jxr_linenumber" name="1131" href="#1131">1131</a>             metadata.setGroupId( artifact.getGroupId() );
+<a class="jxr_linenumber" name="1132" href="#1132">1132</a>         }
+<a class="jxr_linenumber" name="1133" href="#1133">1133</a>         <strong class="jxr_keyword">if</strong> ( metadata.getArtifactId() == <strong class="jxr_keyword">null</strong> )
+<a class="jxr_linenumber" name="1134" href="#1134">1134</a>         {
+<a class="jxr_linenumber" name="1135" href="#1135">1135</a>             metadata.setArtifactId( artifact.getArtifactId() );
+<a class="jxr_linenumber" name="1136" href="#1136">1136</a>         }
+<a class="jxr_linenumber" name="1137" href="#1137">1137</a> 
+<a class="jxr_linenumber" name="1138" href="#1138">1138</a>         <strong class="jxr_keyword">if</strong> ( !VersionUtil.isSnapshot( artifact.getVersion() ) )
+<a class="jxr_linenumber" name="1139" href="#1139">1139</a>         {
+<a class="jxr_linenumber" name="1140" href="#1140">1140</a>             <strong class="jxr_keyword">if</strong> ( metadata.getReleasedVersion() != <strong class="jxr_keyword">null</strong> &amp;&amp; metadata.getReleasedVersion().equals(
+<a class="jxr_linenumber" name="1141" href="#1141">1141</a>                 artifact.getVersion() ) )
+<a class="jxr_linenumber" name="1142" href="#1142">1142</a>             {
+<a class="jxr_linenumber" name="1143" href="#1143">1143</a>                 metadata.setReleasedVersion( latestVersion );
+<a class="jxr_linenumber" name="1144" href="#1144">1144</a>             }
+<a class="jxr_linenumber" name="1145" href="#1145">1145</a>         }
+<a class="jxr_linenumber" name="1146" href="#1146">1146</a> 
+<a class="jxr_linenumber" name="1147" href="#1147">1147</a>         metadata.setLatestVersion( latestVersion );
+<a class="jxr_linenumber" name="1148" href="#1148">1148</a>         metadata.setLastUpdatedTimestamp( lastUpdatedTimestamp );
+<a class="jxr_linenumber" name="1149" href="#1149">1149</a>         metadata.setAvailableVersions( availableVersions );
+<a class="jxr_linenumber" name="1150" href="#1150">1150</a> 
+<a class="jxr_linenumber" name="1151" href="#1151">1151</a>         RepositoryMetadataWriter.write( metadata, metadataFile );
+<a class="jxr_linenumber" name="1152" href="#1152">1152</a>         <a href="../../../../../org/apache/archiva/checksum/ChecksummedFile.html">ChecksummedFile</a> checksum = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/checksum/ChecksummedFile.html">ChecksummedFile</a>( metadataFile );
+<a class="jxr_linenumber" name="1153" href="#1153">1153</a>         checksum.fixChecksums( algorithms );
+<a class="jxr_linenumber" name="1154" href="#1154">1154</a>     }
+<a class="jxr_linenumber" name="1155" href="#1155">1155</a> 
+<a class="jxr_linenumber" name="1156" href="#1156">1156</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../org/apache/archiva/admin/model/managed/ManagedRepositoryAdmin.html">ManagedRepositoryAdmin</a> getManagedRepositoryAdmin()
+<a class="jxr_linenumber" name="1157" href="#1157">1157</a>     {
+<a class="jxr_linenumber" name="1158" href="#1158">1158</a>         <strong class="jxr_keyword">return</strong> managedRepositoryAdmin;
+<a class="jxr_linenumber" name="1159" href="#1159">1159</a>     }
+<a class="jxr_linenumber" name="1160" href="#1160">1160</a> 
+<a class="jxr_linenumber" name="1161" href="#1161">1161</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setManagedRepositoryAdmin( ManagedRepositoryAdmin managedRepositoryAdmin )
+<a class="jxr_linenumber" name="1162" href="#1162">1162</a>     {
+<a class="jxr_linenumber" name="1163" href="#1163">1163</a>         <strong class="jxr_keyword">this</strong>.managedRepositoryAdmin = managedRepositoryAdmin;
+<a class="jxr_linenumber" name="1164" href="#1164">1164</a>     }
+<a class="jxr_linenumber" name="1165" href="#1165">1165</a> 
+<a class="jxr_linenumber" name="1166" href="#1166">1166</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../org/apache/archiva/repository/RepositoryContentFactory.html">RepositoryContentFactory</a> getRepositoryFactory()
+<a class="jxr_linenumber" name="1167" href="#1167">1167</a>     {
+<a class="jxr_linenumber" name="1168" href="#1168">1168</a>         <strong class="jxr_keyword">return</strong> repositoryFactory;
+<a class="jxr_linenumber" name="1169" href="#1169">1169</a>     }
+<a class="jxr_linenumber" name="1170" href="#1170">1170</a> 
+<a class="jxr_linenumber" name="1171" href="#1171">1171</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setRepositoryFactory( RepositoryContentFactory repositoryFactory )
+<a class="jxr_linenumber" name="1172" href="#1172">1172</a>     {
+<a class="jxr_linenumber" name="1173" href="#1173">1173</a>         <strong class="jxr_keyword">this</strong>.repositoryFactory = repositoryFactory;
+<a class="jxr_linenumber" name="1174" href="#1174">1174</a>     }
+<a class="jxr_linenumber" name="1175" href="#1175">1175</a> 
+<a class="jxr_linenumber" name="1176" href="#1176">1176</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html">RepositorySessionFactory</a> getRepositorySessionFactory()
+<a class="jxr_linenumber" name="1177" href="#1177">1177</a>     {
+<a class="jxr_linenumber" name="1178" href="#1178">1178</a>         <strong class="jxr_keyword">return</strong> repositorySessionFactory;
+<a class="jxr_linenumber" name="1179" href="#1179">1179</a>     }
+<a class="jxr_linenumber" name="1180" href="#1180">1180</a> 
+<a class="jxr_linenumber" name="1181" href="#1181">1181</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setRepositorySessionFactory( RepositorySessionFactory repositorySessionFactory )
+<a class="jxr_linenumber" name="1182" href="#1182">1182</a>     {
+<a class="jxr_linenumber" name="1183" href="#1183">1183</a>         <strong class="jxr_keyword">this</strong>.repositorySessionFactory = repositorySessionFactory;
+<a class="jxr_linenumber" name="1184" href="#1184">1184</a>     }
+<a class="jxr_linenumber" name="1185" href="#1185">1185</a> 
+<a class="jxr_linenumber" name="1186" href="#1186">1186</a>     <strong class="jxr_keyword">public</strong> List&lt;RepositoryListener&gt; getListeners()
+<a class="jxr_linenumber" name="1187" href="#1187">1187</a>     {
+<a class="jxr_linenumber" name="1188" href="#1188">1188</a>         <strong class="jxr_keyword">return</strong> listeners;
+<a class="jxr_linenumber" name="1189" href="#1189">1189</a>     }
+<a class="jxr_linenumber" name="1190" href="#1190">1190</a> 
+<a class="jxr_linenumber" name="1191" href="#1191">1191</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setListeners( List&lt;RepositoryListener&gt; listeners )
+<a class="jxr_linenumber" name="1192" href="#1192">1192</a>     {
+<a class="jxr_linenumber" name="1193" href="#1193">1193</a>         <strong class="jxr_keyword">this</strong>.listeners = listeners;
+<a class="jxr_linenumber" name="1194" href="#1194">1194</a>     }
+<a class="jxr_linenumber" name="1195" href="#1195">1195</a> 
+<a class="jxr_linenumber" name="1196" href="#1196">1196</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html">ArchivaAdministration</a> getArchivaAdministration()
+<a class="jxr_linenumber" name="1197" href="#1197">1197</a>     {
+<a class="jxr_linenumber" name="1198" href="#1198">1198</a>         <strong class="jxr_keyword">return</strong> archivaAdministration;
+<a class="jxr_linenumber" name="1199" href="#1199">1199</a>     }
+<a class="jxr_linenumber" name="1200" href="#1200">1200</a> 
+<a class="jxr_linenumber" name="1201" href="#1201">1201</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setArchivaAdministration( ArchivaAdministration archivaAdministration )
+<a class="jxr_linenumber" name="1202" href="#1202">1202</a>     {
+<a class="jxr_linenumber" name="1203" href="#1203">1203</a>         <strong class="jxr_keyword">this</strong>.archivaAdministration = archivaAdministration;
+<a class="jxr_linenumber" name="1204" href="#1204">1204</a>     }
+<a class="jxr_linenumber" name="1205" href="#1205">1205</a> }
+<a class="jxr_linenumber" name="1206" href="#1206">1206</a> 
 <a class="jxr_linenumber" name="1207" href="#1207">1207</a> 
-<a class="jxr_linenumber" name="1208" href="#1208">1208</a> 
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>
