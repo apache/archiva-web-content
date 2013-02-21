@@ -105,7 +105,7 @@
 <hr>
 <br>
 <pre>@Service(value="redbackRuntimeConfigurationService#rest")
-public class <a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.60">DefaultRedbackRuntimeConfigurationService</a>
+public class <a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.63">DefaultRedbackRuntimeConfigurationService</a>
 extends <a href="../../../../../org/apache/archiva/rest/services/AbstractRestService.html" title="class in org.apache.archiva.rest.services">AbstractRestService</a>
 implements <a href="../../../../../org/apache/archiva/rest/api/services/RedbackRuntimeConfigurationService.html" title="interface in org.apache.archiva.rest.api.services">RedbackRuntimeConfigurationService</a></pre>
 <dl><dt><span class="strong">Since:</span></dt>
@@ -143,8 +143,16 @@ implements <a href="../../../../../org/apache/archiva/rest/api/services/RedbackR
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#ldapUserMapper">ldapUserMapper</a></strong></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code>private org.apache.archiva.redback.rbac.RBACManager</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#rbacManager">rbacManager</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>private <a href="../../../../../org/apache/archiva/admin/model/runtime/RedbackRuntimeConfigurationAdmin.html" title="interface in org.apache.archiva.admin.model.runtime">RedbackRuntimeConfigurationAdmin</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#redbackRuntimeConfigurationAdmin">redbackRuntimeConfigurationAdmin</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private org.apache.archiva.redback.role.RoleManager</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#roleManager">roleManager</a></strong></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>private org.apache.archiva.redback.users.UserManager</code></td>
@@ -202,6 +210,14 @@ implements <a href="../../../../../org/apache/archiva/rest/api/services/RedbackR
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#checkLdapConnection(org.apache.archiva.admin.model.beans.LdapConfiguration)">checkLdapConnection</a></strong>(<a href="../../../../../org/apache/archiva/admin/model/beans/LdapConfiguration.html" title="class in org.apache.archiva.admin.model.beans">LdapConfiguration</a>&nbsp;ldapConfiguration)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/rest/api/model/RBACManagerImplementationInformation.html" title="class in org.apache.archiva.rest.api.model">RBACManagerImplementationInformation</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#getRbacManagerImplementationInformations()">getRbacManagerImplementationInformations</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/rest/api/model/RedbackImplementationsInformations.html" title="class in org.apache.archiva.rest.api.model">RedbackImplementationsInformations</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#getRedbackImplementationsInformations()">getRedbackImplementationsInformations</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html" title="class in org.apache.archiva.admin.model.beans">RedbackRuntimeConfiguration</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#getRedbackRuntimeConfiguration()">getRedbackRuntimeConfiguration</a></strong>()</code>&nbsp;</td>
 </tr>
@@ -253,7 +269,7 @@ implements <a href="../../../../../org/apache/archiva/rest/api/services/RedbackR
 <li class="blockList">
 <h4>redbackRuntimeConfigurationAdmin</h4>
 <pre>@Inject
-private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/RedbackRuntimeConfigurationAdmin.html" title="interface in org.apache.archiva.admin.model.runtime">RedbackRuntimeConfigurationAdmin</a> <a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.65">redbackRuntimeConfigurationAdmin</a></pre>
+private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/RedbackRuntimeConfigurationAdmin.html" title="interface in org.apache.archiva.admin.model.runtime">RedbackRuntimeConfigurationAdmin</a> <a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.68">redbackRuntimeConfigurationAdmin</a></pre>
 </li>
 </ul>
 <a name="userManager">
@@ -264,7 +280,28 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <h4>userManager</h4>
 <pre>@Inject
 @Named(value="userManager#configurable")
-private&nbsp;org.apache.archiva.redback.users.UserManager <a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.69">userManager</a></pre>
+private&nbsp;org.apache.archiva.redback.users.UserManager <a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.72">userManager</a></pre>
+</li>
+</ul>
+<a name="rbacManager">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>rbacManager</h4>
+<pre>@Inject
+@Named(value="rbacManager#default")
+private&nbsp;org.apache.archiva.redback.rbac.RBACManager <a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.76">rbacManager</a></pre>
+</li>
+</ul>
+<a name="roleManager">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>roleManager</h4>
+<pre>@Inject
+private&nbsp;org.apache.archiva.redback.role.RoleManager <a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.79">roleManager</a></pre>
 </li>
 </ul>
 <a name="applicationContext">
@@ -274,7 +311,7 @@ private&nbsp;org.apache.archiva.redback.users.UserManager <a href="../../../../.
 <li class="blockList">
 <h4>applicationContext</h4>
 <pre>@Inject
-private&nbsp;org.springframework.context.ApplicationContext <a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.72">applicationContext</a></pre>
+private&nbsp;org.springframework.context.ApplicationContext <a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.82">applicationContext</a></pre>
 </li>
 </ul>
 <a name="ldapConnectionFactory">
@@ -285,7 +322,7 @@ private&nbsp;org.springframework.context.ApplicationContext <a href="../../../..
 <h4>ldapConnectionFactory</h4>
 <pre>@Inject
 @Named(value="ldapConnectionFactory#configurable")
-private&nbsp;org.apache.archiva.redback.common.ldap.connection.LdapConnectionFactory <a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.76">ldapConnectionFactory</a></pre>
+private&nbsp;org.apache.archiva.redback.common.ldap.connection.LdapConnectionFactory <a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.86">ldapConnectionFactory</a></pre>
 </li>
 </ul>
 <a name="usersCache">
@@ -296,7 +333,7 @@ private&nbsp;org.apache.archiva.redback.common.ldap.connection.LdapConnectionFac
 <h4>usersCache</h4>
 <pre>@Inject
 @Named(value="cache#users")
-private&nbsp;org.apache.archiva.redback.components.cache.Cache <a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.80">usersCache</a></pre>
+private&nbsp;org.apache.archiva.redback.components.cache.Cache <a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.90">usersCache</a></pre>
 </li>
 </ul>
 <a name="ldapUserMapper">
@@ -306,7 +343,7 @@ private&nbsp;org.apache.archiva.redback.components.cache.Cache <a href="../../..
 <li class="blockList">
 <h4>ldapUserMapper</h4>
 <pre>@Inject
-private&nbsp;org.apache.archiva.redback.common.ldap.user.LdapUserMapper <a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.83">ldapUserMapper</a></pre>
+private&nbsp;org.apache.archiva.redback.common.ldap.user.LdapUserMapper <a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.93">ldapUserMapper</a></pre>
 </li>
 </ul>
 </li>
@@ -323,7 +360,7 @@ private&nbsp;org.apache.archiva.redback.common.ldap.user.LdapUserMapper <a href=
 <ul class="blockListLast">
 <li class="blockList">
 <h4>DefaultRedbackRuntimeConfigurationService</h4>
-<pre>public&nbsp;<a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.60">DefaultRedbackRuntimeConfigurationService</a>()</pre>
+<pre>public&nbsp;<a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.63">DefaultRedbackRuntimeConfigurationService</a>()</pre>
 </li>
 </ul>
 </li>
@@ -340,7 +377,7 @@ private&nbsp;org.apache.archiva.redback.common.ldap.user.LdapUserMapper <a href=
 <ul class="blockList">
 <li class="blockList">
 <h4>getRedbackRuntimeConfiguration</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html" title="class in org.apache.archiva.admin.model.beans">RedbackRuntimeConfiguration</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.86">getRedbackRuntimeConfiguration</a>()
+<pre>public&nbsp;<a href="../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html" title="class in org.apache.archiva.admin.model.beans">RedbackRuntimeConfiguration</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.96">getRedbackRuntimeConfiguration</a>()
                                                            throws <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</a></pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -355,7 +392,7 @@ private&nbsp;org.apache.archiva.redback.common.ldap.user.LdapUserMapper <a href=
 <ul class="blockList">
 <li class="blockList">
 <h4>updateRedbackRuntimeConfiguration</h4>
-<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.99">updateRedbackRuntimeConfiguration</a>(<a href="../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html" title="class in org.apache.archiva.admin.model.beans">RedbackRuntimeConfiguration</a>&nbsp;redbackRuntimeConfiguration)
+<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.109">updateRedbackRuntimeConfiguration</a>(<a href="../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html" title="class in org.apache.archiva.admin.model.beans">RedbackRuntimeConfiguration</a>&nbsp;redbackRuntimeConfiguration)
                                           throws <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</a></pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -370,11 +407,41 @@ private&nbsp;org.apache.archiva.redback.common.ldap.user.LdapUserMapper <a href=
 <ul class="blockList">
 <li class="blockList">
 <h4>getUserManagerImplementationInformations</h4>
-<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/rest/api/model/UserManagerImplementationInformation.html" title="class in org.apache.archiva.rest.api.model">UserManagerImplementationInformation</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.171">getUserManagerImplementationInformations</a>()
+<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/rest/api/model/UserManagerImplementationInformation.html" title="class in org.apache.archiva.rest.api.model">UserManagerImplementationInformation</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.192">getUserManagerImplementationInformations</a>()
                                                                                     throws <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</a></pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
 <dd><code><a href="../../../../../org/apache/archiva/rest/api/services/RedbackRuntimeConfigurationService.html#getUserManagerImplementationInformations()">getUserManagerImplementationInformations</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/archiva/rest/api/services/RedbackRuntimeConfigurationService.html" title="interface in org.apache.archiva.rest.api.services">RedbackRuntimeConfigurationService</a></code></dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</a></code></dd></dl>
+</li>
+</ul>
+<a name="getRbacManagerImplementationInformations()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRbacManagerImplementationInformations</h4>
+<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/rest/api/model/RBACManagerImplementationInformation.html" title="class in org.apache.archiva.rest.api.model">RBACManagerImplementationInformation</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.222">getRbacManagerImplementationInformations</a>()
+                                                                                    throws <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</a></pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../../org/apache/archiva/rest/api/services/RedbackRuntimeConfigurationService.html#getRbacManagerImplementationInformations()">getRbacManagerImplementationInformations</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/archiva/rest/api/services/RedbackRuntimeConfigurationService.html" title="interface in org.apache.archiva.rest.api.services">RedbackRuntimeConfigurationService</a></code></dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</a></code></dd></dl>
+</li>
+</ul>
+<a name="getRedbackImplementationsInformations()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRedbackImplementationsInformations</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/archiva/rest/api/model/RedbackImplementationsInformations.html" title="class in org.apache.archiva.rest.api.model">RedbackImplementationsInformations</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.251">getRedbackImplementationsInformations</a>()
+                                                                         throws <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</a></pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../../org/apache/archiva/rest/api/services/RedbackRuntimeConfigurationService.html#getRedbackImplementationsInformations()">getRedbackImplementationsInformations</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/archiva/rest/api/services/RedbackRuntimeConfigurationService.html" title="interface in org.apache.archiva.rest.api.services">RedbackRuntimeConfigurationService</a></code></dd>
 <dt><span class="strong">Throws:</span></dt>
 <dd><code><a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</a></code></dd></dl>
 </li>
@@ -385,7 +452,7 @@ private&nbsp;org.apache.archiva.redback.common.ldap.user.LdapUserMapper <a href=
 <ul class="blockList">
 <li class="blockList">
 <h4>checkLdapConnection</h4>
-<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.202">checkLdapConnection</a>()
+<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.258">checkLdapConnection</a>()
                             throws <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</a></pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -400,7 +467,7 @@ private&nbsp;org.apache.archiva.redback.common.ldap.user.LdapUserMapper <a href=
 <ul class="blockList">
 <li class="blockList">
 <h4>checkLdapConnection</h4>
-<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.227">checkLdapConnection</a>(<a href="../../../../../org/apache/archiva/admin/model/beans/LdapConfiguration.html" title="class in org.apache.archiva.admin.model.beans">LdapConfiguration</a>&nbsp;ldapConfiguration)
+<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.283">checkLdapConnection</a>(<a href="../../../../../org/apache/archiva/admin/model/beans/LdapConfiguration.html" title="class in org.apache.archiva.admin.model.beans">LdapConfiguration</a>&nbsp;ldapConfiguration)
                             throws <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</a></pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -415,7 +482,7 @@ private&nbsp;org.apache.archiva.redback.common.ldap.user.LdapUserMapper <a href=
 <ul class="blockListLast">
 <li class="blockList">
 <h4>toProperties</h4>
-<pre>private&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.278">toProperties</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;map)</pre>
+<pre>private&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#line.334">toProperties</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;map)</pre>
 </li>
 </ul>
 </li>

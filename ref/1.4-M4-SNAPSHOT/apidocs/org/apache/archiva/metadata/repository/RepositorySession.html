@@ -182,22 +182,28 @@ extends <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?i
 </td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html#closeQuietly()">closeQuietly</a></strong>()</code>
+<div class="block">ignore RuntimeException when closing repository</div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html#getRepository()">getRepository</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html" title="interface in org.apache.archiva.metadata.repository">MetadataResolver</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html#getResolver()">getResolver</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html#markDirty()">markDirty</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html#revert()">revert</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html#save()">save</a></strong>()</code>&nbsp;</td>
 </tr>
@@ -327,11 +333,24 @@ extends <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?i
 <ul class="blockList">
 <li class="blockList">
 <h4>close</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/RepositorySession.html#line.86">close</a>()</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/RepositorySession.html#line.87">close</a>()</pre>
 <div class="block">Close the session. Required to be called for all open sessions to ensure resources are properly released.
  If the session has been marked as dirty, it will be saved. This may save partial changes in the case of a typical
  <code>try { ... } finally { ... }</code> approach - if this is a problem, ensure you revert changes when an
- exception occurs.</div>
+ exception occurs.
+ <b>can throw RuntimeException</b></div>
+</li>
+</ul>
+<a name="closeQuietly()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>closeQuietly</h4>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/RepositorySession.html#line.113">closeQuietly</a>()</pre>
+<div class="block">ignore RuntimeException when closing repository</div>
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>1.4-M4</dd></dl>
 </li>
 </ul>
 <a name="markDirty()">
@@ -340,7 +359,7 @@ extends <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?i
 <ul class="blockListLast">
 <li class="blockList">
 <h4>markDirty</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/RepositorySession.html#line.109">markDirty</a>()</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/RepositorySession.html#line.126">markDirty</a>()</pre>
 </li>
 </ul>
 </li>

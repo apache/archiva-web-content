@@ -87,9 +87,13 @@
 <span class="sourceLineNo">079</span><a name="line.79"></a>
 <span class="sourceLineNo">080</span>    public int compareTo( PropertyEntry o )<a name="line.80"></a>
 <span class="sourceLineNo">081</span>    {<a name="line.81"></a>
-<span class="sourceLineNo">082</span>        return this.key.compareTo( o.getKey() );<a name="line.82"></a>
-<span class="sourceLineNo">083</span>    }<a name="line.83"></a>
-<span class="sourceLineNo">084</span>}<a name="line.84"></a>
+<span class="sourceLineNo">082</span>        if (o == null || o.getKey() == null)<a name="line.82"></a>
+<span class="sourceLineNo">083</span>        {<a name="line.83"></a>
+<span class="sourceLineNo">084</span>            return 1;<a name="line.84"></a>
+<span class="sourceLineNo">085</span>        }<a name="line.85"></a>
+<span class="sourceLineNo">086</span>        return this.key.compareTo( o.getKey() );<a name="line.86"></a>
+<span class="sourceLineNo">087</span>    }<a name="line.87"></a>
+<span class="sourceLineNo">088</span>}<a name="line.88"></a>
 
 
 

@@ -105,7 +105,7 @@
 <hr>
 <br>
 <pre>@Service(value="rbacManager#archiva")
-public class <a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.48">ArchivaRbacManager</a>
+public class <a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.53">ArchivaRbacManager</a>
 extends org.apache.archiva.redback.rbac.AbstractRBACManager
 implements org.apache.archiva.redback.rbac.RBACManager</pre>
 <dl><dt><span class="strong">Since:</span></dt>
@@ -135,12 +135,40 @@ implements org.apache.archiva.redback.rbac.RBACManager</pre>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#applicationContext">applicationContext</a></strong></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code>private org.apache.archiva.redback.components.cache.Cache&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;org.apache.archiva.redback.rbac.Role&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#effectiveRoleSetCache">effectiveRoleSetCache</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private org.apache.archiva.redback.components.cache.Cache&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,org.apache.archiva.redback.rbac.Operation&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#operationsCache">operationsCache</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private org.apache.archiva.redback.components.cache.Cache&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,org.apache.archiva.redback.rbac.Permission&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#permissionsCache">permissionsCache</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>private <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,org.apache.archiva.redback.rbac.RBACManager&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#rbacManagersPerId">rbacManagersPerId</a></strong></code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>private <a href="../../../../../org/apache/archiva/admin/model/runtime/RedbackRuntimeConfigurationAdmin.html" title="interface in org.apache.archiva.admin.model.runtime">RedbackRuntimeConfigurationAdmin</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#redbackRuntimeConfigurationAdmin">redbackRuntimeConfigurationAdmin</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private org.apache.archiva.redback.components.cache.Cache&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,org.apache.archiva.redback.rbac.Resource&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#resourcesCache">resourcesCache</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private org.apache.archiva.redback.components.cache.Cache&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,org.apache.archiva.redback.rbac.Role&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#rolesCache">rolesCache</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private org.apache.archiva.redback.components.cache.Cache&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,org.apache.archiva.redback.rbac.UserAssignment&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#userAssignmentsCache">userAssignmentsCache</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private org.apache.archiva.redback.components.cache.Cache&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.archiva.redback.rbac.Permission&gt;&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#userPermissionsCache">userPermissionsCache</a></strong></code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -232,94 +260,106 @@ implements org.apache.archiva.redback.rbac.RBACManager</pre>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#getAllUserAssignments()">getAllUserAssignments</a></strong>()</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#getDescriptionKey()">getDescriptionKey</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>org.apache.archiva.redback.rbac.Operation</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#getOperation(java.lang.String)">getOperation</a></strong>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;operationName)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>org.apache.archiva.redback.rbac.Permission</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#getPermission(java.lang.String)">getPermission</a></strong>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;permissionName)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
-<td class="colFirst"><code>protected org.apache.archiva.redback.rbac.RBACManager</code></td>
-<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#getRbacManagerForCommon()">getRbacManagerForCommon</a></strong>()</code>&nbsp;</td>
-</tr>
 <tr class="rowColor">
+<td class="colFirst"><code>protected org.apache.archiva.redback.rbac.RBACManager</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#getRbacManagerForWrite()">getRbacManagerForWrite</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>org.apache.archiva.redback.rbac.Resource</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#getResource(java.lang.String)">getResource</a></strong>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;resourceIdentifier)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>org.apache.archiva.redback.rbac.Role</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#getRole(java.lang.String)">getRole</a></strong>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;roleName)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>org.apache.archiva.redback.rbac.UserAssignment</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#getUserAssignment(java.lang.String)">getUserAssignment</a></strong>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;principal)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.archiva.redback.rbac.UserAssignment&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#getUserAssignmentsForRoles(java.util.Collection)">getUserAssignmentsForRoles</a></strong>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;roleNames)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#initialize()">initialize</a></strong>()</code>&nbsp;</td>
 </tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#isFinalImplementation()">isFinalImplementation</a></strong>()</code>&nbsp;</td>
+</tr>
 <tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#isReadOnly()">isReadOnly</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#removeOperation(org.apache.archiva.redback.rbac.Operation)">removeOperation</a></strong>(org.apache.archiva.redback.rbac.Operation&nbsp;operation)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#removePermission(org.apache.archiva.redback.rbac.Permission)">removePermission</a></strong>(org.apache.archiva.redback.rbac.Permission&nbsp;permission)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#removeResource(org.apache.archiva.redback.rbac.Resource)">removeResource</a></strong>(org.apache.archiva.redback.rbac.Resource&nbsp;resource)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#removeRole(org.apache.archiva.redback.rbac.Role)">removeRole</a></strong>(org.apache.archiva.redback.rbac.Role&nbsp;role)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#removeUserAssignment(org.apache.archiva.redback.rbac.UserAssignment)">removeUserAssignment</a></strong>(org.apache.archiva.redback.rbac.UserAssignment&nbsp;userAssignment)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#roleExists(org.apache.archiva.redback.rbac.Role)">roleExists</a></strong>(org.apache.archiva.redback.rbac.Role&nbsp;role)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#roleExists(java.lang.String)">roleExists</a></strong>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>org.apache.archiva.redback.rbac.Operation</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#saveOperation(org.apache.archiva.redback.rbac.Operation)">saveOperation</a></strong>(org.apache.archiva.redback.rbac.Operation&nbsp;operation)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>org.apache.archiva.redback.rbac.Permission</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#savePermission(org.apache.archiva.redback.rbac.Permission)">savePermission</a></strong>(org.apache.archiva.redback.rbac.Permission&nbsp;permission)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>org.apache.archiva.redback.rbac.Resource</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#saveResource(org.apache.archiva.redback.rbac.Resource)">saveResource</a></strong>(org.apache.archiva.redback.rbac.Resource&nbsp;resource)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>org.apache.archiva.redback.rbac.Role</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#saveRole(org.apache.archiva.redback.rbac.Role)">saveRole</a></strong>(org.apache.archiva.redback.rbac.Role&nbsp;role)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#saveRoles(java.util.Collection)">saveRoles</a></strong>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;org.apache.archiva.redback.rbac.Role&gt;&nbsp;roles)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>org.apache.archiva.redback.rbac.UserAssignment</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#saveUserAssignment(org.apache.archiva.redback.rbac.UserAssignment)">saveUserAssignment</a></strong>(org.apache.archiva.redback.rbac.UserAssignment&nbsp;userAssignment)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#userAssignmentExists(java.lang.String)">userAssignmentExists</a></strong>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;principal)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/web/security/ArchivaRbacManager.html#userAssignmentExists(org.apache.archiva.redback.rbac.UserAssignment)">userAssignmentExists</a></strong>(org.apache.archiva.redback.rbac.UserAssignment&nbsp;assignment)</code>&nbsp;</td>
 </tr>
@@ -365,7 +405,7 @@ implements org.apache.archiva.redback.rbac.RBACManager</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>rbacManagersPerId</h4>
-<pre>private&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,org.apache.archiva.redback.rbac.RBACManager&gt; <a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.53">rbacManagersPerId</a></pre>
+<pre>private&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,org.apache.archiva.redback.rbac.RBACManager&gt; <a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.58">rbacManagersPerId</a></pre>
 </li>
 </ul>
 <a name="applicationContext">
@@ -375,17 +415,94 @@ implements org.apache.archiva.redback.rbac.RBACManager</pre>
 <li class="blockList">
 <h4>applicationContext</h4>
 <pre>@Inject
-private&nbsp;org.springframework.context.ApplicationContext <a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.56">applicationContext</a></pre>
+private&nbsp;org.springframework.context.ApplicationContext <a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.61">applicationContext</a></pre>
 </li>
 </ul>
 <a name="redbackRuntimeConfigurationAdmin">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>redbackRuntimeConfigurationAdmin</h4>
 <pre>@Inject
-private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/RedbackRuntimeConfigurationAdmin.html" title="interface in org.apache.archiva.admin.model.runtime">RedbackRuntimeConfigurationAdmin</a> <a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.59">redbackRuntimeConfigurationAdmin</a></pre>
+private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/RedbackRuntimeConfigurationAdmin.html" title="interface in org.apache.archiva.admin.model.runtime">RedbackRuntimeConfigurationAdmin</a> <a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.64">redbackRuntimeConfigurationAdmin</a></pre>
+</li>
+</ul>
+<a name="operationsCache">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>operationsCache</h4>
+<pre>@Inject
+@Named(value="cache#operations")
+private&nbsp;org.apache.archiva.redback.components.cache.Cache&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,org.apache.archiva.redback.rbac.Operation&gt; <a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.68">operationsCache</a></pre>
+</li>
+</ul>
+<a name="permissionsCache">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>permissionsCache</h4>
+<pre>@Inject
+@Named(value="cache#permissions")
+private&nbsp;org.apache.archiva.redback.components.cache.Cache&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,org.apache.archiva.redback.rbac.Permission&gt; <a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.72">permissionsCache</a></pre>
+</li>
+</ul>
+<a name="resourcesCache">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>resourcesCache</h4>
+<pre>@Inject
+@Named(value="cache#resources")
+private&nbsp;org.apache.archiva.redback.components.cache.Cache&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,org.apache.archiva.redback.rbac.Resource&gt; <a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.76">resourcesCache</a></pre>
+</li>
+</ul>
+<a name="rolesCache">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>rolesCache</h4>
+<pre>@Inject
+@Named(value="cache#roles")
+private&nbsp;org.apache.archiva.redback.components.cache.Cache&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,org.apache.archiva.redback.rbac.Role&gt; <a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.80">rolesCache</a></pre>
+</li>
+</ul>
+<a name="userAssignmentsCache">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>userAssignmentsCache</h4>
+<pre>@Inject
+@Named(value="cache#userAssignments")
+private&nbsp;org.apache.archiva.redback.components.cache.Cache&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,org.apache.archiva.redback.rbac.UserAssignment&gt; <a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.84">userAssignmentsCache</a></pre>
+</li>
+</ul>
+<a name="userPermissionsCache">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>userPermissionsCache</h4>
+<pre>@Inject
+@Named(value="cache#userPermissions")
+private&nbsp;org.apache.archiva.redback.components.cache.Cache&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.archiva.redback.rbac.Permission&gt;&gt;&gt; <a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.88">userPermissionsCache</a></pre>
+</li>
+</ul>
+<a name="effectiveRoleSetCache">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>effectiveRoleSetCache</h4>
+<pre>@Inject
+@Named(value="cache#effectiveRoleSet")
+private&nbsp;org.apache.archiva.redback.components.cache.Cache&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;org.apache.archiva.redback.rbac.Role&gt;&gt; <a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.92">effectiveRoleSetCache</a></pre>
 </li>
 </ul>
 </li>
@@ -402,7 +519,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockListLast">
 <li class="blockList">
 <h4>ArchivaRbacManager</h4>
-<pre>public&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.48">ArchivaRbacManager</a>()</pre>
+<pre>public&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.53">ArchivaRbacManager</a>()</pre>
 </li>
 </ul>
 </li>
@@ -419,7 +536,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>initialize</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.62">initialize</a>()</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.95">initialize</a>()</pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
 <dd><code>initialize</code>&nbsp;in interface&nbsp;<code>org.apache.archiva.redback.rbac.RBACManager</code></dd>
@@ -428,13 +545,13 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 </dl>
 </li>
 </ul>
-<a name="getRbacManagerForCommon()">
+<a name="getRbacManagerForWrite()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getRbacManagerForCommon</h4>
-<pre>protected&nbsp;org.apache.archiva.redback.rbac.RBACManager&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.88">getRbacManagerForCommon</a>()</pre>
+<h4>getRbacManagerForWrite</h4>
+<pre>protected&nbsp;org.apache.archiva.redback.rbac.RBACManager&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.121">getRbacManagerForWrite</a>()</pre>
 </li>
 </ul>
 <a name="createRole(java.lang.String)">
@@ -443,7 +560,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>createRole</h4>
-<pre>public&nbsp;org.apache.archiva.redback.rbac.Role&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.93">createRole</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</pre>
+<pre>public&nbsp;org.apache.archiva.redback.rbac.Role&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.133">createRole</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
 <dd><code>createRole</code>&nbsp;in interface&nbsp;<code>org.apache.archiva.redback.rbac.RBACManager</code></dd>
@@ -456,7 +573,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>saveRole</h4>
-<pre>public&nbsp;org.apache.archiva.redback.rbac.Role&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.98">saveRole</a>(org.apache.archiva.redback.rbac.Role&nbsp;role)
+<pre>public&nbsp;org.apache.archiva.redback.rbac.Role&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.138">saveRole</a>(org.apache.archiva.redback.rbac.Role&nbsp;role)
                                               throws org.apache.archiva.redback.rbac.RbacObjectInvalidException,
                                                      org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
@@ -473,7 +590,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>saveRoles</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.104">saveRoles</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;org.apache.archiva.redback.rbac.Role&gt;&nbsp;roles)
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.162">saveRoles</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;org.apache.archiva.redback.rbac.Role&gt;&nbsp;roles)
                throws org.apache.archiva.redback.rbac.RbacObjectInvalidException,
                       org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
@@ -490,7 +607,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>getRole</h4>
-<pre>public&nbsp;org.apache.archiva.redback.rbac.Role&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.110">getRole</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;roleName)
+<pre>public&nbsp;org.apache.archiva.redback.rbac.Role&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.185">getRole</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;roleName)
                                              throws org.apache.archiva.redback.rbac.RbacObjectNotFoundException,
                                                     org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
@@ -507,7 +624,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>getAllRoles</h4>
-<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.archiva.redback.rbac.Role&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.125">getAllRoles</a>()
+<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.archiva.redback.rbac.Role&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.220">getAllRoles</a>()
                                                        throws org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -522,7 +639,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>removeRole</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.132">removeRole</a>(org.apache.archiva.redback.rbac.Role&nbsp;role)
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.251">removeRole</a>(org.apache.archiva.redback.rbac.Role&nbsp;role)
                 throws org.apache.archiva.redback.rbac.RbacObjectNotFoundException,
                        org.apache.archiva.redback.rbac.RbacObjectInvalidException,
                        org.apache.archiva.redback.rbac.RbacManagerException</pre>
@@ -541,7 +658,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>createPermission</h4>
-<pre>public&nbsp;org.apache.archiva.redback.rbac.Permission&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.139">createPermission</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)
+<pre>public&nbsp;org.apache.archiva.redback.rbac.Permission&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.276">createPermission</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)
                                                             throws org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -556,7 +673,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>createPermission</h4>
-<pre>public&nbsp;org.apache.archiva.redback.rbac.Permission&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.146">createPermission</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+<pre>public&nbsp;org.apache.archiva.redback.rbac.Permission&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.282">createPermission</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
                                                           <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;operationName,
                                                           <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;resourceIdentifier)
                                                             throws org.apache.archiva.redback.rbac.RbacManagerException</pre>
@@ -573,7 +690,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>savePermission</h4>
-<pre>public&nbsp;org.apache.archiva.redback.rbac.Permission&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.153">savePermission</a>(org.apache.archiva.redback.rbac.Permission&nbsp;permission)
+<pre>public&nbsp;org.apache.archiva.redback.rbac.Permission&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.288">savePermission</a>(org.apache.archiva.redback.rbac.Permission&nbsp;permission)
                                                           throws org.apache.archiva.redback.rbac.RbacObjectInvalidException,
                                                                  org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
@@ -590,7 +707,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>getPermission</h4>
-<pre>public&nbsp;org.apache.archiva.redback.rbac.Permission&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.160">getPermission</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;permissionName)
+<pre>public&nbsp;org.apache.archiva.redback.rbac.Permission&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.314">getPermission</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;permissionName)
                                                          throws org.apache.archiva.redback.rbac.RbacObjectNotFoundException,
                                                                 org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
@@ -607,7 +724,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>getAllPermissions</h4>
-<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.archiva.redback.rbac.Permission&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.167">getAllPermissions</a>()
+<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.archiva.redback.rbac.Permission&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.349">getAllPermissions</a>()
                                                                    throws org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -622,7 +739,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>removePermission</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.174">removePermission</a>(org.apache.archiva.redback.rbac.Permission&nbsp;permission)
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.379">removePermission</a>(org.apache.archiva.redback.rbac.Permission&nbsp;permission)
                       throws org.apache.archiva.redback.rbac.RbacObjectNotFoundException,
                              org.apache.archiva.redback.rbac.RbacObjectInvalidException,
                              org.apache.archiva.redback.rbac.RbacManagerException</pre>
@@ -641,7 +758,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>createOperation</h4>
-<pre>public&nbsp;org.apache.archiva.redback.rbac.Operation&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.181">createOperation</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)
+<pre>public&nbsp;org.apache.archiva.redback.rbac.Operation&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.404">createOperation</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)
                                                           throws org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -656,7 +773,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>saveOperation</h4>
-<pre>public&nbsp;org.apache.archiva.redback.rbac.Operation&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.188">saveOperation</a>(org.apache.archiva.redback.rbac.Operation&nbsp;operation)
+<pre>public&nbsp;org.apache.archiva.redback.rbac.Operation&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.410">saveOperation</a>(org.apache.archiva.redback.rbac.Operation&nbsp;operation)
                                                         throws org.apache.archiva.redback.rbac.RbacObjectInvalidException,
                                                                org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
@@ -673,7 +790,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>getOperation</h4>
-<pre>public&nbsp;org.apache.archiva.redback.rbac.Operation&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.195">getOperation</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;operationName)
+<pre>public&nbsp;org.apache.archiva.redback.rbac.Operation&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.435">getOperation</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;operationName)
                                                        throws org.apache.archiva.redback.rbac.RbacObjectNotFoundException,
                                                               org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
@@ -690,7 +807,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>getAllOperations</h4>
-<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.archiva.redback.rbac.Operation&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.202">getAllOperations</a>()
+<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.archiva.redback.rbac.Operation&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.470">getAllOperations</a>()
                                                                  throws org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -705,7 +822,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>removeOperation</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.209">removeOperation</a>(org.apache.archiva.redback.rbac.Operation&nbsp;operation)
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.500">removeOperation</a>(org.apache.archiva.redback.rbac.Operation&nbsp;operation)
                      throws org.apache.archiva.redback.rbac.RbacObjectNotFoundException,
                             org.apache.archiva.redback.rbac.RbacObjectInvalidException,
                             org.apache.archiva.redback.rbac.RbacManagerException</pre>
@@ -724,7 +841,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>createResource</h4>
-<pre>public&nbsp;org.apache.archiva.redback.rbac.Resource&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.216">createResource</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;identifier)
+<pre>public&nbsp;org.apache.archiva.redback.rbac.Resource&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.525">createResource</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;identifier)
                                                         throws org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -739,7 +856,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>saveResource</h4>
-<pre>public&nbsp;org.apache.archiva.redback.rbac.Resource&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.223">saveResource</a>(org.apache.archiva.redback.rbac.Resource&nbsp;resource)
+<pre>public&nbsp;org.apache.archiva.redback.rbac.Resource&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.531">saveResource</a>(org.apache.archiva.redback.rbac.Resource&nbsp;resource)
                                                       throws org.apache.archiva.redback.rbac.RbacObjectInvalidException,
                                                              org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
@@ -756,7 +873,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>getResource</h4>
-<pre>public&nbsp;org.apache.archiva.redback.rbac.Resource&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.230">getResource</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;resourceIdentifier)
+<pre>public&nbsp;org.apache.archiva.redback.rbac.Resource&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.557">getResource</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;resourceIdentifier)
                                                      throws org.apache.archiva.redback.rbac.RbacObjectNotFoundException,
                                                             org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
@@ -773,7 +890,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>getAllResources</h4>
-<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.archiva.redback.rbac.Resource&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.237">getAllResources</a>()
+<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.archiva.redback.rbac.Resource&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.592">getAllResources</a>()
                                                                throws org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -788,7 +905,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>removeResource</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.244">removeResource</a>(org.apache.archiva.redback.rbac.Resource&nbsp;resource)
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.622">removeResource</a>(org.apache.archiva.redback.rbac.Resource&nbsp;resource)
                     throws org.apache.archiva.redback.rbac.RbacObjectNotFoundException,
                            org.apache.archiva.redback.rbac.RbacObjectInvalidException,
                            org.apache.archiva.redback.rbac.RbacManagerException</pre>
@@ -807,7 +924,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>createUserAssignment</h4>
-<pre>public&nbsp;org.apache.archiva.redback.rbac.UserAssignment&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.251">createUserAssignment</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;principal)
+<pre>public&nbsp;org.apache.archiva.redback.rbac.UserAssignment&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.647">createUserAssignment</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;principal)
                                                                     throws org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -822,7 +939,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>saveUserAssignment</h4>
-<pre>public&nbsp;org.apache.archiva.redback.rbac.UserAssignment&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.258">saveUserAssignment</a>(org.apache.archiva.redback.rbac.UserAssignment&nbsp;userAssignment)
+<pre>public&nbsp;org.apache.archiva.redback.rbac.UserAssignment&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.653">saveUserAssignment</a>(org.apache.archiva.redback.rbac.UserAssignment&nbsp;userAssignment)
                                                                   throws org.apache.archiva.redback.rbac.RbacObjectInvalidException,
                                                                          org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
@@ -839,7 +956,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>getUserAssignment</h4>
-<pre>public&nbsp;org.apache.archiva.redback.rbac.UserAssignment&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.265">getUserAssignment</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;principal)
+<pre>public&nbsp;org.apache.archiva.redback.rbac.UserAssignment&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.678">getUserAssignment</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;principal)
                                                                  throws org.apache.archiva.redback.rbac.RbacObjectNotFoundException,
                                                                         org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
@@ -856,7 +973,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>userAssignmentExists</h4>
-<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.273">userAssignmentExists</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;principal)</pre>
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.713">userAssignmentExists</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;principal)</pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
 <dd><code>userAssignmentExists</code>&nbsp;in interface&nbsp;<code>org.apache.archiva.redback.rbac.RBACManager</code></dd>
@@ -871,7 +988,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>userAssignmentExists</h4>
-<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.279">userAssignmentExists</a>(org.apache.archiva.redback.rbac.UserAssignment&nbsp;assignment)</pre>
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.736">userAssignmentExists</a>(org.apache.archiva.redback.rbac.UserAssignment&nbsp;assignment)</pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
 <dd><code>userAssignmentExists</code>&nbsp;in interface&nbsp;<code>org.apache.archiva.redback.rbac.RBACManager</code></dd>
@@ -886,7 +1003,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>getAllUserAssignments</h4>
-<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.archiva.redback.rbac.UserAssignment&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.284">getAllUserAssignments</a>()
+<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.archiva.redback.rbac.UserAssignment&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.757">getAllUserAssignments</a>()
                                                                            throws org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -901,7 +1018,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>getUserAssignmentsForRoles</h4>
-<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.archiva.redback.rbac.UserAssignment&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.291">getUserAssignmentsForRoles</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;roleNames)
+<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.archiva.redback.rbac.UserAssignment&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.787">getUserAssignmentsForRoles</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;roleNames)
                                                                                 throws org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -916,7 +1033,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>removeUserAssignment</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.298">removeUserAssignment</a>(org.apache.archiva.redback.rbac.UserAssignment&nbsp;userAssignment)
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.816">removeUserAssignment</a>(org.apache.archiva.redback.rbac.UserAssignment&nbsp;userAssignment)
                           throws org.apache.archiva.redback.rbac.RbacObjectNotFoundException,
                                  org.apache.archiva.redback.rbac.RbacObjectInvalidException,
                                  org.apache.archiva.redback.rbac.RbacManagerException</pre>
@@ -935,7 +1052,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>roleExists</h4>
-<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.306">roleExists</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.842">roleExists</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)
                    throws org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -952,7 +1069,7 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <ul class="blockList">
 <li class="blockList">
 <h4>roleExists</h4>
-<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.322">roleExists</a>(org.apache.archiva.redback.rbac.Role&nbsp;role)
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.877">roleExists</a>(org.apache.archiva.redback.rbac.Role&nbsp;role)
                    throws org.apache.archiva.redback.rbac.RbacManagerException</pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -966,13 +1083,54 @@ private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/runtime/Redb
 <a name="eraseDatabase()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>eraseDatabase</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.328">eraseDatabase</a>()</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.883">eraseDatabase</a>()</pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
 <dd><code>eraseDatabase</code>&nbsp;in interface&nbsp;<code>org.apache.archiva.redback.rbac.RBACManager</code></dd>
+</dl>
+</li>
+</ul>
+<a name="isFinalImplementation()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isFinalImplementation</h4>
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.889">isFinalImplementation</a>()</pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code>isFinalImplementation</code>&nbsp;in interface&nbsp;<code>org.apache.archiva.redback.rbac.RBACManager</code></dd>
+<dt><strong>Overrides:</strong></dt>
+<dd><code>isFinalImplementation</code>&nbsp;in class&nbsp;<code>org.apache.archiva.redback.rbac.AbstractRBACManager</code></dd>
+</dl>
+</li>
+</ul>
+<a name="getDescriptionKey()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDescriptionKey</h4>
+<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.894">getDescriptionKey</a>()</pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code>getDescriptionKey</code>&nbsp;in interface&nbsp;<code>org.apache.archiva.redback.rbac.RBACManager</code></dd>
+</dl>
+</li>
+</ul>
+<a name="isReadOnly()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>isReadOnly</h4>
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/security/ArchivaRbacManager.html#line.899">isReadOnly</a>()</pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code>isReadOnly</code>&nbsp;in interface&nbsp;<code>org.apache.archiva.redback.rbac.RBACManager</code></dd>
 </dl>
 </li>
 </ul>
