@@ -293,12 +293,14 @@
     <li><h2>Interfaces</h2>
       <ul>
           <li class="selected api apilevel-"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html">LdapRoleMapper</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapperConfiguration.html">LdapRoleMapperConfiguration</a></li>
       </ul>
     </li>
               
     <li><h2>Classes</h2>
       <ul>
           <li class="api apilevel-"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/DefaultLdapRoleMapper.html">DefaultLdapRoleMapper</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/DefaultLdapRoleMapperConfiguration.html">DefaultLdapRoleMapperConfiguration</a></li>
       </ul>
     </li>
               
@@ -518,24 +520,6 @@ Summary:
             
             
             
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html#addLdapMapping(java.lang.String, java.lang.String)">addLdapMapping</a></span>(String role, String ldapGroup)</nobr>
-        
-        <div class="jd-descrdiv">add mapping redback role <-> ldap group</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
             List&lt;String&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
@@ -547,7 +531,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -565,7 +549,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -581,7 +565,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -597,7 +581,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -613,7 +597,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -629,7 +613,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -645,6 +629,22 @@ Summary:
 
 
 	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            List&lt;String&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html#getRoles(java.lang.String, javax.naming.directory.DirContext, java.util.Collection<java.lang.String>)">getRoles</a></span>(String username, DirContext context, Collection&lt;String&gt; realRoles)</nobr>
+        
+  </td></tr>
+
+
+	 
     <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
@@ -652,10 +652,10 @@ Summary:
             
             
             
-            Map&lt;String,&nbsp;String&gt;</nobr>
+            String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html#getLdapGroupMappings()">getLdapGroupMappings</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html#getUserIdAttribute()">getUserIdAttribute</a></span>()</nobr>
         
   </td></tr>
 
@@ -668,16 +668,32 @@ Summary:
             
             
             
-            List&lt;String&gt;</nobr>
+            boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html#getRoles(java.lang.String, javax.naming.directory.DirContext)">getRoles</a></span>(String username, DirContext context)</nobr>
+        <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html#hasRole(javax.naming.directory.DirContext, java.lang.String)">hasRole</a></span>(DirContext context, String role)</nobr>
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html#isUseDefaultRoleName()">isUseDefaultRoleName</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -689,24 +705,6 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html#removeAllRoles(javax.naming.directory.DirContext)">removeAllRoles</a></span>(DirContext context)</nobr>
         
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html#removeLdapMapping(java.lang.String)">removeLdapMapping</a></span>(String role)</nobr>
-        
-        <div class="jd-descrdiv">remove a mapping</div>
-  
   </td></tr>
 
 
@@ -778,22 +776,6 @@ Summary:
   </td></tr>
 
 
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapper.html#setLdapGroupMappings(java.util.Map<java.lang.String, java.lang.String>)">setLdapGroupMappings</a></span>(Map&lt;String,&nbsp;String&gt; mappings)</nobr>
-        
-  </td></tr>
-
-
 
 </table>
 
@@ -840,60 +822,6 @@ Summary:
 
 <h2>Public Methods</h2>
 
-
-
-<A NAME="addLdapMapping(java.lang.String, java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-        abstract 
-         
-        void
-      </span>
-      <span class="sympad">addLdapMapping</span>
-      <span class="normal">(String role, String ldapGroup)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>add mapping redback role <-> ldap group</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>role</td>
-          <td>redback role</td>
-        </tr>
-        <tr>
-          <th>ldapGroup</td>
-          <td>ldap group
-</td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th><a href="../../../../../../../org/apache/archiva/redback/common/ldap/MappingException.html">MappingException</a></td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
 
 
 <A NAME="getAllGroups(javax.naming.directory.DirContext)"></A>
@@ -1208,7 +1136,7 @@ Summary:
 </div>
 
 
-<A NAME="getLdapGroupMappings()"></A>
+<A NAME="getRoles(java.lang.String, javax.naming.directory.DirContext, java.util.Collection<java.lang.String>)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1218,10 +1146,10 @@ Summary:
          
         abstract 
          
-        Map&lt;String,&nbsp;String&gt;
+        List&lt;String&gt;
       </span>
-      <span class="sympad">getLdapGroupMappings</span>
-      <span class="normal">()</span>
+      <span class="sympad">getRoles</span>
+      <span class="normal">(String username, DirContext context, Collection&lt;String&gt; realRoles)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1234,11 +1162,6 @@ Summary:
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>Map of corresponding LDAP group (key) and Redback role (value)
-</li></ul>
-  </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  
@@ -1253,7 +1176,7 @@ Summary:
 </div>
 
 
-<A NAME="getRoles(java.lang.String, javax.naming.directory.DirContext)"></A>
+<A NAME="getUserIdAttribute()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1263,10 +1186,41 @@ Summary:
          
         abstract 
          
-        List&lt;String&gt;
+        String
       </span>
-      <span class="sympad">getRoles</span>
-      <span class="normal">(String username, DirContext context)</span>
+      <span class="sympad">getUserIdAttribute</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="hasRole(javax.naming.directory.DirContext, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">hasRole</span>
+      <span class="normal">(DirContext context, String role)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1288,6 +1242,37 @@ Summary:
         </tr>
       </table>
   </div>
+
+    </div>
+</div>
+
+
+<A NAME="isUseDefaultRoleName()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">isUseDefaultRoleName</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     </div>
 </div>
@@ -1319,56 +1304,6 @@ Summary:
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th><a href="../../../../../../../org/apache/archiva/redback/common/ldap/MappingException.html">MappingException</a></td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="removeLdapMapping(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-        abstract 
-         
-        void
-      </span>
-      <span class="sympad">removeLdapMapping</span>
-      <span class="normal">(String role)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>remove a mapping</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>role</td>
-          <td>redback role
-</td>
-        </tr>
-      </table>
-  </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  
@@ -1538,46 +1473,6 @@ Summary:
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li><code>true</code> if role was added to user, <code>false</code> if role already exists for the user</li></ul>
   </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th><a href="../../../../../../../org/apache/archiva/redback/common/ldap/MappingException.html">MappingException</a></td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setLdapGroupMappings(java.util.Map<java.lang.String, java.lang.String>)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-        abstract 
-         
-        void
-      </span>
-      <span class="sympad">setLdapGroupMappings</span>
-      <span class="normal">(Map&lt;String,&nbsp;String&gt; mappings)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  

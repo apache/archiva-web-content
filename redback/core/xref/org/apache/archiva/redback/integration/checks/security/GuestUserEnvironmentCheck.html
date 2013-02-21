@@ -63,7 +63,7 @@
 <a class="jxr_linenumber" name="53" href="#53">53</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../../../org/apache/archiva/redback/system/SecuritySystem.html">SecuritySystem</a> securitySystem;
 <a class="jxr_linenumber" name="54" href="#54">54</a>  
 <a class="jxr_linenumber" name="55" href="#55">55</a>      @Inject
-<a class="jxr_linenumber" name="56" href="#56">56</a>      @Named( value = <span class="jxr_string">"userConfiguration#default"</span> )
+<a class="jxr_linenumber" name="56" href="#56">56</a>      @Named(value = <span class="jxr_string">"userConfiguration#default"</span>)
 <a class="jxr_linenumber" name="57" href="#57">57</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../../../org/apache/archiva/redback/configuration/UserConfiguration.html">UserConfiguration</a> config;
 <a class="jxr_linenumber" name="58" href="#58">58</a>  
 <a class="jxr_linenumber" name="59" href="#59">59</a>      <em class="jxr_javadoccomment">/**</em>
@@ -96,24 +96,33 @@
 <a class="jxr_linenumber" name="86" href="#86">86</a>                  <strong class="jxr_keyword">catch</strong> ( UserManagerException ume )
 <a class="jxr_linenumber" name="87" href="#87">87</a>                  {
 <a class="jxr_linenumber" name="88" href="#88">88</a>                      violations.add( <span class="jxr_string">"unable to initialize guest user properly: "</span> + ume.getMessage() );
-<a class="jxr_linenumber" name="89" href="#89">89</a>                      <strong class="jxr_keyword">return</strong>;
-<a class="jxr_linenumber" name="90" href="#90">90</a>                  }
-<a class="jxr_linenumber" name="91" href="#91">91</a>                  policy.setEnabled( <strong class="jxr_keyword">true</strong> );
-<a class="jxr_linenumber" name="92" href="#92">92</a>              }
-<a class="jxr_linenumber" name="93" href="#93">93</a>  
-<a class="jxr_linenumber" name="94" href="#94">94</a>              <strong class="jxr_keyword">try</strong>
-<a class="jxr_linenumber" name="95" href="#95">95</a>              {
-<a class="jxr_linenumber" name="96" href="#96">96</a>                  roleManager.assignRole( config.getString( UserConfigurationKeys.DEFAULT_GUEST ), guest.getUsername() );
-<a class="jxr_linenumber" name="97" href="#97">97</a>              }
-<a class="jxr_linenumber" name="98" href="#98">98</a>              <strong class="jxr_keyword">catch</strong> ( RoleManagerException rpe )
-<a class="jxr_linenumber" name="99" href="#99">99</a>              {
-<a class="jxr_linenumber" name="100" href="#100">100</a>                 violations.add( <span class="jxr_string">"unable to initialize guest user properly: "</span> + rpe.getMessage() );
-<a class="jxr_linenumber" name="101" href="#101">101</a>             }
-<a class="jxr_linenumber" name="102" href="#102">102</a> 
-<a class="jxr_linenumber" name="103" href="#103">103</a>             checked = <strong class="jxr_keyword">true</strong>;
-<a class="jxr_linenumber" name="104" href="#104">104</a>         }
-<a class="jxr_linenumber" name="105" href="#105">105</a>     }
-<a class="jxr_linenumber" name="106" href="#106">106</a> }
+<a class="jxr_linenumber" name="89" href="#89">89</a>                      checked = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="90" href="#90">90</a>                      <strong class="jxr_keyword">return</strong>;
+<a class="jxr_linenumber" name="91" href="#91">91</a>                  }
+<a class="jxr_linenumber" name="92" href="#92">92</a>                  policy.setEnabled( <strong class="jxr_keyword">true</strong> );
+<a class="jxr_linenumber" name="93" href="#93">93</a>              }
+<a class="jxr_linenumber" name="94" href="#94">94</a>  
+<a class="jxr_linenumber" name="95" href="#95">95</a>              <strong class="jxr_keyword">if</strong> ( guest != <strong class="jxr_keyword">null</strong> )
+<a class="jxr_linenumber" name="96" href="#96">96</a>              {
+<a class="jxr_linenumber" name="97" href="#97">97</a>  
+<a class="jxr_linenumber" name="98" href="#98">98</a>                  <strong class="jxr_keyword">try</strong>
+<a class="jxr_linenumber" name="99" href="#99">99</a>                  {
+<a class="jxr_linenumber" name="100" href="#100">100</a>                     roleManager.assignRole( config.getString( UserConfigurationKeys.DEFAULT_GUEST_ROLE_ID, <span class="jxr_string">"guest"</span> ),
+<a class="jxr_linenumber" name="101" href="#101">101</a>                                             guest.getUsername() );
+<a class="jxr_linenumber" name="102" href="#102">102</a>                 }
+<a class="jxr_linenumber" name="103" href="#103">103</a>                 <strong class="jxr_keyword">catch</strong> ( RoleManagerException rpe )
+<a class="jxr_linenumber" name="104" href="#104">104</a>                 {
+<a class="jxr_linenumber" name="105" href="#105">105</a>                     violations.add( <span class="jxr_string">"unable to initialize guest user properly: "</span> + rpe.getMessage() );
+<a class="jxr_linenumber" name="106" href="#106">106</a>                 }
+<a class="jxr_linenumber" name="107" href="#107">107</a>             }
+<a class="jxr_linenumber" name="108" href="#108">108</a>             <strong class="jxr_keyword">else</strong>
+<a class="jxr_linenumber" name="109" href="#109">109</a>             {
+<a class="jxr_linenumber" name="110" href="#110">110</a>                 violations.add( <span class="jxr_string">"cannot find neither create guest user"</span> );
+<a class="jxr_linenumber" name="111" href="#111">111</a>             }
+<a class="jxr_linenumber" name="112" href="#112">112</a>             checked = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="113" href="#113">113</a>         }
+<a class="jxr_linenumber" name="114" href="#114">114</a>     }
+<a class="jxr_linenumber" name="115" href="#115">115</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

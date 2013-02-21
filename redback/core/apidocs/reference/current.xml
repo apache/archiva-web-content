@@ -3150,21 +3150,6 @@
  visibility="public"
 >
 </constructor>
-<method name="addLdapMapping"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="role" type="java.lang.String">
-</parameter>
-<parameter name="ldapGroup" type="java.lang.String">
-</parameter>
-</method>
 <method name="closeNamingEnumeration"
  return="void"
  abstract="false"
@@ -3177,6 +3162,21 @@
 >
 <parameter name="namingEnumeration" type="javax.naming.NamingEnumeration">
 </parameter>
+</method>
+<method name="findGroupName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+<parameter name="role" type="java.lang.String">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
 </method>
 <method name="getAllGroups"
  return="java.util.List&lt;java.lang.String&gt;"
@@ -3288,17 +3288,6 @@
  visibility="public"
 >
 </method>
-<method name="getLdapGroupMappings"
- return="java.util.Map&lt;java.lang.String, java.lang.String&gt;"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
 <method name="getRoles"
  return="java.util.List&lt;java.lang.String&gt;"
  abstract="false"
@@ -3313,11 +3302,52 @@
 </parameter>
 <parameter name="context" type="javax.naming.directory.DirContext">
 </parameter>
+<parameter name="realRoles" type="java.util.Collection&lt;java.lang.String&gt;">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
+<method name="getUserIdAttribute"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="hasRole"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="context" type="javax.naming.directory.DirContext">
+</parameter>
+<parameter name="roleName" type="java.lang.String">
+</parameter>
 <exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
 </exception>
 </method>
 <method name="initialize"
  return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isUseDefaultRoleName"
+ return="boolean"
  abstract="false"
  native="false"
  synchronized="false"
@@ -3341,19 +3371,6 @@
 </parameter>
 <exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
 </exception>
-</method>
-<method name="removeLdapMapping"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="role" type="java.lang.String">
-</parameter>
 </method>
 <method name="removeRole"
  return="void"
@@ -3479,7 +3496,7 @@
 <parameter name="ldapGroupClass" type="java.lang.String">
 </parameter>
 </method>
-<method name="setLdapGroupMappings"
+<method name="setUseDefaultRoleName"
  return="void"
  abstract="false"
  native="false"
@@ -3489,10 +3506,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="mappings" type="java.util.Map&lt;java.lang.String, java.lang.String&gt;">
+<parameter name="useDefaultRoleName" type="boolean">
 </parameter>
-<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
-</exception>
 </method>
 <method name="setUserConf"
  return="void"
@@ -3507,6 +3522,111 @@
 <parameter name="userConf" type="org.apache.archiva.redback.configuration.UserConfiguration">
 </parameter>
 </method>
+<method name="setUserIdAttribute"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="userIdAttribute" type="java.lang.String">
+</parameter>
+</method>
+</class>
+<class name="DefaultLdapRoleMapperConfiguration"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.apache.archiva.redback.common.ldap.role.LdapRoleMapperConfiguration">
+</implements>
+<constructor name="DefaultLdapRoleMapperConfiguration"
+ type="org.apache.archiva.redback.common.ldap.role.DefaultLdapRoleMapperConfiguration"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="addLdapMapping"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ldapGroup" type="java.lang.String">
+</parameter>
+<parameter name="roles" type="java.util.List&lt;java.lang.String&gt;">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
+<method name="getLdapGroupMappings"
+ return="java.util.Map&lt;java.lang.String, java.util.Collection&lt;java.lang.String&gt;&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="removeLdapMapping"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="group" type="java.lang.String">
+</parameter>
+</method>
+<method name="setLdapGroupMappings"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="mappings" type="java.util.Map&lt;java.lang.String, java.util.List&lt;java.lang.String&gt;&gt;">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
+<method name="updateLdapMapping"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ldapGroup" type="java.lang.String">
+</parameter>
+<parameter name="roles" type="java.util.List&lt;java.lang.String&gt;">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
 </class>
 <interface name="LdapRoleMapper"
  abstract="true"
@@ -3515,23 +3635,6 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<method name="addLdapMapping"
- return="void"
- abstract="true"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="role" type="java.lang.String">
-</parameter>
-<parameter name="ldapGroup" type="java.lang.String">
-</parameter>
-<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
-</exception>
-</method>
 <method name="getAllGroups"
  return="java.util.List&lt;java.lang.String&gt;"
  abstract="true"
@@ -3633,19 +3736,6 @@
  visibility="public"
 >
 </method>
-<method name="getLdapGroupMappings"
- return="java.util.Map&lt;java.lang.String, java.lang.String&gt;"
- abstract="true"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
-</exception>
-</method>
 <method name="getRoles"
  return="java.util.List&lt;java.lang.String&gt;"
  abstract="true"
@@ -3660,8 +3750,49 @@
 </parameter>
 <parameter name="context" type="javax.naming.directory.DirContext">
 </parameter>
+<parameter name="realRoles" type="java.util.Collection&lt;java.lang.String&gt;">
+</parameter>
 <exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
 </exception>
+</method>
+<method name="getUserIdAttribute"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="hasRole"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="context" type="javax.naming.directory.DirContext">
+</parameter>
+<parameter name="role" type="java.lang.String">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
+<method name="isUseDefaultRoleName"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
 </method>
 <method name="removeAllRoles"
  return="void"
@@ -3674,21 +3805,6 @@
  visibility="public"
 >
 <parameter name="context" type="javax.naming.directory.DirContext">
-</parameter>
-<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
-</exception>
-</method>
-<method name="removeLdapMapping"
- return="void"
- abstract="true"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="role" type="java.lang.String">
 </parameter>
 <exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
 </exception>
@@ -3765,6 +3881,59 @@
 <exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
 </exception>
 </method>
+</interface>
+<interface name="LdapRoleMapperConfiguration"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="addLdapMapping"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ldapGroup" type="java.lang.String">
+</parameter>
+<parameter name="roles" type="java.util.List&lt;java.lang.String&gt;">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
+<method name="getLdapGroupMappings"
+ return="java.util.Map&lt;java.lang.String, java.util.Collection&lt;java.lang.String&gt;&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
+<method name="removeLdapMapping"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="group" type="java.lang.String">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
 <method name="setLdapGroupMappings"
  return="void"
  abstract="true"
@@ -3775,7 +3944,24 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="mappings" type="java.util.Map&lt;java.lang.String, java.lang.String&gt;">
+<parameter name="mappings" type="java.util.Map&lt;java.lang.String, java.util.List&lt;java.lang.String&gt;&gt;">
+</parameter>
+<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
+</exception>
+</method>
+<method name="updateLdapMapping"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ldapGroup" type="java.lang.String">
+</parameter>
+<parameter name="roles" type="java.util.List&lt;java.lang.String&gt;">
 </parameter>
 <exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
 </exception>
@@ -5356,6 +5542,17 @@
  visibility="public"
 >
 </field>
+<field name="DEFAULT_GUEST_ROLE_ID"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;redback.default.role.guest.id&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
 <field name="EMAIL_FEEDBACK_PATH"
  type="java.lang.String"
  transient="false"
@@ -5532,6 +5729,17 @@
  visibility="public"
 >
 </field>
+<field name="LDAP_GROUPS_USE_ROLENAME"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;ldap.config.groups.use.rolename&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
 <field name="LDAP_HOSTNAME"
  type="java.lang.String"
  transient="false"
@@ -5647,6 +5855,17 @@
  transient="false"
  volatile="false"
  value="&quot;ldap.config.ssl&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="LDAP_USER_ID_ATTRIBUTE"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;ldap.config.user.attribute&quot;"
  static="true"
  final="true"
  deprecated="not deprecated"
@@ -9551,17 +9770,6 @@
  visibility="public"
 >
 </method>
-<method name="getModelEncoding"
- return="java.lang.String"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
 <method name="getPurpose"
  return="java.lang.String"
  abstract="false"
@@ -9623,19 +9831,6 @@
  visibility="public"
 >
 <parameter name="key" type="java.lang.String">
-</parameter>
-</method>
-<method name="setModelEncoding"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="modelEncoding" type="java.lang.String">
 </parameter>
 </method>
 <method name="setPurpose"
@@ -9876,219 +10071,6 @@
  visibility="public"
 >
 </constructor>
-<method name="buildDom"
- return="org.codehaus.plexus.util.xml.Xpp3Dom"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getBooleanValue"
- return="boolean"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getCharacterValue"
- return="char"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getDateValue"
- return="java.util.Date"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="dateFormat" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getDoubleValue"
- return="double"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<parameter name="strict" type="boolean">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getFloatValue"
- return="float"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<parameter name="strict" type="boolean">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getIntegerValue"
- return="int"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<parameter name="strict" type="boolean">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getLongValue"
- return="long"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<parameter name="strict" type="boolean">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getRequiredAttributeValue"
- return="java.lang.String"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<parameter name="strict" type="boolean">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getShortValue"
- return="short"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<parameter name="strict" type="boolean">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getTrimmedValue"
- return="java.lang.String"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-</method>
 <method name="read"
  return="org.apache.archiva.redback.keys.jdo.AuthenticationKeyDatabase"
  abstract="false"
@@ -10119,6 +10101,42 @@
  visibility="public"
 >
 <parameter name="reader" type="java.io.Reader">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
+</exception>
+</method>
+<method name="read"
+ return="org.apache.archiva.redback.keys.jdo.AuthenticationKeyDatabase"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="stream" type="java.io.InputStream">
+</parameter>
+<parameter name="strict" type="boolean">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
+</exception>
+</method>
+<method name="read"
+ return="org.apache.archiva.redback.keys.jdo.AuthenticationKeyDatabase"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="stream" type="java.io.InputStream">
 </parameter>
 <exception name="IOException" type="java.io.IOException">
 </exception>
@@ -10197,7 +10215,7 @@
 <exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
 </exception>
 </method>
-<method name="writeDom"
+<method name="write"
  return="void"
  abstract="false"
  native="false"
@@ -10207,10 +10225,12 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="dom" type="org.codehaus.plexus.util.xml.Xpp3Dom">
+<parameter name="stream" type="java.io.OutputStream">
 </parameter>
-<parameter name="serializer" type="javax.xml.stream.XMLStreamWriter">
+<parameter name="authenticationKeyDatabase" type="org.apache.archiva.redback.keys.jdo.AuthenticationKeyDatabase">
 </parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
 <exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
 </exception>
 </method>
@@ -13734,6 +13754,17 @@
  visibility="public"
 >
 </method>
+<method name="isFinalImplementation"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="operationExists"
  return="boolean"
  abstract="false"
@@ -14591,6 +14622,17 @@
 <exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
 </exception>
 </method>
+<method name="getDescriptionKey"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getEffectiveRoles"
  return="java.util.Set&lt;org.apache.archiva.redback.rbac.Role&gt;"
  abstract="true"
@@ -14806,6 +14848,28 @@
 </method>
 <method name="initialize"
  return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isFinalImplementation"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isReadOnly"
+ return="boolean"
  abstract="true"
  native="false"
  synchronized="false"
@@ -16682,6 +16746,17 @@
 <exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
 </exception>
 </method>
+<method name="getDescriptionKey"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getEffectiveRoleSetCache"
  return="org.apache.archiva.redback.components.cache.Cache"
  abstract="false"
@@ -16985,6 +17060,28 @@
 </method>
 <method name="initialize"
  return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isFinalImplementation"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isReadOnly"
+ return="boolean"
  abstract="false"
  native="false"
  synchronized="false"
@@ -17661,17 +17758,6 @@
  visibility="public"
 >
 </method>
-<method name="getModelEncoding"
- return="java.lang.String"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
 <method name="getName"
  return="java.lang.String"
  abstract="false"
@@ -17716,19 +17802,6 @@
  visibility="public"
 >
 <parameter name="description" type="java.lang.String">
-</parameter>
-</method>
-<method name="setModelEncoding"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="modelEncoding" type="java.lang.String">
 </parameter>
 </method>
 <method name="setName"
@@ -17800,17 +17873,6 @@
  visibility="public"
 >
 </method>
-<method name="getModelEncoding"
- return="java.lang.String"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
 <method name="getName"
  return="java.lang.String"
  abstract="false"
@@ -17866,19 +17928,6 @@
  visibility="public"
 >
 <parameter name="description" type="java.lang.String">
-</parameter>
-</method>
-<method name="setModelEncoding"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="modelEncoding" type="java.lang.String">
 </parameter>
 </method>
 <method name="setName"
@@ -18118,6 +18167,17 @@
 <exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
 </exception>
 </method>
+<method name="getDescriptionKey"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getJdo"
  return="org.apache.archiva.redback.rbac.jdo.JdoTool"
  abstract="false"
@@ -18230,6 +18290,17 @@
 </exception>
 </method>
 <method name="isEnableCache"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isReadOnly"
  return="boolean"
  abstract="false"
  native="false"
@@ -18584,17 +18655,6 @@
  visibility="public"
 >
 </method>
-<method name="getModelEncoding"
- return="java.lang.String"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
 <method name="isPattern"
  return="boolean"
  abstract="false"
@@ -18628,19 +18688,6 @@
  visibility="public"
 >
 <parameter name="identifier" type="java.lang.String">
-</parameter>
-</method>
-<method name="setModelEncoding"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="modelEncoding" type="java.lang.String">
 </parameter>
 </method>
 <method name="setPattern"
@@ -18726,17 +18773,6 @@
 >
 </method>
 <method name="getDescription"
- return="java.lang.String"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
-<method name="getModelEncoding"
  return="java.lang.String"
  abstract="false"
  native="false"
@@ -18854,19 +18890,6 @@
  visibility="public"
 >
 <parameter name="description" type="java.lang.String">
-</parameter>
-</method>
-<method name="setModelEncoding"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="modelEncoding" type="java.lang.String">
 </parameter>
 </method>
 <method name="setName"
@@ -19300,17 +19323,6 @@
  visibility="public"
 >
 </constructor>
-<method name="getModelEncoding"
- return="java.lang.String"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
 <method name="getPrincipal"
  return="java.lang.String"
  abstract="false"
@@ -19354,19 +19366,6 @@
  deprecated="not deprecated"
  visibility="public"
 >
-</method>
-<method name="setModelEncoding"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="modelEncoding" type="java.lang.String">
-</parameter>
 </method>
 <method name="setPermanent"
  return="void"
@@ -19772,219 +19771,6 @@
  visibility="public"
 >
 </constructor>
-<method name="buildDom"
- return="org.codehaus.plexus.util.xml.Xpp3Dom"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getBooleanValue"
- return="boolean"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getCharacterValue"
- return="char"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getDateValue"
- return="java.util.Date"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="dateFormat" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getDoubleValue"
- return="double"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<parameter name="strict" type="boolean">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getFloatValue"
- return="float"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<parameter name="strict" type="boolean">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getIntegerValue"
- return="int"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<parameter name="strict" type="boolean">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getLongValue"
- return="long"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<parameter name="strict" type="boolean">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getRequiredAttributeValue"
- return="java.lang.String"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<parameter name="strict" type="boolean">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getShortValue"
- return="short"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<parameter name="strict" type="boolean">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getTrimmedValue"
- return="java.lang.String"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-</method>
 <method name="read"
  return="org.apache.archiva.redback.rbac.jdo.RbacDatabase"
  abstract="false"
@@ -20015,6 +19801,42 @@
  visibility="public"
 >
 <parameter name="reader" type="java.io.Reader">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
+</exception>
+</method>
+<method name="read"
+ return="org.apache.archiva.redback.rbac.jdo.RbacDatabase"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="stream" type="java.io.InputStream">
+</parameter>
+<parameter name="strict" type="boolean">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
+</exception>
+</method>
+<method name="read"
+ return="org.apache.archiva.redback.rbac.jdo.RbacDatabase"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="stream" type="java.io.InputStream">
 </parameter>
 <exception name="IOException" type="java.io.IOException">
 </exception>
@@ -20093,7 +19915,7 @@
 <exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
 </exception>
 </method>
-<method name="writeDom"
+<method name="write"
  return="void"
  abstract="false"
  native="false"
@@ -20103,10 +19925,12 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="dom" type="org.codehaus.plexus.util.xml.Xpp3Dom">
+<parameter name="stream" type="java.io.OutputStream">
 </parameter>
-<parameter name="serializer" type="javax.xml.stream.XMLStreamWriter">
+<parameter name="rbacDatabase" type="org.apache.archiva.redback.rbac.jdo.RbacDatabase">
 </parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
 <exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
 </exception>
 </method>
@@ -20328,6 +20152,17 @@
 <exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
 </exception>
 </method>
+<method name="getDescriptionKey"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getLdapRoleMapper"
  return="org.apache.archiva.redback.common.ldap.role.LdapRoleMapper"
  abstract="false"
@@ -20379,6 +20214,19 @@
  deprecated="not deprecated"
  visibility="public"
 >
+</method>
+<method name="getRealRoles"
+ return="java.util.List&lt;java.lang.String&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+<exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
+</exception>
 </method>
 <method name="getResource"
  return="org.apache.archiva.redback.rbac.Resource"
@@ -20439,6 +20287,17 @@
 </parameter>
 <exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
 </exception>
+</method>
+<method name="isReadOnly"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
 </method>
 <method name="isWritableLdap"
  return="boolean"
@@ -21352,6 +21211,17 @@
 <exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
 </exception>
 </method>
+<method name="getDescriptionKey"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getOperation"
  return="org.apache.archiva.redback.rbac.Operation"
  abstract="false"
@@ -21462,6 +21332,17 @@
 </parameter>
 <exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
 </exception>
+</method>
+<method name="isReadOnly"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
 </method>
 <method name="removeOperation"
  return="void"
@@ -22428,6 +22309,83 @@
  visibility="public"
 >
 <parameter name="message" type="java.lang.String">
+</parameter>
+</method>
+</class>
+<class name="LdapGroupMapping"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="LdapGroupMapping"
+ type="org.apache.archiva.redback.rest.api.model.LdapGroupMapping"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<constructor name="LdapGroupMapping"
+ type="org.apache.archiva.redback.rest.api.model.LdapGroupMapping"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="group" type="java.lang.String">
+</parameter>
+<parameter name="roleNames" type="java.util.Collection&lt;java.lang.String&gt;">
+</parameter>
+</constructor>
+<method name="getGroup"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getRoleNames"
+ return="java.util.Collection&lt;java.lang.String&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setGroup"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="group" type="java.lang.String">
+</parameter>
+</method>
+<method name="setRoleNames"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="roleNames" type="java.util.Collection&lt;java.lang.String&gt;">
 </parameter>
 </method>
 </class>
@@ -23479,6 +23437,57 @@
 </parameter>
 </method>
 </class>
+<class name="StringList"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="StringList"
+ type="org.apache.archiva.redback.rest.api.model.StringList"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<constructor name="StringList"
+ type="org.apache.archiva.redback.rest.api.model.StringList"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="strings" type="java.util.List&lt;java.lang.String&gt;">
+</parameter>
+</constructor>
+<method name="getStrings"
+ return="java.util.List&lt;java.lang.String&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setStrings"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="strings" type="java.util.List&lt;java.lang.String&gt;">
+</parameter>
+</method>
+</class>
 <class name="User"
  extends="java.lang.Object"
  abstract="false"
@@ -23988,6 +23997,85 @@
 </package>
 <package name="org.apache.archiva.redback.rest.api.services"
 >
+<interface name="LdapGroupMappingService"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="addLdapGroupMapping"
+ return="java.lang.Boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ldapGroupMapping" type="org.apache.archiva.redback.rest.api.model.LdapGroupMapping">
+</parameter>
+<exception name="RedbackServiceException" type="org.apache.archiva.redback.rest.api.services.RedbackServiceException">
+</exception>
+</method>
+<method name="getLdapGroupMappings"
+ return="java.util.List&lt;org.apache.archiva.redback.rest.api.model.LdapGroupMapping&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="RedbackServiceException" type="org.apache.archiva.redback.rest.api.services.RedbackServiceException">
+</exception>
+</method>
+<method name="getLdapGroups"
+ return="org.apache.archiva.redback.rest.api.model.StringList"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="RedbackServiceException" type="org.apache.archiva.redback.rest.api.services.RedbackServiceException">
+</exception>
+</method>
+<method name="removeLdapGroupMapping"
+ return="java.lang.Boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="group" type="java.lang.String">
+</parameter>
+<exception name="RedbackServiceException" type="org.apache.archiva.redback.rest.api.services.RedbackServiceException">
+</exception>
+</method>
+<method name="updateLdapGroupMapping"
+ return="java.lang.Boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ldapGroupMapping" type="org.apache.archiva.redback.rest.api.model.LdapGroupMapping">
+</parameter>
+<exception name="RedbackServiceException" type="org.apache.archiva.redback.rest.api.services.RedbackServiceException">
+</exception>
+</method>
+</interface>
 <interface name="LoginService"
  abstract="true"
  static="false"
@@ -24966,6 +25054,122 @@
 </package>
 <package name="org.apache.archiva.redback.rest.services"
 >
+<class name="DefaultLdapGroupMappingService"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.apache.archiva.redback.rest.api.services.LdapGroupMappingService">
+</implements>
+<constructor name="DefaultLdapGroupMappingService"
+ type="org.apache.archiva.redback.rest.services.DefaultLdapGroupMappingService"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="addLdapGroupMapping"
+ return="java.lang.Boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ldapGroupMapping" type="org.apache.archiva.redback.rest.api.model.LdapGroupMapping">
+</parameter>
+<exception name="RedbackServiceException" type="org.apache.archiva.redback.rest.api.services.RedbackServiceException">
+</exception>
+</method>
+<method name="closeContext"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+<parameter name="context" type="javax.naming.directory.DirContext">
+</parameter>
+</method>
+<method name="closeLdapConnection"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+<parameter name="ldapConnection" type="org.apache.archiva.redback.common.ldap.connection.LdapConnection">
+</parameter>
+</method>
+<method name="getLdapGroupMappings"
+ return="java.util.List&lt;org.apache.archiva.redback.rest.api.model.LdapGroupMapping&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="RedbackServiceException" type="org.apache.archiva.redback.rest.api.services.RedbackServiceException">
+</exception>
+</method>
+<method name="getLdapGroups"
+ return="org.apache.archiva.redback.rest.api.model.StringList"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="RedbackServiceException" type="org.apache.archiva.redback.rest.api.services.RedbackServiceException">
+</exception>
+</method>
+<method name="removeLdapGroupMapping"
+ return="java.lang.Boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="group" type="java.lang.String">
+</parameter>
+<exception name="RedbackServiceException" type="org.apache.archiva.redback.rest.api.services.RedbackServiceException">
+</exception>
+</method>
+<method name="updateLdapGroupMapping"
+ return="java.lang.Boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ldapGroupMapping" type="org.apache.archiva.redback.rest.api.model.LdapGroupMapping">
+</parameter>
+<exception name="RedbackServiceException" type="org.apache.archiva.redback.rest.api.services.RedbackServiceException">
+</exception>
+</method>
+</class>
 <class name="DefaultLoginService"
  extends="java.lang.Object"
  abstract="false"
@@ -26923,6 +27127,17 @@
 </method>
 <method name="getModel"
  return="org.apache.archiva.redback.role.model.RedbackRoleModel"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="initialize"
+ return="void"
  abstract="true"
  native="false"
  synchronized="false"
@@ -30561,6 +30776,19 @@
 <exception name="RbacManagerException" type="org.apache.archiva.redback.rbac.RbacManagerException">
 </exception>
 </method>
+<method name="testInitialize"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="Exception" type="java.lang.Exception">
+</exception>
+</method>
 <method name="testLargeApplicationInit"
  return="void"
  abstract="false"
@@ -33388,17 +33616,6 @@
  visibility="public"
 >
 </method>
-<method name="getModelEncoding"
- return="java.lang.String"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
 <method name="getPassword"
  return="java.lang.String"
  abstract="false"
@@ -33602,19 +33819,6 @@
  visibility="public"
 >
 <parameter name="locked" type="boolean">
-</parameter>
-</method>
-<method name="setModelEncoding"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="modelEncoding" type="java.lang.String">
 </parameter>
 </method>
 <method name="setPassword"
@@ -34301,219 +34505,6 @@
  visibility="public"
 >
 </constructor>
-<method name="buildDom"
- return="org.codehaus.plexus.util.xml.Xpp3Dom"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getBooleanValue"
- return="boolean"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getCharacterValue"
- return="char"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getDateValue"
- return="java.util.Date"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="dateFormat" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getDoubleValue"
- return="double"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<parameter name="strict" type="boolean">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getFloatValue"
- return="float"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<parameter name="strict" type="boolean">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getIntegerValue"
- return="int"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<parameter name="strict" type="boolean">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getLongValue"
- return="long"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<parameter name="strict" type="boolean">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getRequiredAttributeValue"
- return="java.lang.String"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<parameter name="strict" type="boolean">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getShortValue"
- return="short"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="attribute" type="java.lang.String">
-</parameter>
-<parameter name="xmlStreamReader" type="javax.xml.stream.XMLStreamReader">
-</parameter>
-<parameter name="strict" type="boolean">
-</parameter>
-<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
-</exception>
-</method>
-<method name="getTrimmedValue"
- return="java.lang.String"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="s" type="java.lang.String">
-</parameter>
-</method>
 <method name="read"
  return="org.apache.archiva.redback.users.jdo.UserDatabase"
  abstract="false"
@@ -34544,6 +34535,42 @@
  visibility="public"
 >
 <parameter name="reader" type="java.io.Reader">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
+</exception>
+</method>
+<method name="read"
+ return="org.apache.archiva.redback.users.jdo.UserDatabase"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="stream" type="java.io.InputStream">
+</parameter>
+<parameter name="strict" type="boolean">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+<exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
+</exception>
+</method>
+<method name="read"
+ return="org.apache.archiva.redback.users.jdo.UserDatabase"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="stream" type="java.io.InputStream">
 </parameter>
 <exception name="IOException" type="java.io.IOException">
 </exception>
@@ -34622,7 +34649,7 @@
 <exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
 </exception>
 </method>
-<method name="writeDom"
+<method name="write"
  return="void"
  abstract="false"
  native="false"
@@ -34632,10 +34659,12 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="dom" type="org.codehaus.plexus.util.xml.Xpp3Dom">
+<parameter name="stream" type="java.io.OutputStream">
 </parameter>
-<parameter name="serializer" type="javax.xml.stream.XMLStreamWriter">
+<parameter name="userDatabase" type="org.apache.archiva.redback.users.jdo.UserDatabase">
 </parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
 <exception name="XMLStreamException" type="javax.xml.stream.XMLStreamException">
 </exception>
 </method>
