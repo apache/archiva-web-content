@@ -74,6 +74,7 @@
                 <li><a href="el_ns0_uiConfiguration.html">uiConfiguration element</a></li>
                 <li><a href="el_ns0_cacheConfiguration.html">cacheConfiguration element</a></li>
                 <li><a href="el_ns0_policyInformation.html">policyInformation element</a></li>
+                <li><a href="el_ns0_redbackImplementationsInformations.html">redbackImplementationsInformations element</a></li>
                 <li><a href="el_ns0_redbackRuntimeConfiguration.html">redbackRuntimeConfiguration element</a></li>
                 <li><a href="el_ns0_artifactTransferRequest.html">artifactTransferRequest element</a></li>
                 <li><a href="el_ns0_archivaRepositoryStatistics.html">archivaRepositoryStatistics element</a></li>
@@ -84,12 +85,12 @@
                 <li><a href="el_ns0_proxyConnector.html">proxyConnector element</a></li>
                 <li><a href="el_ns0_networkProxy.html">networkProxy element</a></li>
                 <li><a href="el_ns0_artifact.html">artifact element</a></li>
-                <li><a href="el_ns0_repositoryScannerStatistics.html">repositoryScannerStatistics element</a></li>
                 <li><a href="el_ns0_repositoryScanStatistics.html">repositoryScanStatistics element</a></li>
+                <li><a href="el_ns0_repositoryScannerStatistics.html">repositoryScannerStatistics element</a></li>
                 <li><a href="el_ns0_proxyConnectorRule.html">proxyConnectorRule element</a></li>
                 <li><a href="el_ns0_fileType.html">fileType element</a></li>
-                <li><a href="el_ns0_legacyArtifactPath.html">legacyArtifactPath element</a></li>
                 <li><a href="el_ns0_artifactContent.html">artifactContent element</a></li>
+                <li><a href="el_ns0_legacyArtifactPath.html">legacyArtifactPath element</a></li>
                 <li><a href="el_ns0_propertyEntry.html">propertyEntry element</a></li>
                 <li><a href="el_ns0_projectVersionMetadata.html">projectVersionMetadata element</a></li>
                 <li><a href="el_ns0_dependency.html">dependency element</a></li>
@@ -98,6 +99,7 @@
                 <li><a href="el_ns0_queueEntry.html">queueEntry element</a></li>
                 <li><a href="el_ns0_artifactContentEntry.html">artifactContentEntry element</a></li>
                 <li><a href="el_ns0_browseResult.html">browseResult element</a></li>
+                <li><a href="el_ns0_rbacManagerImplementationInformation.html">rbacManagerImplementationInformation element</a></li>
                 <li><a href="el_ns0_archivaRuntimeConfiguration.html">archivaRuntimeConfiguration element</a></li>
                 <li><a href="el_ns0_license.html">license element</a></li>
                 <li><a href="el_ns0_organization.html">organization element</a></li>
@@ -127,6 +129,56 @@
       <h2>Example XML</h2>
       <code class="prettyprint lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;projectVersionMetadata&gt;
+  &lt;mailingLists&gt;
+    &lt;mainArchiveUrl&gt;...&lt;/mainArchiveUrl&gt;
+    &lt;unsubscribeAddress&gt;...&lt;/unsubscribeAddress&gt;
+    &lt;otherArchives&gt;...&lt;/otherArchives&gt;
+    &lt;otherArchives&gt;...&lt;/otherArchives&gt;
+    &lt;!--...more &quot;otherArchives&quot; elements...--&gt;
+    &lt;subscribeAddress&gt;...&lt;/subscribeAddress&gt;
+    &lt;name&gt;...&lt;/name&gt;
+    &lt;postAddress&gt;...&lt;/postAddress&gt;
+  &lt;/mailingLists&gt;
+  &lt;mailingLists&gt;
+    &lt;!--...--&gt;
+  &lt;/mailingLists&gt;
+  &lt;!--...more &quot;mailingLists&quot; elements...--&gt;
+  &lt;organization&gt;
+    &lt;url&gt;...&lt;/url&gt;
+    &lt;name&gt;...&lt;/name&gt;
+  &lt;/organization&gt;
+  &lt;description&gt;...&lt;/description&gt;
+  &lt;dependencies&gt;
+    &lt;scope&gt;...&lt;/scope&gt;
+    &lt;groupId&gt;...&lt;/groupId&gt;
+    &lt;artifactId&gt;...&lt;/artifactId&gt;
+    &lt;optional&gt;...&lt;/optional&gt;
+    &lt;classifier&gt;...&lt;/classifier&gt;
+    &lt;type&gt;...&lt;/type&gt;
+    &lt;systemPath&gt;...&lt;/systemPath&gt;
+    &lt;version&gt;...&lt;/version&gt;
+  &lt;/dependencies&gt;
+  &lt;dependencies&gt;
+    &lt;!--...--&gt;
+  &lt;/dependencies&gt;
+  &lt;!--...more &quot;dependencies&quot; elements...--&gt;
+  &lt;id&gt;...&lt;/id&gt;
+  &lt;url&gt;...&lt;/url&gt;
+  &lt;name&gt;...&lt;/name&gt;
+  &lt;incomplete&gt;...&lt;/incomplete&gt;
+  &lt;ciManagement&gt;
+    &lt;url&gt;...&lt;/url&gt;
+    &lt;system&gt;...&lt;/system&gt;
+  &lt;/ciManagement&gt;
+  &lt;scm&gt;
+    &lt;developerConnection&gt;...&lt;/developerConnection&gt;
+    &lt;connection&gt;...&lt;/connection&gt;
+    &lt;url&gt;...&lt;/url&gt;
+  &lt;/scm&gt;
+  &lt;issueManagement&gt;
+    &lt;system&gt;...&lt;/system&gt;
+    &lt;url&gt;...&lt;/url&gt;
+  &lt;/issueManagement&gt;
   &lt;licenses&gt;
     &lt;url&gt;...&lt;/url&gt;
     &lt;name&gt;...&lt;/name&gt;
@@ -135,103 +187,53 @@
     &lt;!--...--&gt;
   &lt;/licenses&gt;
   &lt;!--...more &quot;licenses&quot; elements...--&gt;
-  &lt;organization&gt;
-    &lt;url&gt;...&lt;/url&gt;
-    &lt;name&gt;...&lt;/name&gt;
-  &lt;/organization&gt;
-  &lt;incomplete&gt;...&lt;/incomplete&gt;
-  &lt;ciManagement&gt;
-    &lt;url&gt;...&lt;/url&gt;
-    &lt;system&gt;...&lt;/system&gt;
-  &lt;/ciManagement&gt;
-  &lt;scm&gt;
-    &lt;url&gt;...&lt;/url&gt;
-    &lt;developerConnection&gt;...&lt;/developerConnection&gt;
-    &lt;connection&gt;...&lt;/connection&gt;
-  &lt;/scm&gt;
-  &lt;dependencies&gt;
-    &lt;classifier&gt;...&lt;/classifier&gt;
-    &lt;scope&gt;...&lt;/scope&gt;
-    &lt;groupId&gt;...&lt;/groupId&gt;
-    &lt;version&gt;...&lt;/version&gt;
-    &lt;systemPath&gt;...&lt;/systemPath&gt;
-    &lt;artifactId&gt;...&lt;/artifactId&gt;
-    &lt;optional&gt;...&lt;/optional&gt;
-    &lt;type&gt;...&lt;/type&gt;
-  &lt;/dependencies&gt;
-  &lt;dependencies&gt;
-    &lt;!--...--&gt;
-  &lt;/dependencies&gt;
-  &lt;!--...more &quot;dependencies&quot; elements...--&gt;
-  &lt;issueManagement&gt;
-    &lt;system&gt;...&lt;/system&gt;
-    &lt;url&gt;...&lt;/url&gt;
-  &lt;/issueManagement&gt;
-  &lt;mailingLists&gt;
-    &lt;unsubscribeAddress&gt;...&lt;/unsubscribeAddress&gt;
-    &lt;subscribeAddress&gt;...&lt;/subscribeAddress&gt;
-    &lt;postAddress&gt;...&lt;/postAddress&gt;
-    &lt;name&gt;...&lt;/name&gt;
-    &lt;mainArchiveUrl&gt;...&lt;/mainArchiveUrl&gt;
-    &lt;otherArchives&gt;...&lt;/otherArchives&gt;
-    &lt;otherArchives&gt;...&lt;/otherArchives&gt;
-    &lt;!--...more &quot;otherArchives&quot; elements...--&gt;
-  &lt;/mailingLists&gt;
-  &lt;mailingLists&gt;
-    &lt;!--...--&gt;
-  &lt;/mailingLists&gt;
-  &lt;!--...more &quot;mailingLists&quot; elements...--&gt;
-  &lt;description&gt;...&lt;/description&gt;
-  &lt;name&gt;...&lt;/name&gt;
-  &lt;url&gt;...&lt;/url&gt;
-  &lt;id&gt;...&lt;/id&gt;
 &lt;/projectVersionMetadata&gt;</code>
       <h2>Example JSON</h2>
       <code class="prettyprint lang-js">{
-  &quot;licenses&quot; : [ {
-    &quot;url&quot; : &quot;...&quot;,
-    &quot;name&quot; : &quot;...&quot;
+  &quot;mailingLists&quot; : [ {
+    &quot;mainArchiveUrl&quot; : &quot;...&quot;,
+    &quot;unsubscribeAddress&quot; : &quot;...&quot;,
+    &quot;otherArchives&quot; : [ &quot;...&quot;, ... ],
+    &quot;subscribeAddress&quot; : &quot;...&quot;,
+    &quot;name&quot; : &quot;...&quot;,
+    &quot;postAddress&quot; : &quot;...&quot;
   }, ... ],
   &quot;organization&quot; : {
     &quot;url&quot; : &quot;...&quot;,
     &quot;name&quot; : &quot;...&quot;
   },
+  &quot;description&quot; : &quot;...&quot;,
+  &quot;dependencies&quot; : [ {
+    &quot;scope&quot; : &quot;...&quot;,
+    &quot;groupId&quot; : &quot;...&quot;,
+    &quot;artifactId&quot; : &quot;...&quot;,
+    &quot;optional&quot; : false,
+    &quot;classifier&quot; : &quot;...&quot;,
+    &quot;type&quot; : &quot;...&quot;,
+    &quot;systemPath&quot; : &quot;...&quot;,
+    &quot;version&quot; : &quot;...&quot;
+  }, ... ],
+  &quot;id&quot; : &quot;...&quot;,
+  &quot;url&quot; : &quot;...&quot;,
+  &quot;name&quot; : &quot;...&quot;,
   &quot;incomplete&quot; : false,
   &quot;ciManagement&quot; : {
     &quot;url&quot; : &quot;...&quot;,
     &quot;system&quot; : &quot;...&quot;
   },
   &quot;scm&quot; : {
-    &quot;url&quot; : &quot;...&quot;,
     &quot;developerConnection&quot; : &quot;...&quot;,
-    &quot;connection&quot; : &quot;...&quot;
+    &quot;connection&quot; : &quot;...&quot;,
+    &quot;url&quot; : &quot;...&quot;
   },
-  &quot;dependencies&quot; : [ {
-    &quot;classifier&quot; : &quot;...&quot;,
-    &quot;scope&quot; : &quot;...&quot;,
-    &quot;groupId&quot; : &quot;...&quot;,
-    &quot;version&quot; : &quot;...&quot;,
-    &quot;systemPath&quot; : &quot;...&quot;,
-    &quot;artifactId&quot; : &quot;...&quot;,
-    &quot;optional&quot; : false,
-    &quot;type&quot; : &quot;...&quot;
-  }, ... ],
   &quot;issueManagement&quot; : {
     &quot;system&quot; : &quot;...&quot;,
     &quot;url&quot; : &quot;...&quot;
   },
-  &quot;mailingLists&quot; : [ {
-    &quot;unsubscribeAddress&quot; : &quot;...&quot;,
-    &quot;subscribeAddress&quot; : &quot;...&quot;,
-    &quot;postAddress&quot; : &quot;...&quot;,
-    &quot;name&quot; : &quot;...&quot;,
-    &quot;mainArchiveUrl&quot; : &quot;...&quot;,
-    &quot;otherArchives&quot; : [ &quot;...&quot;, ... ]
-  }, ... ],
-  &quot;description&quot; : &quot;...&quot;,
-  &quot;name&quot; : &quot;...&quot;,
-  &quot;url&quot; : &quot;...&quot;,
-  &quot;id&quot; : &quot;...&quot;
+  &quot;licenses&quot; : [ {
+    &quot;url&quot; : &quot;...&quot;,
+    &quot;name&quot; : &quot;...&quot;
+  }, ... ]
 }</code>
 
       <div class="clear" />

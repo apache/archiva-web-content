@@ -74,6 +74,7 @@
                 <li><a href="el_ns0_uiConfiguration.html">uiConfiguration element</a></li>
                 <li><a href="el_ns0_cacheConfiguration.html">cacheConfiguration element</a></li>
                 <li><a href="el_ns0_policyInformation.html">policyInformation element</a></li>
+                <li><a href="el_ns0_redbackImplementationsInformations.html">redbackImplementationsInformations element</a></li>
                 <li><a href="el_ns0_redbackRuntimeConfiguration.html">redbackRuntimeConfiguration element</a></li>
                 <li><a href="el_ns0_artifactTransferRequest.html">artifactTransferRequest element</a></li>
                 <li><a href="el_ns0_archivaRepositoryStatistics.html">archivaRepositoryStatistics element</a></li>
@@ -84,12 +85,12 @@
                 <li><a href="el_ns0_proxyConnector.html">proxyConnector element</a></li>
                 <li><a href="el_ns0_networkProxy.html">networkProxy element</a></li>
                 <li><a href="el_ns0_artifact.html">artifact element</a></li>
-                <li><a href="el_ns0_repositoryScannerStatistics.html">repositoryScannerStatistics element</a></li>
                 <li><a href="el_ns0_repositoryScanStatistics.html">repositoryScanStatistics element</a></li>
+                <li><a href="el_ns0_repositoryScannerStatistics.html">repositoryScannerStatistics element</a></li>
                 <li><a href="el_ns0_proxyConnectorRule.html">proxyConnectorRule element</a></li>
                 <li><a href="el_ns0_fileType.html">fileType element</a></li>
-                <li><a href="el_ns0_legacyArtifactPath.html">legacyArtifactPath element</a></li>
                 <li><a href="el_ns0_artifactContent.html">artifactContent element</a></li>
+                <li><a href="el_ns0_legacyArtifactPath.html">legacyArtifactPath element</a></li>
                 <li><a href="el_ns0_propertyEntry.html">propertyEntry element</a></li>
                 <li><a href="el_ns0_projectVersionMetadata.html">projectVersionMetadata element</a></li>
                 <li><a href="el_ns0_dependency.html">dependency element</a></li>
@@ -98,6 +99,7 @@
                 <li><a href="el_ns0_queueEntry.html">queueEntry element</a></li>
                 <li><a href="el_ns0_artifactContentEntry.html">artifactContentEntry element</a></li>
                 <li><a href="el_ns0_browseResult.html">browseResult element</a></li>
+                <li><a href="el_ns0_rbacManagerImplementationInformation.html">rbacManagerImplementationInformation element</a></li>
                 <li><a href="el_ns0_archivaRuntimeConfiguration.html">archivaRuntimeConfiguration element</a></li>
                 <li><a href="el_ns0_license.html">license element</a></li>
                 <li><a href="el_ns0_organization.html">organization element</a></li>
@@ -127,22 +129,16 @@
       <h2>Example XML</h2>
       <code class="prettyprint lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;remoteRepository&gt;
-  &lt;url&gt;...&lt;/url&gt;
-  &lt;cronExpression&gt;...&lt;/cronExpression&gt;
   &lt;userName&gt;...&lt;/userName&gt;
-  &lt;downloadRemoteIndexOnStartup&gt;...&lt;/downloadRemoteIndexOnStartup&gt;
-  &lt;remoteDownloadTimeout&gt;...&lt;/remoteDownloadTimeout&gt;
-  &lt;extraHeadersEntries&gt;
+  &lt;cronExpression&gt;...&lt;/cronExpression&gt;
+  &lt;extraParametersEntries&gt;
     &lt;key&gt;...&lt;/key&gt;
     &lt;value&gt;...&lt;/value&gt;
-  &lt;/extraHeadersEntries&gt;
-  &lt;extraHeadersEntries&gt;
+  &lt;/extraParametersEntries&gt;
+  &lt;extraParametersEntries&gt;
     &lt;!--...--&gt;
-  &lt;/extraHeadersEntries&gt;
-  &lt;!--...more &quot;extraHeadersEntries&quot; elements...--&gt;
-  &lt;downloadRemoteIndex&gt;...&lt;/downloadRemoteIndex&gt;
-  &lt;remoteIndexUrl&gt;...&lt;/remoteIndexUrl&gt;
-  &lt;password&gt;...&lt;/password&gt;
+  &lt;/extraParametersEntries&gt;
+  &lt;!--...more &quot;extraParametersEntries&quot; elements...--&gt;
   &lt;extraParameters&gt;
     &lt;entry&gt;
       &lt;key&gt;...&lt;/key&gt;
@@ -158,15 +154,6 @@
     &lt;/entry&gt;
     &lt;!--...more entries...--&gt;
   &lt;/extraParameters&gt;
-  &lt;extraParametersEntries&gt;
-    &lt;key&gt;...&lt;/key&gt;
-    &lt;value&gt;...&lt;/value&gt;
-  &lt;/extraParametersEntries&gt;
-  &lt;extraParametersEntries&gt;
-    &lt;!--...--&gt;
-  &lt;/extraParametersEntries&gt;
-  &lt;!--...more &quot;extraParametersEntries&quot; elements...--&gt;
-  &lt;timeout&gt;...&lt;/timeout&gt;
   &lt;extraHeaders&gt;
     &lt;entry&gt;
       &lt;key&gt;...&lt;/key&gt;
@@ -182,46 +169,61 @@
     &lt;/entry&gt;
     &lt;!--...more entries...--&gt;
   &lt;/extraHeaders&gt;
+  &lt;timeout&gt;...&lt;/timeout&gt;
+  &lt;password&gt;...&lt;/password&gt;
+  &lt;downloadRemoteIndex&gt;...&lt;/downloadRemoteIndex&gt;
   &lt;remoteDownloadNetworkProxyId&gt;...&lt;/remoteDownloadNetworkProxyId&gt;
-  &lt;layout&gt;...&lt;/layout&gt;
+  &lt;downloadRemoteIndexOnStartup&gt;...&lt;/downloadRemoteIndexOnStartup&gt;
+  &lt;remoteIndexUrl&gt;...&lt;/remoteIndexUrl&gt;
+  &lt;extraHeadersEntries&gt;
+    &lt;key&gt;...&lt;/key&gt;
+    &lt;value&gt;...&lt;/value&gt;
+  &lt;/extraHeadersEntries&gt;
+  &lt;extraHeadersEntries&gt;
+    &lt;!--...--&gt;
+  &lt;/extraHeadersEntries&gt;
+  &lt;!--...more &quot;extraHeadersEntries&quot; elements...--&gt;
+  &lt;remoteDownloadTimeout&gt;...&lt;/remoteDownloadTimeout&gt;
+  &lt;url&gt;...&lt;/url&gt;
   &lt;description&gt;...&lt;/description&gt;
-  &lt;name&gt;...&lt;/name&gt;
   &lt;indexDirectory&gt;...&lt;/indexDirectory&gt;
+  &lt;layout&gt;...&lt;/layout&gt;
   &lt;id&gt;...&lt;/id&gt;
+  &lt;name&gt;...&lt;/name&gt;
 &lt;/remoteRepository&gt;</code>
       <h2>Example JSON</h2>
       <code class="prettyprint lang-js">{
-  &quot;url&quot; : &quot;...&quot;,
-  &quot;cronExpression&quot; : &quot;...&quot;,
   &quot;userName&quot; : &quot;...&quot;,
-  &quot;downloadRemoteIndexOnStartup&quot; : false,
-  &quot;remoteDownloadTimeout&quot; : ...,
-  &quot;extraHeadersEntries&quot; : [ {
-    &quot;key&quot; : &quot;...&quot;,
-    &quot;value&quot; : &quot;...&quot;
-  }, ... ],
-  &quot;downloadRemoteIndex&quot; : false,
-  &quot;remoteIndexUrl&quot; : &quot;...&quot;,
-  &quot;password&quot; : &quot;...&quot;,
-  &quot;extraParameters&quot; : [ {
-    &quot;...&quot; : ...
-  }, {
-  } ],
+  &quot;cronExpression&quot; : &quot;...&quot;,
   &quot;extraParametersEntries&quot; : [ {
     &quot;key&quot; : &quot;...&quot;,
     &quot;value&quot; : &quot;...&quot;
   }, ... ],
-  &quot;timeout&quot; : ...,
+  &quot;extraParameters&quot; : [ {
+    &quot;...&quot; : ...
+  }, {
+  } ],
   &quot;extraHeaders&quot; : [ {
     &quot;...&quot; : ...
   }, {
   } ],
+  &quot;timeout&quot; : ...,
+  &quot;password&quot; : &quot;...&quot;,
+  &quot;downloadRemoteIndex&quot; : false,
   &quot;remoteDownloadNetworkProxyId&quot; : &quot;...&quot;,
-  &quot;layout&quot; : &quot;...&quot;,
+  &quot;downloadRemoteIndexOnStartup&quot; : false,
+  &quot;remoteIndexUrl&quot; : &quot;...&quot;,
+  &quot;extraHeadersEntries&quot; : [ {
+    &quot;key&quot; : &quot;...&quot;,
+    &quot;value&quot; : &quot;...&quot;
+  }, ... ],
+  &quot;remoteDownloadTimeout&quot; : ...,
+  &quot;url&quot; : &quot;...&quot;,
   &quot;description&quot; : &quot;...&quot;,
-  &quot;name&quot; : &quot;...&quot;,
   &quot;indexDirectory&quot; : &quot;...&quot;,
-  &quot;id&quot; : &quot;...&quot;
+  &quot;layout&quot; : &quot;...&quot;,
+  &quot;id&quot; : &quot;...&quot;,
+  &quot;name&quot; : &quot;...&quot;
 }</code>
 
       <div class="clear" />

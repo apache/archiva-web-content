@@ -74,6 +74,7 @@
                 <li><a href="el_ns0_uiConfiguration.html">uiConfiguration element</a></li>
                 <li><a href="el_ns0_cacheConfiguration.html">cacheConfiguration element</a></li>
                 <li><a href="el_ns0_policyInformation.html">policyInformation element</a></li>
+                <li><a href="el_ns0_redbackImplementationsInformations.html">redbackImplementationsInformations element</a></li>
                 <li><a href="el_ns0_redbackRuntimeConfiguration.html">redbackRuntimeConfiguration element</a></li>
                 <li><a href="el_ns0_artifactTransferRequest.html">artifactTransferRequest element</a></li>
                 <li><a href="el_ns0_archivaRepositoryStatistics.html">archivaRepositoryStatistics element</a></li>
@@ -84,12 +85,12 @@
                 <li><a href="el_ns0_proxyConnector.html">proxyConnector element</a></li>
                 <li><a href="el_ns0_networkProxy.html">networkProxy element</a></li>
                 <li><a href="el_ns0_artifact.html">artifact element</a></li>
-                <li><a href="el_ns0_repositoryScannerStatistics.html">repositoryScannerStatistics element</a></li>
                 <li><a href="el_ns0_repositoryScanStatistics.html">repositoryScanStatistics element</a></li>
+                <li><a href="el_ns0_repositoryScannerStatistics.html">repositoryScannerStatistics element</a></li>
                 <li><a href="el_ns0_proxyConnectorRule.html">proxyConnectorRule element</a></li>
                 <li><a href="el_ns0_fileType.html">fileType element</a></li>
-                <li><a href="el_ns0_legacyArtifactPath.html">legacyArtifactPath element</a></li>
                 <li><a href="el_ns0_artifactContent.html">artifactContent element</a></li>
+                <li><a href="el_ns0_legacyArtifactPath.html">legacyArtifactPath element</a></li>
                 <li><a href="el_ns0_propertyEntry.html">propertyEntry element</a></li>
                 <li><a href="el_ns0_projectVersionMetadata.html">projectVersionMetadata element</a></li>
                 <li><a href="el_ns0_dependency.html">dependency element</a></li>
@@ -98,6 +99,7 @@
                 <li><a href="el_ns0_queueEntry.html">queueEntry element</a></li>
                 <li><a href="el_ns0_artifactContentEntry.html">artifactContentEntry element</a></li>
                 <li><a href="el_ns0_browseResult.html">browseResult element</a></li>
+                <li><a href="el_ns0_rbacManagerImplementationInformation.html">rbacManagerImplementationInformation element</a></li>
                 <li><a href="el_ns0_archivaRuntimeConfiguration.html">archivaRuntimeConfiguration element</a></li>
                 <li><a href="el_ns0_license.html">license element</a></li>
                 <li><a href="el_ns0_organization.html">organization element</a></li>
@@ -128,31 +130,31 @@
       <code class="prettyprint lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;repositoryScannerStatistics&gt;
   &lt;managedRepository&gt;
-    &lt;retentionCount&gt;...&lt;/retentionCount&gt;
-    &lt;daysOlder&gt;...&lt;/daysOlder&gt;
-    &lt;scanned&gt;...&lt;/scanned&gt;
     &lt;blockRedeployments&gt;...&lt;/blockRedeployments&gt;
-    &lt;snapshots&gt;...&lt;/snapshots&gt;
-    &lt;deleteReleasedSnapshots&gt;...&lt;/deleteReleasedSnapshots&gt;
-    &lt;stageRepoNeeded&gt;...&lt;/stageRepoNeeded&gt;
+    &lt;cronExpression&gt;...&lt;/cronExpression&gt;
     &lt;skipPackedIndexCreation&gt;...&lt;/skipPackedIndexCreation&gt;
-    &lt;resetStats&gt;...&lt;/resetStats&gt;
     &lt;releases&gt;...&lt;/releases&gt;
+    &lt;daysOlder&gt;...&lt;/daysOlder&gt;
+    &lt;stageRepoNeeded&gt;...&lt;/stageRepoNeeded&gt;
+    &lt;snapshots&gt;...&lt;/snapshots&gt;
+    &lt;resetStats&gt;...&lt;/resetStats&gt;
     &lt;stagingRepository&gt;
       &lt;!--...--&gt;
-      &lt;layout&gt;...&lt;/layout&gt;
       &lt;description&gt;...&lt;/description&gt;
-      &lt;name&gt;...&lt;/name&gt;
       &lt;indexDirectory&gt;...&lt;/indexDirectory&gt;
+      &lt;layout&gt;...&lt;/layout&gt;
       &lt;id&gt;...&lt;/id&gt;
+      &lt;name&gt;...&lt;/name&gt;
     &lt;/stagingRepository&gt;
-    &lt;cronExpression&gt;...&lt;/cronExpression&gt;
     &lt;location&gt;...&lt;/location&gt;
-    &lt;layout&gt;...&lt;/layout&gt;
+    &lt;scanned&gt;...&lt;/scanned&gt;
+    &lt;retentionCount&gt;...&lt;/retentionCount&gt;
+    &lt;deleteReleasedSnapshots&gt;...&lt;/deleteReleasedSnapshots&gt;
     &lt;description&gt;...&lt;/description&gt;
-    &lt;name&gt;...&lt;/name&gt;
     &lt;indexDirectory&gt;...&lt;/indexDirectory&gt;
+    &lt;layout&gt;...&lt;/layout&gt;
     &lt;id&gt;...&lt;/id&gt;
+    &lt;name&gt;...&lt;/name&gt;
   &lt;/managedRepository&gt;
   &lt;consumerScanningStatistics&gt;
     &lt;consumerKey&gt;...&lt;/consumerKey&gt;
@@ -170,31 +172,31 @@
       <h2>Example JSON</h2>
       <code class="prettyprint lang-js">{
   &quot;managedRepository&quot; : {
-    &quot;retentionCount&quot; : ...,
-    &quot;daysOlder&quot; : ...,
-    &quot;scanned&quot; : false,
     &quot;blockRedeployments&quot; : false,
-    &quot;snapshots&quot; : false,
-    &quot;deleteReleasedSnapshots&quot; : false,
-    &quot;stageRepoNeeded&quot; : false,
+    &quot;cronExpression&quot; : &quot;...&quot;,
     &quot;skipPackedIndexCreation&quot; : false,
-    &quot;resetStats&quot; : false,
     &quot;releases&quot; : false,
+    &quot;daysOlder&quot; : ...,
+    &quot;stageRepoNeeded&quot; : false,
+    &quot;snapshots&quot; : false,
+    &quot;resetStats&quot; : false,
     &quot;stagingRepository&quot; : {
       &quot;...&quot; : ...,
-      &quot;layout&quot; : &quot;...&quot;,
       &quot;description&quot; : &quot;...&quot;,
-      &quot;name&quot; : &quot;...&quot;,
       &quot;indexDirectory&quot; : &quot;...&quot;,
-      &quot;id&quot; : &quot;...&quot;
+      &quot;layout&quot; : &quot;...&quot;,
+      &quot;id&quot; : &quot;...&quot;,
+      &quot;name&quot; : &quot;...&quot;
     },
-    &quot;cronExpression&quot; : &quot;...&quot;,
     &quot;location&quot; : &quot;...&quot;,
-    &quot;layout&quot; : &quot;...&quot;,
+    &quot;scanned&quot; : false,
+    &quot;retentionCount&quot; : ...,
+    &quot;deleteReleasedSnapshots&quot; : false,
     &quot;description&quot; : &quot;...&quot;,
-    &quot;name&quot; : &quot;...&quot;,
     &quot;indexDirectory&quot; : &quot;...&quot;,
-    &quot;id&quot; : &quot;...&quot;
+    &quot;layout&quot; : &quot;...&quot;,
+    &quot;id&quot; : &quot;...&quot;,
+    &quot;name&quot; : &quot;...&quot;
   },
   &quot;consumerScanningStatistics&quot; : [ {
     &quot;consumerKey&quot; : &quot;...&quot;,
