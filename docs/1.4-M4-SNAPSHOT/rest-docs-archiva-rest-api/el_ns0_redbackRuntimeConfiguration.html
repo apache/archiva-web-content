@@ -147,12 +147,18 @@
   &lt;userManagerImpls&gt;...&lt;/userManagerImpls&gt;
   &lt;userManagerImpls&gt;...&lt;/userManagerImpls&gt;
   &lt;!--...more &quot;userManagerImpls&quot; elements...--&gt;
+  &lt;useUsersCache&gt;...&lt;/useUsersCache&gt;
+  &lt;migratedFromRedbackConfiguration&gt;...&lt;/migratedFromRedbackConfiguration&gt;
   &lt;ldapConfiguration&gt;
-    &lt;port&gt;...&lt;/port&gt;
-    &lt;password&gt;...&lt;/password&gt;
+    &lt;bindAuthenticatorEnabled&gt;...&lt;/bindAuthenticatorEnabled&gt;
+    &lt;authenticationMethod&gt;...&lt;/authenticationMethod&gt;
     &lt;ssl&gt;...&lt;/ssl&gt;
+    &lt;writable&gt;...&lt;/writable&gt;
+    &lt;password&gt;...&lt;/password&gt;
+    &lt;useRoleNameAsGroup&gt;...&lt;/useRoleNameAsGroup&gt;
+    &lt;hostName&gt;...&lt;/hostName&gt;
     &lt;baseDn&gt;...&lt;/baseDn&gt;
-    &lt;baseGroupsDn&gt;...&lt;/baseGroupsDn&gt;
+    &lt;port&gt;...&lt;/port&gt;
     &lt;extraProperties&gt;
       &lt;entry&gt;
         &lt;key&gt;...&lt;/key&gt;
@@ -168,10 +174,8 @@
       &lt;/entry&gt;
       &lt;!--...more entries...--&gt;
     &lt;/extraProperties&gt;
+    &lt;baseGroupsDn&gt;...&lt;/baseGroupsDn&gt;
     &lt;bindDn&gt;...&lt;/bindDn&gt;
-    &lt;useRoleNameAsGroup&gt;...&lt;/useRoleNameAsGroup&gt;
-    &lt;hostName&gt;...&lt;/hostName&gt;
-    &lt;writable&gt;...&lt;/writable&gt;
     &lt;extraPropertiesEntries&gt;
       &lt;key&gt;...&lt;/key&gt;
       &lt;value&gt;...&lt;/value&gt;
@@ -181,10 +185,7 @@
     &lt;/extraPropertiesEntries&gt;
     &lt;!--...more &quot;extraPropertiesEntries&quot; elements...--&gt;
     &lt;contextFactory&gt;...&lt;/contextFactory&gt;
-    &lt;bindAuthenticatorEnabled&gt;...&lt;/bindAuthenticatorEnabled&gt;
-    &lt;authenticationMethod&gt;...&lt;/authenticationMethod&gt;
   &lt;/ldapConfiguration&gt;
-  &lt;migratedFromRedbackConfiguration&gt;...&lt;/migratedFromRedbackConfiguration&gt;
   &lt;configurationPropertiesEntries&gt;
     &lt;key&gt;...&lt;/key&gt;
     &lt;value&gt;...&lt;/value&gt;
@@ -196,10 +197,9 @@
   &lt;rbacManagerImpls&gt;...&lt;/rbacManagerImpls&gt;
   &lt;rbacManagerImpls&gt;...&lt;/rbacManagerImpls&gt;
   &lt;!--...more &quot;rbacManagerImpls&quot; elements...--&gt;
-  &lt;useUsersCache&gt;...&lt;/useUsersCache&gt;
   &lt;usersCacheConfiguration&gt;
-    &lt;maxElementsInMemory&gt;...&lt;/maxElementsInMemory&gt;
     &lt;maxElementsOnDisk&gt;...&lt;/maxElementsOnDisk&gt;
+    &lt;maxElementsInMemory&gt;...&lt;/maxElementsInMemory&gt;
     &lt;timeToIdleSeconds&gt;...&lt;/timeToIdleSeconds&gt;
     &lt;timeToLiveSeconds&gt;...&lt;/timeToLiveSeconds&gt;
   &lt;/usersCacheConfiguration&gt;
@@ -211,38 +211,38 @@
   }, {
   } ],
   &quot;userManagerImpls&quot; : [ &quot;...&quot;, ... ],
+  &quot;useUsersCache&quot; : false,
+  &quot;migratedFromRedbackConfiguration&quot; : false,
   &quot;ldapConfiguration&quot; : {
-    &quot;port&quot; : ...,
-    &quot;password&quot; : &quot;...&quot;,
+    &quot;bindAuthenticatorEnabled&quot; : false,
+    &quot;authenticationMethod&quot; : &quot;...&quot;,
     &quot;ssl&quot; : false,
+    &quot;writable&quot; : false,
+    &quot;password&quot; : &quot;...&quot;,
+    &quot;useRoleNameAsGroup&quot; : false,
+    &quot;hostName&quot; : &quot;...&quot;,
     &quot;baseDn&quot; : &quot;...&quot;,
-    &quot;baseGroupsDn&quot; : &quot;...&quot;,
+    &quot;port&quot; : ...,
     &quot;extraProperties&quot; : [ {
       &quot;...&quot; : ...
     }, {
     } ],
+    &quot;baseGroupsDn&quot; : &quot;...&quot;,
     &quot;bindDn&quot; : &quot;...&quot;,
-    &quot;useRoleNameAsGroup&quot; : false,
-    &quot;hostName&quot; : &quot;...&quot;,
-    &quot;writable&quot; : false,
     &quot;extraPropertiesEntries&quot; : [ {
       &quot;key&quot; : &quot;...&quot;,
       &quot;value&quot; : &quot;...&quot;
     }, ... ],
-    &quot;contextFactory&quot; : &quot;...&quot;,
-    &quot;bindAuthenticatorEnabled&quot; : false,
-    &quot;authenticationMethod&quot; : &quot;...&quot;
+    &quot;contextFactory&quot; : &quot;...&quot;
   },
-  &quot;migratedFromRedbackConfiguration&quot; : false,
   &quot;configurationPropertiesEntries&quot; : [ {
     &quot;key&quot; : &quot;...&quot;,
     &quot;value&quot; : &quot;...&quot;
   }, ... ],
   &quot;rbacManagerImpls&quot; : [ &quot;...&quot;, ... ],
-  &quot;useUsersCache&quot; : false,
   &quot;usersCacheConfiguration&quot; : {
-    &quot;maxElementsInMemory&quot; : ...,
     &quot;maxElementsOnDisk&quot; : ...,
+    &quot;maxElementsInMemory&quot; : ...,
     &quot;timeToIdleSeconds&quot; : ...,
     &quot;timeToLiveSeconds&quot; : ...
   }
