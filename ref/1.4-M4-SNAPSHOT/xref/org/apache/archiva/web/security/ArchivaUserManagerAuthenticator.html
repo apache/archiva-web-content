@@ -174,7 +174,7 @@
 <a class="jxr_linenumber" name="164" href="#164">164</a>                         <em class="jxr_comment">//throw e;</em>
 <a class="jxr_linenumber" name="165" href="#165">165</a>                         resultException = e;
 <a class="jxr_linenumber" name="166" href="#166">166</a>                         authnResultErrors.add( <strong class="jxr_keyword">new</strong> AuthenticationFailureCause(
-<a class="jxr_linenumber" name="167" href="#167">167</a>                             AuthenticationConstants.AUTHN_MUST_CHANGE_PASSWORD_EXCEPTION, e.getMessage() ) );
+<a class="jxr_linenumber" name="167" href="#167">167</a>                             AuthenticationConstants.AUTHN_MUST_CHANGE_PASSWORD_EXCEPTION, e.getMessage() ).user( user ) );
 <a class="jxr_linenumber" name="168" href="#168">168</a>                     }
 <a class="jxr_linenumber" name="169" href="#169">169</a>                 }
 <a class="jxr_linenumber" name="170" href="#170">170</a>                 <strong class="jxr_keyword">else</strong>
@@ -183,7 +183,7 @@
 <a class="jxr_linenumber" name="173" href="#173">173</a>                               userManager.getId() );
 <a class="jxr_linenumber" name="174" href="#174">174</a>                     authnResultErrors.add( <strong class="jxr_keyword">new</strong> AuthenticationFailureCause( AuthenticationConstants.AUTHN_NO_SUCH_USER,
 <a class="jxr_linenumber" name="175" href="#175">175</a>                                                                            <span class="jxr_string">"Password is Invalid for user "</span>
-<a class="jxr_linenumber" name="176" href="#176">176</a>                                                                                + source.getUsername() + <span class="jxr_string">"."</span> ) );
+<a class="jxr_linenumber" name="176" href="#176">176</a>                                                                                + source.getUsername() + <span class="jxr_string">"."</span> ).user( user ) );
 <a class="jxr_linenumber" name="177" href="#177">177</a> 
 <a class="jxr_linenumber" name="178" href="#178">178</a>                     <strong class="jxr_keyword">try</strong>
 <a class="jxr_linenumber" name="179" href="#179">179</a>                     {
