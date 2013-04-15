@@ -129,15 +129,12 @@
       <h2>Example XML</h2>
       <code class="prettyprint lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;ldapConfiguration&gt;
+  &lt;baseDn&gt;...&lt;/baseDn&gt;
+  &lt;bindDn&gt;...&lt;/bindDn&gt;
   &lt;bindAuthenticatorEnabled&gt;...&lt;/bindAuthenticatorEnabled&gt;
-  &lt;authenticationMethod&gt;...&lt;/authenticationMethod&gt;
   &lt;ssl&gt;...&lt;/ssl&gt;
   &lt;writable&gt;...&lt;/writable&gt;
-  &lt;password&gt;...&lt;/password&gt;
-  &lt;useRoleNameAsGroup&gt;...&lt;/useRoleNameAsGroup&gt;
-  &lt;hostName&gt;...&lt;/hostName&gt;
-  &lt;baseDn&gt;...&lt;/baseDn&gt;
-  &lt;port&gt;...&lt;/port&gt;
+  &lt;authenticationMethod&gt;...&lt;/authenticationMethod&gt;
   &lt;extraProperties&gt;
     &lt;entry&gt;
       &lt;key&gt;...&lt;/key&gt;
@@ -153,8 +150,9 @@
     &lt;/entry&gt;
     &lt;!--...more entries...--&gt;
   &lt;/extraProperties&gt;
-  &lt;baseGroupsDn&gt;...&lt;/baseGroupsDn&gt;
-  &lt;bindDn&gt;...&lt;/bindDn&gt;
+  &lt;useRoleNameAsGroup&gt;...&lt;/useRoleNameAsGroup&gt;
+  &lt;port&gt;...&lt;/port&gt;
+  &lt;contextFactory&gt;...&lt;/contextFactory&gt;
   &lt;extraPropertiesEntries&gt;
     &lt;key&gt;...&lt;/key&gt;
     &lt;value&gt;...&lt;/value&gt;
@@ -163,30 +161,32 @@
     &lt;!--...--&gt;
   &lt;/extraPropertiesEntries&gt;
   &lt;!--...more &quot;extraPropertiesEntries&quot; elements...--&gt;
-  &lt;contextFactory&gt;...&lt;/contextFactory&gt;
+  &lt;baseGroupsDn&gt;...&lt;/baseGroupsDn&gt;
+  &lt;password&gt;...&lt;/password&gt;
+  &lt;hostName&gt;...&lt;/hostName&gt;
 &lt;/ldapConfiguration&gt;</code>
       <h2>Example JSON</h2>
       <code class="prettyprint lang-js">{
+  &quot;baseDn&quot; : &quot;...&quot;,
+  &quot;bindDn&quot; : &quot;...&quot;,
   &quot;bindAuthenticatorEnabled&quot; : false,
-  &quot;authenticationMethod&quot; : &quot;...&quot;,
   &quot;ssl&quot; : false,
   &quot;writable&quot; : false,
-  &quot;password&quot; : &quot;...&quot;,
-  &quot;useRoleNameAsGroup&quot; : false,
-  &quot;hostName&quot; : &quot;...&quot;,
-  &quot;baseDn&quot; : &quot;...&quot;,
-  &quot;port&quot; : ...,
+  &quot;authenticationMethod&quot; : &quot;...&quot;,
   &quot;extraProperties&quot; : [ {
     &quot;...&quot; : ...
   }, {
   } ],
-  &quot;baseGroupsDn&quot; : &quot;...&quot;,
-  &quot;bindDn&quot; : &quot;...&quot;,
+  &quot;useRoleNameAsGroup&quot; : false,
+  &quot;port&quot; : ...,
+  &quot;contextFactory&quot; : &quot;...&quot;,
   &quot;extraPropertiesEntries&quot; : [ {
     &quot;key&quot; : &quot;...&quot;,
     &quot;value&quot; : &quot;...&quot;
   }, ... ],
-  &quot;contextFactory&quot; : &quot;...&quot;
+  &quot;baseGroupsDn&quot; : &quot;...&quot;,
+  &quot;password&quot; : &quot;...&quot;,
+  &quot;hostName&quot; : &quot;...&quot;
 }</code>
 
       <div class="clear" />
