@@ -46,12 +46,12 @@
 <a class="jxr_linenumber" name="36" href="#36">36</a>  <strong class="jxr_keyword">import</strong> java.util.Map;
 <a class="jxr_linenumber" name="37" href="#37">37</a>  
 <a class="jxr_linenumber" name="38" href="#38">38</a>  <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="39" href="#39">39</a>  <em class="jxr_javadoccomment"> * &lt;b&gt;This implementation is only in memory you must use a different one if you need to serialize datas.&lt;/b&gt;</em>
+<a class="jxr_linenumber" name="39" href="#39">39</a>  <em class="jxr_javadoccomment"> * &lt;b&gt;This implementation is only in memory you must use a different one if you need to save datas.&lt;/b&gt;</em>
 <a class="jxr_linenumber" name="40" href="#40">40</a>  <em class="jxr_javadoccomment"> *</em>
 <a class="jxr_linenumber" name="41" href="#41">41</a>  <em class="jxr_javadoccomment"> * @author Olivier Lamy</em>
 <a class="jxr_linenumber" name="42" href="#42">42</a>  <em class="jxr_javadoccomment"> * @since 2.1</em>
 <a class="jxr_linenumber" name="43" href="#43">43</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="44" href="#44">44</a>  @Service( <span class="jxr_string">"ldapRoleMapperConfiguration#default"</span> )
+<a class="jxr_linenumber" name="44" href="#44">44</a>  @Service(<span class="jxr_string">"ldapRoleMapperConfiguration#default"</span>)
 <a class="jxr_linenumber" name="45" href="#45">45</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/DefaultLdapRoleMapperConfiguration.html">DefaultLdapRoleMapperConfiguration</a>
 <a class="jxr_linenumber" name="46" href="#46">46</a>      <strong class="jxr_keyword">implements</strong> <a href="../../../../../../../org/apache/archiva/redback/common/ldap/role/LdapRoleMapperConfiguration.html">LdapRoleMapperConfiguration</a>
 <a class="jxr_linenumber" name="47" href="#47">47</a>  {
@@ -61,14 +61,14 @@
 <a class="jxr_linenumber" name="51" href="#51">51</a>      <strong class="jxr_keyword">private</strong> Map&lt;String, List&lt;String&gt;&gt; ldapMappings = <strong class="jxr_keyword">new</strong> HashMap&lt;String, List&lt;String&gt;&gt;();
 <a class="jxr_linenumber" name="52" href="#52">52</a>  
 <a class="jxr_linenumber" name="53" href="#53">53</a>      @Inject
-<a class="jxr_linenumber" name="54" href="#54">54</a>      @Named( value = <span class="jxr_string">"userConfiguration#default"</span> )
+<a class="jxr_linenumber" name="54" href="#54">54</a>      @Named(value = <span class="jxr_string">"userConfiguration#default"</span>)
 <a class="jxr_linenumber" name="55" href="#55">55</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../../../org/apache/archiva/redback/configuration/UserConfiguration.html">UserConfiguration</a> userConf;
 <a class="jxr_linenumber" name="56" href="#56">56</a>  
 <a class="jxr_linenumber" name="57" href="#57">57</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> addLdapMapping( String ldapGroup, List&lt;String&gt; roles )
 <a class="jxr_linenumber" name="58" href="#58">58</a>          <strong class="jxr_keyword">throws</strong> <a href="../../../../../../../org/apache/archiva/redback/common/ldap/MappingException.html">MappingException</a>
 <a class="jxr_linenumber" name="59" href="#59">59</a>      {
 <a class="jxr_linenumber" name="60" href="#60">60</a>          ldapMappings.put( ldapGroup, roles );
-<a class="jxr_linenumber" name="61" href="#61">61</a>          log.warn( <span class="jxr_string">"addLdapMapping implemented but only in memory save"</span> );
+<a class="jxr_linenumber" name="61" href="#61">61</a>          log.warn( <span class="jxr_string">"addLdapMapping implemented but only in memory save: group '{}' roles '{}'"</span>, ldapGroup, roles );
 <a class="jxr_linenumber" name="62" href="#62">62</a>      }
 <a class="jxr_linenumber" name="63" href="#63">63</a>  
 <a class="jxr_linenumber" name="64" href="#64">64</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> removeLdapMapping( String group )
@@ -80,7 +80,7 @@
 <a class="jxr_linenumber" name="70" href="#70">70</a>          <strong class="jxr_keyword">throws</strong> <a href="../../../../../../../org/apache/archiva/redback/common/ldap/MappingException.html">MappingException</a>
 <a class="jxr_linenumber" name="71" href="#71">71</a>      {
 <a class="jxr_linenumber" name="72" href="#72">72</a>          ldapMappings.put( ldapGroup, roles );
-<a class="jxr_linenumber" name="73" href="#73">73</a>          log.warn( <span class="jxr_string">"updateLdapMapping implemented but only in memory save"</span> );
+<a class="jxr_linenumber" name="73" href="#73">73</a>          log.warn( <span class="jxr_string">"updateLdapMapping implemented but only in memory save: group '{}' roles '{}'"</span>, ldapGroup, roles );
 <a class="jxr_linenumber" name="74" href="#74">74</a>      }
 <a class="jxr_linenumber" name="75" href="#75">75</a>  
 <a class="jxr_linenumber" name="76" href="#76">76</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setLdapGroupMappings( Map&lt;String, List&lt;String&gt;&gt; mappings )

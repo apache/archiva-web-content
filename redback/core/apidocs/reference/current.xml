@@ -215,6 +215,17 @@
  visibility="public"
 >
 </method>
+<method name="getUser"
+ return="org.apache.archiva.redback.users.User"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="setCause"
  return="void"
  abstract="false"
@@ -239,6 +250,32 @@
  visibility="public"
 >
 <parameter name="message" type="java.lang.String">
+</parameter>
+</method>
+<method name="setUser"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="user" type="org.apache.archiva.redback.users.User">
+</parameter>
+</method>
+<method name="user"
+ return="org.apache.archiva.redback.authentication.AuthenticationFailureCause"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="user" type="org.apache.archiva.redback.users.User">
 </parameter>
 </method>
 </class>
@@ -3264,19 +3301,6 @@
 <exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
 </exception>
 </method>
-<method name="getLdapGroup"
- return="java.lang.String"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="role" type="java.lang.String">
-</parameter>
-</method>
 <method name="getLdapGroupClass"
  return="java.lang.String"
  abstract="false"
@@ -3706,21 +3730,6 @@
 <parameter name="group" type="java.lang.String">
 </parameter>
 <parameter name="context" type="javax.naming.directory.DirContext">
-</parameter>
-<exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
-</exception>
-</method>
-<method name="getLdapGroup"
- return="java.lang.String"
- abstract="true"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="role" type="java.lang.String">
 </parameter>
 <exception name="MappingException" type="org.apache.archiva.redback.common.ldap.MappingException">
 </exception>
@@ -22389,6 +22398,47 @@
 </parameter>
 </method>
 </class>
+<class name="LdapGroupMappingUpdateRequest"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="LdapGroupMappingUpdateRequest"
+ type="org.apache.archiva.redback.rest.api.model.LdapGroupMappingUpdateRequest"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getLdapGroupMapping"
+ return="java.util.List&lt;org.apache.archiva.redback.rest.api.model.LdapGroupMapping&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setLdapGroupMapping"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ldapGroupMapping" type="java.util.List&lt;org.apache.archiva.redback.rest.api.model.LdapGroupMapping&gt;">
+</parameter>
+</method>
+</class>
 <class name="LoginRequest"
  extends="java.lang.Object"
  abstract="false"
@@ -24070,7 +24120,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="ldapGroupMapping" type="org.apache.archiva.redback.rest.api.model.LdapGroupMapping">
+<parameter name="ldapGroupMappingUpdateRequest" type="org.apache.archiva.redback.rest.api.model.LdapGroupMappingUpdateRequest">
 </parameter>
 <exception name="RedbackServiceException" type="org.apache.archiva.redback.rest.api.services.RedbackServiceException">
 </exception>
@@ -25164,7 +25214,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="ldapGroupMapping" type="org.apache.archiva.redback.rest.api.model.LdapGroupMapping">
+<parameter name="ldapGroupMappingUpdateRequest" type="org.apache.archiva.redback.rest.api.model.LdapGroupMappingUpdateRequest">
 </parameter>
 <exception name="RedbackServiceException" type="org.apache.archiva.redback.rest.api.services.RedbackServiceException">
 </exception>
