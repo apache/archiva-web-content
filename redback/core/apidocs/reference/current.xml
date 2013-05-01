@@ -2249,7 +2249,7 @@
 >
 </method>
 <method name="getConnection"
- return="org.apache.archiva.redback.common.ldap.connection.LdapConnection"
+ return="org.apache.archiva.redback.common.ldap.connection.DefaultLdapConnection"
  abstract="false"
  native="false"
  synchronized="false"
@@ -2262,7 +2262,7 @@
 </exception>
 </method>
 <method name="getConnection"
- return="org.apache.archiva.redback.common.ldap.connection.LdapConnection"
+ return="org.apache.archiva.redback.common.ldap.connection.DefaultLdapConnection"
  abstract="false"
  native="false"
  synchronized="false"
@@ -2277,7 +2277,7 @@
 </exception>
 </method>
 <method name="getConnection"
- return="org.apache.archiva.redback.common.ldap.connection.LdapConnection"
+ return="org.apache.archiva.redback.common.ldap.connection.DefaultLdapConnection"
  abstract="false"
  native="false"
  synchronized="false"
@@ -2294,7 +2294,7 @@
 </exception>
 </method>
 <method name="getConnection"
- return="org.apache.archiva.redback.common.ldap.connection.LdapConnection"
+ return="org.apache.archiva.redback.common.ldap.connection.DefaultLdapConnection"
  abstract="false"
  native="false"
  synchronized="false"
@@ -2551,7 +2551,7 @@
 </parameter>
 </method>
 </class>
-<class name="LdapConnection"
+<class name="DefaultLdapConnection"
  extends="java.lang.Object"
  abstract="false"
  static="false"
@@ -2559,8 +2559,10 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<constructor name="LdapConnection"
- type="org.apache.archiva.redback.common.ldap.connection.LdapConnection"
+<implements name="org.apache.archiva.redback.common.ldap.connection.LdapConnection">
+</implements>
+<constructor name="DefaultLdapConnection"
+ type="org.apache.archiva.redback.common.ldap.connection.DefaultLdapConnection"
  static="false"
  final="false"
  deprecated="not deprecated"
@@ -2573,8 +2575,8 @@
 <exception name="LdapException" type="org.apache.archiva.redback.common.ldap.connection.LdapException">
 </exception>
 </constructor>
-<constructor name="LdapConnection"
- type="org.apache.archiva.redback.common.ldap.connection.LdapConnection"
+<constructor name="DefaultLdapConnection"
+ type="org.apache.archiva.redback.common.ldap.connection.DefaultLdapConnection"
  static="false"
  final="false"
  deprecated="not deprecated"
@@ -2647,6 +2649,71 @@
 </exception>
 </method>
 </class>
+<interface name="LdapConnection"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="close"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getBaseDnRdns"
+ return="java.util.List&lt;javax.naming.ldap.Rdn&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getConfiguration"
+ return="org.apache.archiva.redback.common.ldap.connection.LdapConnectionConfiguration"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getDirContext"
+ return="javax.naming.directory.DirContext"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getEnvironment"
+ return="java.util.Hashtable&lt;java.lang.Object, java.lang.Object&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="LdapException" type="org.apache.archiva.redback.common.ldap.connection.LdapException">
+</exception>
+</method>
+</interface>
 <class name="LdapConnectionConfiguration"
  extends="java.lang.Object"
  abstract="false"
