@@ -151,54 +151,83 @@
 <a class="jxr_linenumber" name="141" href="#141">141</a>     }
 <a class="jxr_linenumber" name="142" href="#142">142</a> 
 <a class="jxr_linenumber" name="143" href="#143">143</a>     @Test
-<a class="jxr_linenumber" name="144" href="#144">144</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> getKnownContentAdminRepositoryConsumer()
-<a class="jxr_linenumber" name="145" href="#145">145</a>         <strong class="jxr_keyword">throws</strong> Exception
-<a class="jxr_linenumber" name="146" href="#146">146</a>     {
-<a class="jxr_linenumber" name="147" href="#147">147</a>         List&lt;AdminRepositoryConsumer&gt; consumers =
-<a class="jxr_linenumber" name="148" href="#148">148</a>             getArchivaAdministrationService().getKnownContentAdminRepositoryConsumers();
-<a class="jxr_linenumber" name="149" href="#149">149</a>         assertFalse( consumers.isEmpty() );
-<a class="jxr_linenumber" name="150" href="#150">150</a>     }
-<a class="jxr_linenumber" name="151" href="#151">151</a> 
-<a class="jxr_linenumber" name="152" href="#152">152</a>     @Test
-<a class="jxr_linenumber" name="153" href="#153">153</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> getInvalidContentAdminRepositoryConsumer()
-<a class="jxr_linenumber" name="154" href="#154">154</a>         <strong class="jxr_keyword">throws</strong> Exception
-<a class="jxr_linenumber" name="155" href="#155">155</a>     {
-<a class="jxr_linenumber" name="156" href="#156">156</a>         List&lt;AdminRepositoryConsumer&gt; consumers =
-<a class="jxr_linenumber" name="157" href="#157">157</a>             getArchivaAdministrationService().getInvalidContentAdminRepositoryConsumers();
-<a class="jxr_linenumber" name="158" href="#158">158</a>         assertFalse( consumers.isEmpty() );
-<a class="jxr_linenumber" name="159" href="#159">159</a>         assertAllDisabled( consumers );
-<a class="jxr_linenumber" name="160" href="#160">160</a> 
-<a class="jxr_linenumber" name="161" href="#161">161</a>         getArchivaAdministrationService().enabledInvalidContentConsumer( <span class="jxr_string">"foo"</span> );
+<a class="jxr_linenumber" name="144" href="#144">144</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> uiConfigurationUpdate_ApplicationUrlHasTrailingSlash()
+<a class="jxr_linenumber" name="145" href="#145">145</a>         <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="146" href="#146">146</a> 
+<a class="jxr_linenumber" name="147" href="#147">147</a>         UiConfiguration ui = getArchivaAdministrationService().getUiConfiguration();
+<a class="jxr_linenumber" name="148" href="#148">148</a>         assertNotNull( ui );
+<a class="jxr_linenumber" name="149" href="#149">149</a>         assertNull( ui.getApplicationUrl() );
+<a class="jxr_linenumber" name="150" href="#150">150</a> 
+<a class="jxr_linenumber" name="151" href="#151">151</a>         String url = <span class="jxr_string">"http://foo.fr/bar/"</span>;
+<a class="jxr_linenumber" name="152" href="#152">152</a>         ui.setApplicationUrl( url );
+<a class="jxr_linenumber" name="153" href="#153">153</a> 
+<a class="jxr_linenumber" name="154" href="#154">154</a>         getArchivaAdministrationService().setUiConfiguration( ui );
+<a class="jxr_linenumber" name="155" href="#155">155</a> 
+<a class="jxr_linenumber" name="156" href="#156">156</a>         ui = getArchivaAdministrationService().getUiConfiguration();
+<a class="jxr_linenumber" name="157" href="#157">157</a> 
+<a class="jxr_linenumber" name="158" href="#158">158</a>         assertEquals( <span class="jxr_string">"http://foo.fr/bar"</span>, ui.getApplicationUrl() );
+<a class="jxr_linenumber" name="159" href="#159">159</a> 
+<a class="jxr_linenumber" name="160" href="#160">160</a>         <em class="jxr_comment">// test if multiple '/' is trailing</em>
+<a class="jxr_linenumber" name="161" href="#161">161</a>         url = <span class="jxr_string">"http://foo.fr/bar//"</span>;
 <a class="jxr_linenumber" name="162" href="#162">162</a> 
-<a class="jxr_linenumber" name="163" href="#163">163</a>         consumers = getArchivaAdministrationService().getInvalidContentAdminRepositoryConsumers();
-<a class="jxr_linenumber" name="164" href="#164">164</a>         assertFalse( consumers.isEmpty() );
-<a class="jxr_linenumber" name="165" href="#165">165</a>         assertAllEnabled( consumers );
+<a class="jxr_linenumber" name="163" href="#163">163</a>         ui.setApplicationUrl(url);
+<a class="jxr_linenumber" name="164" href="#164">164</a> 
+<a class="jxr_linenumber" name="165" href="#165">165</a>         getArchivaAdministrationService().setUiConfiguration(ui);
 <a class="jxr_linenumber" name="166" href="#166">166</a> 
-<a class="jxr_linenumber" name="167" href="#167">167</a>         getArchivaAdministrationService().disabledInvalidContentConsumer( <span class="jxr_string">"foo"</span> );
+<a class="jxr_linenumber" name="167" href="#167">167</a>         ui = getArchivaAdministrationService().getUiConfiguration();
 <a class="jxr_linenumber" name="168" href="#168">168</a> 
-<a class="jxr_linenumber" name="169" href="#169">169</a>         consumers = getArchivaAdministrationService().getInvalidContentAdminRepositoryConsumers();
-<a class="jxr_linenumber" name="170" href="#170">170</a> 
-<a class="jxr_linenumber" name="171" href="#171">171</a>         assertAllDisabled( consumers );
-<a class="jxr_linenumber" name="172" href="#172">172</a> 
-<a class="jxr_linenumber" name="173" href="#173">173</a>         assertFalse( consumers.isEmpty() );
-<a class="jxr_linenumber" name="174" href="#174">174</a>     }
-<a class="jxr_linenumber" name="175" href="#175">175</a> 
-<a class="jxr_linenumber" name="176" href="#176">176</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> assertAllEnabled( List&lt;AdminRepositoryConsumer&gt; consumers )
-<a class="jxr_linenumber" name="177" href="#177">177</a>     {
-<a class="jxr_linenumber" name="178" href="#178">178</a>         <strong class="jxr_keyword">for</strong> ( AdminRepositoryConsumer consumer : consumers )
-<a class="jxr_linenumber" name="179" href="#179">179</a>         {
-<a class="jxr_linenumber" name="180" href="#180">180</a>             assertTrue( consumer.isEnabled() );
-<a class="jxr_linenumber" name="181" href="#181">181</a>         }
-<a class="jxr_linenumber" name="182" href="#182">182</a>     }
-<a class="jxr_linenumber" name="183" href="#183">183</a> 
-<a class="jxr_linenumber" name="184" href="#184">184</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> assertAllDisabled( List&lt;AdminRepositoryConsumer&gt; consumers )
-<a class="jxr_linenumber" name="185" href="#185">185</a>     {
-<a class="jxr_linenumber" name="186" href="#186">186</a>         <strong class="jxr_keyword">for</strong> ( AdminRepositoryConsumer consumer : consumers )
-<a class="jxr_linenumber" name="187" href="#187">187</a>         {
-<a class="jxr_linenumber" name="188" href="#188">188</a>             assertFalse( consumer.isEnabled() );
-<a class="jxr_linenumber" name="189" href="#189">189</a>         }
-<a class="jxr_linenumber" name="190" href="#190">190</a>     }
-<a class="jxr_linenumber" name="191" href="#191">191</a> }
+<a class="jxr_linenumber" name="169" href="#169">169</a>         assertEquals( <span class="jxr_string">"http://foo.fr/bar"</span>, ui.getApplicationUrl() );
+<a class="jxr_linenumber" name="170" href="#170">170</a>     }
+<a class="jxr_linenumber" name="171" href="#171">171</a> 
+<a class="jxr_linenumber" name="172" href="#172">172</a>     @Test
+<a class="jxr_linenumber" name="173" href="#173">173</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> getKnownContentAdminRepositoryConsumer()
+<a class="jxr_linenumber" name="174" href="#174">174</a>         <strong class="jxr_keyword">throws</strong> Exception
+<a class="jxr_linenumber" name="175" href="#175">175</a>     {
+<a class="jxr_linenumber" name="176" href="#176">176</a>         List&lt;AdminRepositoryConsumer&gt; consumers =
+<a class="jxr_linenumber" name="177" href="#177">177</a>             getArchivaAdministrationService().getKnownContentAdminRepositoryConsumers();
+<a class="jxr_linenumber" name="178" href="#178">178</a>         assertFalse( consumers.isEmpty() );
+<a class="jxr_linenumber" name="179" href="#179">179</a>     }
+<a class="jxr_linenumber" name="180" href="#180">180</a> 
+<a class="jxr_linenumber" name="181" href="#181">181</a>     @Test
+<a class="jxr_linenumber" name="182" href="#182">182</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> getInvalidContentAdminRepositoryConsumer()
+<a class="jxr_linenumber" name="183" href="#183">183</a>         <strong class="jxr_keyword">throws</strong> Exception
+<a class="jxr_linenumber" name="184" href="#184">184</a>     {
+<a class="jxr_linenumber" name="185" href="#185">185</a>         List&lt;AdminRepositoryConsumer&gt; consumers =
+<a class="jxr_linenumber" name="186" href="#186">186</a>             getArchivaAdministrationService().getInvalidContentAdminRepositoryConsumers();
+<a class="jxr_linenumber" name="187" href="#187">187</a>         assertFalse( consumers.isEmpty() );
+<a class="jxr_linenumber" name="188" href="#188">188</a>         assertAllDisabled( consumers );
+<a class="jxr_linenumber" name="189" href="#189">189</a> 
+<a class="jxr_linenumber" name="190" href="#190">190</a>         getArchivaAdministrationService().enabledInvalidContentConsumer( <span class="jxr_string">"foo"</span> );
+<a class="jxr_linenumber" name="191" href="#191">191</a> 
+<a class="jxr_linenumber" name="192" href="#192">192</a>         consumers = getArchivaAdministrationService().getInvalidContentAdminRepositoryConsumers();
+<a class="jxr_linenumber" name="193" href="#193">193</a>         assertFalse( consumers.isEmpty() );
+<a class="jxr_linenumber" name="194" href="#194">194</a>         assertAllEnabled( consumers );
+<a class="jxr_linenumber" name="195" href="#195">195</a> 
+<a class="jxr_linenumber" name="196" href="#196">196</a>         getArchivaAdministrationService().disabledInvalidContentConsumer( <span class="jxr_string">"foo"</span> );
+<a class="jxr_linenumber" name="197" href="#197">197</a> 
+<a class="jxr_linenumber" name="198" href="#198">198</a>         consumers = getArchivaAdministrationService().getInvalidContentAdminRepositoryConsumers();
+<a class="jxr_linenumber" name="199" href="#199">199</a> 
+<a class="jxr_linenumber" name="200" href="#200">200</a>         assertAllDisabled( consumers );
+<a class="jxr_linenumber" name="201" href="#201">201</a> 
+<a class="jxr_linenumber" name="202" href="#202">202</a>         assertFalse( consumers.isEmpty() );
+<a class="jxr_linenumber" name="203" href="#203">203</a>     }
+<a class="jxr_linenumber" name="204" href="#204">204</a> 
+<a class="jxr_linenumber" name="205" href="#205">205</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> assertAllEnabled( List&lt;AdminRepositoryConsumer&gt; consumers )
+<a class="jxr_linenumber" name="206" href="#206">206</a>     {
+<a class="jxr_linenumber" name="207" href="#207">207</a>         <strong class="jxr_keyword">for</strong> ( AdminRepositoryConsumer consumer : consumers )
+<a class="jxr_linenumber" name="208" href="#208">208</a>         {
+<a class="jxr_linenumber" name="209" href="#209">209</a>             assertTrue( consumer.isEnabled() );
+<a class="jxr_linenumber" name="210" href="#210">210</a>         }
+<a class="jxr_linenumber" name="211" href="#211">211</a>     }
+<a class="jxr_linenumber" name="212" href="#212">212</a> 
+<a class="jxr_linenumber" name="213" href="#213">213</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> assertAllDisabled( List&lt;AdminRepositoryConsumer&gt; consumers )
+<a class="jxr_linenumber" name="214" href="#214">214</a>     {
+<a class="jxr_linenumber" name="215" href="#215">215</a>         <strong class="jxr_keyword">for</strong> ( AdminRepositoryConsumer consumer : consumers )
+<a class="jxr_linenumber" name="216" href="#216">216</a>         {
+<a class="jxr_linenumber" name="217" href="#217">217</a>             assertFalse( consumer.isEnabled() );
+<a class="jxr_linenumber" name="218" href="#218">218</a>         }
+<a class="jxr_linenumber" name="219" href="#219">219</a>     }
+<a class="jxr_linenumber" name="220" href="#220">220</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

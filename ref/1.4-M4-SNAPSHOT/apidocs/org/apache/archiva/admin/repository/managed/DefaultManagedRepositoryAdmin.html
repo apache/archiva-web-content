@@ -151,7 +151,9 @@ implements <a href="../../../../../../org/apache/archiva/admin/model/managed/Man
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>private <a href="../../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html" title="interface in org.apache.archiva.metadata.repository">RepositorySessionFactory</a></code></td>
-<td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#repositorySessionFactory">repositorySessionFactory</a></strong></code>&nbsp;</td>
+<td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#repositorySessionFactory">repositorySessionFactory</a></strong></code>
+<div class="block">FIXME: this could be multiple implementations and needs to be configured.</div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>private <a href="../../../../../../org/apache/archiva/metadata/repository/stats/RepositoryStatisticsManager.html" title="interface in org.apache.archiva.metadata.repository.stats">RepositoryStatisticsManager</a></code></td>
@@ -241,124 +243,128 @@ implements <a href="../../../../../../org/apache/archiva/admin/model/managed/Man
                           <a href="../../../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;configuration)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#addRepositoryRoles(org.apache.archiva.configuration.ManagedRepositoryConfiguration)">addRepositoryRoles</a></strong>(<a href="../../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&nbsp;newRepository)</code>&nbsp;</td>
+<td class="colFirst"><code>private void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#addRepositoryRoles(org.apache.archiva.admin.model.beans.ManagedRepository)">addRepositoryRoles</a></strong>(<a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&nbsp;newRepository)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>private void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#addRepositoryRoles(java.lang.String)">addRepositoryRoles</a></strong>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>org.apache.maven.index.context.IndexingContext</code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#createIndexContext(org.apache.archiva.admin.model.beans.ManagedRepository)">createIndexContext</a></strong>(<a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&nbsp;repository)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>private <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#deleteManagedRepository(org.apache.archiva.configuration.ManagedRepositoryConfiguration, boolean, org.apache.archiva.configuration.Configuration, boolean)">deleteManagedRepository</a></strong>(<a href="../../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&nbsp;repository,
                                               boolean&nbsp;deleteContent,
                                               <a href="../../../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;config,
                                               boolean&nbsp;stagedOne)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#deleteManagedRepository(java.lang.String, org.apache.archiva.admin.model.AuditInformation, boolean)">deleteManagedRepository</a></strong>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
                                               <a href="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</a>&nbsp;auditInformation,
                                               boolean&nbsp;deleteContent)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends org.apache.maven.index.context.IndexCreator&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#getIndexCreators()">getIndexCreators</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>org.apache.maven.index.NexusIndexer</code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#getIndexer()">getIndexer</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#getManagedRepositories()">getManagedRepositories</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#getManagedRepositoriesAsMap()">getManagedRepositoriesAsMap</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#getManagedRepository(java.lang.String)">getManagedRepository</a></strong>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../../../org/apache/archiva/common/plexusbridge/MavenIndexerUtils.html" title="class in org.apache.archiva.common.plexusbridge">MavenIndexerUtils</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#getMavenIndexerUtils()">getMavenIndexerUtils</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridge.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridge</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#getPlexusSisuBridge()">getPlexusSisuBridge</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html" title="interface in org.apache.archiva.metadata.repository">RepositorySessionFactory</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#getRepositorySessionFactory()">getRepositorySessionFactory</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../../../../org/apache/archiva/metadata/repository/stats/RepositoryStatisticsManager.html" title="interface in org.apache.archiva.metadata.repository.stats">RepositoryStatisticsManager</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#getRepositoryStatisticsManager()">getRepositoryStatisticsManager</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler.repository.model">RepositoryArchivaTaskScheduler</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#getRepositoryTaskScheduler()">getRepositoryTaskScheduler</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>org.apache.archiva.redback.role.RoleManager</code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#getRoleManager()">getRoleManager</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>private <a href="../../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#getStageRepoConfig(org.apache.archiva.configuration.ManagedRepositoryConfiguration)">getStageRepoConfig</a></strong>(<a href="../../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&nbsp;repository)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#initialize()">initialize</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#removeRepositoryRoles(org.apache.archiva.configuration.ManagedRepositoryConfiguration)">removeRepositoryRoles</a></strong>(<a href="../../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&nbsp;existingRepository)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#scanRepository(java.lang.String, boolean)">scanRepository</a></strong>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
                             boolean&nbsp;fullScan)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#setIndexCreators(java.util.List)">setIndexCreators</a></strong>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends org.apache.maven.index.context.IndexCreator&gt;&nbsp;indexCreators)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#setIndexer(org.apache.maven.index.NexusIndexer)">setIndexer</a></strong>(org.apache.maven.index.NexusIndexer&nbsp;indexer)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#setMavenIndexerUtils(org.apache.archiva.common.plexusbridge.MavenIndexerUtils)">setMavenIndexerUtils</a></strong>(<a href="../../../../../../org/apache/archiva/common/plexusbridge/MavenIndexerUtils.html" title="class in org.apache.archiva.common.plexusbridge">MavenIndexerUtils</a>&nbsp;mavenIndexerUtils)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#setPlexusSisuBridge(org.apache.archiva.common.plexusbridge.PlexusSisuBridge)">setPlexusSisuBridge</a></strong>(<a href="../../../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridge.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridge</a>&nbsp;plexusSisuBridge)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#setRepositorySessionFactory(org.apache.archiva.metadata.repository.RepositorySessionFactory)">setRepositorySessionFactory</a></strong>(<a href="../../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html" title="interface in org.apache.archiva.metadata.repository">RepositorySessionFactory</a>&nbsp;repositorySessionFactory)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#setRepositoryStatisticsManager(org.apache.archiva.metadata.repository.stats.RepositoryStatisticsManager)">setRepositoryStatisticsManager</a></strong>(<a href="../../../../../../org/apache/archiva/metadata/repository/stats/RepositoryStatisticsManager.html" title="interface in org.apache.archiva.metadata.repository.stats">RepositoryStatisticsManager</a>&nbsp;repositoryStatisticsManager)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#setRepositoryTaskScheduler(org.apache.archiva.scheduler.repository.model.RepositoryArchivaTaskScheduler)">setRepositoryTaskScheduler</a></strong>(<a href="../../../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler.repository.model">RepositoryArchivaTaskScheduler</a>&nbsp;repositoryTaskScheduler)</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#setRoleManager(org.apache.archiva.redback.role.RoleManager)">setRoleManager</a></strong>(org.apache.archiva.redback.role.RoleManager&nbsp;roleManager)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#shutdown()">shutdown</a></strong>()</code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a></code></td>
 <td class="colLast"><code><strong><a href="../../../../../../org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#updateManagedRepository(org.apache.archiva.admin.model.beans.ManagedRepository, boolean, org.apache.archiva.admin.model.AuditInformation, boolean)">updateManagedRepository</a></strong>(<a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&nbsp;managedRepository,
                                               boolean&nbsp;needStageRepo,
@@ -431,7 +437,8 @@ private&nbsp;<a href="../../../../../../org/apache/archiva/scheduler/repository/
 <li class="blockList">
 <h4>repositorySessionFactory</h4>
 <pre>@Inject
-private&nbsp;<a href="../../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html" title="interface in org.apache.archiva.metadata.repository">RepositorySessionFactory</a> <a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.88">repositorySessionFactory</a></pre>
+private&nbsp;<a href="../../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html" title="interface in org.apache.archiva.metadata.repository">RepositorySessionFactory</a> <a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.91">repositorySessionFactory</a></pre>
+<div class="block">FIXME: this could be multiple implementations and needs to be configured.</div>
 </li>
 </ul>
 <a name="repositoryStatisticsManager">
@@ -441,7 +448,7 @@ private&nbsp;<a href="../../../../../../org/apache/archiva/metadata/repository/R
 <li class="blockList">
 <h4>repositoryStatisticsManager</h4>
 <pre>@Inject
-private&nbsp;<a href="../../../../../../org/apache/archiva/metadata/repository/stats/RepositoryStatisticsManager.html" title="interface in org.apache.archiva.metadata.repository.stats">RepositoryStatisticsManager</a> <a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.91">repositoryStatisticsManager</a></pre>
+private&nbsp;<a href="../../../../../../org/apache/archiva/metadata/repository/stats/RepositoryStatisticsManager.html" title="interface in org.apache.archiva.metadata.repository.stats">RepositoryStatisticsManager</a> <a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.94">repositoryStatisticsManager</a></pre>
 </li>
 </ul>
 <a name="plexusSisuBridge">
@@ -451,7 +458,7 @@ private&nbsp;<a href="../../../../../../org/apache/archiva/metadata/repository/s
 <li class="blockList">
 <h4>plexusSisuBridge</h4>
 <pre>@Inject
-private&nbsp;<a href="../../../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridge.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridge</a> <a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.94">plexusSisuBridge</a></pre>
+private&nbsp;<a href="../../../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridge.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridge</a> <a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.97">plexusSisuBridge</a></pre>
 </li>
 </ul>
 <a name="mavenIndexerUtils">
@@ -461,7 +468,7 @@ private&nbsp;<a href="../../../../../../org/apache/archiva/common/plexusbridge/P
 <li class="blockList">
 <h4>mavenIndexerUtils</h4>
 <pre>@Inject
-private&nbsp;<a href="../../../../../../org/apache/archiva/common/plexusbridge/MavenIndexerUtils.html" title="class in org.apache.archiva.common.plexusbridge">MavenIndexerUtils</a> <a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.97">mavenIndexerUtils</a></pre>
+private&nbsp;<a href="../../../../../../org/apache/archiva/common/plexusbridge/MavenIndexerUtils.html" title="class in org.apache.archiva.common.plexusbridge">MavenIndexerUtils</a> <a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.100">mavenIndexerUtils</a></pre>
 </li>
 </ul>
 <a name="roleManager">
@@ -471,7 +478,7 @@ private&nbsp;<a href="../../../../../../org/apache/archiva/common/plexusbridge/M
 <li class="blockList">
 <h4>roleManager</h4>
 <pre>@Inject
-protected&nbsp;org.apache.archiva.redback.role.RoleManager <a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.100">roleManager</a></pre>
+protected&nbsp;org.apache.archiva.redback.role.RoleManager <a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.103">roleManager</a></pre>
 </li>
 </ul>
 <a name="indexCreators">
@@ -480,7 +487,7 @@ protected&nbsp;org.apache.archiva.redback.role.RoleManager <a href="../../../../
 <ul class="blockList">
 <li class="blockList">
 <h4>indexCreators</h4>
-<pre><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends org.apache.maven.index.context.IndexCreator&gt; <a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.103">indexCreators</a></pre>
+<pre><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends org.apache.maven.index.context.IndexCreator&gt; <a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.106">indexCreators</a></pre>
 </li>
 </ul>
 <a name="indexer">
@@ -489,7 +496,7 @@ protected&nbsp;org.apache.archiva.redback.role.RoleManager <a href="../../../../
 <ul class="blockListLast">
 <li class="blockList">
 <h4>indexer</h4>
-<pre>org.apache.maven.index.NexusIndexer <a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.105">indexer</a></pre>
+<pre>org.apache.maven.index.NexusIndexer <a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.108">indexer</a></pre>
 </li>
 </ul>
 </li>
@@ -524,10 +531,12 @@ protected&nbsp;org.apache.archiva.redback.role.RoleManager <a href="../../../../
 <li class="blockList">
 <h4>initialize</h4>
 <pre><a href="http://docs.oracle.com/javase/6/docs/api/javax/annotation/PostConstruct.html?is-external=true" title="class or interface in javax.annotation">@PostConstruct</a>
-public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.108">initialize</a>()
-                throws <a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</a></pre>
+public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.111">initialize</a>()
+                throws <a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</a>,
+                       org.apache.archiva.redback.role.RoleManagerException</pre>
 <dl><dt><span class="strong">Throws:</span></dt>
-<dd><code><a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</a></code></dd></dl>
+<dd><code><a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</a></code></dd>
+<dd><code>org.apache.archiva.redback.role.RoleManagerException</code></dd></dl>
 </li>
 </ul>
 <a name="shutdown()">
@@ -537,7 +546,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <li class="blockList">
 <h4>shutdown</h4>
 <pre><a href="http://docs.oracle.com/javase/6/docs/api/javax/annotation/PreDestroy.html?is-external=true" title="class or interface in javax.annotation">@PreDestroy</a>
-public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.128">shutdown</a>()
+public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.133">shutdown</a>()
               throws <a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</a></pre>
 <dl><dt><span class="strong">Throws:</span></dt>
 <dd><code><a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</a></code></dd></dl>
@@ -549,7 +558,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>getManagedRepositories</h4>
-<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&gt;&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.149">getManagedRepositories</a>()
+<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&gt;&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.154">getManagedRepositories</a>()
                                                throws <a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</a></pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -564,7 +573,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>getManagedRepositoriesAsMap</h4>
-<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&gt;&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.179">getManagedRepositoriesAsMap</a>()
+<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&gt;&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.184">getManagedRepositoriesAsMap</a>()
                                                           throws <a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</a></pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -579,7 +588,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>getManagedRepository</h4>
-<pre>public&nbsp;<a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.192">getManagedRepository</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId)
+<pre>public&nbsp;<a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.197">getManagedRepository</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId)
                                        throws <a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</a></pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -594,7 +603,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>addManagedRepository</h4>
-<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.206">addManagedRepository</a>(<a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&nbsp;managedRepository,
+<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.211">addManagedRepository</a>(<a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&nbsp;managedRepository,
                            boolean&nbsp;needStageRepo,
                            <a href="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</a>&nbsp;auditInformation)
                              throws <a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</a></pre>
@@ -611,7 +620,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>addManagedRepository</h4>
-<pre>private&nbsp;<a href="../../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.229">addManagedRepository</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId,
+<pre>private&nbsp;<a href="../../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.234">addManagedRepository</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId,
                                                   <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;layout,
                                                   <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
                                                   <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;location,
@@ -640,7 +649,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>deleteManagedRepository</h4>
-<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.310">deleteManagedRepository</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
+<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.315">deleteManagedRepository</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
                               <a href="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</a>&nbsp;auditInformation,
                               boolean&nbsp;deleteContent)
                                 throws <a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</a></pre>
@@ -657,7 +666,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>deleteManagedRepository</h4>
-<pre>private&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.348">deleteManagedRepository</a>(<a href="../../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&nbsp;repository,
+<pre>private&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.353">deleteManagedRepository</a>(<a href="../../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&nbsp;repository,
                               boolean&nbsp;deleteContent,
                               <a href="../../../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;config,
                               boolean&nbsp;stagedOne)
@@ -672,7 +681,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>updateManagedRepository</h4>
-<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.453">updateManagedRepository</a>(<a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&nbsp;managedRepository,
+<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.458">updateManagedRepository</a>(<a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&nbsp;managedRepository,
                               boolean&nbsp;needStageRepo,
                               <a href="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</a>&nbsp;auditInformation,
                               boolean&nbsp;resetStats)
@@ -690,7 +699,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>addRepository</h4>
-<pre>protected&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.556">addRepository</a>(<a href="../../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&nbsp;repository,
+<pre>protected&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.561">addRepository</a>(<a href="../../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&nbsp;repository,
                  <a href="../../../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;configuration)
                       throws <a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</a>,
                              <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
@@ -705,7 +714,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>createIndexContext</h4>
-<pre>public&nbsp;org.apache.maven.index.context.IndexingContext&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.582">createIndexContext</a>(<a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&nbsp;repository)
+<pre>public&nbsp;org.apache.maven.index.context.IndexingContext&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.587">createIndexContext</a>(<a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&nbsp;repository)
                                                                   throws <a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</a></pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
@@ -721,7 +730,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>getStageRepoConfig</h4>
-<pre>private&nbsp;<a href="../../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.668">getStageRepoConfig</a>(<a href="../../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&nbsp;repository)</pre>
+<pre>private&nbsp;<a href="../../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.673">getStageRepoConfig</a>(<a href="../../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&nbsp;repository)</pre>
 </li>
 </ul>
 <a name="scanRepository(java.lang.String, boolean)">
@@ -730,18 +739,30 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>scanRepository</h4>
-<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.706">scanRepository</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
+<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.711">scanRepository</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
                      boolean&nbsp;fullScan)</pre>
 </li>
 </ul>
-<a name="addRepositoryRoles(org.apache.archiva.configuration.ManagedRepositoryConfiguration)">
+<a name="addRepositoryRoles(org.apache.archiva.admin.model.beans.ManagedRepository)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>addRepositoryRoles</h4>
-<pre>protected&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.727">addRepositoryRoles</a>(<a href="../../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&nbsp;newRepository)
-                           throws org.apache.archiva.redback.role.RoleManagerException</pre>
+<pre>private&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.733">addRepositoryRoles</a>(<a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&nbsp;newRepository)
+                         throws org.apache.archiva.redback.role.RoleManagerException</pre>
+<dl><dt><span class="strong">Throws:</span></dt>
+<dd><code>org.apache.archiva.redback.role.RoleManagerException</code></dd></dl>
+</li>
+</ul>
+<a name="addRepositoryRoles(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addRepositoryRoles</h4>
+<pre>private&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.753">addRepositoryRoles</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId)
+                         throws org.apache.archiva.redback.role.RoleManagerException</pre>
 <dl><dt><span class="strong">Throws:</span></dt>
 <dd><code>org.apache.archiva.redback.role.RoleManagerException</code></dd></dl>
 </li>
@@ -752,7 +773,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>removeRepositoryRoles</h4>
-<pre>protected&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.746">removeRepositoryRoles</a>(<a href="../../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&nbsp;existingRepository)
+<pre>protected&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.770">removeRepositoryRoles</a>(<a href="../../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&nbsp;existingRepository)
                               throws org.apache.archiva.redback.role.RoleManagerException</pre>
 <dl><dt><span class="strong">Throws:</span></dt>
 <dd><code>org.apache.archiva.redback.role.RoleManagerException</code></dd></dl>
@@ -764,7 +785,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>getRoleManager</h4>
-<pre>public&nbsp;org.apache.archiva.redback.role.RoleManager&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.769">getRoleManager</a>()</pre>
+<pre>public&nbsp;org.apache.archiva.redback.role.RoleManager&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.793">getRoleManager</a>()</pre>
 </li>
 </ul>
 <a name="setRoleManager(org.apache.archiva.redback.role.RoleManager)">
@@ -773,7 +794,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>setRoleManager</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.774">setRoleManager</a>(org.apache.archiva.redback.role.RoleManager&nbsp;roleManager)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.798">setRoleManager</a>(org.apache.archiva.redback.role.RoleManager&nbsp;roleManager)</pre>
 </li>
 </ul>
 <a name="getRepositoryStatisticsManager()">
@@ -782,7 +803,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>getRepositoryStatisticsManager</h4>
-<pre>public&nbsp;<a href="../../../../../../org/apache/archiva/metadata/repository/stats/RepositoryStatisticsManager.html" title="interface in org.apache.archiva.metadata.repository.stats">RepositoryStatisticsManager</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.779">getRepositoryStatisticsManager</a>()</pre>
+<pre>public&nbsp;<a href="../../../../../../org/apache/archiva/metadata/repository/stats/RepositoryStatisticsManager.html" title="interface in org.apache.archiva.metadata.repository.stats">RepositoryStatisticsManager</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.803">getRepositoryStatisticsManager</a>()</pre>
 </li>
 </ul>
 <a name="setRepositoryStatisticsManager(org.apache.archiva.metadata.repository.stats.RepositoryStatisticsManager)">
@@ -791,7 +812,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>setRepositoryStatisticsManager</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.784">setRepositoryStatisticsManager</a>(<a href="../../../../../../org/apache/archiva/metadata/repository/stats/RepositoryStatisticsManager.html" title="interface in org.apache.archiva.metadata.repository.stats">RepositoryStatisticsManager</a>&nbsp;repositoryStatisticsManager)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.808">setRepositoryStatisticsManager</a>(<a href="../../../../../../org/apache/archiva/metadata/repository/stats/RepositoryStatisticsManager.html" title="interface in org.apache.archiva.metadata.repository.stats">RepositoryStatisticsManager</a>&nbsp;repositoryStatisticsManager)</pre>
 </li>
 </ul>
 <a name="getRepositorySessionFactory()">
@@ -800,7 +821,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>getRepositorySessionFactory</h4>
-<pre>public&nbsp;<a href="../../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html" title="interface in org.apache.archiva.metadata.repository">RepositorySessionFactory</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.789">getRepositorySessionFactory</a>()</pre>
+<pre>public&nbsp;<a href="../../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html" title="interface in org.apache.archiva.metadata.repository">RepositorySessionFactory</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.813">getRepositorySessionFactory</a>()</pre>
 </li>
 </ul>
 <a name="setRepositorySessionFactory(org.apache.archiva.metadata.repository.RepositorySessionFactory)">
@@ -809,7 +830,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>setRepositorySessionFactory</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.794">setRepositorySessionFactory</a>(<a href="../../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html" title="interface in org.apache.archiva.metadata.repository">RepositorySessionFactory</a>&nbsp;repositorySessionFactory)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.818">setRepositorySessionFactory</a>(<a href="../../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html" title="interface in org.apache.archiva.metadata.repository">RepositorySessionFactory</a>&nbsp;repositorySessionFactory)</pre>
 </li>
 </ul>
 <a name="getRepositoryTaskScheduler()">
@@ -818,7 +839,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>getRepositoryTaskScheduler</h4>
-<pre>public&nbsp;<a href="../../../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler.repository.model">RepositoryArchivaTaskScheduler</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.800">getRepositoryTaskScheduler</a>()</pre>
+<pre>public&nbsp;<a href="../../../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler.repository.model">RepositoryArchivaTaskScheduler</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.824">getRepositoryTaskScheduler</a>()</pre>
 </li>
 </ul>
 <a name="setRepositoryTaskScheduler(org.apache.archiva.scheduler.repository.model.RepositoryArchivaTaskScheduler)">
@@ -827,7 +848,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>setRepositoryTaskScheduler</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.805">setRepositoryTaskScheduler</a>(<a href="../../../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler.repository.model">RepositoryArchivaTaskScheduler</a>&nbsp;repositoryTaskScheduler)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.829">setRepositoryTaskScheduler</a>(<a href="../../../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler.repository.model">RepositoryArchivaTaskScheduler</a>&nbsp;repositoryTaskScheduler)</pre>
 </li>
 </ul>
 <a name="getPlexusSisuBridge()">
@@ -836,7 +857,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>getPlexusSisuBridge</h4>
-<pre>public&nbsp;<a href="../../../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridge.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridge</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.810">getPlexusSisuBridge</a>()</pre>
+<pre>public&nbsp;<a href="../../../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridge.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridge</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.834">getPlexusSisuBridge</a>()</pre>
 </li>
 </ul>
 <a name="setPlexusSisuBridge(org.apache.archiva.common.plexusbridge.PlexusSisuBridge)">
@@ -845,7 +866,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>setPlexusSisuBridge</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.815">setPlexusSisuBridge</a>(<a href="../../../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridge.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridge</a>&nbsp;plexusSisuBridge)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.839">setPlexusSisuBridge</a>(<a href="../../../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridge.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridge</a>&nbsp;plexusSisuBridge)</pre>
 </li>
 </ul>
 <a name="getMavenIndexerUtils()">
@@ -854,7 +875,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>getMavenIndexerUtils</h4>
-<pre>public&nbsp;<a href="../../../../../../org/apache/archiva/common/plexusbridge/MavenIndexerUtils.html" title="class in org.apache.archiva.common.plexusbridge">MavenIndexerUtils</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.820">getMavenIndexerUtils</a>()</pre>
+<pre>public&nbsp;<a href="../../../../../../org/apache/archiva/common/plexusbridge/MavenIndexerUtils.html" title="class in org.apache.archiva.common.plexusbridge">MavenIndexerUtils</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.844">getMavenIndexerUtils</a>()</pre>
 </li>
 </ul>
 <a name="setMavenIndexerUtils(org.apache.archiva.common.plexusbridge.MavenIndexerUtils)">
@@ -863,7 +884,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>setMavenIndexerUtils</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.825">setMavenIndexerUtils</a>(<a href="../../../../../../org/apache/archiva/common/plexusbridge/MavenIndexerUtils.html" title="class in org.apache.archiva.common.plexusbridge">MavenIndexerUtils</a>&nbsp;mavenIndexerUtils)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.849">setMavenIndexerUtils</a>(<a href="../../../../../../org/apache/archiva/common/plexusbridge/MavenIndexerUtils.html" title="class in org.apache.archiva.common.plexusbridge">MavenIndexerUtils</a>&nbsp;mavenIndexerUtils)</pre>
 </li>
 </ul>
 <a name="getIndexer()">
@@ -872,7 +893,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>getIndexer</h4>
-<pre>public&nbsp;org.apache.maven.index.NexusIndexer&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.830">getIndexer</a>()</pre>
+<pre>public&nbsp;org.apache.maven.index.NexusIndexer&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.854">getIndexer</a>()</pre>
 </li>
 </ul>
 <a name="setIndexer(org.apache.maven.index.NexusIndexer)">
@@ -881,7 +902,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>setIndexer</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.835">setIndexer</a>(org.apache.maven.index.NexusIndexer&nbsp;indexer)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.859">setIndexer</a>(org.apache.maven.index.NexusIndexer&nbsp;indexer)</pre>
 </li>
 </ul>
 <a name="getIndexCreators()">
@@ -890,7 +911,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockList">
 <li class="blockList">
 <h4>getIndexCreators</h4>
-<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends org.apache.maven.index.context.IndexCreator&gt;&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.840">getIndexCreators</a>()</pre>
+<pre>public&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends org.apache.maven.index.context.IndexCreator&gt;&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.864">getIndexCreators</a>()</pre>
 </li>
 </ul>
 <a name="setIndexCreators(java.util.List)">
@@ -899,7 +920,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/adm
 <ul class="blockListLast">
 <li class="blockList">
 <h4>setIndexCreators</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.845">setIndexCreators</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends org.apache.maven.index.context.IndexCreator&gt;&nbsp;indexCreators)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/admin/repository/managed/DefaultManagedRepositoryAdmin.html#line.869">setIndexCreators</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends org.apache.maven.index.context.IndexCreator&gt;&nbsp;indexCreators)</pre>
 </li>
 </ul>
 </li>

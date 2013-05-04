@@ -895,863 +895,882 @@
 <span class="sourceLineNo">887</span>    }<a name="line.887"></a>
 <span class="sourceLineNo">888</span><a name="line.888"></a>
 <span class="sourceLineNo">889</span>        value.setId( id );<a name="line.889"></a>
-<span class="sourceLineNo">890</span>        java.util.List repositories = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.890"></a>
-<span class="sourceLineNo">891</span>        repositories.addAll( registry.getList( prefix + "repositories.repository" ) );<a name="line.891"></a>
-<span class="sourceLineNo">892</span>        value.setRepositories( repositories );<a name="line.892"></a>
-<span class="sourceLineNo">893</span><a name="line.893"></a>
-<span class="sourceLineNo">894</span>        return value;<a name="line.894"></a>
-<span class="sourceLineNo">895</span>    }<a name="line.895"></a>
-<span class="sourceLineNo">896</span>    <a name="line.896"></a>
-<span class="sourceLineNo">897</span>    private AbstractRepositoryConnectorConfiguration readAbstractRepositoryConnectorConfiguration( String prefix, Registry registry )<a name="line.897"></a>
-<span class="sourceLineNo">898</span>    {<a name="line.898"></a>
-<span class="sourceLineNo">899</span>        AbstractRepositoryConnectorConfiguration value = new AbstractRepositoryConnectorConfiguration();<a name="line.899"></a>
-<span class="sourceLineNo">900</span><a name="line.900"></a>
-<span class="sourceLineNo">901</span>    //String sourceRepoId = registry.getString( prefix + "sourceRepoId", value.getSourceRepoId() );<a name="line.901"></a>
-<span class="sourceLineNo">902</span><a name="line.902"></a>
-<span class="sourceLineNo">903</span>    List&lt;String&gt; sourceRepoIdList = registry.getList( prefix + "sourceRepoId" );<a name="line.903"></a>
-<span class="sourceLineNo">904</span>    String sourceRepoId = value.getSourceRepoId();<a name="line.904"></a>
-<span class="sourceLineNo">905</span>    if (sourceRepoIdList != null &amp;&amp; !sourceRepoIdList.isEmpty() )<a name="line.905"></a>
-<span class="sourceLineNo">906</span>    {<a name="line.906"></a>
-<span class="sourceLineNo">907</span>        StringBuilder sb = new StringBuilder(  );<a name="line.907"></a>
-<span class="sourceLineNo">908</span>        for (int i = 0,size = sourceRepoIdList.size();i&lt;size;i++)<a name="line.908"></a>
-<span class="sourceLineNo">909</span>        {<a name="line.909"></a>
-<span class="sourceLineNo">910</span>            sb.append( sourceRepoIdList.get( i ) );<a name="line.910"></a>
-<span class="sourceLineNo">911</span>            if (i&lt;size - 1)<a name="line.911"></a>
-<span class="sourceLineNo">912</span>            {<a name="line.912"></a>
-<span class="sourceLineNo">913</span>                sb.append( ',' );<a name="line.913"></a>
-<span class="sourceLineNo">914</span>            }<a name="line.914"></a>
-<span class="sourceLineNo">915</span>        }<a name="line.915"></a>
-<span class="sourceLineNo">916</span>        sourceRepoId = sb.toString();<a name="line.916"></a>
-<span class="sourceLineNo">917</span>    }<a name="line.917"></a>
-<span class="sourceLineNo">918</span><a name="line.918"></a>
-<span class="sourceLineNo">919</span>        value.setSourceRepoId( sourceRepoId );<a name="line.919"></a>
-<span class="sourceLineNo">920</span>    //String targetRepoId = registry.getString( prefix + "targetRepoId", value.getTargetRepoId() );<a name="line.920"></a>
+<span class="sourceLineNo">890</span>    //String mergedIndexPath = registry.getString( prefix + "mergedIndexPath", value.getMergedIndexPath() );<a name="line.890"></a>
+<span class="sourceLineNo">891</span><a name="line.891"></a>
+<span class="sourceLineNo">892</span>    List&lt;String&gt; mergedIndexPathList = registry.getList( prefix + "mergedIndexPath" );<a name="line.892"></a>
+<span class="sourceLineNo">893</span>    String mergedIndexPath = value.getMergedIndexPath();<a name="line.893"></a>
+<span class="sourceLineNo">894</span>    if (mergedIndexPathList != null &amp;&amp; !mergedIndexPathList.isEmpty() )<a name="line.894"></a>
+<span class="sourceLineNo">895</span>    {<a name="line.895"></a>
+<span class="sourceLineNo">896</span>        StringBuilder sb = new StringBuilder(  );<a name="line.896"></a>
+<span class="sourceLineNo">897</span>        for (int i = 0,size = mergedIndexPathList.size();i&lt;size;i++)<a name="line.897"></a>
+<span class="sourceLineNo">898</span>        {<a name="line.898"></a>
+<span class="sourceLineNo">899</span>            sb.append( mergedIndexPathList.get( i ) );<a name="line.899"></a>
+<span class="sourceLineNo">900</span>            if (i&lt;size - 1)<a name="line.900"></a>
+<span class="sourceLineNo">901</span>            {<a name="line.901"></a>
+<span class="sourceLineNo">902</span>                sb.append( ',' );<a name="line.902"></a>
+<span class="sourceLineNo">903</span>            }<a name="line.903"></a>
+<span class="sourceLineNo">904</span>        }<a name="line.904"></a>
+<span class="sourceLineNo">905</span>        mergedIndexPath = sb.toString();<a name="line.905"></a>
+<span class="sourceLineNo">906</span>    }<a name="line.906"></a>
+<span class="sourceLineNo">907</span><a name="line.907"></a>
+<span class="sourceLineNo">908</span>        value.setMergedIndexPath( mergedIndexPath );<a name="line.908"></a>
+<span class="sourceLineNo">909</span>        java.util.List repositories = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.909"></a>
+<span class="sourceLineNo">910</span>        repositories.addAll( registry.getList( prefix + "repositories.repository" ) );<a name="line.910"></a>
+<span class="sourceLineNo">911</span>        value.setRepositories( repositories );<a name="line.911"></a>
+<span class="sourceLineNo">912</span><a name="line.912"></a>
+<span class="sourceLineNo">913</span>        return value;<a name="line.913"></a>
+<span class="sourceLineNo">914</span>    }<a name="line.914"></a>
+<span class="sourceLineNo">915</span>    <a name="line.915"></a>
+<span class="sourceLineNo">916</span>    private AbstractRepositoryConnectorConfiguration readAbstractRepositoryConnectorConfiguration( String prefix, Registry registry )<a name="line.916"></a>
+<span class="sourceLineNo">917</span>    {<a name="line.917"></a>
+<span class="sourceLineNo">918</span>        AbstractRepositoryConnectorConfiguration value = new AbstractRepositoryConnectorConfiguration();<a name="line.918"></a>
+<span class="sourceLineNo">919</span><a name="line.919"></a>
+<span class="sourceLineNo">920</span>    //String sourceRepoId = registry.getString( prefix + "sourceRepoId", value.getSourceRepoId() );<a name="line.920"></a>
 <span class="sourceLineNo">921</span><a name="line.921"></a>
-<span class="sourceLineNo">922</span>    List&lt;String&gt; targetRepoIdList = registry.getList( prefix + "targetRepoId" );<a name="line.922"></a>
-<span class="sourceLineNo">923</span>    String targetRepoId = value.getTargetRepoId();<a name="line.923"></a>
-<span class="sourceLineNo">924</span>    if (targetRepoIdList != null &amp;&amp; !targetRepoIdList.isEmpty() )<a name="line.924"></a>
+<span class="sourceLineNo">922</span>    List&lt;String&gt; sourceRepoIdList = registry.getList( prefix + "sourceRepoId" );<a name="line.922"></a>
+<span class="sourceLineNo">923</span>    String sourceRepoId = value.getSourceRepoId();<a name="line.923"></a>
+<span class="sourceLineNo">924</span>    if (sourceRepoIdList != null &amp;&amp; !sourceRepoIdList.isEmpty() )<a name="line.924"></a>
 <span class="sourceLineNo">925</span>    {<a name="line.925"></a>
 <span class="sourceLineNo">926</span>        StringBuilder sb = new StringBuilder(  );<a name="line.926"></a>
-<span class="sourceLineNo">927</span>        for (int i = 0,size = targetRepoIdList.size();i&lt;size;i++)<a name="line.927"></a>
+<span class="sourceLineNo">927</span>        for (int i = 0,size = sourceRepoIdList.size();i&lt;size;i++)<a name="line.927"></a>
 <span class="sourceLineNo">928</span>        {<a name="line.928"></a>
-<span class="sourceLineNo">929</span>            sb.append( targetRepoIdList.get( i ) );<a name="line.929"></a>
+<span class="sourceLineNo">929</span>            sb.append( sourceRepoIdList.get( i ) );<a name="line.929"></a>
 <span class="sourceLineNo">930</span>            if (i&lt;size - 1)<a name="line.930"></a>
 <span class="sourceLineNo">931</span>            {<a name="line.931"></a>
 <span class="sourceLineNo">932</span>                sb.append( ',' );<a name="line.932"></a>
 <span class="sourceLineNo">933</span>            }<a name="line.933"></a>
 <span class="sourceLineNo">934</span>        }<a name="line.934"></a>
-<span class="sourceLineNo">935</span>        targetRepoId = sb.toString();<a name="line.935"></a>
+<span class="sourceLineNo">935</span>        sourceRepoId = sb.toString();<a name="line.935"></a>
 <span class="sourceLineNo">936</span>    }<a name="line.936"></a>
 <span class="sourceLineNo">937</span><a name="line.937"></a>
-<span class="sourceLineNo">938</span>        value.setTargetRepoId( targetRepoId );<a name="line.938"></a>
-<span class="sourceLineNo">939</span>    //String proxyId = registry.getString( prefix + "proxyId", value.getProxyId() );<a name="line.939"></a>
+<span class="sourceLineNo">938</span>        value.setSourceRepoId( sourceRepoId );<a name="line.938"></a>
+<span class="sourceLineNo">939</span>    //String targetRepoId = registry.getString( prefix + "targetRepoId", value.getTargetRepoId() );<a name="line.939"></a>
 <span class="sourceLineNo">940</span><a name="line.940"></a>
-<span class="sourceLineNo">941</span>    List&lt;String&gt; proxyIdList = registry.getList( prefix + "proxyId" );<a name="line.941"></a>
-<span class="sourceLineNo">942</span>    String proxyId = value.getProxyId();<a name="line.942"></a>
-<span class="sourceLineNo">943</span>    if (proxyIdList != null &amp;&amp; !proxyIdList.isEmpty() )<a name="line.943"></a>
+<span class="sourceLineNo">941</span>    List&lt;String&gt; targetRepoIdList = registry.getList( prefix + "targetRepoId" );<a name="line.941"></a>
+<span class="sourceLineNo">942</span>    String targetRepoId = value.getTargetRepoId();<a name="line.942"></a>
+<span class="sourceLineNo">943</span>    if (targetRepoIdList != null &amp;&amp; !targetRepoIdList.isEmpty() )<a name="line.943"></a>
 <span class="sourceLineNo">944</span>    {<a name="line.944"></a>
 <span class="sourceLineNo">945</span>        StringBuilder sb = new StringBuilder(  );<a name="line.945"></a>
-<span class="sourceLineNo">946</span>        for (int i = 0,size = proxyIdList.size();i&lt;size;i++)<a name="line.946"></a>
+<span class="sourceLineNo">946</span>        for (int i = 0,size = targetRepoIdList.size();i&lt;size;i++)<a name="line.946"></a>
 <span class="sourceLineNo">947</span>        {<a name="line.947"></a>
-<span class="sourceLineNo">948</span>            sb.append( proxyIdList.get( i ) );<a name="line.948"></a>
+<span class="sourceLineNo">948</span>            sb.append( targetRepoIdList.get( i ) );<a name="line.948"></a>
 <span class="sourceLineNo">949</span>            if (i&lt;size - 1)<a name="line.949"></a>
 <span class="sourceLineNo">950</span>            {<a name="line.950"></a>
 <span class="sourceLineNo">951</span>                sb.append( ',' );<a name="line.951"></a>
 <span class="sourceLineNo">952</span>            }<a name="line.952"></a>
 <span class="sourceLineNo">953</span>        }<a name="line.953"></a>
-<span class="sourceLineNo">954</span>        proxyId = sb.toString();<a name="line.954"></a>
+<span class="sourceLineNo">954</span>        targetRepoId = sb.toString();<a name="line.954"></a>
 <span class="sourceLineNo">955</span>    }<a name="line.955"></a>
 <span class="sourceLineNo">956</span><a name="line.956"></a>
-<span class="sourceLineNo">957</span>        value.setProxyId( proxyId );<a name="line.957"></a>
-<span class="sourceLineNo">958</span>        java.util.List blackListPatterns = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.958"></a>
-<span class="sourceLineNo">959</span>        blackListPatterns.addAll( registry.getList( prefix + "blackListPatterns.blackListPattern" ) );<a name="line.959"></a>
-<span class="sourceLineNo">960</span>        value.setBlackListPatterns( blackListPatterns );<a name="line.960"></a>
-<span class="sourceLineNo">961</span>        java.util.List whiteListPatterns = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.961"></a>
-<span class="sourceLineNo">962</span>        whiteListPatterns.addAll( registry.getList( prefix + "whiteListPatterns.whiteListPattern" ) );<a name="line.962"></a>
-<span class="sourceLineNo">963</span>        value.setWhiteListPatterns( whiteListPatterns );<a name="line.963"></a>
-<span class="sourceLineNo">964</span>        java.util.Map policies = registry.getProperties( prefix + "policies" );<a name="line.964"></a>
-<span class="sourceLineNo">965</span>        value.setPolicies( policies );<a name="line.965"></a>
-<span class="sourceLineNo">966</span>        java.util.Map properties = registry.getProperties( prefix + "properties" );<a name="line.966"></a>
-<span class="sourceLineNo">967</span>        value.setProperties( properties );<a name="line.967"></a>
-<span class="sourceLineNo">968</span>        boolean disabled = registry.getBoolean( prefix + "disabled", value.isDisabled() );<a name="line.968"></a>
-<span class="sourceLineNo">969</span>        value.setDisabled( disabled );<a name="line.969"></a>
-<span class="sourceLineNo">970</span><a name="line.970"></a>
-<span class="sourceLineNo">971</span>        return value;<a name="line.971"></a>
-<span class="sourceLineNo">972</span>    }<a name="line.972"></a>
-<span class="sourceLineNo">973</span>    <a name="line.973"></a>
-<span class="sourceLineNo">974</span>    private ProxyConnectorRuleConfiguration readProxyConnectorRuleConfiguration( String prefix, Registry registry )<a name="line.974"></a>
-<span class="sourceLineNo">975</span>    {<a name="line.975"></a>
-<span class="sourceLineNo">976</span>        ProxyConnectorRuleConfiguration value = new ProxyConnectorRuleConfiguration();<a name="line.976"></a>
-<span class="sourceLineNo">977</span><a name="line.977"></a>
-<span class="sourceLineNo">978</span>    //String ruleType = registry.getString( prefix + "ruleType", value.getRuleType() );<a name="line.978"></a>
-<span class="sourceLineNo">979</span><a name="line.979"></a>
-<span class="sourceLineNo">980</span>    List&lt;String&gt; ruleTypeList = registry.getList( prefix + "ruleType" );<a name="line.980"></a>
-<span class="sourceLineNo">981</span>    String ruleType = value.getRuleType();<a name="line.981"></a>
-<span class="sourceLineNo">982</span>    if (ruleTypeList != null &amp;&amp; !ruleTypeList.isEmpty() )<a name="line.982"></a>
-<span class="sourceLineNo">983</span>    {<a name="line.983"></a>
-<span class="sourceLineNo">984</span>        StringBuilder sb = new StringBuilder(  );<a name="line.984"></a>
-<span class="sourceLineNo">985</span>        for (int i = 0,size = ruleTypeList.size();i&lt;size;i++)<a name="line.985"></a>
-<span class="sourceLineNo">986</span>        {<a name="line.986"></a>
-<span class="sourceLineNo">987</span>            sb.append( ruleTypeList.get( i ) );<a name="line.987"></a>
-<span class="sourceLineNo">988</span>            if (i&lt;size - 1)<a name="line.988"></a>
-<span class="sourceLineNo">989</span>            {<a name="line.989"></a>
-<span class="sourceLineNo">990</span>                sb.append( ',' );<a name="line.990"></a>
-<span class="sourceLineNo">991</span>            }<a name="line.991"></a>
-<span class="sourceLineNo">992</span>        }<a name="line.992"></a>
-<span class="sourceLineNo">993</span>        ruleType = sb.toString();<a name="line.993"></a>
-<span class="sourceLineNo">994</span>    }<a name="line.994"></a>
-<span class="sourceLineNo">995</span><a name="line.995"></a>
-<span class="sourceLineNo">996</span>        value.setRuleType( ruleType );<a name="line.996"></a>
-<span class="sourceLineNo">997</span>    //String pattern = registry.getString( prefix + "pattern", value.getPattern() );<a name="line.997"></a>
+<span class="sourceLineNo">957</span>        value.setTargetRepoId( targetRepoId );<a name="line.957"></a>
+<span class="sourceLineNo">958</span>    //String proxyId = registry.getString( prefix + "proxyId", value.getProxyId() );<a name="line.958"></a>
+<span class="sourceLineNo">959</span><a name="line.959"></a>
+<span class="sourceLineNo">960</span>    List&lt;String&gt; proxyIdList = registry.getList( prefix + "proxyId" );<a name="line.960"></a>
+<span class="sourceLineNo">961</span>    String proxyId = value.getProxyId();<a name="line.961"></a>
+<span class="sourceLineNo">962</span>    if (proxyIdList != null &amp;&amp; !proxyIdList.isEmpty() )<a name="line.962"></a>
+<span class="sourceLineNo">963</span>    {<a name="line.963"></a>
+<span class="sourceLineNo">964</span>        StringBuilder sb = new StringBuilder(  );<a name="line.964"></a>
+<span class="sourceLineNo">965</span>        for (int i = 0,size = proxyIdList.size();i&lt;size;i++)<a name="line.965"></a>
+<span class="sourceLineNo">966</span>        {<a name="line.966"></a>
+<span class="sourceLineNo">967</span>            sb.append( proxyIdList.get( i ) );<a name="line.967"></a>
+<span class="sourceLineNo">968</span>            if (i&lt;size - 1)<a name="line.968"></a>
+<span class="sourceLineNo">969</span>            {<a name="line.969"></a>
+<span class="sourceLineNo">970</span>                sb.append( ',' );<a name="line.970"></a>
+<span class="sourceLineNo">971</span>            }<a name="line.971"></a>
+<span class="sourceLineNo">972</span>        }<a name="line.972"></a>
+<span class="sourceLineNo">973</span>        proxyId = sb.toString();<a name="line.973"></a>
+<span class="sourceLineNo">974</span>    }<a name="line.974"></a>
+<span class="sourceLineNo">975</span><a name="line.975"></a>
+<span class="sourceLineNo">976</span>        value.setProxyId( proxyId );<a name="line.976"></a>
+<span class="sourceLineNo">977</span>        java.util.List blackListPatterns = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.977"></a>
+<span class="sourceLineNo">978</span>        blackListPatterns.addAll( registry.getList( prefix + "blackListPatterns.blackListPattern" ) );<a name="line.978"></a>
+<span class="sourceLineNo">979</span>        value.setBlackListPatterns( blackListPatterns );<a name="line.979"></a>
+<span class="sourceLineNo">980</span>        java.util.List whiteListPatterns = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.980"></a>
+<span class="sourceLineNo">981</span>        whiteListPatterns.addAll( registry.getList( prefix + "whiteListPatterns.whiteListPattern" ) );<a name="line.981"></a>
+<span class="sourceLineNo">982</span>        value.setWhiteListPatterns( whiteListPatterns );<a name="line.982"></a>
+<span class="sourceLineNo">983</span>        java.util.Map policies = registry.getProperties( prefix + "policies" );<a name="line.983"></a>
+<span class="sourceLineNo">984</span>        value.setPolicies( policies );<a name="line.984"></a>
+<span class="sourceLineNo">985</span>        java.util.Map properties = registry.getProperties( prefix + "properties" );<a name="line.985"></a>
+<span class="sourceLineNo">986</span>        value.setProperties( properties );<a name="line.986"></a>
+<span class="sourceLineNo">987</span>        boolean disabled = registry.getBoolean( prefix + "disabled", value.isDisabled() );<a name="line.987"></a>
+<span class="sourceLineNo">988</span>        value.setDisabled( disabled );<a name="line.988"></a>
+<span class="sourceLineNo">989</span><a name="line.989"></a>
+<span class="sourceLineNo">990</span>        return value;<a name="line.990"></a>
+<span class="sourceLineNo">991</span>    }<a name="line.991"></a>
+<span class="sourceLineNo">992</span>    <a name="line.992"></a>
+<span class="sourceLineNo">993</span>    private ProxyConnectorRuleConfiguration readProxyConnectorRuleConfiguration( String prefix, Registry registry )<a name="line.993"></a>
+<span class="sourceLineNo">994</span>    {<a name="line.994"></a>
+<span class="sourceLineNo">995</span>        ProxyConnectorRuleConfiguration value = new ProxyConnectorRuleConfiguration();<a name="line.995"></a>
+<span class="sourceLineNo">996</span><a name="line.996"></a>
+<span class="sourceLineNo">997</span>    //String ruleType = registry.getString( prefix + "ruleType", value.getRuleType() );<a name="line.997"></a>
 <span class="sourceLineNo">998</span><a name="line.998"></a>
-<span class="sourceLineNo">999</span>    List&lt;String&gt; patternList = registry.getList( prefix + "pattern" );<a name="line.999"></a>
-<span class="sourceLineNo">1000</span>    String pattern = value.getPattern();<a name="line.1000"></a>
-<span class="sourceLineNo">1001</span>    if (patternList != null &amp;&amp; !patternList.isEmpty() )<a name="line.1001"></a>
+<span class="sourceLineNo">999</span>    List&lt;String&gt; ruleTypeList = registry.getList( prefix + "ruleType" );<a name="line.999"></a>
+<span class="sourceLineNo">1000</span>    String ruleType = value.getRuleType();<a name="line.1000"></a>
+<span class="sourceLineNo">1001</span>    if (ruleTypeList != null &amp;&amp; !ruleTypeList.isEmpty() )<a name="line.1001"></a>
 <span class="sourceLineNo">1002</span>    {<a name="line.1002"></a>
 <span class="sourceLineNo">1003</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1003"></a>
-<span class="sourceLineNo">1004</span>        for (int i = 0,size = patternList.size();i&lt;size;i++)<a name="line.1004"></a>
+<span class="sourceLineNo">1004</span>        for (int i = 0,size = ruleTypeList.size();i&lt;size;i++)<a name="line.1004"></a>
 <span class="sourceLineNo">1005</span>        {<a name="line.1005"></a>
-<span class="sourceLineNo">1006</span>            sb.append( patternList.get( i ) );<a name="line.1006"></a>
+<span class="sourceLineNo">1006</span>            sb.append( ruleTypeList.get( i ) );<a name="line.1006"></a>
 <span class="sourceLineNo">1007</span>            if (i&lt;size - 1)<a name="line.1007"></a>
 <span class="sourceLineNo">1008</span>            {<a name="line.1008"></a>
 <span class="sourceLineNo">1009</span>                sb.append( ',' );<a name="line.1009"></a>
 <span class="sourceLineNo">1010</span>            }<a name="line.1010"></a>
 <span class="sourceLineNo">1011</span>        }<a name="line.1011"></a>
-<span class="sourceLineNo">1012</span>        pattern = sb.toString();<a name="line.1012"></a>
+<span class="sourceLineNo">1012</span>        ruleType = sb.toString();<a name="line.1012"></a>
 <span class="sourceLineNo">1013</span>    }<a name="line.1013"></a>
 <span class="sourceLineNo">1014</span><a name="line.1014"></a>
-<span class="sourceLineNo">1015</span>        value.setPattern( pattern );<a name="line.1015"></a>
-<span class="sourceLineNo">1016</span>        java.util.List proxyConnectors = new java.util.ArrayList/*&lt;ProxyConnectorConfiguration&gt;*/();<a name="line.1016"></a>
-<span class="sourceLineNo">1017</span>        List proxyConnectorsSubsets = registry.getSubsetList( prefix + "proxyConnectors.proxyConnector" );<a name="line.1017"></a>
-<span class="sourceLineNo">1018</span>        for ( Iterator i = proxyConnectorsSubsets.iterator(); i.hasNext(); )<a name="line.1018"></a>
-<span class="sourceLineNo">1019</span>        {<a name="line.1019"></a>
-<span class="sourceLineNo">1020</span>            ProxyConnectorConfiguration v = readProxyConnectorConfiguration( "", (Registry) i.next() );<a name="line.1020"></a>
-<span class="sourceLineNo">1021</span>            proxyConnectors.add( v );<a name="line.1021"></a>
-<span class="sourceLineNo">1022</span>        }<a name="line.1022"></a>
-<span class="sourceLineNo">1023</span>        value.setProxyConnectors( proxyConnectors );<a name="line.1023"></a>
-<span class="sourceLineNo">1024</span><a name="line.1024"></a>
-<span class="sourceLineNo">1025</span>        return value;<a name="line.1025"></a>
-<span class="sourceLineNo">1026</span>    }<a name="line.1026"></a>
-<span class="sourceLineNo">1027</span>    <a name="line.1027"></a>
-<span class="sourceLineNo">1028</span>    private ProxyConnectorConfiguration readProxyConnectorConfiguration( String prefix, Registry registry )<a name="line.1028"></a>
-<span class="sourceLineNo">1029</span>    {<a name="line.1029"></a>
-<span class="sourceLineNo">1030</span>        ProxyConnectorConfiguration value = new ProxyConnectorConfiguration();<a name="line.1030"></a>
-<span class="sourceLineNo">1031</span><a name="line.1031"></a>
-<span class="sourceLineNo">1032</span>    int order = registry.getInt( prefix + "order", value.getOrder() );<a name="line.1032"></a>
-<span class="sourceLineNo">1033</span>        value.setOrder( order );<a name="line.1033"></a>
-<span class="sourceLineNo">1034</span>    //String sourceRepoId = registry.getString( prefix + "sourceRepoId", value.getSourceRepoId() );<a name="line.1034"></a>
-<span class="sourceLineNo">1035</span><a name="line.1035"></a>
-<span class="sourceLineNo">1036</span>    List&lt;String&gt; sourceRepoIdList = registry.getList( prefix + "sourceRepoId" );<a name="line.1036"></a>
-<span class="sourceLineNo">1037</span>    String sourceRepoId = value.getSourceRepoId();<a name="line.1037"></a>
-<span class="sourceLineNo">1038</span>    if (sourceRepoIdList != null &amp;&amp; !sourceRepoIdList.isEmpty() )<a name="line.1038"></a>
-<span class="sourceLineNo">1039</span>    {<a name="line.1039"></a>
-<span class="sourceLineNo">1040</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1040"></a>
-<span class="sourceLineNo">1041</span>        for (int i = 0,size = sourceRepoIdList.size();i&lt;size;i++)<a name="line.1041"></a>
-<span class="sourceLineNo">1042</span>        {<a name="line.1042"></a>
-<span class="sourceLineNo">1043</span>            sb.append( sourceRepoIdList.get( i ) );<a name="line.1043"></a>
-<span class="sourceLineNo">1044</span>            if (i&lt;size - 1)<a name="line.1044"></a>
-<span class="sourceLineNo">1045</span>            {<a name="line.1045"></a>
-<span class="sourceLineNo">1046</span>                sb.append( ',' );<a name="line.1046"></a>
-<span class="sourceLineNo">1047</span>            }<a name="line.1047"></a>
-<span class="sourceLineNo">1048</span>        }<a name="line.1048"></a>
-<span class="sourceLineNo">1049</span>        sourceRepoId = sb.toString();<a name="line.1049"></a>
-<span class="sourceLineNo">1050</span>    }<a name="line.1050"></a>
-<span class="sourceLineNo">1051</span><a name="line.1051"></a>
-<span class="sourceLineNo">1052</span>        value.setSourceRepoId( sourceRepoId );<a name="line.1052"></a>
-<span class="sourceLineNo">1053</span>    //String targetRepoId = registry.getString( prefix + "targetRepoId", value.getTargetRepoId() );<a name="line.1053"></a>
+<span class="sourceLineNo">1015</span>        value.setRuleType( ruleType );<a name="line.1015"></a>
+<span class="sourceLineNo">1016</span>    //String pattern = registry.getString( prefix + "pattern", value.getPattern() );<a name="line.1016"></a>
+<span class="sourceLineNo">1017</span><a name="line.1017"></a>
+<span class="sourceLineNo">1018</span>    List&lt;String&gt; patternList = registry.getList( prefix + "pattern" );<a name="line.1018"></a>
+<span class="sourceLineNo">1019</span>    String pattern = value.getPattern();<a name="line.1019"></a>
+<span class="sourceLineNo">1020</span>    if (patternList != null &amp;&amp; !patternList.isEmpty() )<a name="line.1020"></a>
+<span class="sourceLineNo">1021</span>    {<a name="line.1021"></a>
+<span class="sourceLineNo">1022</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1022"></a>
+<span class="sourceLineNo">1023</span>        for (int i = 0,size = patternList.size();i&lt;size;i++)<a name="line.1023"></a>
+<span class="sourceLineNo">1024</span>        {<a name="line.1024"></a>
+<span class="sourceLineNo">1025</span>            sb.append( patternList.get( i ) );<a name="line.1025"></a>
+<span class="sourceLineNo">1026</span>            if (i&lt;size - 1)<a name="line.1026"></a>
+<span class="sourceLineNo">1027</span>            {<a name="line.1027"></a>
+<span class="sourceLineNo">1028</span>                sb.append( ',' );<a name="line.1028"></a>
+<span class="sourceLineNo">1029</span>            }<a name="line.1029"></a>
+<span class="sourceLineNo">1030</span>        }<a name="line.1030"></a>
+<span class="sourceLineNo">1031</span>        pattern = sb.toString();<a name="line.1031"></a>
+<span class="sourceLineNo">1032</span>    }<a name="line.1032"></a>
+<span class="sourceLineNo">1033</span><a name="line.1033"></a>
+<span class="sourceLineNo">1034</span>        value.setPattern( pattern );<a name="line.1034"></a>
+<span class="sourceLineNo">1035</span>        java.util.List proxyConnectors = new java.util.ArrayList/*&lt;ProxyConnectorConfiguration&gt;*/();<a name="line.1035"></a>
+<span class="sourceLineNo">1036</span>        List proxyConnectorsSubsets = registry.getSubsetList( prefix + "proxyConnectors.proxyConnector" );<a name="line.1036"></a>
+<span class="sourceLineNo">1037</span>        for ( Iterator i = proxyConnectorsSubsets.iterator(); i.hasNext(); )<a name="line.1037"></a>
+<span class="sourceLineNo">1038</span>        {<a name="line.1038"></a>
+<span class="sourceLineNo">1039</span>            ProxyConnectorConfiguration v = readProxyConnectorConfiguration( "", (Registry) i.next() );<a name="line.1039"></a>
+<span class="sourceLineNo">1040</span>            proxyConnectors.add( v );<a name="line.1040"></a>
+<span class="sourceLineNo">1041</span>        }<a name="line.1041"></a>
+<span class="sourceLineNo">1042</span>        value.setProxyConnectors( proxyConnectors );<a name="line.1042"></a>
+<span class="sourceLineNo">1043</span><a name="line.1043"></a>
+<span class="sourceLineNo">1044</span>        return value;<a name="line.1044"></a>
+<span class="sourceLineNo">1045</span>    }<a name="line.1045"></a>
+<span class="sourceLineNo">1046</span>    <a name="line.1046"></a>
+<span class="sourceLineNo">1047</span>    private ProxyConnectorConfiguration readProxyConnectorConfiguration( String prefix, Registry registry )<a name="line.1047"></a>
+<span class="sourceLineNo">1048</span>    {<a name="line.1048"></a>
+<span class="sourceLineNo">1049</span>        ProxyConnectorConfiguration value = new ProxyConnectorConfiguration();<a name="line.1049"></a>
+<span class="sourceLineNo">1050</span><a name="line.1050"></a>
+<span class="sourceLineNo">1051</span>    int order = registry.getInt( prefix + "order", value.getOrder() );<a name="line.1051"></a>
+<span class="sourceLineNo">1052</span>        value.setOrder( order );<a name="line.1052"></a>
+<span class="sourceLineNo">1053</span>    //String sourceRepoId = registry.getString( prefix + "sourceRepoId", value.getSourceRepoId() );<a name="line.1053"></a>
 <span class="sourceLineNo">1054</span><a name="line.1054"></a>
-<span class="sourceLineNo">1055</span>    List&lt;String&gt; targetRepoIdList = registry.getList( prefix + "targetRepoId" );<a name="line.1055"></a>
-<span class="sourceLineNo">1056</span>    String targetRepoId = value.getTargetRepoId();<a name="line.1056"></a>
-<span class="sourceLineNo">1057</span>    if (targetRepoIdList != null &amp;&amp; !targetRepoIdList.isEmpty() )<a name="line.1057"></a>
+<span class="sourceLineNo">1055</span>    List&lt;String&gt; sourceRepoIdList = registry.getList( prefix + "sourceRepoId" );<a name="line.1055"></a>
+<span class="sourceLineNo">1056</span>    String sourceRepoId = value.getSourceRepoId();<a name="line.1056"></a>
+<span class="sourceLineNo">1057</span>    if (sourceRepoIdList != null &amp;&amp; !sourceRepoIdList.isEmpty() )<a name="line.1057"></a>
 <span class="sourceLineNo">1058</span>    {<a name="line.1058"></a>
 <span class="sourceLineNo">1059</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1059"></a>
-<span class="sourceLineNo">1060</span>        for (int i = 0,size = targetRepoIdList.size();i&lt;size;i++)<a name="line.1060"></a>
+<span class="sourceLineNo">1060</span>        for (int i = 0,size = sourceRepoIdList.size();i&lt;size;i++)<a name="line.1060"></a>
 <span class="sourceLineNo">1061</span>        {<a name="line.1061"></a>
-<span class="sourceLineNo">1062</span>            sb.append( targetRepoIdList.get( i ) );<a name="line.1062"></a>
+<span class="sourceLineNo">1062</span>            sb.append( sourceRepoIdList.get( i ) );<a name="line.1062"></a>
 <span class="sourceLineNo">1063</span>            if (i&lt;size - 1)<a name="line.1063"></a>
 <span class="sourceLineNo">1064</span>            {<a name="line.1064"></a>
 <span class="sourceLineNo">1065</span>                sb.append( ',' );<a name="line.1065"></a>
 <span class="sourceLineNo">1066</span>            }<a name="line.1066"></a>
 <span class="sourceLineNo">1067</span>        }<a name="line.1067"></a>
-<span class="sourceLineNo">1068</span>        targetRepoId = sb.toString();<a name="line.1068"></a>
+<span class="sourceLineNo">1068</span>        sourceRepoId = sb.toString();<a name="line.1068"></a>
 <span class="sourceLineNo">1069</span>    }<a name="line.1069"></a>
 <span class="sourceLineNo">1070</span><a name="line.1070"></a>
-<span class="sourceLineNo">1071</span>        value.setTargetRepoId( targetRepoId );<a name="line.1071"></a>
-<span class="sourceLineNo">1072</span>    //String proxyId = registry.getString( prefix + "proxyId", value.getProxyId() );<a name="line.1072"></a>
+<span class="sourceLineNo">1071</span>        value.setSourceRepoId( sourceRepoId );<a name="line.1071"></a>
+<span class="sourceLineNo">1072</span>    //String targetRepoId = registry.getString( prefix + "targetRepoId", value.getTargetRepoId() );<a name="line.1072"></a>
 <span class="sourceLineNo">1073</span><a name="line.1073"></a>
-<span class="sourceLineNo">1074</span>    List&lt;String&gt; proxyIdList = registry.getList( prefix + "proxyId" );<a name="line.1074"></a>
-<span class="sourceLineNo">1075</span>    String proxyId = value.getProxyId();<a name="line.1075"></a>
-<span class="sourceLineNo">1076</span>    if (proxyIdList != null &amp;&amp; !proxyIdList.isEmpty() )<a name="line.1076"></a>
+<span class="sourceLineNo">1074</span>    List&lt;String&gt; targetRepoIdList = registry.getList( prefix + "targetRepoId" );<a name="line.1074"></a>
+<span class="sourceLineNo">1075</span>    String targetRepoId = value.getTargetRepoId();<a name="line.1075"></a>
+<span class="sourceLineNo">1076</span>    if (targetRepoIdList != null &amp;&amp; !targetRepoIdList.isEmpty() )<a name="line.1076"></a>
 <span class="sourceLineNo">1077</span>    {<a name="line.1077"></a>
 <span class="sourceLineNo">1078</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1078"></a>
-<span class="sourceLineNo">1079</span>        for (int i = 0,size = proxyIdList.size();i&lt;size;i++)<a name="line.1079"></a>
+<span class="sourceLineNo">1079</span>        for (int i = 0,size = targetRepoIdList.size();i&lt;size;i++)<a name="line.1079"></a>
 <span class="sourceLineNo">1080</span>        {<a name="line.1080"></a>
-<span class="sourceLineNo">1081</span>            sb.append( proxyIdList.get( i ) );<a name="line.1081"></a>
+<span class="sourceLineNo">1081</span>            sb.append( targetRepoIdList.get( i ) );<a name="line.1081"></a>
 <span class="sourceLineNo">1082</span>            if (i&lt;size - 1)<a name="line.1082"></a>
 <span class="sourceLineNo">1083</span>            {<a name="line.1083"></a>
 <span class="sourceLineNo">1084</span>                sb.append( ',' );<a name="line.1084"></a>
 <span class="sourceLineNo">1085</span>            }<a name="line.1085"></a>
 <span class="sourceLineNo">1086</span>        }<a name="line.1086"></a>
-<span class="sourceLineNo">1087</span>        proxyId = sb.toString();<a name="line.1087"></a>
+<span class="sourceLineNo">1087</span>        targetRepoId = sb.toString();<a name="line.1087"></a>
 <span class="sourceLineNo">1088</span>    }<a name="line.1088"></a>
 <span class="sourceLineNo">1089</span><a name="line.1089"></a>
-<span class="sourceLineNo">1090</span>        value.setProxyId( proxyId );<a name="line.1090"></a>
-<span class="sourceLineNo">1091</span>        java.util.List blackListPatterns = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1091"></a>
-<span class="sourceLineNo">1092</span>        blackListPatterns.addAll( registry.getList( prefix + "blackListPatterns.blackListPattern" ) );<a name="line.1092"></a>
-<span class="sourceLineNo">1093</span>        value.setBlackListPatterns( blackListPatterns );<a name="line.1093"></a>
-<span class="sourceLineNo">1094</span>        java.util.List whiteListPatterns = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1094"></a>
-<span class="sourceLineNo">1095</span>        whiteListPatterns.addAll( registry.getList( prefix + "whiteListPatterns.whiteListPattern" ) );<a name="line.1095"></a>
-<span class="sourceLineNo">1096</span>        value.setWhiteListPatterns( whiteListPatterns );<a name="line.1096"></a>
-<span class="sourceLineNo">1097</span>        java.util.Map policies = registry.getProperties( prefix + "policies" );<a name="line.1097"></a>
-<span class="sourceLineNo">1098</span>        value.setPolicies( policies );<a name="line.1098"></a>
-<span class="sourceLineNo">1099</span>        java.util.Map properties = registry.getProperties( prefix + "properties" );<a name="line.1099"></a>
-<span class="sourceLineNo">1100</span>        value.setProperties( properties );<a name="line.1100"></a>
-<span class="sourceLineNo">1101</span>        boolean disabled = registry.getBoolean( prefix + "disabled", value.isDisabled() );<a name="line.1101"></a>
-<span class="sourceLineNo">1102</span>        value.setDisabled( disabled );<a name="line.1102"></a>
-<span class="sourceLineNo">1103</span><a name="line.1103"></a>
-<span class="sourceLineNo">1104</span>        return value;<a name="line.1104"></a>
-<span class="sourceLineNo">1105</span>    }<a name="line.1105"></a>
-<span class="sourceLineNo">1106</span>    <a name="line.1106"></a>
-<span class="sourceLineNo">1107</span>    private SyncConnectorConfiguration readSyncConnectorConfiguration( String prefix, Registry registry )<a name="line.1107"></a>
-<span class="sourceLineNo">1108</span>    {<a name="line.1108"></a>
-<span class="sourceLineNo">1109</span>        SyncConnectorConfiguration value = new SyncConnectorConfiguration();<a name="line.1109"></a>
-<span class="sourceLineNo">1110</span><a name="line.1110"></a>
-<span class="sourceLineNo">1111</span>    //String cronExpression = registry.getString( prefix + "cronExpression", value.getCronExpression() );<a name="line.1111"></a>
-<span class="sourceLineNo">1112</span><a name="line.1112"></a>
-<span class="sourceLineNo">1113</span>    List&lt;String&gt; cronExpressionList = registry.getList( prefix + "cronExpression" );<a name="line.1113"></a>
-<span class="sourceLineNo">1114</span>    String cronExpression = value.getCronExpression();<a name="line.1114"></a>
-<span class="sourceLineNo">1115</span>    if (cronExpressionList != null &amp;&amp; !cronExpressionList.isEmpty() )<a name="line.1115"></a>
-<span class="sourceLineNo">1116</span>    {<a name="line.1116"></a>
-<span class="sourceLineNo">1117</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1117"></a>
-<span class="sourceLineNo">1118</span>        for (int i = 0,size = cronExpressionList.size();i&lt;size;i++)<a name="line.1118"></a>
-<span class="sourceLineNo">1119</span>        {<a name="line.1119"></a>
-<span class="sourceLineNo">1120</span>            sb.append( cronExpressionList.get( i ) );<a name="line.1120"></a>
-<span class="sourceLineNo">1121</span>            if (i&lt;size - 1)<a name="line.1121"></a>
-<span class="sourceLineNo">1122</span>            {<a name="line.1122"></a>
-<span class="sourceLineNo">1123</span>                sb.append( ',' );<a name="line.1123"></a>
-<span class="sourceLineNo">1124</span>            }<a name="line.1124"></a>
-<span class="sourceLineNo">1125</span>        }<a name="line.1125"></a>
-<span class="sourceLineNo">1126</span>        cronExpression = sb.toString();<a name="line.1126"></a>
-<span class="sourceLineNo">1127</span>    }<a name="line.1127"></a>
-<span class="sourceLineNo">1128</span><a name="line.1128"></a>
-<span class="sourceLineNo">1129</span>        value.setCronExpression( cronExpression );<a name="line.1129"></a>
-<span class="sourceLineNo">1130</span>    //String method = registry.getString( prefix + "method", value.getMethod() );<a name="line.1130"></a>
+<span class="sourceLineNo">1090</span>        value.setTargetRepoId( targetRepoId );<a name="line.1090"></a>
+<span class="sourceLineNo">1091</span>    //String proxyId = registry.getString( prefix + "proxyId", value.getProxyId() );<a name="line.1091"></a>
+<span class="sourceLineNo">1092</span><a name="line.1092"></a>
+<span class="sourceLineNo">1093</span>    List&lt;String&gt; proxyIdList = registry.getList( prefix + "proxyId" );<a name="line.1093"></a>
+<span class="sourceLineNo">1094</span>    String proxyId = value.getProxyId();<a name="line.1094"></a>
+<span class="sourceLineNo">1095</span>    if (proxyIdList != null &amp;&amp; !proxyIdList.isEmpty() )<a name="line.1095"></a>
+<span class="sourceLineNo">1096</span>    {<a name="line.1096"></a>
+<span class="sourceLineNo">1097</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1097"></a>
+<span class="sourceLineNo">1098</span>        for (int i = 0,size = proxyIdList.size();i&lt;size;i++)<a name="line.1098"></a>
+<span class="sourceLineNo">1099</span>        {<a name="line.1099"></a>
+<span class="sourceLineNo">1100</span>            sb.append( proxyIdList.get( i ) );<a name="line.1100"></a>
+<span class="sourceLineNo">1101</span>            if (i&lt;size - 1)<a name="line.1101"></a>
+<span class="sourceLineNo">1102</span>            {<a name="line.1102"></a>
+<span class="sourceLineNo">1103</span>                sb.append( ',' );<a name="line.1103"></a>
+<span class="sourceLineNo">1104</span>            }<a name="line.1104"></a>
+<span class="sourceLineNo">1105</span>        }<a name="line.1105"></a>
+<span class="sourceLineNo">1106</span>        proxyId = sb.toString();<a name="line.1106"></a>
+<span class="sourceLineNo">1107</span>    }<a name="line.1107"></a>
+<span class="sourceLineNo">1108</span><a name="line.1108"></a>
+<span class="sourceLineNo">1109</span>        value.setProxyId( proxyId );<a name="line.1109"></a>
+<span class="sourceLineNo">1110</span>        java.util.List blackListPatterns = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1110"></a>
+<span class="sourceLineNo">1111</span>        blackListPatterns.addAll( registry.getList( prefix + "blackListPatterns.blackListPattern" ) );<a name="line.1111"></a>
+<span class="sourceLineNo">1112</span>        value.setBlackListPatterns( blackListPatterns );<a name="line.1112"></a>
+<span class="sourceLineNo">1113</span>        java.util.List whiteListPatterns = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1113"></a>
+<span class="sourceLineNo">1114</span>        whiteListPatterns.addAll( registry.getList( prefix + "whiteListPatterns.whiteListPattern" ) );<a name="line.1114"></a>
+<span class="sourceLineNo">1115</span>        value.setWhiteListPatterns( whiteListPatterns );<a name="line.1115"></a>
+<span class="sourceLineNo">1116</span>        java.util.Map policies = registry.getProperties( prefix + "policies" );<a name="line.1116"></a>
+<span class="sourceLineNo">1117</span>        value.setPolicies( policies );<a name="line.1117"></a>
+<span class="sourceLineNo">1118</span>        java.util.Map properties = registry.getProperties( prefix + "properties" );<a name="line.1118"></a>
+<span class="sourceLineNo">1119</span>        value.setProperties( properties );<a name="line.1119"></a>
+<span class="sourceLineNo">1120</span>        boolean disabled = registry.getBoolean( prefix + "disabled", value.isDisabled() );<a name="line.1120"></a>
+<span class="sourceLineNo">1121</span>        value.setDisabled( disabled );<a name="line.1121"></a>
+<span class="sourceLineNo">1122</span><a name="line.1122"></a>
+<span class="sourceLineNo">1123</span>        return value;<a name="line.1123"></a>
+<span class="sourceLineNo">1124</span>    }<a name="line.1124"></a>
+<span class="sourceLineNo">1125</span>    <a name="line.1125"></a>
+<span class="sourceLineNo">1126</span>    private SyncConnectorConfiguration readSyncConnectorConfiguration( String prefix, Registry registry )<a name="line.1126"></a>
+<span class="sourceLineNo">1127</span>    {<a name="line.1127"></a>
+<span class="sourceLineNo">1128</span>        SyncConnectorConfiguration value = new SyncConnectorConfiguration();<a name="line.1128"></a>
+<span class="sourceLineNo">1129</span><a name="line.1129"></a>
+<span class="sourceLineNo">1130</span>    //String cronExpression = registry.getString( prefix + "cronExpression", value.getCronExpression() );<a name="line.1130"></a>
 <span class="sourceLineNo">1131</span><a name="line.1131"></a>
-<span class="sourceLineNo">1132</span>    List&lt;String&gt; methodList = registry.getList( prefix + "method" );<a name="line.1132"></a>
-<span class="sourceLineNo">1133</span>    String method = value.getMethod();<a name="line.1133"></a>
-<span class="sourceLineNo">1134</span>    if (methodList != null &amp;&amp; !methodList.isEmpty() )<a name="line.1134"></a>
+<span class="sourceLineNo">1132</span>    List&lt;String&gt; cronExpressionList = registry.getList( prefix + "cronExpression" );<a name="line.1132"></a>
+<span class="sourceLineNo">1133</span>    String cronExpression = value.getCronExpression();<a name="line.1133"></a>
+<span class="sourceLineNo">1134</span>    if (cronExpressionList != null &amp;&amp; !cronExpressionList.isEmpty() )<a name="line.1134"></a>
 <span class="sourceLineNo">1135</span>    {<a name="line.1135"></a>
 <span class="sourceLineNo">1136</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1136"></a>
-<span class="sourceLineNo">1137</span>        for (int i = 0,size = methodList.size();i&lt;size;i++)<a name="line.1137"></a>
+<span class="sourceLineNo">1137</span>        for (int i = 0,size = cronExpressionList.size();i&lt;size;i++)<a name="line.1137"></a>
 <span class="sourceLineNo">1138</span>        {<a name="line.1138"></a>
-<span class="sourceLineNo">1139</span>            sb.append( methodList.get( i ) );<a name="line.1139"></a>
+<span class="sourceLineNo">1139</span>            sb.append( cronExpressionList.get( i ) );<a name="line.1139"></a>
 <span class="sourceLineNo">1140</span>            if (i&lt;size - 1)<a name="line.1140"></a>
 <span class="sourceLineNo">1141</span>            {<a name="line.1141"></a>
 <span class="sourceLineNo">1142</span>                sb.append( ',' );<a name="line.1142"></a>
 <span class="sourceLineNo">1143</span>            }<a name="line.1143"></a>
 <span class="sourceLineNo">1144</span>        }<a name="line.1144"></a>
-<span class="sourceLineNo">1145</span>        method = sb.toString();<a name="line.1145"></a>
+<span class="sourceLineNo">1145</span>        cronExpression = sb.toString();<a name="line.1145"></a>
 <span class="sourceLineNo">1146</span>    }<a name="line.1146"></a>
 <span class="sourceLineNo">1147</span><a name="line.1147"></a>
-<span class="sourceLineNo">1148</span>        value.setMethod( method );<a name="line.1148"></a>
-<span class="sourceLineNo">1149</span>    //String sourceRepoId = registry.getString( prefix + "sourceRepoId", value.getSourceRepoId() );<a name="line.1149"></a>
+<span class="sourceLineNo">1148</span>        value.setCronExpression( cronExpression );<a name="line.1148"></a>
+<span class="sourceLineNo">1149</span>    //String method = registry.getString( prefix + "method", value.getMethod() );<a name="line.1149"></a>
 <span class="sourceLineNo">1150</span><a name="line.1150"></a>
-<span class="sourceLineNo">1151</span>    List&lt;String&gt; sourceRepoIdList = registry.getList( prefix + "sourceRepoId" );<a name="line.1151"></a>
-<span class="sourceLineNo">1152</span>    String sourceRepoId = value.getSourceRepoId();<a name="line.1152"></a>
-<span class="sourceLineNo">1153</span>    if (sourceRepoIdList != null &amp;&amp; !sourceRepoIdList.isEmpty() )<a name="line.1153"></a>
+<span class="sourceLineNo">1151</span>    List&lt;String&gt; methodList = registry.getList( prefix + "method" );<a name="line.1151"></a>
+<span class="sourceLineNo">1152</span>    String method = value.getMethod();<a name="line.1152"></a>
+<span class="sourceLineNo">1153</span>    if (methodList != null &amp;&amp; !methodList.isEmpty() )<a name="line.1153"></a>
 <span class="sourceLineNo">1154</span>    {<a name="line.1154"></a>
 <span class="sourceLineNo">1155</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1155"></a>
-<span class="sourceLineNo">1156</span>        for (int i = 0,size = sourceRepoIdList.size();i&lt;size;i++)<a name="line.1156"></a>
+<span class="sourceLineNo">1156</span>        for (int i = 0,size = methodList.size();i&lt;size;i++)<a name="line.1156"></a>
 <span class="sourceLineNo">1157</span>        {<a name="line.1157"></a>
-<span class="sourceLineNo">1158</span>            sb.append( sourceRepoIdList.get( i ) );<a name="line.1158"></a>
+<span class="sourceLineNo">1158</span>            sb.append( methodList.get( i ) );<a name="line.1158"></a>
 <span class="sourceLineNo">1159</span>            if (i&lt;size - 1)<a name="line.1159"></a>
 <span class="sourceLineNo">1160</span>            {<a name="line.1160"></a>
 <span class="sourceLineNo">1161</span>                sb.append( ',' );<a name="line.1161"></a>
 <span class="sourceLineNo">1162</span>            }<a name="line.1162"></a>
 <span class="sourceLineNo">1163</span>        }<a name="line.1163"></a>
-<span class="sourceLineNo">1164</span>        sourceRepoId = sb.toString();<a name="line.1164"></a>
+<span class="sourceLineNo">1164</span>        method = sb.toString();<a name="line.1164"></a>
 <span class="sourceLineNo">1165</span>    }<a name="line.1165"></a>
 <span class="sourceLineNo">1166</span><a name="line.1166"></a>
-<span class="sourceLineNo">1167</span>        value.setSourceRepoId( sourceRepoId );<a name="line.1167"></a>
-<span class="sourceLineNo">1168</span>    //String targetRepoId = registry.getString( prefix + "targetRepoId", value.getTargetRepoId() );<a name="line.1168"></a>
+<span class="sourceLineNo">1167</span>        value.setMethod( method );<a name="line.1167"></a>
+<span class="sourceLineNo">1168</span>    //String sourceRepoId = registry.getString( prefix + "sourceRepoId", value.getSourceRepoId() );<a name="line.1168"></a>
 <span class="sourceLineNo">1169</span><a name="line.1169"></a>
-<span class="sourceLineNo">1170</span>    List&lt;String&gt; targetRepoIdList = registry.getList( prefix + "targetRepoId" );<a name="line.1170"></a>
-<span class="sourceLineNo">1171</span>    String targetRepoId = value.getTargetRepoId();<a name="line.1171"></a>
-<span class="sourceLineNo">1172</span>    if (targetRepoIdList != null &amp;&amp; !targetRepoIdList.isEmpty() )<a name="line.1172"></a>
+<span class="sourceLineNo">1170</span>    List&lt;String&gt; sourceRepoIdList = registry.getList( prefix + "sourceRepoId" );<a name="line.1170"></a>
+<span class="sourceLineNo">1171</span>    String sourceRepoId = value.getSourceRepoId();<a name="line.1171"></a>
+<span class="sourceLineNo">1172</span>    if (sourceRepoIdList != null &amp;&amp; !sourceRepoIdList.isEmpty() )<a name="line.1172"></a>
 <span class="sourceLineNo">1173</span>    {<a name="line.1173"></a>
 <span class="sourceLineNo">1174</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1174"></a>
-<span class="sourceLineNo">1175</span>        for (int i = 0,size = targetRepoIdList.size();i&lt;size;i++)<a name="line.1175"></a>
+<span class="sourceLineNo">1175</span>        for (int i = 0,size = sourceRepoIdList.size();i&lt;size;i++)<a name="line.1175"></a>
 <span class="sourceLineNo">1176</span>        {<a name="line.1176"></a>
-<span class="sourceLineNo">1177</span>            sb.append( targetRepoIdList.get( i ) );<a name="line.1177"></a>
+<span class="sourceLineNo">1177</span>            sb.append( sourceRepoIdList.get( i ) );<a name="line.1177"></a>
 <span class="sourceLineNo">1178</span>            if (i&lt;size - 1)<a name="line.1178"></a>
 <span class="sourceLineNo">1179</span>            {<a name="line.1179"></a>
 <span class="sourceLineNo">1180</span>                sb.append( ',' );<a name="line.1180"></a>
 <span class="sourceLineNo">1181</span>            }<a name="line.1181"></a>
 <span class="sourceLineNo">1182</span>        }<a name="line.1182"></a>
-<span class="sourceLineNo">1183</span>        targetRepoId = sb.toString();<a name="line.1183"></a>
+<span class="sourceLineNo">1183</span>        sourceRepoId = sb.toString();<a name="line.1183"></a>
 <span class="sourceLineNo">1184</span>    }<a name="line.1184"></a>
 <span class="sourceLineNo">1185</span><a name="line.1185"></a>
-<span class="sourceLineNo">1186</span>        value.setTargetRepoId( targetRepoId );<a name="line.1186"></a>
-<span class="sourceLineNo">1187</span>    //String proxyId = registry.getString( prefix + "proxyId", value.getProxyId() );<a name="line.1187"></a>
+<span class="sourceLineNo">1186</span>        value.setSourceRepoId( sourceRepoId );<a name="line.1186"></a>
+<span class="sourceLineNo">1187</span>    //String targetRepoId = registry.getString( prefix + "targetRepoId", value.getTargetRepoId() );<a name="line.1187"></a>
 <span class="sourceLineNo">1188</span><a name="line.1188"></a>
-<span class="sourceLineNo">1189</span>    List&lt;String&gt; proxyIdList = registry.getList( prefix + "proxyId" );<a name="line.1189"></a>
-<span class="sourceLineNo">1190</span>    String proxyId = value.getProxyId();<a name="line.1190"></a>
-<span class="sourceLineNo">1191</span>    if (proxyIdList != null &amp;&amp; !proxyIdList.isEmpty() )<a name="line.1191"></a>
+<span class="sourceLineNo">1189</span>    List&lt;String&gt; targetRepoIdList = registry.getList( prefix + "targetRepoId" );<a name="line.1189"></a>
+<span class="sourceLineNo">1190</span>    String targetRepoId = value.getTargetRepoId();<a name="line.1190"></a>
+<span class="sourceLineNo">1191</span>    if (targetRepoIdList != null &amp;&amp; !targetRepoIdList.isEmpty() )<a name="line.1191"></a>
 <span class="sourceLineNo">1192</span>    {<a name="line.1192"></a>
 <span class="sourceLineNo">1193</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1193"></a>
-<span class="sourceLineNo">1194</span>        for (int i = 0,size = proxyIdList.size();i&lt;size;i++)<a name="line.1194"></a>
+<span class="sourceLineNo">1194</span>        for (int i = 0,size = targetRepoIdList.size();i&lt;size;i++)<a name="line.1194"></a>
 <span class="sourceLineNo">1195</span>        {<a name="line.1195"></a>
-<span class="sourceLineNo">1196</span>            sb.append( proxyIdList.get( i ) );<a name="line.1196"></a>
+<span class="sourceLineNo">1196</span>            sb.append( targetRepoIdList.get( i ) );<a name="line.1196"></a>
 <span class="sourceLineNo">1197</span>            if (i&lt;size - 1)<a name="line.1197"></a>
 <span class="sourceLineNo">1198</span>            {<a name="line.1198"></a>
 <span class="sourceLineNo">1199</span>                sb.append( ',' );<a name="line.1199"></a>
 <span class="sourceLineNo">1200</span>            }<a name="line.1200"></a>
 <span class="sourceLineNo">1201</span>        }<a name="line.1201"></a>
-<span class="sourceLineNo">1202</span>        proxyId = sb.toString();<a name="line.1202"></a>
+<span class="sourceLineNo">1202</span>        targetRepoId = sb.toString();<a name="line.1202"></a>
 <span class="sourceLineNo">1203</span>    }<a name="line.1203"></a>
 <span class="sourceLineNo">1204</span><a name="line.1204"></a>
-<span class="sourceLineNo">1205</span>        value.setProxyId( proxyId );<a name="line.1205"></a>
-<span class="sourceLineNo">1206</span>        java.util.List blackListPatterns = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1206"></a>
-<span class="sourceLineNo">1207</span>        blackListPatterns.addAll( registry.getList( prefix + "blackListPatterns.blackListPattern" ) );<a name="line.1207"></a>
-<span class="sourceLineNo">1208</span>        value.setBlackListPatterns( blackListPatterns );<a name="line.1208"></a>
-<span class="sourceLineNo">1209</span>        java.util.List whiteListPatterns = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1209"></a>
-<span class="sourceLineNo">1210</span>        whiteListPatterns.addAll( registry.getList( prefix + "whiteListPatterns.whiteListPattern" ) );<a name="line.1210"></a>
-<span class="sourceLineNo">1211</span>        value.setWhiteListPatterns( whiteListPatterns );<a name="line.1211"></a>
-<span class="sourceLineNo">1212</span>        java.util.Map policies = registry.getProperties( prefix + "policies" );<a name="line.1212"></a>
-<span class="sourceLineNo">1213</span>        value.setPolicies( policies );<a name="line.1213"></a>
-<span class="sourceLineNo">1214</span>        java.util.Map properties = registry.getProperties( prefix + "properties" );<a name="line.1214"></a>
-<span class="sourceLineNo">1215</span>        value.setProperties( properties );<a name="line.1215"></a>
-<span class="sourceLineNo">1216</span>        boolean disabled = registry.getBoolean( prefix + "disabled", value.isDisabled() );<a name="line.1216"></a>
-<span class="sourceLineNo">1217</span>        value.setDisabled( disabled );<a name="line.1217"></a>
-<span class="sourceLineNo">1218</span><a name="line.1218"></a>
-<span class="sourceLineNo">1219</span>        return value;<a name="line.1219"></a>
-<span class="sourceLineNo">1220</span>    }<a name="line.1220"></a>
-<span class="sourceLineNo">1221</span>    <a name="line.1221"></a>
-<span class="sourceLineNo">1222</span>    private NetworkProxyConfiguration readNetworkProxyConfiguration( String prefix, Registry registry )<a name="line.1222"></a>
-<span class="sourceLineNo">1223</span>    {<a name="line.1223"></a>
-<span class="sourceLineNo">1224</span>        NetworkProxyConfiguration value = new NetworkProxyConfiguration();<a name="line.1224"></a>
-<span class="sourceLineNo">1225</span><a name="line.1225"></a>
-<span class="sourceLineNo">1226</span>    //String id = registry.getString( prefix + "id", value.getId() );<a name="line.1226"></a>
-<span class="sourceLineNo">1227</span><a name="line.1227"></a>
-<span class="sourceLineNo">1228</span>    List&lt;String&gt; idList = registry.getList( prefix + "id" );<a name="line.1228"></a>
-<span class="sourceLineNo">1229</span>    String id = value.getId();<a name="line.1229"></a>
-<span class="sourceLineNo">1230</span>    if (idList != null &amp;&amp; !idList.isEmpty() )<a name="line.1230"></a>
-<span class="sourceLineNo">1231</span>    {<a name="line.1231"></a>
-<span class="sourceLineNo">1232</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1232"></a>
-<span class="sourceLineNo">1233</span>        for (int i = 0,size = idList.size();i&lt;size;i++)<a name="line.1233"></a>
-<span class="sourceLineNo">1234</span>        {<a name="line.1234"></a>
-<span class="sourceLineNo">1235</span>            sb.append( idList.get( i ) );<a name="line.1235"></a>
-<span class="sourceLineNo">1236</span>            if (i&lt;size - 1)<a name="line.1236"></a>
-<span class="sourceLineNo">1237</span>            {<a name="line.1237"></a>
-<span class="sourceLineNo">1238</span>                sb.append( ',' );<a name="line.1238"></a>
-<span class="sourceLineNo">1239</span>            }<a name="line.1239"></a>
-<span class="sourceLineNo">1240</span>        }<a name="line.1240"></a>
-<span class="sourceLineNo">1241</span>        id = sb.toString();<a name="line.1241"></a>
-<span class="sourceLineNo">1242</span>    }<a name="line.1242"></a>
-<span class="sourceLineNo">1243</span><a name="line.1243"></a>
-<span class="sourceLineNo">1244</span>        value.setId( id );<a name="line.1244"></a>
-<span class="sourceLineNo">1245</span>    //String protocol = registry.getString( prefix + "protocol", value.getProtocol() );<a name="line.1245"></a>
+<span class="sourceLineNo">1205</span>        value.setTargetRepoId( targetRepoId );<a name="line.1205"></a>
+<span class="sourceLineNo">1206</span>    //String proxyId = registry.getString( prefix + "proxyId", value.getProxyId() );<a name="line.1206"></a>
+<span class="sourceLineNo">1207</span><a name="line.1207"></a>
+<span class="sourceLineNo">1208</span>    List&lt;String&gt; proxyIdList = registry.getList( prefix + "proxyId" );<a name="line.1208"></a>
+<span class="sourceLineNo">1209</span>    String proxyId = value.getProxyId();<a name="line.1209"></a>
+<span class="sourceLineNo">1210</span>    if (proxyIdList != null &amp;&amp; !proxyIdList.isEmpty() )<a name="line.1210"></a>
+<span class="sourceLineNo">1211</span>    {<a name="line.1211"></a>
+<span class="sourceLineNo">1212</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1212"></a>
+<span class="sourceLineNo">1213</span>        for (int i = 0,size = proxyIdList.size();i&lt;size;i++)<a name="line.1213"></a>
+<span class="sourceLineNo">1214</span>        {<a name="line.1214"></a>
+<span class="sourceLineNo">1215</span>            sb.append( proxyIdList.get( i ) );<a name="line.1215"></a>
+<span class="sourceLineNo">1216</span>            if (i&lt;size - 1)<a name="line.1216"></a>
+<span class="sourceLineNo">1217</span>            {<a name="line.1217"></a>
+<span class="sourceLineNo">1218</span>                sb.append( ',' );<a name="line.1218"></a>
+<span class="sourceLineNo">1219</span>            }<a name="line.1219"></a>
+<span class="sourceLineNo">1220</span>        }<a name="line.1220"></a>
+<span class="sourceLineNo">1221</span>        proxyId = sb.toString();<a name="line.1221"></a>
+<span class="sourceLineNo">1222</span>    }<a name="line.1222"></a>
+<span class="sourceLineNo">1223</span><a name="line.1223"></a>
+<span class="sourceLineNo">1224</span>        value.setProxyId( proxyId );<a name="line.1224"></a>
+<span class="sourceLineNo">1225</span>        java.util.List blackListPatterns = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1225"></a>
+<span class="sourceLineNo">1226</span>        blackListPatterns.addAll( registry.getList( prefix + "blackListPatterns.blackListPattern" ) );<a name="line.1226"></a>
+<span class="sourceLineNo">1227</span>        value.setBlackListPatterns( blackListPatterns );<a name="line.1227"></a>
+<span class="sourceLineNo">1228</span>        java.util.List whiteListPatterns = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1228"></a>
+<span class="sourceLineNo">1229</span>        whiteListPatterns.addAll( registry.getList( prefix + "whiteListPatterns.whiteListPattern" ) );<a name="line.1229"></a>
+<span class="sourceLineNo">1230</span>        value.setWhiteListPatterns( whiteListPatterns );<a name="line.1230"></a>
+<span class="sourceLineNo">1231</span>        java.util.Map policies = registry.getProperties( prefix + "policies" );<a name="line.1231"></a>
+<span class="sourceLineNo">1232</span>        value.setPolicies( policies );<a name="line.1232"></a>
+<span class="sourceLineNo">1233</span>        java.util.Map properties = registry.getProperties( prefix + "properties" );<a name="line.1233"></a>
+<span class="sourceLineNo">1234</span>        value.setProperties( properties );<a name="line.1234"></a>
+<span class="sourceLineNo">1235</span>        boolean disabled = registry.getBoolean( prefix + "disabled", value.isDisabled() );<a name="line.1235"></a>
+<span class="sourceLineNo">1236</span>        value.setDisabled( disabled );<a name="line.1236"></a>
+<span class="sourceLineNo">1237</span><a name="line.1237"></a>
+<span class="sourceLineNo">1238</span>        return value;<a name="line.1238"></a>
+<span class="sourceLineNo">1239</span>    }<a name="line.1239"></a>
+<span class="sourceLineNo">1240</span>    <a name="line.1240"></a>
+<span class="sourceLineNo">1241</span>    private NetworkProxyConfiguration readNetworkProxyConfiguration( String prefix, Registry registry )<a name="line.1241"></a>
+<span class="sourceLineNo">1242</span>    {<a name="line.1242"></a>
+<span class="sourceLineNo">1243</span>        NetworkProxyConfiguration value = new NetworkProxyConfiguration();<a name="line.1243"></a>
+<span class="sourceLineNo">1244</span><a name="line.1244"></a>
+<span class="sourceLineNo">1245</span>    //String id = registry.getString( prefix + "id", value.getId() );<a name="line.1245"></a>
 <span class="sourceLineNo">1246</span><a name="line.1246"></a>
-<span class="sourceLineNo">1247</span>    List&lt;String&gt; protocolList = registry.getList( prefix + "protocol" );<a name="line.1247"></a>
-<span class="sourceLineNo">1248</span>    String protocol = value.getProtocol();<a name="line.1248"></a>
-<span class="sourceLineNo">1249</span>    if (protocolList != null &amp;&amp; !protocolList.isEmpty() )<a name="line.1249"></a>
+<span class="sourceLineNo">1247</span>    List&lt;String&gt; idList = registry.getList( prefix + "id" );<a name="line.1247"></a>
+<span class="sourceLineNo">1248</span>    String id = value.getId();<a name="line.1248"></a>
+<span class="sourceLineNo">1249</span>    if (idList != null &amp;&amp; !idList.isEmpty() )<a name="line.1249"></a>
 <span class="sourceLineNo">1250</span>    {<a name="line.1250"></a>
 <span class="sourceLineNo">1251</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1251"></a>
-<span class="sourceLineNo">1252</span>        for (int i = 0,size = protocolList.size();i&lt;size;i++)<a name="line.1252"></a>
+<span class="sourceLineNo">1252</span>        for (int i = 0,size = idList.size();i&lt;size;i++)<a name="line.1252"></a>
 <span class="sourceLineNo">1253</span>        {<a name="line.1253"></a>
-<span class="sourceLineNo">1254</span>            sb.append( protocolList.get( i ) );<a name="line.1254"></a>
+<span class="sourceLineNo">1254</span>            sb.append( idList.get( i ) );<a name="line.1254"></a>
 <span class="sourceLineNo">1255</span>            if (i&lt;size - 1)<a name="line.1255"></a>
 <span class="sourceLineNo">1256</span>            {<a name="line.1256"></a>
 <span class="sourceLineNo">1257</span>                sb.append( ',' );<a name="line.1257"></a>
 <span class="sourceLineNo">1258</span>            }<a name="line.1258"></a>
 <span class="sourceLineNo">1259</span>        }<a name="line.1259"></a>
-<span class="sourceLineNo">1260</span>        protocol = sb.toString();<a name="line.1260"></a>
+<span class="sourceLineNo">1260</span>        id = sb.toString();<a name="line.1260"></a>
 <span class="sourceLineNo">1261</span>    }<a name="line.1261"></a>
 <span class="sourceLineNo">1262</span><a name="line.1262"></a>
-<span class="sourceLineNo">1263</span>        value.setProtocol( protocol );<a name="line.1263"></a>
-<span class="sourceLineNo">1264</span>    //String host = registry.getString( prefix + "host", value.getHost() );<a name="line.1264"></a>
+<span class="sourceLineNo">1263</span>        value.setId( id );<a name="line.1263"></a>
+<span class="sourceLineNo">1264</span>    //String protocol = registry.getString( prefix + "protocol", value.getProtocol() );<a name="line.1264"></a>
 <span class="sourceLineNo">1265</span><a name="line.1265"></a>
-<span class="sourceLineNo">1266</span>    List&lt;String&gt; hostList = registry.getList( prefix + "host" );<a name="line.1266"></a>
-<span class="sourceLineNo">1267</span>    String host = value.getHost();<a name="line.1267"></a>
-<span class="sourceLineNo">1268</span>    if (hostList != null &amp;&amp; !hostList.isEmpty() )<a name="line.1268"></a>
+<span class="sourceLineNo">1266</span>    List&lt;String&gt; protocolList = registry.getList( prefix + "protocol" );<a name="line.1266"></a>
+<span class="sourceLineNo">1267</span>    String protocol = value.getProtocol();<a name="line.1267"></a>
+<span class="sourceLineNo">1268</span>    if (protocolList != null &amp;&amp; !protocolList.isEmpty() )<a name="line.1268"></a>
 <span class="sourceLineNo">1269</span>    {<a name="line.1269"></a>
 <span class="sourceLineNo">1270</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1270"></a>
-<span class="sourceLineNo">1271</span>        for (int i = 0,size = hostList.size();i&lt;size;i++)<a name="line.1271"></a>
+<span class="sourceLineNo">1271</span>        for (int i = 0,size = protocolList.size();i&lt;size;i++)<a name="line.1271"></a>
 <span class="sourceLineNo">1272</span>        {<a name="line.1272"></a>
-<span class="sourceLineNo">1273</span>            sb.append( hostList.get( i ) );<a name="line.1273"></a>
+<span class="sourceLineNo">1273</span>            sb.append( protocolList.get( i ) );<a name="line.1273"></a>
 <span class="sourceLineNo">1274</span>            if (i&lt;size - 1)<a name="line.1274"></a>
 <span class="sourceLineNo">1275</span>            {<a name="line.1275"></a>
 <span class="sourceLineNo">1276</span>                sb.append( ',' );<a name="line.1276"></a>
 <span class="sourceLineNo">1277</span>            }<a name="line.1277"></a>
 <span class="sourceLineNo">1278</span>        }<a name="line.1278"></a>
-<span class="sourceLineNo">1279</span>        host = sb.toString();<a name="line.1279"></a>
+<span class="sourceLineNo">1279</span>        protocol = sb.toString();<a name="line.1279"></a>
 <span class="sourceLineNo">1280</span>    }<a name="line.1280"></a>
 <span class="sourceLineNo">1281</span><a name="line.1281"></a>
-<span class="sourceLineNo">1282</span>        value.setHost( host );<a name="line.1282"></a>
-<span class="sourceLineNo">1283</span>    int port = registry.getInt( prefix + "port", value.getPort() );<a name="line.1283"></a>
-<span class="sourceLineNo">1284</span>        value.setPort( port );<a name="line.1284"></a>
-<span class="sourceLineNo">1285</span>    //String username = registry.getString( prefix + "username", value.getUsername() );<a name="line.1285"></a>
-<span class="sourceLineNo">1286</span><a name="line.1286"></a>
-<span class="sourceLineNo">1287</span>    List&lt;String&gt; usernameList = registry.getList( prefix + "username" );<a name="line.1287"></a>
-<span class="sourceLineNo">1288</span>    String username = value.getUsername();<a name="line.1288"></a>
-<span class="sourceLineNo">1289</span>    if (usernameList != null &amp;&amp; !usernameList.isEmpty() )<a name="line.1289"></a>
-<span class="sourceLineNo">1290</span>    {<a name="line.1290"></a>
-<span class="sourceLineNo">1291</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1291"></a>
-<span class="sourceLineNo">1292</span>        for (int i = 0,size = usernameList.size();i&lt;size;i++)<a name="line.1292"></a>
-<span class="sourceLineNo">1293</span>        {<a name="line.1293"></a>
-<span class="sourceLineNo">1294</span>            sb.append( usernameList.get( i ) );<a name="line.1294"></a>
-<span class="sourceLineNo">1295</span>            if (i&lt;size - 1)<a name="line.1295"></a>
-<span class="sourceLineNo">1296</span>            {<a name="line.1296"></a>
-<span class="sourceLineNo">1297</span>                sb.append( ',' );<a name="line.1297"></a>
-<span class="sourceLineNo">1298</span>            }<a name="line.1298"></a>
-<span class="sourceLineNo">1299</span>        }<a name="line.1299"></a>
-<span class="sourceLineNo">1300</span>        username = sb.toString();<a name="line.1300"></a>
-<span class="sourceLineNo">1301</span>    }<a name="line.1301"></a>
-<span class="sourceLineNo">1302</span><a name="line.1302"></a>
-<span class="sourceLineNo">1303</span>        value.setUsername( username );<a name="line.1303"></a>
-<span class="sourceLineNo">1304</span>    //String password = registry.getString( prefix + "password", value.getPassword() );<a name="line.1304"></a>
+<span class="sourceLineNo">1282</span>        value.setProtocol( protocol );<a name="line.1282"></a>
+<span class="sourceLineNo">1283</span>    //String host = registry.getString( prefix + "host", value.getHost() );<a name="line.1283"></a>
+<span class="sourceLineNo">1284</span><a name="line.1284"></a>
+<span class="sourceLineNo">1285</span>    List&lt;String&gt; hostList = registry.getList( prefix + "host" );<a name="line.1285"></a>
+<span class="sourceLineNo">1286</span>    String host = value.getHost();<a name="line.1286"></a>
+<span class="sourceLineNo">1287</span>    if (hostList != null &amp;&amp; !hostList.isEmpty() )<a name="line.1287"></a>
+<span class="sourceLineNo">1288</span>    {<a name="line.1288"></a>
+<span class="sourceLineNo">1289</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1289"></a>
+<span class="sourceLineNo">1290</span>        for (int i = 0,size = hostList.size();i&lt;size;i++)<a name="line.1290"></a>
+<span class="sourceLineNo">1291</span>        {<a name="line.1291"></a>
+<span class="sourceLineNo">1292</span>            sb.append( hostList.get( i ) );<a name="line.1292"></a>
+<span class="sourceLineNo">1293</span>            if (i&lt;size - 1)<a name="line.1293"></a>
+<span class="sourceLineNo">1294</span>            {<a name="line.1294"></a>
+<span class="sourceLineNo">1295</span>                sb.append( ',' );<a name="line.1295"></a>
+<span class="sourceLineNo">1296</span>            }<a name="line.1296"></a>
+<span class="sourceLineNo">1297</span>        }<a name="line.1297"></a>
+<span class="sourceLineNo">1298</span>        host = sb.toString();<a name="line.1298"></a>
+<span class="sourceLineNo">1299</span>    }<a name="line.1299"></a>
+<span class="sourceLineNo">1300</span><a name="line.1300"></a>
+<span class="sourceLineNo">1301</span>        value.setHost( host );<a name="line.1301"></a>
+<span class="sourceLineNo">1302</span>    int port = registry.getInt( prefix + "port", value.getPort() );<a name="line.1302"></a>
+<span class="sourceLineNo">1303</span>        value.setPort( port );<a name="line.1303"></a>
+<span class="sourceLineNo">1304</span>    //String username = registry.getString( prefix + "username", value.getUsername() );<a name="line.1304"></a>
 <span class="sourceLineNo">1305</span><a name="line.1305"></a>
-<span class="sourceLineNo">1306</span>    List&lt;String&gt; passwordList = registry.getList( prefix + "password" );<a name="line.1306"></a>
-<span class="sourceLineNo">1307</span>    String password = value.getPassword();<a name="line.1307"></a>
-<span class="sourceLineNo">1308</span>    if (passwordList != null &amp;&amp; !passwordList.isEmpty() )<a name="line.1308"></a>
+<span class="sourceLineNo">1306</span>    List&lt;String&gt; usernameList = registry.getList( prefix + "username" );<a name="line.1306"></a>
+<span class="sourceLineNo">1307</span>    String username = value.getUsername();<a name="line.1307"></a>
+<span class="sourceLineNo">1308</span>    if (usernameList != null &amp;&amp; !usernameList.isEmpty() )<a name="line.1308"></a>
 <span class="sourceLineNo">1309</span>    {<a name="line.1309"></a>
 <span class="sourceLineNo">1310</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1310"></a>
-<span class="sourceLineNo">1311</span>        for (int i = 0,size = passwordList.size();i&lt;size;i++)<a name="line.1311"></a>
+<span class="sourceLineNo">1311</span>        for (int i = 0,size = usernameList.size();i&lt;size;i++)<a name="line.1311"></a>
 <span class="sourceLineNo">1312</span>        {<a name="line.1312"></a>
-<span class="sourceLineNo">1313</span>            sb.append( passwordList.get( i ) );<a name="line.1313"></a>
+<span class="sourceLineNo">1313</span>            sb.append( usernameList.get( i ) );<a name="line.1313"></a>
 <span class="sourceLineNo">1314</span>            if (i&lt;size - 1)<a name="line.1314"></a>
 <span class="sourceLineNo">1315</span>            {<a name="line.1315"></a>
 <span class="sourceLineNo">1316</span>                sb.append( ',' );<a name="line.1316"></a>
 <span class="sourceLineNo">1317</span>            }<a name="line.1317"></a>
 <span class="sourceLineNo">1318</span>        }<a name="line.1318"></a>
-<span class="sourceLineNo">1319</span>        password = sb.toString();<a name="line.1319"></a>
+<span class="sourceLineNo">1319</span>        username = sb.toString();<a name="line.1319"></a>
 <span class="sourceLineNo">1320</span>    }<a name="line.1320"></a>
 <span class="sourceLineNo">1321</span><a name="line.1321"></a>
-<span class="sourceLineNo">1322</span>        value.setPassword( password );<a name="line.1322"></a>
-<span class="sourceLineNo">1323</span>        boolean useNtlm = registry.getBoolean( prefix + "useNtlm", value.isUseNtlm() );<a name="line.1323"></a>
-<span class="sourceLineNo">1324</span>        value.setUseNtlm( useNtlm );<a name="line.1324"></a>
-<span class="sourceLineNo">1325</span><a name="line.1325"></a>
-<span class="sourceLineNo">1326</span>        return value;<a name="line.1326"></a>
-<span class="sourceLineNo">1327</span>    }<a name="line.1327"></a>
-<span class="sourceLineNo">1328</span>    <a name="line.1328"></a>
-<span class="sourceLineNo">1329</span>    private RepositoryScanningConfiguration readRepositoryScanningConfiguration( String prefix, Registry registry )<a name="line.1329"></a>
-<span class="sourceLineNo">1330</span>    {<a name="line.1330"></a>
-<span class="sourceLineNo">1331</span>        RepositoryScanningConfiguration value = new RepositoryScanningConfiguration();<a name="line.1331"></a>
-<span class="sourceLineNo">1332</span><a name="line.1332"></a>
-<span class="sourceLineNo">1333</span>        java.util.List fileTypes = new java.util.ArrayList/*&lt;FileType&gt;*/();<a name="line.1333"></a>
-<span class="sourceLineNo">1334</span>        List fileTypesSubsets = registry.getSubsetList( prefix + "fileTypes.fileType" );<a name="line.1334"></a>
-<span class="sourceLineNo">1335</span>        for ( Iterator i = fileTypesSubsets.iterator(); i.hasNext(); )<a name="line.1335"></a>
-<span class="sourceLineNo">1336</span>        {<a name="line.1336"></a>
-<span class="sourceLineNo">1337</span>            FileType v = readFileType( "", (Registry) i.next() );<a name="line.1337"></a>
-<span class="sourceLineNo">1338</span>            fileTypes.add( v );<a name="line.1338"></a>
-<span class="sourceLineNo">1339</span>        }<a name="line.1339"></a>
-<span class="sourceLineNo">1340</span>        value.setFileTypes( fileTypes );<a name="line.1340"></a>
-<span class="sourceLineNo">1341</span>        java.util.List knownContentConsumers = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1341"></a>
-<span class="sourceLineNo">1342</span>        knownContentConsumers.addAll( registry.getList( prefix + "knownContentConsumers.knownContentConsumer" ) );<a name="line.1342"></a>
-<span class="sourceLineNo">1343</span>        value.setKnownContentConsumers( knownContentConsumers );<a name="line.1343"></a>
-<span class="sourceLineNo">1344</span>        java.util.List invalidContentConsumers = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1344"></a>
-<span class="sourceLineNo">1345</span>        invalidContentConsumers.addAll( registry.getList( prefix + "invalidContentConsumers.invalidContentConsumer" ) );<a name="line.1345"></a>
-<span class="sourceLineNo">1346</span>        value.setInvalidContentConsumers( invalidContentConsumers );<a name="line.1346"></a>
-<span class="sourceLineNo">1347</span><a name="line.1347"></a>
-<span class="sourceLineNo">1348</span>        return value;<a name="line.1348"></a>
-<span class="sourceLineNo">1349</span>    }<a name="line.1349"></a>
-<span class="sourceLineNo">1350</span>    <a name="line.1350"></a>
-<span class="sourceLineNo">1351</span>    private FileType readFileType( String prefix, Registry registry )<a name="line.1351"></a>
-<span class="sourceLineNo">1352</span>    {<a name="line.1352"></a>
-<span class="sourceLineNo">1353</span>        FileType value = new FileType();<a name="line.1353"></a>
-<span class="sourceLineNo">1354</span><a name="line.1354"></a>
-<span class="sourceLineNo">1355</span>    //String id = registry.getString( prefix + "id", value.getId() );<a name="line.1355"></a>
-<span class="sourceLineNo">1356</span><a name="line.1356"></a>
-<span class="sourceLineNo">1357</span>    List&lt;String&gt; idList = registry.getList( prefix + "id" );<a name="line.1357"></a>
-<span class="sourceLineNo">1358</span>    String id = value.getId();<a name="line.1358"></a>
-<span class="sourceLineNo">1359</span>    if (idList != null &amp;&amp; !idList.isEmpty() )<a name="line.1359"></a>
-<span class="sourceLineNo">1360</span>    {<a name="line.1360"></a>
-<span class="sourceLineNo">1361</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1361"></a>
-<span class="sourceLineNo">1362</span>        for (int i = 0,size = idList.size();i&lt;size;i++)<a name="line.1362"></a>
-<span class="sourceLineNo">1363</span>        {<a name="line.1363"></a>
-<span class="sourceLineNo">1364</span>            sb.append( idList.get( i ) );<a name="line.1364"></a>
-<span class="sourceLineNo">1365</span>            if (i&lt;size - 1)<a name="line.1365"></a>
-<span class="sourceLineNo">1366</span>            {<a name="line.1366"></a>
-<span class="sourceLineNo">1367</span>                sb.append( ',' );<a name="line.1367"></a>
-<span class="sourceLineNo">1368</span>            }<a name="line.1368"></a>
-<span class="sourceLineNo">1369</span>        }<a name="line.1369"></a>
-<span class="sourceLineNo">1370</span>        id = sb.toString();<a name="line.1370"></a>
-<span class="sourceLineNo">1371</span>    }<a name="line.1371"></a>
-<span class="sourceLineNo">1372</span><a name="line.1372"></a>
-<span class="sourceLineNo">1373</span>        value.setId( id );<a name="line.1373"></a>
-<span class="sourceLineNo">1374</span>        java.util.List patterns = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1374"></a>
-<span class="sourceLineNo">1375</span>        patterns.addAll( registry.getList( prefix + "patterns.pattern" ) );<a name="line.1375"></a>
-<span class="sourceLineNo">1376</span>        value.setPatterns( patterns );<a name="line.1376"></a>
-<span class="sourceLineNo">1377</span><a name="line.1377"></a>
-<span class="sourceLineNo">1378</span>        return value;<a name="line.1378"></a>
-<span class="sourceLineNo">1379</span>    }<a name="line.1379"></a>
-<span class="sourceLineNo">1380</span>    <a name="line.1380"></a>
-<span class="sourceLineNo">1381</span>    private OrganisationInformation readOrganisationInformation( String prefix, Registry registry )<a name="line.1381"></a>
-<span class="sourceLineNo">1382</span>    {<a name="line.1382"></a>
-<span class="sourceLineNo">1383</span>        OrganisationInformation value = new OrganisationInformation();<a name="line.1383"></a>
-<span class="sourceLineNo">1384</span><a name="line.1384"></a>
-<span class="sourceLineNo">1385</span>    //String name = registry.getString( prefix + "name", value.getName() );<a name="line.1385"></a>
-<span class="sourceLineNo">1386</span><a name="line.1386"></a>
-<span class="sourceLineNo">1387</span>    List&lt;String&gt; nameList = registry.getList( prefix + "name" );<a name="line.1387"></a>
-<span class="sourceLineNo">1388</span>    String name = value.getName();<a name="line.1388"></a>
-<span class="sourceLineNo">1389</span>    if (nameList != null &amp;&amp; !nameList.isEmpty() )<a name="line.1389"></a>
-<span class="sourceLineNo">1390</span>    {<a name="line.1390"></a>
-<span class="sourceLineNo">1391</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1391"></a>
-<span class="sourceLineNo">1392</span>        for (int i = 0,size = nameList.size();i&lt;size;i++)<a name="line.1392"></a>
-<span class="sourceLineNo">1393</span>        {<a name="line.1393"></a>
-<span class="sourceLineNo">1394</span>            sb.append( nameList.get( i ) );<a name="line.1394"></a>
-<span class="sourceLineNo">1395</span>            if (i&lt;size - 1)<a name="line.1395"></a>
-<span class="sourceLineNo">1396</span>            {<a name="line.1396"></a>
-<span class="sourceLineNo">1397</span>                sb.append( ',' );<a name="line.1397"></a>
-<span class="sourceLineNo">1398</span>            }<a name="line.1398"></a>
-<span class="sourceLineNo">1399</span>        }<a name="line.1399"></a>
-<span class="sourceLineNo">1400</span>        name = sb.toString();<a name="line.1400"></a>
-<span class="sourceLineNo">1401</span>    }<a name="line.1401"></a>
-<span class="sourceLineNo">1402</span><a name="line.1402"></a>
-<span class="sourceLineNo">1403</span>        value.setName( name );<a name="line.1403"></a>
-<span class="sourceLineNo">1404</span>    //String url = registry.getString( prefix + "url", value.getUrl() );<a name="line.1404"></a>
+<span class="sourceLineNo">1322</span>        value.setUsername( username );<a name="line.1322"></a>
+<span class="sourceLineNo">1323</span>    //String password = registry.getString( prefix + "password", value.getPassword() );<a name="line.1323"></a>
+<span class="sourceLineNo">1324</span><a name="line.1324"></a>
+<span class="sourceLineNo">1325</span>    List&lt;String&gt; passwordList = registry.getList( prefix + "password" );<a name="line.1325"></a>
+<span class="sourceLineNo">1326</span>    String password = value.getPassword();<a name="line.1326"></a>
+<span class="sourceLineNo">1327</span>    if (passwordList != null &amp;&amp; !passwordList.isEmpty() )<a name="line.1327"></a>
+<span class="sourceLineNo">1328</span>    {<a name="line.1328"></a>
+<span class="sourceLineNo">1329</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1329"></a>
+<span class="sourceLineNo">1330</span>        for (int i = 0,size = passwordList.size();i&lt;size;i++)<a name="line.1330"></a>
+<span class="sourceLineNo">1331</span>        {<a name="line.1331"></a>
+<span class="sourceLineNo">1332</span>            sb.append( passwordList.get( i ) );<a name="line.1332"></a>
+<span class="sourceLineNo">1333</span>            if (i&lt;size - 1)<a name="line.1333"></a>
+<span class="sourceLineNo">1334</span>            {<a name="line.1334"></a>
+<span class="sourceLineNo">1335</span>                sb.append( ',' );<a name="line.1335"></a>
+<span class="sourceLineNo">1336</span>            }<a name="line.1336"></a>
+<span class="sourceLineNo">1337</span>        }<a name="line.1337"></a>
+<span class="sourceLineNo">1338</span>        password = sb.toString();<a name="line.1338"></a>
+<span class="sourceLineNo">1339</span>    }<a name="line.1339"></a>
+<span class="sourceLineNo">1340</span><a name="line.1340"></a>
+<span class="sourceLineNo">1341</span>        value.setPassword( password );<a name="line.1341"></a>
+<span class="sourceLineNo">1342</span>        boolean useNtlm = registry.getBoolean( prefix + "useNtlm", value.isUseNtlm() );<a name="line.1342"></a>
+<span class="sourceLineNo">1343</span>        value.setUseNtlm( useNtlm );<a name="line.1343"></a>
+<span class="sourceLineNo">1344</span><a name="line.1344"></a>
+<span class="sourceLineNo">1345</span>        return value;<a name="line.1345"></a>
+<span class="sourceLineNo">1346</span>    }<a name="line.1346"></a>
+<span class="sourceLineNo">1347</span>    <a name="line.1347"></a>
+<span class="sourceLineNo">1348</span>    private RepositoryScanningConfiguration readRepositoryScanningConfiguration( String prefix, Registry registry )<a name="line.1348"></a>
+<span class="sourceLineNo">1349</span>    {<a name="line.1349"></a>
+<span class="sourceLineNo">1350</span>        RepositoryScanningConfiguration value = new RepositoryScanningConfiguration();<a name="line.1350"></a>
+<span class="sourceLineNo">1351</span><a name="line.1351"></a>
+<span class="sourceLineNo">1352</span>        java.util.List fileTypes = new java.util.ArrayList/*&lt;FileType&gt;*/();<a name="line.1352"></a>
+<span class="sourceLineNo">1353</span>        List fileTypesSubsets = registry.getSubsetList( prefix + "fileTypes.fileType" );<a name="line.1353"></a>
+<span class="sourceLineNo">1354</span>        for ( Iterator i = fileTypesSubsets.iterator(); i.hasNext(); )<a name="line.1354"></a>
+<span class="sourceLineNo">1355</span>        {<a name="line.1355"></a>
+<span class="sourceLineNo">1356</span>            FileType v = readFileType( "", (Registry) i.next() );<a name="line.1356"></a>
+<span class="sourceLineNo">1357</span>            fileTypes.add( v );<a name="line.1357"></a>
+<span class="sourceLineNo">1358</span>        }<a name="line.1358"></a>
+<span class="sourceLineNo">1359</span>        value.setFileTypes( fileTypes );<a name="line.1359"></a>
+<span class="sourceLineNo">1360</span>        java.util.List knownContentConsumers = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1360"></a>
+<span class="sourceLineNo">1361</span>        knownContentConsumers.addAll( registry.getList( prefix + "knownContentConsumers.knownContentConsumer" ) );<a name="line.1361"></a>
+<span class="sourceLineNo">1362</span>        value.setKnownContentConsumers( knownContentConsumers );<a name="line.1362"></a>
+<span class="sourceLineNo">1363</span>        java.util.List invalidContentConsumers = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1363"></a>
+<span class="sourceLineNo">1364</span>        invalidContentConsumers.addAll( registry.getList( prefix + "invalidContentConsumers.invalidContentConsumer" ) );<a name="line.1364"></a>
+<span class="sourceLineNo">1365</span>        value.setInvalidContentConsumers( invalidContentConsumers );<a name="line.1365"></a>
+<span class="sourceLineNo">1366</span><a name="line.1366"></a>
+<span class="sourceLineNo">1367</span>        return value;<a name="line.1367"></a>
+<span class="sourceLineNo">1368</span>    }<a name="line.1368"></a>
+<span class="sourceLineNo">1369</span>    <a name="line.1369"></a>
+<span class="sourceLineNo">1370</span>    private FileType readFileType( String prefix, Registry registry )<a name="line.1370"></a>
+<span class="sourceLineNo">1371</span>    {<a name="line.1371"></a>
+<span class="sourceLineNo">1372</span>        FileType value = new FileType();<a name="line.1372"></a>
+<span class="sourceLineNo">1373</span><a name="line.1373"></a>
+<span class="sourceLineNo">1374</span>    //String id = registry.getString( prefix + "id", value.getId() );<a name="line.1374"></a>
+<span class="sourceLineNo">1375</span><a name="line.1375"></a>
+<span class="sourceLineNo">1376</span>    List&lt;String&gt; idList = registry.getList( prefix + "id" );<a name="line.1376"></a>
+<span class="sourceLineNo">1377</span>    String id = value.getId();<a name="line.1377"></a>
+<span class="sourceLineNo">1378</span>    if (idList != null &amp;&amp; !idList.isEmpty() )<a name="line.1378"></a>
+<span class="sourceLineNo">1379</span>    {<a name="line.1379"></a>
+<span class="sourceLineNo">1380</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1380"></a>
+<span class="sourceLineNo">1381</span>        for (int i = 0,size = idList.size();i&lt;size;i++)<a name="line.1381"></a>
+<span class="sourceLineNo">1382</span>        {<a name="line.1382"></a>
+<span class="sourceLineNo">1383</span>            sb.append( idList.get( i ) );<a name="line.1383"></a>
+<span class="sourceLineNo">1384</span>            if (i&lt;size - 1)<a name="line.1384"></a>
+<span class="sourceLineNo">1385</span>            {<a name="line.1385"></a>
+<span class="sourceLineNo">1386</span>                sb.append( ',' );<a name="line.1386"></a>
+<span class="sourceLineNo">1387</span>            }<a name="line.1387"></a>
+<span class="sourceLineNo">1388</span>        }<a name="line.1388"></a>
+<span class="sourceLineNo">1389</span>        id = sb.toString();<a name="line.1389"></a>
+<span class="sourceLineNo">1390</span>    }<a name="line.1390"></a>
+<span class="sourceLineNo">1391</span><a name="line.1391"></a>
+<span class="sourceLineNo">1392</span>        value.setId( id );<a name="line.1392"></a>
+<span class="sourceLineNo">1393</span>        java.util.List patterns = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1393"></a>
+<span class="sourceLineNo">1394</span>        patterns.addAll( registry.getList( prefix + "patterns.pattern" ) );<a name="line.1394"></a>
+<span class="sourceLineNo">1395</span>        value.setPatterns( patterns );<a name="line.1395"></a>
+<span class="sourceLineNo">1396</span><a name="line.1396"></a>
+<span class="sourceLineNo">1397</span>        return value;<a name="line.1397"></a>
+<span class="sourceLineNo">1398</span>    }<a name="line.1398"></a>
+<span class="sourceLineNo">1399</span>    <a name="line.1399"></a>
+<span class="sourceLineNo">1400</span>    private OrganisationInformation readOrganisationInformation( String prefix, Registry registry )<a name="line.1400"></a>
+<span class="sourceLineNo">1401</span>    {<a name="line.1401"></a>
+<span class="sourceLineNo">1402</span>        OrganisationInformation value = new OrganisationInformation();<a name="line.1402"></a>
+<span class="sourceLineNo">1403</span><a name="line.1403"></a>
+<span class="sourceLineNo">1404</span>    //String name = registry.getString( prefix + "name", value.getName() );<a name="line.1404"></a>
 <span class="sourceLineNo">1405</span><a name="line.1405"></a>
-<span class="sourceLineNo">1406</span>    List&lt;String&gt; urlList = registry.getList( prefix + "url" );<a name="line.1406"></a>
-<span class="sourceLineNo">1407</span>    String url = value.getUrl();<a name="line.1407"></a>
-<span class="sourceLineNo">1408</span>    if (urlList != null &amp;&amp; !urlList.isEmpty() )<a name="line.1408"></a>
+<span class="sourceLineNo">1406</span>    List&lt;String&gt; nameList = registry.getList( prefix + "name" );<a name="line.1406"></a>
+<span class="sourceLineNo">1407</span>    String name = value.getName();<a name="line.1407"></a>
+<span class="sourceLineNo">1408</span>    if (nameList != null &amp;&amp; !nameList.isEmpty() )<a name="line.1408"></a>
 <span class="sourceLineNo">1409</span>    {<a name="line.1409"></a>
 <span class="sourceLineNo">1410</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1410"></a>
-<span class="sourceLineNo">1411</span>        for (int i = 0,size = urlList.size();i&lt;size;i++)<a name="line.1411"></a>
+<span class="sourceLineNo">1411</span>        for (int i = 0,size = nameList.size();i&lt;size;i++)<a name="line.1411"></a>
 <span class="sourceLineNo">1412</span>        {<a name="line.1412"></a>
-<span class="sourceLineNo">1413</span>            sb.append( urlList.get( i ) );<a name="line.1413"></a>
+<span class="sourceLineNo">1413</span>            sb.append( nameList.get( i ) );<a name="line.1413"></a>
 <span class="sourceLineNo">1414</span>            if (i&lt;size - 1)<a name="line.1414"></a>
 <span class="sourceLineNo">1415</span>            {<a name="line.1415"></a>
 <span class="sourceLineNo">1416</span>                sb.append( ',' );<a name="line.1416"></a>
 <span class="sourceLineNo">1417</span>            }<a name="line.1417"></a>
 <span class="sourceLineNo">1418</span>        }<a name="line.1418"></a>
-<span class="sourceLineNo">1419</span>        url = sb.toString();<a name="line.1419"></a>
+<span class="sourceLineNo">1419</span>        name = sb.toString();<a name="line.1419"></a>
 <span class="sourceLineNo">1420</span>    }<a name="line.1420"></a>
 <span class="sourceLineNo">1421</span><a name="line.1421"></a>
-<span class="sourceLineNo">1422</span>        value.setUrl( url );<a name="line.1422"></a>
-<span class="sourceLineNo">1423</span>    //String logoLocation = registry.getString( prefix + "logoLocation", value.getLogoLocation() );<a name="line.1423"></a>
+<span class="sourceLineNo">1422</span>        value.setName( name );<a name="line.1422"></a>
+<span class="sourceLineNo">1423</span>    //String url = registry.getString( prefix + "url", value.getUrl() );<a name="line.1423"></a>
 <span class="sourceLineNo">1424</span><a name="line.1424"></a>
-<span class="sourceLineNo">1425</span>    List&lt;String&gt; logoLocationList = registry.getList( prefix + "logoLocation" );<a name="line.1425"></a>
-<span class="sourceLineNo">1426</span>    String logoLocation = value.getLogoLocation();<a name="line.1426"></a>
-<span class="sourceLineNo">1427</span>    if (logoLocationList != null &amp;&amp; !logoLocationList.isEmpty() )<a name="line.1427"></a>
+<span class="sourceLineNo">1425</span>    List&lt;String&gt; urlList = registry.getList( prefix + "url" );<a name="line.1425"></a>
+<span class="sourceLineNo">1426</span>    String url = value.getUrl();<a name="line.1426"></a>
+<span class="sourceLineNo">1427</span>    if (urlList != null &amp;&amp; !urlList.isEmpty() )<a name="line.1427"></a>
 <span class="sourceLineNo">1428</span>    {<a name="line.1428"></a>
 <span class="sourceLineNo">1429</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1429"></a>
-<span class="sourceLineNo">1430</span>        for (int i = 0,size = logoLocationList.size();i&lt;size;i++)<a name="line.1430"></a>
+<span class="sourceLineNo">1430</span>        for (int i = 0,size = urlList.size();i&lt;size;i++)<a name="line.1430"></a>
 <span class="sourceLineNo">1431</span>        {<a name="line.1431"></a>
-<span class="sourceLineNo">1432</span>            sb.append( logoLocationList.get( i ) );<a name="line.1432"></a>
+<span class="sourceLineNo">1432</span>            sb.append( urlList.get( i ) );<a name="line.1432"></a>
 <span class="sourceLineNo">1433</span>            if (i&lt;size - 1)<a name="line.1433"></a>
 <span class="sourceLineNo">1434</span>            {<a name="line.1434"></a>
 <span class="sourceLineNo">1435</span>                sb.append( ',' );<a name="line.1435"></a>
 <span class="sourceLineNo">1436</span>            }<a name="line.1436"></a>
 <span class="sourceLineNo">1437</span>        }<a name="line.1437"></a>
-<span class="sourceLineNo">1438</span>        logoLocation = sb.toString();<a name="line.1438"></a>
+<span class="sourceLineNo">1438</span>        url = sb.toString();<a name="line.1438"></a>
 <span class="sourceLineNo">1439</span>    }<a name="line.1439"></a>
 <span class="sourceLineNo">1440</span><a name="line.1440"></a>
-<span class="sourceLineNo">1441</span>        value.setLogoLocation( logoLocation );<a name="line.1441"></a>
-<span class="sourceLineNo">1442</span><a name="line.1442"></a>
-<span class="sourceLineNo">1443</span>        return value;<a name="line.1443"></a>
-<span class="sourceLineNo">1444</span>    }<a name="line.1444"></a>
-<span class="sourceLineNo">1445</span>    <a name="line.1445"></a>
-<span class="sourceLineNo">1446</span>    private WebappConfiguration readWebappConfiguration( String prefix, Registry registry )<a name="line.1446"></a>
+<span class="sourceLineNo">1441</span>        value.setUrl( url );<a name="line.1441"></a>
+<span class="sourceLineNo">1442</span>    //String logoLocation = registry.getString( prefix + "logoLocation", value.getLogoLocation() );<a name="line.1442"></a>
+<span class="sourceLineNo">1443</span><a name="line.1443"></a>
+<span class="sourceLineNo">1444</span>    List&lt;String&gt; logoLocationList = registry.getList( prefix + "logoLocation" );<a name="line.1444"></a>
+<span class="sourceLineNo">1445</span>    String logoLocation = value.getLogoLocation();<a name="line.1445"></a>
+<span class="sourceLineNo">1446</span>    if (logoLocationList != null &amp;&amp; !logoLocationList.isEmpty() )<a name="line.1446"></a>
 <span class="sourceLineNo">1447</span>    {<a name="line.1447"></a>
-<span class="sourceLineNo">1448</span>        WebappConfiguration value = new WebappConfiguration();<a name="line.1448"></a>
-<span class="sourceLineNo">1449</span><a name="line.1449"></a>
-<span class="sourceLineNo">1450</span>        UserInterfaceOptions ui = readUserInterfaceOptions( prefix + "ui.", registry );<a name="line.1450"></a>
-<span class="sourceLineNo">1451</span>        value.setUi( ui );<a name="line.1451"></a>
-<span class="sourceLineNo">1452</span><a name="line.1452"></a>
-<span class="sourceLineNo">1453</span>        return value;<a name="line.1453"></a>
-<span class="sourceLineNo">1454</span>    }<a name="line.1454"></a>
-<span class="sourceLineNo">1455</span>    <a name="line.1455"></a>
-<span class="sourceLineNo">1456</span>    private UserInterfaceOptions readUserInterfaceOptions( String prefix, Registry registry )<a name="line.1456"></a>
-<span class="sourceLineNo">1457</span>    {<a name="line.1457"></a>
-<span class="sourceLineNo">1458</span>        UserInterfaceOptions value = new UserInterfaceOptions();<a name="line.1458"></a>
+<span class="sourceLineNo">1448</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1448"></a>
+<span class="sourceLineNo">1449</span>        for (int i = 0,size = logoLocationList.size();i&lt;size;i++)<a name="line.1449"></a>
+<span class="sourceLineNo">1450</span>        {<a name="line.1450"></a>
+<span class="sourceLineNo">1451</span>            sb.append( logoLocationList.get( i ) );<a name="line.1451"></a>
+<span class="sourceLineNo">1452</span>            if (i&lt;size - 1)<a name="line.1452"></a>
+<span class="sourceLineNo">1453</span>            {<a name="line.1453"></a>
+<span class="sourceLineNo">1454</span>                sb.append( ',' );<a name="line.1454"></a>
+<span class="sourceLineNo">1455</span>            }<a name="line.1455"></a>
+<span class="sourceLineNo">1456</span>        }<a name="line.1456"></a>
+<span class="sourceLineNo">1457</span>        logoLocation = sb.toString();<a name="line.1457"></a>
+<span class="sourceLineNo">1458</span>    }<a name="line.1458"></a>
 <span class="sourceLineNo">1459</span><a name="line.1459"></a>
-<span class="sourceLineNo">1460</span>        boolean showFindArtifacts = registry.getBoolean( prefix + "showFindArtifacts", value.isShowFindArtifacts() );<a name="line.1460"></a>
-<span class="sourceLineNo">1461</span>        value.setShowFindArtifacts( showFindArtifacts );<a name="line.1461"></a>
-<span class="sourceLineNo">1462</span>        boolean appletFindEnabled = registry.getBoolean( prefix + "appletFindEnabled", value.isAppletFindEnabled() );<a name="line.1462"></a>
-<span class="sourceLineNo">1463</span>        value.setAppletFindEnabled( appletFindEnabled );<a name="line.1463"></a>
-<span class="sourceLineNo">1464</span>        boolean disableEasterEggs = registry.getBoolean( prefix + "disableEasterEggs", value.isDisableEasterEggs() );<a name="line.1464"></a>
-<span class="sourceLineNo">1465</span>        value.setDisableEasterEggs( disableEasterEggs );<a name="line.1465"></a>
-<span class="sourceLineNo">1466</span>    //String applicationUrl = registry.getString( prefix + "applicationUrl", value.getApplicationUrl() );<a name="line.1466"></a>
-<span class="sourceLineNo">1467</span><a name="line.1467"></a>
-<span class="sourceLineNo">1468</span>    List&lt;String&gt; applicationUrlList = registry.getList( prefix + "applicationUrl" );<a name="line.1468"></a>
-<span class="sourceLineNo">1469</span>    String applicationUrl = value.getApplicationUrl();<a name="line.1469"></a>
-<span class="sourceLineNo">1470</span>    if (applicationUrlList != null &amp;&amp; !applicationUrlList.isEmpty() )<a name="line.1470"></a>
-<span class="sourceLineNo">1471</span>    {<a name="line.1471"></a>
-<span class="sourceLineNo">1472</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1472"></a>
-<span class="sourceLineNo">1473</span>        for (int i = 0,size = applicationUrlList.size();i&lt;size;i++)<a name="line.1473"></a>
-<span class="sourceLineNo">1474</span>        {<a name="line.1474"></a>
-<span class="sourceLineNo">1475</span>            sb.append( applicationUrlList.get( i ) );<a name="line.1475"></a>
-<span class="sourceLineNo">1476</span>            if (i&lt;size - 1)<a name="line.1476"></a>
-<span class="sourceLineNo">1477</span>            {<a name="line.1477"></a>
-<span class="sourceLineNo">1478</span>                sb.append( ',' );<a name="line.1478"></a>
-<span class="sourceLineNo">1479</span>            }<a name="line.1479"></a>
-<span class="sourceLineNo">1480</span>        }<a name="line.1480"></a>
-<span class="sourceLineNo">1481</span>        applicationUrl = sb.toString();<a name="line.1481"></a>
-<span class="sourceLineNo">1482</span>    }<a name="line.1482"></a>
-<span class="sourceLineNo">1483</span><a name="line.1483"></a>
-<span class="sourceLineNo">1484</span>        value.setApplicationUrl( applicationUrl );<a name="line.1484"></a>
-<span class="sourceLineNo">1485</span>        boolean disableRegistration = registry.getBoolean( prefix + "disableRegistration", value.isDisableRegistration() );<a name="line.1485"></a>
-<span class="sourceLineNo">1486</span>        value.setDisableRegistration( disableRegistration );<a name="line.1486"></a>
-<span class="sourceLineNo">1487</span><a name="line.1487"></a>
-<span class="sourceLineNo">1488</span>        return value;<a name="line.1488"></a>
-<span class="sourceLineNo">1489</span>    }<a name="line.1489"></a>
-<span class="sourceLineNo">1490</span>    <a name="line.1490"></a>
-<span class="sourceLineNo">1491</span>    private NetworkConfiguration readNetworkConfiguration( String prefix, Registry registry )<a name="line.1491"></a>
-<span class="sourceLineNo">1492</span>    {<a name="line.1492"></a>
-<span class="sourceLineNo">1493</span>        NetworkConfiguration value = new NetworkConfiguration();<a name="line.1493"></a>
-<span class="sourceLineNo">1494</span><a name="line.1494"></a>
-<span class="sourceLineNo">1495</span>    int maxTotal = registry.getInt( prefix + "maxTotal", value.getMaxTotal() );<a name="line.1495"></a>
-<span class="sourceLineNo">1496</span>        value.setMaxTotal( maxTotal );<a name="line.1496"></a>
-<span class="sourceLineNo">1497</span>    int maxTotalPerHost = registry.getInt( prefix + "maxTotalPerHost", value.getMaxTotalPerHost() );<a name="line.1497"></a>
-<span class="sourceLineNo">1498</span>        value.setMaxTotalPerHost( maxTotalPerHost );<a name="line.1498"></a>
-<span class="sourceLineNo">1499</span>        boolean usePooling = registry.getBoolean( prefix + "usePooling", value.isUsePooling() );<a name="line.1499"></a>
-<span class="sourceLineNo">1500</span>        value.setUsePooling( usePooling );<a name="line.1500"></a>
-<span class="sourceLineNo">1501</span><a name="line.1501"></a>
-<span class="sourceLineNo">1502</span>        return value;<a name="line.1502"></a>
-<span class="sourceLineNo">1503</span>    }<a name="line.1503"></a>
-<span class="sourceLineNo">1504</span>    <a name="line.1504"></a>
-<span class="sourceLineNo">1505</span>    private ArchivaRuntimeConfiguration readArchivaRuntimeConfiguration( String prefix, Registry registry )<a name="line.1505"></a>
-<span class="sourceLineNo">1506</span>    {<a name="line.1506"></a>
-<span class="sourceLineNo">1507</span>        ArchivaRuntimeConfiguration value = new ArchivaRuntimeConfiguration();<a name="line.1507"></a>
-<span class="sourceLineNo">1508</span><a name="line.1508"></a>
-<span class="sourceLineNo">1509</span>        CacheConfiguration urlFailureCacheConfiguration = readCacheConfiguration( prefix + "urlFailureCacheConfiguration.", registry );<a name="line.1509"></a>
-<span class="sourceLineNo">1510</span>        value.setUrlFailureCacheConfiguration( urlFailureCacheConfiguration );<a name="line.1510"></a>
-<span class="sourceLineNo">1511</span><a name="line.1511"></a>
-<span class="sourceLineNo">1512</span>        return value;<a name="line.1512"></a>
-<span class="sourceLineNo">1513</span>    }<a name="line.1513"></a>
-<span class="sourceLineNo">1514</span>    <a name="line.1514"></a>
-<span class="sourceLineNo">1515</span>    private RedbackRuntimeConfiguration readRedbackRuntimeConfiguration( String prefix, Registry registry )<a name="line.1515"></a>
-<span class="sourceLineNo">1516</span>    {<a name="line.1516"></a>
-<span class="sourceLineNo">1517</span>        RedbackRuntimeConfiguration value = new RedbackRuntimeConfiguration();<a name="line.1517"></a>
-<span class="sourceLineNo">1518</span><a name="line.1518"></a>
-<span class="sourceLineNo">1519</span>        boolean migratedFromRedbackConfiguration = registry.getBoolean( prefix + "migratedFromRedbackConfiguration", value.isMigratedFromRedbackConfiguration() );<a name="line.1519"></a>
-<span class="sourceLineNo">1520</span>        value.setMigratedFromRedbackConfiguration( migratedFromRedbackConfiguration );<a name="line.1520"></a>
-<span class="sourceLineNo">1521</span>        java.util.List userManagerImpls = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1521"></a>
-<span class="sourceLineNo">1522</span>        userManagerImpls.addAll( registry.getList( prefix + "userManagerImpls.userManagerImpl" ) );<a name="line.1522"></a>
-<span class="sourceLineNo">1523</span>        value.setUserManagerImpls( userManagerImpls );<a name="line.1523"></a>
-<span class="sourceLineNo">1524</span>        java.util.List rbacManagerImpls = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1524"></a>
-<span class="sourceLineNo">1525</span>        rbacManagerImpls.addAll( registry.getList( prefix + "rbacManagerImpls.rbacManagerImpl" ) );<a name="line.1525"></a>
-<span class="sourceLineNo">1526</span>        value.setRbacManagerImpls( rbacManagerImpls );<a name="line.1526"></a>
-<span class="sourceLineNo">1527</span>        LdapConfiguration ldapConfiguration = readLdapConfiguration( prefix + "ldapConfiguration.", registry );<a name="line.1527"></a>
-<span class="sourceLineNo">1528</span>        value.setLdapConfiguration( ldapConfiguration );<a name="line.1528"></a>
-<span class="sourceLineNo">1529</span>        java.util.List ldapGroupMappings = new java.util.ArrayList/*&lt;LdapGroupMapping&gt;*/();<a name="line.1529"></a>
-<span class="sourceLineNo">1530</span>        List ldapGroupMappingsSubsets = registry.getSubsetList( prefix + "ldapGroupMappings.ldapGroupMapping" );<a name="line.1530"></a>
-<span class="sourceLineNo">1531</span>        for ( Iterator i = ldapGroupMappingsSubsets.iterator(); i.hasNext(); )<a name="line.1531"></a>
-<span class="sourceLineNo">1532</span>        {<a name="line.1532"></a>
-<span class="sourceLineNo">1533</span>            LdapGroupMapping v = readLdapGroupMapping( "", (Registry) i.next() );<a name="line.1533"></a>
-<span class="sourceLineNo">1534</span>            ldapGroupMappings.add( v );<a name="line.1534"></a>
-<span class="sourceLineNo">1535</span>        }<a name="line.1535"></a>
-<span class="sourceLineNo">1536</span>        value.setLdapGroupMappings( ldapGroupMappings );<a name="line.1536"></a>
-<span class="sourceLineNo">1537</span>        java.util.Map configurationProperties = registry.getProperties( prefix + "configurationProperties" );<a name="line.1537"></a>
-<span class="sourceLineNo">1538</span>        value.setConfigurationProperties( configurationProperties );<a name="line.1538"></a>
-<span class="sourceLineNo">1539</span>        boolean useUsersCache = registry.getBoolean( prefix + "useUsersCache", value.isUseUsersCache() );<a name="line.1539"></a>
-<span class="sourceLineNo">1540</span>        value.setUseUsersCache( useUsersCache );<a name="line.1540"></a>
-<span class="sourceLineNo">1541</span>        CacheConfiguration usersCacheConfiguration = readCacheConfiguration( prefix + "usersCacheConfiguration.", registry );<a name="line.1541"></a>
-<span class="sourceLineNo">1542</span>        value.setUsersCacheConfiguration( usersCacheConfiguration );<a name="line.1542"></a>
-<span class="sourceLineNo">1543</span><a name="line.1543"></a>
-<span class="sourceLineNo">1544</span>        return value;<a name="line.1544"></a>
-<span class="sourceLineNo">1545</span>    }<a name="line.1545"></a>
-<span class="sourceLineNo">1546</span>    <a name="line.1546"></a>
-<span class="sourceLineNo">1547</span>    private LdapConfiguration readLdapConfiguration( String prefix, Registry registry )<a name="line.1547"></a>
-<span class="sourceLineNo">1548</span>    {<a name="line.1548"></a>
-<span class="sourceLineNo">1549</span>        LdapConfiguration value = new LdapConfiguration();<a name="line.1549"></a>
-<span class="sourceLineNo">1550</span><a name="line.1550"></a>
-<span class="sourceLineNo">1551</span>    //String hostName = registry.getString( prefix + "hostName", value.getHostName() );<a name="line.1551"></a>
-<span class="sourceLineNo">1552</span><a name="line.1552"></a>
-<span class="sourceLineNo">1553</span>    List&lt;String&gt; hostNameList = registry.getList( prefix + "hostName" );<a name="line.1553"></a>
-<span class="sourceLineNo">1554</span>    String hostName = value.getHostName();<a name="line.1554"></a>
-<span class="sourceLineNo">1555</span>    if (hostNameList != null &amp;&amp; !hostNameList.isEmpty() )<a name="line.1555"></a>
-<span class="sourceLineNo">1556</span>    {<a name="line.1556"></a>
-<span class="sourceLineNo">1557</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1557"></a>
-<span class="sourceLineNo">1558</span>        for (int i = 0,size = hostNameList.size();i&lt;size;i++)<a name="line.1558"></a>
-<span class="sourceLineNo">1559</span>        {<a name="line.1559"></a>
-<span class="sourceLineNo">1560</span>            sb.append( hostNameList.get( i ) );<a name="line.1560"></a>
-<span class="sourceLineNo">1561</span>            if (i&lt;size - 1)<a name="line.1561"></a>
-<span class="sourceLineNo">1562</span>            {<a name="line.1562"></a>
-<span class="sourceLineNo">1563</span>                sb.append( ',' );<a name="line.1563"></a>
-<span class="sourceLineNo">1564</span>            }<a name="line.1564"></a>
-<span class="sourceLineNo">1565</span>        }<a name="line.1565"></a>
-<span class="sourceLineNo">1566</span>        hostName = sb.toString();<a name="line.1566"></a>
-<span class="sourceLineNo">1567</span>    }<a name="line.1567"></a>
-<span class="sourceLineNo">1568</span><a name="line.1568"></a>
-<span class="sourceLineNo">1569</span>        value.setHostName( hostName );<a name="line.1569"></a>
-<span class="sourceLineNo">1570</span>    int port = registry.getInt( prefix + "port", value.getPort() );<a name="line.1570"></a>
-<span class="sourceLineNo">1571</span>        value.setPort( port );<a name="line.1571"></a>
-<span class="sourceLineNo">1572</span>        boolean ssl = registry.getBoolean( prefix + "ssl", value.isSsl() );<a name="line.1572"></a>
-<span class="sourceLineNo">1573</span>        value.setSsl( ssl );<a name="line.1573"></a>
-<span class="sourceLineNo">1574</span>    //String baseDn = registry.getString( prefix + "baseDn", value.getBaseDn() );<a name="line.1574"></a>
-<span class="sourceLineNo">1575</span><a name="line.1575"></a>
-<span class="sourceLineNo">1576</span>    List&lt;String&gt; baseDnList = registry.getList( prefix + "baseDn" );<a name="line.1576"></a>
-<span class="sourceLineNo">1577</span>    String baseDn = value.getBaseDn();<a name="line.1577"></a>
-<span class="sourceLineNo">1578</span>    if (baseDnList != null &amp;&amp; !baseDnList.isEmpty() )<a name="line.1578"></a>
-<span class="sourceLineNo">1579</span>    {<a name="line.1579"></a>
-<span class="sourceLineNo">1580</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1580"></a>
-<span class="sourceLineNo">1581</span>        for (int i = 0,size = baseDnList.size();i&lt;size;i++)<a name="line.1581"></a>
-<span class="sourceLineNo">1582</span>        {<a name="line.1582"></a>
-<span class="sourceLineNo">1583</span>            sb.append( baseDnList.get( i ) );<a name="line.1583"></a>
-<span class="sourceLineNo">1584</span>            if (i&lt;size - 1)<a name="line.1584"></a>
-<span class="sourceLineNo">1585</span>            {<a name="line.1585"></a>
-<span class="sourceLineNo">1586</span>                sb.append( ',' );<a name="line.1586"></a>
-<span class="sourceLineNo">1587</span>            }<a name="line.1587"></a>
-<span class="sourceLineNo">1588</span>        }<a name="line.1588"></a>
-<span class="sourceLineNo">1589</span>        baseDn = sb.toString();<a name="line.1589"></a>
-<span class="sourceLineNo">1590</span>    }<a name="line.1590"></a>
-<span class="sourceLineNo">1591</span><a name="line.1591"></a>
-<span class="sourceLineNo">1592</span>        value.setBaseDn( baseDn );<a name="line.1592"></a>
-<span class="sourceLineNo">1593</span>    //String baseGroupsDn = registry.getString( prefix + "baseGroupsDn", value.getBaseGroupsDn() );<a name="line.1593"></a>
+<span class="sourceLineNo">1460</span>        value.setLogoLocation( logoLocation );<a name="line.1460"></a>
+<span class="sourceLineNo">1461</span><a name="line.1461"></a>
+<span class="sourceLineNo">1462</span>        return value;<a name="line.1462"></a>
+<span class="sourceLineNo">1463</span>    }<a name="line.1463"></a>
+<span class="sourceLineNo">1464</span>    <a name="line.1464"></a>
+<span class="sourceLineNo">1465</span>    private WebappConfiguration readWebappConfiguration( String prefix, Registry registry )<a name="line.1465"></a>
+<span class="sourceLineNo">1466</span>    {<a name="line.1466"></a>
+<span class="sourceLineNo">1467</span>        WebappConfiguration value = new WebappConfiguration();<a name="line.1467"></a>
+<span class="sourceLineNo">1468</span><a name="line.1468"></a>
+<span class="sourceLineNo">1469</span>        UserInterfaceOptions ui = readUserInterfaceOptions( prefix + "ui.", registry );<a name="line.1469"></a>
+<span class="sourceLineNo">1470</span>        value.setUi( ui );<a name="line.1470"></a>
+<span class="sourceLineNo">1471</span><a name="line.1471"></a>
+<span class="sourceLineNo">1472</span>        return value;<a name="line.1472"></a>
+<span class="sourceLineNo">1473</span>    }<a name="line.1473"></a>
+<span class="sourceLineNo">1474</span>    <a name="line.1474"></a>
+<span class="sourceLineNo">1475</span>    private UserInterfaceOptions readUserInterfaceOptions( String prefix, Registry registry )<a name="line.1475"></a>
+<span class="sourceLineNo">1476</span>    {<a name="line.1476"></a>
+<span class="sourceLineNo">1477</span>        UserInterfaceOptions value = new UserInterfaceOptions();<a name="line.1477"></a>
+<span class="sourceLineNo">1478</span><a name="line.1478"></a>
+<span class="sourceLineNo">1479</span>        boolean showFindArtifacts = registry.getBoolean( prefix + "showFindArtifacts", value.isShowFindArtifacts() );<a name="line.1479"></a>
+<span class="sourceLineNo">1480</span>        value.setShowFindArtifacts( showFindArtifacts );<a name="line.1480"></a>
+<span class="sourceLineNo">1481</span>        boolean appletFindEnabled = registry.getBoolean( prefix + "appletFindEnabled", value.isAppletFindEnabled() );<a name="line.1481"></a>
+<span class="sourceLineNo">1482</span>        value.setAppletFindEnabled( appletFindEnabled );<a name="line.1482"></a>
+<span class="sourceLineNo">1483</span>        boolean disableEasterEggs = registry.getBoolean( prefix + "disableEasterEggs", value.isDisableEasterEggs() );<a name="line.1483"></a>
+<span class="sourceLineNo">1484</span>        value.setDisableEasterEggs( disableEasterEggs );<a name="line.1484"></a>
+<span class="sourceLineNo">1485</span>    //String applicationUrl = registry.getString( prefix + "applicationUrl", value.getApplicationUrl() );<a name="line.1485"></a>
+<span class="sourceLineNo">1486</span><a name="line.1486"></a>
+<span class="sourceLineNo">1487</span>    List&lt;String&gt; applicationUrlList = registry.getList( prefix + "applicationUrl" );<a name="line.1487"></a>
+<span class="sourceLineNo">1488</span>    String applicationUrl = value.getApplicationUrl();<a name="line.1488"></a>
+<span class="sourceLineNo">1489</span>    if (applicationUrlList != null &amp;&amp; !applicationUrlList.isEmpty() )<a name="line.1489"></a>
+<span class="sourceLineNo">1490</span>    {<a name="line.1490"></a>
+<span class="sourceLineNo">1491</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1491"></a>
+<span class="sourceLineNo">1492</span>        for (int i = 0,size = applicationUrlList.size();i&lt;size;i++)<a name="line.1492"></a>
+<span class="sourceLineNo">1493</span>        {<a name="line.1493"></a>
+<span class="sourceLineNo">1494</span>            sb.append( applicationUrlList.get( i ) );<a name="line.1494"></a>
+<span class="sourceLineNo">1495</span>            if (i&lt;size - 1)<a name="line.1495"></a>
+<span class="sourceLineNo">1496</span>            {<a name="line.1496"></a>
+<span class="sourceLineNo">1497</span>                sb.append( ',' );<a name="line.1497"></a>
+<span class="sourceLineNo">1498</span>            }<a name="line.1498"></a>
+<span class="sourceLineNo">1499</span>        }<a name="line.1499"></a>
+<span class="sourceLineNo">1500</span>        applicationUrl = sb.toString();<a name="line.1500"></a>
+<span class="sourceLineNo">1501</span>    }<a name="line.1501"></a>
+<span class="sourceLineNo">1502</span><a name="line.1502"></a>
+<span class="sourceLineNo">1503</span>        value.setApplicationUrl( applicationUrl );<a name="line.1503"></a>
+<span class="sourceLineNo">1504</span>        boolean disableRegistration = registry.getBoolean( prefix + "disableRegistration", value.isDisableRegistration() );<a name="line.1504"></a>
+<span class="sourceLineNo">1505</span>        value.setDisableRegistration( disableRegistration );<a name="line.1505"></a>
+<span class="sourceLineNo">1506</span><a name="line.1506"></a>
+<span class="sourceLineNo">1507</span>        return value;<a name="line.1507"></a>
+<span class="sourceLineNo">1508</span>    }<a name="line.1508"></a>
+<span class="sourceLineNo">1509</span>    <a name="line.1509"></a>
+<span class="sourceLineNo">1510</span>    private NetworkConfiguration readNetworkConfiguration( String prefix, Registry registry )<a name="line.1510"></a>
+<span class="sourceLineNo">1511</span>    {<a name="line.1511"></a>
+<span class="sourceLineNo">1512</span>        NetworkConfiguration value = new NetworkConfiguration();<a name="line.1512"></a>
+<span class="sourceLineNo">1513</span><a name="line.1513"></a>
+<span class="sourceLineNo">1514</span>    int maxTotal = registry.getInt( prefix + "maxTotal", value.getMaxTotal() );<a name="line.1514"></a>
+<span class="sourceLineNo">1515</span>        value.setMaxTotal( maxTotal );<a name="line.1515"></a>
+<span class="sourceLineNo">1516</span>    int maxTotalPerHost = registry.getInt( prefix + "maxTotalPerHost", value.getMaxTotalPerHost() );<a name="line.1516"></a>
+<span class="sourceLineNo">1517</span>        value.setMaxTotalPerHost( maxTotalPerHost );<a name="line.1517"></a>
+<span class="sourceLineNo">1518</span>        boolean usePooling = registry.getBoolean( prefix + "usePooling", value.isUsePooling() );<a name="line.1518"></a>
+<span class="sourceLineNo">1519</span>        value.setUsePooling( usePooling );<a name="line.1519"></a>
+<span class="sourceLineNo">1520</span><a name="line.1520"></a>
+<span class="sourceLineNo">1521</span>        return value;<a name="line.1521"></a>
+<span class="sourceLineNo">1522</span>    }<a name="line.1522"></a>
+<span class="sourceLineNo">1523</span>    <a name="line.1523"></a>
+<span class="sourceLineNo">1524</span>    private ArchivaRuntimeConfiguration readArchivaRuntimeConfiguration( String prefix, Registry registry )<a name="line.1524"></a>
+<span class="sourceLineNo">1525</span>    {<a name="line.1525"></a>
+<span class="sourceLineNo">1526</span>        ArchivaRuntimeConfiguration value = new ArchivaRuntimeConfiguration();<a name="line.1526"></a>
+<span class="sourceLineNo">1527</span><a name="line.1527"></a>
+<span class="sourceLineNo">1528</span>        CacheConfiguration urlFailureCacheConfiguration = readCacheConfiguration( prefix + "urlFailureCacheConfiguration.", registry );<a name="line.1528"></a>
+<span class="sourceLineNo">1529</span>        value.setUrlFailureCacheConfiguration( urlFailureCacheConfiguration );<a name="line.1529"></a>
+<span class="sourceLineNo">1530</span><a name="line.1530"></a>
+<span class="sourceLineNo">1531</span>        return value;<a name="line.1531"></a>
+<span class="sourceLineNo">1532</span>    }<a name="line.1532"></a>
+<span class="sourceLineNo">1533</span>    <a name="line.1533"></a>
+<span class="sourceLineNo">1534</span>    private RedbackRuntimeConfiguration readRedbackRuntimeConfiguration( String prefix, Registry registry )<a name="line.1534"></a>
+<span class="sourceLineNo">1535</span>    {<a name="line.1535"></a>
+<span class="sourceLineNo">1536</span>        RedbackRuntimeConfiguration value = new RedbackRuntimeConfiguration();<a name="line.1536"></a>
+<span class="sourceLineNo">1537</span><a name="line.1537"></a>
+<span class="sourceLineNo">1538</span>        boolean migratedFromRedbackConfiguration = registry.getBoolean( prefix + "migratedFromRedbackConfiguration", value.isMigratedFromRedbackConfiguration() );<a name="line.1538"></a>
+<span class="sourceLineNo">1539</span>        value.setMigratedFromRedbackConfiguration( migratedFromRedbackConfiguration );<a name="line.1539"></a>
+<span class="sourceLineNo">1540</span>        java.util.List userManagerImpls = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1540"></a>
+<span class="sourceLineNo">1541</span>        userManagerImpls.addAll( registry.getList( prefix + "userManagerImpls.userManagerImpl" ) );<a name="line.1541"></a>
+<span class="sourceLineNo">1542</span>        value.setUserManagerImpls( userManagerImpls );<a name="line.1542"></a>
+<span class="sourceLineNo">1543</span>        java.util.List rbacManagerImpls = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1543"></a>
+<span class="sourceLineNo">1544</span>        rbacManagerImpls.addAll( registry.getList( prefix + "rbacManagerImpls.rbacManagerImpl" ) );<a name="line.1544"></a>
+<span class="sourceLineNo">1545</span>        value.setRbacManagerImpls( rbacManagerImpls );<a name="line.1545"></a>
+<span class="sourceLineNo">1546</span>        LdapConfiguration ldapConfiguration = readLdapConfiguration( prefix + "ldapConfiguration.", registry );<a name="line.1546"></a>
+<span class="sourceLineNo">1547</span>        value.setLdapConfiguration( ldapConfiguration );<a name="line.1547"></a>
+<span class="sourceLineNo">1548</span>        java.util.List ldapGroupMappings = new java.util.ArrayList/*&lt;LdapGroupMapping&gt;*/();<a name="line.1548"></a>
+<span class="sourceLineNo">1549</span>        List ldapGroupMappingsSubsets = registry.getSubsetList( prefix + "ldapGroupMappings.ldapGroupMapping" );<a name="line.1549"></a>
+<span class="sourceLineNo">1550</span>        for ( Iterator i = ldapGroupMappingsSubsets.iterator(); i.hasNext(); )<a name="line.1550"></a>
+<span class="sourceLineNo">1551</span>        {<a name="line.1551"></a>
+<span class="sourceLineNo">1552</span>            LdapGroupMapping v = readLdapGroupMapping( "", (Registry) i.next() );<a name="line.1552"></a>
+<span class="sourceLineNo">1553</span>            ldapGroupMappings.add( v );<a name="line.1553"></a>
+<span class="sourceLineNo">1554</span>        }<a name="line.1554"></a>
+<span class="sourceLineNo">1555</span>        value.setLdapGroupMappings( ldapGroupMappings );<a name="line.1555"></a>
+<span class="sourceLineNo">1556</span>        java.util.Map configurationProperties = registry.getProperties( prefix + "configurationProperties" );<a name="line.1556"></a>
+<span class="sourceLineNo">1557</span>        value.setConfigurationProperties( configurationProperties );<a name="line.1557"></a>
+<span class="sourceLineNo">1558</span>        boolean useUsersCache = registry.getBoolean( prefix + "useUsersCache", value.isUseUsersCache() );<a name="line.1558"></a>
+<span class="sourceLineNo">1559</span>        value.setUseUsersCache( useUsersCache );<a name="line.1559"></a>
+<span class="sourceLineNo">1560</span>        CacheConfiguration usersCacheConfiguration = readCacheConfiguration( prefix + "usersCacheConfiguration.", registry );<a name="line.1560"></a>
+<span class="sourceLineNo">1561</span>        value.setUsersCacheConfiguration( usersCacheConfiguration );<a name="line.1561"></a>
+<span class="sourceLineNo">1562</span><a name="line.1562"></a>
+<span class="sourceLineNo">1563</span>        return value;<a name="line.1563"></a>
+<span class="sourceLineNo">1564</span>    }<a name="line.1564"></a>
+<span class="sourceLineNo">1565</span>    <a name="line.1565"></a>
+<span class="sourceLineNo">1566</span>    private LdapConfiguration readLdapConfiguration( String prefix, Registry registry )<a name="line.1566"></a>
+<span class="sourceLineNo">1567</span>    {<a name="line.1567"></a>
+<span class="sourceLineNo">1568</span>        LdapConfiguration value = new LdapConfiguration();<a name="line.1568"></a>
+<span class="sourceLineNo">1569</span><a name="line.1569"></a>
+<span class="sourceLineNo">1570</span>    //String hostName = registry.getString( prefix + "hostName", value.getHostName() );<a name="line.1570"></a>
+<span class="sourceLineNo">1571</span><a name="line.1571"></a>
+<span class="sourceLineNo">1572</span>    List&lt;String&gt; hostNameList = registry.getList( prefix + "hostName" );<a name="line.1572"></a>
+<span class="sourceLineNo">1573</span>    String hostName = value.getHostName();<a name="line.1573"></a>
+<span class="sourceLineNo">1574</span>    if (hostNameList != null &amp;&amp; !hostNameList.isEmpty() )<a name="line.1574"></a>
+<span class="sourceLineNo">1575</span>    {<a name="line.1575"></a>
+<span class="sourceLineNo">1576</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1576"></a>
+<span class="sourceLineNo">1577</span>        for (int i = 0,size = hostNameList.size();i&lt;size;i++)<a name="line.1577"></a>
+<span class="sourceLineNo">1578</span>        {<a name="line.1578"></a>
+<span class="sourceLineNo">1579</span>            sb.append( hostNameList.get( i ) );<a name="line.1579"></a>
+<span class="sourceLineNo">1580</span>            if (i&lt;size - 1)<a name="line.1580"></a>
+<span class="sourceLineNo">1581</span>            {<a name="line.1581"></a>
+<span class="sourceLineNo">1582</span>                sb.append( ',' );<a name="line.1582"></a>
+<span class="sourceLineNo">1583</span>            }<a name="line.1583"></a>
+<span class="sourceLineNo">1584</span>        }<a name="line.1584"></a>
+<span class="sourceLineNo">1585</span>        hostName = sb.toString();<a name="line.1585"></a>
+<span class="sourceLineNo">1586</span>    }<a name="line.1586"></a>
+<span class="sourceLineNo">1587</span><a name="line.1587"></a>
+<span class="sourceLineNo">1588</span>        value.setHostName( hostName );<a name="line.1588"></a>
+<span class="sourceLineNo">1589</span>    int port = registry.getInt( prefix + "port", value.getPort() );<a name="line.1589"></a>
+<span class="sourceLineNo">1590</span>        value.setPort( port );<a name="line.1590"></a>
+<span class="sourceLineNo">1591</span>        boolean ssl = registry.getBoolean( prefix + "ssl", value.isSsl() );<a name="line.1591"></a>
+<span class="sourceLineNo">1592</span>        value.setSsl( ssl );<a name="line.1592"></a>
+<span class="sourceLineNo">1593</span>    //String baseDn = registry.getString( prefix + "baseDn", value.getBaseDn() );<a name="line.1593"></a>
 <span class="sourceLineNo">1594</span><a name="line.1594"></a>
-<span class="sourceLineNo">1595</span>    List&lt;String&gt; baseGroupsDnList = registry.getList( prefix + "baseGroupsDn" );<a name="line.1595"></a>
-<span class="sourceLineNo">1596</span>    String baseGroupsDn = value.getBaseGroupsDn();<a name="line.1596"></a>
-<span class="sourceLineNo">1597</span>    if (baseGroupsDnList != null &amp;&amp; !baseGroupsDnList.isEmpty() )<a name="line.1597"></a>
+<span class="sourceLineNo">1595</span>    List&lt;String&gt; baseDnList = registry.getList( prefix + "baseDn" );<a name="line.1595"></a>
+<span class="sourceLineNo">1596</span>    String baseDn = value.getBaseDn();<a name="line.1596"></a>
+<span class="sourceLineNo">1597</span>    if (baseDnList != null &amp;&amp; !baseDnList.isEmpty() )<a name="line.1597"></a>
 <span class="sourceLineNo">1598</span>    {<a name="line.1598"></a>
 <span class="sourceLineNo">1599</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1599"></a>
-<span class="sourceLineNo">1600</span>        for (int i = 0,size = baseGroupsDnList.size();i&lt;size;i++)<a name="line.1600"></a>
+<span class="sourceLineNo">1600</span>        for (int i = 0,size = baseDnList.size();i&lt;size;i++)<a name="line.1600"></a>
 <span class="sourceLineNo">1601</span>        {<a name="line.1601"></a>
-<span class="sourceLineNo">1602</span>            sb.append( baseGroupsDnList.get( i ) );<a name="line.1602"></a>
+<span class="sourceLineNo">1602</span>            sb.append( baseDnList.get( i ) );<a name="line.1602"></a>
 <span class="sourceLineNo">1603</span>            if (i&lt;size - 1)<a name="line.1603"></a>
 <span class="sourceLineNo">1604</span>            {<a name="line.1604"></a>
 <span class="sourceLineNo">1605</span>                sb.append( ',' );<a name="line.1605"></a>
 <span class="sourceLineNo">1606</span>            }<a name="line.1606"></a>
 <span class="sourceLineNo">1607</span>        }<a name="line.1607"></a>
-<span class="sourceLineNo">1608</span>        baseGroupsDn = sb.toString();<a name="line.1608"></a>
+<span class="sourceLineNo">1608</span>        baseDn = sb.toString();<a name="line.1608"></a>
 <span class="sourceLineNo">1609</span>    }<a name="line.1609"></a>
 <span class="sourceLineNo">1610</span><a name="line.1610"></a>
-<span class="sourceLineNo">1611</span>        value.setBaseGroupsDn( baseGroupsDn );<a name="line.1611"></a>
-<span class="sourceLineNo">1612</span>    //String contextFactory = registry.getString( prefix + "contextFactory", value.getContextFactory() );<a name="line.1612"></a>
+<span class="sourceLineNo">1611</span>        value.setBaseDn( baseDn );<a name="line.1611"></a>
+<span class="sourceLineNo">1612</span>    //String baseGroupsDn = registry.getString( prefix + "baseGroupsDn", value.getBaseGroupsDn() );<a name="line.1612"></a>
 <span class="sourceLineNo">1613</span><a name="line.1613"></a>
-<span class="sourceLineNo">1614</span>    List&lt;String&gt; contextFactoryList = registry.getList( prefix + "contextFactory" );<a name="line.1614"></a>
-<span class="sourceLineNo">1615</span>    String contextFactory = value.getContextFactory();<a name="line.1615"></a>
-<span class="sourceLineNo">1616</span>    if (contextFactoryList != null &amp;&amp; !contextFactoryList.isEmpty() )<a name="line.1616"></a>
+<span class="sourceLineNo">1614</span>    List&lt;String&gt; baseGroupsDnList = registry.getList( prefix + "baseGroupsDn" );<a name="line.1614"></a>
+<span class="sourceLineNo">1615</span>    String baseGroupsDn = value.getBaseGroupsDn();<a name="line.1615"></a>
+<span class="sourceLineNo">1616</span>    if (baseGroupsDnList != null &amp;&amp; !baseGroupsDnList.isEmpty() )<a name="line.1616"></a>
 <span class="sourceLineNo">1617</span>    {<a name="line.1617"></a>
 <span class="sourceLineNo">1618</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1618"></a>
-<span class="sourceLineNo">1619</span>        for (int i = 0,size = contextFactoryList.size();i&lt;size;i++)<a name="line.1619"></a>
+<span class="sourceLineNo">1619</span>        for (int i = 0,size = baseGroupsDnList.size();i&lt;size;i++)<a name="line.1619"></a>
 <span class="sourceLineNo">1620</span>        {<a name="line.1620"></a>
-<span class="sourceLineNo">1621</span>            sb.append( contextFactoryList.get( i ) );<a name="line.1621"></a>
+<span class="sourceLineNo">1621</span>            sb.append( baseGroupsDnList.get( i ) );<a name="line.1621"></a>
 <span class="sourceLineNo">1622</span>            if (i&lt;size - 1)<a name="line.1622"></a>
 <span class="sourceLineNo">1623</span>            {<a name="line.1623"></a>
 <span class="sourceLineNo">1624</span>                sb.append( ',' );<a name="line.1624"></a>
 <span class="sourceLineNo">1625</span>            }<a name="line.1625"></a>
 <span class="sourceLineNo">1626</span>        }<a name="line.1626"></a>
-<span class="sourceLineNo">1627</span>        contextFactory = sb.toString();<a name="line.1627"></a>
+<span class="sourceLineNo">1627</span>        baseGroupsDn = sb.toString();<a name="line.1627"></a>
 <span class="sourceLineNo">1628</span>    }<a name="line.1628"></a>
 <span class="sourceLineNo">1629</span><a name="line.1629"></a>
-<span class="sourceLineNo">1630</span>        value.setContextFactory( contextFactory );<a name="line.1630"></a>
-<span class="sourceLineNo">1631</span>    //String bindDn = registry.getString( prefix + "bindDn", value.getBindDn() );<a name="line.1631"></a>
+<span class="sourceLineNo">1630</span>        value.setBaseGroupsDn( baseGroupsDn );<a name="line.1630"></a>
+<span class="sourceLineNo">1631</span>    //String contextFactory = registry.getString( prefix + "contextFactory", value.getContextFactory() );<a name="line.1631"></a>
 <span class="sourceLineNo">1632</span><a name="line.1632"></a>
-<span class="sourceLineNo">1633</span>    List&lt;String&gt; bindDnList = registry.getList( prefix + "bindDn" );<a name="line.1633"></a>
-<span class="sourceLineNo">1634</span>    String bindDn = value.getBindDn();<a name="line.1634"></a>
-<span class="sourceLineNo">1635</span>    if (bindDnList != null &amp;&amp; !bindDnList.isEmpty() )<a name="line.1635"></a>
+<span class="sourceLineNo">1633</span>    List&lt;String&gt; contextFactoryList = registry.getList( prefix + "contextFactory" );<a name="line.1633"></a>
+<span class="sourceLineNo">1634</span>    String contextFactory = value.getContextFactory();<a name="line.1634"></a>
+<span class="sourceLineNo">1635</span>    if (contextFactoryList != null &amp;&amp; !contextFactoryList.isEmpty() )<a name="line.1635"></a>
 <span class="sourceLineNo">1636</span>    {<a name="line.1636"></a>
 <span class="sourceLineNo">1637</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1637"></a>
-<span class="sourceLineNo">1638</span>        for (int i = 0,size = bindDnList.size();i&lt;size;i++)<a name="line.1638"></a>
+<span class="sourceLineNo">1638</span>        for (int i = 0,size = contextFactoryList.size();i&lt;size;i++)<a name="line.1638"></a>
 <span class="sourceLineNo">1639</span>        {<a name="line.1639"></a>
-<span class="sourceLineNo">1640</span>            sb.append( bindDnList.get( i ) );<a name="line.1640"></a>
+<span class="sourceLineNo">1640</span>            sb.append( contextFactoryList.get( i ) );<a name="line.1640"></a>
 <span class="sourceLineNo">1641</span>            if (i&lt;size - 1)<a name="line.1641"></a>
 <span class="sourceLineNo">1642</span>            {<a name="line.1642"></a>
 <span class="sourceLineNo">1643</span>                sb.append( ',' );<a name="line.1643"></a>
 <span class="sourceLineNo">1644</span>            }<a name="line.1644"></a>
 <span class="sourceLineNo">1645</span>        }<a name="line.1645"></a>
-<span class="sourceLineNo">1646</span>        bindDn = sb.toString();<a name="line.1646"></a>
+<span class="sourceLineNo">1646</span>        contextFactory = sb.toString();<a name="line.1646"></a>
 <span class="sourceLineNo">1647</span>    }<a name="line.1647"></a>
 <span class="sourceLineNo">1648</span><a name="line.1648"></a>
-<span class="sourceLineNo">1649</span>        value.setBindDn( bindDn );<a name="line.1649"></a>
-<span class="sourceLineNo">1650</span>    //String password = registry.getString( prefix + "password", value.getPassword() );<a name="line.1650"></a>
+<span class="sourceLineNo">1649</span>        value.setContextFactory( contextFactory );<a name="line.1649"></a>
+<span class="sourceLineNo">1650</span>    //String bindDn = registry.getString( prefix + "bindDn", value.getBindDn() );<a name="line.1650"></a>
 <span class="sourceLineNo">1651</span><a name="line.1651"></a>
-<span class="sourceLineNo">1652</span>    List&lt;String&gt; passwordList = registry.getList( prefix + "password" );<a name="line.1652"></a>
-<span class="sourceLineNo">1653</span>    String password = value.getPassword();<a name="line.1653"></a>
-<span class="sourceLineNo">1654</span>    if (passwordList != null &amp;&amp; !passwordList.isEmpty() )<a name="line.1654"></a>
+<span class="sourceLineNo">1652</span>    List&lt;String&gt; bindDnList = registry.getList( prefix + "bindDn" );<a name="line.1652"></a>
+<span class="sourceLineNo">1653</span>    String bindDn = value.getBindDn();<a name="line.1653"></a>
+<span class="sourceLineNo">1654</span>    if (bindDnList != null &amp;&amp; !bindDnList.isEmpty() )<a name="line.1654"></a>
 <span class="sourceLineNo">1655</span>    {<a name="line.1655"></a>
 <span class="sourceLineNo">1656</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1656"></a>
-<span class="sourceLineNo">1657</span>        for (int i = 0,size = passwordList.size();i&lt;size;i++)<a name="line.1657"></a>
+<span class="sourceLineNo">1657</span>        for (int i = 0,size = bindDnList.size();i&lt;size;i++)<a name="line.1657"></a>
 <span class="sourceLineNo">1658</span>        {<a name="line.1658"></a>
-<span class="sourceLineNo">1659</span>            sb.append( passwordList.get( i ) );<a name="line.1659"></a>
+<span class="sourceLineNo">1659</span>            sb.append( bindDnList.get( i ) );<a name="line.1659"></a>
 <span class="sourceLineNo">1660</span>            if (i&lt;size - 1)<a name="line.1660"></a>
 <span class="sourceLineNo">1661</span>            {<a name="line.1661"></a>
 <span class="sourceLineNo">1662</span>                sb.append( ',' );<a name="line.1662"></a>
 <span class="sourceLineNo">1663</span>            }<a name="line.1663"></a>
 <span class="sourceLineNo">1664</span>        }<a name="line.1664"></a>
-<span class="sourceLineNo">1665</span>        password = sb.toString();<a name="line.1665"></a>
+<span class="sourceLineNo">1665</span>        bindDn = sb.toString();<a name="line.1665"></a>
 <span class="sourceLineNo">1666</span>    }<a name="line.1666"></a>
 <span class="sourceLineNo">1667</span><a name="line.1667"></a>
-<span class="sourceLineNo">1668</span>        value.setPassword( password );<a name="line.1668"></a>
-<span class="sourceLineNo">1669</span>    //String authenticationMethod = registry.getString( prefix + "authenticationMethod", value.getAuthenticationMethod() );<a name="line.1669"></a>
+<span class="sourceLineNo">1668</span>        value.setBindDn( bindDn );<a name="line.1668"></a>
+<span class="sourceLineNo">1669</span>    //String password = registry.getString( prefix + "password", value.getPassword() );<a name="line.1669"></a>
 <span class="sourceLineNo">1670</span><a name="line.1670"></a>
-<span class="sourceLineNo">1671</span>    List&lt;String&gt; authenticationMethodList = registry.getList( prefix + "authenticationMethod" );<a name="line.1671"></a>
-<span class="sourceLineNo">1672</span>    String authenticationMethod = value.getAuthenticationMethod();<a name="line.1672"></a>
-<span class="sourceLineNo">1673</span>    if (authenticationMethodList != null &amp;&amp; !authenticationMethodList.isEmpty() )<a name="line.1673"></a>
+<span class="sourceLineNo">1671</span>    List&lt;String&gt; passwordList = registry.getList( prefix + "password" );<a name="line.1671"></a>
+<span class="sourceLineNo">1672</span>    String password = value.getPassword();<a name="line.1672"></a>
+<span class="sourceLineNo">1673</span>    if (passwordList != null &amp;&amp; !passwordList.isEmpty() )<a name="line.1673"></a>
 <span class="sourceLineNo">1674</span>    {<a name="line.1674"></a>
 <span class="sourceLineNo">1675</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1675"></a>
-<span class="sourceLineNo">1676</span>        for (int i = 0,size = authenticationMethodList.size();i&lt;size;i++)<a name="line.1676"></a>
+<span class="sourceLineNo">1676</span>        for (int i = 0,size = passwordList.size();i&lt;size;i++)<a name="line.1676"></a>
 <span class="sourceLineNo">1677</span>        {<a name="line.1677"></a>
-<span class="sourceLineNo">1678</span>            sb.append( authenticationMethodList.get( i ) );<a name="line.1678"></a>
+<span class="sourceLineNo">1678</span>            sb.append( passwordList.get( i ) );<a name="line.1678"></a>
 <span class="sourceLineNo">1679</span>            if (i&lt;size - 1)<a name="line.1679"></a>
 <span class="sourceLineNo">1680</span>            {<a name="line.1680"></a>
 <span class="sourceLineNo">1681</span>                sb.append( ',' );<a name="line.1681"></a>
 <span class="sourceLineNo">1682</span>            }<a name="line.1682"></a>
 <span class="sourceLineNo">1683</span>        }<a name="line.1683"></a>
-<span class="sourceLineNo">1684</span>        authenticationMethod = sb.toString();<a name="line.1684"></a>
+<span class="sourceLineNo">1684</span>        password = sb.toString();<a name="line.1684"></a>
 <span class="sourceLineNo">1685</span>    }<a name="line.1685"></a>
 <span class="sourceLineNo">1686</span><a name="line.1686"></a>
-<span class="sourceLineNo">1687</span>        value.setAuthenticationMethod( authenticationMethod );<a name="line.1687"></a>
-<span class="sourceLineNo">1688</span>        boolean bindAuthenticatorEnabled = registry.getBoolean( prefix + "bindAuthenticatorEnabled", value.isBindAuthenticatorEnabled() );<a name="line.1688"></a>
-<span class="sourceLineNo">1689</span>        value.setBindAuthenticatorEnabled( bindAuthenticatorEnabled );<a name="line.1689"></a>
-<span class="sourceLineNo">1690</span>        boolean writable = registry.getBoolean( prefix + "writable", value.isWritable() );<a name="line.1690"></a>
-<span class="sourceLineNo">1691</span>        value.setWritable( writable );<a name="line.1691"></a>
-<span class="sourceLineNo">1692</span>        boolean useRoleNameAsGroup = registry.getBoolean( prefix + "useRoleNameAsGroup", value.isUseRoleNameAsGroup() );<a name="line.1692"></a>
-<span class="sourceLineNo">1693</span>        value.setUseRoleNameAsGroup( useRoleNameAsGroup );<a name="line.1693"></a>
-<span class="sourceLineNo">1694</span>        java.util.Map extraProperties = registry.getProperties( prefix + "extraProperties" );<a name="line.1694"></a>
-<span class="sourceLineNo">1695</span>        value.setExtraProperties( extraProperties );<a name="line.1695"></a>
-<span class="sourceLineNo">1696</span><a name="line.1696"></a>
-<span class="sourceLineNo">1697</span>        return value;<a name="line.1697"></a>
-<span class="sourceLineNo">1698</span>    }<a name="line.1698"></a>
-<span class="sourceLineNo">1699</span>    <a name="line.1699"></a>
-<span class="sourceLineNo">1700</span>    private CacheConfiguration readCacheConfiguration( String prefix, Registry registry )<a name="line.1700"></a>
-<span class="sourceLineNo">1701</span>    {<a name="line.1701"></a>
-<span class="sourceLineNo">1702</span>        CacheConfiguration value = new CacheConfiguration();<a name="line.1702"></a>
-<span class="sourceLineNo">1703</span><a name="line.1703"></a>
-<span class="sourceLineNo">1704</span>    int timeToIdleSeconds = registry.getInt( prefix + "timeToIdleSeconds", value.getTimeToIdleSeconds() );<a name="line.1704"></a>
-<span class="sourceLineNo">1705</span>        value.setTimeToIdleSeconds( timeToIdleSeconds );<a name="line.1705"></a>
-<span class="sourceLineNo">1706</span>    int timeToLiveSeconds = registry.getInt( prefix + "timeToLiveSeconds", value.getTimeToLiveSeconds() );<a name="line.1706"></a>
-<span class="sourceLineNo">1707</span>        value.setTimeToLiveSeconds( timeToLiveSeconds );<a name="line.1707"></a>
-<span class="sourceLineNo">1708</span>    int maxElementsInMemory = registry.getInt( prefix + "maxElementsInMemory", value.getMaxElementsInMemory() );<a name="line.1708"></a>
-<span class="sourceLineNo">1709</span>        value.setMaxElementsInMemory( maxElementsInMemory );<a name="line.1709"></a>
-<span class="sourceLineNo">1710</span>    int maxElementsOnDisk = registry.getInt( prefix + "maxElementsOnDisk", value.getMaxElementsOnDisk() );<a name="line.1710"></a>
-<span class="sourceLineNo">1711</span>        value.setMaxElementsOnDisk( maxElementsOnDisk );<a name="line.1711"></a>
-<span class="sourceLineNo">1712</span><a name="line.1712"></a>
-<span class="sourceLineNo">1713</span>        return value;<a name="line.1713"></a>
-<span class="sourceLineNo">1714</span>    }<a name="line.1714"></a>
-<span class="sourceLineNo">1715</span>    <a name="line.1715"></a>
-<span class="sourceLineNo">1716</span>    private LdapGroupMapping readLdapGroupMapping( String prefix, Registry registry )<a name="line.1716"></a>
-<span class="sourceLineNo">1717</span>    {<a name="line.1717"></a>
-<span class="sourceLineNo">1718</span>        LdapGroupMapping value = new LdapGroupMapping();<a name="line.1718"></a>
-<span class="sourceLineNo">1719</span><a name="line.1719"></a>
-<span class="sourceLineNo">1720</span>    //String group = registry.getString( prefix + "group", value.getGroup() );<a name="line.1720"></a>
-<span class="sourceLineNo">1721</span><a name="line.1721"></a>
-<span class="sourceLineNo">1722</span>    List&lt;String&gt; groupList = registry.getList( prefix + "group" );<a name="line.1722"></a>
-<span class="sourceLineNo">1723</span>    String group = value.getGroup();<a name="line.1723"></a>
-<span class="sourceLineNo">1724</span>    if (groupList != null &amp;&amp; !groupList.isEmpty() )<a name="line.1724"></a>
-<span class="sourceLineNo">1725</span>    {<a name="line.1725"></a>
-<span class="sourceLineNo">1726</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1726"></a>
-<span class="sourceLineNo">1727</span>        for (int i = 0,size = groupList.size();i&lt;size;i++)<a name="line.1727"></a>
-<span class="sourceLineNo">1728</span>        {<a name="line.1728"></a>
-<span class="sourceLineNo">1729</span>            sb.append( groupList.get( i ) );<a name="line.1729"></a>
-<span class="sourceLineNo">1730</span>            if (i&lt;size - 1)<a name="line.1730"></a>
-<span class="sourceLineNo">1731</span>            {<a name="line.1731"></a>
-<span class="sourceLineNo">1732</span>                sb.append( ',' );<a name="line.1732"></a>
-<span class="sourceLineNo">1733</span>            }<a name="line.1733"></a>
-<span class="sourceLineNo">1734</span>        }<a name="line.1734"></a>
-<span class="sourceLineNo">1735</span>        group = sb.toString();<a name="line.1735"></a>
-<span class="sourceLineNo">1736</span>    }<a name="line.1736"></a>
-<span class="sourceLineNo">1737</span><a name="line.1737"></a>
-<span class="sourceLineNo">1738</span>        value.setGroup( group );<a name="line.1738"></a>
-<span class="sourceLineNo">1739</span>        java.util.List roleNames = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1739"></a>
-<span class="sourceLineNo">1740</span>        roleNames.addAll( registry.getList( prefix + "roleNames.roleName" ) );<a name="line.1740"></a>
-<span class="sourceLineNo">1741</span>        value.setRoleNames( roleNames );<a name="line.1741"></a>
-<span class="sourceLineNo">1742</span><a name="line.1742"></a>
-<span class="sourceLineNo">1743</span>        return value;<a name="line.1743"></a>
-<span class="sourceLineNo">1744</span>    }<a name="line.1744"></a>
-<span class="sourceLineNo">1745</span>    <a name="line.1745"></a>
-<span class="sourceLineNo">1746</span>}<a name="line.1746"></a>
+<span class="sourceLineNo">1687</span>        value.setPassword( password );<a name="line.1687"></a>
+<span class="sourceLineNo">1688</span>    //String authenticationMethod = registry.getString( prefix + "authenticationMethod", value.getAuthenticationMethod() );<a name="line.1688"></a>
+<span class="sourceLineNo">1689</span><a name="line.1689"></a>
+<span class="sourceLineNo">1690</span>    List&lt;String&gt; authenticationMethodList = registry.getList( prefix + "authenticationMethod" );<a name="line.1690"></a>
+<span class="sourceLineNo">1691</span>    String authenticationMethod = value.getAuthenticationMethod();<a name="line.1691"></a>
+<span class="sourceLineNo">1692</span>    if (authenticationMethodList != null &amp;&amp; !authenticationMethodList.isEmpty() )<a name="line.1692"></a>
+<span class="sourceLineNo">1693</span>    {<a name="line.1693"></a>
+<span class="sourceLineNo">1694</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1694"></a>
+<span class="sourceLineNo">1695</span>        for (int i = 0,size = authenticationMethodList.size();i&lt;size;i++)<a name="line.1695"></a>
+<span class="sourceLineNo">1696</span>        {<a name="line.1696"></a>
+<span class="sourceLineNo">1697</span>            sb.append( authenticationMethodList.get( i ) );<a name="line.1697"></a>
+<span class="sourceLineNo">1698</span>            if (i&lt;size - 1)<a name="line.1698"></a>
+<span class="sourceLineNo">1699</span>            {<a name="line.1699"></a>
+<span class="sourceLineNo">1700</span>                sb.append( ',' );<a name="line.1700"></a>
+<span class="sourceLineNo">1701</span>            }<a name="line.1701"></a>
+<span class="sourceLineNo">1702</span>        }<a name="line.1702"></a>
+<span class="sourceLineNo">1703</span>        authenticationMethod = sb.toString();<a name="line.1703"></a>
+<span class="sourceLineNo">1704</span>    }<a name="line.1704"></a>
+<span class="sourceLineNo">1705</span><a name="line.1705"></a>
+<span class="sourceLineNo">1706</span>        value.setAuthenticationMethod( authenticationMethod );<a name="line.1706"></a>
+<span class="sourceLineNo">1707</span>        boolean bindAuthenticatorEnabled = registry.getBoolean( prefix + "bindAuthenticatorEnabled", value.isBindAuthenticatorEnabled() );<a name="line.1707"></a>
+<span class="sourceLineNo">1708</span>        value.setBindAuthenticatorEnabled( bindAuthenticatorEnabled );<a name="line.1708"></a>
+<span class="sourceLineNo">1709</span>        boolean writable = registry.getBoolean( prefix + "writable", value.isWritable() );<a name="line.1709"></a>
+<span class="sourceLineNo">1710</span>        value.setWritable( writable );<a name="line.1710"></a>
+<span class="sourceLineNo">1711</span>        boolean useRoleNameAsGroup = registry.getBoolean( prefix + "useRoleNameAsGroup", value.isUseRoleNameAsGroup() );<a name="line.1711"></a>
+<span class="sourceLineNo">1712</span>        value.setUseRoleNameAsGroup( useRoleNameAsGroup );<a name="line.1712"></a>
+<span class="sourceLineNo">1713</span>        java.util.Map extraProperties = registry.getProperties( prefix + "extraProperties" );<a name="line.1713"></a>
+<span class="sourceLineNo">1714</span>        value.setExtraProperties( extraProperties );<a name="line.1714"></a>
+<span class="sourceLineNo">1715</span><a name="line.1715"></a>
+<span class="sourceLineNo">1716</span>        return value;<a name="line.1716"></a>
+<span class="sourceLineNo">1717</span>    }<a name="line.1717"></a>
+<span class="sourceLineNo">1718</span>    <a name="line.1718"></a>
+<span class="sourceLineNo">1719</span>    private CacheConfiguration readCacheConfiguration( String prefix, Registry registry )<a name="line.1719"></a>
+<span class="sourceLineNo">1720</span>    {<a name="line.1720"></a>
+<span class="sourceLineNo">1721</span>        CacheConfiguration value = new CacheConfiguration();<a name="line.1721"></a>
+<span class="sourceLineNo">1722</span><a name="line.1722"></a>
+<span class="sourceLineNo">1723</span>    int timeToIdleSeconds = registry.getInt( prefix + "timeToIdleSeconds", value.getTimeToIdleSeconds() );<a name="line.1723"></a>
+<span class="sourceLineNo">1724</span>        value.setTimeToIdleSeconds( timeToIdleSeconds );<a name="line.1724"></a>
+<span class="sourceLineNo">1725</span>    int timeToLiveSeconds = registry.getInt( prefix + "timeToLiveSeconds", value.getTimeToLiveSeconds() );<a name="line.1725"></a>
+<span class="sourceLineNo">1726</span>        value.setTimeToLiveSeconds( timeToLiveSeconds );<a name="line.1726"></a>
+<span class="sourceLineNo">1727</span>    int maxElementsInMemory = registry.getInt( prefix + "maxElementsInMemory", value.getMaxElementsInMemory() );<a name="line.1727"></a>
+<span class="sourceLineNo">1728</span>        value.setMaxElementsInMemory( maxElementsInMemory );<a name="line.1728"></a>
+<span class="sourceLineNo">1729</span>    int maxElementsOnDisk = registry.getInt( prefix + "maxElementsOnDisk", value.getMaxElementsOnDisk() );<a name="line.1729"></a>
+<span class="sourceLineNo">1730</span>        value.setMaxElementsOnDisk( maxElementsOnDisk );<a name="line.1730"></a>
+<span class="sourceLineNo">1731</span><a name="line.1731"></a>
+<span class="sourceLineNo">1732</span>        return value;<a name="line.1732"></a>
+<span class="sourceLineNo">1733</span>    }<a name="line.1733"></a>
+<span class="sourceLineNo">1734</span>    <a name="line.1734"></a>
+<span class="sourceLineNo">1735</span>    private LdapGroupMapping readLdapGroupMapping( String prefix, Registry registry )<a name="line.1735"></a>
+<span class="sourceLineNo">1736</span>    {<a name="line.1736"></a>
+<span class="sourceLineNo">1737</span>        LdapGroupMapping value = new LdapGroupMapping();<a name="line.1737"></a>
+<span class="sourceLineNo">1738</span><a name="line.1738"></a>
+<span class="sourceLineNo">1739</span>    //String group = registry.getString( prefix + "group", value.getGroup() );<a name="line.1739"></a>
+<span class="sourceLineNo">1740</span><a name="line.1740"></a>
+<span class="sourceLineNo">1741</span>    List&lt;String&gt; groupList = registry.getList( prefix + "group" );<a name="line.1741"></a>
+<span class="sourceLineNo">1742</span>    String group = value.getGroup();<a name="line.1742"></a>
+<span class="sourceLineNo">1743</span>    if (groupList != null &amp;&amp; !groupList.isEmpty() )<a name="line.1743"></a>
+<span class="sourceLineNo">1744</span>    {<a name="line.1744"></a>
+<span class="sourceLineNo">1745</span>        StringBuilder sb = new StringBuilder(  );<a name="line.1745"></a>
+<span class="sourceLineNo">1746</span>        for (int i = 0,size = groupList.size();i&lt;size;i++)<a name="line.1746"></a>
+<span class="sourceLineNo">1747</span>        {<a name="line.1747"></a>
+<span class="sourceLineNo">1748</span>            sb.append( groupList.get( i ) );<a name="line.1748"></a>
+<span class="sourceLineNo">1749</span>            if (i&lt;size - 1)<a name="line.1749"></a>
+<span class="sourceLineNo">1750</span>            {<a name="line.1750"></a>
+<span class="sourceLineNo">1751</span>                sb.append( ',' );<a name="line.1751"></a>
+<span class="sourceLineNo">1752</span>            }<a name="line.1752"></a>
+<span class="sourceLineNo">1753</span>        }<a name="line.1753"></a>
+<span class="sourceLineNo">1754</span>        group = sb.toString();<a name="line.1754"></a>
+<span class="sourceLineNo">1755</span>    }<a name="line.1755"></a>
+<span class="sourceLineNo">1756</span><a name="line.1756"></a>
+<span class="sourceLineNo">1757</span>        value.setGroup( group );<a name="line.1757"></a>
+<span class="sourceLineNo">1758</span>        java.util.List roleNames = new java.util.ArrayList/*&lt;String&gt;*/();<a name="line.1758"></a>
+<span class="sourceLineNo">1759</span>        roleNames.addAll( registry.getList( prefix + "roleNames.roleName" ) );<a name="line.1759"></a>
+<span class="sourceLineNo">1760</span>        value.setRoleNames( roleNames );<a name="line.1760"></a>
+<span class="sourceLineNo">1761</span><a name="line.1761"></a>
+<span class="sourceLineNo">1762</span>        return value;<a name="line.1762"></a>
+<span class="sourceLineNo">1763</span>    }<a name="line.1763"></a>
+<span class="sourceLineNo">1764</span>    <a name="line.1764"></a>
+<span class="sourceLineNo">1765</span>}<a name="line.1765"></a>
 
 
 

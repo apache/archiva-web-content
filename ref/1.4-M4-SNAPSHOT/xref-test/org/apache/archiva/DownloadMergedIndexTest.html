@@ -133,66 +133,73 @@
 <a class="jxr_linenumber" name="123" href="#123">123</a> 
 <a class="jxr_linenumber" name="124" href="#124">124</a>         RepositoryGroupService repositoryGroupService = getRepositoryGroupService();
 <a class="jxr_linenumber" name="125" href="#125">125</a> 
-<a class="jxr_linenumber" name="126" href="#126">126</a>         RepositoryGroup repositoryGroup = <strong class="jxr_keyword">new</strong> RepositoryGroup();
-<a class="jxr_linenumber" name="127" href="#127">127</a>         repositoryGroup.setId( <span class="jxr_string">"test-group"</span> );
-<a class="jxr_linenumber" name="128" href="#128">128</a>         repositoryGroup.setRepositories( Arrays.asList( id ) );
-<a class="jxr_linenumber" name="129" href="#129">129</a> 
-<a class="jxr_linenumber" name="130" href="#130">130</a>         repositoryGroupService.addRepositoryGroup( repositoryGroup );
-<a class="jxr_linenumber" name="131" href="#131">131</a> 
-<a class="jxr_linenumber" name="132" href="#132">132</a>         <em class="jxr_comment">// create a repo with a remote on the one with index</em>
-<a class="jxr_linenumber" name="133" href="#133">133</a>         id = Long.toString( System.currentTimeMillis() );
-<a class="jxr_linenumber" name="134" href="#134">134</a>         managedRepository = <strong class="jxr_keyword">new</strong> ManagedRepository();
-<a class="jxr_linenumber" name="135" href="#135">135</a>         managedRepository.setId( id );
-<a class="jxr_linenumber" name="136" href="#136">136</a>         managedRepository.setName( <span class="jxr_string">"name of "</span> + id );
-<a class="jxr_linenumber" name="137" href="#137">137</a>         managedRepository.setLocation(System.getProperty( <span class="jxr_string">"basedir"</span> ) + <span class="jxr_string">"/src/test/repositories/test-repo"</span> );
-<a class="jxr_linenumber" name="138" href="#138">138</a>         managedRepository.setIndexDirectory( System.getProperty( <span class="jxr_string">"java.io.tmpdir"</span> ) + <span class="jxr_string">"/tmpIndex/"</span> + id );
-<a class="jxr_linenumber" name="139" href="#139">139</a> 
-<a class="jxr_linenumber" name="140" href="#140">140</a>         <strong class="jxr_keyword">if</strong> ( managedRepositoriesService.getManagedRepository( id ) != <strong class="jxr_keyword">null</strong> )
-<a class="jxr_linenumber" name="141" href="#141">141</a>         {
-<a class="jxr_linenumber" name="142" href="#142">142</a>             managedRepositoriesService.deleteManagedRepository( id, false );
-<a class="jxr_linenumber" name="143" href="#143">143</a>         }
-<a class="jxr_linenumber" name="144" href="#144">144</a> 
-<a class="jxr_linenumber" name="145" href="#145">145</a>         getManagedRepositoriesService().addManagedRepository( managedRepository );
+<a class="jxr_linenumber" name="126" href="#126">126</a>         String repoGroupId = <span class="jxr_string">"test-group"</span>;
+<a class="jxr_linenumber" name="127" href="#127">127</a> 
+<a class="jxr_linenumber" name="128" href="#128">128</a>         <strong class="jxr_keyword">if</strong> ( repositoryGroupService.getRepositoryGroup( repoGroupId ) != <strong class="jxr_keyword">null</strong> )
+<a class="jxr_linenumber" name="129" href="#129">129</a>         {
+<a class="jxr_linenumber" name="130" href="#130">130</a>             repositoryGroupService.deleteRepositoryGroup( repoGroupId );
+<a class="jxr_linenumber" name="131" href="#131">131</a>         }
+<a class="jxr_linenumber" name="132" href="#132">132</a> 
+<a class="jxr_linenumber" name="133" href="#133">133</a>         RepositoryGroup repositoryGroup = <strong class="jxr_keyword">new</strong> RepositoryGroup();
+<a class="jxr_linenumber" name="134" href="#134">134</a>         repositoryGroup.setId( repoGroupId );
+<a class="jxr_linenumber" name="135" href="#135">135</a>         repositoryGroup.setRepositories( Arrays.asList( id ) );
+<a class="jxr_linenumber" name="136" href="#136">136</a> 
+<a class="jxr_linenumber" name="137" href="#137">137</a>         repositoryGroupService.addRepositoryGroup( repositoryGroup );
+<a class="jxr_linenumber" name="138" href="#138">138</a> 
+<a class="jxr_linenumber" name="139" href="#139">139</a>         <em class="jxr_comment">// create a repo with a remote on the one with index</em>
+<a class="jxr_linenumber" name="140" href="#140">140</a>         id = Long.toString( System.currentTimeMillis() );
+<a class="jxr_linenumber" name="141" href="#141">141</a>         managedRepository = <strong class="jxr_keyword">new</strong> ManagedRepository();
+<a class="jxr_linenumber" name="142" href="#142">142</a>         managedRepository.setId( id );
+<a class="jxr_linenumber" name="143" href="#143">143</a>         managedRepository.setName( <span class="jxr_string">"name of "</span> + id );
+<a class="jxr_linenumber" name="144" href="#144">144</a>         managedRepository.setLocation( System.getProperty( <span class="jxr_string">"basedir"</span> ) + <span class="jxr_string">"/src/test/repositories/test-repo"</span> );
+<a class="jxr_linenumber" name="145" href="#145">145</a>         managedRepository.setIndexDirectory( System.getProperty( <span class="jxr_string">"java.io.tmpdir"</span> ) + <span class="jxr_string">"/tmpIndex/"</span> + id );
 <a class="jxr_linenumber" name="146" href="#146">146</a> 
-<a class="jxr_linenumber" name="147" href="#147">147</a>         RemoteRepository remoteRepository = <strong class="jxr_keyword">new</strong> RemoteRepository();
-<a class="jxr_linenumber" name="148" href="#148">148</a>         remoteRepository.setId( <span class="jxr_string">"all-merged"</span> );
-<a class="jxr_linenumber" name="149" href="#149">149</a>         remoteRepository.setName( <span class="jxr_string">"all-merged"</span> );
-<a class="jxr_linenumber" name="150" href="#150">150</a>         remoteRepository.setDownloadRemoteIndex( <strong class="jxr_keyword">true</strong> );
-<a class="jxr_linenumber" name="151" href="#151">151</a>         remoteRepository.setUrl( <span class="jxr_string">"http://localhost:"</span> + port + <span class="jxr_string">"/repository/test-group"</span> );
-<a class="jxr_linenumber" name="152" href="#152">152</a>         remoteRepository.setRemoteIndexUrl( <span class="jxr_string">"http://localhost:"</span> + port + <span class="jxr_string">"/repository/test-group/.indexer"</span> );
-<a class="jxr_linenumber" name="153" href="#153">153</a>         remoteRepository.setUserName( RedbackRoleConstants.ADMINISTRATOR_ACCOUNT_NAME );
-<a class="jxr_linenumber" name="154" href="#154">154</a>         remoteRepository.setPassword( FakeCreateAdminService.ADMIN_TEST_PWD );
-<a class="jxr_linenumber" name="155" href="#155">155</a> 
-<a class="jxr_linenumber" name="156" href="#156">156</a>         getRemoteRepositoriesService().addRemoteRepository( remoteRepository );
-<a class="jxr_linenumber" name="157" href="#157">157</a> 
-<a class="jxr_linenumber" name="158" href="#158">158</a>         ProxyConnectorService proxyConnectorService = getProxyConnectorService();
-<a class="jxr_linenumber" name="159" href="#159">159</a>         ProxyConnector proxyConnector = <strong class="jxr_keyword">new</strong> ProxyConnector();
-<a class="jxr_linenumber" name="160" href="#160">160</a>         proxyConnector.setProxyId( <span class="jxr_string">"foo-bar"</span> );
-<a class="jxr_linenumber" name="161" href="#161">161</a>         proxyConnector.setSourceRepoId( id );
-<a class="jxr_linenumber" name="162" href="#162">162</a>         proxyConnector.setTargetRepoId( <span class="jxr_string">"all-merged"</span> );
-<a class="jxr_linenumber" name="163" href="#163">163</a>         proxyConnectorService.addProxyConnector( proxyConnector );
+<a class="jxr_linenumber" name="147" href="#147">147</a>         <strong class="jxr_keyword">if</strong> ( managedRepositoriesService.getManagedRepository( id ) != <strong class="jxr_keyword">null</strong> )
+<a class="jxr_linenumber" name="148" href="#148">148</a>         {
+<a class="jxr_linenumber" name="149" href="#149">149</a>             managedRepositoriesService.deleteManagedRepository( id, false );
+<a class="jxr_linenumber" name="150" href="#150">150</a>         }
+<a class="jxr_linenumber" name="151" href="#151">151</a> 
+<a class="jxr_linenumber" name="152" href="#152">152</a>         getManagedRepositoriesService().addManagedRepository( managedRepository );
+<a class="jxr_linenumber" name="153" href="#153">153</a> 
+<a class="jxr_linenumber" name="154" href="#154">154</a>         RemoteRepository remoteRepository = <strong class="jxr_keyword">new</strong> RemoteRepository();
+<a class="jxr_linenumber" name="155" href="#155">155</a>         remoteRepository.setId( <span class="jxr_string">"all-merged"</span> );
+<a class="jxr_linenumber" name="156" href="#156">156</a>         remoteRepository.setName( <span class="jxr_string">"all-merged"</span> );
+<a class="jxr_linenumber" name="157" href="#157">157</a>         remoteRepository.setDownloadRemoteIndex( <strong class="jxr_keyword">true</strong> );
+<a class="jxr_linenumber" name="158" href="#158">158</a>         remoteRepository.setUrl( <span class="jxr_string">"http://localhost:"</span> + port + <span class="jxr_string">"/repository/test-group"</span> );
+<a class="jxr_linenumber" name="159" href="#159">159</a>         remoteRepository.setRemoteIndexUrl( <span class="jxr_string">"http://localhost:"</span> + port + <span class="jxr_string">"/repository/test-group/.indexer"</span> );
+<a class="jxr_linenumber" name="160" href="#160">160</a>         remoteRepository.setUserName( RedbackRoleConstants.ADMINISTRATOR_ACCOUNT_NAME );
+<a class="jxr_linenumber" name="161" href="#161">161</a>         remoteRepository.setPassword( FakeCreateAdminService.ADMIN_TEST_PWD );
+<a class="jxr_linenumber" name="162" href="#162">162</a> 
+<a class="jxr_linenumber" name="163" href="#163">163</a>         getRemoteRepositoriesService().addRemoteRepository( remoteRepository );
 <a class="jxr_linenumber" name="164" href="#164">164</a> 
-<a class="jxr_linenumber" name="165" href="#165">165</a>         repositoriesService.scheduleDownloadRemoteIndex( <span class="jxr_string">"all-merged"</span>, <strong class="jxr_keyword">true</strong>, <strong class="jxr_keyword">true</strong> );
-<a class="jxr_linenumber" name="166" href="#166">166</a> 
-<a class="jxr_linenumber" name="167" href="#167">167</a>         <em class="jxr_comment">// wait a bit</em>
-<a class="jxr_linenumber" name="168" href="#168">168</a>         timeout = 20000;
-<a class="jxr_linenumber" name="169" href="#169">169</a>         <strong class="jxr_keyword">while</strong> ( timeout &gt; 0 )
-<a class="jxr_linenumber" name="170" href="#170">170</a>         {
-<a class="jxr_linenumber" name="171" href="#171">171</a>             Thread.sleep( 500 );
-<a class="jxr_linenumber" name="172" href="#172">172</a>             timeout -= 500;
-<a class="jxr_linenumber" name="173" href="#173">173</a>         }
-<a class="jxr_linenumber" name="174" href="#174">174</a> 
-<a class="jxr_linenumber" name="175" href="#175">175</a>         SearchService searchService = getSearchService();
-<a class="jxr_linenumber" name="176" href="#176">176</a> 
-<a class="jxr_linenumber" name="177" href="#177">177</a>         SearchRequest request = <strong class="jxr_keyword">new</strong> SearchRequest();
-<a class="jxr_linenumber" name="178" href="#178">178</a>         request.setRepositories( Arrays.asList( id ) );
-<a class="jxr_linenumber" name="179" href="#179">179</a>         request.setGroupId( <span class="jxr_string">"org.apache.felix"</span> );
-<a class="jxr_linenumber" name="180" href="#180">180</a> 
-<a class="jxr_linenumber" name="181" href="#181">181</a>         List&lt;Artifact&gt; artifacts = searchService.searchArtifacts( request );
-<a class="jxr_linenumber" name="182" href="#182">182</a>         Assertions.assertThat( artifacts ).isNotNull().isNotEmpty().hasSize( 1 );
+<a class="jxr_linenumber" name="165" href="#165">165</a>         ProxyConnectorService proxyConnectorService = getProxyConnectorService();
+<a class="jxr_linenumber" name="166" href="#166">166</a>         ProxyConnector proxyConnector = <strong class="jxr_keyword">new</strong> ProxyConnector();
+<a class="jxr_linenumber" name="167" href="#167">167</a>         proxyConnector.setProxyId( <span class="jxr_string">"foo-bar1"</span> );
+<a class="jxr_linenumber" name="168" href="#168">168</a>         proxyConnector.setSourceRepoId( id );
+<a class="jxr_linenumber" name="169" href="#169">169</a>         proxyConnector.setTargetRepoId( <span class="jxr_string">"all-merged"</span> );
+<a class="jxr_linenumber" name="170" href="#170">170</a>         proxyConnectorService.addProxyConnector( proxyConnector );
+<a class="jxr_linenumber" name="171" href="#171">171</a> 
+<a class="jxr_linenumber" name="172" href="#172">172</a>         repositoriesService.scheduleDownloadRemoteIndex( <span class="jxr_string">"all-merged"</span>, <strong class="jxr_keyword">true</strong>, <strong class="jxr_keyword">true</strong> );
+<a class="jxr_linenumber" name="173" href="#173">173</a> 
+<a class="jxr_linenumber" name="174" href="#174">174</a>         <em class="jxr_comment">// wait a bit</em>
+<a class="jxr_linenumber" name="175" href="#175">175</a>         timeout = 20000;
+<a class="jxr_linenumber" name="176" href="#176">176</a>         <strong class="jxr_keyword">while</strong> ( timeout &gt; 0 )
+<a class="jxr_linenumber" name="177" href="#177">177</a>         {
+<a class="jxr_linenumber" name="178" href="#178">178</a>             Thread.sleep( 500 );
+<a class="jxr_linenumber" name="179" href="#179">179</a>             timeout -= 500;
+<a class="jxr_linenumber" name="180" href="#180">180</a>         }
+<a class="jxr_linenumber" name="181" href="#181">181</a> 
+<a class="jxr_linenumber" name="182" href="#182">182</a>         SearchService searchService = getSearchService();
 <a class="jxr_linenumber" name="183" href="#183">183</a> 
-<a class="jxr_linenumber" name="184" href="#184">184</a>     }
-<a class="jxr_linenumber" name="185" href="#185">185</a> }
+<a class="jxr_linenumber" name="184" href="#184">184</a>         SearchRequest request = <strong class="jxr_keyword">new</strong> SearchRequest();
+<a class="jxr_linenumber" name="185" href="#185">185</a>         request.setRepositories( Arrays.asList( id ) );
+<a class="jxr_linenumber" name="186" href="#186">186</a>         request.setGroupId( <span class="jxr_string">"org.apache.felix"</span> );
+<a class="jxr_linenumber" name="187" href="#187">187</a> 
+<a class="jxr_linenumber" name="188" href="#188">188</a>         List&lt;Artifact&gt; artifacts = searchService.searchArtifacts( request );
+<a class="jxr_linenumber" name="189" href="#189">189</a>         Assertions.assertThat( artifacts ).isNotNull().isNotEmpty().hasSize( 1 );
+<a class="jxr_linenumber" name="190" href="#190">190</a> 
+<a class="jxr_linenumber" name="191" href="#191">191</a>     }
+<a class="jxr_linenumber" name="192" href="#192">192</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

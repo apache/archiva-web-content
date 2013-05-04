@@ -100,7 +100,7 @@
 <hr>
 <br>
 <pre>@Service(value="davResourceFactory#archiva")
-public class <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.114">ArchivaDavResourceFactory</a>
+public class <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.115">ArchivaDavResourceFactory</a>
 extends <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements org.apache.jackrabbit.webdav.DavResourceFactory, <a href="../../../../org/apache/archiva/audit/Auditable.html" title="interface in org.apache.archiva.audit">Auditable</a></pre>
 </li>
@@ -268,10 +268,10 @@ implements org.apache.jackrabbit.webdav.DavResourceFactory, <a href="../../../..
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>protected <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a></code></td>
-<td class="colLast"><code><strong><a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#buildMergedIndexDirectory(java.util.List, java.lang.String, org.apache.jackrabbit.webdav.DavServletRequest, java.lang.String)">buildMergedIndexDirectory</a></strong>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositories,
+<td class="colLast"><code><strong><a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#buildMergedIndexDirectory(java.util.List, java.lang.String, org.apache.jackrabbit.webdav.DavServletRequest, org.apache.archiva.configuration.RepositoryGroupConfiguration)">buildMergedIndexDirectory</a></strong>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositories,
                                                   <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;activePrincipal,
                                                   org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
-                                                  <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;groupId)</code>&nbsp;</td>
+                                                  <a href="../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a>&nbsp;repositoryGroupConfiguration)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>private <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</a></code></td>
@@ -315,10 +315,10 @@ implements org.apache.jackrabbit.webdav.DavResourceFactory, <a href="../../../..
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>private org.apache.jackrabbit.webdav.DavResource</code></td>
-<td class="colLast"><code><strong><a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#getResource(org.apache.jackrabbit.webdav.DavServletRequest, java.util.List, org.apache.archiva.webdav.ArchivaDavResourceLocator, java.lang.String)">getResource</a></strong>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
-                      <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositories,
-                      <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</a>&nbsp;locator,
-                      <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;groupId)</code>&nbsp;</td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#getResourceFromGroup(org.apache.jackrabbit.webdav.DavServletRequest, java.util.List, org.apache.archiva.webdav.ArchivaDavResourceLocator, org.apache.archiva.configuration.RepositoryGroupConfiguration)">getResourceFromGroup</a></strong>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+                                        <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositories,
+                                        <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</a>&nbsp;locator,
+                                        <a href="../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a>&nbsp;repositoryGroupConfiguration)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
@@ -350,12 +350,12 @@ implements org.apache.jackrabbit.webdav.DavResourceFactory, <a href="../../../..
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>private org.apache.jackrabbit.webdav.DavResource</code></td>
-<td class="colLast"><code><strong><a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#processRepositoryGroup(org.apache.jackrabbit.webdav.DavServletRequest, org.apache.archiva.webdav.ArchivaDavResourceLocator, java.util.List, java.lang.String, java.util.List, java.lang.String)">processRepositoryGroup</a></strong>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+<td class="colLast"><code><strong><a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#processRepositoryGroup(org.apache.jackrabbit.webdav.DavServletRequest, org.apache.archiva.webdav.ArchivaDavResourceLocator, java.util.List, java.lang.String, java.util.List, org.apache.archiva.configuration.RepositoryGroupConfiguration)">processRepositoryGroup</a></strong>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
                                             <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</a>&nbsp;archivaLocator,
                                             <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositories,
                                             <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;activePrincipal,
                                             <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;resourcesInAbsolutePath,
-                                            <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryGroupId)</code>&nbsp;</td>
+                                            <a href="../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a>&nbsp;repoGroupConfig)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
@@ -442,7 +442,7 @@ implements org.apache.jackrabbit.webdav.DavResourceFactory, <a href="../../../..
 <ul class="blockList">
 <li class="blockList">
 <h4>PROXIED_SUFFIX</h4>
-<pre>private static final&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.117">PROXIED_SUFFIX</a></pre>
+<pre>private static final&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.118">PROXIED_SUFFIX</a></pre>
 <dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../constant-values.html#org.apache.archiva.webdav.ArchivaDavResourceFactory.PROXIED_SUFFIX">Constant Field Values</a></dd></dl>
 </li>
 </ul>
@@ -452,7 +452,7 @@ implements org.apache.jackrabbit.webdav.DavResourceFactory, <a href="../../../..
 <ul class="blockList">
 <li class="blockList">
 <h4>HTTP_PUT_METHOD</h4>
-<pre>private static final&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.119">HTTP_PUT_METHOD</a></pre>
+<pre>private static final&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.120">HTTP_PUT_METHOD</a></pre>
 <dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../constant-values.html#org.apache.archiva.webdav.ArchivaDavResourceFactory.HTTP_PUT_METHOD">Constant Field Values</a></dd></dl>
 </li>
 </ul>
@@ -462,7 +462,7 @@ implements org.apache.jackrabbit.webdav.DavResourceFactory, <a href="../../../..
 <ul class="blockList">
 <li class="blockList">
 <h4>log</h4>
-<pre>private&nbsp;org.slf4j.Logger <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.121">log</a></pre>
+<pre>private&nbsp;org.slf4j.Logger <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.122">log</a></pre>
 </li>
 </ul>
 <a name="auditListeners">
@@ -472,7 +472,7 @@ implements org.apache.jackrabbit.webdav.DavResourceFactory, <a href="../../../..
 <li class="blockList">
 <h4>auditListeners</h4>
 <pre>@Inject
-private&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/archiva/audit/AuditListener.html" title="interface in org.apache.archiva.audit">AuditListener</a>&gt; <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.127">auditListeners</a></pre>
+private&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/archiva/audit/AuditListener.html" title="interface in org.apache.archiva.audit">AuditListener</a>&gt; <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.128">auditListeners</a></pre>
 </li>
 </ul>
 <a name="repositoryFactory">
@@ -482,7 +482,7 @@ private&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.htm
 <li class="blockList">
 <h4>repositoryFactory</h4>
 <pre>@Inject
-private&nbsp;<a href="../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.133">repositoryFactory</a></pre>
+private&nbsp;<a href="../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.134">repositoryFactory</a></pre>
 </li>
 </ul>
 <a name="repositoryRequest">
@@ -491,7 +491,7 @@ private&nbsp;<a href="../../../../org/apache/archiva/repository/RepositoryConten
 <ul class="blockList">
 <li class="blockList">
 <h4>repositoryRequest</h4>
-<pre>private&nbsp;<a href="../../../../org/apache/archiva/repository/content/maven2/RepositoryRequest.html" title="class in org.apache.archiva.repository.content.maven2">RepositoryRequest</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.138">repositoryRequest</a></pre>
+<pre>private&nbsp;<a href="../../../../org/apache/archiva/repository/content/maven2/RepositoryRequest.html" title="class in org.apache.archiva.repository.content.maven2">RepositoryRequest</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.139">repositoryRequest</a></pre>
 </li>
 </ul>
 <a name="connectors">
@@ -502,7 +502,7 @@ private&nbsp;<a href="../../../../org/apache/archiva/repository/RepositoryConten
 <h4>connectors</h4>
 <pre>@Inject
 @Named(value="repositoryProxyConnectors#default")
-private&nbsp;<a href="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html" title="interface in org.apache.archiva.proxy.model">RepositoryProxyConnectors</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.145">connectors</a></pre>
+private&nbsp;<a href="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html" title="interface in org.apache.archiva.proxy.model">RepositoryProxyConnectors</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.146">connectors</a></pre>
 </li>
 </ul>
 <a name="metadataTools">
@@ -512,7 +512,7 @@ private&nbsp;<a href="../../../../org/apache/archiva/proxy/model/RepositoryProxy
 <li class="blockList">
 <h4>metadataTools</h4>
 <pre>@Inject
-private&nbsp;<a href="../../../../org/apache/archiva/repository/metadata/MetadataTools.html" title="class in org.apache.archiva.repository.metadata">MetadataTools</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.151">metadataTools</a></pre>
+private&nbsp;<a href="../../../../org/apache/archiva/repository/metadata/MetadataTools.html" title="class in org.apache.archiva.repository.metadata">MetadataTools</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.152">metadataTools</a></pre>
 </li>
 </ul>
 <a name="mimeTypes">
@@ -522,7 +522,7 @@ private&nbsp;<a href="../../../../org/apache/archiva/repository/metadata/Metadat
 <li class="blockList">
 <h4>mimeTypes</h4>
 <pre>@Inject
-private&nbsp;<a href="../../../../org/apache/archiva/webdav/util/MimeTypes.html" title="class in org.apache.archiva.webdav.util">MimeTypes</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.157">mimeTypes</a></pre>
+private&nbsp;<a href="../../../../org/apache/archiva/webdav/util/MimeTypes.html" title="class in org.apache.archiva.webdav.util">MimeTypes</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.158">mimeTypes</a></pre>
 </li>
 </ul>
 <a name="archivaConfiguration">
@@ -531,7 +531,7 @@ private&nbsp;<a href="../../../../org/apache/archiva/webdav/util/MimeTypes.html"
 <ul class="blockList">
 <li class="blockList">
 <h4>archivaConfiguration</h4>
-<pre>private&nbsp;<a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.162">archivaConfiguration</a></pre>
+<pre>private&nbsp;<a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.163">archivaConfiguration</a></pre>
 </li>
 </ul>
 <a name="servletAuth">
@@ -541,7 +541,7 @@ private&nbsp;<a href="../../../../org/apache/archiva/webdav/util/MimeTypes.html"
 <li class="blockList">
 <h4>servletAuth</h4>
 <pre>@Inject
-private&nbsp;<a href="../../../../org/apache/archiva/security/ServletAuthenticator.html" title="interface in org.apache.archiva.security">ServletAuthenticator</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.168">servletAuth</a></pre>
+private&nbsp;<a href="../../../../org/apache/archiva/security/ServletAuthenticator.html" title="interface in org.apache.archiva.security">ServletAuthenticator</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.169">servletAuth</a></pre>
 </li>
 </ul>
 <a name="httpAuth">
@@ -552,7 +552,7 @@ private&nbsp;<a href="../../../../org/apache/archiva/security/ServletAuthenticat
 <h4>httpAuth</h4>
 <pre>@Inject
 @Named(value="httpAuthenticator#basic")
-private&nbsp;org.apache.archiva.redback.integration.filter.authentication.HttpAuthenticator <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.175">httpAuth</a></pre>
+private&nbsp;org.apache.archiva.redback.integration.filter.authentication.HttpAuthenticator <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.176">httpAuth</a></pre>
 </li>
 </ul>
 <a name="remoteRepositoryAdmin">
@@ -562,7 +562,7 @@ private&nbsp;org.apache.archiva.redback.integration.filter.authentication.HttpAu
 <li class="blockList">
 <h4>remoteRepositoryAdmin</h4>
 <pre>@Inject
-private&nbsp;<a href="../../../../org/apache/archiva/admin/model/remote/RemoteRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.remote">RemoteRepositoryAdmin</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.178">remoteRepositoryAdmin</a></pre>
+private&nbsp;<a href="../../../../org/apache/archiva/admin/model/remote/RemoteRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.remote">RemoteRepositoryAdmin</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.179">remoteRepositoryAdmin</a></pre>
 </li>
 </ul>
 <a name="indexMerger">
@@ -572,7 +572,7 @@ private&nbsp;<a href="../../../../org/apache/archiva/admin/model/remote/RemoteRe
 <li class="blockList">
 <h4>indexMerger</h4>
 <pre>@Inject
-private&nbsp;<a href="../../../../org/apache/archiva/indexer/merger/IndexMerger.html" title="interface in org.apache.archiva.indexer.merger">IndexMerger</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.181">indexMerger</a></pre>
+private&nbsp;<a href="../../../../org/apache/archiva/indexer/merger/IndexMerger.html" title="interface in org.apache.archiva.indexer.merger">IndexMerger</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.182">indexMerger</a></pre>
 </li>
 </ul>
 <a name="repositorySearch">
@@ -582,7 +582,7 @@ private&nbsp;<a href="../../../../org/apache/archiva/indexer/merger/IndexMerger.
 <li class="blockList">
 <h4>repositorySearch</h4>
 <pre>@Inject
-private&nbsp;<a href="../../../../org/apache/archiva/indexer/search/RepositorySearch.html" title="interface in org.apache.archiva.indexer.search">RepositorySearch</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.184">repositorySearch</a></pre>
+private&nbsp;<a href="../../../../org/apache/archiva/indexer/search/RepositorySearch.html" title="interface in org.apache.archiva.indexer.search">RepositorySearch</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.185">repositorySearch</a></pre>
 </li>
 </ul>
 <a name="lockManager">
@@ -591,7 +591,7 @@ private&nbsp;<a href="../../../../org/apache/archiva/indexer/search/RepositorySe
 <ul class="blockList">
 <li class="blockList">
 <h4>lockManager</h4>
-<pre>private final&nbsp;org.apache.jackrabbit.webdav.lock.LockManager <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.189">lockManager</a></pre>
+<pre>private final&nbsp;org.apache.jackrabbit.webdav.lock.LockManager <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.190">lockManager</a></pre>
 <div class="block">Lock Manager - use simple implementation from JackRabbit</div>
 </li>
 </ul>
@@ -601,7 +601,7 @@ private&nbsp;<a href="../../../../org/apache/archiva/indexer/search/RepositorySe
 <ul class="blockList">
 <li class="blockList">
 <h4>checksum</h4>
-<pre>private&nbsp;org.codehaus.plexus.digest.ChecksumFile <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.194">checksum</a></pre>
+<pre>private&nbsp;org.codehaus.plexus.digest.ChecksumFile <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.195">checksum</a></pre>
 </li>
 </ul>
 <a name="digestSha1">
@@ -610,7 +610,7 @@ private&nbsp;<a href="../../../../org/apache/archiva/indexer/search/RepositorySe
 <ul class="blockList">
 <li class="blockList">
 <h4>digestSha1</h4>
-<pre>private&nbsp;org.codehaus.plexus.digest.Digester <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.199">digestSha1</a></pre>
+<pre>private&nbsp;org.codehaus.plexus.digest.Digester <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.200">digestSha1</a></pre>
 </li>
 </ul>
 <a name="digestMd5">
@@ -619,7 +619,7 @@ private&nbsp;<a href="../../../../org/apache/archiva/indexer/search/RepositorySe
 <ul class="blockList">
 <li class="blockList">
 <h4>digestMd5</h4>
-<pre>private&nbsp;org.codehaus.plexus.digest.Digester <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.204">digestMd5</a></pre>
+<pre>private&nbsp;org.codehaus.plexus.digest.Digester <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.205">digestMd5</a></pre>
 </li>
 </ul>
 <a name="scheduler">
@@ -630,7 +630,7 @@ private&nbsp;<a href="../../../../org/apache/archiva/indexer/search/RepositorySe
 <h4>scheduler</h4>
 <pre>@Inject
 @Named(value="archivaTaskScheduler#repository")
-private&nbsp;<a href="../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler.repository.model">RepositoryArchivaTaskScheduler</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.211">scheduler</a></pre>
+private&nbsp;<a href="../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler.repository.model">RepositoryArchivaTaskScheduler</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.212">scheduler</a></pre>
 </li>
 </ul>
 <a name="applicationContext">
@@ -639,7 +639,7 @@ private&nbsp;<a href="../../../../org/apache/archiva/scheduler/repository/model/
 <ul class="blockListLast">
 <li class="blockList">
 <h4>applicationContext</h4>
-<pre>private&nbsp;org.springframework.context.ApplicationContext <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.213">applicationContext</a></pre>
+<pre>private&nbsp;org.springframework.context.ApplicationContext <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.214">applicationContext</a></pre>
 </li>
 </ul>
 </li>
@@ -657,7 +657,7 @@ private&nbsp;<a href="../../../../org/apache/archiva/scheduler/repository/model/
 <li class="blockList">
 <h4>ArchivaDavResourceFactory</h4>
 <pre>@Inject
-public&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.216">ArchivaDavResourceFactory</a>(org.springframework.context.ApplicationContext&nbsp;applicationContext,
+public&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.217">ArchivaDavResourceFactory</a>(org.springframework.context.ApplicationContext&nbsp;applicationContext,
                                 <a href="../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridge.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridge</a>&nbsp;plexusSisuBridge,
                                 <a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a>&nbsp;archivaConfiguration)
                           throws <a href="../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridgeException.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridgeException</a></pre>
@@ -680,7 +680,7 @@ public&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavRe
 <li class="blockList">
 <h4>initialize</h4>
 <pre><a href="http://docs.oracle.com/javase/6/docs/api/javax/annotation/PostConstruct.html?is-external=true" title="class or interface in javax.annotation">@PostConstruct</a>
-public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.232">initialize</a>()</pre>
+public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.233">initialize</a>()</pre>
 </li>
 </ul>
 <a name="createResource(org.apache.jackrabbit.webdav.DavResourceLocator, org.apache.jackrabbit.webdav.DavServletRequest, org.apache.jackrabbit.webdav.DavServletResponse)">
@@ -689,7 +689,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>createResource</h4>
-<pre>public&nbsp;org.apache.jackrabbit.webdav.DavResource&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.237">createResource</a>(org.apache.jackrabbit.webdav.DavResourceLocator&nbsp;locator,
+<pre>public&nbsp;org.apache.jackrabbit.webdav.DavResource&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.238">createResource</a>(org.apache.jackrabbit.webdav.DavResourceLocator&nbsp;locator,
                                                       org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
                                                       org.apache.jackrabbit.webdav.DavServletResponse&nbsp;response)
                                                         throws org.apache.jackrabbit.webdav.DavException</pre>
@@ -700,18 +700,18 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <dd><code>org.apache.jackrabbit.webdav.DavException</code></dd></dl>
 </li>
 </ul>
-<a name="processRepositoryGroup(org.apache.jackrabbit.webdav.DavServletRequest, org.apache.archiva.webdav.ArchivaDavResourceLocator, java.util.List, java.lang.String, java.util.List, java.lang.String)">
+<a name="processRepositoryGroup(org.apache.jackrabbit.webdav.DavServletRequest, org.apache.archiva.webdav.ArchivaDavResourceLocator, java.util.List, java.lang.String, java.util.List, org.apache.archiva.configuration.RepositoryGroupConfiguration)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>processRepositoryGroup</h4>
-<pre>private&nbsp;org.apache.jackrabbit.webdav.DavResource&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.435">processRepositoryGroup</a>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+<pre>private&nbsp;org.apache.jackrabbit.webdav.DavResource&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.436">processRepositoryGroup</a>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
                                                               <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</a>&nbsp;archivaLocator,
                                                               <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositories,
                                                               <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;activePrincipal,
                                                               <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;resourcesInAbsolutePath,
-                                                              <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryGroupId)
+                                                              <a href="../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a>&nbsp;repoGroupConfig)
                                                                  throws org.apache.jackrabbit.webdav.DavException</pre>
 <dl><dt><span class="strong">Throws:</span></dt>
 <dd><code>org.apache.jackrabbit.webdav.DavException</code></dd></dl>
@@ -723,7 +723,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>processRepository</h4>
-<pre>private&nbsp;org.apache.jackrabbit.webdav.DavResource&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.525">processRepository</a>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+<pre>private&nbsp;org.apache.jackrabbit.webdav.DavResource&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.526">processRepository</a>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
                                                          <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</a>&nbsp;archivaLocator,
                                                          <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;activePrincipal,
                                                          <a href="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;managedRepository)
@@ -738,7 +738,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>createResource</h4>
-<pre>public&nbsp;org.apache.jackrabbit.webdav.DavResource&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.661">createResource</a>(org.apache.jackrabbit.webdav.DavResourceLocator&nbsp;locator,
+<pre>public&nbsp;org.apache.jackrabbit.webdav.DavResource&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.662">createResource</a>(org.apache.jackrabbit.webdav.DavResourceLocator&nbsp;locator,
                                                       org.apache.jackrabbit.webdav.DavSession&nbsp;davSession)
                                                         throws org.apache.jackrabbit.webdav.DavException</pre>
 <dl>
@@ -754,7 +754,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>fetchContentFromProxies</h4>
-<pre>private&nbsp;boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.695">fetchContentFromProxies</a>(<a href="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;managedRepository,
+<pre>private&nbsp;boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.696">fetchContentFromProxies</a>(<a href="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;managedRepository,
                               org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
                               <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.LogicalResource.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceFactory.LogicalResource</a>&nbsp;resource)
                                  throws org.apache.jackrabbit.webdav.DavException</pre>
@@ -768,7 +768,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>triggerAuditEvent</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.761">triggerAuditEvent</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;remoteIP,
+<pre>private&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.762">triggerAuditEvent</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;remoteIP,
                      <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
                      <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;resource,
                      <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;action,
@@ -781,7 +781,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>addAuditListener</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.773">addAuditListener</a>(<a href="../../../../org/apache/archiva/audit/AuditListener.html" title="interface in org.apache.archiva.audit">AuditListener</a>&nbsp;listener)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.774">addAuditListener</a>(<a href="../../../../org/apache/archiva/audit/AuditListener.html" title="interface in org.apache.archiva.audit">AuditListener</a>&nbsp;listener)</pre>
 <div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/audit/Auditable.html#addAuditListener(org.apache.archiva.audit.AuditListener)">Auditable</a></code></strong></div>
 <div class="block">Add an AuditListener.</div>
 <dl>
@@ -796,7 +796,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>clearAuditListeners</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.778">clearAuditListeners</a>()</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.779">clearAuditListeners</a>()</pre>
 <div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/audit/Auditable.html#clearAuditListeners()">Auditable</a></code></strong></div>
 <div class="block">Remove all registered <a href="../../../../org/apache/archiva/audit/AuditListener.html" title="interface in org.apache.archiva.audit"><code>AuditListener</code></a> objects.</div>
 <dl>
@@ -811,7 +811,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>removeAuditListener</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.783">removeAuditListener</a>(<a href="../../../../org/apache/archiva/audit/AuditListener.html" title="interface in org.apache.archiva.audit">AuditListener</a>&nbsp;listener)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.784">removeAuditListener</a>(<a href="../../../../org/apache/archiva/audit/AuditListener.html" title="interface in org.apache.archiva.audit">AuditListener</a>&nbsp;listener)</pre>
 <div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/audit/Auditable.html#removeAuditListener(org.apache.archiva.audit.AuditListener)">Auditable</a></code></strong></div>
 <div class="block">Remove an AuditListener.</div>
 <dl>
@@ -826,7 +826,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>setHeaders</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.788">setHeaders</a>(org.apache.jackrabbit.webdav.DavServletResponse&nbsp;response,
+<pre>private&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.789">setHeaders</a>(org.apache.jackrabbit.webdav.DavServletResponse&nbsp;response,
               org.apache.jackrabbit.webdav.DavResourceLocator&nbsp;locator,
               org.apache.jackrabbit.webdav.DavResource&nbsp;resource)</pre>
 </li>
@@ -837,7 +837,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>checkLocatorIsInstanceOfRepositoryLocator</h4>
-<pre>private&nbsp;<a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.809">checkLocatorIsInstanceOfRepositoryLocator</a>(org.apache.jackrabbit.webdav.DavResourceLocator&nbsp;locator)
+<pre>private&nbsp;<a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.810">checkLocatorIsInstanceOfRepositoryLocator</a>(org.apache.jackrabbit.webdav.DavResourceLocator&nbsp;locator)
                                                                      throws org.apache.jackrabbit.webdav.DavException</pre>
 <dl><dt><span class="strong">Throws:</span></dt>
 <dd><code>org.apache.jackrabbit.webdav.DavException</code></dd></dl>
@@ -849,24 +849,24 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>isAuthorized</h4>
-<pre>protected&nbsp;boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.854">isAuthorized</a>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+<pre>protected&nbsp;boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.855">isAuthorized</a>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
                    <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId)
                         throws org.apache.jackrabbit.webdav.DavException</pre>
 <dl><dt><span class="strong">Throws:</span></dt>
 <dd><code>org.apache.jackrabbit.webdav.DavException</code></dd></dl>
 </li>
 </ul>
-<a name="getResource(org.apache.jackrabbit.webdav.DavServletRequest, java.util.List, org.apache.archiva.webdav.ArchivaDavResourceLocator, java.lang.String)">
+<a name="getResourceFromGroup(org.apache.jackrabbit.webdav.DavServletRequest, java.util.List, org.apache.archiva.webdav.ArchivaDavResourceLocator, org.apache.archiva.configuration.RepositoryGroupConfiguration)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getResource</h4>
-<pre>private&nbsp;org.apache.jackrabbit.webdav.DavResource&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.907">getResource</a>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
-                                                   <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositories,
-                                                   <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</a>&nbsp;locator,
-                                                   <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;groupId)
-                                                      throws org.apache.jackrabbit.webdav.DavException</pre>
+<h4>getResourceFromGroup</h4>
+<pre>private&nbsp;org.apache.jackrabbit.webdav.DavResource&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.908">getResourceFromGroup</a>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+                                                            <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositories,
+                                                            <a href="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</a>&nbsp;locator,
+                                                            <a href="../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a>&nbsp;repositoryGroupConfiguration)
+                                                               throws org.apache.jackrabbit.webdav.DavException</pre>
 <dl><dt><span class="strong">Throws:</span></dt>
 <dd><code>org.apache.jackrabbit.webdav.DavException</code></dd></dl>
 </li>
@@ -877,7 +877,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>getActivePrincipal</h4>
-<pre>protected&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1049">getActivePrincipal</a>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request)</pre>
+<pre>protected&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1070">getActivePrincipal</a>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request)</pre>
 </li>
 </ul>
 <a name="isAllowedToContinue(org.apache.jackrabbit.webdav.DavServletRequest, java.util.List, java.lang.String)">
@@ -886,7 +886,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>isAllowedToContinue</h4>
-<pre>private&nbsp;boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1063">isAllowedToContinue</a>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+<pre>private&nbsp;boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1084">isAllowedToContinue</a>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
                           <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositories,
                           <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;activePrincipal)</pre>
 <div class="block">Check if the current user is authorized to access any of the repos</div>
@@ -900,7 +900,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>writeMergedMetadataToFile</h4>
-<pre>private&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1116">writeMergedMetadataToFile</a>(<a href="../../../../org/apache/archiva/model/ArchivaRepositoryMetadata.html" title="class in org.apache.archiva.model">ArchivaRepositoryMetadata</a>&nbsp;mergedMetadata,
+<pre>private&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1137">writeMergedMetadataToFile</a>(<a href="../../../../org/apache/archiva/model/ArchivaRepositoryMetadata.html" title="class in org.apache.archiva.model">ArchivaRepositoryMetadata</a>&nbsp;mergedMetadata,
                              <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;outputFilename)
                                 throws <a href="../../../../org/apache/archiva/repository/metadata/RepositoryMetadataException.html" title="class in org.apache.archiva.repository.metadata">RepositoryMetadataException</a>,
                                        org.codehaus.plexus.digest.DigesterException,
@@ -917,7 +917,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>createChecksumFile</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1134">createChecksumFile</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<pre>private&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1155">createChecksumFile</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
                       org.codehaus.plexus.digest.Digester&nbsp;digester)
                          throws org.codehaus.plexus.digest.DigesterException,
                                 <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
@@ -932,19 +932,19 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>isProjectReference</h4>
-<pre>private&nbsp;boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1149">isProjectReference</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;requestedResource)</pre>
+<pre>private&nbsp;boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1170">isProjectReference</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;requestedResource)</pre>
 </li>
 </ul>
-<a name="buildMergedIndexDirectory(java.util.List, java.lang.String, org.apache.jackrabbit.webdav.DavServletRequest, java.lang.String)">
+<a name="buildMergedIndexDirectory(java.util.List, java.lang.String, org.apache.jackrabbit.webdav.DavServletRequest, org.apache.archiva.configuration.RepositoryGroupConfiguration)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>buildMergedIndexDirectory</h4>
-<pre>protected&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1162">buildMergedIndexDirectory</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositories,
+<pre>protected&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1183">buildMergedIndexDirectory</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositories,
                              <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;activePrincipal,
                              org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
-                             <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;groupId)
+                             <a href="../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a>&nbsp;repositoryGroupConfiguration)
                                   throws org.apache.jackrabbit.webdav.DavException</pre>
 <dl><dt><span class="strong">Throws:</span></dt>
 <dd><code>org.apache.jackrabbit.webdav.DavException</code></dd></dl>
@@ -956,7 +956,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>setServletAuth</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1242">setServletAuth</a>(<a href="../../../../org/apache/archiva/security/ServletAuthenticator.html" title="interface in org.apache.archiva.security">ServletAuthenticator</a>&nbsp;servletAuth)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1265">setServletAuth</a>(<a href="../../../../org/apache/archiva/security/ServletAuthenticator.html" title="interface in org.apache.archiva.security">ServletAuthenticator</a>&nbsp;servletAuth)</pre>
 </li>
 </ul>
 <a name="setHttpAuth(org.apache.archiva.redback.integration.filter.authentication.HttpAuthenticator)">
@@ -965,7 +965,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>setHttpAuth</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1247">setHttpAuth</a>(org.apache.archiva.redback.integration.filter.authentication.HttpAuthenticator&nbsp;httpAuth)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1270">setHttpAuth</a>(org.apache.archiva.redback.integration.filter.authentication.HttpAuthenticator&nbsp;httpAuth)</pre>
 </li>
 </ul>
 <a name="setScheduler(org.apache.archiva.scheduler.repository.model.RepositoryArchivaTaskScheduler)">
@@ -974,7 +974,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>setScheduler</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1252">setScheduler</a>(<a href="../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler.repository.model">RepositoryArchivaTaskScheduler</a>&nbsp;scheduler)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1275">setScheduler</a>(<a href="../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler.repository.model">RepositoryArchivaTaskScheduler</a>&nbsp;scheduler)</pre>
 </li>
 </ul>
 <a name="setArchivaConfiguration(org.apache.archiva.configuration.ArchivaConfiguration)">
@@ -983,7 +983,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>setArchivaConfiguration</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1257">setArchivaConfiguration</a>(<a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a>&nbsp;archivaConfiguration)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1280">setArchivaConfiguration</a>(<a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a>&nbsp;archivaConfiguration)</pre>
 </li>
 </ul>
 <a name="setRepositoryFactory(org.apache.archiva.repository.RepositoryContentFactory)">
@@ -992,7 +992,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>setRepositoryFactory</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1262">setRepositoryFactory</a>(<a href="../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</a>&nbsp;repositoryFactory)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1285">setRepositoryFactory</a>(<a href="../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</a>&nbsp;repositoryFactory)</pre>
 </li>
 </ul>
 <a name="setRepositoryRequest(org.apache.archiva.repository.content.maven2.RepositoryRequest)">
@@ -1001,7 +1001,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>setRepositoryRequest</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1267">setRepositoryRequest</a>(<a href="../../../../org/apache/archiva/repository/content/maven2/RepositoryRequest.html" title="class in org.apache.archiva.repository.content.maven2">RepositoryRequest</a>&nbsp;repositoryRequest)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1290">setRepositoryRequest</a>(<a href="../../../../org/apache/archiva/repository/content/maven2/RepositoryRequest.html" title="class in org.apache.archiva.repository.content.maven2">RepositoryRequest</a>&nbsp;repositoryRequest)</pre>
 </li>
 </ul>
 <a name="setConnectors(org.apache.archiva.proxy.model.RepositoryProxyConnectors)">
@@ -1010,7 +1010,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>setConnectors</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1272">setConnectors</a>(<a href="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html" title="interface in org.apache.archiva.proxy.model">RepositoryProxyConnectors</a>&nbsp;connectors)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1295">setConnectors</a>(<a href="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html" title="interface in org.apache.archiva.proxy.model">RepositoryProxyConnectors</a>&nbsp;connectors)</pre>
 </li>
 </ul>
 <a name="getRemoteRepositoryAdmin()">
@@ -1019,7 +1019,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockList">
 <li class="blockList">
 <h4>getRemoteRepositoryAdmin</h4>
-<pre>public&nbsp;<a href="../../../../org/apache/archiva/admin/model/remote/RemoteRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.remote">RemoteRepositoryAdmin</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1277">getRemoteRepositoryAdmin</a>()</pre>
+<pre>public&nbsp;<a href="../../../../org/apache/archiva/admin/model/remote/RemoteRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.remote">RemoteRepositoryAdmin</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1300">getRemoteRepositoryAdmin</a>()</pre>
 </li>
 </ul>
 <a name="setRemoteRepositoryAdmin(org.apache.archiva.admin.model.remote.RemoteRepositoryAdmin)">
@@ -1028,7 +1028,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/Ar
 <ul class="blockListLast">
 <li class="blockList">
 <h4>setRemoteRepositoryAdmin</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1282">setRemoteRepositoryAdmin</a>(<a href="../../../../org/apache/archiva/admin/model/remote/RemoteRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.remote">RemoteRepositoryAdmin</a>&nbsp;remoteRepositoryAdmin)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1305">setRemoteRepositoryAdmin</a>(<a href="../../../../org/apache/archiva/admin/model/remote/RemoteRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.remote">RemoteRepositoryAdmin</a>&nbsp;remoteRepositoryAdmin)</pre>
 </li>
 </ul>
 </li>

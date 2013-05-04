@@ -55,7 +55,7 @@
 <span class="sourceLineNo">047</span> * @author Olivier Lamy<a name="line.47"></a>
 <span class="sourceLineNo">048</span> * @since 1.4-M2<a name="line.48"></a>
 <span class="sourceLineNo">049</span> */<a name="line.49"></a>
-<span class="sourceLineNo">050</span>@Service( "indexMerger#default" )<a name="line.50"></a>
+<span class="sourceLineNo">050</span>@Service("indexMerger#default")<a name="line.50"></a>
 <span class="sourceLineNo">051</span>public class DefaultIndexMerger<a name="line.51"></a>
 <span class="sourceLineNo">052</span>    implements IndexMerger<a name="line.52"></a>
 <span class="sourceLineNo">053</span>{<a name="line.53"></a>
@@ -108,7 +108,7 @@
 <span class="sourceLineNo">100</span><a name="line.100"></a>
 <span class="sourceLineNo">101</span>        try<a name="line.101"></a>
 <span class="sourceLineNo">102</span>        {<a name="line.102"></a>
-<span class="sourceLineNo">103</span>            File indexLocation = new File( tempRepoFile, ".indexer" );<a name="line.103"></a>
+<span class="sourceLineNo">103</span>            File indexLocation = new File( tempRepoFile, indexMergerRequest.getMergedIndexPath() );<a name="line.103"></a>
 <span class="sourceLineNo">104</span>            IndexingContext indexingContext =<a name="line.104"></a>
 <span class="sourceLineNo">105</span>                indexer.addIndexingContext( tempRepoId, tempRepoId, tempRepoFile, indexLocation, null, null,<a name="line.105"></a>
 <span class="sourceLineNo">106</span>                                            mavenIndexerUtils.getAllIndexCreators() );<a name="line.106"></a>
@@ -132,57 +132,58 @@
 <span class="sourceLineNo">124</span>            temporaryGroupIndexes.add(<a name="line.124"></a>
 <span class="sourceLineNo">125</span>                new TemporaryGroupIndex( tempRepoFile, tempRepoId, indexMergerRequest.getGroupId() ) );<a name="line.125"></a>
 <span class="sourceLineNo">126</span>            stopWatch.stop();<a name="line.126"></a>
-<span class="sourceLineNo">127</span>            log.info( "merged index for repos {} in {} s", indexMergerRequest.getRepositoriesIds(), stopWatch.getTime() );<a name="line.127"></a>
-<span class="sourceLineNo">128</span>            return indexingContext;<a name="line.128"></a>
-<span class="sourceLineNo">129</span>        }<a name="line.129"></a>
-<span class="sourceLineNo">130</span>        catch ( IOException e )<a name="line.130"></a>
-<span class="sourceLineNo">131</span>        {<a name="line.131"></a>
-<span class="sourceLineNo">132</span>            throw new IndexMergerException( e.getMessage(), e );<a name="line.132"></a>
-<span class="sourceLineNo">133</span>        }<a name="line.133"></a>
-<span class="sourceLineNo">134</span>        catch ( UnsupportedExistingLuceneIndexException e )<a name="line.134"></a>
-<span class="sourceLineNo">135</span>        {<a name="line.135"></a>
-<span class="sourceLineNo">136</span>            throw new IndexMergerException( e.getMessage(), e );<a name="line.136"></a>
-<span class="sourceLineNo">137</span>        }<a name="line.137"></a>
-<span class="sourceLineNo">138</span>    }<a name="line.138"></a>
-<span class="sourceLineNo">139</span><a name="line.139"></a>
-<span class="sourceLineNo">140</span>    @Async<a name="line.140"></a>
-<span class="sourceLineNo">141</span>    public void cleanTemporaryGroupIndex( TemporaryGroupIndex temporaryGroupIndex )<a name="line.141"></a>
-<span class="sourceLineNo">142</span>    {<a name="line.142"></a>
-<span class="sourceLineNo">143</span>        if ( temporaryGroupIndex == null )<a name="line.143"></a>
-<span class="sourceLineNo">144</span>        {<a name="line.144"></a>
-<span class="sourceLineNo">145</span>            return;<a name="line.145"></a>
-<span class="sourceLineNo">146</span>        }<a name="line.146"></a>
-<span class="sourceLineNo">147</span><a name="line.147"></a>
-<span class="sourceLineNo">148</span>        try<a name="line.148"></a>
-<span class="sourceLineNo">149</span>        {<a name="line.149"></a>
-<span class="sourceLineNo">150</span>            IndexingContext indexingContext = indexer.getIndexingContexts().get( temporaryGroupIndex.getIndexId() );<a name="line.150"></a>
-<span class="sourceLineNo">151</span>            if ( indexingContext != null )<a name="line.151"></a>
-<span class="sourceLineNo">152</span>            {<a name="line.152"></a>
-<span class="sourceLineNo">153</span>                indexer.removeIndexingContext( indexingContext, true );<a name="line.153"></a>
-<span class="sourceLineNo">154</span>            }<a name="line.154"></a>
-<span class="sourceLineNo">155</span>            File directory = temporaryGroupIndex.getDirectory();<a name="line.155"></a>
-<span class="sourceLineNo">156</span>            if ( directory != null &amp;&amp; directory.exists() )<a name="line.156"></a>
-<span class="sourceLineNo">157</span>            {<a name="line.157"></a>
-<span class="sourceLineNo">158</span>                FileUtils.deleteDirectory( directory );<a name="line.158"></a>
-<span class="sourceLineNo">159</span>            }<a name="line.159"></a>
-<span class="sourceLineNo">160</span>            temporaryGroupIndexes.remove( temporaryGroupIndex );<a name="line.160"></a>
-<span class="sourceLineNo">161</span>        }<a name="line.161"></a>
-<span class="sourceLineNo">162</span>        catch ( IOException e )<a name="line.162"></a>
-<span class="sourceLineNo">163</span>        {<a name="line.163"></a>
-<span class="sourceLineNo">164</span>            log.warn( "fail to delete temporary group index {}", temporaryGroupIndex.getIndexId(), e );<a name="line.164"></a>
-<span class="sourceLineNo">165</span>        }<a name="line.165"></a>
-<span class="sourceLineNo">166</span>    }<a name="line.166"></a>
-<span class="sourceLineNo">167</span><a name="line.167"></a>
-<span class="sourceLineNo">168</span>    public Collection&lt;TemporaryGroupIndex&gt; getTemporaryGroupIndexes()<a name="line.168"></a>
-<span class="sourceLineNo">169</span>    {<a name="line.169"></a>
-<span class="sourceLineNo">170</span>        return this.temporaryGroupIndexes;<a name="line.170"></a>
-<span class="sourceLineNo">171</span>    }<a name="line.171"></a>
-<span class="sourceLineNo">172</span><a name="line.172"></a>
-<span class="sourceLineNo">173</span>    public int getGroupMergedIndexTtl()<a name="line.173"></a>
-<span class="sourceLineNo">174</span>    {<a name="line.174"></a>
-<span class="sourceLineNo">175</span>        return this.groupMergedIndexTtl;<a name="line.175"></a>
-<span class="sourceLineNo">176</span>    }<a name="line.176"></a>
-<span class="sourceLineNo">177</span>}<a name="line.177"></a>
+<span class="sourceLineNo">127</span>            log.info( "merged index for repos {} in {} s", indexMergerRequest.getRepositoriesIds(),<a name="line.127"></a>
+<span class="sourceLineNo">128</span>                      stopWatch.getTime() );<a name="line.128"></a>
+<span class="sourceLineNo">129</span>            return indexingContext;<a name="line.129"></a>
+<span class="sourceLineNo">130</span>        }<a name="line.130"></a>
+<span class="sourceLineNo">131</span>        catch ( IOException e )<a name="line.131"></a>
+<span class="sourceLineNo">132</span>        {<a name="line.132"></a>
+<span class="sourceLineNo">133</span>            throw new IndexMergerException( e.getMessage(), e );<a name="line.133"></a>
+<span class="sourceLineNo">134</span>        }<a name="line.134"></a>
+<span class="sourceLineNo">135</span>        catch ( UnsupportedExistingLuceneIndexException e )<a name="line.135"></a>
+<span class="sourceLineNo">136</span>        {<a name="line.136"></a>
+<span class="sourceLineNo">137</span>            throw new IndexMergerException( e.getMessage(), e );<a name="line.137"></a>
+<span class="sourceLineNo">138</span>        }<a name="line.138"></a>
+<span class="sourceLineNo">139</span>    }<a name="line.139"></a>
+<span class="sourceLineNo">140</span><a name="line.140"></a>
+<span class="sourceLineNo">141</span>    @Async<a name="line.141"></a>
+<span class="sourceLineNo">142</span>    public void cleanTemporaryGroupIndex( TemporaryGroupIndex temporaryGroupIndex )<a name="line.142"></a>
+<span class="sourceLineNo">143</span>    {<a name="line.143"></a>
+<span class="sourceLineNo">144</span>        if ( temporaryGroupIndex == null )<a name="line.144"></a>
+<span class="sourceLineNo">145</span>        {<a name="line.145"></a>
+<span class="sourceLineNo">146</span>            return;<a name="line.146"></a>
+<span class="sourceLineNo">147</span>        }<a name="line.147"></a>
+<span class="sourceLineNo">148</span><a name="line.148"></a>
+<span class="sourceLineNo">149</span>        try<a name="line.149"></a>
+<span class="sourceLineNo">150</span>        {<a name="line.150"></a>
+<span class="sourceLineNo">151</span>            IndexingContext indexingContext = indexer.getIndexingContexts().get( temporaryGroupIndex.getIndexId() );<a name="line.151"></a>
+<span class="sourceLineNo">152</span>            if ( indexingContext != null )<a name="line.152"></a>
+<span class="sourceLineNo">153</span>            {<a name="line.153"></a>
+<span class="sourceLineNo">154</span>                indexer.removeIndexingContext( indexingContext, true );<a name="line.154"></a>
+<span class="sourceLineNo">155</span>            }<a name="line.155"></a>
+<span class="sourceLineNo">156</span>            File directory = temporaryGroupIndex.getDirectory();<a name="line.156"></a>
+<span class="sourceLineNo">157</span>            if ( directory != null &amp;&amp; directory.exists() )<a name="line.157"></a>
+<span class="sourceLineNo">158</span>            {<a name="line.158"></a>
+<span class="sourceLineNo">159</span>                FileUtils.deleteDirectory( directory );<a name="line.159"></a>
+<span class="sourceLineNo">160</span>            }<a name="line.160"></a>
+<span class="sourceLineNo">161</span>            temporaryGroupIndexes.remove( temporaryGroupIndex );<a name="line.161"></a>
+<span class="sourceLineNo">162</span>        }<a name="line.162"></a>
+<span class="sourceLineNo">163</span>        catch ( IOException e )<a name="line.163"></a>
+<span class="sourceLineNo">164</span>        {<a name="line.164"></a>
+<span class="sourceLineNo">165</span>            log.warn( "fail to delete temporary group index {}", temporaryGroupIndex.getIndexId(), e );<a name="line.165"></a>
+<span class="sourceLineNo">166</span>        }<a name="line.166"></a>
+<span class="sourceLineNo">167</span>    }<a name="line.167"></a>
+<span class="sourceLineNo">168</span><a name="line.168"></a>
+<span class="sourceLineNo">169</span>    public Collection&lt;TemporaryGroupIndex&gt; getTemporaryGroupIndexes()<a name="line.169"></a>
+<span class="sourceLineNo">170</span>    {<a name="line.170"></a>
+<span class="sourceLineNo">171</span>        return this.temporaryGroupIndexes;<a name="line.171"></a>
+<span class="sourceLineNo">172</span>    }<a name="line.172"></a>
+<span class="sourceLineNo">173</span><a name="line.173"></a>
+<span class="sourceLineNo">174</span>    public int getGroupMergedIndexTtl()<a name="line.174"></a>
+<span class="sourceLineNo">175</span>    {<a name="line.175"></a>
+<span class="sourceLineNo">176</span>        return this.groupMergedIndexTtl;<a name="line.176"></a>
+<span class="sourceLineNo">177</span>    }<a name="line.177"></a>
+<span class="sourceLineNo">178</span>}<a name="line.178"></a>
 
 
 
