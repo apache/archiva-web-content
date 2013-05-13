@@ -11,7 +11,7 @@
        Remove this if you use the .htaccess -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>ldapGroupMapping</title>
+  <title>ldapGroupMappingUpdateRequest</title>
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +30,7 @@
   <div class="container">
     <header>
       <div id="header" class="column first last span-20">
-        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">ldapGroupMapping</a></div>
+        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">ldapGroupMappingUpdateRequest</a></div>
         <div id="primary" class="column span-18 append-1 prepend-1 first last">
           <ul class="navigation">
             <li id="nav-rest"><a href="rest.html">REST</a></li>
@@ -56,7 +56,7 @@
               </ul>
             </li>
             <li class="current">
-              <a href="el_ns0_ldapGroupMapping.html">ldapGroupMapping element</a>
+              <a href="el_ns0_ldapGroupMappingUpdateRequest.html">ldapGroupMappingUpdateRequest element</a>
               <ul>
                 <li><a href="el_ns0_userRegistrationRequest.html">userRegistrationRequest element</a></li>
                 <li><a href="el_ns0_roleTemplate.html">roleTemplate element</a></li>
@@ -81,11 +81,11 @@
       </div>
     </header>
     <div id="main" class="column first last span-20">
-      <h1>ldapGroupMapping element</h1>
+      <h1>ldapGroupMappingUpdateRequest element</h1>
       <table>
         <tr>
           <td align="right">Type:</td>
-          <td><a href="ns0_ldapGroupMapping.html">ldapGroupMapping</a></td>
+          <td><a href="ns0_ldapGroupMappingUpdateRequest.html">ldapGroupMappingUpdateRequest</a></td>
         </tr>
         <tr>
           <td align="right">Namespace:</td>
@@ -95,23 +95,27 @@
           <td align="right">XML Schema:</td>
           <td><a href="ns0.xsd">ns0.xsd</a></td>
         </tr>
-        <tr>
-          <td align="right">Available Since:</td>
-          <td>2.1</td>
-        </tr>
       </table>
       <h2>Example XML</h2>
       <code class="prettyprint lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;ldapGroupMapping&gt;
-  &lt;group&gt;...&lt;/group&gt;
-  &lt;roleNames&gt;...&lt;/roleNames&gt;
-  &lt;roleNames&gt;...&lt;/roleNames&gt;
-  &lt;!--...more &quot;roleNames&quot; elements...--&gt;
-&lt;/ldapGroupMapping&gt;</code>
+&lt;ldapGroupMappingUpdateRequest&gt;
+  &lt;ldapGroupMapping&gt;
+    &lt;group&gt;...&lt;/group&gt;
+    &lt;roleNames&gt;...&lt;/roleNames&gt;
+    &lt;roleNames&gt;...&lt;/roleNames&gt;
+    &lt;!--...more &quot;roleNames&quot; elements...--&gt;
+  &lt;/ldapGroupMapping&gt;
+  &lt;ldapGroupMapping&gt;
+    &lt;!--...--&gt;
+  &lt;/ldapGroupMapping&gt;
+  &lt;!--...more &quot;ldapGroupMapping&quot; elements...--&gt;
+&lt;/ldapGroupMappingUpdateRequest&gt;</code>
       <h2>Example JSON</h2>
       <code class="prettyprint lang-js">{
-  &quot;group&quot; : &quot;...&quot;,
-  &quot;roleNames&quot; : [ &quot;...&quot;, ... ]
+  &quot;ldapGroupMapping&quot; : [ {
+    &quot;group&quot; : &quot;...&quot;,
+    &quot;roleNames&quot; : [ &quot;...&quot;, ... ]
+  }, ... ]
 }</code>
 
       <div class="clear" />

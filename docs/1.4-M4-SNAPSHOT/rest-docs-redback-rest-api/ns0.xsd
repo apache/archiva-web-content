@@ -4,6 +4,7 @@
   <xs:element name="applicationRole" type="applicationRoles"/>
   <xs:element name="errorMessage" type="errorMessage"/>
   <xs:element name="ldapGroupMapping" type="ldapGroupMapping"/>
+  <xs:element name="ldapGroupMappingUpdateRequest" type="ldapGroupMappingUpdateRequest"/>
   <xs:element name="loginRequest" type="loginRequest"/>
   <xs:element name="operation" type="operation"/>
   <xs:element name="permission" type="permission"/>
@@ -43,6 +44,11 @@
     <xs:sequence>
       <xs:element name="group" type="xs:string" minOccurs="0"/>
       <xs:element name="roleNames" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ldapGroupMappingUpdateRequest">
+    <xs:sequence>
+      <xs:element name="ldapGroupMapping" type="ldapGroupMapping" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="loginRequest">
