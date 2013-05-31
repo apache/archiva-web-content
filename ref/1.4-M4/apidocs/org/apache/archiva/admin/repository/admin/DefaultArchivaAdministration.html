@@ -1,0 +1,993 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>
+DefaultArchivaAdministration (Archiva :: Modules 1.4-M4 API)
+</TITLE>
+
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="DefaultArchivaAdministration (Archiva :: Modules 1.4-M4 API)";
+    }
+}
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/DefaultArchivaAdministration.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;PREV CLASS&nbsp;
+&nbsp;<A HREF="../../../../../../org/apache/archiva/admin/repository/admin/FiletypeToMapClosure.html" title="class in org.apache.archiva.admin.repository.admin"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../../index.html?org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="DefaultArchivaAdministration.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<!-- ======== START OF CLASS DATA ======== -->
+<H2>
+<FONT SIZE="-1">
+org.apache.archiva.admin.repository.admin</FONT>
+<BR>
+Class DefaultArchivaAdministration</H2>
+<PRE>
+<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</A>
+  <IMG SRC="../../../../../../resources/inherit.gif" ALT="extended by "><A HREF="../../../../../../org/apache/archiva/admin/repository/AbstractRepositoryAdmin.html" title="class in org.apache.archiva.admin.repository">org.apache.archiva.admin.repository.AbstractRepositoryAdmin</A>
+      <IMG SRC="../../../../../../resources/inherit.gif" ALT="extended by "><B>org.apache.archiva.admin.repository.admin.DefaultArchivaAdministration</B>
+</PRE>
+<DL>
+<DT><B>All Implemented Interfaces:</B> <DD><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></DD>
+</DL>
+<HR>
+<DL>
+<DT><PRE><FONT SIZE="-1">@Service(value="archivaAdministration#default")
+</FONT>public class <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.50"><B>DefaultArchivaAdministration</B></A><DT>extends <A HREF="../../../../../../org/apache/archiva/admin/repository/AbstractRepositoryAdmin.html" title="class in org.apache.archiva.admin.repository">AbstractRepositoryAdmin</A><DT>implements <A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></DL>
+</PRE>
+
+<P>
+<DL>
+<DT><B>Author:</B></DT>
+  <DD>Olivier Lamy</DD>
+</DL>
+<HR>
+
+<P>
+<!-- =========== FIELD SUMMARY =========== -->
+
+<A NAME="field_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Field Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.apache.http.impl.conn.PoolingClientConnectionManager</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#poolingClientConnectionManager">poolingClientConnectionManager</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="fields_inherited_from_class_org.apache.archiva.admin.repository.AbstractRepositoryAdmin"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Fields inherited from class org.apache.archiva.admin.repository.<A HREF="../../../../../../org/apache/archiva/admin/repository/AbstractRepositoryAdmin.html" title="class in org.apache.archiva.admin.repository">AbstractRepositoryAdmin</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="../../../../../../org/apache/archiva/admin/repository/AbstractRepositoryAdmin.html#log">log</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+
+<A NAME="constructor_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Constructor Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#DefaultArchivaAdministration()">DefaultArchivaAdministration</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ========== METHOD SUMMARY =========== -->
+
+<A NAME="method_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#addFileType(org.apache.archiva.admin.model.beans.FileType, org.apache.archiva.admin.model.AuditInformation)">addFileType</A></B>(<A HREF="../../../../../../org/apache/archiva/admin/model/beans/FileType.html" title="class in org.apache.archiva.admin.model.beans">FileType</A>&nbsp;fileType,
+                       <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#addFileTypePattern(java.lang.String, java.lang.String, org.apache.archiva.admin.model.AuditInformation)">addFileTypePattern</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;fileTypeId,
+                                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;pattern,
+                                     <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#addInvalidContentConsumer(java.lang.String, org.apache.archiva.admin.model.AuditInformation)">addInvalidContentConsumer</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;invalidContentConsumer,
+                                                   <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#addKnownContentConsumer(java.lang.String, org.apache.archiva.admin.model.AuditInformation)">addKnownContentConsumer</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;knownContentConsumer,
+                                               <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#addLegacyArtifactPath(org.apache.archiva.admin.model.beans.LegacyArtifactPath, org.apache.archiva.admin.model.AuditInformation)">addLegacyArtifactPath</A></B>(<A HREF="../../../../../../org/apache/archiva/admin/model/beans/LegacyArtifactPath.html" title="class in org.apache.archiva.admin.model.beans">LegacyArtifactPath</A>&nbsp;legacyArtifactPath,
+                                           <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#deleteLegacyArtifactPath(java.lang.String, org.apache.archiva.admin.model.AuditInformation)">deleteLegacyArtifactPath</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;path,
+                                                 <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../../org/apache/archiva/admin/model/beans/FileType.html" title="class in org.apache.archiva.admin.model.beans">FileType</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#getFileType(java.lang.String)">getFileType</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;fileTypeId)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../../../org/apache/archiva/configuration/FileType.html" title="class in org.apache.archiva.configuration">FileType</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#getFileTypeById(java.lang.String, org.apache.archiva.configuration.Configuration)">getFileTypeById</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;id,
+                               <A HREF="../../../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</A>&nbsp;configuration)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../../org/apache/archiva/admin/model/beans/FileType.html" title="class in org.apache.archiva.admin.model.beans">FileType</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#getFileTypes()">getFileTypes</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#getInvalidContentConsumers()">getInvalidContentConsumers</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#getKnownContentConsumers()">getKnownContentConsumers</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../../org/apache/archiva/admin/model/beans/LegacyArtifactPath.html" title="class in org.apache.archiva.admin.model.beans">LegacyArtifactPath</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#getLegacyArtifactPaths()">getLegacyArtifactPaths</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../../org/apache/archiva/admin/model/beans/NetworkConfiguration.html" title="class in org.apache.archiva.admin.model.beans">NetworkConfiguration</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#getNetworkConfiguration()">getNetworkConfiguration</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../../org/apache/archiva/admin/model/beans/OrganisationInformation.html" title="class in org.apache.archiva.admin.model.beans">OrganisationInformation</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#getOrganisationInformation()">getOrganisationInformation</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../../org/apache/archiva/admin/model/beans/UiConfiguration.html" title="class in org.apache.archiva.admin.model.beans">UiConfiguration</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#getUiConfiguration()">getUiConfiguration</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#initialize()">initialize</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#removeFileType(java.lang.String, org.apache.archiva.admin.model.AuditInformation)">removeFileType</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;fileTypeId,
+                             <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#removeFileTypePattern(java.lang.String, java.lang.String, org.apache.archiva.admin.model.AuditInformation)">removeFileTypePattern</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;fileTypeId,
+                                           <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;pattern,
+                                           <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#removeInvalidContentConsumer(java.lang.String, org.apache.archiva.admin.model.AuditInformation)">removeInvalidContentConsumer</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;invalidContentConsumer,
+                                                         <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#removeKnownContentConsumer(java.lang.String, org.apache.archiva.admin.model.AuditInformation)">removeKnownContentConsumer</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;knownContentConsumer,
+                                                     <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#setInvalidContentConsumers(java.util.List, org.apache.archiva.admin.model.AuditInformation)">setInvalidContentConsumers</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;invalidContentConsumers,
+                                                     <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#setKnownContentConsumers(java.util.List, org.apache.archiva.admin.model.AuditInformation)">setKnownContentConsumers</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;knownContentConsumers,
+                                                 <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#setNetworkConfiguration(org.apache.archiva.admin.model.beans.NetworkConfiguration)">setNetworkConfiguration</A></B>(<A HREF="../../../../../../org/apache/archiva/admin/model/beans/NetworkConfiguration.html" title="class in org.apache.archiva.admin.model.beans">NetworkConfiguration</A>&nbsp;networkConfiguration)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#setOrganisationInformation(org.apache.archiva.admin.model.beans.OrganisationInformation)">setOrganisationInformation</A></B>(<A HREF="../../../../../../org/apache/archiva/admin/model/beans/OrganisationInformation.html" title="class in org.apache.archiva.admin.model.beans">OrganisationInformation</A>&nbsp;organisationInformation)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#setupWagon(org.apache.archiva.admin.model.beans.NetworkConfiguration)">setupWagon</A></B>(<A HREF="../../../../../../org/apache/archiva/admin/model/beans/NetworkConfiguration.html" title="class in org.apache.archiva.admin.model.beans">NetworkConfiguration</A>&nbsp;networkConfiguration)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#shutdown()">shutdown</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#updateUiConfiguration(org.apache.archiva.admin.model.beans.UiConfiguration)">updateUiConfiguration</A></B>(<A HREF="../../../../../../org/apache/archiva/admin/model/beans/UiConfiguration.html" title="class in org.apache.archiva.admin.model.beans">UiConfiguration</A>&nbsp;uiConfiguration)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_org.apache.archiva.admin.repository.AbstractRepositoryAdmin"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class org.apache.archiva.admin.repository.<A HREF="../../../../../../org/apache/archiva/admin/repository/AbstractRepositoryAdmin.html" title="class in org.apache.archiva.admin.repository">AbstractRepositoryAdmin</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="../../../../../../org/apache/archiva/admin/repository/AbstractRepositoryAdmin.html#getArchivaConfiguration()">getArchivaConfiguration</A>, <A HREF="../../../../../../org/apache/archiva/admin/repository/AbstractRepositoryAdmin.html#getAuditListeners()">getAuditListeners</A>, <A HREF="../../../../../../org/apache/archiva/admin/repository/AbstractRepositoryAdmin.html#getRegistry()">getRegistry</A>, <A HREF="../../../../../../org/apache/archiva/admin/repository/AbstractRepositoryAdmin.html#getRepositoryCommonValidator()">getRepositoryCommonValidator</A>, <A HREF="../../../../../../org/apache/archiva/admin/repository/AbstractRepositoryAdmin.html#saveConfiguration(org.apache.archiva.configuration.Configuration)">saveConfiguration</A>, <A HREF="../../../../../../org/apache/archiva/admin/repository/AbstractRepositoryAdmin.html#setArchivaConfiguration(org.apache.archiva.configuration.ArchivaConfiguration)">setArchivaConfiguration</A>, <A HREF="../../../../../../org/apache/archiva/admin/repository/AbstractRepositoryAdmin.html#setAuditListeners(java.util.List)">setAuditListeners</A>, <A HREF="../../../../../../org/apache/archiva/admin/repository/AbstractRepositoryAdmin.html#setRegistry(org.apache.archiva.redback.components.registry.Registry)">setRegistry</A>, <A HREF="../../../../../../org/apache/archiva/admin/repository/AbstractRepositoryAdmin.html#setRepositoryCommonValidator(org.apache.archiva.admin.model.RepositoryCommonValidator)">setRepositoryCommonValidator</A>, <A HREF="../../../../../../org/apache/archiva/admin/repository/AbstractRepositoryAdmin.html#triggerAuditEvent(java.lang.String, java.lang.String, java.lang.String, org.apache.archiva.admin.model.AuditInformation)">triggerAuditEvent</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class java.lang.<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<!-- ============ FIELD DETAIL =========== -->
+
+<A NAME="field_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Field Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="poolingClientConnectionManager"><!-- --></A><H3>
+poolingClientConnectionManager</H3>
+<PRE>
+private org.apache.http.impl.conn.PoolingClientConnectionManager <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.55"><B>poolingClientConnectionManager</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+
+<A NAME="constructor_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Constructor Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="DefaultArchivaAdministration()"><!-- --></A><H3>
+DefaultArchivaAdministration</H3>
+<PRE>
+public <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.50"><B>DefaultArchivaAdministration</B></A>()</PRE>
+<DL>
+</DL>
+
+<!-- ============ METHOD DETAIL ========== -->
+
+<A NAME="method_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Method Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="initialize()"><!-- --></A><H3>
+initialize</H3>
+<PRE>
+<FONT SIZE="-1"><A HREF="http://docs.oracle.com/javase/6/docs/api/javax/annotation/PostConstruct.html?is-external=true" title="class or interface in javax.annotation">@PostConstruct</A>
+</FONT>public void <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.58"><B>initialize</B></A>()
+                throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="shutdown()"><!-- --></A><H3>
+shutdown</H3>
+<PRE>
+<FONT SIZE="-1"><A HREF="http://docs.oracle.com/javase/6/docs/api/javax/annotation/PreDestroy.html?is-external=true" title="class or interface in javax.annotation">@PreDestroy</A>
+</FONT>public void <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.67"><B>shutdown</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getLegacyArtifactPaths()"><!-- --></A><H3>
+getLegacyArtifactPaths</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../../org/apache/archiva/admin/model/beans/LegacyArtifactPath.html" title="class in org.apache.archiva.admin.model.beans">LegacyArtifactPath</A>&gt; <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.76"><B>getLegacyArtifactPaths</B></A>()
+                                                throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#getLegacyArtifactPaths()">getLegacyArtifactPaths</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="addLegacyArtifactPath(org.apache.archiva.admin.model.beans.LegacyArtifactPath, org.apache.archiva.admin.model.AuditInformation)"><!-- --></A><H3>
+addLegacyArtifactPath</H3>
+<PRE>
+public void <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.89"><B>addLegacyArtifactPath</B></A>(<A HREF="../../../../../../org/apache/archiva/admin/model/beans/LegacyArtifactPath.html" title="class in org.apache.archiva.admin.model.beans">LegacyArtifactPath</A>&nbsp;legacyArtifactPath,
+                                  <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)
+                           throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#addLegacyArtifactPath(org.apache.archiva.admin.model.beans.LegacyArtifactPath, org.apache.archiva.admin.model.AuditInformation)">addLegacyArtifactPath</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="deleteLegacyArtifactPath(java.lang.String, org.apache.archiva.admin.model.AuditInformation)"><!-- --></A><H3>
+deleteLegacyArtifactPath</H3>
+<PRE>
+public void <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.101"><B>deleteLegacyArtifactPath</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;path,
+                                     <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)
+                              throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#deleteLegacyArtifactPath(java.lang.String, org.apache.archiva.admin.model.AuditInformation)">deleteLegacyArtifactPath</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="addFileTypePattern(java.lang.String, java.lang.String, org.apache.archiva.admin.model.AuditInformation)"><!-- --></A><H3>
+addFileTypePattern</H3>
+<PRE>
+public void <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.116"><B>addFileTypePattern</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;fileTypeId,
+                               <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;pattern,
+                               <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)
+                        throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#addFileTypePattern(java.lang.String, java.lang.String, org.apache.archiva.admin.model.AuditInformation)">addFileTypePattern</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="removeFileTypePattern(java.lang.String, java.lang.String, org.apache.archiva.admin.model.AuditInformation)"><!-- --></A><H3>
+removeFileTypePattern</H3>
+<PRE>
+public void <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.138"><B>removeFileTypePattern</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;fileTypeId,
+                                  <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;pattern,
+                                  <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)
+                           throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#removeFileTypePattern(java.lang.String, java.lang.String, org.apache.archiva.admin.model.AuditInformation)">removeFileTypePattern</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getFileType(java.lang.String)"><!-- --></A><H3>
+getFileType</H3>
+<PRE>
+public <A HREF="../../../../../../org/apache/archiva/admin/model/beans/FileType.html" title="class in org.apache.archiva.admin.model.beans">FileType</A> <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.154"><B>getFileType</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;fileTypeId)
+                     throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#getFileType(java.lang.String)">getFileType</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="addFileType(org.apache.archiva.admin.model.beans.FileType, org.apache.archiva.admin.model.AuditInformation)"><!-- --></A><H3>
+addFileType</H3>
+<PRE>
+public void <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.166"><B>addFileType</B></A>(<A HREF="../../../../../../org/apache/archiva/admin/model/beans/FileType.html" title="class in org.apache.archiva.admin.model.beans">FileType</A>&nbsp;fileType,
+                        <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)
+                 throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#addFileType(org.apache.archiva.admin.model.beans.FileType, org.apache.archiva.admin.model.AuditInformation)">addFileType</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="removeFileType(java.lang.String, org.apache.archiva.admin.model.AuditInformation)"><!-- --></A><H3>
+removeFileType</H3>
+<PRE>
+public void <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.181"><B>removeFileType</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;fileTypeId,
+                           <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)
+                    throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#removeFileType(java.lang.String, org.apache.archiva.admin.model.AuditInformation)">removeFileType</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="addKnownContentConsumer(java.lang.String, org.apache.archiva.admin.model.AuditInformation)"><!-- --></A><H3>
+addKnownContentConsumer</H3>
+<PRE>
+public void <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.191"><B>addKnownContentConsumer</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;knownContentConsumer,
+                                    <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)
+                             throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#addKnownContentConsumer(java.lang.String, org.apache.archiva.admin.model.AuditInformation)">addKnownContentConsumer</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="removeKnownContentConsumer(java.lang.String, org.apache.archiva.admin.model.AuditInformation)"><!-- --></A><H3>
+removeKnownContentConsumer</H3>
+<PRE>
+public void <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.205"><B>removeKnownContentConsumer</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;knownContentConsumer,
+                                       <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)
+                                throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#removeKnownContentConsumer(java.lang.String, org.apache.archiva.admin.model.AuditInformation)">removeKnownContentConsumer</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="addInvalidContentConsumer(java.lang.String, org.apache.archiva.admin.model.AuditInformation)"><!-- --></A><H3>
+addInvalidContentConsumer</H3>
+<PRE>
+public void <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.214"><B>addInvalidContentConsumer</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;invalidContentConsumer,
+                                      <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)
+                               throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#addInvalidContentConsumer(java.lang.String, org.apache.archiva.admin.model.AuditInformation)">addInvalidContentConsumer</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="removeInvalidContentConsumer(java.lang.String, org.apache.archiva.admin.model.AuditInformation)"><!-- --></A><H3>
+removeInvalidContentConsumer</H3>
+<PRE>
+public void <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.228"><B>removeInvalidContentConsumer</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;invalidContentConsumer,
+                                         <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)
+                                  throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#removeInvalidContentConsumer(java.lang.String, org.apache.archiva.admin.model.AuditInformation)">removeInvalidContentConsumer</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setKnownContentConsumers(java.util.List, org.apache.archiva.admin.model.AuditInformation)"><!-- --></A><H3>
+setKnownContentConsumers</H3>
+<PRE>
+public void <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.237"><B>setKnownContentConsumers</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;knownContentConsumers,
+                                     <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)
+                              throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#setKnownContentConsumers(java.util.List, org.apache.archiva.admin.model.AuditInformation)">setKnownContentConsumers</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setInvalidContentConsumers(java.util.List, org.apache.archiva.admin.model.AuditInformation)"><!-- --></A><H3>
+setInvalidContentConsumers</H3>
+<PRE>
+public void <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.250"><B>setInvalidContentConsumers</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;invalidContentConsumers,
+                                       <A HREF="../../../../../../org/apache/archiva/admin/model/AuditInformation.html" title="class in org.apache.archiva.admin.model">AuditInformation</A>&nbsp;auditInformation)
+                                throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#setInvalidContentConsumers(java.util.List, org.apache.archiva.admin.model.AuditInformation)">setInvalidContentConsumers</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getFileTypes()"><!-- --></A><H3>
+getFileTypes</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../../org/apache/archiva/admin/model/beans/FileType.html" title="class in org.apache.archiva.admin.model.beans">FileType</A>&gt; <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.263"><B>getFileTypes</B></A>()
+                            throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#getFileTypes()">getFileTypes</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getKnownContentConsumers()"><!-- --></A><H3>
+getKnownContentConsumers</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt; <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.280"><B>getKnownContentConsumers</B></A>()
+                                      throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#getKnownContentConsumers()">getKnownContentConsumers</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getInvalidContentConsumers()"><!-- --></A><H3>
+getInvalidContentConsumers</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt; <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.287"><B>getInvalidContentConsumers</B></A>()
+                                        throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#getInvalidContentConsumers()">getInvalidContentConsumers</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getOrganisationInformation()"><!-- --></A><H3>
+getOrganisationInformation</H3>
+<PRE>
+public <A HREF="../../../../../../org/apache/archiva/admin/model/beans/OrganisationInformation.html" title="class in org.apache.archiva.admin.model.beans">OrganisationInformation</A> <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.294"><B>getOrganisationInformation</B></A>()
+                                                   throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#getOrganisationInformation()">getOrganisationInformation</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setOrganisationInformation(org.apache.archiva.admin.model.beans.OrganisationInformation)"><!-- --></A><H3>
+setOrganisationInformation</H3>
+<PRE>
+public void <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.306"><B>setOrganisationInformation</B></A>(<A HREF="../../../../../../org/apache/archiva/admin/model/beans/OrganisationInformation.html" title="class in org.apache.archiva.admin.model.beans">OrganisationInformation</A>&nbsp;organisationInformation)
+                                throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#setOrganisationInformation(org.apache.archiva.admin.model.beans.OrganisationInformation)">setOrganisationInformation</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getUiConfiguration()"><!-- --></A><H3>
+getUiConfiguration</H3>
+<PRE>
+public <A HREF="../../../../../../org/apache/archiva/admin/model/beans/UiConfiguration.html" title="class in org.apache.archiva.admin.model.beans">UiConfiguration</A> <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.324"><B>getUiConfiguration</B></A>()
+                                   throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#getUiConfiguration()">getUiConfiguration</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="updateUiConfiguration(org.apache.archiva.admin.model.beans.UiConfiguration)"><!-- --></A><H3>
+updateUiConfiguration</H3>
+<PRE>
+public void <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.340"><B>updateUiConfiguration</B></A>(<A HREF="../../../../../../org/apache/archiva/admin/model/beans/UiConfiguration.html" title="class in org.apache.archiva.admin.model.beans">UiConfiguration</A>&nbsp;uiConfiguration)
+                           throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#updateUiConfiguration(org.apache.archiva.admin.model.beans.UiConfiguration)">updateUiConfiguration</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getNetworkConfiguration()"><!-- --></A><H3>
+getNetworkConfiguration</H3>
+<PRE>
+public <A HREF="../../../../../../org/apache/archiva/admin/model/beans/NetworkConfiguration.html" title="class in org.apache.archiva.admin.model.beans">NetworkConfiguration</A> <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.359"><B>getNetworkConfiguration</B></A>()
+                                             throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#getNetworkConfiguration()">getNetworkConfiguration</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setNetworkConfiguration(org.apache.archiva.admin.model.beans.NetworkConfiguration)"><!-- --></A><H3>
+setNetworkConfiguration</H3>
+<PRE>
+public void <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.372"><B>setNetworkConfiguration</B></A>(<A HREF="../../../../../../org/apache/archiva/admin/model/beans/NetworkConfiguration.html" title="class in org.apache.archiva.admin.model.beans">NetworkConfiguration</A>&nbsp;networkConfiguration)
+                             throws <A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html#setNetworkConfiguration(org.apache.archiva.admin.model.beans.NetworkConfiguration)">setNetworkConfiguration</A></CODE> in interface <CODE><A HREF="../../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setupWagon(org.apache.archiva.admin.model.beans.NetworkConfiguration)"><!-- --></A><H3>
+setupWagon</H3>
+<PRE>
+protected void <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.389"><B>setupWagon</B></A>(<A HREF="../../../../../../org/apache/archiva/admin/model/beans/NetworkConfiguration.html" title="class in org.apache.archiva.admin.model.beans">NetworkConfiguration</A>&nbsp;networkConfiguration)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getFileTypeById(java.lang.String, org.apache.archiva.configuration.Configuration)"><!-- --></A><H3>
+getFileTypeById</H3>
+<PRE>
+private <A HREF="../../../../../../org/apache/archiva/configuration/FileType.html" title="class in org.apache.archiva.configuration">FileType</A> <A HREF="../../../../../../src-html/org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html#line.415"><B>getFileTypeById</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;id,
+                                 <A HREF="../../../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</A>&nbsp;configuration)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<!-- ========= END OF CLASS DATA ========= -->
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/DefaultArchivaAdministration.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;PREV CLASS&nbsp;
+&nbsp;<A HREF="../../../../../../org/apache/archiva/admin/repository/admin/FiletypeToMapClosure.html" title="class in org.apache.archiva.admin.repository.admin"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../../index.html?org/apache/archiva/admin/repository/admin/DefaultArchivaAdministration.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="DefaultArchivaAdministration.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+Copyright &#169; 2006-2013 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.
+</BODY>
+</HTML>

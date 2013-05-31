@@ -1,0 +1,917 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>
+DuplicateArtifactsConsumer (Archiva :: Modules 1.4-M4 API)
+</TITLE>
+
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="DuplicateArtifactsConsumer (Archiva :: Modules 1.4-M4 API)";
+    }
+}
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/DuplicateArtifactsConsumer.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;PREV CLASS&nbsp;
+&nbsp;NEXT CLASS</FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../index.html?org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="DuplicateArtifactsConsumer.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<!-- ======== START OF CLASS DATA ======== -->
+<H2>
+<FONT SIZE="-1">
+org.apache.archiva.reports.consumers</FONT>
+<BR>
+Class DuplicateArtifactsConsumer</H2>
+<PRE>
+<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</A>
+  <IMG SRC="../../../../../resources/inherit.gif" ALT="extended by "><A HREF="../../../../../org/apache/archiva/consumers/AbstractMonitoredConsumer.html" title="class in org.apache.archiva.consumers">org.apache.archiva.consumers.AbstractMonitoredConsumer</A>
+      <IMG SRC="../../../../../resources/inherit.gif" ALT="extended by "><B>org.apache.archiva.reports.consumers.DuplicateArtifactsConsumer</B>
+</PRE>
+<DL>
+<DT><B>All Implemented Interfaces:</B> <DD><A HREF="../../../../../org/apache/archiva/consumers/Consumer.html" title="interface in org.apache.archiva.consumers">Consumer</A>, <A HREF="../../../../../org/apache/archiva/consumers/KnownRepositoryContentConsumer.html" title="interface in org.apache.archiva.consumers">KnownRepositoryContentConsumer</A>, <A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html" title="interface in org.apache.archiva.consumers">RepositoryContentConsumer</A>, org.apache.archiva.redback.components.registry.RegistryListener</DD>
+</DL>
+<HR>
+<DL>
+<DT><PRE><FONT SIZE="-1">@Service(value="knownRepositoryContentConsumer#duplicate-artifacts")
+@Scope(value="prototype")
+</FONT>public class <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.63"><B>DuplicateArtifactsConsumer</B></A><DT>extends <A HREF="../../../../../org/apache/archiva/consumers/AbstractMonitoredConsumer.html" title="class in org.apache.archiva.consumers">AbstractMonitoredConsumer</A><DT>implements <A HREF="../../../../../org/apache/archiva/consumers/KnownRepositoryContentConsumer.html" title="interface in org.apache.archiva.consumers">KnownRepositoryContentConsumer</A>, org.apache.archiva.redback.components.registry.RegistryListener</DL>
+</PRE>
+
+<P>
+Search the artifact repository of known SHA1 Checksums for potential duplicate artifacts.
+ <p/>
+ TODO: no need for this to be a scanner - we can just query the database / content repository to get a full list
+<P>
+
+<P>
+<HR>
+
+<P>
+<!-- =========== FIELD SUMMARY =========== -->
+
+<A NAME="field_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Field Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#configuration">configuration</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#description">description</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../../org/apache/archiva/configuration/FileTypes.html" title="class in org.apache.archiva.configuration">FileTypes</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#filetypes">filetypes</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#id">id</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#includes">includes</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.slf4j.Logger</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#log">log</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../../org/apache/archiva/metadata/repository/storage/RepositoryPathTranslator.html" title="interface in org.apache.archiva.metadata.repository.storage">RepositoryPathTranslator</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#pathTranslator">pathTranslator</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FIXME: needs to be selected based on the repository in question</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#repoId">repoId</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#repositoryDir">repositoryDir</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#repositorySession">repositorySession</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html" title="interface in org.apache.archiva.metadata.repository">RepositorySessionFactory</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#repositorySessionFactory">repositorySessionFactory</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FIXME: this could be multiple implementations and needs to be configured.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+
+<A NAME="constructor_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Constructor Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#DuplicateArtifactsConsumer()">DuplicateArtifactsConsumer</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ========== METHOD SUMMARY =========== -->
+
+<A NAME="method_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#afterConfigurationChange(org.apache.archiva.redback.components.registry.Registry, java.lang.String, java.lang.Object)">afterConfigurationChange</A></B>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry,
+                                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;propertyName,
+                                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;propertyValue)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#beforeConfigurationChange(org.apache.archiva.redback.components.registry.Registry, java.lang.String, java.lang.Object)">beforeConfigurationChange</A></B>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry,
+                                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;propertyName,
+                                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;propertyValue)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#beginScan(org.apache.archiva.admin.model.beans.ManagedRepository, java.util.Date)">beginScan</A></B>(<A HREF="../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</A>&nbsp;repo,
+                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Date.html?is-external=true" title="class or interface in java.util">Date</A>&nbsp;whenGathered)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Event that triggers at the beginning of a scan.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#beginScan(org.apache.archiva.admin.model.beans.ManagedRepository, java.util.Date, boolean)">beginScan</A></B>(<A HREF="../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</A>&nbsp;repo,
+                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Date.html?is-external=true" title="class or interface in java.util">Date</A>&nbsp;whenGathered,
+                   boolean&nbsp;executeOnEntireRepo)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Event that triggers at the beginning of a scan, where you can also indicate whether the consumers will be
+ executed on an entire repository or on a specific resource.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#completeScan()">completeScan</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Event that triggers on the completion of a scan.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#completeScan(boolean)">completeScan</A></B>(boolean&nbsp;executeOnEntireRepo)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#getDescription()">getDescription</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The human readable description for this consumer.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#getExcludes()">getExcludes</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the list of excluded file patterns for this consumer.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#getId()">getId</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is the id for the consumer.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#getIncludes()">getIncludes</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the list of included file patterns for this consumer.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#initialize()">initialize</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#initIncludes()">initIncludes</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#isPermanent()">isPermanent</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Flag indicating permanance of consumer.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#processFile(java.lang.String)">processFile</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;path)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Event indicating a file is to be processed by this consumer.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#processFile(java.lang.String, boolean)">processFile</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;path,
+                       boolean&nbsp;executeOnEntireRepo)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_org.apache.archiva.consumers.AbstractMonitoredConsumer"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class org.apache.archiva.consumers.<A HREF="../../../../../org/apache/archiva/consumers/AbstractMonitoredConsumer.html" title="class in org.apache.archiva.consumers">AbstractMonitoredConsumer</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="../../../../../org/apache/archiva/consumers/AbstractMonitoredConsumer.html#addConsumerMonitor(org.apache.archiva.consumers.ConsumerMonitor)">addConsumerMonitor</A>, <A HREF="../../../../../org/apache/archiva/consumers/AbstractMonitoredConsumer.html#getDefaultArtifactExclusions()">getDefaultArtifactExclusions</A>, <A HREF="../../../../../org/apache/archiva/consumers/AbstractMonitoredConsumer.html#isProcessUnmodified()">isProcessUnmodified</A>, <A HREF="../../../../../org/apache/archiva/consumers/AbstractMonitoredConsumer.html#removeConsumerMonitor(org.apache.archiva.consumers.ConsumerMonitor)">removeConsumerMonitor</A>, <A HREF="../../../../../org/apache/archiva/consumers/AbstractMonitoredConsumer.html#triggerConsumerError(java.lang.String, java.lang.String)">triggerConsumerError</A>, <A HREF="../../../../../org/apache/archiva/consumers/AbstractMonitoredConsumer.html#triggerConsumerInfo(java.lang.String)">triggerConsumerInfo</A>, <A HREF="../../../../../org/apache/archiva/consumers/AbstractMonitoredConsumer.html#triggerConsumerWarning(java.lang.String, java.lang.String)">triggerConsumerWarning</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class java.lang.<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_org.apache.archiva.consumers.RepositoryContentConsumer"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from interface org.apache.archiva.consumers.<A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html" title="interface in org.apache.archiva.consumers">RepositoryContentConsumer</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html#isProcessUnmodified()">isProcessUnmodified</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_org.apache.archiva.consumers.Consumer"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from interface org.apache.archiva.consumers.<A HREF="../../../../../org/apache/archiva/consumers/Consumer.html" title="interface in org.apache.archiva.consumers">Consumer</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="../../../../../org/apache/archiva/consumers/Consumer.html#addConsumerMonitor(org.apache.archiva.consumers.ConsumerMonitor)">addConsumerMonitor</A>, <A HREF="../../../../../org/apache/archiva/consumers/Consumer.html#removeConsumerMonitor(org.apache.archiva.consumers.ConsumerMonitor)">removeConsumerMonitor</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<!-- ============ FIELD DETAIL =========== -->
+
+<A NAME="field_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Field Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="log"><!-- --></A><H3>
+log</H3>
+<PRE>
+private org.slf4j.Logger <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.67"><B>log</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="id"><!-- --></A><H3>
+id</H3>
+<PRE>
+private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.69"><B>id</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="description"><!-- --></A><H3>
+description</H3>
+<PRE>
+private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.71"><B>description</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="configuration"><!-- --></A><H3>
+configuration</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</A> <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.74"><B>configuration</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="filetypes"><!-- --></A><H3>
+filetypes</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../../org/apache/archiva/configuration/FileTypes.html" title="class in org.apache.archiva.configuration">FileTypes</A> <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.77"><B>filetypes</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="repositorySessionFactory"><!-- --></A><H3>
+repositorySessionFactory</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html" title="interface in org.apache.archiva.metadata.repository">RepositorySessionFactory</A> <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.83"><B>repositorySessionFactory</B></A></PRE>
+<DL>
+<DD>FIXME: this could be multiple implementations and needs to be configured.
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="includes"><!-- --></A><H3>
+includes</H3>
+<PRE>
+private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt; <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.85"><B>includes</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="repositoryDir"><!-- --></A><H3>
+repositoryDir</H3>
+<PRE>
+private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A> <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.87"><B>repositoryDir</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="repoId"><!-- --></A><H3>
+repoId</H3>
+<PRE>
+private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.89"><B>repoId</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="pathTranslator"><!-- --></A><H3>
+pathTranslator</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+@Named(value="repositoryPathTranslator#maven2")
+</FONT>private <A HREF="../../../../../org/apache/archiva/metadata/repository/storage/RepositoryPathTranslator.html" title="interface in org.apache.archiva.metadata.repository.storage">RepositoryPathTranslator</A> <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.96"><B>pathTranslator</B></A></PRE>
+<DL>
+<DD>FIXME: needs to be selected based on the repository in question
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="repositorySession"><!-- --></A><H3>
+repositorySession</H3>
+<PRE>
+private <A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</A> <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.98"><B>repositorySession</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+
+<A NAME="constructor_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Constructor Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="DuplicateArtifactsConsumer()"><!-- --></A><H3>
+DuplicateArtifactsConsumer</H3>
+<PRE>
+public <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.63"><B>DuplicateArtifactsConsumer</B></A>()</PRE>
+<DL>
+</DL>
+
+<!-- ============ METHOD DETAIL ========== -->
+
+<A NAME="method_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Method Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="getId()"><!-- --></A><H3>
+getId</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.100"><B>getId</B></A>()</PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/consumers/Consumer.html#getId()">Consumer</A></CODE></B></DD>
+<DD>This is the id for the consumer.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/consumers/Consumer.html#getId()">getId</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/consumers/Consumer.html" title="interface in org.apache.archiva.consumers">Consumer</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the consumer id.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getDescription()"><!-- --></A><H3>
+getDescription</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.105"><B>getDescription</B></A>()</PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/consumers/Consumer.html#getDescription()">Consumer</A></CODE></B></DD>
+<DD>The human readable description for this consumer.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/consumers/Consumer.html#getDescription()">getDescription</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/consumers/Consumer.html" title="interface in org.apache.archiva.consumers">Consumer</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the human readable description for this consumer.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="isPermanent()"><!-- --></A><H3>
+isPermanent</H3>
+<PRE>
+public boolean <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.110"><B>isPermanent</B></A>()</PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/consumers/Consumer.html#isPermanent()">Consumer</A></CODE></B></DD>
+<DD>Flag indicating permanance of consumer. (if it can be disabled or not)
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/consumers/Consumer.html#isPermanent()">isPermanent</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/consumers/Consumer.html" title="interface in org.apache.archiva.consumers">Consumer</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>true indicating that consumer is permanent and cannot be disabled.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getIncludes()"><!-- --></A><H3>
+getIncludes</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt; <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.115"><B>getIncludes</B></A>()</PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html#getIncludes()">RepositoryContentConsumer</A></CODE></B></DD>
+<DD>Get the list of included file patterns for this consumer.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html#getIncludes()">getIncludes</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html" title="interface in org.apache.archiva.consumers">RepositoryContentConsumer</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the list of <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><CODE>String</CODE></A> patterns. (example: <code>"**<span />/*.pom"</code>)</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getExcludes()"><!-- --></A><H3>
+getExcludes</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt; <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.120"><B>getExcludes</B></A>()</PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html#getExcludes()">RepositoryContentConsumer</A></CODE></B></DD>
+<DD>Get the list of excluded file patterns for this consumer.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html#getExcludes()">getExcludes</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html" title="interface in org.apache.archiva.consumers">RepositoryContentConsumer</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the list of <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><CODE>String</CODE></A> patterns. (example: <code>"**<span />/*.pom"</code>) - (can be null for no exclusions)</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="beginScan(org.apache.archiva.admin.model.beans.ManagedRepository, java.util.Date)"><!-- --></A><H3>
+beginScan</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.125"><B>beginScan</B></A>(<A HREF="../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</A>&nbsp;repo,
+                      <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Date.html?is-external=true" title="class or interface in java.util">Date</A>&nbsp;whenGathered)
+               throws <A HREF="../../../../../org/apache/archiva/consumers/ConsumerException.html" title="class in org.apache.archiva.consumers">ConsumerException</A></PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html#beginScan(org.apache.archiva.admin.model.beans.ManagedRepository, java.util.Date)">RepositoryContentConsumer</A></CODE></B></DD>
+<DD><p>
+ Event that triggers at the beginning of a scan.
+ </p>
+ <p/>
+ <p>
+ NOTE: This would be a good place to initialize the consumer, to lock any resources, and to
+ generally start tracking the scan as a whole.
+ </p>
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html#beginScan(org.apache.archiva.admin.model.beans.ManagedRepository, java.util.Date)">beginScan</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html" title="interface in org.apache.archiva.consumers">RepositoryContentConsumer</A></CODE></DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>repo</CODE> - the repository that this consumer is being used for.<DD><CODE>whenGathered</CODE> - the start of the repository scan
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/consumers/ConsumerException.html" title="class in org.apache.archiva.consumers">ConsumerException</A></CODE> - if there was a problem with using the provided repository with the consumer.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="beginScan(org.apache.archiva.admin.model.beans.ManagedRepository, java.util.Date, boolean)"><!-- --></A><H3>
+beginScan</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.133"><B>beginScan</B></A>(<A HREF="../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</A>&nbsp;repo,
+                      <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Date.html?is-external=true" title="class or interface in java.util">Date</A>&nbsp;whenGathered,
+                      boolean&nbsp;executeOnEntireRepo)
+               throws <A HREF="../../../../../org/apache/archiva/consumers/ConsumerException.html" title="class in org.apache.archiva.consumers">ConsumerException</A></PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html#beginScan(org.apache.archiva.admin.model.beans.ManagedRepository, java.util.Date, boolean)">RepositoryContentConsumer</A></CODE></B></DD>
+<DD><p>
+ Event that triggers at the beginning of a scan, where you can also indicate whether the consumers will be
+ executed on an entire repository or on a specific resource.
+ </p>
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html#beginScan(org.apache.archiva.admin.model.beans.ManagedRepository, java.util.Date, boolean)">beginScan</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html" title="interface in org.apache.archiva.consumers">RepositoryContentConsumer</A></CODE></DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>repo</CODE> - the repository that this consumer is being used for.<DD><CODE>whenGathered</CODE> - the start of the repository scan<DD><CODE>executeOnEntireRepo</CODE> - flags whether the consumer will be executed on an entire repository or just on a specific resource
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/consumers/ConsumerException.html" title="class in org.apache.archiva.consumers">ConsumerException</A></CODE> - if there was a problem with using the provided repository with the consumer.<DT><B>See Also:</B><DD><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html#beginScan(org.apache.archiva.admin.model.beans.ManagedRepository, java.util.Date)"><CODE>RepositoryContentConsumer.beginScan(ManagedRepository, java.util.Date)</CODE></A></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="processFile(java.lang.String)"><!-- --></A><H3>
+processFile</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.139"><B>processFile</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;path)
+                 throws <A HREF="../../../../../org/apache/archiva/consumers/ConsumerException.html" title="class in org.apache.archiva.consumers">ConsumerException</A></PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html#processFile(java.lang.String)">RepositoryContentConsumer</A></CODE></B></DD>
+<DD><p>
+ Event indicating a file is to be processed by this consumer.
+ </p>
+ <p/>
+ <p>
+ NOTE: The consumer does not need to process the file immediately, can can opt to queue and/or track
+ the files to be processed in batch.  Just be sure to complete the processing by the <A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html#completeScan()"><CODE>RepositoryContentConsumer.completeScan()</CODE></A>
+ event.
+ </p>
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html#processFile(java.lang.String)">processFile</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html" title="interface in org.apache.archiva.consumers">RepositoryContentConsumer</A></CODE></DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>path</CODE> - the relative file path (in the repository) to process.
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/consumers/ConsumerException.html" title="class in org.apache.archiva.consumers">ConsumerException</A></CODE> - if there was a problem processing this file.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="processFile(java.lang.String, boolean)"><!-- --></A><H3>
+processFile</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.226"><B>processFile</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;path,
+                        boolean&nbsp;executeOnEntireRepo)
+                 throws <A HREF="../../../../../org/apache/archiva/consumers/ConsumerException.html" title="class in org.apache.archiva.consumers">ConsumerException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html#processFile(java.lang.String, boolean)">processFile</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html" title="interface in org.apache.archiva.consumers">RepositoryContentConsumer</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/consumers/ConsumerException.html" title="class in org.apache.archiva.consumers">ConsumerException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="completeScan()"><!-- --></A><H3>
+completeScan</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.232"><B>completeScan</B></A>()</PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html#completeScan()">RepositoryContentConsumer</A></CODE></B></DD>
+<DD><p>
+ Event that triggers on the completion of a scan.
+ </p>
+ <p/>
+ <p>
+ NOTE: If the consumer opted to batch up processing requests in the <A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html#processFile(java.lang.String)"><CODE>RepositoryContentConsumer.processFile(String)</CODE></A> event
+ this would be the last opportunity to drain any processing queue's.
+ </p>
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html#completeScan()">completeScan</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html" title="interface in org.apache.archiva.consumers">RepositoryContentConsumer</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="completeScan(boolean)"><!-- --></A><H3>
+completeScan</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.237"><B>completeScan</B></A>(boolean&nbsp;executeOnEntireRepo)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html#completeScan(boolean)">completeScan</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html" title="interface in org.apache.archiva.consumers">RepositoryContentConsumer</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="afterConfigurationChange(org.apache.archiva.redback.components.registry.Registry, java.lang.String, java.lang.Object)"><!-- --></A><H3>
+afterConfigurationChange</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.242"><B>afterConfigurationChange</B></A>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry,
+                                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;propertyName,
+                                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;propertyValue)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE>afterConfigurationChange</CODE> in interface <CODE>org.apache.archiva.redback.components.registry.RegistryListener</CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="beforeConfigurationChange(org.apache.archiva.redback.components.registry.Registry, java.lang.String, java.lang.Object)"><!-- --></A><H3>
+beforeConfigurationChange</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.250"><B>beforeConfigurationChange</B></A>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry,
+                                      <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;propertyName,
+                                      <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;propertyValue)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE>beforeConfigurationChange</CODE> in interface <CODE>org.apache.archiva.redback.components.registry.RegistryListener</CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="initIncludes()"><!-- --></A><H3>
+initIncludes</H3>
+<PRE>
+private void <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.255"><B>initIncludes</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="initialize()"><!-- --></A><H3>
+initialize</H3>
+<PRE>
+<FONT SIZE="-1"><A HREF="http://docs.oracle.com/javase/6/docs/api/javax/annotation/PostConstruct.html?is-external=true" title="class or interface in javax.annotation">@PostConstruct</A>
+</FONT>public void <A HREF="../../../../../src-html/org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html#line.263"><B>initialize</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<!-- ========= END OF CLASS DATA ========= -->
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/DuplicateArtifactsConsumer.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;PREV CLASS&nbsp;
+&nbsp;NEXT CLASS</FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../index.html?org/apache/archiva/reports/consumers/DuplicateArtifactsConsumer.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="DuplicateArtifactsConsumer.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+Copyright &#169; 2006-2013 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.
+</BODY>
+</HTML>

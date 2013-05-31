@@ -1,0 +1,579 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>
+DefaultMetadataResolver (Archiva :: Modules 1.4-M4 API)
+</TITLE>
+
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="DefaultMetadataResolver (Archiva :: Modules 1.4-M4 API)";
+    }
+}
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/DefaultMetadataResolver.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;PREV CLASS&nbsp;
+&nbsp;<A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../index.html?org/apache/archiva/metadata/repository/DefaultMetadataResolver.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="DefaultMetadataResolver.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<!-- ======== START OF CLASS DATA ======== -->
+<H2>
+<FONT SIZE="-1">
+org.apache.archiva.metadata.repository</FONT>
+<BR>
+Class DefaultMetadataResolver</H2>
+<PRE>
+<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</A>
+  <IMG SRC="../../../../../resources/inherit.gif" ALT="extended by "><B>org.apache.archiva.metadata.repository.DefaultMetadataResolver</B>
+</PRE>
+<DL>
+<DT><B>All Implemented Interfaces:</B> <DD><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html" title="interface in org.apache.archiva.metadata.repository">MetadataResolver</A></DD>
+</DL>
+<HR>
+<DL>
+<DT><PRE><FONT SIZE="-1">@Service(value="metadataResolver#default")
+</FONT>public class <A HREF="../../../../../src-html/org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#line.61"><B>DefaultMetadataResolver</B></A><DT>extends <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A><DT>implements <A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html" title="interface in org.apache.archiva.metadata.repository">MetadataResolver</A></DL>
+</PRE>
+
+<P>
+Default implementation of the metadata resolver API. At present it will handle updating the content repository
+ from new or changed information in the model and artifacts from the repository storage.
+ <p/>
+ This is a singleton component to allow an alternate implementation to be provided. It is intended to be the same
+ system-wide for the whole content repository instead of on a per-managed-repository basis. Therefore, the session is
+ passed in as an argument to obtain any necessary resources, rather than the class being instantiated within the
+ session in the context of a single managed repository's resolution needs.
+ <p/>
+ Note that the caller is responsible for the session, such as closing and saving (which is implied by the resolver
+ being obtained from within the session). The <A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html#markDirty()"><CODE>RepositorySession.markDirty()</CODE></A> method is used as a hint to ensure
+ that the session knows we've made changes at close. We cannot ensure the changes will be persisted if the caller
+ chooses to revert first. This is preferable to storing the metadata immediately - a separate session would require
+ having a bi-directional link with the session factory, and saving the existing session might save other changes
+ unknowingly by the caller.
+ <p/>
+<P>
+
+<P>
+<HR>
+
+<P>
+<!-- =========== FIELD SUMMARY =========== -->
+
+<A NAME="field_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Field Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../org/apache/archiva/repository/events/RepositoryListener.html" title="interface in org.apache.archiva.repository.events">RepositoryListener</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#listeners">listeners</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.slf4j.Logger</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#log">log</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../../org/apache/archiva/metadata/repository/storage/RepositoryStorage.html" title="interface in org.apache.archiva.metadata.repository.storage">RepositoryStorage</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#repositoryStorage">repositoryStorage</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FIXME: this needs to be configurable based on storage type - and could also be instantiated per repo.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+
+<A NAME="constructor_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Constructor Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#DefaultMetadataResolver()">DefaultMetadataResolver</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ========== METHOD SUMMARY =========== -->
+
+<A NAME="method_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#createArtifactIdList(java.util.Collection)">createArtifactIdList</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A HREF="../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</A>&gt;&nbsp;artifacts)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A HREF="../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#resolveArtifacts(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String, java.lang.String, java.lang.String, java.lang.String)">resolveArtifacts</A></B>(<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</A>&nbsp;session,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repoId,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;namespace,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectId,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectVersion)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#resolveNamespaces(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String, java.lang.String)">resolveNamespaces</A></B>(<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</A>&nbsp;session,
+                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repoId,
+                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;namespace)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A HREF="../../../../../org/apache/archiva/metadata/model/ProjectVersionReference.html" title="class in org.apache.archiva.metadata.model">ProjectVersionReference</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#resolveProjectReferences(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String, java.lang.String, java.lang.String, java.lang.String)">resolveProjectReferences</A></B>(<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</A>&nbsp;session,
+                                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repoId,
+                                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;namespace,
+                                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectId,
+                                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectVersion)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Retrieve project references from the metadata repository.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#resolveProjects(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String, java.lang.String)">resolveProjects</A></B>(<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</A>&nbsp;session,
+                               <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repoId,
+                               <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;namespace)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../org/apache/archiva/metadata/model/ProjectVersionMetadata.html" title="class in org.apache.archiva.metadata.model">ProjectVersionMetadata</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#resolveProjectVersion(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String, java.lang.String, java.lang.String, java.lang.String)">resolveProjectVersion</A></B>(<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</A>&nbsp;session,
+                                           <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repoId,
+                                           <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;namespace,
+                                           <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectId,
+                                           <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectVersion)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#resolveProjectVersions(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String, java.lang.String, java.lang.String)">resolveProjectVersions</A></B>(<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</A>&nbsp;session,
+                                             <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repoId,
+                                             <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;namespace,
+                                             <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectId)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#resolveRootNamespaces(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String)">resolveRootNamespaces</A></B>(<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</A>&nbsp;session,
+                                           <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repoId)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class java.lang.<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<!-- ============ FIELD DETAIL =========== -->
+
+<A NAME="field_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Field Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="log"><!-- --></A><H3>
+log</H3>
+<PRE>
+private org.slf4j.Logger <A HREF="../../../../../src-html/org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#line.65"><B>log</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="repositoryStorage"><!-- --></A><H3>
+repositoryStorage</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+@Named(value="repositoryStorage#maven2")
+</FONT>private <A HREF="../../../../../org/apache/archiva/metadata/repository/storage/RepositoryStorage.html" title="interface in org.apache.archiva.metadata.repository.storage">RepositoryStorage</A> <A HREF="../../../../../src-html/org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#line.77"><B>repositoryStorage</B></A></PRE>
+<DL>
+<DD>FIXME: this needs to be configurable based on storage type - and could also be instantiated per repo. Change to a
+ factory, and perhaps retrieve from the session. We should avoid creating one per request, however.
+ <p/>
+ TODO: Also need to accommodate availability of proxy module
+ ... could be a different type since we need methods to modify the storage metadata, which would also allow more
+ appropriate methods to pass in the already determined repository configuration, for example, instead of the ID
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="listeners"><!-- --></A><H3>
+listeners</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../org/apache/archiva/repository/events/RepositoryListener.html" title="interface in org.apache.archiva.repository.events">RepositoryListener</A>&gt; <A HREF="../../../../../src-html/org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#line.83"><B>listeners</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+
+<A NAME="constructor_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Constructor Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="DefaultMetadataResolver()"><!-- --></A><H3>
+DefaultMetadataResolver</H3>
+<PRE>
+public <A HREF="../../../../../src-html/org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#line.61"><B>DefaultMetadataResolver</B></A>()</PRE>
+<DL>
+</DL>
+
+<!-- ============ METHOD DETAIL ========== -->
+
+<A NAME="method_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Method Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="resolveProjectVersion(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String, java.lang.String, java.lang.String, java.lang.String)"><!-- --></A><H3>
+resolveProjectVersion</H3>
+<PRE>
+public <A HREF="../../../../../org/apache/archiva/metadata/model/ProjectVersionMetadata.html" title="class in org.apache.archiva.metadata.model">ProjectVersionMetadata</A> <A HREF="../../../../../src-html/org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#line.85"><B>resolveProjectVersion</B></A>(<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</A>&nbsp;session,
+                                                    <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repoId,
+                                                    <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;namespace,
+                                                    <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectId,
+                                                    <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectVersion)
+                                             throws <A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html#resolveProjectVersion(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String, java.lang.String, java.lang.String, java.lang.String)">resolveProjectVersion</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html" title="interface in org.apache.archiva.metadata.repository">MetadataResolver</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="resolveProjectReferences(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String, java.lang.String, java.lang.String, java.lang.String)"><!-- --></A><H3>
+resolveProjectReferences</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A HREF="../../../../../org/apache/archiva/metadata/model/ProjectVersionReference.html" title="class in org.apache.archiva.metadata.model">ProjectVersionReference</A>&gt; <A HREF="../../../../../src-html/org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#line.163"><B>resolveProjectReferences</B></A>(<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</A>&nbsp;session,
+                                                                    <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repoId,
+                                                                    <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;namespace,
+                                                                    <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectId,
+                                                                    <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectVersion)
+                                                             throws <A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</A></PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html#resolveProjectReferences(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String, java.lang.String, java.lang.String, java.lang.String)">MetadataResolver</A></CODE></B></DD>
+<DD>Retrieve project references from the metadata repository. Note that this is not built into the content model for
+ a project version as a reference may be present (due to reverse-lookup of dependencies) before the actual
+ project is, and we want to avoid adding a stub model to the content repository.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html#resolveProjectReferences(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String, java.lang.String, java.lang.String, java.lang.String)">resolveProjectReferences</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html" title="interface in org.apache.archiva.metadata.repository">MetadataResolver</A></CODE></DL>
+</DD>
+<DD><DL>
+<DD><CODE>repoId</CODE> - the repository ID to look within<DD><CODE>namespace</CODE> - the namespace of the project to get references to<DD><CODE>projectId</CODE> - the identifier of the project to get references to<DD><CODE>projectVersion</CODE> - the version of the project to get references to
+<DT><B>Returns:</B><DD>a list of project references
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="resolveRootNamespaces(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String)"><!-- --></A><H3>
+resolveRootNamespaces</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt; <A HREF="../../../../../src-html/org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#line.174"><B>resolveRootNamespaces</B></A>(<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</A>&nbsp;session,
+                                                <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repoId)
+                                         throws <A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html#resolveRootNamespaces(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String)">resolveRootNamespaces</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html" title="interface in org.apache.archiva.metadata.repository">MetadataResolver</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="resolveNamespaces(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String, java.lang.String)"><!-- --></A><H3>
+resolveNamespaces</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt; <A HREF="../../../../../src-html/org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#line.212"><B>resolveNamespaces</B></A>(<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</A>&nbsp;session,
+                                            <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repoId,
+                                            <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;namespace)
+                                     throws <A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html#resolveNamespaces(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String, java.lang.String)">resolveNamespaces</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html" title="interface in org.apache.archiva.metadata.repository">MetadataResolver</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="resolveProjects(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String, java.lang.String)"><!-- --></A><H3>
+resolveProjects</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt; <A HREF="../../../../../src-html/org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#line.252"><B>resolveProjects</B></A>(<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</A>&nbsp;session,
+                                          <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repoId,
+                                          <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;namespace)
+                                   throws <A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html#resolveProjects(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String, java.lang.String)">resolveProjects</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html" title="interface in org.apache.archiva.metadata.repository">MetadataResolver</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="resolveProjectVersions(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String, java.lang.String, java.lang.String)"><!-- --></A><H3>
+resolveProjectVersions</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt; <A HREF="../../../../../src-html/org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#line.296"><B>resolveProjectVersions</B></A>(<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</A>&nbsp;session,
+                                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repoId,
+                                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;namespace,
+                                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectId)
+                                          throws <A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html#resolveProjectVersions(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String, java.lang.String, java.lang.String)">resolveProjectVersions</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html" title="interface in org.apache.archiva.metadata.repository">MetadataResolver</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="resolveArtifacts(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String, java.lang.String, java.lang.String, java.lang.String)"><!-- --></A><H3>
+resolveArtifacts</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A HREF="../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</A>&gt; <A HREF="../../../../../src-html/org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#line.364"><B>resolveArtifacts</B></A>(<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</A>&nbsp;session,
+                                                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repoId,
+                                                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;namespace,
+                                                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectId,
+                                                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectVersion)
+                                              throws <A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html#resolveArtifacts(org.apache.archiva.metadata.repository.RepositorySession, java.lang.String, java.lang.String, java.lang.String, java.lang.String)">resolveArtifacts</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html" title="interface in org.apache.archiva.metadata.repository">MetadataResolver</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="createArtifactIdList(java.util.Collection)"><!-- --></A><H3>
+createArtifactIdList</H3>
+<PRE>
+private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt; <A HREF="../../../../../src-html/org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#line.414"><B>createArtifactIdList</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</A>&lt;<A HREF="../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</A>&gt;&nbsp;artifacts)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<!-- ========= END OF CLASS DATA ========= -->
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/DefaultMetadataResolver.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;PREV CLASS&nbsp;
+&nbsp;<A HREF="../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../index.html?org/apache/archiva/metadata/repository/DefaultMetadataResolver.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="DefaultMetadataResolver.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+Copyright &#169; 2006-2013 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.
+</BODY>
+</HTML>

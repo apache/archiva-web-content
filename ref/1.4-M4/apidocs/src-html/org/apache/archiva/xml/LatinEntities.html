@@ -1,0 +1,392 @@
+<HTML>
+<BODY BGCOLOR="white">
+<PRE>
+<FONT color="green">001</FONT>    package org.apache.archiva.xml;<a name="line.1"></a>
+<FONT color="green">002</FONT>    <a name="line.2"></a>
+<FONT color="green">003</FONT>    /*<a name="line.3"></a>
+<FONT color="green">004</FONT>     * Licensed to the Apache Software Foundation (ASF) under one<a name="line.4"></a>
+<FONT color="green">005</FONT>     * or more contributor license agreements.  See the NOTICE file<a name="line.5"></a>
+<FONT color="green">006</FONT>     * distributed with this work for additional information<a name="line.6"></a>
+<FONT color="green">007</FONT>     * regarding copyright ownership.  The ASF licenses this file<a name="line.7"></a>
+<FONT color="green">008</FONT>     * to you under the Apache License, Version 2.0 (the<a name="line.8"></a>
+<FONT color="green">009</FONT>     * "License"); you may not use this file except in compliance<a name="line.9"></a>
+<FONT color="green">010</FONT>     * with the License.  You may obtain a copy of the License at<a name="line.10"></a>
+<FONT color="green">011</FONT>     *<a name="line.11"></a>
+<FONT color="green">012</FONT>     *  http://www.apache.org/licenses/LICENSE-2.0<a name="line.12"></a>
+<FONT color="green">013</FONT>     *<a name="line.13"></a>
+<FONT color="green">014</FONT>     * Unless required by applicable law or agreed to in writing,<a name="line.14"></a>
+<FONT color="green">015</FONT>     * software distributed under the License is distributed on an<a name="line.15"></a>
+<FONT color="green">016</FONT>     * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY<a name="line.16"></a>
+<FONT color="green">017</FONT>     * KIND, either express or implied.  See the License for the<a name="line.17"></a>
+<FONT color="green">018</FONT>     * specific language governing permissions and limitations<a name="line.18"></a>
+<FONT color="green">019</FONT>     * under the License.<a name="line.19"></a>
+<FONT color="green">020</FONT>     */<a name="line.20"></a>
+<FONT color="green">021</FONT>    <a name="line.21"></a>
+<FONT color="green">022</FONT>    import java.util.HashMap;<a name="line.22"></a>
+<FONT color="green">023</FONT>    import java.util.Map;<a name="line.23"></a>
+<FONT color="green">024</FONT>    <a name="line.24"></a>
+<FONT color="green">025</FONT>    /**<a name="line.25"></a>
+<FONT color="green">026</FONT>     * LatinEntities - simple utility class to handle latin entity conversion. <a name="line.26"></a>
+<FONT color="green">027</FONT>     *<a name="line.27"></a>
+<FONT color="green">028</FONT>     *<a name="line.28"></a>
+<FONT color="green">029</FONT>     */<a name="line.29"></a>
+<FONT color="green">030</FONT>    public class LatinEntities<a name="line.30"></a>
+<FONT color="green">031</FONT>    {<a name="line.31"></a>
+<FONT color="green">032</FONT>        private static final Map&lt;String, String&gt; defaultEntityMap;<a name="line.32"></a>
+<FONT color="green">033</FONT>    <a name="line.33"></a>
+<FONT color="green">034</FONT>        static<a name="line.34"></a>
+<FONT color="green">035</FONT>        {<a name="line.35"></a>
+<FONT color="green">036</FONT>            defaultEntityMap = new HashMap&lt;String, String&gt;();<a name="line.36"></a>
+<FONT color="green">037</FONT>    <a name="line.37"></a>
+<FONT color="green">038</FONT>            defaultEntityMap.put( "nbsp", "\u00a0" );<a name="line.38"></a>
+<FONT color="green">039</FONT>            defaultEntityMap.put( "iexcl", "\u00a1" );<a name="line.39"></a>
+<FONT color="green">040</FONT>            defaultEntityMap.put( "cent", "\u00a2" );<a name="line.40"></a>
+<FONT color="green">041</FONT>            defaultEntityMap.put( "pound", "\u00a3" );<a name="line.41"></a>
+<FONT color="green">042</FONT>            defaultEntityMap.put( "curren", "\u00a4" );<a name="line.42"></a>
+<FONT color="green">043</FONT>            defaultEntityMap.put( "yen", "\u00a5" );<a name="line.43"></a>
+<FONT color="green">044</FONT>            defaultEntityMap.put( "brvbar", "\u00a6" );<a name="line.44"></a>
+<FONT color="green">045</FONT>            defaultEntityMap.put( "sect", "\u00a7" );<a name="line.45"></a>
+<FONT color="green">046</FONT>            defaultEntityMap.put( "uml", "\u00a8" );<a name="line.46"></a>
+<FONT color="green">047</FONT>            defaultEntityMap.put( "copy", "\u00a9" );<a name="line.47"></a>
+<FONT color="green">048</FONT>            defaultEntityMap.put( "ordf", "\u00aa" );<a name="line.48"></a>
+<FONT color="green">049</FONT>            defaultEntityMap.put( "laquo", "\u00ab" );<a name="line.49"></a>
+<FONT color="green">050</FONT>            defaultEntityMap.put( "not", "\u00ac" );<a name="line.50"></a>
+<FONT color="green">051</FONT>            defaultEntityMap.put( "shy", "\u00ad" );<a name="line.51"></a>
+<FONT color="green">052</FONT>            defaultEntityMap.put( "reg", "\u00ae" );<a name="line.52"></a>
+<FONT color="green">053</FONT>            defaultEntityMap.put( "macr", "\u00af" );<a name="line.53"></a>
+<FONT color="green">054</FONT>            defaultEntityMap.put( "deg", "\u00b0" );<a name="line.54"></a>
+<FONT color="green">055</FONT>            defaultEntityMap.put( "plusmn", "\u00b1" );<a name="line.55"></a>
+<FONT color="green">056</FONT>            defaultEntityMap.put( "sup2", "\u00b2" );<a name="line.56"></a>
+<FONT color="green">057</FONT>            defaultEntityMap.put( "sup3", "\u00b3" );<a name="line.57"></a>
+<FONT color="green">058</FONT>            defaultEntityMap.put( "acute", "\u00b4" );<a name="line.58"></a>
+<FONT color="green">059</FONT>            defaultEntityMap.put( "micro", "\u00b5" );<a name="line.59"></a>
+<FONT color="green">060</FONT>            defaultEntityMap.put( "para", "\u00b6" );<a name="line.60"></a>
+<FONT color="green">061</FONT>            defaultEntityMap.put( "middot", "\u00b7" );<a name="line.61"></a>
+<FONT color="green">062</FONT>            defaultEntityMap.put( "cedil", "\u00b8" );<a name="line.62"></a>
+<FONT color="green">063</FONT>            defaultEntityMap.put( "sup1", "\u00b9" );<a name="line.63"></a>
+<FONT color="green">064</FONT>            defaultEntityMap.put( "ordm", "\u00ba" );<a name="line.64"></a>
+<FONT color="green">065</FONT>            defaultEntityMap.put( "raquo", "\u00bb" );<a name="line.65"></a>
+<FONT color="green">066</FONT>            defaultEntityMap.put( "frac14", "\u00bc" );<a name="line.66"></a>
+<FONT color="green">067</FONT>            defaultEntityMap.put( "frac12", "\u00bd" );<a name="line.67"></a>
+<FONT color="green">068</FONT>            defaultEntityMap.put( "frac34", "\u00be" );<a name="line.68"></a>
+<FONT color="green">069</FONT>            defaultEntityMap.put( "iquest", "\u00bf" );<a name="line.69"></a>
+<FONT color="green">070</FONT>            defaultEntityMap.put( "Agrave", "\u00c0" );<a name="line.70"></a>
+<FONT color="green">071</FONT>            defaultEntityMap.put( "Aacute", "\u00c1" );<a name="line.71"></a>
+<FONT color="green">072</FONT>            defaultEntityMap.put( "Acirc", "\u00c2" );<a name="line.72"></a>
+<FONT color="green">073</FONT>            defaultEntityMap.put( "Atilde", "\u00c3" );<a name="line.73"></a>
+<FONT color="green">074</FONT>            defaultEntityMap.put( "Auml", "\u00c4" );<a name="line.74"></a>
+<FONT color="green">075</FONT>            defaultEntityMap.put( "Aring", "\u00c5" );<a name="line.75"></a>
+<FONT color="green">076</FONT>            defaultEntityMap.put( "AElig", "\u00c6" );<a name="line.76"></a>
+<FONT color="green">077</FONT>            defaultEntityMap.put( "Ccedil", "\u00c7" );<a name="line.77"></a>
+<FONT color="green">078</FONT>            defaultEntityMap.put( "Egrave", "\u00c8" );<a name="line.78"></a>
+<FONT color="green">079</FONT>            defaultEntityMap.put( "Eacute", "\u00c9" );<a name="line.79"></a>
+<FONT color="green">080</FONT>            defaultEntityMap.put( "Ecirc", "\u00ca" );<a name="line.80"></a>
+<FONT color="green">081</FONT>            defaultEntityMap.put( "Euml", "\u00cb" );<a name="line.81"></a>
+<FONT color="green">082</FONT>            defaultEntityMap.put( "Igrave", "\u00cc" );<a name="line.82"></a>
+<FONT color="green">083</FONT>            defaultEntityMap.put( "Iacute", "\u00cd" );<a name="line.83"></a>
+<FONT color="green">084</FONT>            defaultEntityMap.put( "Icirc", "\u00ce" );<a name="line.84"></a>
+<FONT color="green">085</FONT>            defaultEntityMap.put( "Iuml", "\u00cf" );<a name="line.85"></a>
+<FONT color="green">086</FONT>            defaultEntityMap.put( "ETH", "\u00d0" );<a name="line.86"></a>
+<FONT color="green">087</FONT>            defaultEntityMap.put( "Ntilde", "\u00d1" );<a name="line.87"></a>
+<FONT color="green">088</FONT>            defaultEntityMap.put( "Ograve", "\u00d2" );<a name="line.88"></a>
+<FONT color="green">089</FONT>            defaultEntityMap.put( "Oacute", "\u00d3" );<a name="line.89"></a>
+<FONT color="green">090</FONT>            defaultEntityMap.put( "Ocirc", "\u00d4" );<a name="line.90"></a>
+<FONT color="green">091</FONT>            defaultEntityMap.put( "Otilde", "\u00d5" );<a name="line.91"></a>
+<FONT color="green">092</FONT>            defaultEntityMap.put( "Ouml", "\u00d6" );<a name="line.92"></a>
+<FONT color="green">093</FONT>            defaultEntityMap.put( "times", "\u00d7" );<a name="line.93"></a>
+<FONT color="green">094</FONT>            defaultEntityMap.put( "Oslash", "\u00d8" );<a name="line.94"></a>
+<FONT color="green">095</FONT>            defaultEntityMap.put( "Ugrave", "\u00d9" );<a name="line.95"></a>
+<FONT color="green">096</FONT>            defaultEntityMap.put( "Uacute", "\u00da" );<a name="line.96"></a>
+<FONT color="green">097</FONT>            defaultEntityMap.put( "Ucirc", "\u00db" );<a name="line.97"></a>
+<FONT color="green">098</FONT>            defaultEntityMap.put( "Uuml", "\u00dc" );<a name="line.98"></a>
+<FONT color="green">099</FONT>            defaultEntityMap.put( "Yacute", "\u00dd" );<a name="line.99"></a>
+<FONT color="green">100</FONT>            defaultEntityMap.put( "THORN", "\u00de" );<a name="line.100"></a>
+<FONT color="green">101</FONT>            defaultEntityMap.put( "szlig", "\u00df" );<a name="line.101"></a>
+<FONT color="green">102</FONT>            defaultEntityMap.put( "agrave", "\u00e0" );<a name="line.102"></a>
+<FONT color="green">103</FONT>            defaultEntityMap.put( "aacute", "\u00e1" );<a name="line.103"></a>
+<FONT color="green">104</FONT>            defaultEntityMap.put( "acirc", "\u00e2" );<a name="line.104"></a>
+<FONT color="green">105</FONT>            defaultEntityMap.put( "atilde", "\u00e3" );<a name="line.105"></a>
+<FONT color="green">106</FONT>            defaultEntityMap.put( "auml", "\u00e4" );<a name="line.106"></a>
+<FONT color="green">107</FONT>            defaultEntityMap.put( "aring", "\u00e5" );<a name="line.107"></a>
+<FONT color="green">108</FONT>            defaultEntityMap.put( "aelig", "\u00e6" );<a name="line.108"></a>
+<FONT color="green">109</FONT>            defaultEntityMap.put( "ccedil", "\u00e7" );<a name="line.109"></a>
+<FONT color="green">110</FONT>            defaultEntityMap.put( "egrave", "\u00e8" );<a name="line.110"></a>
+<FONT color="green">111</FONT>            defaultEntityMap.put( "eacute", "\u00e9" );<a name="line.111"></a>
+<FONT color="green">112</FONT>            defaultEntityMap.put( "ecirc", "\u00ea" );<a name="line.112"></a>
+<FONT color="green">113</FONT>            defaultEntityMap.put( "euml", "\u00eb" );<a name="line.113"></a>
+<FONT color="green">114</FONT>            defaultEntityMap.put( "igrave", "\u00ec" );<a name="line.114"></a>
+<FONT color="green">115</FONT>            defaultEntityMap.put( "iacute", "\u00ed" );<a name="line.115"></a>
+<FONT color="green">116</FONT>            defaultEntityMap.put( "icirc", "\u00ee" );<a name="line.116"></a>
+<FONT color="green">117</FONT>            defaultEntityMap.put( "iuml", "\u00ef" );<a name="line.117"></a>
+<FONT color="green">118</FONT>            defaultEntityMap.put( "eth", "\u00f0" );<a name="line.118"></a>
+<FONT color="green">119</FONT>            defaultEntityMap.put( "ntilde", "\u00f1" );<a name="line.119"></a>
+<FONT color="green">120</FONT>            defaultEntityMap.put( "ograve", "\u00f2" );<a name="line.120"></a>
+<FONT color="green">121</FONT>            defaultEntityMap.put( "oacute", "\u00f3" );<a name="line.121"></a>
+<FONT color="green">122</FONT>            defaultEntityMap.put( "ocirc", "\u00f4" );<a name="line.122"></a>
+<FONT color="green">123</FONT>            defaultEntityMap.put( "otilde", "\u00f5" );<a name="line.123"></a>
+<FONT color="green">124</FONT>            defaultEntityMap.put( "ouml", "\u00f6" );<a name="line.124"></a>
+<FONT color="green">125</FONT>            defaultEntityMap.put( "divide", "\u00f7" );<a name="line.125"></a>
+<FONT color="green">126</FONT>            defaultEntityMap.put( "oslash", "\u00f8" );<a name="line.126"></a>
+<FONT color="green">127</FONT>            defaultEntityMap.put( "ugrave", "\u00f9" );<a name="line.127"></a>
+<FONT color="green">128</FONT>            defaultEntityMap.put( "uacute", "\u00fa" );<a name="line.128"></a>
+<FONT color="green">129</FONT>            defaultEntityMap.put( "ucirc", "\u00fb" );<a name="line.129"></a>
+<FONT color="green">130</FONT>            defaultEntityMap.put( "uuml", "\u00fc" );<a name="line.130"></a>
+<FONT color="green">131</FONT>            defaultEntityMap.put( "yacute", "\u00fd" );<a name="line.131"></a>
+<FONT color="green">132</FONT>            defaultEntityMap.put( "thorn", "\u00fe" );<a name="line.132"></a>
+<FONT color="green">133</FONT>            defaultEntityMap.put( "yuml", "\u00ff" );<a name="line.133"></a>
+<FONT color="green">134</FONT>    <a name="line.134"></a>
+<FONT color="green">135</FONT>            // ----------------------------------------------------------------------<a name="line.135"></a>
+<FONT color="green">136</FONT>            // Special entities<a name="line.136"></a>
+<FONT color="green">137</FONT>            // ----------------------------------------------------------------------<a name="line.137"></a>
+<FONT color="green">138</FONT>    <a name="line.138"></a>
+<FONT color="green">139</FONT>            defaultEntityMap.put( "OElig", "\u0152" );<a name="line.139"></a>
+<FONT color="green">140</FONT>            defaultEntityMap.put( "oelig", "\u0153" );<a name="line.140"></a>
+<FONT color="green">141</FONT>            defaultEntityMap.put( "Scaron", "\u0160" );<a name="line.141"></a>
+<FONT color="green">142</FONT>            defaultEntityMap.put( "scaron", "\u0161" );<a name="line.142"></a>
+<FONT color="green">143</FONT>            defaultEntityMap.put( "Yuml", "\u0178" );<a name="line.143"></a>
+<FONT color="green">144</FONT>            defaultEntityMap.put( "circ", "\u02c6" );<a name="line.144"></a>
+<FONT color="green">145</FONT>            defaultEntityMap.put( "tilde", "\u02dc" );<a name="line.145"></a>
+<FONT color="green">146</FONT>            defaultEntityMap.put( "ensp", "\u2002" );<a name="line.146"></a>
+<FONT color="green">147</FONT>            defaultEntityMap.put( "emsp", "\u2003" );<a name="line.147"></a>
+<FONT color="green">148</FONT>            defaultEntityMap.put( "thinsp", "\u2009" );<a name="line.148"></a>
+<FONT color="green">149</FONT>            defaultEntityMap.put( "zwnj", "\u200c" );<a name="line.149"></a>
+<FONT color="green">150</FONT>            defaultEntityMap.put( "zwj", "\u200d" );<a name="line.150"></a>
+<FONT color="green">151</FONT>            defaultEntityMap.put( "lrm", "\u200e" );<a name="line.151"></a>
+<FONT color="green">152</FONT>            defaultEntityMap.put( "rlm", "\u200f" );<a name="line.152"></a>
+<FONT color="green">153</FONT>            defaultEntityMap.put( "ndash", "\u2013" );<a name="line.153"></a>
+<FONT color="green">154</FONT>            defaultEntityMap.put( "mdash", "\u2014" );<a name="line.154"></a>
+<FONT color="green">155</FONT>            defaultEntityMap.put( "lsquo", "\u2018" );<a name="line.155"></a>
+<FONT color="green">156</FONT>            defaultEntityMap.put( "rsquo", "\u2019" );<a name="line.156"></a>
+<FONT color="green">157</FONT>            defaultEntityMap.put( "sbquo", "\u201a" );<a name="line.157"></a>
+<FONT color="green">158</FONT>            defaultEntityMap.put( "ldquo", "\u201c" );<a name="line.158"></a>
+<FONT color="green">159</FONT>            defaultEntityMap.put( "rdquo", "\u201d" );<a name="line.159"></a>
+<FONT color="green">160</FONT>            defaultEntityMap.put( "bdquo", "\u201e" );<a name="line.160"></a>
+<FONT color="green">161</FONT>            defaultEntityMap.put( "dagger", "\u2020" );<a name="line.161"></a>
+<FONT color="green">162</FONT>            defaultEntityMap.put( "Dagger", "\u2021" );<a name="line.162"></a>
+<FONT color="green">163</FONT>            defaultEntityMap.put( "permil", "\u2030" );<a name="line.163"></a>
+<FONT color="green">164</FONT>            defaultEntityMap.put( "lsaquo", "\u2039" );<a name="line.164"></a>
+<FONT color="green">165</FONT>            defaultEntityMap.put( "rsaquo", "\u203a" );<a name="line.165"></a>
+<FONT color="green">166</FONT>            defaultEntityMap.put( "euro", "\u20ac" );<a name="line.166"></a>
+<FONT color="green">167</FONT>    <a name="line.167"></a>
+<FONT color="green">168</FONT>            // ----------------------------------------------------------------------<a name="line.168"></a>
+<FONT color="green">169</FONT>            // Symbol entities<a name="line.169"></a>
+<FONT color="green">170</FONT>            // ----------------------------------------------------------------------<a name="line.170"></a>
+<FONT color="green">171</FONT>    <a name="line.171"></a>
+<FONT color="green">172</FONT>            defaultEntityMap.put( "fnof", "\u0192" );<a name="line.172"></a>
+<FONT color="green">173</FONT>            defaultEntityMap.put( "Alpha", "\u0391" );<a name="line.173"></a>
+<FONT color="green">174</FONT>            defaultEntityMap.put( "Beta", "\u0392" );<a name="line.174"></a>
+<FONT color="green">175</FONT>            defaultEntityMap.put( "Gamma", "\u0393" );<a name="line.175"></a>
+<FONT color="green">176</FONT>            defaultEntityMap.put( "Delta", "\u0394" );<a name="line.176"></a>
+<FONT color="green">177</FONT>            defaultEntityMap.put( "Epsilon", "\u0395" );<a name="line.177"></a>
+<FONT color="green">178</FONT>            defaultEntityMap.put( "Zeta", "\u0396" );<a name="line.178"></a>
+<FONT color="green">179</FONT>            defaultEntityMap.put( "Eta", "\u0397" );<a name="line.179"></a>
+<FONT color="green">180</FONT>            defaultEntityMap.put( "Theta", "\u0398" );<a name="line.180"></a>
+<FONT color="green">181</FONT>            defaultEntityMap.put( "Iota", "\u0399" );<a name="line.181"></a>
+<FONT color="green">182</FONT>            defaultEntityMap.put( "Kappa", "\u039a" );<a name="line.182"></a>
+<FONT color="green">183</FONT>            defaultEntityMap.put( "Lambda", "\u039b" );<a name="line.183"></a>
+<FONT color="green">184</FONT>            defaultEntityMap.put( "Mu", "\u039c" );<a name="line.184"></a>
+<FONT color="green">185</FONT>            defaultEntityMap.put( "Nu", "\u039d" );<a name="line.185"></a>
+<FONT color="green">186</FONT>            defaultEntityMap.put( "Xi", "\u039e" );<a name="line.186"></a>
+<FONT color="green">187</FONT>            defaultEntityMap.put( "Omicron", "\u039f" );<a name="line.187"></a>
+<FONT color="green">188</FONT>            defaultEntityMap.put( "Pi", "\u03a0" );<a name="line.188"></a>
+<FONT color="green">189</FONT>            defaultEntityMap.put( "Rho", "\u03a1" );<a name="line.189"></a>
+<FONT color="green">190</FONT>            defaultEntityMap.put( "Sigma", "\u03a3" );<a name="line.190"></a>
+<FONT color="green">191</FONT>            defaultEntityMap.put( "Tau", "\u03a4" );<a name="line.191"></a>
+<FONT color="green">192</FONT>            defaultEntityMap.put( "Upsilon", "\u03a5" );<a name="line.192"></a>
+<FONT color="green">193</FONT>            defaultEntityMap.put( "Phi", "\u03a6" );<a name="line.193"></a>
+<FONT color="green">194</FONT>            defaultEntityMap.put( "Chi", "\u03a7" );<a name="line.194"></a>
+<FONT color="green">195</FONT>            defaultEntityMap.put( "Psi", "\u03a8" );<a name="line.195"></a>
+<FONT color="green">196</FONT>            defaultEntityMap.put( "Omega", "\u03a9" );<a name="line.196"></a>
+<FONT color="green">197</FONT>            defaultEntityMap.put( "alpha", "\u03b1" );<a name="line.197"></a>
+<FONT color="green">198</FONT>            defaultEntityMap.put( "beta", "\u03b2" );<a name="line.198"></a>
+<FONT color="green">199</FONT>            defaultEntityMap.put( "gamma", "\u03b3" );<a name="line.199"></a>
+<FONT color="green">200</FONT>            defaultEntityMap.put( "delta", "\u03b4" );<a name="line.200"></a>
+<FONT color="green">201</FONT>            defaultEntityMap.put( "epsilon", "\u03b5" );<a name="line.201"></a>
+<FONT color="green">202</FONT>            defaultEntityMap.put( "zeta", "\u03b6" );<a name="line.202"></a>
+<FONT color="green">203</FONT>            defaultEntityMap.put( "eta", "\u03b7" );<a name="line.203"></a>
+<FONT color="green">204</FONT>            defaultEntityMap.put( "theta", "\u03b8" );<a name="line.204"></a>
+<FONT color="green">205</FONT>            defaultEntityMap.put( "iota", "\u03b9" );<a name="line.205"></a>
+<FONT color="green">206</FONT>            defaultEntityMap.put( "kappa", "\u03ba" );<a name="line.206"></a>
+<FONT color="green">207</FONT>            defaultEntityMap.put( "lambda", "\u03bb" );<a name="line.207"></a>
+<FONT color="green">208</FONT>            defaultEntityMap.put( "mu", "\u03bc" );<a name="line.208"></a>
+<FONT color="green">209</FONT>            defaultEntityMap.put( "nu", "\u03bd" );<a name="line.209"></a>
+<FONT color="green">210</FONT>            defaultEntityMap.put( "xi", "\u03be" );<a name="line.210"></a>
+<FONT color="green">211</FONT>            defaultEntityMap.put( "omicron", "\u03bf" );<a name="line.211"></a>
+<FONT color="green">212</FONT>            defaultEntityMap.put( "pi", "\u03c0" );<a name="line.212"></a>
+<FONT color="green">213</FONT>            defaultEntityMap.put( "rho", "\u03c1" );<a name="line.213"></a>
+<FONT color="green">214</FONT>            defaultEntityMap.put( "sigmaf", "\u03c2" );<a name="line.214"></a>
+<FONT color="green">215</FONT>            defaultEntityMap.put( "sigma", "\u03c3" );<a name="line.215"></a>
+<FONT color="green">216</FONT>            defaultEntityMap.put( "tau", "\u03c4" );<a name="line.216"></a>
+<FONT color="green">217</FONT>            defaultEntityMap.put( "upsilon", "\u03c5" );<a name="line.217"></a>
+<FONT color="green">218</FONT>            defaultEntityMap.put( "phi", "\u03c6" );<a name="line.218"></a>
+<FONT color="green">219</FONT>            defaultEntityMap.put( "chi", "\u03c7" );<a name="line.219"></a>
+<FONT color="green">220</FONT>            defaultEntityMap.put( "psi", "\u03c8" );<a name="line.220"></a>
+<FONT color="green">221</FONT>            defaultEntityMap.put( "omega", "\u03c9" );<a name="line.221"></a>
+<FONT color="green">222</FONT>            defaultEntityMap.put( "thetasym", "\u03d1" );<a name="line.222"></a>
+<FONT color="green">223</FONT>            defaultEntityMap.put( "upsih", "\u03d2" );<a name="line.223"></a>
+<FONT color="green">224</FONT>            defaultEntityMap.put( "piv", "\u03d6" );<a name="line.224"></a>
+<FONT color="green">225</FONT>            defaultEntityMap.put( "bull", "\u2022" );<a name="line.225"></a>
+<FONT color="green">226</FONT>            defaultEntityMap.put( "hellip", "\u2026" );<a name="line.226"></a>
+<FONT color="green">227</FONT>            defaultEntityMap.put( "prime", "\u2032" );<a name="line.227"></a>
+<FONT color="green">228</FONT>            defaultEntityMap.put( "Prime", "\u2033" );<a name="line.228"></a>
+<FONT color="green">229</FONT>            defaultEntityMap.put( "oline", "\u203e" );<a name="line.229"></a>
+<FONT color="green">230</FONT>            defaultEntityMap.put( "frasl", "\u2044" );<a name="line.230"></a>
+<FONT color="green">231</FONT>            defaultEntityMap.put( "weierp", "\u2118" );<a name="line.231"></a>
+<FONT color="green">232</FONT>            defaultEntityMap.put( "image", "\u2111" );<a name="line.232"></a>
+<FONT color="green">233</FONT>            defaultEntityMap.put( "real", "\u211c" );<a name="line.233"></a>
+<FONT color="green">234</FONT>            defaultEntityMap.put( "trade", "\u2122" );<a name="line.234"></a>
+<FONT color="green">235</FONT>            defaultEntityMap.put( "alefsym", "\u2135" );<a name="line.235"></a>
+<FONT color="green">236</FONT>            defaultEntityMap.put( "larr", "\u2190" );<a name="line.236"></a>
+<FONT color="green">237</FONT>            defaultEntityMap.put( "uarr", "\u2191" );<a name="line.237"></a>
+<FONT color="green">238</FONT>            defaultEntityMap.put( "rarr", "\u2192" );<a name="line.238"></a>
+<FONT color="green">239</FONT>            defaultEntityMap.put( "darr", "\u2193" );<a name="line.239"></a>
+<FONT color="green">240</FONT>            defaultEntityMap.put( "harr", "\u2194" );<a name="line.240"></a>
+<FONT color="green">241</FONT>            defaultEntityMap.put( "crarr", "\u21b5" );<a name="line.241"></a>
+<FONT color="green">242</FONT>            defaultEntityMap.put( "lArr", "\u21d0" );<a name="line.242"></a>
+<FONT color="green">243</FONT>            defaultEntityMap.put( "uArr", "\u21d1" );<a name="line.243"></a>
+<FONT color="green">244</FONT>            defaultEntityMap.put( "rArr", "\u21d2" );<a name="line.244"></a>
+<FONT color="green">245</FONT>            defaultEntityMap.put( "dArr", "\u21d3" );<a name="line.245"></a>
+<FONT color="green">246</FONT>            defaultEntityMap.put( "hArr", "\u21d4" );<a name="line.246"></a>
+<FONT color="green">247</FONT>            defaultEntityMap.put( "forall", "\u2200" );<a name="line.247"></a>
+<FONT color="green">248</FONT>            defaultEntityMap.put( "part", "\u2202" );<a name="line.248"></a>
+<FONT color="green">249</FONT>            defaultEntityMap.put( "exist", "\u2203" );<a name="line.249"></a>
+<FONT color="green">250</FONT>            defaultEntityMap.put( "empty", "\u2205" );<a name="line.250"></a>
+<FONT color="green">251</FONT>            defaultEntityMap.put( "nabla", "\u2207" );<a name="line.251"></a>
+<FONT color="green">252</FONT>            defaultEntityMap.put( "isin", "\u2208" );<a name="line.252"></a>
+<FONT color="green">253</FONT>            defaultEntityMap.put( "notin", "\u2209" );<a name="line.253"></a>
+<FONT color="green">254</FONT>            defaultEntityMap.put( "ni", "\u220b" );<a name="line.254"></a>
+<FONT color="green">255</FONT>            defaultEntityMap.put( "prod", "\u220f" );<a name="line.255"></a>
+<FONT color="green">256</FONT>            defaultEntityMap.put( "sum", "\u2211" );<a name="line.256"></a>
+<FONT color="green">257</FONT>            defaultEntityMap.put( "minus", "\u2212" );<a name="line.257"></a>
+<FONT color="green">258</FONT>            defaultEntityMap.put( "lowast", "\u2217" );<a name="line.258"></a>
+<FONT color="green">259</FONT>            defaultEntityMap.put( "radic", "\u221a" );<a name="line.259"></a>
+<FONT color="green">260</FONT>            defaultEntityMap.put( "prop", "\u221d" );<a name="line.260"></a>
+<FONT color="green">261</FONT>            defaultEntityMap.put( "infin", "\u221e" );<a name="line.261"></a>
+<FONT color="green">262</FONT>            defaultEntityMap.put( "ang", "\u2220" );<a name="line.262"></a>
+<FONT color="green">263</FONT>            defaultEntityMap.put( "and", "\u2227" );<a name="line.263"></a>
+<FONT color="green">264</FONT>            defaultEntityMap.put( "or", "\u2228" );<a name="line.264"></a>
+<FONT color="green">265</FONT>            defaultEntityMap.put( "cap", "\u2229" );<a name="line.265"></a>
+<FONT color="green">266</FONT>            defaultEntityMap.put( "cup", "\u222a" );<a name="line.266"></a>
+<FONT color="green">267</FONT>            defaultEntityMap.put( "int", "\u222b" );<a name="line.267"></a>
+<FONT color="green">268</FONT>            defaultEntityMap.put( "there4", "\u2234" );<a name="line.268"></a>
+<FONT color="green">269</FONT>            defaultEntityMap.put( "sim", "\u223c" );<a name="line.269"></a>
+<FONT color="green">270</FONT>            defaultEntityMap.put( "cong", "\u2245" );<a name="line.270"></a>
+<FONT color="green">271</FONT>            defaultEntityMap.put( "asymp", "\u2248" );<a name="line.271"></a>
+<FONT color="green">272</FONT>            defaultEntityMap.put( "ne", "\u2260" );<a name="line.272"></a>
+<FONT color="green">273</FONT>            defaultEntityMap.put( "equiv", "\u2261" );<a name="line.273"></a>
+<FONT color="green">274</FONT>            defaultEntityMap.put( "le", "\u2264" );<a name="line.274"></a>
+<FONT color="green">275</FONT>            defaultEntityMap.put( "ge", "\u2265" );<a name="line.275"></a>
+<FONT color="green">276</FONT>            defaultEntityMap.put( "sub", "\u2282" );<a name="line.276"></a>
+<FONT color="green">277</FONT>            defaultEntityMap.put( "sup", "\u2283" );<a name="line.277"></a>
+<FONT color="green">278</FONT>            defaultEntityMap.put( "nsub", "\u2284" );<a name="line.278"></a>
+<FONT color="green">279</FONT>            defaultEntityMap.put( "sube", "\u2286" );<a name="line.279"></a>
+<FONT color="green">280</FONT>            defaultEntityMap.put( "supe", "\u2287" );<a name="line.280"></a>
+<FONT color="green">281</FONT>            defaultEntityMap.put( "oplus", "\u2295" );<a name="line.281"></a>
+<FONT color="green">282</FONT>            defaultEntityMap.put( "otimes", "\u2297" );<a name="line.282"></a>
+<FONT color="green">283</FONT>            defaultEntityMap.put( "perp", "\u22a5" );<a name="line.283"></a>
+<FONT color="green">284</FONT>            defaultEntityMap.put( "sdot", "\u22c5" );<a name="line.284"></a>
+<FONT color="green">285</FONT>            defaultEntityMap.put( "lceil", "\u2308" );<a name="line.285"></a>
+<FONT color="green">286</FONT>            defaultEntityMap.put( "rceil", "\u2309" );<a name="line.286"></a>
+<FONT color="green">287</FONT>            defaultEntityMap.put( "lfloor", "\u230a" );<a name="line.287"></a>
+<FONT color="green">288</FONT>            defaultEntityMap.put( "rfloor", "\u230b" );<a name="line.288"></a>
+<FONT color="green">289</FONT>            defaultEntityMap.put( "lang", "\u2329" );<a name="line.289"></a>
+<FONT color="green">290</FONT>            defaultEntityMap.put( "rang", "\u232a" );<a name="line.290"></a>
+<FONT color="green">291</FONT>            defaultEntityMap.put( "loz", "\u25ca" );<a name="line.291"></a>
+<FONT color="green">292</FONT>            defaultEntityMap.put( "spades", "\u2660" );<a name="line.292"></a>
+<FONT color="green">293</FONT>            defaultEntityMap.put( "clubs", "\u2663" );<a name="line.293"></a>
+<FONT color="green">294</FONT>            defaultEntityMap.put( "hearts", "\u2665" );<a name="line.294"></a>
+<FONT color="green">295</FONT>            defaultEntityMap.put( "diams", "\u2666" );<a name="line.295"></a>
+<FONT color="green">296</FONT>        }<a name="line.296"></a>
+<FONT color="green">297</FONT>    <a name="line.297"></a>
+<FONT color="green">298</FONT>        public static String resolveEntity( String entity )<a name="line.298"></a>
+<FONT color="green">299</FONT>        {<a name="line.299"></a>
+<FONT color="green">300</FONT>            if ( entity == null )<a name="line.300"></a>
+<FONT color="green">301</FONT>            {<a name="line.301"></a>
+<FONT color="green">302</FONT>                // Invalid. null.<a name="line.302"></a>
+<FONT color="green">303</FONT>                return entity;<a name="line.303"></a>
+<FONT color="green">304</FONT>            }<a name="line.304"></a>
+<FONT color="green">305</FONT>    <a name="line.305"></a>
+<FONT color="green">306</FONT>            if ( entity.trim().length() &lt;= 0 )<a name="line.306"></a>
+<FONT color="green">307</FONT>            {<a name="line.307"></a>
+<FONT color="green">308</FONT>                // Invalid. empty.<a name="line.308"></a>
+<FONT color="green">309</FONT>                return entity;<a name="line.309"></a>
+<FONT color="green">310</FONT>            }<a name="line.310"></a>
+<FONT color="green">311</FONT>    <a name="line.311"></a>
+<FONT color="green">312</FONT>            if ( !( entity.charAt( 0 ) == '&amp;' ) &amp;&amp; ( entity.charAt( entity.length() ) == ';' ) )<a name="line.312"></a>
+<FONT color="green">313</FONT>            {<a name="line.313"></a>
+<FONT color="green">314</FONT>                // Invalid, not an entity.<a name="line.314"></a>
+<FONT color="green">315</FONT>                return entity;<a name="line.315"></a>
+<FONT color="green">316</FONT>            }<a name="line.316"></a>
+<FONT color="green">317</FONT>    <a name="line.317"></a>
+<FONT color="green">318</FONT>            String result = (String) defaultEntityMap.get( entity.substring( 1, entity.length() - 1 ) );<a name="line.318"></a>
+<FONT color="green">319</FONT>            if ( result == null )<a name="line.319"></a>
+<FONT color="green">320</FONT>            {<a name="line.320"></a>
+<FONT color="green">321</FONT>                return entity;<a name="line.321"></a>
+<FONT color="green">322</FONT>            }<a name="line.322"></a>
+<FONT color="green">323</FONT>    <a name="line.323"></a>
+<FONT color="green">324</FONT>            return result;<a name="line.324"></a>
+<FONT color="green">325</FONT>        }<a name="line.325"></a>
+<FONT color="green">326</FONT>    }<a name="line.326"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</PRE>
+</BODY>
+</HTML>

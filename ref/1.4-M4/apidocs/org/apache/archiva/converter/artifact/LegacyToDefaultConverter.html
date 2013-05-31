@@ -1,0 +1,1168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>
+LegacyToDefaultConverter (Archiva :: Modules 1.4-M4 API)
+</TITLE>
+
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="LegacyToDefaultConverter (Archiva :: Modules 1.4-M4 API)";
+    }
+}
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/LegacyToDefaultConverter.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyRepositoryLayout.html" title="class in org.apache.archiva.converter.artifact"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../org/apache/archiva/converter/artifact/Messages.html" title="class in org.apache.archiva.converter.artifact"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../index.html?org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="LegacyToDefaultConverter.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<!-- ======== START OF CLASS DATA ======== -->
+<H2>
+<FONT SIZE="-1">
+org.apache.archiva.converter.artifact</FONT>
+<BR>
+Class LegacyToDefaultConverter</H2>
+<PRE>
+<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</A>
+  <IMG SRC="../../../../../resources/inherit.gif" ALT="extended by "><B>org.apache.archiva.converter.artifact.LegacyToDefaultConverter</B>
+</PRE>
+<DL>
+<DT><B>All Implemented Interfaces:</B> <DD><A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConverter.html" title="interface in org.apache.archiva.converter.artifact">ArtifactConverter</A></DD>
+</DL>
+<HR>
+<DL>
+<DT><PRE><FONT SIZE="-1">@Service(value="artifactConverter#legacy-to-default")
+</FONT>public class <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.72"><B>LegacyToDefaultConverter</B></A><DT>extends <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A><DT>implements <A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConverter.html" title="interface in org.apache.archiva.converter.artifact">ArtifactConverter</A></DL>
+</PRE>
+
+<P>
+LegacyToDefaultConverter
+<P>
+
+<P>
+<HR>
+
+<P>
+<!-- =========== FIELD SUMMARY =========== -->
+
+<A NAME="field_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Field Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.apache.maven.artifact.factory.ArtifactFactory</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#artifactFactory">artifactFactory</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.apache.maven.artifact.handler.manager.ArtifactHandlerManager</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#artifactHandlerManager">artifactHandlerManager</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;? extends org.codehaus.plexus.digest.Digester&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#digesters">digesters</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util"><CODE>List</CODE></A>&lt;<CODE>Digester</CODE></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../../org/apache/archiva/common/plexusbridge/DigesterUtils.html" title="class in org.apache.archiva.common.plexusbridge">DigesterUtils</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#digesterUtils">digesterUtils</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#dryrun">dryrun</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default-value="false"</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#force">force</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default-value="false"</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridge.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridge</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#plexusSisuBridge">plexusSisuBridge</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.apache.maven.model.converter.ModelConverter</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#translator">translator</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;org.apache.maven.artifact.Artifact,<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#warnings">warnings</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+
+<A NAME="constructor_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Constructor Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#LegacyToDefaultConverter()">LegacyToDefaultConverter</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ========== METHOD SUMMARY =========== -->
+
+<A NAME="method_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#addWarning(org.apache.maven.artifact.Artifact, java.lang.String)">addWarning</A></B>(org.apache.maven.artifact.Artifact&nbsp;artifact,
+                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;message)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#clearWarnings()">clearWarnings</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clear the list of warning messages.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#convert(org.apache.maven.artifact.Artifact, org.apache.maven.artifact.repository.ArtifactRepository)">convert</A></B>(org.apache.maven.artifact.Artifact&nbsp;artifact,
+               org.apache.maven.artifact.repository.ArtifactRepository&nbsp;targetRepository)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Convert an provided artifact, and place it into the destination repository.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#copyArtifact(org.apache.maven.artifact.Artifact, org.apache.maven.artifact.repository.ArtifactRepository, org.apache.archiva.transaction.FileTransaction)">copyArtifact</A></B>(org.apache.maven.artifact.Artifact&nbsp;artifact,
+                         org.apache.maven.artifact.repository.ArtifactRepository&nbsp;targetRepository,
+                         <A HREF="../../../../../org/apache/archiva/transaction/FileTransaction.html" title="class in org.apache.archiva.transaction">FileTransaction</A>&nbsp;transaction)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#copyPom(org.apache.maven.artifact.Artifact, org.apache.maven.artifact.repository.ArtifactRepository, org.apache.archiva.transaction.FileTransaction)">copyPom</A></B>(org.apache.maven.artifact.Artifact&nbsp;artifact,
+               org.apache.maven.artifact.repository.ArtifactRepository&nbsp;targetRepository,
+               <A HREF="../../../../../org/apache/archiva/transaction/FileTransaction.html" title="class in org.apache.archiva.transaction">FileTransaction</A>&nbsp;transaction)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.apache.maven.artifact.repository.metadata.Metadata</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#createBaseMetadata(org.apache.maven.artifact.Artifact)">createBaseMetadata</A></B>(org.apache.maven.artifact.Artifact&nbsp;artifact)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#doRelocation(org.apache.maven.artifact.Artifact, org.apache.maven.model.v3_0_0.Model, org.apache.maven.artifact.repository.ArtifactRepository, org.apache.archiva.transaction.FileTransaction)">doRelocation</A></B>(org.apache.maven.artifact.Artifact&nbsp;artifact,
+                         org.apache.maven.model.v3_0_0.Model&nbsp;v3Model,
+                         org.apache.maven.artifact.repository.ArtifactRepository&nbsp;repository,
+                         <A HREF="../../../../../org/apache/archiva/transaction/FileTransaction.html" title="class in org.apache.archiva.transaction">FileTransaction</A>&nbsp;transaction)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;org.apache.maven.artifact.factory.ArtifactFactory</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#getArtifactFactory()">getArtifactFactory</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;org.apache.maven.artifact.handler.manager.ArtifactHandlerManager</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#getArtifactHandlerManager()">getArtifactHandlerManager</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#getDigesterFileExtension(org.codehaus.plexus.digest.Digester)">getDigesterFileExtension</A></B>(org.codehaus.plexus.digest.Digester&nbsp;digester)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File extension for checksums
+ TODO should be moved to plexus-digester ?</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;? extends org.codehaus.plexus.digest.Digester&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#getDigesters()">getDigesters</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;org.apache.maven.model.converter.ModelConverter</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#getTranslator()">getTranslator</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;org.apache.maven.artifact.Artifact,<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#getWarnings()">getWarnings</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the map of accumulated warnings for the conversion.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#initialize()">initialize</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#isDryrun()">isDryrun</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#isForce()">isForce</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.apache.maven.artifact.repository.metadata.Metadata</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#readMetadata(java.io.File)">readMetadata</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;file)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#setArtifactFactory(org.apache.maven.artifact.factory.ArtifactFactory)">setArtifactFactory</A></B>(org.apache.maven.artifact.factory.ArtifactFactory&nbsp;artifactFactory)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#setArtifactHandlerManager(org.apache.maven.artifact.handler.manager.ArtifactHandlerManager)">setArtifactHandlerManager</A></B>(org.apache.maven.artifact.handler.manager.ArtifactHandlerManager&nbsp;artifactHandlerManager)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#setDigesters(java.util.List)">setDigesters</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;org.codehaus.plexus.digest.Digester&gt;&nbsp;digesters)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#setDryrun(boolean)">setDryrun</A></B>(boolean&nbsp;dryrun)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#setForce(boolean)">setForce</A></B>(boolean&nbsp;force)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#setTranslator(org.apache.maven.model.converter.ModelConverter)">setTranslator</A></B>(org.apache.maven.model.converter.ModelConverter&nbsp;translator)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#testChecksums(org.apache.maven.artifact.Artifact, java.io.File)">testChecksums</A></B>(org.apache.maven.artifact.Artifact&nbsp;artifact,
+                           <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;file)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#updateMetadata(org.apache.maven.artifact.repository.metadata.RepositoryMetadata, org.apache.maven.artifact.repository.ArtifactRepository, org.apache.maven.artifact.repository.metadata.Metadata, org.apache.archiva.transaction.FileTransaction)">updateMetadata</A></B>(org.apache.maven.artifact.repository.metadata.RepositoryMetadata&nbsp;artifactMetadata,
+                             org.apache.maven.artifact.repository.ArtifactRepository&nbsp;targetRepository,
+                             org.apache.maven.artifact.repository.metadata.Metadata&nbsp;newMetadata,
+                             <A HREF="../../../../../org/apache/archiva/transaction/FileTransaction.html" title="class in org.apache.archiva.transaction">FileTransaction</A>&nbsp;transaction)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#validateMetadata(org.apache.maven.artifact.Artifact)">validateMetadata</A></B>(org.apache.maven.artifact.Artifact&nbsp;artifact)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#validateMetadata(org.apache.maven.artifact.repository.metadata.Metadata, org.apache.maven.artifact.repository.metadata.RepositoryMetadata, org.apache.maven.artifact.Artifact)">validateMetadata</A></B>(org.apache.maven.artifact.repository.metadata.Metadata&nbsp;metadata,
+                                 org.apache.maven.artifact.repository.metadata.RepositoryMetadata&nbsp;repositoryMetadata,
+                                 org.apache.maven.artifact.Artifact&nbsp;artifact)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#verifyChecksum(java.io.File, java.lang.String, org.codehaus.plexus.digest.Digester, org.apache.maven.artifact.Artifact, java.lang.String)">verifyChecksum</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;file,
+                             <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;fileName,
+                             org.codehaus.plexus.digest.Digester&nbsp;digester,
+                             org.apache.maven.artifact.Artifact&nbsp;artifact,
+                             <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;key)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#writeRelocationPom(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.apache.maven.artifact.repository.ArtifactRepository, org.apache.archiva.transaction.FileTransaction)">writeRelocationPom</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;groupId,
+                                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;artifactId,
+                                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;version,
+                                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;newGroupId,
+                                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;newArtifactId,
+                                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;newVersion,
+                                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;message,
+                                     org.apache.maven.artifact.repository.ArtifactRepository&nbsp;repository,
+                                     <A HREF="../../../../../org/apache/archiva/transaction/FileTransaction.html" title="class in org.apache.archiva.transaction">FileTransaction</A>&nbsp;transaction)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class java.lang.<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<!-- ============ FIELD DETAIL =========== -->
+
+<A NAME="field_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Field Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="digesters"><!-- --></A><H3>
+digesters</H3>
+<PRE>
+private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;? extends org.codehaus.plexus.digest.Digester&gt; <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.78"><B>digesters</B></A></PRE>
+<DL>
+<DD><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util"><CODE>List</CODE></A>&lt;<CODE>Digester</CODE>
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="plexusSisuBridge"><!-- --></A><H3>
+plexusSisuBridge</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridge.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridge</A> <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.81"><B>plexusSisuBridge</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="digesterUtils"><!-- --></A><H3>
+digesterUtils</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../../org/apache/archiva/common/plexusbridge/DigesterUtils.html" title="class in org.apache.archiva.common.plexusbridge">DigesterUtils</A> <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.84"><B>digesterUtils</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="translator"><!-- --></A><H3>
+translator</H3>
+<PRE>
+private org.apache.maven.model.converter.ModelConverter <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.89"><B>translator</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="artifactFactory"><!-- --></A><H3>
+artifactFactory</H3>
+<PRE>
+private org.apache.maven.artifact.factory.ArtifactFactory <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.94"><B>artifactFactory</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="artifactHandlerManager"><!-- --></A><H3>
+artifactHandlerManager</H3>
+<PRE>
+private org.apache.maven.artifact.handler.manager.ArtifactHandlerManager <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.99"><B>artifactHandlerManager</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="force"><!-- --></A><H3>
+force</H3>
+<PRE>
+private boolean <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.104"><B>force</B></A></PRE>
+<DL>
+<DD>default-value="false"
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="dryrun"><!-- --></A><H3>
+dryrun</H3>
+<PRE>
+private boolean <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.109"><B>dryrun</B></A></PRE>
+<DL>
+<DD>default-value="false"
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="warnings"><!-- --></A><H3>
+warnings</H3>
+<PRE>
+private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;org.apache.maven.artifact.Artifact,<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&gt; <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.111"><B>warnings</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+
+<A NAME="constructor_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Constructor Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="LegacyToDefaultConverter()"><!-- --></A><H3>
+LegacyToDefaultConverter</H3>
+<PRE>
+public <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.72"><B>LegacyToDefaultConverter</B></A>()</PRE>
+<DL>
+</DL>
+
+<!-- ============ METHOD DETAIL ========== -->
+
+<A NAME="method_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Method Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="initialize()"><!-- --></A><H3>
+initialize</H3>
+<PRE>
+<FONT SIZE="-1"><A HREF="http://docs.oracle.com/javase/6/docs/api/javax/annotation/PostConstruct.html?is-external=true" title="class or interface in javax.annotation">@PostConstruct</A>
+</FONT>public void <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.114"><B>initialize</B></A>()
+                throws <A HREF="../../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridgeException.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridgeException</A></PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridgeException.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridgeException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="convert(org.apache.maven.artifact.Artifact, org.apache.maven.artifact.repository.ArtifactRepository)"><!-- --></A><H3>
+convert</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.123"><B>convert</B></A>(org.apache.maven.artifact.Artifact&nbsp;artifact,
+                    org.apache.maven.artifact.repository.ArtifactRepository&nbsp;targetRepository)
+             throws <A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConversionException.html" title="class in org.apache.archiva.converter.artifact">ArtifactConversionException</A></PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConverter.html#convert(org.apache.maven.artifact.Artifact, org.apache.maven.artifact.repository.ArtifactRepository)">ArtifactConverter</A></CODE></B></DD>
+<DD>Convert an provided artifact, and place it into the destination repository.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConverter.html#convert(org.apache.maven.artifact.Artifact, org.apache.maven.artifact.repository.ArtifactRepository)">convert</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConverter.html" title="interface in org.apache.archiva.converter.artifact">ArtifactConverter</A></CODE></DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>artifact</CODE> - the artifact to convert.<DD><CODE>targetRepository</CODE> - the respository to send the artifact to.
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConversionException.html" title="class in org.apache.archiva.converter.artifact">ArtifactConversionException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="copyPom(org.apache.maven.artifact.Artifact, org.apache.maven.artifact.repository.ArtifactRepository, org.apache.archiva.transaction.FileTransaction)"><!-- --></A><H3>
+copyPom</H3>
+<PRE>
+private boolean <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.189"><B>copyPom</B></A>(org.apache.maven.artifact.Artifact&nbsp;artifact,
+                        org.apache.maven.artifact.repository.ArtifactRepository&nbsp;targetRepository,
+                        <A HREF="../../../../../org/apache/archiva/transaction/FileTransaction.html" title="class in org.apache.archiva.transaction">FileTransaction</A>&nbsp;transaction)
+                 throws <A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConversionException.html" title="class in org.apache.archiva.converter.artifact">ArtifactConversionException</A></PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConversionException.html" title="class in org.apache.archiva.converter.artifact">ArtifactConversionException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="testChecksums(org.apache.maven.artifact.Artifact, java.io.File)"><!-- --></A><H3>
+testChecksums</H3>
+<PRE>
+private boolean <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.308"><B>testChecksums</B></A>(org.apache.maven.artifact.Artifact&nbsp;artifact,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;file)
+                       throws <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</A></PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="verifyChecksum(java.io.File, java.lang.String, org.codehaus.plexus.digest.Digester, org.apache.maven.artifact.Artifact, java.lang.String)"><!-- --></A><H3>
+verifyChecksum</H3>
+<PRE>
+private boolean <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.322"><B>verifyChecksum</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;file,
+                               <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;fileName,
+                               org.codehaus.plexus.digest.Digester&nbsp;digester,
+                               org.apache.maven.artifact.Artifact&nbsp;artifact,
+                               <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;key)
+                        throws <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</A></PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getDigesterFileExtension(org.codehaus.plexus.digest.Digester)"><!-- --></A><H3>
+getDigesterFileExtension</H3>
+<PRE>
+private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.348"><B>getDigesterFileExtension</B></A>(org.codehaus.plexus.digest.Digester&nbsp;digester)</PRE>
+<DL>
+<DD>File extension for checksums
+ TODO should be moved to plexus-digester ?
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="copyArtifact(org.apache.maven.artifact.Artifact, org.apache.maven.artifact.repository.ArtifactRepository, org.apache.archiva.transaction.FileTransaction)"><!-- --></A><H3>
+copyArtifact</H3>
+<PRE>
+private boolean <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.353"><B>copyArtifact</B></A>(org.apache.maven.artifact.Artifact&nbsp;artifact,
+                             org.apache.maven.artifact.repository.ArtifactRepository&nbsp;targetRepository,
+                             <A HREF="../../../../../org/apache/archiva/transaction/FileTransaction.html" title="class in org.apache.archiva.transaction">FileTransaction</A>&nbsp;transaction)
+                      throws <A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConversionException.html" title="class in org.apache.archiva.converter.artifact">ArtifactConversionException</A></PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConversionException.html" title="class in org.apache.archiva.converter.artifact">ArtifactConversionException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="createBaseMetadata(org.apache.maven.artifact.Artifact)"><!-- --></A><H3>
+createBaseMetadata</H3>
+<PRE>
+private org.apache.maven.artifact.repository.metadata.Metadata <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.400"><B>createBaseMetadata</B></A>(org.apache.maven.artifact.Artifact&nbsp;artifact)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="readMetadata(java.io.File)"><!-- --></A><H3>
+readMetadata</H3>
+<PRE>
+private org.apache.maven.artifact.repository.metadata.Metadata <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.408"><B>readMetadata</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;file)
+                                                                     throws <A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConversionException.html" title="class in org.apache.archiva.converter.artifact">ArtifactConversionException</A></PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConversionException.html" title="class in org.apache.archiva.converter.artifact">ArtifactConversionException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="validateMetadata(org.apache.maven.artifact.Artifact)"><!-- --></A><H3>
+validateMetadata</H3>
+<PRE>
+private boolean <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.441"><B>validateMetadata</B></A>(org.apache.maven.artifact.Artifact&nbsp;artifact)
+                          throws <A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConversionException.html" title="class in org.apache.archiva.converter.artifact">ArtifactConversionException</A></PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConversionException.html" title="class in org.apache.archiva.converter.artifact">ArtifactConversionException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="validateMetadata(org.apache.maven.artifact.repository.metadata.Metadata, org.apache.maven.artifact.repository.metadata.RepositoryMetadata, org.apache.maven.artifact.Artifact)"><!-- --></A><H3>
+validateMetadata</H3>
+<PRE>
+private boolean <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.469"><B>validateMetadata</B></A>(org.apache.maven.artifact.repository.metadata.Metadata&nbsp;metadata,
+                                 org.apache.maven.artifact.repository.metadata.RepositoryMetadata&nbsp;repositoryMetadata,
+                                 org.apache.maven.artifact.Artifact&nbsp;artifact)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="updateMetadata(org.apache.maven.artifact.repository.metadata.RepositoryMetadata, org.apache.maven.artifact.repository.ArtifactRepository, org.apache.maven.artifact.repository.metadata.Metadata, org.apache.archiva.transaction.FileTransaction)"><!-- --></A><H3>
+updateMetadata</H3>
+<PRE>
+private void <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.570"><B>updateMetadata</B></A>(org.apache.maven.artifact.repository.metadata.RepositoryMetadata&nbsp;artifactMetadata,
+                            org.apache.maven.artifact.repository.ArtifactRepository&nbsp;targetRepository,
+                            org.apache.maven.artifact.repository.metadata.Metadata&nbsp;newMetadata,
+                            <A HREF="../../../../../org/apache/archiva/transaction/FileTransaction.html" title="class in org.apache.archiva.transaction">FileTransaction</A>&nbsp;transaction)
+                     throws <A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConversionException.html" title="class in org.apache.archiva.converter.artifact">ArtifactConversionException</A></PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConversionException.html" title="class in org.apache.archiva.converter.artifact">ArtifactConversionException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="doRelocation(org.apache.maven.artifact.Artifact, org.apache.maven.model.v3_0_0.Model, org.apache.maven.artifact.repository.ArtifactRepository, org.apache.archiva.transaction.FileTransaction)"><!-- --></A><H3>
+doRelocation</H3>
+<PRE>
+private boolean <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.616"><B>doRelocation</B></A>(org.apache.maven.artifact.Artifact&nbsp;artifact,
+                             org.apache.maven.model.v3_0_0.Model&nbsp;v3Model,
+                             org.apache.maven.artifact.repository.ArtifactRepository&nbsp;repository,
+                             <A HREF="../../../../../org/apache/archiva/transaction/FileTransaction.html" title="class in org.apache.archiva.transaction">FileTransaction</A>&nbsp;transaction)
+                      throws <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</A></PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="writeRelocationPom(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.apache.maven.artifact.repository.ArtifactRepository, org.apache.archiva.transaction.FileTransaction)"><!-- --></A><H3>
+writeRelocationPom</H3>
+<PRE>
+private void <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.662"><B>writeRelocationPom</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;groupId,
+                                <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;artifactId,
+                                <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;version,
+                                <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;newGroupId,
+                                <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;newArtifactId,
+                                <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;newVersion,
+                                <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;message,
+                                org.apache.maven.artifact.repository.ArtifactRepository&nbsp;repository,
+                                <A HREF="../../../../../org/apache/archiva/transaction/FileTransaction.html" title="class in org.apache.archiva.transaction">FileTransaction</A>&nbsp;transaction)
+                         throws <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</A></PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="addWarning(org.apache.maven.artifact.Artifact, java.lang.String)"><!-- --></A><H3>
+addWarning</H3>
+<PRE>
+private void <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.697"><B>addWarning</B></A>(org.apache.maven.artifact.Artifact&nbsp;artifact,
+                        <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;message)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="clearWarnings()"><!-- --></A><H3>
+clearWarnings</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.708"><B>clearWarnings</B></A>()</PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConverter.html#clearWarnings()">ArtifactConverter</A></CODE></B></DD>
+<DD>Clear the list of warning messages.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConverter.html#clearWarnings()">clearWarnings</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConverter.html" title="interface in org.apache.archiva.converter.artifact">ArtifactConverter</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getWarnings()"><!-- --></A><H3>
+getWarnings</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;org.apache.maven.artifact.Artifact,<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&gt; <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.713"><B>getWarnings</B></A>()</PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConverter.html#getWarnings()">ArtifactConverter</A></CODE></B></DD>
+<DD>Get the map of accumulated warnings for the conversion.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConverter.html#getWarnings()">getWarnings</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/converter/artifact/ArtifactConverter.html" title="interface in org.apache.archiva.converter.artifact">ArtifactConverter</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util"><CODE>Map</CODE></A>&lt;<CODE>Artifact</CODE>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><CODE>String</CODE></A>&gt; warning messages.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getDigesters()"><!-- --></A><H3>
+getDigesters</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;? extends org.codehaus.plexus.digest.Digester&gt; <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.719"><B>getDigesters</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setDigesters(java.util.List)"><!-- --></A><H3>
+setDigesters</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.724"><B>setDigesters</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;org.codehaus.plexus.digest.Digester&gt;&nbsp;digesters)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getTranslator()"><!-- --></A><H3>
+getTranslator</H3>
+<PRE>
+public org.apache.maven.model.converter.ModelConverter <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.729"><B>getTranslator</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setTranslator(org.apache.maven.model.converter.ModelConverter)"><!-- --></A><H3>
+setTranslator</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.734"><B>setTranslator</B></A>(org.apache.maven.model.converter.ModelConverter&nbsp;translator)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getArtifactFactory()"><!-- --></A><H3>
+getArtifactFactory</H3>
+<PRE>
+public org.apache.maven.artifact.factory.ArtifactFactory <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.739"><B>getArtifactFactory</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setArtifactFactory(org.apache.maven.artifact.factory.ArtifactFactory)"><!-- --></A><H3>
+setArtifactFactory</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.744"><B>setArtifactFactory</B></A>(org.apache.maven.artifact.factory.ArtifactFactory&nbsp;artifactFactory)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getArtifactHandlerManager()"><!-- --></A><H3>
+getArtifactHandlerManager</H3>
+<PRE>
+public org.apache.maven.artifact.handler.manager.ArtifactHandlerManager <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.749"><B>getArtifactHandlerManager</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setArtifactHandlerManager(org.apache.maven.artifact.handler.manager.ArtifactHandlerManager)"><!-- --></A><H3>
+setArtifactHandlerManager</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.754"><B>setArtifactHandlerManager</B></A>(org.apache.maven.artifact.handler.manager.ArtifactHandlerManager&nbsp;artifactHandlerManager)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="isForce()"><!-- --></A><H3>
+isForce</H3>
+<PRE>
+public boolean <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.759"><B>isForce</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setForce(boolean)"><!-- --></A><H3>
+setForce</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.764"><B>setForce</B></A>(boolean&nbsp;force)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="isDryrun()"><!-- --></A><H3>
+isDryrun</H3>
+<PRE>
+public boolean <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.769"><B>isDryrun</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setDryrun(boolean)"><!-- --></A><H3>
+setDryrun</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html#line.774"><B>setDryrun</B></A>(boolean&nbsp;dryrun)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<!-- ========= END OF CLASS DATA ========= -->
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/LegacyToDefaultConverter.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../../org/apache/archiva/converter/artifact/LegacyRepositoryLayout.html" title="class in org.apache.archiva.converter.artifact"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../org/apache/archiva/converter/artifact/Messages.html" title="class in org.apache.archiva.converter.artifact"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../index.html?org/apache/archiva/converter/artifact/LegacyToDefaultConverter.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="LegacyToDefaultConverter.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+Copyright &#169; 2006-2013 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.
+</BODY>
+</HTML>

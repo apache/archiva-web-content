@@ -1,0 +1,1273 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>
+DefaultRepositoriesService (Archiva :: Modules 1.4-M4 API)
+</TITLE>
+
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="DefaultRepositoriesService (Archiva :: Modules 1.4-M4 API)";
+    }
+}
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/DefaultRepositoriesService.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../../org/apache/archiva/rest/services/DefaultReportRepositoriesService.html" title="class in org.apache.archiva.rest.services"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoryGroupService.html" title="class in org.apache.archiva.rest.services"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../index.html?org/apache/archiva/rest/services/DefaultRepositoriesService.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="DefaultRepositoriesService.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<!-- ======== START OF CLASS DATA ======== -->
+<H2>
+<FONT SIZE="-1">
+org.apache.archiva.rest.services</FONT>
+<BR>
+Class DefaultRepositoriesService</H2>
+<PRE>
+<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</A>
+  <IMG SRC="../../../../../resources/inherit.gif" ALT="extended by "><A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html" title="class in org.apache.archiva.rest.services">org.apache.archiva.rest.services.AbstractRestService</A>
+      <IMG SRC="../../../../../resources/inherit.gif" ALT="extended by "><B>org.apache.archiva.rest.services.DefaultRepositoriesService</B>
+</PRE>
+<DL>
+<DT><B>All Implemented Interfaces:</B> <DD><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html" title="interface in org.apache.archiva.rest.api.services">RepositoriesService</A></DD>
+</DL>
+<HR>
+<DL>
+<DT><PRE><FONT SIZE="-1">@Service(value="repositoriesService#rest")
+</FONT>public class <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.109"><B>DefaultRepositoriesService</B></A><DT>extends <A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html" title="class in org.apache.archiva.rest.services">AbstractRestService</A><DT>implements <A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html" title="interface in org.apache.archiva.rest.api.services">RepositoriesService</A></DL>
+</PRE>
+
+<P>
+<DL>
+<DT><B>Since:</B></DT>
+  <DD>1.4-M1</DD>
+<DT><B>Author:</B></DT>
+  <DD>Olivier Lamy</DD>
+</DL>
+<HR>
+
+<P>
+<!-- =========== FIELD SUMMARY =========== -->
+
+<A NAME="field_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Field Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../../org/apache/archiva/checksum/ChecksumAlgorithm.html" title="enum in org.apache.archiva.checksum">ChecksumAlgorithm</A>[]</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#algorithms">algorithms</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../../org/apache/archiva/scheduler/indexing/ArchivaIndexingTaskExecutor.html" title="class in org.apache.archiva.scheduler.indexing">ArchivaIndexingTaskExecutor</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#archivaIndexingTaskExecutor">archivaIndexingTaskExecutor</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../../org/apache/archiva/scheduler/indexing/DownloadRemoteIndexScheduler.html" title="interface in org.apache.archiva.scheduler.indexing">DownloadRemoteIndexScheduler</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#downloadRemoteIndexScheduler">downloadRemoteIndexScheduler</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../org/apache/archiva/repository/events/RepositoryListener.html" title="interface in org.apache.archiva.repository.events">RepositoryListener</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#listeners">listeners</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.slf4j.Logger</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#log">log</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../../org/apache/archiva/admin/model/managed/ManagedRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.managed">ManagedRepositoryAdmin</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#managedRepositoryAdmin">managedRepositoryAdmin</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../../org/apache/archiva/common/plexusbridge/MavenIndexerUtils.html" title="class in org.apache.archiva.common.plexusbridge">MavenIndexerUtils</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#mavenIndexerUtils">mavenIndexerUtils</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridge.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridge</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#plexusSisuBridge">plexusSisuBridge</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../../org/apache/archiva/repository/scanner/RepositoryScanner.html" title="interface in org.apache.archiva.repository.scanner">RepositoryScanner</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#repoScanner">repoScanner</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#repositoryFactory">repositoryFactory</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html" title="interface in org.apache.archiva.metadata.repository">RepositorySessionFactory</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#repositorySessionFactory">repositorySessionFactory</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../../org/apache/archiva/scheduler/ArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler">ArchivaTaskScheduler</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#scheduler">scheduler</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.apache.archiva.redback.system.SecuritySystem</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#securitySystem">securitySystem</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="fields_inherited_from_class_org.apache.archiva.rest.services.AbstractRestService"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Fields inherited from class org.apache.archiva.rest.services.<A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html" title="class in org.apache.archiva.rest.services">AbstractRestService</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html#archivaAdministration">archivaAdministration</A>, <A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html#config">config</A>, <A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html#httpServletRequest">httpServletRequest</A>, <A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html#repositoryContentFactory">repositoryContentFactory</A>, <A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html#repositoryTaskScheduler">repositoryTaskScheduler</A>, <A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html#userRepositories">userRepositories</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+
+<A NAME="constructor_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Constructor Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#DefaultRepositoriesService()">DefaultRepositoriesService</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ========== METHOD SUMMARY =========== -->
+
+<A NAME="method_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#alreadyScanning(java.lang.String)">alreadyScanning</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#copyArtifact(org.apache.archiva.rest.api.model.ArtifactTransferRequest)">copyArtifact</A></B>(<A HREF="../../../../../org/apache/archiva/rest/api/model/ArtifactTransferRequest.html" title="class in org.apache.archiva.rest.api.model">ArtifactTransferRequest</A>&nbsp;artifactTransferRequest)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;permissions are checked in impl
+ will copy an artifact from the source repository to the target repository</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#copyFile(java.io.File, java.io.File, java.lang.String, boolean)">copyFile</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;sourceFile,
+                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;targetPath,
+                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;targetFilename,
+                 boolean&nbsp;fixChecksums)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#deleteArtifact(org.apache.archiva.maven2.model.Artifact)">deleteArtifact</A></B>(<A HREF="../../../../../org/apache/archiva/maven2/model/Artifact.html" title="class in org.apache.archiva.maven2.model">Artifact</A>&nbsp;artifact)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>permissions are checked in impl</b></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#deleteGroupId(java.lang.String, java.lang.String)">deleteGroupId</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;groupId,
+                           <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>permissions are checked in impl</b></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#deleteProject(java.lang.String, java.lang.String, java.lang.String)">deleteProject</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;groupId,
+                           <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectId,
+                           <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>permissions are checked in impl</b></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#fixChecksums(java.io.File)">fixChecksums</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;file)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#getArchivaAdministration()">getArchivaAdministration</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../org/apache/archiva/repository/events/RepositoryListener.html" title="interface in org.apache.archiva.repository.events">RepositoryListener</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#getListeners()">getListeners</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../org/apache/archiva/admin/model/managed/ManagedRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.managed">ManagedRepositoryAdmin</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#getManagedRepositoryAdmin()">getManagedRepositoryAdmin</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../../org/apache/archiva/model/ArchivaRepositoryMetadata.html" title="class in org.apache.archiva.model">ArchivaRepositoryMetadata</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#getMetadata(java.io.File)">getMetadata</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;metadataFile)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#getMetadata(java.lang.String)">getMetadata</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;targetPath)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#getRepositoryFactory()">getRepositoryFactory</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html" title="interface in org.apache.archiva.metadata.repository">RepositorySessionFactory</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#getRepositorySessionFactory()">getRepositorySessionFactory</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#isAuthorizedToDeleteArtifacts(java.lang.String)">isAuthorizedToDeleteArtifacts</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repoId)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#queueRepositoryTask(java.lang.String, java.io.File)">queueRepositoryTask</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId,
+                                       <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;localFile)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#removeProjectVersion(java.lang.String, java.lang.String, java.lang.String, java.lang.String)">removeProjectVersion</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId,
+                                         <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;namespace,
+                                         <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectId,
+                                         <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;version)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>permissions are checked in impl</b></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#removeScanningTaskFromQueue(java.lang.String)">removeScanningTaskFromQueue</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#scanRepository(java.lang.String, boolean)">scanRepository</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId,
+                             boolean&nbsp;fullScan)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index repository</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../org/apache/archiva/repository/scanner/RepositoryScanStatistics.html" title="class in org.apache.archiva.repository.scanner">RepositoryScanStatistics</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#scanRepositoryDirectoriesNow(java.lang.String)">scanRepositoryDirectoriesNow</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scan directories</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#scanRepositoryNow(java.lang.String, boolean)">scanRepositoryNow</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId,
+                                   boolean&nbsp;fullScan)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#scheduleDownloadRemoteIndex(java.lang.String, boolean, boolean)">scheduleDownloadRemoteIndex</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId,
+                                                       boolean&nbsp;now,
+                                                       boolean&nbsp;fullDownload)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#setArchivaAdministration(org.apache.archiva.admin.model.admin.ArchivaAdministration)">setArchivaAdministration</A></B>(<A HREF="../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A>&nbsp;archivaAdministration)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#setListeners(java.util.List)">setListeners</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../org/apache/archiva/repository/events/RepositoryListener.html" title="interface in org.apache.archiva.repository.events">RepositoryListener</A>&gt;&nbsp;listeners)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#setManagedRepositoryAdmin(org.apache.archiva.admin.model.managed.ManagedRepositoryAdmin)">setManagedRepositoryAdmin</A></B>(<A HREF="../../../../../org/apache/archiva/admin/model/managed/ManagedRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.managed">ManagedRepositoryAdmin</A>&nbsp;managedRepositoryAdmin)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#setRepositoryFactory(org.apache.archiva.repository.RepositoryContentFactory)">setRepositoryFactory</A></B>(<A HREF="../../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</A>&nbsp;repositoryFactory)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#setRepositorySessionFactory(org.apache.archiva.metadata.repository.RepositorySessionFactory)">setRepositorySessionFactory</A></B>(<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html" title="interface in org.apache.archiva.metadata.repository">RepositorySessionFactory</A>&nbsp;repositorySessionFactory)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#updateMetadata(org.apache.archiva.model.ArchivaRepositoryMetadata, java.io.File, java.util.Date, org.apache.archiva.maven2.model.Artifact)">updateMetadata</A></B>(<A HREF="../../../../../org/apache/archiva/model/ArchivaRepositoryMetadata.html" title="class in org.apache.archiva.model">ArchivaRepositoryMetadata</A>&nbsp;metadata,
+                             <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;metadataFile,
+                             <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Date.html?is-external=true" title="class or interface in java.util">Date</A>&nbsp;lastUpdatedTimestamp,
+                             <A HREF="../../../../../org/apache/archiva/maven2/model/Artifact.html" title="class in org.apache.archiva.maven2.model">Artifact</A>&nbsp;artifact)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Update artifact level metadata.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoriesService.html#updateProjectMetadata(java.lang.String, java.util.Date, java.lang.String, int, boolean, org.apache.archiva.rest.api.model.ArtifactTransferRequest)">updateProjectMetadata</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;targetPath,
+                                           <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Date.html?is-external=true" title="class or interface in java.util">Date</A>&nbsp;lastUpdatedTimestamp,
+                                           <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;timestamp,
+                                           int&nbsp;buildNumber,
+                                           boolean&nbsp;fixChecksums,
+                                           <A HREF="../../../../../org/apache/archiva/rest/api/model/ArtifactTransferRequest.html" title="class in org.apache.archiva.rest.api.model">ArtifactTransferRequest</A>&nbsp;artifactTransferRequest)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_org.apache.archiva.rest.services.AbstractRestService"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class org.apache.archiva.rest.services.<A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html" title="class in org.apache.archiva.rest.services">AbstractRestService</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html#buildArtifacts(java.util.List, java.lang.String)">buildArtifacts</A>, <A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html#doScanRepository(java.lang.String, boolean)">doScanRepository</A>, <A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html#getArtifactUrl(org.apache.archiva.maven2.model.Artifact)">getArtifactUrl</A>, <A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html#getAuditInformation()">getAuditInformation</A>, <A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html#getAuditListeners()">getAuditListeners</A>, <A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html#getBaseUrl()">getBaseUrl</A>, <A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html#getBeansOfType(org.springframework.context.ApplicationContext, java.lang.Class)">getBeansOfType</A>, <A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html#getObservableRepos()">getObservableRepos</A>, <A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html#getPrincipal()">getPrincipal</A>, <A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html#setAuditListeners(java.util.List)">setAuditListeners</A>, <A HREF="../../../../../org/apache/archiva/rest/services/AbstractRestService.html#triggerAuditEvent(java.lang.String, java.lang.String, java.lang.String)">triggerAuditEvent</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class java.lang.<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<!-- ============ FIELD DETAIL =========== -->
+
+<A NAME="field_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Field Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="log"><!-- --></A><H3>
+log</H3>
+<PRE>
+private org.slf4j.Logger <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.113"><B>log</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="archivaIndexingTaskExecutor"><!-- --></A><H3>
+archivaIndexingTaskExecutor</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+@Named(value="taskExecutor#indexing")
+</FONT>private <A HREF="../../../../../org/apache/archiva/scheduler/indexing/ArchivaIndexingTaskExecutor.html" title="class in org.apache.archiva.scheduler.indexing">ArchivaIndexingTaskExecutor</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.117"><B>archivaIndexingTaskExecutor</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="managedRepositoryAdmin"><!-- --></A><H3>
+managedRepositoryAdmin</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../../org/apache/archiva/admin/model/managed/ManagedRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.managed">ManagedRepositoryAdmin</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.120"><B>managedRepositoryAdmin</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="plexusSisuBridge"><!-- --></A><H3>
+plexusSisuBridge</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridge.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridge</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.123"><B>plexusSisuBridge</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="mavenIndexerUtils"><!-- --></A><H3>
+mavenIndexerUtils</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../../org/apache/archiva/common/plexusbridge/MavenIndexerUtils.html" title="class in org.apache.archiva.common.plexusbridge">MavenIndexerUtils</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.126"><B>mavenIndexerUtils</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="securitySystem"><!-- --></A><H3>
+securitySystem</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private org.apache.archiva.redback.system.SecuritySystem <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.129"><B>securitySystem</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="repositoryFactory"><!-- --></A><H3>
+repositoryFactory</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.132"><B>repositoryFactory</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="scheduler"><!-- --></A><H3>
+scheduler</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+@Named(value="archivaTaskScheduler#repository")
+</FONT>private <A HREF="../../../../../org/apache/archiva/scheduler/ArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler">ArchivaTaskScheduler</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.136"><B>scheduler</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="downloadRemoteIndexScheduler"><!-- --></A><H3>
+downloadRemoteIndexScheduler</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../../org/apache/archiva/scheduler/indexing/DownloadRemoteIndexScheduler.html" title="interface in org.apache.archiva.scheduler.indexing">DownloadRemoteIndexScheduler</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.139"><B>downloadRemoteIndexScheduler</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="repositorySessionFactory"><!-- --></A><H3>
+repositorySessionFactory</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+@Named(value="repositorySessionFactory")
+</FONT>protected <A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html" title="interface in org.apache.archiva.metadata.repository">RepositorySessionFactory</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.143"><B>repositorySessionFactory</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="listeners"><!-- --></A><H3>
+listeners</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>protected <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../org/apache/archiva/repository/events/RepositoryListener.html" title="interface in org.apache.archiva.repository.events">RepositoryListener</A>&gt; <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.146"><B>listeners</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="repoScanner"><!-- --></A><H3>
+repoScanner</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../../org/apache/archiva/repository/scanner/RepositoryScanner.html" title="interface in org.apache.archiva.repository.scanner">RepositoryScanner</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.149"><B>repoScanner</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="algorithms"><!-- --></A><H3>
+algorithms</H3>
+<PRE>
+private <A HREF="../../../../../org/apache/archiva/checksum/ChecksumAlgorithm.html" title="enum in org.apache.archiva.checksum">ChecksumAlgorithm</A>[] <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.151"><B>algorithms</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+
+<A NAME="constructor_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Constructor Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="DefaultRepositoriesService()"><!-- --></A><H3>
+DefaultRepositoriesService</H3>
+<PRE>
+public <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.109"><B>DefaultRepositoriesService</B></A>()</PRE>
+<DL>
+</DL>
+
+<!-- ============ METHOD DETAIL ========== -->
+
+<A NAME="method_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Method Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="scanRepository(java.lang.String, boolean)"><!-- --></A><H3>
+scanRepository</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.153"><B>scanRepository</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId,
+                              boolean&nbsp;fullScan)</PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html#scanRepository(java.lang.String, boolean)">RepositoriesService</A></CODE></B></DD>
+<DD>index repository
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html#scanRepository(java.lang.String, boolean)">scanRepository</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html" title="interface in org.apache.archiva.rest.api.services">RepositoriesService</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="alreadyScanning(java.lang.String)"><!-- --></A><H3>
+alreadyScanning</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.158"><B>alreadyScanning</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html#alreadyScanning(java.lang.String)">alreadyScanning</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html" title="interface in org.apache.archiva.rest.api.services">RepositoriesService</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="removeScanningTaskFromQueue(java.lang.String)"><!-- --></A><H3>
+removeScanningTaskFromQueue</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.163"><B>removeScanningTaskFromQueue</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html#removeScanningTaskFromQueue(java.lang.String)">removeScanningTaskFromQueue</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html" title="interface in org.apache.archiva.rest.api.services">RepositoriesService</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="scanRepositoryNow(java.lang.String, boolean)"><!-- --></A><H3>
+scanRepositoryNow</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.178"><B>scanRepositoryNow</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId,
+                                 boolean&nbsp;fullScan)
+                          throws <A HREF="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html#scanRepositoryNow(java.lang.String, boolean)">scanRepositoryNow</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html" title="interface in org.apache.archiva.rest.api.services">RepositoriesService</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="scheduleDownloadRemoteIndex(java.lang.String, boolean, boolean)"><!-- --></A><H3>
+scheduleDownloadRemoteIndex</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.204"><B>scheduleDownloadRemoteIndex</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId,
+                                           boolean&nbsp;now,
+                                           boolean&nbsp;fullDownload)
+                                    throws <A HREF="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html#scheduleDownloadRemoteIndex(java.lang.String, boolean, boolean)">scheduleDownloadRemoteIndex</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html" title="interface in org.apache.archiva.rest.api.services">RepositoriesService</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="copyArtifact(org.apache.archiva.rest.api.model.ArtifactTransferRequest)"><!-- --></A><H3>
+copyArtifact</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.219"><B>copyArtifact</B></A>(<A HREF="../../../../../org/apache/archiva/rest/api/model/ArtifactTransferRequest.html" title="class in org.apache.archiva.rest.api.model">ArtifactTransferRequest</A>&nbsp;artifactTransferRequest)
+                     throws <A HREF="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</A></PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html#copyArtifact(org.apache.archiva.rest.api.model.ArtifactTransferRequest)">RepositoriesService</A></CODE></B></DD>
+<DD>permissions are checked in impl
+ will copy an artifact from the source repository to the target repository
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html#copyArtifact(org.apache.archiva.rest.api.model.ArtifactTransferRequest)">copyArtifact</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html" title="interface in org.apache.archiva.rest.api.services">RepositoriesService</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="queueRepositoryTask(java.lang.String, java.io.File)"><!-- --></A><H3>
+queueRepositoryTask</H3>
+<PRE>
+private void <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.472"><B>queueRepositoryTask</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;localFile)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getMetadata(java.io.File)"><!-- --></A><H3>
+getMetadata</H3>
+<PRE>
+private <A HREF="../../../../../org/apache/archiva/model/ArchivaRepositoryMetadata.html" title="class in org.apache.archiva.model">ArchivaRepositoryMetadata</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.491"><B>getMetadata</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;metadataFile)
+                                       throws <A HREF="../../../../../org/apache/archiva/repository/metadata/RepositoryMetadataException.html" title="class in org.apache.archiva.repository.metadata">RepositoryMetadataException</A></PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/repository/metadata/RepositoryMetadataException.html" title="class in org.apache.archiva.repository.metadata">RepositoryMetadataException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getMetadata(java.lang.String)"><!-- --></A><H3>
+getMetadata</H3>
+<PRE>
+private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.509"><B>getMetadata</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;targetPath)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="copyFile(java.io.File, java.io.File, java.lang.String, boolean)"><!-- --></A><H3>
+copyFile</H3>
+<PRE>
+private void <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.516"><B>copyFile</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;sourceFile,
+                      <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;targetPath,
+                      <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;targetFilename,
+                      boolean&nbsp;fixChecksums)
+               throws <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</A></PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="fixChecksums(java.io.File)"><!-- --></A><H3>
+fixChecksums</H3>
+<PRE>
+private void <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.538"><B>fixChecksums</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;file)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="updateProjectMetadata(java.lang.String, java.util.Date, java.lang.String, int, boolean, org.apache.archiva.rest.api.model.ArtifactTransferRequest)"><!-- --></A><H3>
+updateProjectMetadata</H3>
+<PRE>
+private void <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.544"><B>updateProjectMetadata</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;targetPath,
+                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Date.html?is-external=true" title="class or interface in java.util">Date</A>&nbsp;lastUpdatedTimestamp,
+                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;timestamp,
+                                   int&nbsp;buildNumber,
+                                   boolean&nbsp;fixChecksums,
+                                   <A HREF="../../../../../org/apache/archiva/rest/api/model/ArtifactTransferRequest.html" title="class in org.apache.archiva.rest.api.model">ArtifactTransferRequest</A>&nbsp;artifactTransferRequest)
+                            throws <A HREF="../../../../../org/apache/archiva/repository/metadata/RepositoryMetadataException.html" title="class in org.apache.archiva.repository.metadata">RepositoryMetadataException</A></PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/repository/metadata/RepositoryMetadataException.html" title="class in org.apache.archiva.repository.metadata">RepositoryMetadataException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="removeProjectVersion(java.lang.String, java.lang.String, java.lang.String, java.lang.String)"><!-- --></A><H3>
+removeProjectVersion</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.604"><B>removeProjectVersion</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId,
+                                    <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;namespace,
+                                    <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectId,
+                                    <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;version)
+                             throws <A HREF="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</A></PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html#removeProjectVersion(java.lang.String, java.lang.String, java.lang.String, java.lang.String)">RepositoriesService</A></CODE></B></DD>
+<DD><b>permissions are checked in impl</b>
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html#removeProjectVersion(java.lang.String, java.lang.String, java.lang.String, java.lang.String)">removeProjectVersion</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html" title="interface in org.apache.archiva.rest.api.services">RepositoriesService</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="deleteArtifact(org.apache.archiva.maven2.model.Artifact)"><!-- --></A><H3>
+deleteArtifact</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.707"><B>deleteArtifact</B></A>(<A HREF="../../../../../org/apache/archiva/maven2/model/Artifact.html" title="class in org.apache.archiva.maven2.model">Artifact</A>&nbsp;artifact)
+                       throws <A HREF="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</A></PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html#deleteArtifact(org.apache.archiva.maven2.model.Artifact)">RepositoriesService</A></CODE></B></DD>
+<DD><b>permissions are checked in impl</b>
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html#deleteArtifact(org.apache.archiva.maven2.model.Artifact)">deleteArtifact</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html" title="interface in org.apache.archiva.rest.api.services">RepositoriesService</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="deleteGroupId(java.lang.String, java.lang.String)"><!-- --></A><H3>
+deleteGroupId</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.944"><B>deleteGroupId</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;groupId,
+                             <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId)
+                      throws <A HREF="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</A></PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html#deleteGroupId(java.lang.String, java.lang.String)">RepositoriesService</A></CODE></B></DD>
+<DD><b>permissions are checked in impl</b>
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html#deleteGroupId(java.lang.String, java.lang.String)">deleteGroupId</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html" title="interface in org.apache.archiva.rest.api.services">RepositoriesService</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="deleteProject(java.lang.String, java.lang.String, java.lang.String)"><!-- --></A><H3>
+deleteProject</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.994"><B>deleteProject</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;groupId,
+                             <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectId,
+                             <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId)
+                      throws <A HREF="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</A></PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html#deleteProject(java.lang.String, java.lang.String, java.lang.String)">RepositoriesService</A></CODE></B></DD>
+<DD><b>permissions are checked in impl</b>
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html#deleteProject(java.lang.String, java.lang.String, java.lang.String)">deleteProject</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html" title="interface in org.apache.archiva.rest.api.services">RepositoriesService</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="isAuthorizedToDeleteArtifacts(java.lang.String)"><!-- --></A><H3>
+isAuthorizedToDeleteArtifacts</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.1058"><B>isAuthorizedToDeleteArtifacts</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repoId)
+                                      throws <A HREF="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html#isAuthorizedToDeleteArtifacts(java.lang.String)">isAuthorizedToDeleteArtifacts</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html" title="interface in org.apache.archiva.rest.api.services">RepositoriesService</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="scanRepositoryDirectoriesNow(java.lang.String)"><!-- --></A><H3>
+scanRepositoryDirectoriesNow</H3>
+<PRE>
+public <A HREF="../../../../../org/apache/archiva/repository/scanner/RepositoryScanStatistics.html" title="class in org.apache.archiva.repository.scanner">RepositoryScanStatistics</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.1075"><B>scanRepositoryDirectoriesNow</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId)
+                                                      throws <A HREF="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</A></PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html#scanRepositoryDirectoriesNow(java.lang.String)">RepositoriesService</A></CODE></B></DD>
+<DD>scan directories
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html#scanRepositoryDirectoriesNow(java.lang.String)">scanRepositoryDirectoriesNow</A></CODE> in interface <CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/RepositoriesService.html" title="interface in org.apache.archiva.rest.api.services">RepositoriesService</A></CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html" title="class in org.apache.archiva.rest.api.services">ArchivaRestServiceException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="updateMetadata(org.apache.archiva.model.ArchivaRepositoryMetadata, java.io.File, java.util.Date, org.apache.archiva.maven2.model.Artifact)"><!-- --></A><H3>
+updateMetadata</H3>
+<PRE>
+private void <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.1100"><B>updateMetadata</B></A>(<A HREF="../../../../../org/apache/archiva/model/ArchivaRepositoryMetadata.html" title="class in org.apache.archiva.model">ArchivaRepositoryMetadata</A>&nbsp;metadata,
+                            <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;metadataFile,
+                            <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Date.html?is-external=true" title="class or interface in java.util">Date</A>&nbsp;lastUpdatedTimestamp,
+                            <A HREF="../../../../../org/apache/archiva/maven2/model/Artifact.html" title="class in org.apache.archiva.maven2.model">Artifact</A>&nbsp;artifact)
+                     throws <A HREF="../../../../../org/apache/archiva/repository/metadata/RepositoryMetadataException.html" title="class in org.apache.archiva.repository.metadata">RepositoryMetadataException</A></PRE>
+<DL>
+<DD>Update artifact level metadata. Creates one if metadata does not exist after artifact deletion.
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>metadata</CODE> - 
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/archiva/repository/metadata/RepositoryMetadataException.html" title="class in org.apache.archiva.repository.metadata">RepositoryMetadataException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getManagedRepositoryAdmin()"><!-- --></A><H3>
+getManagedRepositoryAdmin</H3>
+<PRE>
+public <A HREF="../../../../../org/apache/archiva/admin/model/managed/ManagedRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.managed">ManagedRepositoryAdmin</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.1156"><B>getManagedRepositoryAdmin</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setManagedRepositoryAdmin(org.apache.archiva.admin.model.managed.ManagedRepositoryAdmin)"><!-- --></A><H3>
+setManagedRepositoryAdmin</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.1161"><B>setManagedRepositoryAdmin</B></A>(<A HREF="../../../../../org/apache/archiva/admin/model/managed/ManagedRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.managed">ManagedRepositoryAdmin</A>&nbsp;managedRepositoryAdmin)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getRepositoryFactory()"><!-- --></A><H3>
+getRepositoryFactory</H3>
+<PRE>
+public <A HREF="../../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.1166"><B>getRepositoryFactory</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setRepositoryFactory(org.apache.archiva.repository.RepositoryContentFactory)"><!-- --></A><H3>
+setRepositoryFactory</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.1171"><B>setRepositoryFactory</B></A>(<A HREF="../../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</A>&nbsp;repositoryFactory)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getRepositorySessionFactory()"><!-- --></A><H3>
+getRepositorySessionFactory</H3>
+<PRE>
+public <A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html" title="interface in org.apache.archiva.metadata.repository">RepositorySessionFactory</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.1176"><B>getRepositorySessionFactory</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setRepositorySessionFactory(org.apache.archiva.metadata.repository.RepositorySessionFactory)"><!-- --></A><H3>
+setRepositorySessionFactory</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.1181"><B>setRepositorySessionFactory</B></A>(<A HREF="../../../../../org/apache/archiva/metadata/repository/RepositorySessionFactory.html" title="interface in org.apache.archiva.metadata.repository">RepositorySessionFactory</A>&nbsp;repositorySessionFactory)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getListeners()"><!-- --></A><H3>
+getListeners</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../org/apache/archiva/repository/events/RepositoryListener.html" title="interface in org.apache.archiva.repository.events">RepositoryListener</A>&gt; <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.1186"><B>getListeners</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setListeners(java.util.List)"><!-- --></A><H3>
+setListeners</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.1191"><B>setListeners</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../org/apache/archiva/repository/events/RepositoryListener.html" title="interface in org.apache.archiva.repository.events">RepositoryListener</A>&gt;&nbsp;listeners)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getArchivaAdministration()"><!-- --></A><H3>
+getArchivaAdministration</H3>
+<PRE>
+public <A HREF="../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A> <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.1196"><B>getArchivaAdministration</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setArchivaAdministration(org.apache.archiva.admin.model.admin.ArchivaAdministration)"><!-- --></A><H3>
+setArchivaAdministration</H3>
+<PRE>
+public void <A HREF="../../../../../src-html/org/apache/archiva/rest/services/DefaultRepositoriesService.html#line.1201"><B>setArchivaAdministration</B></A>(<A HREF="../../../../../org/apache/archiva/admin/model/admin/ArchivaAdministration.html" title="interface in org.apache.archiva.admin.model.admin">ArchivaAdministration</A>&nbsp;archivaAdministration)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<!-- ========= END OF CLASS DATA ========= -->
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/DefaultRepositoriesService.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../../org/apache/archiva/rest/services/DefaultReportRepositoriesService.html" title="class in org.apache.archiva.rest.services"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../org/apache/archiva/rest/services/DefaultRepositoryGroupService.html" title="class in org.apache.archiva.rest.services"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../index.html?org/apache/archiva/rest/services/DefaultRepositoriesService.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="DefaultRepositoriesService.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+Copyright &#169; 2006-2013 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.
+</BODY>
+</HTML>

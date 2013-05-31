@@ -1,0 +1,1425 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>
+ArchivaDavResourceFactory (Archiva :: Modules 1.4-M4 API)
+</TITLE>
+
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="ArchivaDavResourceFactory (Archiva :: Modules 1.4-M4 API)";
+    }
+}
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ArchivaDavResourceFactory.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResource.html" title="class in org.apache.archiva.webdav"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.LogicalResource.html" title="class in org.apache.archiva.webdav"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../index.html?org/apache/archiva/webdav/ArchivaDavResourceFactory.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="ArchivaDavResourceFactory.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;<A HREF="#nested_class_summary">NESTED</A>&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<!-- ======== START OF CLASS DATA ======== -->
+<H2>
+<FONT SIZE="-1">
+org.apache.archiva.webdav</FONT>
+<BR>
+Class ArchivaDavResourceFactory</H2>
+<PRE>
+<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</A>
+  <IMG SRC="../../../../resources/inherit.gif" ALT="extended by "><B>org.apache.archiva.webdav.ArchivaDavResourceFactory</B>
+</PRE>
+<DL>
+<DT><B>All Implemented Interfaces:</B> <DD><A HREF="../../../../org/apache/archiva/audit/Auditable.html" title="interface in org.apache.archiva.audit">Auditable</A>, org.apache.jackrabbit.webdav.DavResourceFactory</DD>
+</DL>
+<HR>
+<DL>
+<DT><PRE><FONT SIZE="-1">@Service(value="davResourceFactory#archiva")
+</FONT>public class <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.115"><B>ArchivaDavResourceFactory</B></A><DT>extends <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A><DT>implements org.apache.jackrabbit.webdav.DavResourceFactory, <A HREF="../../../../org/apache/archiva/audit/Auditable.html" title="interface in org.apache.archiva.audit">Auditable</A></DL>
+</PRE>
+
+<P>
+<HR>
+
+<P>
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+
+<A NAME="nested_class_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Nested Class Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private static&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.LogicalResource.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceFactory.LogicalResource</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;<!-- =========== FIELD SUMMARY =========== -->
+
+<A NAME="field_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Field Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.springframework.context.ApplicationContext</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#applicationContext">applicationContext</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#archivaConfiguration">archivaConfiguration</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../org/apache/archiva/audit/AuditListener.html" title="interface in org.apache.archiva.audit">AuditListener</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#auditListeners">auditListeners</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.codehaus.plexus.digest.ChecksumFile</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#checksum">checksum</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html" title="interface in org.apache.archiva.proxy.model">RepositoryProxyConnectors</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#connectors">connectors</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.codehaus.plexus.digest.Digester</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#digestMd5">digestMd5</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.codehaus.plexus.digest.Digester</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#digestSha1">digestSha1</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private static&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#HTTP_PUT_METHOD">HTTP_PUT_METHOD</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.apache.archiva.redback.integration.filter.authentication.HttpAuthenticator</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#httpAuth">httpAuth</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../org/apache/archiva/indexer/merger/IndexMerger.html" title="interface in org.apache.archiva.indexer.merger">IndexMerger</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#indexMerger">indexMerger</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.apache.jackrabbit.webdav.lock.LockManager</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#lockManager">lockManager</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lock Manager - use simple implementation from JackRabbit</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.slf4j.Logger</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#log">log</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../org/apache/archiva/repository/metadata/MetadataTools.html" title="class in org.apache.archiva.repository.metadata">MetadataTools</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#metadataTools">metadataTools</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../org/apache/archiva/webdav/util/MimeTypes.html" title="class in org.apache.archiva.webdav.util">MimeTypes</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#mimeTypes">mimeTypes</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private static&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#PROXIED_SUFFIX">PROXIED_SUFFIX</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../org/apache/archiva/admin/model/remote/RemoteRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.remote">RemoteRepositoryAdmin</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#remoteRepositoryAdmin">remoteRepositoryAdmin</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#repositoryFactory">repositoryFactory</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../org/apache/archiva/repository/content/maven2/RepositoryRequest.html" title="class in org.apache.archiva.repository.content.maven2">RepositoryRequest</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#repositoryRequest">repositoryRequest</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../org/apache/archiva/indexer/search/RepositorySearch.html" title="interface in org.apache.archiva.indexer.search">RepositorySearch</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#repositorySearch">repositorySearch</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler.repository.model">RepositoryArchivaTaskScheduler</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#scheduler">scheduler</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../org/apache/archiva/security/ServletAuthenticator.html" title="interface in org.apache.archiva.security">ServletAuthenticator</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#servletAuth">servletAuth</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+
+<A NAME="constructor_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Constructor Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#ArchivaDavResourceFactory(org.springframework.context.ApplicationContext, org.apache.archiva.common.plexusbridge.PlexusSisuBridge, org.apache.archiva.configuration.ArchivaConfiguration)">ArchivaDavResourceFactory</A></B>(org.springframework.context.ApplicationContext&nbsp;applicationContext,
+                                                   <A HREF="../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridge.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridge</A>&nbsp;plexusSisuBridge,
+                                                   <A HREF="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</A>&nbsp;archivaConfiguration)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ========== METHOD SUMMARY =========== -->
+
+<A NAME="method_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#addAuditListener(org.apache.archiva.audit.AuditListener)">addAuditListener</A></B>(<A HREF="../../../../org/apache/archiva/audit/AuditListener.html" title="interface in org.apache.archiva.audit">AuditListener</A>&nbsp;listener)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add an AuditListener.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#buildMergedIndexDirectory(java.util.List, java.lang.String, org.apache.jackrabbit.webdav.DavServletRequest, org.apache.archiva.configuration.RepositoryGroupConfiguration)">buildMergedIndexDirectory</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;repositories,
+                                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;activePrincipal,
+                                                   org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+                                                   <A HREF="../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</A>&nbsp;repositoryGroupConfiguration)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#checkLocatorIsInstanceOfRepositoryLocator(org.apache.jackrabbit.webdav.DavResourceLocator)">checkLocatorIsInstanceOfRepositoryLocator</A></B>(org.apache.jackrabbit.webdav.DavResourceLocator&nbsp;locator)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#clearAuditListeners()">clearAuditListeners</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remove all registered <A HREF="../../../../org/apache/archiva/audit/AuditListener.html" title="interface in org.apache.archiva.audit"><CODE>AuditListener</CODE></A> objects.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#createChecksumFile(java.lang.String, org.codehaus.plexus.digest.Digester)">createChecksumFile</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;path,
+                                     org.codehaus.plexus.digest.Digester&nbsp;digester)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;org.apache.jackrabbit.webdav.DavResource</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#createResource(org.apache.jackrabbit.webdav.DavResourceLocator, org.apache.jackrabbit.webdav.DavServletRequest, org.apache.jackrabbit.webdav.DavServletResponse)">createResource</A></B>(org.apache.jackrabbit.webdav.DavResourceLocator&nbsp;locator,
+                             org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+                             org.apache.jackrabbit.webdav.DavServletResponse&nbsp;response)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;org.apache.jackrabbit.webdav.DavResource</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#createResource(org.apache.jackrabbit.webdav.DavResourceLocator, org.apache.jackrabbit.webdav.DavSession)">createResource</A></B>(org.apache.jackrabbit.webdav.DavResourceLocator&nbsp;locator,
+                             org.apache.jackrabbit.webdav.DavSession&nbsp;davSession)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#fetchContentFromProxies(org.apache.archiva.repository.ManagedRepositoryContent, org.apache.jackrabbit.webdav.DavServletRequest, org.apache.archiva.webdav.ArchivaDavResourceFactory.LogicalResource)">fetchContentFromProxies</A></B>(<A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;managedRepository,
+                                               org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+                                               <A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.LogicalResource.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceFactory.LogicalResource</A>&nbsp;resource)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#getActivePrincipal(org.apache.jackrabbit.webdav.DavServletRequest)">getActivePrincipal</A></B>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/archiva/admin/model/remote/RemoteRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.remote">RemoteRepositoryAdmin</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#getRemoteRepositoryAdmin()">getRemoteRepositoryAdmin</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.apache.jackrabbit.webdav.DavResource</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#getResourceFromGroup(org.apache.jackrabbit.webdav.DavServletRequest, java.util.List, org.apache.archiva.webdav.ArchivaDavResourceLocator, org.apache.archiva.configuration.RepositoryGroupConfiguration)">getResourceFromGroup</A></B>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+                                         <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;repositories,
+                                         <A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</A>&nbsp;locator,
+                                         <A HREF="../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</A>&nbsp;repositoryGroupConfiguration)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#initialize()">initialize</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#isAllowedToContinue(org.apache.jackrabbit.webdav.DavServletRequest, java.util.List, java.lang.String)">isAllowedToContinue</A></B>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+                                       <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;repositories,
+                                       <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;activePrincipal)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check if the current user is authorized to access any of the repos</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#isAuthorized(org.apache.jackrabbit.webdav.DavServletRequest, java.lang.String)">isAuthorized</A></B>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+                         <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#isProjectReference(java.lang.String)">isProjectReference</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;requestedResource)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.apache.jackrabbit.webdav.DavResource</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#processRepository(org.apache.jackrabbit.webdav.DavServletRequest, org.apache.archiva.webdav.ArchivaDavResourceLocator, java.lang.String, org.apache.archiva.repository.ManagedRepositoryContent)">processRepository</A></B>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+                                   <A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</A>&nbsp;archivaLocator,
+                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;activePrincipal,
+                                   <A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;managedRepository)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.apache.jackrabbit.webdav.DavResource</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#processRepositoryGroup(org.apache.jackrabbit.webdav.DavServletRequest, org.apache.archiva.webdav.ArchivaDavResourceLocator, java.util.List, java.lang.String, java.util.List, org.apache.archiva.configuration.RepositoryGroupConfiguration)">processRepositoryGroup</A></B>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+                                             <A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</A>&nbsp;archivaLocator,
+                                             <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;repositories,
+                                             <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;activePrincipal,
+                                             <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;resourcesInAbsolutePath,
+                                             <A HREF="../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</A>&nbsp;repoGroupConfig)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#removeAuditListener(org.apache.archiva.audit.AuditListener)">removeAuditListener</A></B>(<A HREF="../../../../org/apache/archiva/audit/AuditListener.html" title="interface in org.apache.archiva.audit">AuditListener</A>&nbsp;listener)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remove an AuditListener.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#setArchivaConfiguration(org.apache.archiva.configuration.ArchivaConfiguration)">setArchivaConfiguration</A></B>(<A HREF="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</A>&nbsp;archivaConfiguration)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#setConnectors(org.apache.archiva.proxy.model.RepositoryProxyConnectors)">setConnectors</A></B>(<A HREF="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html" title="interface in org.apache.archiva.proxy.model">RepositoryProxyConnectors</A>&nbsp;connectors)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#setHeaders(org.apache.jackrabbit.webdav.DavServletResponse, org.apache.jackrabbit.webdav.DavResourceLocator, org.apache.jackrabbit.webdav.DavResource)">setHeaders</A></B>(org.apache.jackrabbit.webdav.DavServletResponse&nbsp;response,
+                     org.apache.jackrabbit.webdav.DavResourceLocator&nbsp;locator,
+                     org.apache.jackrabbit.webdav.DavResource&nbsp;resource)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#setHttpAuth(org.apache.archiva.redback.integration.filter.authentication.HttpAuthenticator)">setHttpAuth</A></B>(org.apache.archiva.redback.integration.filter.authentication.HttpAuthenticator&nbsp;httpAuth)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#setRemoteRepositoryAdmin(org.apache.archiva.admin.model.remote.RemoteRepositoryAdmin)">setRemoteRepositoryAdmin</A></B>(<A HREF="../../../../org/apache/archiva/admin/model/remote/RemoteRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.remote">RemoteRepositoryAdmin</A>&nbsp;remoteRepositoryAdmin)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#setRepositoryFactory(org.apache.archiva.repository.RepositoryContentFactory)">setRepositoryFactory</A></B>(<A HREF="../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</A>&nbsp;repositoryFactory)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#setRepositoryRequest(org.apache.archiva.repository.content.maven2.RepositoryRequest)">setRepositoryRequest</A></B>(<A HREF="../../../../org/apache/archiva/repository/content/maven2/RepositoryRequest.html" title="class in org.apache.archiva.repository.content.maven2">RepositoryRequest</A>&nbsp;repositoryRequest)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#setScheduler(org.apache.archiva.scheduler.repository.model.RepositoryArchivaTaskScheduler)">setScheduler</A></B>(<A HREF="../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler.repository.model">RepositoryArchivaTaskScheduler</A>&nbsp;scheduler)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#setServletAuth(org.apache.archiva.security.ServletAuthenticator)">setServletAuth</A></B>(<A HREF="../../../../org/apache/archiva/security/ServletAuthenticator.html" title="interface in org.apache.archiva.security">ServletAuthenticator</A>&nbsp;servletAuth)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#triggerAuditEvent(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)">triggerAuditEvent</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;remoteIP,
+                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId,
+                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;resource,
+                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;action,
+                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;principal)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#writeMergedMetadataToFile(org.apache.archiva.model.ArchivaRepositoryMetadata, java.lang.String)">writeMergedMetadataToFile</A></B>(<A HREF="../../../../org/apache/archiva/model/ArchivaRepositoryMetadata.html" title="class in org.apache.archiva.model">ArchivaRepositoryMetadata</A>&nbsp;mergedMetadata,
+                                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;outputFilename)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class java.lang.<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<!-- ============ FIELD DETAIL =========== -->
+
+<A NAME="field_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Field Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="PROXIED_SUFFIX"><!-- --></A><H3>
+PROXIED_SUFFIX</H3>
+<PRE>
+private static final <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.118"><B>PROXIED_SUFFIX</B></A></PRE>
+<DL>
+<DL>
+<DT><B>See Also:</B><DD><A HREF="../../../../constant-values.html#org.apache.archiva.webdav.ArchivaDavResourceFactory.PROXIED_SUFFIX">Constant Field Values</A></DL>
+</DL>
+<HR>
+
+<A NAME="HTTP_PUT_METHOD"><!-- --></A><H3>
+HTTP_PUT_METHOD</H3>
+<PRE>
+private static final <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.120"><B>HTTP_PUT_METHOD</B></A></PRE>
+<DL>
+<DL>
+<DT><B>See Also:</B><DD><A HREF="../../../../constant-values.html#org.apache.archiva.webdav.ArchivaDavResourceFactory.HTTP_PUT_METHOD">Constant Field Values</A></DL>
+</DL>
+<HR>
+
+<A NAME="log"><!-- --></A><H3>
+log</H3>
+<PRE>
+private org.slf4j.Logger <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.122"><B>log</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="auditListeners"><!-- --></A><H3>
+auditListeners</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../org/apache/archiva/audit/AuditListener.html" title="interface in org.apache.archiva.audit">AuditListener</A>&gt; <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.128"><B>auditListeners</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="repositoryFactory"><!-- --></A><H3>
+repositoryFactory</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</A> <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.134"><B>repositoryFactory</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="repositoryRequest"><!-- --></A><H3>
+repositoryRequest</H3>
+<PRE>
+private <A HREF="../../../../org/apache/archiva/repository/content/maven2/RepositoryRequest.html" title="class in org.apache.archiva.repository.content.maven2">RepositoryRequest</A> <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.139"><B>repositoryRequest</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="connectors"><!-- --></A><H3>
+connectors</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+@Named(value="repositoryProxyConnectors#default")
+</FONT>private <A HREF="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html" title="interface in org.apache.archiva.proxy.model">RepositoryProxyConnectors</A> <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.146"><B>connectors</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="metadataTools"><!-- --></A><H3>
+metadataTools</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../org/apache/archiva/repository/metadata/MetadataTools.html" title="class in org.apache.archiva.repository.metadata">MetadataTools</A> <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.152"><B>metadataTools</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="mimeTypes"><!-- --></A><H3>
+mimeTypes</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../org/apache/archiva/webdav/util/MimeTypes.html" title="class in org.apache.archiva.webdav.util">MimeTypes</A> <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.158"><B>mimeTypes</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="archivaConfiguration"><!-- --></A><H3>
+archivaConfiguration</H3>
+<PRE>
+private <A HREF="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</A> <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.163"><B>archivaConfiguration</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="servletAuth"><!-- --></A><H3>
+servletAuth</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../org/apache/archiva/security/ServletAuthenticator.html" title="interface in org.apache.archiva.security">ServletAuthenticator</A> <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.169"><B>servletAuth</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="httpAuth"><!-- --></A><H3>
+httpAuth</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+@Named(value="httpAuthenticator#basic")
+</FONT>private org.apache.archiva.redback.integration.filter.authentication.HttpAuthenticator <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.176"><B>httpAuth</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="remoteRepositoryAdmin"><!-- --></A><H3>
+remoteRepositoryAdmin</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../org/apache/archiva/admin/model/remote/RemoteRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.remote">RemoteRepositoryAdmin</A> <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.179"><B>remoteRepositoryAdmin</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="indexMerger"><!-- --></A><H3>
+indexMerger</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../org/apache/archiva/indexer/merger/IndexMerger.html" title="interface in org.apache.archiva.indexer.merger">IndexMerger</A> <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.182"><B>indexMerger</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="repositorySearch"><!-- --></A><H3>
+repositorySearch</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../org/apache/archiva/indexer/search/RepositorySearch.html" title="interface in org.apache.archiva.indexer.search">RepositorySearch</A> <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.185"><B>repositorySearch</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="lockManager"><!-- --></A><H3>
+lockManager</H3>
+<PRE>
+private final org.apache.jackrabbit.webdav.lock.LockManager <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.190"><B>lockManager</B></A></PRE>
+<DL>
+<DD>Lock Manager - use simple implementation from JackRabbit
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="checksum"><!-- --></A><H3>
+checksum</H3>
+<PRE>
+private org.codehaus.plexus.digest.ChecksumFile <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.195"><B>checksum</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="digestSha1"><!-- --></A><H3>
+digestSha1</H3>
+<PRE>
+private org.codehaus.plexus.digest.Digester <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.200"><B>digestSha1</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="digestMd5"><!-- --></A><H3>
+digestMd5</H3>
+<PRE>
+private org.codehaus.plexus.digest.Digester <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.205"><B>digestMd5</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="scheduler"><!-- --></A><H3>
+scheduler</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+@Named(value="archivaTaskScheduler#repository")
+</FONT>private <A HREF="../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler.repository.model">RepositoryArchivaTaskScheduler</A> <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.212"><B>scheduler</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="applicationContext"><!-- --></A><H3>
+applicationContext</H3>
+<PRE>
+private org.springframework.context.ApplicationContext <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.214"><B>applicationContext</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+
+<A NAME="constructor_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Constructor Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="ArchivaDavResourceFactory(org.springframework.context.ApplicationContext, org.apache.archiva.common.plexusbridge.PlexusSisuBridge, org.apache.archiva.configuration.ArchivaConfiguration)"><!-- --></A><H3>
+ArchivaDavResourceFactory</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>public <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.217"><B>ArchivaDavResourceFactory</B></A>(org.springframework.context.ApplicationContext&nbsp;applicationContext,
+                                        <A HREF="../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridge.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridge</A>&nbsp;plexusSisuBridge,
+                                        <A HREF="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</A>&nbsp;archivaConfiguration)
+                          throws <A HREF="../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridgeException.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridgeException</A></PRE>
+<DL>
+<DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridgeException.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridgeException</A></CODE></DL>
+</DL>
+
+<!-- ============ METHOD DETAIL ========== -->
+
+<A NAME="method_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Method Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="initialize()"><!-- --></A><H3>
+initialize</H3>
+<PRE>
+<FONT SIZE="-1"><A HREF="http://docs.oracle.com/javase/6/docs/api/javax/annotation/PostConstruct.html?is-external=true" title="class or interface in javax.annotation">@PostConstruct</A>
+</FONT>public void <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.233"><B>initialize</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="createResource(org.apache.jackrabbit.webdav.DavResourceLocator, org.apache.jackrabbit.webdav.DavServletRequest, org.apache.jackrabbit.webdav.DavServletResponse)"><!-- --></A><H3>
+createResource</H3>
+<PRE>
+public org.apache.jackrabbit.webdav.DavResource <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.238"><B>createResource</B></A>(org.apache.jackrabbit.webdav.DavResourceLocator&nbsp;locator,
+                                                               org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+                                                               org.apache.jackrabbit.webdav.DavServletResponse&nbsp;response)
+                                                        throws org.apache.jackrabbit.webdav.DavException</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE>createResource</CODE> in interface <CODE>org.apache.jackrabbit.webdav.DavResourceFactory</CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE>org.apache.jackrabbit.webdav.DavException</CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="processRepositoryGroup(org.apache.jackrabbit.webdav.DavServletRequest, org.apache.archiva.webdav.ArchivaDavResourceLocator, java.util.List, java.lang.String, java.util.List, org.apache.archiva.configuration.RepositoryGroupConfiguration)"><!-- --></A><H3>
+processRepositoryGroup</H3>
+<PRE>
+private org.apache.jackrabbit.webdav.DavResource <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.436"><B>processRepositoryGroup</B></A>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+                                                                        <A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</A>&nbsp;archivaLocator,
+                                                                        <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;repositories,
+                                                                        <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;activePrincipal,
+                                                                        <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;resourcesInAbsolutePath,
+                                                                        <A HREF="../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</A>&nbsp;repoGroupConfig)
+                                                                 throws org.apache.jackrabbit.webdav.DavException</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE>org.apache.jackrabbit.webdav.DavException</CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="processRepository(org.apache.jackrabbit.webdav.DavServletRequest, org.apache.archiva.webdav.ArchivaDavResourceLocator, java.lang.String, org.apache.archiva.repository.ManagedRepositoryContent)"><!-- --></A><H3>
+processRepository</H3>
+<PRE>
+private org.apache.jackrabbit.webdav.DavResource <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.526"><B>processRepository</B></A>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+                                                                   <A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</A>&nbsp;archivaLocator,
+                                                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;activePrincipal,
+                                                                   <A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;managedRepository)
+                                                            throws org.apache.jackrabbit.webdav.DavException</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE>org.apache.jackrabbit.webdav.DavException</CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="createResource(org.apache.jackrabbit.webdav.DavResourceLocator, org.apache.jackrabbit.webdav.DavSession)"><!-- --></A><H3>
+createResource</H3>
+<PRE>
+public org.apache.jackrabbit.webdav.DavResource <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.662"><B>createResource</B></A>(org.apache.jackrabbit.webdav.DavResourceLocator&nbsp;locator,
+                                                               org.apache.jackrabbit.webdav.DavSession&nbsp;davSession)
+                                                        throws org.apache.jackrabbit.webdav.DavException</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE>createResource</CODE> in interface <CODE>org.apache.jackrabbit.webdav.DavResourceFactory</CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE>org.apache.jackrabbit.webdav.DavException</CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="fetchContentFromProxies(org.apache.archiva.repository.ManagedRepositoryContent, org.apache.jackrabbit.webdav.DavServletRequest, org.apache.archiva.webdav.ArchivaDavResourceFactory.LogicalResource)"><!-- --></A><H3>
+fetchContentFromProxies</H3>
+<PRE>
+private boolean <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.696"><B>fetchContentFromProxies</B></A>(<A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;managedRepository,
+                                        org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+                                        <A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.LogicalResource.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceFactory.LogicalResource</A>&nbsp;resource)
+                                 throws org.apache.jackrabbit.webdav.DavException</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE>org.apache.jackrabbit.webdav.DavException</CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="triggerAuditEvent(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)"><!-- --></A><H3>
+triggerAuditEvent</H3>
+<PRE>
+private void <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.762"><B>triggerAuditEvent</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;remoteIP,
+                               <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId,
+                               <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;resource,
+                               <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;action,
+                               <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;principal)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="addAuditListener(org.apache.archiva.audit.AuditListener)"><!-- --></A><H3>
+addAuditListener</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.774"><B>addAuditListener</B></A>(<A HREF="../../../../org/apache/archiva/audit/AuditListener.html" title="interface in org.apache.archiva.audit">AuditListener</A>&nbsp;listener)</PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../org/apache/archiva/audit/Auditable.html#addAuditListener(org.apache.archiva.audit.AuditListener)">Auditable</A></CODE></B></DD>
+<DD>Add an AuditListener.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../org/apache/archiva/audit/Auditable.html#addAuditListener(org.apache.archiva.audit.AuditListener)">addAuditListener</A></CODE> in interface <CODE><A HREF="../../../../org/apache/archiva/audit/Auditable.html" title="interface in org.apache.archiva.audit">Auditable</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="clearAuditListeners()"><!-- --></A><H3>
+clearAuditListeners</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.779"><B>clearAuditListeners</B></A>()</PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../org/apache/archiva/audit/Auditable.html#clearAuditListeners()">Auditable</A></CODE></B></DD>
+<DD>Remove all registered <A HREF="../../../../org/apache/archiva/audit/AuditListener.html" title="interface in org.apache.archiva.audit"><CODE>AuditListener</CODE></A> objects.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../org/apache/archiva/audit/Auditable.html#clearAuditListeners()">clearAuditListeners</A></CODE> in interface <CODE><A HREF="../../../../org/apache/archiva/audit/Auditable.html" title="interface in org.apache.archiva.audit">Auditable</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="removeAuditListener(org.apache.archiva.audit.AuditListener)"><!-- --></A><H3>
+removeAuditListener</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.784"><B>removeAuditListener</B></A>(<A HREF="../../../../org/apache/archiva/audit/AuditListener.html" title="interface in org.apache.archiva.audit">AuditListener</A>&nbsp;listener)</PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../org/apache/archiva/audit/Auditable.html#removeAuditListener(org.apache.archiva.audit.AuditListener)">Auditable</A></CODE></B></DD>
+<DD>Remove an AuditListener.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../org/apache/archiva/audit/Auditable.html#removeAuditListener(org.apache.archiva.audit.AuditListener)">removeAuditListener</A></CODE> in interface <CODE><A HREF="../../../../org/apache/archiva/audit/Auditable.html" title="interface in org.apache.archiva.audit">Auditable</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setHeaders(org.apache.jackrabbit.webdav.DavServletResponse, org.apache.jackrabbit.webdav.DavResourceLocator, org.apache.jackrabbit.webdav.DavResource)"><!-- --></A><H3>
+setHeaders</H3>
+<PRE>
+private void <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.789"><B>setHeaders</B></A>(org.apache.jackrabbit.webdav.DavServletResponse&nbsp;response,
+                        org.apache.jackrabbit.webdav.DavResourceLocator&nbsp;locator,
+                        org.apache.jackrabbit.webdav.DavResource&nbsp;resource)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="checkLocatorIsInstanceOfRepositoryLocator(org.apache.jackrabbit.webdav.DavResourceLocator)"><!-- --></A><H3>
+checkLocatorIsInstanceOfRepositoryLocator</H3>
+<PRE>
+private <A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</A> <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.810"><B>checkLocatorIsInstanceOfRepositoryLocator</B></A>(org.apache.jackrabbit.webdav.DavResourceLocator&nbsp;locator)
+                                                                     throws org.apache.jackrabbit.webdav.DavException</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE>org.apache.jackrabbit.webdav.DavException</CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="isAuthorized(org.apache.jackrabbit.webdav.DavServletRequest, java.lang.String)"><!-- --></A><H3>
+isAuthorized</H3>
+<PRE>
+protected boolean <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.855"><B>isAuthorized</B></A>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+                               <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId)
+                        throws org.apache.jackrabbit.webdav.DavException</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE>org.apache.jackrabbit.webdav.DavException</CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getResourceFromGroup(org.apache.jackrabbit.webdav.DavServletRequest, java.util.List, org.apache.archiva.webdav.ArchivaDavResourceLocator, org.apache.archiva.configuration.RepositoryGroupConfiguration)"><!-- --></A><H3>
+getResourceFromGroup</H3>
+<PRE>
+private org.apache.jackrabbit.webdav.DavResource <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.908"><B>getResourceFromGroup</B></A>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+                                                                      <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;repositories,
+                                                                      <A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</A>&nbsp;locator,
+                                                                      <A HREF="../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</A>&nbsp;repositoryGroupConfiguration)
+                                                               throws org.apache.jackrabbit.webdav.DavException</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE>org.apache.jackrabbit.webdav.DavException</CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getActivePrincipal(org.apache.jackrabbit.webdav.DavServletRequest)"><!-- --></A><H3>
+getActivePrincipal</H3>
+<PRE>
+protected <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1070"><B>getActivePrincipal</B></A>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="isAllowedToContinue(org.apache.jackrabbit.webdav.DavServletRequest, java.util.List, java.lang.String)"><!-- --></A><H3>
+isAllowedToContinue</H3>
+<PRE>
+private boolean <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1084"><B>isAllowedToContinue</B></A>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+                                    <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;repositories,
+                                    <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;activePrincipal)</PRE>
+<DL>
+<DD>Check if the current user is authorized to access any of the repos
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>request</CODE> - <DD><CODE>repositories</CODE> - <DD><CODE>activePrincipal</CODE> - 
+<DT><B>Returns:</B><DD></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="writeMergedMetadataToFile(org.apache.archiva.model.ArchivaRepositoryMetadata, java.lang.String)"><!-- --></A><H3>
+writeMergedMetadataToFile</H3>
+<PRE>
+private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A> <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1137"><B>writeMergedMetadataToFile</B></A>(<A HREF="../../../../org/apache/archiva/model/ArchivaRepositoryMetadata.html" title="class in org.apache.archiva.model">ArchivaRepositoryMetadata</A>&nbsp;mergedMetadata,
+                                       <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;outputFilename)
+                                throws <A HREF="../../../../org/apache/archiva/repository/metadata/RepositoryMetadataException.html" title="class in org.apache.archiva.repository.metadata">RepositoryMetadataException</A>,
+                                       org.codehaus.plexus.digest.DigesterException,
+                                       <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</A></PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/repository/metadata/RepositoryMetadataException.html" title="class in org.apache.archiva.repository.metadata">RepositoryMetadataException</A></CODE>
+<DD><CODE>org.codehaus.plexus.digest.DigesterException</CODE>
+<DD><CODE><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="createChecksumFile(java.lang.String, org.codehaus.plexus.digest.Digester)"><!-- --></A><H3>
+createChecksumFile</H3>
+<PRE>
+private void <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1155"><B>createChecksumFile</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;path,
+                                org.codehaus.plexus.digest.Digester&nbsp;digester)
+                         throws org.codehaus.plexus.digest.DigesterException,
+                                <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</A></PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE>org.codehaus.plexus.digest.DigesterException</CODE>
+<DD><CODE><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="isProjectReference(java.lang.String)"><!-- --></A><H3>
+isProjectReference</H3>
+<PRE>
+private boolean <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1170"><B>isProjectReference</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;requestedResource)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="buildMergedIndexDirectory(java.util.List, java.lang.String, org.apache.jackrabbit.webdav.DavServletRequest, org.apache.archiva.configuration.RepositoryGroupConfiguration)"><!-- --></A><H3>
+buildMergedIndexDirectory</H3>
+<PRE>
+protected <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A> <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1183"><B>buildMergedIndexDirectory</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;repositories,
+                                         <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;activePrincipal,
+                                         org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
+                                         <A HREF="../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</A>&nbsp;repositoryGroupConfiguration)
+                                  throws org.apache.jackrabbit.webdav.DavException</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE>org.apache.jackrabbit.webdav.DavException</CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setServletAuth(org.apache.archiva.security.ServletAuthenticator)"><!-- --></A><H3>
+setServletAuth</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1264"><B>setServletAuth</B></A>(<A HREF="../../../../org/apache/archiva/security/ServletAuthenticator.html" title="interface in org.apache.archiva.security">ServletAuthenticator</A>&nbsp;servletAuth)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setHttpAuth(org.apache.archiva.redback.integration.filter.authentication.HttpAuthenticator)"><!-- --></A><H3>
+setHttpAuth</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1269"><B>setHttpAuth</B></A>(org.apache.archiva.redback.integration.filter.authentication.HttpAuthenticator&nbsp;httpAuth)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setScheduler(org.apache.archiva.scheduler.repository.model.RepositoryArchivaTaskScheduler)"><!-- --></A><H3>
+setScheduler</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1274"><B>setScheduler</B></A>(<A HREF="../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler.repository.model">RepositoryArchivaTaskScheduler</A>&nbsp;scheduler)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setArchivaConfiguration(org.apache.archiva.configuration.ArchivaConfiguration)"><!-- --></A><H3>
+setArchivaConfiguration</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1279"><B>setArchivaConfiguration</B></A>(<A HREF="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</A>&nbsp;archivaConfiguration)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setRepositoryFactory(org.apache.archiva.repository.RepositoryContentFactory)"><!-- --></A><H3>
+setRepositoryFactory</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1284"><B>setRepositoryFactory</B></A>(<A HREF="../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</A>&nbsp;repositoryFactory)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setRepositoryRequest(org.apache.archiva.repository.content.maven2.RepositoryRequest)"><!-- --></A><H3>
+setRepositoryRequest</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1289"><B>setRepositoryRequest</B></A>(<A HREF="../../../../org/apache/archiva/repository/content/maven2/RepositoryRequest.html" title="class in org.apache.archiva.repository.content.maven2">RepositoryRequest</A>&nbsp;repositoryRequest)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setConnectors(org.apache.archiva.proxy.model.RepositoryProxyConnectors)"><!-- --></A><H3>
+setConnectors</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1294"><B>setConnectors</B></A>(<A HREF="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html" title="interface in org.apache.archiva.proxy.model">RepositoryProxyConnectors</A>&nbsp;connectors)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getRemoteRepositoryAdmin()"><!-- --></A><H3>
+getRemoteRepositoryAdmin</H3>
+<PRE>
+public <A HREF="../../../../org/apache/archiva/admin/model/remote/RemoteRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.remote">RemoteRepositoryAdmin</A> <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1299"><B>getRemoteRepositoryAdmin</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setRemoteRepositoryAdmin(org.apache.archiva.admin.model.remote.RemoteRepositoryAdmin)"><!-- --></A><H3>
+setRemoteRepositoryAdmin</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/webdav/ArchivaDavResourceFactory.html#line.1304"><B>setRemoteRepositoryAdmin</B></A>(<A HREF="../../../../org/apache/archiva/admin/model/remote/RemoteRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.remote">RemoteRepositoryAdmin</A>&nbsp;remoteRepositoryAdmin)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<!-- ========= END OF CLASS DATA ========= -->
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ArchivaDavResourceFactory.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResource.html" title="class in org.apache.archiva.webdav"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.LogicalResource.html" title="class in org.apache.archiva.webdav"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../index.html?org/apache/archiva/webdav/ArchivaDavResourceFactory.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="ArchivaDavResourceFactory.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;<A HREF="#nested_class_summary">NESTED</A>&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+Copyright &#169; 2006-2013 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.
+</BODY>
+</HTML>

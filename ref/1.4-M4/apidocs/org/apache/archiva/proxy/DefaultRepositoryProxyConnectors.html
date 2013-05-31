@@ -1,0 +1,1733 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>
+DefaultRepositoryProxyConnectors (Archiva :: Modules 1.4-M4 API)
+</TITLE>
+
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="DefaultRepositoryProxyConnectors (Archiva :: Modules 1.4-M4 API)";
+    }
+}
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/DefaultRepositoryProxyConnectors.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;PREV CLASS&nbsp;
+&nbsp;<A HREF="../../../../org/apache/archiva/proxy/NotFoundException.html" title="class in org.apache.archiva.proxy"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../index.html?org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="DefaultRepositoryProxyConnectors.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<!-- ======== START OF CLASS DATA ======== -->
+<H2>
+<FONT SIZE="-1">
+org.apache.archiva.proxy</FONT>
+<BR>
+Class DefaultRepositoryProxyConnectors</H2>
+<PRE>
+<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</A>
+  <IMG SRC="../../../../resources/inherit.gif" ALT="extended by "><B>org.apache.archiva.proxy.DefaultRepositoryProxyConnectors</B>
+</PRE>
+<DL>
+<DT><B>All Implemented Interfaces:</B> <DD><A HREF="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html" title="interface in org.apache.archiva.proxy.model">RepositoryProxyConnectors</A>, org.apache.archiva.redback.components.registry.RegistryListener</DD>
+</DL>
+<HR>
+<DL>
+<DT><PRE><FONT SIZE="-1">@Service(value="repositoryProxyConnectors#default")
+</FONT>public class <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.103"><B>DefaultRepositoryProxyConnectors</B></A><DT>extends <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A><DT>implements <A HREF="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html" title="interface in org.apache.archiva.proxy.model">RepositoryProxyConnectors</A>, org.apache.archiva.redback.components.registry.RegistryListener</DL>
+</PRE>
+
+<P>
+DefaultRepositoryProxyConnectors
+<P>
+
+<P>
+<DL>
+<DT><B>To Do:</B></DT>
+  <DD>exception handling needs work - "not modified" is not really an exceptional case, and it has more layers than
+ your average brown onion</DD>
+</DL>
+<HR>
+
+<P>
+<!-- =========== FIELD SUMMARY =========== -->
+
+<A NAME="field_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Field Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#archivaConfiguration">archivaConfiguration</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/DownloadErrorPolicy.html" title="interface in org.apache.archiva.policies">DownloadErrorPolicy</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#downloadErrorPolicies">downloadErrorPolicies</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;org.slf4j.Logger</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#log">log</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../org/apache/archiva/repository/metadata/MetadataTools.html" title="class in org.apache.archiva.repository.metadata">MetadataTools</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#metadataTools">metadataTools</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../org/apache/archiva/admin/model/networkproxy/NetworkProxyAdmin.html" title="interface in org.apache.archiva.admin.model.networkproxy">NetworkProxyAdmin</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#networkProxyAdmin">networkProxyAdmin</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,org.apache.maven.wagon.proxy.ProxyInfo&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#networkProxyMap">networkProxyMap</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/PostDownloadPolicy.html" title="interface in org.apache.archiva.policies">PostDownloadPolicy</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#postDownloadPolicies">postDownloadPolicies</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/PreDownloadPolicy.html" title="interface in org.apache.archiva.policies">PreDownloadPolicy</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#preDownloadPolicies">preDownloadPolicies</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../org/apache/archiva/proxy/model/ProxyConnector.html" title="class in org.apache.archiva.proxy.model">ProxyConnector</A>&gt;&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#proxyConnectorMap">proxyConnectorMap</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#repositoryFactory">repositoryFactory</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../org/apache/archiva/scheduler/ArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler">ArchivaTaskScheduler</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#scheduler">scheduler</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../org/apache/archiva/policies/urlcache/UrlFailureCache.html" title="interface in org.apache.archiva.policies.urlcache">UrlFailureCache</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#urlFailureCache">urlFailureCache</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="../../../../org/apache/archiva/proxy/common/WagonFactory.html" title="interface in org.apache.archiva.proxy.common">WagonFactory</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#wagonFactory">wagonFactory</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+
+<A NAME="constructor_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Constructor Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#DefaultRepositoryProxyConnectors()">DefaultRepositoryProxyConnectors</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ========== METHOD SUMMARY =========== -->
+
+<A NAME="method_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#addParameters(java.lang.String, org.apache.archiva.admin.model.beans.RemoteRepository)">addParameters</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;path,
+                           <A HREF="../../../../org/apache/archiva/admin/model/beans/RemoteRepository.html" title="class in org.apache.archiva.admin.model.beans">RemoteRepository</A>&nbsp;remoteRepository)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#afterConfigurationChange(org.apache.archiva.redback.components.registry.Registry, java.lang.String, java.lang.Object)">afterConfigurationChange</A></B>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry,
+                                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;propertyName,
+                                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;propertyValue)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#beforeConfigurationChange(org.apache.archiva.redback.components.registry.Registry, java.lang.String, java.lang.Object)">beforeConfigurationChange</A></B>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry,
+                                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;propertyName,
+                                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;propertyValue)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#connectToRepository(org.apache.archiva.proxy.model.ProxyConnector, org.apache.maven.wagon.Wagon, org.apache.archiva.repository.RemoteRepositoryContent)">connectToRepository</A></B>(<A HREF="../../../../org/apache/archiva/proxy/model/ProxyConnector.html" title="class in org.apache.archiva.proxy.model">ProxyConnector</A>&nbsp;connector,
+                                       org.apache.maven.wagon.Wagon&nbsp;wagon,
+                                       <A HREF="../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</A>&nbsp;remoteRepository)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using wagon, connect to the remote repository.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#createWorkingDirectory(org.apache.archiva.repository.ManagedRepositoryContent)">createWorkingDirectory</A></B>(<A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a working directory</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#fetchFromProxies(org.apache.archiva.repository.ManagedRepositoryContent, org.apache.archiva.model.ArtifactReference)">fetchFromProxies</A></B>(<A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository,
+                                 <A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A>&nbsp;artifact)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Performs the artifact fetch operation against the target repositories
+ of the provided source repository.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#fetchFromProxies(org.apache.archiva.repository.ManagedRepositoryContent, java.lang.String)">fetchFromProxies</A></B>(<A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;path)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Performs the fetch operation against the target repositories
+ of the provided source repository.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#fetchMetatadaFromProxies(org.apache.archiva.repository.ManagedRepositoryContent, java.lang.String)">fetchMetatadaFromProxies</A></B>(<A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository,
+                                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;logicalPath)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Performs the metadata fetch operation against the target repositories
+ of the provided source repository.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#fileExists(java.io.File)">fileExists</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;file)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Simple method to test if the file exists on the local disk.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../org/apache/archiva/configuration/ProxyConnectorRuleConfiguration.html" title="class in org.apache.archiva.configuration">ProxyConnectorRuleConfiguration</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#findProxyConnectorRules(java.lang.String, java.lang.String, java.util.List)">findProxyConnectorRules</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;sourceRepository,
+                                               <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;targetRepository,
+                                               <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../org/apache/archiva/configuration/ProxyConnectorRuleConfiguration.html" title="class in org.apache.archiva.configuration">ProxyConnectorRuleConfiguration</A>&gt;&nbsp;all)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#getArchivaConfiguration()">getArchivaConfiguration</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/DownloadErrorPolicy.html" title="interface in org.apache.archiva.policies">DownloadErrorPolicy</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#getDownloadErrorPolicies()">getDownloadErrorPolicies</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;long</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#getLastModified(java.io.File)">getLastModified</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;file)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/archiva/repository/metadata/MetadataTools.html" title="class in org.apache.archiva.repository.metadata">MetadataTools</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#getMetadataTools()">getMetadataTools</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/PostDownloadPolicy.html" title="interface in org.apache.archiva.policies">PostDownloadPolicy</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#getPostDownloadPolicies()">getPostDownloadPolicies</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/PreDownloadPolicy.html" title="interface in org.apache.archiva.policies">PreDownloadPolicy</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#getPreDownloadPolicies()">getPreDownloadPolicies</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../org/apache/archiva/proxy/model/ProxyConnector.html" title="class in org.apache.archiva.proxy.model">ProxyConnector</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#getProxyConnectors(org.apache.archiva.repository.ManagedRepositoryContent)">getProxyConnectors</A></B>(<A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TODO: Ensure that list is correctly ordered based on configuration.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#getRepositoryFactory()">getRepositoryFactory</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/archiva/policies/urlcache/UrlFailureCache.html" title="interface in org.apache.archiva.policies.urlcache">UrlFailureCache</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#getUrlFailureCache()">getUrlFailureCache</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/archiva/proxy/common/WagonFactory.html" title="interface in org.apache.archiva.proxy.common">WagonFactory</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#getWagonFactory()">getWagonFactory</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#hasBeenUpdated(java.io.File, long)">hasBeenUpdated</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;file,
+                             long&nbsp;originalLastModified)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#hasProxies(org.apache.archiva.repository.ManagedRepositoryContent)">hasProxies</A></B>(<A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test if the provided ManagedRepositoryContent has any proxies configured for it.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#initConnectorsAndNetworkProxies()">initConnectorsAndNetworkProxies</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#initialize()">initialize</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#matchesPattern(java.lang.String, java.util.List)">matchesPattern</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;path,
+                             <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;patterns)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tests whitelist and blacklist patterns against path.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#moveFileIfExists(java.io.File, java.io.File)">moveFileIfExists</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;fileToMove,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;directory)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Moves the file into repository location if it exists</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#moveTempToTarget(java.io.File, java.io.File)">moveTempToTarget</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;temp,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;target)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Used to move the temporary file to its real destination.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#queueRepositoryTask(java.lang.String, java.io.File)">queueRepositoryTask</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId,
+                                       <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;localFile)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#setArchivaConfiguration(org.apache.archiva.configuration.ArchivaConfiguration)">setArchivaConfiguration</A></B>(<A HREF="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</A>&nbsp;archivaConfiguration)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#setDownloadErrorPolicies(java.util.Map)">setDownloadErrorPolicies</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/DownloadErrorPolicy.html" title="interface in org.apache.archiva.policies">DownloadErrorPolicy</A>&gt;&nbsp;downloadErrorPolicies)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#setMetadataTools(org.apache.archiva.repository.metadata.MetadataTools)">setMetadataTools</A></B>(<A HREF="../../../../org/apache/archiva/repository/metadata/MetadataTools.html" title="class in org.apache.archiva.repository.metadata">MetadataTools</A>&nbsp;metadataTools)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#setPostDownloadPolicies(java.util.Map)">setPostDownloadPolicies</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/PostDownloadPolicy.html" title="interface in org.apache.archiva.policies">PostDownloadPolicy</A>&gt;&nbsp;postDownloadPolicies)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#setPreDownloadPolicies(java.util.Map)">setPreDownloadPolicies</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/PreDownloadPolicy.html" title="interface in org.apache.archiva.policies">PreDownloadPolicy</A>&gt;&nbsp;preDownloadPolicies)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#setRepositoryFactory(org.apache.archiva.repository.RepositoryContentFactory)">setRepositoryFactory</A></B>(<A HREF="../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</A>&nbsp;repositoryFactory)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#setUrlFailureCache(org.apache.archiva.policies.urlcache.UrlFailureCache)">setUrlFailureCache</A></B>(<A HREF="../../../../org/apache/archiva/policies/urlcache/UrlFailureCache.html" title="interface in org.apache.archiva.policies.urlcache">UrlFailureCache</A>&nbsp;urlFailureCache)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#setWagonFactory(org.apache.archiva.proxy.common.WagonFactory)">setWagonFactory</A></B>(<A HREF="../../../../org/apache/archiva/proxy/common/WagonFactory.html" title="interface in org.apache.archiva.proxy.common">WagonFactory</A>&nbsp;wagonFactory)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#toLocalFile(org.apache.archiva.repository.ManagedRepositoryContent, org.apache.archiva.model.ArtifactReference)">toLocalFile</A></B>(<A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository,
+                       <A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A>&nbsp;artifact)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#toLocalRepoFile(org.apache.archiva.repository.ManagedRepositoryContent, org.apache.archiva.repository.RemoteRepositoryContent, java.lang.String)">toLocalRepoFile</A></B>(<A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository,
+                               <A HREF="../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</A>&nbsp;targetRepository,
+                               <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;targetPath)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#transferArtifact(org.apache.maven.wagon.Wagon, org.apache.archiva.repository.RemoteRepositoryContent, java.lang.String, org.apache.archiva.repository.ManagedRepositoryContent, java.io.File, java.io.File, java.io.File)">transferArtifact</A></B>(org.apache.maven.wagon.Wagon&nbsp;wagon,
+                                 <A HREF="../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</A>&nbsp;remoteRepository,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;remotePath,
+                                 <A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;resource,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;tmpDirectory,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;destFile)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#transferChecksum(org.apache.maven.wagon.Wagon, org.apache.archiva.repository.RemoteRepositoryContent, java.lang.String, org.apache.archiva.repository.ManagedRepositoryContent, java.io.File, java.io.File, java.lang.String, java.io.File)">transferChecksum</A></B>(org.apache.maven.wagon.Wagon&nbsp;wagon,
+                                 <A HREF="../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</A>&nbsp;remoteRepository,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;remotePath,
+                                 <A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;resource,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;tmpDirectory,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;ext,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;destFile)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Quietly transfer the checksum file from the remote repository to the local file.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#transferFile(org.apache.archiva.proxy.model.ProxyConnector, org.apache.archiva.repository.RemoteRepositoryContent, java.lang.String, org.apache.archiva.repository.ManagedRepositoryContent, java.io.File, java.util.Properties, boolean)">transferFile</A></B>(<A HREF="../../../../org/apache/archiva/proxy/model/ProxyConnector.html" title="class in org.apache.archiva.proxy.model">ProxyConnector</A>&nbsp;connector,
+                         <A HREF="../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</A>&nbsp;remoteRepository,
+                         <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;remotePath,
+                         <A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository,
+                         <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;resource,
+                         <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</A>&nbsp;requestProperties,
+                         boolean&nbsp;executeConsumers)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Perform the transfer of the file.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#transferResources(org.apache.archiva.proxy.model.ProxyConnector, org.apache.archiva.repository.RemoteRepositoryContent, java.io.File, java.io.File, java.io.File, java.lang.String, java.lang.String, java.io.File, java.io.File, org.apache.archiva.repository.ManagedRepositoryContent)">transferResources</A></B>(<A HREF="../../../../org/apache/archiva/proxy/model/ProxyConnector.html" title="class in org.apache.archiva.proxy.model">ProxyConnector</A>&nbsp;connector,
+                                   <A HREF="../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</A>&nbsp;remoteRepository,
+                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;tmpMd5,
+                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;tmpSha1,
+                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;tmpResource,
+                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;url,
+                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;remotePath,
+                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;resource,
+                                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;workingDirectory,
+                                   <A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#transferSimpleFile(org.apache.maven.wagon.Wagon, org.apache.archiva.repository.RemoteRepositoryContent, java.lang.String, org.apache.archiva.repository.ManagedRepositoryContent, java.io.File, java.io.File)">transferSimpleFile</A></B>(org.apache.maven.wagon.Wagon&nbsp;wagon,
+                                     <A HREF="../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</A>&nbsp;remoteRepository,
+                                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;remotePath,
+                                     <A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository,
+                                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;origFile,
+                                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;destFile)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Perform the transfer of the remote file to the local file specified.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#validatePolicies(java.util.Map, java.util.Map, java.util.Properties, java.io.File)">validatePolicies</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,? extends <A HREF="../../../../org/apache/archiva/policies/DownloadPolicy.html" title="interface in org.apache.archiva.policies">DownloadPolicy</A>&gt;&nbsp;policies,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;settings,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</A>&nbsp;request,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;localFile)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apply the policies.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>private &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#validatePolicies(java.util.Map, java.util.Map, java.util.Properties, org.apache.archiva.model.ArtifactReference, org.apache.archiva.repository.RemoteRepositoryContent, java.io.File, java.lang.Exception, java.util.Map)">validatePolicies</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/DownloadErrorPolicy.html" title="interface in org.apache.archiva.policies">DownloadErrorPolicy</A>&gt;&nbsp;policies,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;settings,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</A>&nbsp;request,
+                                 <A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A>&nbsp;artifact,
+                                 <A HREF="../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</A>&nbsp;content,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;localFile,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</A>&nbsp;exception,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</A>&gt;&nbsp;previousExceptions)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class java.lang.<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<!-- ============ FIELD DETAIL =========== -->
+
+<A NAME="field_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Field Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="log"><!-- --></A><H3>
+log</H3>
+<PRE>
+private org.slf4j.Logger <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.106"><B>log</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="archivaConfiguration"><!-- --></A><H3>
+archivaConfiguration</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+@Named(value="archivaConfiguration#default")
+</FONT>private <A HREF="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.113"><B>archivaConfiguration</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="repositoryFactory"><!-- --></A><H3>
+repositoryFactory</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+@Named(value="repositoryContentFactory#default")
+</FONT>private <A HREF="../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.120"><B>repositoryFactory</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="metadataTools"><!-- --></A><H3>
+metadataTools</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+@Named(value="metadataTools#default")
+</FONT>private <A HREF="../../../../org/apache/archiva/repository/metadata/MetadataTools.html" title="class in org.apache.archiva.repository.metadata">MetadataTools</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.127"><B>metadataTools</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="preDownloadPolicies"><!-- --></A><H3>
+preDownloadPolicies</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/PreDownloadPolicy.html" title="interface in org.apache.archiva.policies">PreDownloadPolicy</A>&gt; <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.133"><B>preDownloadPolicies</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="postDownloadPolicies"><!-- --></A><H3>
+postDownloadPolicies</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/PostDownloadPolicy.html" title="interface in org.apache.archiva.policies">PostDownloadPolicy</A>&gt; <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.139"><B>postDownloadPolicies</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="downloadErrorPolicies"><!-- --></A><H3>
+downloadErrorPolicies</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/DownloadErrorPolicy.html" title="interface in org.apache.archiva.policies">DownloadErrorPolicy</A>&gt; <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.145"><B>downloadErrorPolicies</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="urlFailureCache"><!-- --></A><H3>
+urlFailureCache</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../org/apache/archiva/policies/urlcache/UrlFailureCache.html" title="interface in org.apache.archiva.policies.urlcache">UrlFailureCache</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.151"><B>urlFailureCache</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="proxyConnectorMap"><!-- --></A><H3>
+proxyConnectorMap</H3>
+<PRE>
+private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../org/apache/archiva/proxy/model/ProxyConnector.html" title="class in org.apache.archiva.proxy.model">ProxyConnector</A>&gt;&gt; <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.153"><B>proxyConnectorMap</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="networkProxyMap"><!-- --></A><H3>
+networkProxyMap</H3>
+<PRE>
+private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,org.apache.maven.wagon.proxy.ProxyInfo&gt; <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.155"><B>networkProxyMap</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="wagonFactory"><!-- --></A><H3>
+wagonFactory</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../org/apache/archiva/proxy/common/WagonFactory.html" title="interface in org.apache.archiva.proxy.common">WagonFactory</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.161"><B>wagonFactory</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="scheduler"><!-- --></A><H3>
+scheduler</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+@Named(value="archivaTaskScheduler#repository")
+</FONT>private <A HREF="../../../../org/apache/archiva/scheduler/ArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler">ArchivaTaskScheduler</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.168"><B>scheduler</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="networkProxyAdmin"><!-- --></A><H3>
+networkProxyAdmin</H3>
+<PRE>
+<FONT SIZE="-1">@Inject
+</FONT>private <A HREF="../../../../org/apache/archiva/admin/model/networkproxy/NetworkProxyAdmin.html" title="interface in org.apache.archiva.admin.model.networkproxy">NetworkProxyAdmin</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.171"><B>networkProxyAdmin</B></A></PRE>
+<DL>
+<DL>
+</DL>
+</DL>
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+
+<A NAME="constructor_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Constructor Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="DefaultRepositoryProxyConnectors()"><!-- --></A><H3>
+DefaultRepositoryProxyConnectors</H3>
+<PRE>
+public <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.103"><B>DefaultRepositoryProxyConnectors</B></A>()</PRE>
+<DL>
+</DL>
+
+<!-- ============ METHOD DETAIL ========== -->
+
+<A NAME="method_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Method Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="initialize()"><!-- --></A><H3>
+initialize</H3>
+<PRE>
+<FONT SIZE="-1"><A HREF="http://docs.oracle.com/javase/6/docs/api/javax/annotation/PostConstruct.html?is-external=true" title="class or interface in javax.annotation">@PostConstruct</A>
+</FONT>public void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.174"><B>initialize</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="initConnectorsAndNetworkProxies()"><!-- --></A><H3>
+initConnectorsAndNetworkProxies</H3>
+<PRE>
+private void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.182"><B>initConnectorsAndNetworkProxies</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="findProxyConnectorRules(java.lang.String, java.lang.String, java.util.List)"><!-- --></A><H3>
+findProxyConnectorRules</H3>
+<PRE>
+private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../org/apache/archiva/configuration/ProxyConnectorRuleConfiguration.html" title="class in org.apache.archiva.configuration">ProxyConnectorRuleConfiguration</A>&gt; <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.301"><B>findProxyConnectorRules</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;sourceRepository,
+                                                                      <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;targetRepository,
+                                                                      <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../org/apache/archiva/configuration/ProxyConnectorRuleConfiguration.html" title="class in org.apache.archiva.configuration">ProxyConnectorRuleConfiguration</A>&gt;&nbsp;all)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="fetchFromProxies(org.apache.archiva.repository.ManagedRepositoryContent, org.apache.archiva.model.ArtifactReference)"><!-- --></A><H3>
+fetchFromProxies</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.323"><B>fetchFromProxies</B></A>(<A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository,
+                             <A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A>&nbsp;artifact)
+                      throws <A HREF="../../../../org/apache/archiva/policies/ProxyDownloadException.html" title="class in org.apache.archiva.policies">ProxyDownloadException</A></PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html#fetchFromProxies(org.apache.archiva.repository.ManagedRepositoryContent, org.apache.archiva.model.ArtifactReference)">RepositoryProxyConnectors</A></CODE></B></DD>
+<DD>Performs the artifact fetch operation against the target repositories
+ of the provided source repository.
+ 
+ If the artifact is found, it is downloaded and placed into the source repository
+ filesystem.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html#fetchFromProxies(org.apache.archiva.repository.ManagedRepositoryContent, org.apache.archiva.model.ArtifactReference)">fetchFromProxies</A></CODE> in interface <CODE><A HREF="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html" title="interface in org.apache.archiva.proxy.model">RepositoryProxyConnectors</A></CODE></DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>repository</CODE> - the source repository to use. (must be a managed repository)<DD><CODE>artifact</CODE> - the artifact to fetch.
+<DT><B>Returns:</B><DD>the file that was obtained, or null if no content was obtained
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/policies/ProxyDownloadException.html" title="class in org.apache.archiva.policies">ProxyDownloadException</A></CODE> - if there was a problem fetching the content from the target repositories.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="fetchFromProxies(org.apache.archiva.repository.ManagedRepositoryContent, java.lang.String)"><!-- --></A><H3>
+fetchFromProxies</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.398"><B>fetchFromProxies</B></A>(<A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository,
+                             <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;path)</PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html#fetchFromProxies(org.apache.archiva.repository.ManagedRepositoryContent, java.lang.String)">RepositoryProxyConnectors</A></CODE></B></DD>
+<DD>Performs the fetch operation against the target repositories
+ of the provided source repository.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html#fetchFromProxies(org.apache.archiva.repository.ManagedRepositoryContent, java.lang.String)">fetchFromProxies</A></CODE> in interface <CODE><A HREF="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html" title="interface in org.apache.archiva.proxy.model">RepositoryProxyConnectors</A></CODE></DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>repository</CODE> - the source repository to use. (must be a managed repository)<DD><CODE>path</CODE> - the path of the resource to fetch
+<DT><B>Returns:</B><DD>the file that was obtained, or null if no content was obtained</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="fetchMetatadaFromProxies(org.apache.archiva.repository.ManagedRepositoryContent, java.lang.String)"><!-- --></A><H3>
+fetchMetatadaFromProxies</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.472"><B>fetchMetatadaFromProxies</B></A>(<A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository,
+                                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;logicalPath)</PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html#fetchMetatadaFromProxies(org.apache.archiva.repository.ManagedRepositoryContent, java.lang.String)">RepositoryProxyConnectors</A></CODE></B></DD>
+<DD>Performs the metadata fetch operation against the target repositories
+ of the provided source repository.
+ 
+ If the metadata is found, it is downloaded and placed into the source repository
+ filesystem.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html#fetchMetatadaFromProxies(org.apache.archiva.repository.ManagedRepositoryContent, java.lang.String)">fetchMetatadaFromProxies</A></CODE> in interface <CODE><A HREF="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html" title="interface in org.apache.archiva.proxy.model">RepositoryProxyConnectors</A></CODE></DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>repository</CODE> - the source repository to use. (must be a managed repository)<DD><CODE>logicalPath</CODE> - the metadata to fetch.
+<DT><B>Returns:</B><DD>the file that was obtained, or null if no content was obtained</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="transferResources(org.apache.archiva.proxy.model.ProxyConnector, org.apache.archiva.repository.RemoteRepositoryContent, java.io.File, java.io.File, java.io.File, java.lang.String, java.lang.String, java.io.File, java.io.File, org.apache.archiva.repository.ManagedRepositoryContent)"><!-- --></A><H3>
+transferResources</H3>
+<PRE>
+protected void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.573"><B>transferResources</B></A>(<A HREF="../../../../org/apache/archiva/proxy/model/ProxyConnector.html" title="class in org.apache.archiva.proxy.model">ProxyConnector</A>&nbsp;connector,
+                                 <A HREF="../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</A>&nbsp;remoteRepository,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;tmpMd5,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;tmpSha1,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;tmpResource,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;url,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;remotePath,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;resource,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;workingDirectory,
+                                 <A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository)
+                          throws <A HREF="../../../../org/apache/archiva/proxy/ProxyException.html" title="class in org.apache.archiva.proxy">ProxyException</A>,
+                                 <A HREF="../../../../org/apache/archiva/proxy/NotModifiedException.html" title="class in org.apache.archiva.proxy">NotModifiedException</A>,
+                                 <A HREF="../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>connector</CODE> - <DD><CODE>remoteRepository</CODE> - <DD><CODE>tmpMd5</CODE> - <DD><CODE>tmpSha1</CODE> - <DD><CODE>tmpResource</CODE> - <DD><CODE>url</CODE> - <DD><CODE>remotePath</CODE> - <DD><CODE>resource</CODE> - <DD><CODE>workingDirectory</CODE> - <DD><CODE>repository</CODE> - 
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/proxy/ProxyException.html" title="class in org.apache.archiva.proxy">ProxyException</A></CODE>
+<DD><CODE><A HREF="../../../../org/apache/archiva/proxy/NotModifiedException.html" title="class in org.apache.archiva.proxy">NotModifiedException</A></CODE>
+<DD><CODE><A HREF="../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="transferArtifact(org.apache.maven.wagon.Wagon, org.apache.archiva.repository.RemoteRepositoryContent, java.lang.String, org.apache.archiva.repository.ManagedRepositoryContent, java.io.File, java.io.File, java.io.File)"><!-- --></A><H3>
+transferArtifact</H3>
+<PRE>
+private void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.652"><B>transferArtifact</B></A>(org.apache.maven.wagon.Wagon&nbsp;wagon,
+                              <A HREF="../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</A>&nbsp;remoteRepository,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;remotePath,
+                              <A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;resource,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;tmpDirectory,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;destFile)
+                       throws <A HREF="../../../../org/apache/archiva/proxy/ProxyException.html" title="class in org.apache.archiva.proxy">ProxyException</A></PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/proxy/ProxyException.html" title="class in org.apache.archiva.proxy">ProxyException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getLastModified(java.io.File)"><!-- --></A><H3>
+getLastModified</H3>
+<PRE>
+private long <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.660"><B>getLastModified</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;file)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="hasBeenUpdated(java.io.File, long)"><!-- --></A><H3>
+hasBeenUpdated</H3>
+<PRE>
+private boolean <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.670"><B>hasBeenUpdated</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;file,
+                               long&nbsp;originalLastModified)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="toLocalRepoFile(org.apache.archiva.repository.ManagedRepositoryContent, org.apache.archiva.repository.RemoteRepositoryContent, java.lang.String)"><!-- --></A><H3>
+toLocalRepoFile</H3>
+<PRE>
+private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.681"><B>toLocalRepoFile</B></A>(<A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository,
+                             <A HREF="../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</A>&nbsp;targetRepository,
+                             <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;targetPath)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="hasProxies(org.apache.archiva.repository.ManagedRepositoryContent)"><!-- --></A><H3>
+hasProxies</H3>
+<PRE>
+public boolean <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.691"><B>hasProxies</B></A>(<A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository)</PRE>
+<DL>
+<DD>Test if the provided ManagedRepositoryContent has any proxies configured for it.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html#hasProxies(org.apache.archiva.repository.ManagedRepositoryContent)">hasProxies</A></CODE> in interface <CODE><A HREF="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html" title="interface in org.apache.archiva.proxy.model">RepositoryProxyConnectors</A></CODE></DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>repository</CODE> - the source repository to look for.
+<DT><B>Returns:</B><DD>true if there are proxy connectors that use the provided 
+   repository as a source repository.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="toLocalFile(org.apache.archiva.repository.ManagedRepositoryContent, org.apache.archiva.model.ArtifactReference)"><!-- --></A><H3>
+toLocalFile</H3>
+<PRE>
+private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.699"><B>toLocalFile</B></A>(<A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository,
+                         <A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A>&nbsp;artifact)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="fileExists(java.io.File)"><!-- --></A><H3>
+fileExists</H3>
+<PRE>
+private boolean <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.710"><B>fileExists</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;file)</PRE>
+<DL>
+<DD>Simple method to test if the file exists on the local disk.
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>file</CODE> - the file to test. (may be null)
+<DT><B>Returns:</B><DD>true if file exists. false if the file param is null, doesn't exist, or is not of type File.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="transferFile(org.apache.archiva.proxy.model.ProxyConnector, org.apache.archiva.repository.RemoteRepositoryContent, java.lang.String, org.apache.archiva.repository.ManagedRepositoryContent, java.io.File, java.util.Properties, boolean)"><!-- --></A><H3>
+transferFile</H3>
+<PRE>
+private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.746"><B>transferFile</B></A>(<A HREF="../../../../org/apache/archiva/proxy/model/ProxyConnector.html" title="class in org.apache.archiva.proxy.model">ProxyConnector</A>&nbsp;connector,
+                          <A HREF="../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</A>&nbsp;remoteRepository,
+                          <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;remotePath,
+                          <A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository,
+                          <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;resource,
+                          <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</A>&nbsp;requestProperties,
+                          boolean&nbsp;executeConsumers)
+                   throws <A HREF="../../../../org/apache/archiva/proxy/ProxyException.html" title="class in org.apache.archiva.proxy">ProxyException</A>,
+                          <A HREF="../../../../org/apache/archiva/proxy/NotModifiedException.html" title="class in org.apache.archiva.proxy">NotModifiedException</A>,
+                          <A HREF="../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></PRE>
+<DL>
+<DD>Perform the transfer of the file.
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>connector</CODE> - the connector configuration to use.<DD><CODE>remoteRepository</CODE> - the remote repository get the resource from.<DD><CODE>remotePath</CODE> - the path in the remote repository to the resource to get.<DD><CODE>repository</CODE> - the managed repository that will hold the file<DD><CODE>resource</CODE> - the local file to place the downloaded resource into<DD><CODE>requestProperties</CODE> - the request properties to utilize for policy handling.<DD><CODE>executeConsumers</CODE> - whether to execute the consumers after proxying
+<DT><B>Returns:</B><DD>the local file that was downloaded, or null if not downloaded.
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/proxy/NotFoundException.html" title="class in org.apache.archiva.proxy">NotFoundException</A></CODE> - if the file was not found on the remote repository.
+<DD><CODE><A HREF="../../../../org/apache/archiva/proxy/NotModifiedException.html" title="class in org.apache.archiva.proxy">NotModifiedException</A></CODE> - if the localFile was present, and the resource was present on remote repository, but
+                              the remote resource is not newer than the local File.
+<DD><CODE><A HREF="../../../../org/apache/archiva/proxy/ProxyException.html" title="class in org.apache.archiva.proxy">ProxyException</A></CODE> - if transfer was unsuccessful.
+<DD><CODE><A HREF="../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="queueRepositoryTask(java.lang.String, java.io.File)"><!-- --></A><H3>
+queueRepositoryTask</H3>
+<PRE>
+private void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.850"><B>queueRepositoryTask</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;repositoryId,
+                                 <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;localFile)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="moveFileIfExists(java.io.File, java.io.File)"><!-- --></A><H3>
+moveFileIfExists</H3>
+<PRE>
+private void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.875"><B>moveFileIfExists</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;fileToMove,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;directory)
+                       throws <A HREF="../../../../org/apache/archiva/proxy/ProxyException.html" title="class in org.apache.archiva.proxy">ProxyException</A></PRE>
+<DL>
+<DD>Moves the file into repository location if it exists
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>fileToMove</CODE> - this could be either the main artifact, sha1 or md5 checksum file.<DD><CODE>directory</CODE> - directory to write files to
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/proxy/ProxyException.html" title="class in org.apache.archiva.proxy">ProxyException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="transferChecksum(org.apache.maven.wagon.Wagon, org.apache.archiva.repository.RemoteRepositoryContent, java.lang.String, org.apache.archiva.repository.ManagedRepositoryContent, java.io.File, java.io.File, java.lang.String, java.io.File)"><!-- --></A><H3>
+transferChecksum</H3>
+<PRE>
+private void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.899"><B>transferChecksum</B></A>(org.apache.maven.wagon.Wagon&nbsp;wagon,
+                              <A HREF="../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</A>&nbsp;remoteRepository,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;remotePath,
+                              <A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;resource,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;tmpDirectory,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;ext,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;destFile)
+                       throws <A HREF="../../../../org/apache/archiva/proxy/ProxyException.html" title="class in org.apache.archiva.proxy">ProxyException</A></PRE>
+<DL>
+<DD><p>
+ Quietly transfer the checksum file from the remote repository to the local file.
+ </p>
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>wagon</CODE> - the wagon instance (should already be connected) to use.<DD><CODE>remoteRepository</CODE> - the remote repository to transfer from.<DD><CODE>remotePath</CODE> - the remote path to the resource to get.<DD><CODE>repository</CODE> - the managed repository that will hold the file<DD><CODE>resource</CODE> - the local file that should contain the downloaded contents<DD><CODE>tmpDirectory</CODE> - the temporary directory to download to<DD><CODE>ext</CODE> - the type of checksum to transfer (example: ".md5" or ".sha1")
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/proxy/ProxyException.html" title="class in org.apache.archiva.proxy">ProxyException</A></CODE> - if copying the downloaded file into place did not succeed.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="transferSimpleFile(org.apache.maven.wagon.Wagon, org.apache.archiva.repository.RemoteRepositoryContent, java.lang.String, org.apache.archiva.repository.ManagedRepositoryContent, java.io.File, java.io.File)"><!-- --></A><H3>
+transferSimpleFile</H3>
+<PRE>
+private void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.949"><B>transferSimpleFile</B></A>(org.apache.maven.wagon.Wagon&nbsp;wagon,
+                                <A HREF="../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</A>&nbsp;remoteRepository,
+                                <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;remotePath,
+                                <A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository,
+                                <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;origFile,
+                                <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;destFile)
+                         throws <A HREF="../../../../org/apache/archiva/proxy/ProxyException.html" title="class in org.apache.archiva.proxy">ProxyException</A></PRE>
+<DL>
+<DD>Perform the transfer of the remote file to the local file specified.
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>wagon</CODE> - the wagon instance to use.<DD><CODE>remoteRepository</CODE> - the remote repository to use<DD><CODE>remotePath</CODE> - the remote path to attempt to get<DD><CODE>repository</CODE> - the managed repository that will hold the file<DD><CODE>origFile</CODE> - the local file to save to
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/proxy/ProxyException.html" title="class in org.apache.archiva.proxy">ProxyException</A></CODE> - if there was a problem moving the downloaded file into place.
+<DD><CODE>org.apache.maven.wagon.WagonException</CODE> - if there was a problem tranfering the file.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="validatePolicies(java.util.Map, java.util.Map, java.util.Properties, java.io.File)"><!-- --></A><H3>
+validatePolicies</H3>
+<PRE>
+private void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1016"><B>validatePolicies</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,? extends <A HREF="../../../../org/apache/archiva/policies/DownloadPolicy.html" title="interface in org.apache.archiva.policies">DownloadPolicy</A>&gt;&nbsp;policies,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;settings,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</A>&nbsp;request,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;localFile)
+                       throws <A HREF="../../../../org/apache/archiva/policies/PolicyViolationException.html" title="class in org.apache.archiva.policies">PolicyViolationException</A></PRE>
+<DL>
+<DD>Apply the policies.
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>policies</CODE> - the map of policies to execute. (Map of String policy keys, to <A HREF="../../../../org/apache/archiva/policies/DownloadPolicy.html" title="interface in org.apache.archiva.policies"><CODE>DownloadPolicy</CODE></A> objects)<DD><CODE>settings</CODE> - the map of settings for the policies to execute. (Map of String policy keys, to String policy
+                  setting)<DD><CODE>request</CODE> - the request properties (utilized by the <A HREF="../../../../org/apache/archiva/policies/DownloadPolicy.html#applyPolicy(java.lang.String, java.util.Properties, java.io.File)"><CODE>DownloadPolicy.applyPolicy(String, Properties, File)</CODE></A>
+                  )<DD><CODE>localFile</CODE> - the local file (utilized by the <A HREF="../../../../org/apache/archiva/policies/DownloadPolicy.html#applyPolicy(java.lang.String, java.util.Properties, java.io.File)"><CODE>DownloadPolicy.applyPolicy(String, Properties, File)</CODE></A>)
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/policies/PolicyViolationException.html" title="class in org.apache.archiva.policies">PolicyViolationException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="validatePolicies(java.util.Map, java.util.Map, java.util.Properties, org.apache.archiva.model.ArtifactReference, org.apache.archiva.repository.RemoteRepositoryContent, java.io.File, java.lang.Exception, java.util.Map)"><!-- --></A><H3>
+validatePolicies</H3>
+<PRE>
+private void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1042"><B>validatePolicies</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/DownloadErrorPolicy.html" title="interface in org.apache.archiva.policies">DownloadErrorPolicy</A>&gt;&nbsp;policies,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;settings,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</A>&nbsp;request,
+                              <A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A>&nbsp;artifact,
+                              <A HREF="../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</A>&nbsp;content,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;localFile,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</A>&nbsp;exception,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</A>&gt;&nbsp;previousExceptions)
+                       throws <A HREF="../../../../org/apache/archiva/policies/ProxyDownloadException.html" title="class in org.apache.archiva.policies">ProxyDownloadException</A></PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/policies/ProxyDownloadException.html" title="class in org.apache.archiva.policies">ProxyDownloadException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="createWorkingDirectory(org.apache.archiva.repository.ManagedRepositoryContent)"><!-- --></A><H3>
+createWorkingDirectory</H3>
+<PRE>
+private <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1103"><B>createWorkingDirectory</B></A>(<A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository)</PRE>
+<DL>
+<DD>Creates a working directory
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>repository</CODE> - 
+<DT><B>Returns:</B><DD>file location of working directory
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="moveTempToTarget(java.io.File, java.io.File)"><!-- --></A><H3>
+moveTempToTarget</H3>
+<PRE>
+private void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1116"><B>moveTempToTarget</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;temp,
+                              <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A>&nbsp;target)
+                       throws <A HREF="../../../../org/apache/archiva/proxy/ProxyException.html" title="class in org.apache.archiva.proxy">ProxyException</A></PRE>
+<DL>
+<DD>Used to move the temporary file to its real destination. This is patterned from the way WagonManager handles its
+ downloaded files.
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>temp</CODE> - The completed download file<DD><CODE>target</CODE> - The final location of the downloaded file
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/proxy/ProxyException.html" title="class in org.apache.archiva.proxy">ProxyException</A></CODE> - when the temp file cannot replace the target file</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="connectToRepository(org.apache.archiva.proxy.model.ProxyConnector, org.apache.maven.wagon.Wagon, org.apache.archiva.repository.RemoteRepositoryContent)"><!-- --></A><H3>
+connectToRepository</H3>
+<PRE>
+private boolean <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1161"><B>connectToRepository</B></A>(<A HREF="../../../../org/apache/archiva/proxy/model/ProxyConnector.html" title="class in org.apache.archiva.proxy.model">ProxyConnector</A>&nbsp;connector,
+                                    org.apache.maven.wagon.Wagon&nbsp;wagon,
+                                    <A HREF="../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</A>&nbsp;remoteRepository)</PRE>
+<DL>
+<DD>Using wagon, connect to the remote repository.
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>connector</CODE> - the connector configuration to utilize (for obtaining network proxy configuration from)<DD><CODE>wagon</CODE> - the wagon instance to establish the connection on.<DD><CODE>remoteRepository</CODE> - the remote repository to connect to.
+<DT><B>Returns:</B><DD>true if the connection was successful. false if not connected.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="matchesPattern(java.lang.String, java.util.List)"><!-- --></A><H3>
+matchesPattern</H3>
+<PRE>
+private boolean <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1236"><B>matchesPattern</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;path,
+                               <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;&nbsp;patterns)</PRE>
+<DL>
+<DD>Tests whitelist and blacklist patterns against path.
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>path</CODE> - the path to test.<DD><CODE>patterns</CODE> - the list of patterns to check.
+<DT><B>Returns:</B><DD>true if the path matches at least 1 pattern in the provided patterns list.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getProxyConnectors(org.apache.archiva.repository.ManagedRepositoryContent)"><!-- --></A><H3>
+getProxyConnectors</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../org/apache/archiva/proxy/model/ProxyConnector.html" title="class in org.apache.archiva.proxy.model">ProxyConnector</A>&gt; <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1267"><B>getProxyConnectors</B></A>(<A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</A>&nbsp;repository)</PRE>
+<DL>
+<DD>TODO: Ensure that list is correctly ordered based on configuration. See MRM-477
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html#getProxyConnectors(org.apache.archiva.repository.ManagedRepositoryContent)">getProxyConnectors</A></CODE> in interface <CODE><A HREF="../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html" title="interface in org.apache.archiva.proxy.model">RepositoryProxyConnectors</A></CODE></DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>repository</CODE> - the source repository to look for.
+<DT><B>Returns:</B><DD>the List of <A HREF="../../../../org/apache/archiva/proxy/model/ProxyConnector.html" title="class in org.apache.archiva.proxy.model"><CODE>ProxyConnector</CODE></A> objects.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="afterConfigurationChange(org.apache.archiva.redback.components.registry.Registry, java.lang.String, java.lang.Object)"><!-- --></A><H3>
+afterConfigurationChange</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1282"><B>afterConfigurationChange</B></A>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry,
+                                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;propertyName,
+                                     <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;propertyValue)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE>afterConfigurationChange</CODE> in interface <CODE>org.apache.archiva.redback.components.registry.RegistryListener</CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="addParameters(java.lang.String, org.apache.archiva.admin.model.beans.RemoteRepository)"><!-- --></A><H3>
+addParameters</H3>
+<PRE>
+protected <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1292"><B>addParameters</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;path,
+                               <A HREF="../../../../org/apache/archiva/admin/model/beans/RemoteRepository.html" title="class in org.apache.archiva.admin.model.beans">RemoteRepository</A>&nbsp;remoteRepository)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="beforeConfigurationChange(org.apache.archiva.redback.components.registry.Registry, java.lang.String, java.lang.Object)"><!-- --></A><H3>
+beforeConfigurationChange</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1315"><B>beforeConfigurationChange</B></A>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry,
+                                      <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;propertyName,
+                                      <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;propertyValue)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE>beforeConfigurationChange</CODE> in interface <CODE>org.apache.archiva.redback.components.registry.RegistryListener</CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getArchivaConfiguration()"><!-- --></A><H3>
+getArchivaConfiguration</H3>
+<PRE>
+public <A HREF="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1320"><B>getArchivaConfiguration</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setArchivaConfiguration(org.apache.archiva.configuration.ArchivaConfiguration)"><!-- --></A><H3>
+setArchivaConfiguration</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1325"><B>setArchivaConfiguration</B></A>(<A HREF="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</A>&nbsp;archivaConfiguration)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getRepositoryFactory()"><!-- --></A><H3>
+getRepositoryFactory</H3>
+<PRE>
+public <A HREF="../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1330"><B>getRepositoryFactory</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setRepositoryFactory(org.apache.archiva.repository.RepositoryContentFactory)"><!-- --></A><H3>
+setRepositoryFactory</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1335"><B>setRepositoryFactory</B></A>(<A HREF="../../../../org/apache/archiva/repository/RepositoryContentFactory.html" title="class in org.apache.archiva.repository">RepositoryContentFactory</A>&nbsp;repositoryFactory)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getMetadataTools()"><!-- --></A><H3>
+getMetadataTools</H3>
+<PRE>
+public <A HREF="../../../../org/apache/archiva/repository/metadata/MetadataTools.html" title="class in org.apache.archiva.repository.metadata">MetadataTools</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1340"><B>getMetadataTools</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setMetadataTools(org.apache.archiva.repository.metadata.MetadataTools)"><!-- --></A><H3>
+setMetadataTools</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1345"><B>setMetadataTools</B></A>(<A HREF="../../../../org/apache/archiva/repository/metadata/MetadataTools.html" title="class in org.apache.archiva.repository.metadata">MetadataTools</A>&nbsp;metadataTools)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getUrlFailureCache()"><!-- --></A><H3>
+getUrlFailureCache</H3>
+<PRE>
+public <A HREF="../../../../org/apache/archiva/policies/urlcache/UrlFailureCache.html" title="interface in org.apache.archiva.policies.urlcache">UrlFailureCache</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1350"><B>getUrlFailureCache</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setUrlFailureCache(org.apache.archiva.policies.urlcache.UrlFailureCache)"><!-- --></A><H3>
+setUrlFailureCache</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1355"><B>setUrlFailureCache</B></A>(<A HREF="../../../../org/apache/archiva/policies/urlcache/UrlFailureCache.html" title="interface in org.apache.archiva.policies.urlcache">UrlFailureCache</A>&nbsp;urlFailureCache)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getWagonFactory()"><!-- --></A><H3>
+getWagonFactory</H3>
+<PRE>
+public <A HREF="../../../../org/apache/archiva/proxy/common/WagonFactory.html" title="interface in org.apache.archiva.proxy.common">WagonFactory</A> <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1360"><B>getWagonFactory</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setWagonFactory(org.apache.archiva.proxy.common.WagonFactory)"><!-- --></A><H3>
+setWagonFactory</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1365"><B>setWagonFactory</B></A>(<A HREF="../../../../org/apache/archiva/proxy/common/WagonFactory.html" title="interface in org.apache.archiva.proxy.common">WagonFactory</A>&nbsp;wagonFactory)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getPreDownloadPolicies()"><!-- --></A><H3>
+getPreDownloadPolicies</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/PreDownloadPolicy.html" title="interface in org.apache.archiva.policies">PreDownloadPolicy</A>&gt; <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1370"><B>getPreDownloadPolicies</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setPreDownloadPolicies(java.util.Map)"><!-- --></A><H3>
+setPreDownloadPolicies</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1375"><B>setPreDownloadPolicies</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/PreDownloadPolicy.html" title="interface in org.apache.archiva.policies">PreDownloadPolicy</A>&gt;&nbsp;preDownloadPolicies)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getPostDownloadPolicies()"><!-- --></A><H3>
+getPostDownloadPolicies</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/PostDownloadPolicy.html" title="interface in org.apache.archiva.policies">PostDownloadPolicy</A>&gt; <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1380"><B>getPostDownloadPolicies</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setPostDownloadPolicies(java.util.Map)"><!-- --></A><H3>
+setPostDownloadPolicies</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1385"><B>setPostDownloadPolicies</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/PostDownloadPolicy.html" title="interface in org.apache.archiva.policies">PostDownloadPolicy</A>&gt;&nbsp;postDownloadPolicies)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getDownloadErrorPolicies()"><!-- --></A><H3>
+getDownloadErrorPolicies</H3>
+<PRE>
+public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/DownloadErrorPolicy.html" title="interface in org.apache.archiva.policies">DownloadErrorPolicy</A>&gt; <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1390"><B>getDownloadErrorPolicies</B></A>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setDownloadErrorPolicies(java.util.Map)"><!-- --></A><H3>
+setDownloadErrorPolicies</H3>
+<PRE>
+public void <A HREF="../../../../src-html/org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#line.1395"><B>setDownloadErrorPolicies</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="../../../../org/apache/archiva/policies/DownloadErrorPolicy.html" title="interface in org.apache.archiva.policies">DownloadErrorPolicy</A>&gt;&nbsp;downloadErrorPolicies)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<!-- ========= END OF CLASS DATA ========= -->
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/DefaultRepositoryProxyConnectors.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;PREV CLASS&nbsp;
+&nbsp;<A HREF="../../../../org/apache/archiva/proxy/NotFoundException.html" title="class in org.apache.archiva.proxy"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../index.html?org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="DefaultRepositoryProxyConnectors.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+Copyright &#169; 2006-2013 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.
+</BODY>
+</HTML>

@@ -1,0 +1,725 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>
+ManagedRepositoryContent (Archiva :: Modules 1.4-M4 API)
+</TITLE>
+
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="ManagedRepositoryContent (Archiva :: Modules 1.4-M4 API)";
+    }
+}
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ManagedRepositoryContent.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../index.html?org/apache/archiva/repository/ManagedRepositoryContent.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="ManagedRepositoryContent.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;FIELD&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;FIELD&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<!-- ======== START OF CLASS DATA ======== -->
+<H2>
+<FONT SIZE="-1">
+org.apache.archiva.repository</FONT>
+<BR>
+Interface ManagedRepositoryContent</H2>
+<DL>
+<DT><B>All Known Implementing Classes:</B> <DD><A HREF="../../../../org/apache/archiva/repository/content/maven2/ManagedDefaultRepositoryContent.html" title="class in org.apache.archiva.repository.content.maven2">ManagedDefaultRepositoryContent</A>, <A HREF="../../../../org/apache/archiva/repository/content/legacy/ManagedLegacyRepositoryContent.html" title="class in org.apache.archiva.repository.content.legacy">ManagedLegacyRepositoryContent</A></DD>
+</DL>
+<HR>
+<DL>
+<DT><PRE>public interface <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.36"><B>ManagedRepositoryContent</B></A></DL>
+</PRE>
+
+<P>
+ManagedRepositoryContent interface for interacting with a managed repository in an abstract way,
+ without the need for processing based on filesystem paths, or working with the database.
+<P>
+
+<P>
+<HR>
+
+<P>
+
+<!-- ========== METHOD SUMMARY =========== -->
+
+<A NAME="method_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#deleteArtifact(org.apache.archiva.model.ArtifactReference)">deleteArtifact</A></B>(<A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A>&nbsp;artifactReference)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete a specified artifact from the repository</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#deleteGroupId(java.lang.String)">deleteGroupId</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;groupId)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#deleteProject(java.lang.String, java.lang.String)">deleteProject</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;namespace,
+                           <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectId)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#deleteVersion(org.apache.archiva.model.VersionedReference)">deleteVersion</A></B>(<A HREF="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</A>&nbsp;reference)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete from the managed repository all files / directories associated with the
+ provided version reference.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#getId()">getId</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Convenience method to get the repository id.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</A>&lt;<A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#getRelatedArtifacts(org.apache.archiva.model.ArtifactReference)">getRelatedArtifacts</A></B>(<A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A>&nbsp;reference)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Gather up the list of related artifacts to the ArtifactReference provided.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#getRepoRoot()">getRepoRoot</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Convenience method to get the repository (on disk) root directory.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#getRepository()">getRepository</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the repository configuration associated with this
+ repository content.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#getVersions(org.apache.archiva.model.ProjectReference)">getVersions</A></B>(<A HREF="../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model">ProjectReference</A>&nbsp;reference)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given a specific <A HREF="../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model"><CODE>ProjectReference</CODE></A>, return the list of available versions for
+ that project reference.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#getVersions(org.apache.archiva.model.VersionedReference)">getVersions</A></B>(<A HREF="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</A>&nbsp;reference)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Given a specific <A HREF="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model"><CODE>VersionedReference</CODE></A>, return the list of available versions for that
+ versioned reference.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#hasContent(org.apache.archiva.model.ArtifactReference)">hasContent</A></B>(<A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A>&nbsp;reference)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Determines if the artifact referenced exists in the repository.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#hasContent(org.apache.archiva.model.ProjectReference)">hasContent</A></B>(<A HREF="../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model">ProjectReference</A>&nbsp;reference)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Determines if the project referenced exists in the repository.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#hasContent(org.apache.archiva.model.VersionedReference)">hasContent</A></B>(<A HREF="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</A>&nbsp;reference)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Determines if the version reference exists in the repository.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#setRepository(org.apache.archiva.admin.model.beans.ManagedRepository)">setRepository</A></B>(<A HREF="../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</A>&nbsp;repo)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set the repository configuration to associate with this
+ repository content.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#toArtifactReference(java.lang.String)">toArtifactReference</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;path)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given a repository relative path to a filename, return the <A HREF="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model"><CODE>VersionedReference</CODE></A> object suitable for the path.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#toFile(org.apache.archiva.model.ArchivaArtifact)">toFile</A></B>(<A HREF="../../../../org/apache/archiva/model/ArchivaArtifact.html" title="class in org.apache.archiva.model">ArchivaArtifact</A>&nbsp;reference)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given an <A HREF="../../../../org/apache/archiva/model/ArchivaArtifact.html" title="class in org.apache.archiva.model"><CODE>ArchivaArtifact</CODE></A>, return the file reference to the artifact.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#toFile(org.apache.archiva.model.ArtifactReference)">toFile</A></B>(<A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A>&nbsp;reference)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given an <A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model"><CODE>ArtifactReference</CODE></A>, return the file reference to the artifact.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#toMetadataPath(org.apache.archiva.model.ProjectReference)">toMetadataPath</A></B>(<A HREF="../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model">ProjectReference</A>&nbsp;reference)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given a <A HREF="../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model"><CODE>ProjectReference</CODE></A>, return the path to the metadata for
+ the project.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#toMetadataPath(org.apache.archiva.model.VersionedReference)">toMetadataPath</A></B>(<A HREF="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</A>&nbsp;reference)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given a <A HREF="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model"><CODE>VersionedReference</CODE></A>, return the path to the metadata for
+ the specific version of the project.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#toPath(org.apache.archiva.model.ArchivaArtifact)">toPath</A></B>(<A HREF="../../../../org/apache/archiva/model/ArchivaArtifact.html" title="class in org.apache.archiva.model">ArchivaArtifact</A>&nbsp;reference)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given an <A HREF="../../../../org/apache/archiva/model/ArchivaArtifact.html" title="class in org.apache.archiva.model"><CODE>ArchivaArtifact</CODE></A>, return the relative path to the artifact.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#toPath(org.apache.archiva.model.ArtifactReference)">toPath</A></B>(<A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A>&nbsp;reference)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given an <A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model"><CODE>ArtifactReference</CODE></A>, return the relative path to the artifact.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<!-- ============ METHOD DETAIL ========== -->
+
+<A NAME="method_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Method Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="deleteVersion(org.apache.archiva.model.VersionedReference)"><!-- --></A><H3>
+deleteVersion</H3>
+<PRE>
+void <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.45"><B>deleteVersion</B></A>(<A HREF="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</A>&nbsp;reference)
+                   throws <A HREF="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository">ContentNotFoundException</A></PRE>
+<DL>
+<DD>Delete from the managed repository all files / directories associated with the
+ provided version reference.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>reference</CODE> - the version reference to delete.
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository">ContentNotFoundException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="deleteArtifact(org.apache.archiva.model.ArtifactReference)"><!-- --></A><H3>
+deleteArtifact</H3>
+<PRE>
+void <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.54"><B>deleteArtifact</B></A>(<A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A>&nbsp;artifactReference)
+                    throws <A HREF="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository">ContentNotFoundException</A></PRE>
+<DL>
+<DD>delete a specified artifact from the repository
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>artifactReference</CODE> - 
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository">ContentNotFoundException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="deleteGroupId(java.lang.String)"><!-- --></A><H3>
+deleteGroupId</H3>
+<PRE>
+void <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.62"><B>deleteGroupId</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;groupId)
+                   throws <A HREF="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository">ContentNotFoundException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>groupId</CODE> - 
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository">ContentNotFoundException</A></CODE><DT><B>Since:</B></DT>
+  <DD>1.4-M3</DD>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="deleteProject(java.lang.String, java.lang.String)"><!-- --></A><H3>
+deleteProject</H3>
+<PRE>
+void <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.71"><B>deleteProject</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;namespace,
+                   <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;projectId)
+                   throws <A HREF="../../../../org/apache/archiva/repository/RepositoryException.html" title="class in org.apache.archiva.repository">RepositoryException</A></PRE>
+<DL>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>namespace</CODE> - groupId for maven<DD><CODE>projectId</CODE> - artifactId for maven
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository">ContentNotFoundException</A></CODE>
+<DD><CODE><A HREF="../../../../org/apache/archiva/repository/RepositoryException.html" title="class in org.apache.archiva.repository">RepositoryException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getId()"><!-- --></A><H3>
+getId</H3>
+<PRE>
+<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.85"><B>getId</B></A>()</PRE>
+<DL>
+<DD><p>
+ Convenience method to get the repository id.
+ </p>
+ <p/>
+ <p>
+ Equivalent to calling <code>.getRepository().getId()</code>
+ </p>
+<P>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the repository id.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getRelatedArtifacts(org.apache.archiva.model.ArtifactReference)"><!-- --></A><H3>
+getRelatedArtifacts</H3>
+<PRE>
+<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</A>&lt;<A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A>&gt; <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.103"><B>getRelatedArtifacts</B></A>(<A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A>&nbsp;reference)
+                                           throws <A HREF="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository">ContentNotFoundException</A></PRE>
+<DL>
+<DD><p>
+ Gather up the list of related artifacts to the ArtifactReference provided.
+ This typically inclues the pom files, and those things with
+ classifiers (such as doc, source code, test libs, etc...)
+ </p>
+ <p/>
+ <p>
+ <strong>NOTE:</strong> Some layouts (such as maven 1 "legacy") are not compatible with this query.
+ </p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>reference</CODE> - the reference to work off of.
+<DT><B>Returns:</B><DD>the set of ArtifactReferences for related artifacts.
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository">ContentNotFoundException</A></CODE> - if the initial artifact reference does not exist within the repository.
+<DD><CODE><A HREF="../../../../org/apache/archiva/repository/layout/LayoutException.html" title="class in org.apache.archiva.repository.layout">LayoutException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getRepoRoot()"><!-- --></A><H3>
+getRepoRoot</H3>
+<PRE>
+<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.117"><B>getRepoRoot</B></A>()</PRE>
+<DL>
+<DD><p>
+ Convenience method to get the repository (on disk) root directory.
+ </p>
+ <p/>
+ <p>
+ Equivalent to calling <code>.getRepository().getLocation()</code>
+ </p>
+<P>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the repository (on disk) root directory.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getRepository()"><!-- --></A><H3>
+getRepository</H3>
+<PRE>
+<A HREF="../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</A> <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.125"><B>getRepository</B></A>()</PRE>
+<DL>
+<DD>Get the repository configuration associated with this
+ repository content.
+<P>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the repository that is associated with this repository content.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getVersions(org.apache.archiva.model.ProjectReference)"><!-- --></A><H3>
+getVersions</H3>
+<PRE>
+<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt; <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.136"><B>getVersions</B></A>(<A HREF="../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model">ProjectReference</A>&nbsp;reference)
+                        throws <A HREF="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository">ContentNotFoundException</A>,
+                               <A HREF="../../../../org/apache/archiva/repository/layout/LayoutException.html" title="class in org.apache.archiva.repository.layout">LayoutException</A></PRE>
+<DL>
+<DD>Given a specific <A HREF="../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model"><CODE>ProjectReference</CODE></A>, return the list of available versions for
+ that project reference.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>reference</CODE> - the project reference to work off of.
+<DT><B>Returns:</B><DD>the list of versions found for that project reference.
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository">ContentNotFoundException</A></CODE> - if the project reference does nto exist within the repository.
+<DD><CODE><A HREF="../../../../org/apache/archiva/repository/layout/LayoutException.html" title="class in org.apache.archiva.repository.layout">LayoutException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getVersions(org.apache.archiva.model.VersionedReference)"><!-- --></A><H3>
+getVersions</H3>
+<PRE>
+<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</A>&lt;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&gt; <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.154"><B>getVersions</B></A>(<A HREF="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</A>&nbsp;reference)
+                        throws <A HREF="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository">ContentNotFoundException</A></PRE>
+<DL>
+<DD><p>
+ Given a specific <A HREF="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model"><CODE>VersionedReference</CODE></A>, return the list of available versions for that
+ versioned reference.
+ </p>
+ <p/>
+ <p>
+ <strong>NOTE:</strong> This is really only useful when working with SNAPSHOTs.
+ </p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>reference</CODE> - the versioned reference to work off of.
+<DT><B>Returns:</B><DD>the set of versions found.
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository">ContentNotFoundException</A></CODE> - if the versioned reference does not exist within the repository.
+<DD><CODE><A HREF="../../../../org/apache/archiva/repository/layout/LayoutException.html" title="class in org.apache.archiva.repository.layout">LayoutException</A></CODE></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="hasContent(org.apache.archiva.model.ArtifactReference)"><!-- --></A><H3>
+hasContent</H3>
+<PRE>
+boolean <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.163"><B>hasContent</B></A>(<A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A>&nbsp;reference)</PRE>
+<DL>
+<DD>Determines if the artifact referenced exists in the repository.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>reference</CODE> - the artifact reference to check for.
+<DT><B>Returns:</B><DD>true if the artifact referenced exists.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="hasContent(org.apache.archiva.model.ProjectReference)"><!-- --></A><H3>
+hasContent</H3>
+<PRE>
+boolean <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.171"><B>hasContent</B></A>(<A HREF="../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model">ProjectReference</A>&nbsp;reference)</PRE>
+<DL>
+<DD>Determines if the project referenced exists in the repository.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>reference</CODE> - the project reference to check for.
+<DT><B>Returns:</B><DD>true it the project referenced exists.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="hasContent(org.apache.archiva.model.VersionedReference)"><!-- --></A><H3>
+hasContent</H3>
+<PRE>
+boolean <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.179"><B>hasContent</B></A>(<A HREF="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</A>&nbsp;reference)</PRE>
+<DL>
+<DD>Determines if the version reference exists in the repository.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>reference</CODE> - the version reference to check for.
+<DT><B>Returns:</B><DD>true if the version referenced exists.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setRepository(org.apache.archiva.admin.model.beans.ManagedRepository)"><!-- --></A><H3>
+setRepository</H3>
+<PRE>
+void <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.187"><B>setRepository</B></A>(<A HREF="../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</A>&nbsp;repo)</PRE>
+<DL>
+<DD>Set the repository configuration to associate with this
+ repository content.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>repo</CODE> - the repository to associate with this repository content.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="toArtifactReference(java.lang.String)"><!-- --></A><H3>
+toArtifactReference</H3>
+<PRE>
+<A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A> <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.197"><B>toArtifactReference</B></A>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;path)
+                                      throws <A HREF="../../../../org/apache/archiva/repository/layout/LayoutException.html" title="class in org.apache.archiva.repository.layout">LayoutException</A></PRE>
+<DL>
+<DD>Given a repository relative path to a filename, return the <A HREF="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model"><CODE>VersionedReference</CODE></A> object suitable for the path.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>path</CODE> - the path relative to the repository base dir for the artifact.
+<DT><B>Returns:</B><DD>the <A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model"><CODE>ArtifactReference</CODE></A> representing the path.  (or null if path cannot be converted to
+         a <A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model"><CODE>ArtifactReference</CODE></A>)
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/archiva/repository/layout/LayoutException.html" title="class in org.apache.archiva.repository.layout">LayoutException</A></CODE> - if there was a problem converting the path to an artifact.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="toFile(org.apache.archiva.model.ArtifactReference)"><!-- --></A><H3>
+toFile</H3>
+<PRE>
+<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A> <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.206"><B>toFile</B></A>(<A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A>&nbsp;reference)</PRE>
+<DL>
+<DD>Given an <A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model"><CODE>ArtifactReference</CODE></A>, return the file reference to the artifact.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>reference</CODE> - the artifact reference to use.
+<DT><B>Returns:</B><DD>the relative path to the artifact.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="toFile(org.apache.archiva.model.ArchivaArtifact)"><!-- --></A><H3>
+toFile</H3>
+<PRE>
+<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</A> <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.214"><B>toFile</B></A>(<A HREF="../../../../org/apache/archiva/model/ArchivaArtifact.html" title="class in org.apache.archiva.model">ArchivaArtifact</A>&nbsp;reference)</PRE>
+<DL>
+<DD>Given an <A HREF="../../../../org/apache/archiva/model/ArchivaArtifact.html" title="class in org.apache.archiva.model"><CODE>ArchivaArtifact</CODE></A>, return the file reference to the artifact.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>reference</CODE> - the archiva artifact to use.
+<DT><B>Returns:</B><DD>the relative path to the artifact.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="toMetadataPath(org.apache.archiva.model.ProjectReference)"><!-- --></A><H3>
+toMetadataPath</H3>
+<PRE>
+<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.223"><B>toMetadataPath</B></A>(<A HREF="../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model">ProjectReference</A>&nbsp;reference)</PRE>
+<DL>
+<DD>Given a <A HREF="../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model"><CODE>ProjectReference</CODE></A>, return the path to the metadata for
+ the project.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>reference</CODE> - the reference to use.
+<DT><B>Returns:</B><DD>the path to the metadata file, or null if no metadata is appropriate.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="toMetadataPath(org.apache.archiva.model.VersionedReference)"><!-- --></A><H3>
+toMetadataPath</H3>
+<PRE>
+<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.232"><B>toMetadataPath</B></A>(<A HREF="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</A>&nbsp;reference)</PRE>
+<DL>
+<DD>Given a <A HREF="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model"><CODE>VersionedReference</CODE></A>, return the path to the metadata for
+ the specific version of the project.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>reference</CODE> - the reference to use.
+<DT><B>Returns:</B><DD>the path to the metadata file, or null if no metadata is appropriate.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="toPath(org.apache.archiva.model.ArtifactReference)"><!-- --></A><H3>
+toPath</H3>
+<PRE>
+<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.240"><B>toPath</B></A>(<A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</A>&nbsp;reference)</PRE>
+<DL>
+<DD>Given an <A HREF="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model"><CODE>ArtifactReference</CODE></A>, return the relative path to the artifact.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>reference</CODE> - the artifact reference to use.
+<DT><B>Returns:</B><DD>the relative path to the artifact.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="toPath(org.apache.archiva.model.ArchivaArtifact)"><!-- --></A><H3>
+toPath</H3>
+<PRE>
+<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <A HREF="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.248"><B>toPath</B></A>(<A HREF="../../../../org/apache/archiva/model/ArchivaArtifact.html" title="class in org.apache.archiva.model">ArchivaArtifact</A>&nbsp;reference)</PRE>
+<DL>
+<DD>Given an <A HREF="../../../../org/apache/archiva/model/ArchivaArtifact.html" title="class in org.apache.archiva.model"><CODE>ArchivaArtifact</CODE></A>, return the relative path to the artifact.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>reference</CODE> - the archiva artifact to use.
+<DT><B>Returns:</B><DD>the relative path to the artifact.</DL>
+</DD>
+</DL>
+<!-- ========= END OF CLASS DATA ========= -->
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ManagedRepositoryContent.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../index.html?org/apache/archiva/repository/ManagedRepositoryContent.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="ManagedRepositoryContent.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;FIELD&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;FIELD&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+Copyright &#169; 2006-2013 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.
+</BODY>
+</HTML>
