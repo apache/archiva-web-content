@@ -9,7 +9,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Olivier Lamy" />
-    <meta name="Date-Revision-yyyymmdd" content="20130603" />
+    <meta name="Date-Revision-yyyymmdd" content="20130609" />
     <meta http-equiv="Content-Language" content="en" />
     <title>Archiva - 
     Archiva Javascript application General design</title>
@@ -207,7 +207,7 @@
         
                 
                     
-                  <li id="publishDate" class="pull-right">Last Published: 03 Jun 2013</li> 
+                  <li id="publishDate" class="pull-right">Last Published: 09 Jun 2013</li> 
             
                             </ul>
       </div>
@@ -240,11 +240,26 @@
     <script type="text/javascript" src="../js/fancy-box-activation.js"></script>
 
 
-    <ul><li><a href="#Archiva_Javascript_Web_Application">Archiva Javascript Web Application</a><ul><li><a href="#General_design">General design</a></li><li><a href="#Runtime_Properties">Runtime Properties</a></li><li><a href="#Used_Javascript_frameworks">Used Javascript frameworks</a></li><li><a href="#Sources_organisation">Sources organisation</a></li><li><a href="#js_directory">js directory</a></li><li><a href="#Start_page">Start page</a></li><li><a href="#Gridedit_model">Grid/edit model</a></li></ul></li></ul>
+    
+<ul>
+<li><a href="#Archiva_Javascript_Web_Application">Archiva Javascript Web Application</a>
+<ul>
+<li><a href="#General_design">General design</a></li>
+<li><a href="#Runtime_Properties">Runtime Properties</a></li>
+<li><a href="#Used_Javascript_frameworks">Used Javascript frameworks</a></li>
+<li><a href="#Sources_organisation">Sources organisation</a></li>
+<li><a href="#js_directory">js directory</a></li>
+<li><a href="#Start_page">Start page</a></li>
+<li><a href="#Gridedit_model">Grid/edit model</a></li></ul></li></ul>
 
-    <div class="section"><h2>Archiva Javascript Web Application<a name="Archiva_Javascript_Web_Application"></a></h2>
-      <div class="section"><h3>General design<a name="General_design"></a></h3>
-        <p>
+    
+<div class="section">
+<h2>Archiva Javascript Web Application<a name="Archiva_Javascript_Web_Application"></a></h2>
+      
+<div class="section">
+<h3>General design<a name="General_design"></a></h3>
+        
+<p>
           The goal is to have a &quot;one page loading&quot; javascript application.
           <br />
           For this the only html page will contains a div with id &quot;main-content&quot; this div will be populated
@@ -257,82 +272,125 @@
           As we are not designer :-), the application will use the <a class="externalLink" href="http://twitter.github.com/bootstrap" target="_blank">twitter bootstrap css</a>.
         </p>
       </div>
-      <div class="section"><h3>Runtime Properties<a name="Runtime_Properties"></a></h3>
-        <p>The application is designed to use http cache mechanism for css, javascript. Except REST call to get datas which will never use cache as a query timestamp parameter is used.
+      
+<div class="section">
+<h3>Runtime Properties<a name="Runtime_Properties"></a></h3>
+        
+<p>The application is designed to use http cache mechanism for css, javascript. Except REST call to get datas which will never use cache as a query timestamp parameter is used.
           But as this can cause issue in developpement phase, two system properties (disabled by default) prevent can prevent caching and/or help debuging
-          </p><ul>
-            <li>archiva.devMode=true/false: if true will add a timestamp query parameter for loading js and html templates.</li>
-            <li>archiva.javascriptLog=true/false: will activate javascript log, method available with $.log(msg)</li>
-            <li>archiva.logMissingI18n=true/false: will activate remote logging of missing i18n key in the servlet container log:  INFO  archivaMissingi18n.logger  - missing i18n key : 'proxy-connectors.grid.managedrepo.title'</li>
+          </p>
+<ul>
+            
+<li>archiva.devMode=true/false: if true will add a timestamp query parameter for loading js and html templates.</li>
+            
+<li>archiva.javascriptLog=true/false: will activate javascript log, method available with $.log(msg)</li>
+            
+<li>archiva.logMissingI18n=true/false: will activate remote logging of missing i18n key in the servlet container log:  INFO  archivaMissingi18n.logger  - missing i18n key : 'proxy-connectors.grid.managedrepo.title'</li>
           </ul>
         
       </div>
-      <div class="section"><h3>Used Javascript frameworks<a name="Used_Javascript_frameworks"></a></h3>
-        <p>
+      
+<div class="section">
+<h3>Used Javascript frameworks<a name="Used_Javascript_frameworks"></a></h3>
+        
+<p>
         We use some well known javascript framework librairies :
-        </p><ul>
-          <li><a class="externalLink" href="http://jquery.com/" target="_blank">jquery</a>.</li>
+        </p>
+<ul>
+          
+<li><a class="externalLink" href="http://jquery.com/" target="_blank">jquery</a>.</li>
 
-          <li><a class="externalLink" href="http://sammyjs.org" target="_blank">sammyjs for hash navigation</a></li>
+          
+<li><a class="externalLink" href="http://sammyjs.org" target="_blank">sammyjs for hash navigation</a></li>
 
-          <li><a class="externalLink" href="http://requirejs.org" target="_blank">requirejs</a> for template loading (see <a href="./template-loading.html">details</a>).</li>
+          
+<li><a class="externalLink" href="http://requirejs.org" target="_blank">requirejs</a> for template loading (see <a href="./template-loading.html">details</a>).</li>
 
-          <li><a class="externalLink" href="http://code.google.com/p/jquery-i18n-properties" target="_blank">jquery-i18n-properties</a> for i18n loading (see <a href="./i18n.html">details</a>).</li>
+          
+<li><a class="externalLink" href="http://code.google.com/p/jquery-i18n-properties" target="_blank">jquery-i18n-properties</a> for i18n loading (see <a href="./i18n.html">details</a>).</li>
 
-          <li><a class="externalLink" href="http://knockoutjs.com" target="_blank">knockoutjs</a> as we use a MVVM pattern (see <a href="./knockout-binding.html">knockout binding</a>).</li>
+          
+<li><a class="externalLink" href="http://knockoutjs.com" target="_blank">knockoutjs</a> as we use a MVVM pattern (see <a href="./knockout-binding.html">knockout binding</a>).</li>
 
-          <li><a class="externalLink" href="http://twitter.github.com/bootstrap/javascript.html" target="_blank">twitter bootstrap js</a> to magnify the ui.</li>
+          
+<li><a class="externalLink" href="http://twitter.github.com/bootstrap/javascript.html" target="_blank">twitter bootstrap js</a> to magnify the ui.</li>
 
-          <li><a class="externalLink" href="http://bassistance.de/jquery-plugins/jquery-plugin-validation" target="_blank">jquery validate</a> for form validation.</li>
+          
+<li><a class="externalLink" href="http://bassistance.de/jquery-plugins/jquery-plugin-validation" target="_blank">jquery validate</a> for form validation.</li>
         </ul>
         
       </div>
-      <div class="section"><h3>Sources organisation<a name="Sources_organisation"></a></h3>
-        <p>
+      
+<div class="section">
+<h3>Sources organisation<a name="Sources_organisation"></a></h3>
+        
+<p>
           Sources are located in <a class="externalLink" href="http://svn.apache.org/repos/asf/archiva/trunk/archiva-modules/archiva-web/archiva-webapp/src/main/webapp/" target="_blank">src/main/webapp</a> :
-          </p><ul>
-            <li>css</li>
-            <li>images</li>
-            <li>js</li>
+          </p>
+<ul>
+            
+<li>css</li>
+            
+<li>images</li>
+            
+<li>js</li>
           </ul>
         
-        </div><div class="section"><h3>js directory<a name="js_directory"></a></h3>
-          <p>
+        </div>
+<div class="section">
+<h3>js directory<a name="js_directory"></a></h3>
+          
+<p>
             Root directory contains external libraries.
           </p>
-          <p>
+          
+<p>
             archiva directory contains archiva js files with a subdirectory templates which contains templates
           </p>
-          <p>
+          
+<p>
             redback directory contains redback js files with a subdirectory templates which contains templates
           </p>
         </div>
       
 
-      <div class="section"><h3>Start page<a name="Start_page"></a></h3>
-        <p>
+      
+<div class="section">
+<h3>Start page<a name="Start_page"></a></h3>
+        
+<p>
           The main page will load javascript files, load <a href="./i18n.html">i18n</a>, <a href="./template-loading.html">load templates</a> and insert menu.
           <br />
           This main page is divided in 3 parts:
-          <p>
+          
+<p>
             <a href="../images/start-screen.png" class="single_image" title="Start Page">
               <img src="../images/start-screen.png" width="150" height="93" style="border: 1px solid silver; margin-left: 0.25em; margin-bottom: 0.25em" alt="" /><br />
               Start Page
             </a>
           </p>
-          <p>
-            </p><ul>
-              <li>#topbar-menu-container is populated with the template js/archiva/templates/topbar.html.</li>
-              <li>#sidebar-content is populated with the template js/archiva/templates/menu.html.</li>
-              <li>#main-content is the place where screen will appear.</li>
-              <li>hidden #html-fragments will contains loaded templates.</li>
+          
+<p>
+            </p>
+<ul>
+              
+<li>#topbar-menu-container is populated with the template js/archiva/templates/topbar.html.</li>
+              
+<li>#sidebar-content is populated with the template js/archiva/templates/menu.html.</li>
+              
+<li>#main-content is the place where screen will appear.</li>
+              
+<li>hidden #html-fragments will contains loaded templates.</li>
             </ul>
           
-          <p>
+          
+<p>
             Link are visible/hide depending on needed redback karmas.
             You can configure redback operations needed for a link using the attribute redback-permissions in your html element
             (by default element needed karma must be marked display: none):
-            </p><div class="source"><pre class="prettyprint">
+            </p>
+<div class="source">
+<pre>
 
 Support array: at least one operation is needed:
 &lt;div .... redback-permissions=&quot;{permissions: ['archiva-manage-users','archiva-manage-configuration']}&quot; style=&quot;display: none&quot;&gt;
@@ -345,17 +403,23 @@ Support single value:
         
       </div>
 
-      <div class="section"><h3>Grid/edit model<a name="Gridedit_model"></a></h3>
-        <p>We use a tab/pill models to display grid of datas and edit/add form:
-          </p><ul>
-            <li>
+      
+<div class="section">
+<h3>Grid/edit model<a name="Gridedit_model"></a></h3>
+        
+<p>We use a tab/pill models to display grid of datas and edit/add form:
+          </p>
+<ul>
+            
+<li>
               One tab/pill display the grid
               <a href="../images/repo-grids.png" class="single_image" title="Repositories Grid">
                 <img src="../images/repo-grids.png" width="150" height="93" style="border: 1px solid silver; margin-left: 0.25em; margin-bottom: 0.25em" alt="" /><br />
                 Repositories Grid
               </a>
             </li>
-            <li>
+            
+<li>
               One tab/pill display the edit/add form. <b>As we use knockout framework grid will be updated with new value from add/edit form automatically.</b>
               <a href="../images/repo-edit.png" class="single_image" title="Repositories Edit/Add">
                 <img src="../images/repo-edit.png" width="150" height="93" style="border: 1px solid silver; margin-left: 0.25em; margin-bottom: 0.25em" alt="" /><br />
