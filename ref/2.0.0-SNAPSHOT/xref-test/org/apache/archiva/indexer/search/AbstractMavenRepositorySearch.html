@@ -218,57 +218,64 @@
 <a class="jxr_linenumber" name="208" href="#208">208</a>         {
 <a class="jxr_linenumber" name="209" href="#209">209</a>             assertTrue( <span class="jxr_string">"file not exists "</span> + artifactFile.getPath(), artifactFile.exists() );
 <a class="jxr_linenumber" name="210" href="#210">210</a>             ArtifactContext ac = artifactContextProducer.getArtifactContext( context, artifactFile );
-<a class="jxr_linenumber" name="211" href="#211">211</a>             nexusIndexer.addArtifactToIndex( ac, context );
-<a class="jxr_linenumber" name="212" href="#212">212</a>             context.updateTimestamp( <strong class="jxr_keyword">true</strong> );
-<a class="jxr_linenumber" name="213" href="#213">213</a>         }
-<a class="jxr_linenumber" name="214" href="#214">214</a> 
-<a class="jxr_linenumber" name="215" href="#215">215</a>         <strong class="jxr_keyword">if</strong> ( scan )
-<a class="jxr_linenumber" name="216" href="#216">216</a>         {
-<a class="jxr_linenumber" name="217" href="#217">217</a>             nexusIndexer.scan( context, <strong class="jxr_keyword">new</strong> ArtifactScanListener(), false );
-<a class="jxr_linenumber" name="218" href="#218">218</a>         }
-<a class="jxr_linenumber" name="219" href="#219">219</a>         <em class="jxr_comment">// force flushing</em>
-<a class="jxr_linenumber" name="220" href="#220">220</a>         context.getIndexWriter().commit();
-<a class="jxr_linenumber" name="221" href="#221">221</a>         context.setSearchable( <strong class="jxr_keyword">true</strong> );
-<a class="jxr_linenumber" name="222" href="#222">222</a> 
-<a class="jxr_linenumber" name="223" href="#223">223</a>     }
-<a class="jxr_linenumber" name="224" href="#224">224</a> 
-<a class="jxr_linenumber" name="225" href="#225">225</a>     <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/apache/archiva/indexer/search/AbstractMavenRepositorySearch.html">ArtifactScanListener</a>
-<a class="jxr_linenumber" name="226" href="#226">226</a>         <strong class="jxr_keyword">implements</strong> ArtifactScanningListener
-<a class="jxr_linenumber" name="227" href="#227">227</a>     {
-<a class="jxr_linenumber" name="228" href="#228">228</a>         <strong class="jxr_keyword">protected</strong> Logger log = LoggerFactory.getLogger( getClass() );
+<a class="jxr_linenumber" name="211" href="#211">211</a> 
+<a class="jxr_linenumber" name="212" href="#212">212</a>             <strong class="jxr_keyword">if</strong> ( artifactFile.getPath().endsWith( <span class="jxr_string">".pom"</span> ) )
+<a class="jxr_linenumber" name="213" href="#213">213</a>             {
+<a class="jxr_linenumber" name="214" href="#214">214</a>                 ac.getArtifactInfo().fextension = <span class="jxr_string">"pom"</span>;
+<a class="jxr_linenumber" name="215" href="#215">215</a>                 ac.getArtifactInfo().packaging = <span class="jxr_string">"pom"</span>;
+<a class="jxr_linenumber" name="216" href="#216">216</a>                 ac.getArtifactInfo().classifier = <span class="jxr_string">"pom"</span>;
+<a class="jxr_linenumber" name="217" href="#217">217</a>             }
+<a class="jxr_linenumber" name="218" href="#218">218</a>             nexusIndexer.addArtifactToIndex( ac, context );
+<a class="jxr_linenumber" name="219" href="#219">219</a>             context.updateTimestamp( <strong class="jxr_keyword">true</strong> );
+<a class="jxr_linenumber" name="220" href="#220">220</a>         }
+<a class="jxr_linenumber" name="221" href="#221">221</a> 
+<a class="jxr_linenumber" name="222" href="#222">222</a>         <strong class="jxr_keyword">if</strong> ( scan )
+<a class="jxr_linenumber" name="223" href="#223">223</a>         {
+<a class="jxr_linenumber" name="224" href="#224">224</a>             nexusIndexer.scan( context, <strong class="jxr_keyword">new</strong> ArtifactScanListener(), false );
+<a class="jxr_linenumber" name="225" href="#225">225</a>         }
+<a class="jxr_linenumber" name="226" href="#226">226</a>         <em class="jxr_comment">// force flushing</em>
+<a class="jxr_linenumber" name="227" href="#227">227</a>         context.getIndexWriter().commit();
+<a class="jxr_linenumber" name="228" href="#228">228</a>         context.setSearchable( <strong class="jxr_keyword">true</strong> );
 <a class="jxr_linenumber" name="229" href="#229">229</a> 
-<a class="jxr_linenumber" name="230" href="#230">230</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> scanningStarted( IndexingContext ctx )
-<a class="jxr_linenumber" name="231" href="#231">231</a>         {
-<a class="jxr_linenumber" name="232" href="#232">232</a> 
-<a class="jxr_linenumber" name="233" href="#233">233</a>         }
-<a class="jxr_linenumber" name="234" href="#234">234</a> 
-<a class="jxr_linenumber" name="235" href="#235">235</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> scanningFinished( IndexingContext ctx, ScanningResult result )
-<a class="jxr_linenumber" name="236" href="#236">236</a>         {
-<a class="jxr_linenumber" name="237" href="#237">237</a> 
-<a class="jxr_linenumber" name="238" href="#238">238</a>         }
+<a class="jxr_linenumber" name="230" href="#230">230</a>     }
+<a class="jxr_linenumber" name="231" href="#231">231</a> 
+<a class="jxr_linenumber" name="232" href="#232">232</a>     <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/apache/archiva/indexer/search/AbstractMavenRepositorySearch.html">ArtifactScanListener</a>
+<a class="jxr_linenumber" name="233" href="#233">233</a>         <strong class="jxr_keyword">implements</strong> ArtifactScanningListener
+<a class="jxr_linenumber" name="234" href="#234">234</a>     {
+<a class="jxr_linenumber" name="235" href="#235">235</a>         <strong class="jxr_keyword">protected</strong> Logger log = LoggerFactory.getLogger( getClass() );
+<a class="jxr_linenumber" name="236" href="#236">236</a> 
+<a class="jxr_linenumber" name="237" href="#237">237</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> scanningStarted( IndexingContext ctx )
+<a class="jxr_linenumber" name="238" href="#238">238</a>         {
 <a class="jxr_linenumber" name="239" href="#239">239</a> 
-<a class="jxr_linenumber" name="240" href="#240">240</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> artifactError( ArtifactContext ac, Exception e )
-<a class="jxr_linenumber" name="241" href="#241">241</a>         {
-<a class="jxr_linenumber" name="242" href="#242">242</a>             log.debug( <span class="jxr_string">"artifactError {}"</span>, ac.getArtifact().getPath(), e );
-<a class="jxr_linenumber" name="243" href="#243">243</a>         }
+<a class="jxr_linenumber" name="240" href="#240">240</a>         }
+<a class="jxr_linenumber" name="241" href="#241">241</a> 
+<a class="jxr_linenumber" name="242" href="#242">242</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> scanningFinished( IndexingContext ctx, ScanningResult result )
+<a class="jxr_linenumber" name="243" href="#243">243</a>         {
 <a class="jxr_linenumber" name="244" href="#244">244</a> 
-<a class="jxr_linenumber" name="245" href="#245">245</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> artifactDiscovered( ArtifactContext ac )
-<a class="jxr_linenumber" name="246" href="#246">246</a>         {
-<a class="jxr_linenumber" name="247" href="#247">247</a>             log.debug( <span class="jxr_string">"artifactDiscovered {}:{}"</span>, ac.getArtifact().getPath(), ac.getArtifactInfo() );
-<a class="jxr_linenumber" name="248" href="#248">248</a>         }
-<a class="jxr_linenumber" name="249" href="#249">249</a>     }
-<a class="jxr_linenumber" name="250" href="#250">250</a> 
-<a class="jxr_linenumber" name="251" href="#251">251</a>     <strong class="jxr_keyword">public</strong> String niceDisplay( SearchResults searchResults )
-<a class="jxr_linenumber" name="252" href="#252">252</a>         <strong class="jxr_keyword">throws</strong> Exception
-<a class="jxr_linenumber" name="253" href="#253">253</a>     {
-<a class="jxr_linenumber" name="254" href="#254">254</a>         StringBuilder sb = <strong class="jxr_keyword">new</strong> StringBuilder();
-<a class="jxr_linenumber" name="255" href="#255">255</a>         <strong class="jxr_keyword">for</strong> ( SearchResultHit hit : searchResults.getHits() )
-<a class="jxr_linenumber" name="256" href="#256">256</a>         {
-<a class="jxr_linenumber" name="257" href="#257">257</a>             sb.append( hit.toString() ).append( SystemUtils.LINE_SEPARATOR );
-<a class="jxr_linenumber" name="258" href="#258">258</a>         }
-<a class="jxr_linenumber" name="259" href="#259">259</a>         <strong class="jxr_keyword">return</strong> sb.toString();
-<a class="jxr_linenumber" name="260" href="#260">260</a>     }
-<a class="jxr_linenumber" name="261" href="#261">261</a> }
+<a class="jxr_linenumber" name="245" href="#245">245</a>         }
+<a class="jxr_linenumber" name="246" href="#246">246</a> 
+<a class="jxr_linenumber" name="247" href="#247">247</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> artifactError( ArtifactContext ac, Exception e )
+<a class="jxr_linenumber" name="248" href="#248">248</a>         {
+<a class="jxr_linenumber" name="249" href="#249">249</a>             log.debug( <span class="jxr_string">"artifactError {}"</span>, ac.getArtifact().getPath(), e );
+<a class="jxr_linenumber" name="250" href="#250">250</a>         }
+<a class="jxr_linenumber" name="251" href="#251">251</a> 
+<a class="jxr_linenumber" name="252" href="#252">252</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> artifactDiscovered( ArtifactContext ac )
+<a class="jxr_linenumber" name="253" href="#253">253</a>         {
+<a class="jxr_linenumber" name="254" href="#254">254</a>             log.debug( <span class="jxr_string">"artifactDiscovered {}:{}"</span>, ac.getArtifact().getPath(), ac.getArtifactInfo() );
+<a class="jxr_linenumber" name="255" href="#255">255</a>         }
+<a class="jxr_linenumber" name="256" href="#256">256</a>     }
+<a class="jxr_linenumber" name="257" href="#257">257</a> 
+<a class="jxr_linenumber" name="258" href="#258">258</a>     <strong class="jxr_keyword">public</strong> String niceDisplay( SearchResults searchResults )
+<a class="jxr_linenumber" name="259" href="#259">259</a>         <strong class="jxr_keyword">throws</strong> Exception
+<a class="jxr_linenumber" name="260" href="#260">260</a>     {
+<a class="jxr_linenumber" name="261" href="#261">261</a>         StringBuilder sb = <strong class="jxr_keyword">new</strong> StringBuilder();
+<a class="jxr_linenumber" name="262" href="#262">262</a>         <strong class="jxr_keyword">for</strong> ( SearchResultHit hit : searchResults.getHits() )
+<a class="jxr_linenumber" name="263" href="#263">263</a>         {
+<a class="jxr_linenumber" name="264" href="#264">264</a>             sb.append( hit.toString() ).append( SystemUtils.LINE_SEPARATOR );
+<a class="jxr_linenumber" name="265" href="#265">265</a>         }
+<a class="jxr_linenumber" name="266" href="#266">266</a>         <strong class="jxr_keyword">return</strong> sb.toString();
+<a class="jxr_linenumber" name="267" href="#267">267</a>     }
+<a class="jxr_linenumber" name="268" href="#268">268</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

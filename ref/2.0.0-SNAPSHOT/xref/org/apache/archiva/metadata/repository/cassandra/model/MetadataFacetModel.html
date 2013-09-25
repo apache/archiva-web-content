@@ -43,22 +43,22 @@
 <a class="jxr_linenumber" name="33" href="#33">33</a>  {
 <a class="jxr_linenumber" name="34" href="#34">34</a>      <em class="jxr_comment">// id is repositoryId + namespaceId + projectId + facetId + name + mapKey</em>
 <a class="jxr_linenumber" name="35" href="#35">35</a>      @Id
-<a class="jxr_linenumber" name="36" href="#36">36</a>      @Column( name = <span class="jxr_string">"id"</span> )
+<a class="jxr_linenumber" name="36" href="#36">36</a>      @Column(name = <span class="jxr_string">"id"</span>)
 <a class="jxr_linenumber" name="37" href="#37">37</a>      <strong class="jxr_keyword">private</strong> String id;
 <a class="jxr_linenumber" name="38" href="#38">38</a>  
-<a class="jxr_linenumber" name="39" href="#39">39</a>      @Column( name = <span class="jxr_string">"artifactMetadataModel"</span> )
+<a class="jxr_linenumber" name="39" href="#39">39</a>      @Column(name = <span class="jxr_string">"artifactMetadataModel"</span>)
 <a class="jxr_linenumber" name="40" href="#40">40</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../../../org/apache/archiva/metadata/repository/cassandra/model/ArtifactMetadataModel.html">ArtifactMetadataModel</a> artifactMetadataModel;
 <a class="jxr_linenumber" name="41" href="#41">41</a>  
-<a class="jxr_linenumber" name="42" href="#42">42</a>      @Column( name = <span class="jxr_string">"facetId"</span> )
+<a class="jxr_linenumber" name="42" href="#42">42</a>      @Column(name = <span class="jxr_string">"facetId"</span>)
 <a class="jxr_linenumber" name="43" href="#43">43</a>      <strong class="jxr_keyword">private</strong> String facetId;
 <a class="jxr_linenumber" name="44" href="#44">44</a>  
-<a class="jxr_linenumber" name="45" href="#45">45</a>      @Column( name = <span class="jxr_string">"name"</span> )
+<a class="jxr_linenumber" name="45" href="#45">45</a>      @Column(name = <span class="jxr_string">"name"</span>)
 <a class="jxr_linenumber" name="46" href="#46">46</a>      <strong class="jxr_keyword">private</strong> String name;
 <a class="jxr_linenumber" name="47" href="#47">47</a>  
-<a class="jxr_linenumber" name="48" href="#48">48</a>      @Column( name = <span class="jxr_string">"key"</span> )
+<a class="jxr_linenumber" name="48" href="#48">48</a>      @Column(name = <span class="jxr_string">"key"</span>)
 <a class="jxr_linenumber" name="49" href="#49">49</a>      <strong class="jxr_keyword">private</strong> String key;
 <a class="jxr_linenumber" name="50" href="#50">50</a>  
-<a class="jxr_linenumber" name="51" href="#51">51</a>      @Column( name = <span class="jxr_string">"value"</span> )
+<a class="jxr_linenumber" name="51" href="#51">51</a>      @Column(name = <span class="jxr_string">"value"</span>)
 <a class="jxr_linenumber" name="52" href="#52">52</a>      <strong class="jxr_keyword">private</strong> String value;
 <a class="jxr_linenumber" name="53" href="#53">53</a>  
 <a class="jxr_linenumber" name="54" href="#54">54</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../../../org/apache/archiva/metadata/repository/cassandra/model/MetadataFacetModel.html">MetadataFacetModel</a>()
@@ -230,13 +230,19 @@
 <a class="jxr_linenumber" name="220" href="#220">220</a>             <em class="jxr_comment">// FIXME add some controls</em>
 <a class="jxr_linenumber" name="221" href="#221">221</a>             <em class="jxr_comment">// getArtifactMetadataModelId can have no namespace, no project and no projectid for statistics</em>
 <a class="jxr_linenumber" name="222" href="#222">222</a>             <em class="jxr_comment">// only repositoryId with artifactMetadataModel</em>
-<a class="jxr_linenumber" name="223" href="#223">223</a>             <strong class="jxr_keyword">return</strong> ( <strong class="jxr_keyword">this</strong>.artifactMetadataModel == <strong class="jxr_keyword">null</strong>
-<a class="jxr_linenumber" name="224" href="#224">224</a>                 ? <strong class="jxr_keyword">this</strong>.repositoryId
-<a class="jxr_linenumber" name="225" href="#225">225</a>                 : <strong class="jxr_keyword">this</strong>.artifactMetadataModel.getArtifactMetadataModelId() ) + <span class="jxr_string">"-"</span> + <strong class="jxr_keyword">this</strong>.facetId + <span class="jxr_string">"-"</span> + <strong class="jxr_keyword">this</strong>.name + <span class="jxr_string">"-"</span>
-<a class="jxr_linenumber" name="226" href="#226">226</a>                 + <strong class="jxr_keyword">this</strong>.key;
-<a class="jxr_linenumber" name="227" href="#227">227</a>         }
-<a class="jxr_linenumber" name="228" href="#228">228</a>     }
-<a class="jxr_linenumber" name="229" href="#229">229</a> }
+<a class="jxr_linenumber" name="223" href="#223">223</a>             <strong class="jxr_keyword">long</strong> hash =
+<a class="jxr_linenumber" name="224" href="#224">224</a>                 ( <strong class="jxr_keyword">this</strong>.artifactMetadataModel == <strong class="jxr_keyword">null</strong>
+<a class="jxr_linenumber" name="225" href="#225">225</a>                 ? <strong class="jxr_keyword">this</strong>.repositoryId.hashCode()
+<a class="jxr_linenumber" name="226" href="#226">226</a>                 : Long.parseLong( <strong class="jxr_keyword">this</strong>.artifactMetadataModel.getArtifactMetadataModelId() ) )
+<a class="jxr_linenumber" name="227" href="#227">227</a>                 + <strong class="jxr_keyword">this</strong>.facetId.hashCode()
+<a class="jxr_linenumber" name="228" href="#228">228</a>                 + ( <strong class="jxr_keyword">this</strong>.name == <strong class="jxr_keyword">null</strong> ? 0 : <strong class="jxr_keyword">this</strong>.name.hashCode() )
+<a class="jxr_linenumber" name="229" href="#229">229</a>                 + ( <strong class="jxr_keyword">this</strong>.key == <strong class="jxr_keyword">null</strong> ? 0 : <strong class="jxr_keyword">this</strong>.key.hashCode() );
+<a class="jxr_linenumber" name="230" href="#230">230</a> 
+<a class="jxr_linenumber" name="231" href="#231">231</a>             String hashStr = Long.toString( hash );
+<a class="jxr_linenumber" name="232" href="#232">232</a>             <strong class="jxr_keyword">return</strong> hashStr;
+<a class="jxr_linenumber" name="233" href="#233">233</a>         }
+<a class="jxr_linenumber" name="234" href="#234">234</a>     }
+<a class="jxr_linenumber" name="235" href="#235">235</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

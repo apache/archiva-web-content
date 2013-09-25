@@ -331,8 +331,8 @@
 <span class="sourceLineNo">323</span>        {<a name="line.323"></a>
 <span class="sourceLineNo">324</span>            //repositoryId + namespaceId + project + projectVersion + id<a name="line.324"></a>
 <span class="sourceLineNo">325</span>            // FIXME add some controls<a name="line.325"></a>
-<span class="sourceLineNo">326</span>            return this.repositoryId + "-" + this.namespaceId + "-" + this.project + "-" + this.projectVersion + "-"<a name="line.326"></a>
-<span class="sourceLineNo">327</span>                + this.id;<a name="line.327"></a>
+<span class="sourceLineNo">326</span>            long hash = this.repositoryId.hashCode()  + this.namespaceId.hashCode()  + this.project.hashCode()  + this.projectVersion.hashCode() + this.id.hashCode();<a name="line.326"></a>
+<span class="sourceLineNo">327</span>            return Long.toString( hash );<a name="line.327"></a>
 <span class="sourceLineNo">328</span>        }<a name="line.328"></a>
 <span class="sourceLineNo">329</span>    }<a name="line.329"></a>
 <span class="sourceLineNo">330</span><a name="line.330"></a>

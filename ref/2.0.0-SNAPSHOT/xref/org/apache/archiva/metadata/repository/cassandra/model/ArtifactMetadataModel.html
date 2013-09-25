@@ -333,8 +333,8 @@
 <a class="jxr_linenumber" name="323" href="#323">323</a>         {
 <a class="jxr_linenumber" name="324" href="#324">324</a>             <em class="jxr_comment">//repositoryId + namespaceId + project + projectVersion + id</em>
 <a class="jxr_linenumber" name="325" href="#325">325</a>             <em class="jxr_comment">// FIXME add some controls</em>
-<a class="jxr_linenumber" name="326" href="#326">326</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">this</strong>.repositoryId + <span class="jxr_string">"-"</span> + <strong class="jxr_keyword">this</strong>.namespaceId + <span class="jxr_string">"-"</span> + <strong class="jxr_keyword">this</strong>.project + <span class="jxr_string">"-"</span> + <strong class="jxr_keyword">this</strong>.projectVersion + <span class="jxr_string">"-"</span>
-<a class="jxr_linenumber" name="327" href="#327">327</a>                 + <strong class="jxr_keyword">this</strong>.id;
+<a class="jxr_linenumber" name="326" href="#326">326</a>             <strong class="jxr_keyword">long</strong> hash = <strong class="jxr_keyword">this</strong>.repositoryId.hashCode()  + <strong class="jxr_keyword">this</strong>.namespaceId.hashCode()  + <strong class="jxr_keyword">this</strong>.project.hashCode()  + <strong class="jxr_keyword">this</strong>.projectVersion.hashCode() + <strong class="jxr_keyword">this</strong>.id.hashCode();
+<a class="jxr_linenumber" name="327" href="#327">327</a>             <strong class="jxr_keyword">return</strong> Long.toString( hash );
 <a class="jxr_linenumber" name="328" href="#328">328</a>         }
 <a class="jxr_linenumber" name="329" href="#329">329</a>     }
 <a class="jxr_linenumber" name="330" href="#330">330</a> 
