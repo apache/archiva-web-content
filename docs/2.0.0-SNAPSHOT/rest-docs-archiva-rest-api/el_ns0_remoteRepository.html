@@ -129,20 +129,6 @@
       <h2>Example XML</h2>
       <code class="prettyprint lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;remoteRepository&gt;
-  &lt;url&gt;...&lt;/url&gt;
-  &lt;downloadRemoteIndex&gt;...&lt;/downloadRemoteIndex&gt;
-  &lt;timeout&gt;...&lt;/timeout&gt;
-  &lt;userName&gt;...&lt;/userName&gt;
-  &lt;extraParametersEntries&gt;
-    &lt;value&gt;...&lt;/value&gt;
-    &lt;key&gt;...&lt;/key&gt;
-  &lt;/extraParametersEntries&gt;
-  &lt;extraParametersEntries&gt;
-    &lt;!--...--&gt;
-  &lt;/extraParametersEntries&gt;
-  &lt;!--...more &quot;extraParametersEntries&quot; elements...--&gt;
-  &lt;cronExpression&gt;...&lt;/cronExpression&gt;
-  &lt;remoteIndexUrl&gt;...&lt;/remoteIndexUrl&gt;
   &lt;extraHeaders&gt;
     &lt;entry&gt;
       &lt;key&gt;...&lt;/key&gt;
@@ -158,15 +144,16 @@
     &lt;/entry&gt;
     &lt;!--...more entries...--&gt;
   &lt;/extraHeaders&gt;
-  &lt;extraHeadersEntries&gt;
+  &lt;remoteIndexUrl&gt;...&lt;/remoteIndexUrl&gt;
+  &lt;remoteDownloadNetworkProxyId&gt;...&lt;/remoteDownloadNetworkProxyId&gt;
+  &lt;extraParametersEntries&gt;
     &lt;value&gt;...&lt;/value&gt;
     &lt;key&gt;...&lt;/key&gt;
-  &lt;/extraHeadersEntries&gt;
-  &lt;extraHeadersEntries&gt;
+  &lt;/extraParametersEntries&gt;
+  &lt;extraParametersEntries&gt;
     &lt;!--...--&gt;
-  &lt;/extraHeadersEntries&gt;
-  &lt;!--...more &quot;extraHeadersEntries&quot; elements...--&gt;
-  &lt;remoteDownloadNetworkProxyId&gt;...&lt;/remoteDownloadNetworkProxyId&gt;
+  &lt;/extraParametersEntries&gt;
+  &lt;!--...more &quot;extraParametersEntries&quot; elements...--&gt;
   &lt;extraParameters&gt;
     &lt;entry&gt;
       &lt;key&gt;...&lt;/key&gt;
@@ -182,48 +169,61 @@
     &lt;/entry&gt;
     &lt;!--...more entries...--&gt;
   &lt;/extraParameters&gt;
+  &lt;downloadRemoteIndex&gt;...&lt;/downloadRemoteIndex&gt;
+  &lt;userName&gt;...&lt;/userName&gt;
+  &lt;extraHeadersEntries&gt;
+    &lt;value&gt;...&lt;/value&gt;
+    &lt;key&gt;...&lt;/key&gt;
+  &lt;/extraHeadersEntries&gt;
+  &lt;extraHeadersEntries&gt;
+    &lt;!--...--&gt;
+  &lt;/extraHeadersEntries&gt;
+  &lt;!--...more &quot;extraHeadersEntries&quot; elements...--&gt;
+  &lt;timeout&gt;...&lt;/timeout&gt;
+  &lt;cronExpression&gt;...&lt;/cronExpression&gt;
   &lt;password&gt;...&lt;/password&gt;
+  &lt;url&gt;...&lt;/url&gt;
   &lt;downloadRemoteIndexOnStartup&gt;...&lt;/downloadRemoteIndexOnStartup&gt;
   &lt;remoteDownloadTimeout&gt;...&lt;/remoteDownloadTimeout&gt;
+  &lt;indexDirectory&gt;...&lt;/indexDirectory&gt;
+  &lt;description&gt;...&lt;/description&gt;
   &lt;id&gt;...&lt;/id&gt;
   &lt;name&gt;...&lt;/name&gt;
   &lt;layout&gt;...&lt;/layout&gt;
-  &lt;description&gt;...&lt;/description&gt;
-  &lt;indexDirectory&gt;...&lt;/indexDirectory&gt;
 &lt;/remoteRepository&gt;</code>
       <h2>Example JSON</h2>
       <code class="prettyprint lang-js">{
-  &quot;url&quot; : &quot;...&quot;,
-  &quot;downloadRemoteIndex&quot; : false,
-  &quot;timeout&quot; : ...,
-  &quot;userName&quot; : &quot;...&quot;,
-  &quot;extraParametersEntries&quot; : [ {
-    &quot;value&quot; : &quot;...&quot;,
-    &quot;key&quot; : &quot;...&quot;
-  }, ... ],
-  &quot;cronExpression&quot; : &quot;...&quot;,
-  &quot;remoteIndexUrl&quot; : &quot;...&quot;,
   &quot;extraHeaders&quot; : [ {
     &quot;...&quot; : ...
   }, {
   } ],
-  &quot;extraHeadersEntries&quot; : [ {
+  &quot;remoteIndexUrl&quot; : &quot;...&quot;,
+  &quot;remoteDownloadNetworkProxyId&quot; : &quot;...&quot;,
+  &quot;extraParametersEntries&quot; : [ {
     &quot;value&quot; : &quot;...&quot;,
     &quot;key&quot; : &quot;...&quot;
   }, ... ],
-  &quot;remoteDownloadNetworkProxyId&quot; : &quot;...&quot;,
   &quot;extraParameters&quot; : [ {
     &quot;...&quot; : ...
   }, {
   } ],
+  &quot;downloadRemoteIndex&quot; : false,
+  &quot;userName&quot; : &quot;...&quot;,
+  &quot;extraHeadersEntries&quot; : [ {
+    &quot;value&quot; : &quot;...&quot;,
+    &quot;key&quot; : &quot;...&quot;
+  }, ... ],
+  &quot;timeout&quot; : ...,
+  &quot;cronExpression&quot; : &quot;...&quot;,
   &quot;password&quot; : &quot;...&quot;,
+  &quot;url&quot; : &quot;...&quot;,
   &quot;downloadRemoteIndexOnStartup&quot; : false,
   &quot;remoteDownloadTimeout&quot; : ...,
+  &quot;indexDirectory&quot; : &quot;...&quot;,
+  &quot;description&quot; : &quot;...&quot;,
   &quot;id&quot; : &quot;...&quot;,
   &quot;name&quot; : &quot;...&quot;,
-  &quot;layout&quot; : &quot;...&quot;,
-  &quot;description&quot; : &quot;...&quot;,
-  &quot;indexDirectory&quot; : &quot;...&quot;
+  &quot;layout&quot; : &quot;...&quot;
 }</code>
 
       <div class="clear" />
