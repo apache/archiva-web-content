@@ -91,8 +91,8 @@
 <a class="jxr_linenumber" name="81" href="#81">81</a>          {
 <a class="jxr_linenumber" name="82" href="#82">82</a>              String name = scans.get( scans.size() - 1 );
 <a class="jxr_linenumber" name="83" href="#83">83</a>              <a href="../../../../../../org/apache/archiva/metadata/repository/stats/RepositoryStatistics.html">RepositoryStatistics</a> repositoryStatistics =
-<a class="jxr_linenumber" name="84" href="#84">84</a>                  (<a href="../../../../../../org/apache/archiva/metadata/repository/stats/RepositoryStatistics.html">RepositoryStatistics</a>) metadataRepository.getMetadataFacet( repositoryId, RepositoryStatistics.FACET_ID,
-<a class="jxr_linenumber" name="85" href="#85">85</a>                                                                              name );
+<a class="jxr_linenumber" name="84" href="#84">84</a>                  RepositoryStatistics.<strong class="jxr_keyword">class</strong>.<strong class="jxr_keyword">cast</strong>( metadataRepository.getMetadataFacet( repositoryId, RepositoryStatistics.FACET_ID,
+<a class="jxr_linenumber" name="85" href="#85">85</a>                                                                              name ));
 <a class="jxr_linenumber" name="86" href="#86">86</a>              stopWatch.stop();
 <a class="jxr_linenumber" name="87" href="#87">87</a>              log.debug( <span class="jxr_string">"time to find last RepositoryStatistics: {} ms"</span>, stopWatch.getTime() );
 <a class="jxr_linenumber" name="88" href="#88">88</a>              <strong class="jxr_keyword">return</strong> repositoryStatistics;

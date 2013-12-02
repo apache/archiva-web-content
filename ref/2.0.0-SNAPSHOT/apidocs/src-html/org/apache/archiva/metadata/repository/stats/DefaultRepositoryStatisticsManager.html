@@ -89,8 +89,8 @@
 <span class="sourceLineNo">081</span>        {<a name="line.81"></a>
 <span class="sourceLineNo">082</span>            String name = scans.get( scans.size() - 1 );<a name="line.82"></a>
 <span class="sourceLineNo">083</span>            RepositoryStatistics repositoryStatistics =<a name="line.83"></a>
-<span class="sourceLineNo">084</span>                (RepositoryStatistics) metadataRepository.getMetadataFacet( repositoryId, RepositoryStatistics.FACET_ID,<a name="line.84"></a>
-<span class="sourceLineNo">085</span>                                                                            name );<a name="line.85"></a>
+<span class="sourceLineNo">084</span>                RepositoryStatistics.class.cast( metadataRepository.getMetadataFacet( repositoryId, RepositoryStatistics.FACET_ID,<a name="line.84"></a>
+<span class="sourceLineNo">085</span>                                                                            name ));<a name="line.85"></a>
 <span class="sourceLineNo">086</span>            stopWatch.stop();<a name="line.86"></a>
 <span class="sourceLineNo">087</span>            log.debug( "time to find last RepositoryStatistics: {} ms", stopWatch.getTime() );<a name="line.87"></a>
 <span class="sourceLineNo">088</span>            return repositoryStatistics;<a name="line.88"></a>

@@ -99,7 +99,7 @@
 </dl>
 <hr>
 <br>
-<pre>public class <a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.35">ConsumerWantsFilePredicate</a>
+<pre>public class <a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.37">ConsumerWantsFilePredicate</a>
 extends <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements org.apache.commons.collections.Predicate</pre>
 <div class="block">ConsumerWantsFilePredicate</div>
@@ -134,6 +134,14 @@ implements org.apache.commons.collections.Predicate</pre>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#isCaseSensitive">isCaseSensitive</a></strong></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code>private org.slf4j.Logger</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#logger">logger</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private <a href="../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#managedRepository">managedRepository</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>private int</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#wantedFileCount">wantedFileCount</a></strong></code>&nbsp;</td>
 </tr>
@@ -152,7 +160,14 @@ implements org.apache.commons.collections.Predicate</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><strong><a href="../../../../../org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#ConsumerWantsFilePredicate()">ConsumerWantsFilePredicate</a></strong>()</code>&nbsp;</td>
+<td class="colOne"><code><strong><a href="../../../../../org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#ConsumerWantsFilePredicate()">ConsumerWantsFilePredicate</a></strong>()</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>use constructor with ManagedRepository</i></div>
+</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><code><strong><a href="../../../../../org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#ConsumerWantsFilePredicate(org.apache.archiva.admin.model.beans.ManagedRepository)">ConsumerWantsFilePredicate</a></strong>(<a href="../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&nbsp;managedRepository)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -230,7 +245,7 @@ implements org.apache.commons.collections.Predicate</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>basefile</h4>
-<pre>private&nbsp;<a href="../../../../../org/apache/archiva/common/utils/BaseFile.html" title="class in org.apache.archiva.common.utils">BaseFile</a> <a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.38">basefile</a></pre>
+<pre>private&nbsp;<a href="../../../../../org/apache/archiva/common/utils/BaseFile.html" title="class in org.apache.archiva.common.utils">BaseFile</a> <a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.40">basefile</a></pre>
 </li>
 </ul>
 <a name="isCaseSensitive">
@@ -239,7 +254,7 @@ implements org.apache.commons.collections.Predicate</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>isCaseSensitive</h4>
-<pre>private&nbsp;boolean <a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.40">isCaseSensitive</a></pre>
+<pre>private&nbsp;boolean <a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.42">isCaseSensitive</a></pre>
 </li>
 </ul>
 <a name="wantedFileCount">
@@ -248,16 +263,34 @@ implements org.apache.commons.collections.Predicate</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>wantedFileCount</h4>
-<pre>private&nbsp;int <a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.42">wantedFileCount</a></pre>
+<pre>private&nbsp;int <a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.44">wantedFileCount</a></pre>
 </li>
 </ul>
 <a name="changesSince">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>changesSince</h4>
-<pre>private&nbsp;long <a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.44">changesSince</a></pre>
+<pre>private&nbsp;long <a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.46">changesSince</a></pre>
+</li>
+</ul>
+<a name="managedRepository">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>managedRepository</h4>
+<pre>private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a> <a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.48">managedRepository</a></pre>
+</li>
+</ul>
+<a name="logger">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>logger</h4>
+<pre>private&nbsp;org.slf4j.Logger <a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.50">logger</a></pre>
 </li>
 </ul>
 </li>
@@ -271,10 +304,20 @@ implements org.apache.commons.collections.Predicate</pre>
 <a name="ConsumerWantsFilePredicate()">
 <!--   -->
 </a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ConsumerWantsFilePredicate</h4>
+<pre>public&nbsp;<a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.55">ConsumerWantsFilePredicate</a>()</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>use constructor with ManagedRepository</i></div>
+</li>
+</ul>
+<a name="ConsumerWantsFilePredicate(org.apache.archiva.admin.model.beans.ManagedRepository)">
+<!--   -->
+</a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>ConsumerWantsFilePredicate</h4>
-<pre>public&nbsp;<a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.35">ConsumerWantsFilePredicate</a>()</pre>
+<pre>public&nbsp;<a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.60">ConsumerWantsFilePredicate</a>(<a href="../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&nbsp;managedRepository)</pre>
 </li>
 </ul>
 </li>
@@ -291,7 +334,7 @@ implements org.apache.commons.collections.Predicate</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>evaluate</h4>
-<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.46">evaluate</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;object)</pre>
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.65">evaluate</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;object)</pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
 <dd><code>evaluate</code>&nbsp;in interface&nbsp;<code>org.apache.commons.collections.Predicate</code></dd>
@@ -304,7 +347,7 @@ implements org.apache.commons.collections.Predicate</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getBasefile</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/archiva/common/utils/BaseFile.html" title="class in org.apache.archiva.common.utils">BaseFile</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.75">getBasefile</a>()</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/archiva/common/utils/BaseFile.html" title="class in org.apache.archiva.common.utils">BaseFile</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.94">getBasefile</a>()</pre>
 </li>
 </ul>
 <a name="getWantedFileCount()">
@@ -313,7 +356,7 @@ implements org.apache.commons.collections.Predicate</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getWantedFileCount</h4>
-<pre>public&nbsp;int&nbsp;<a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.80">getWantedFileCount</a>()</pre>
+<pre>public&nbsp;int&nbsp;<a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.99">getWantedFileCount</a>()</pre>
 </li>
 </ul>
 <a name="isCaseSensitive()">
@@ -322,7 +365,7 @@ implements org.apache.commons.collections.Predicate</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>isCaseSensitive</h4>
-<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.85">isCaseSensitive</a>()</pre>
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.104">isCaseSensitive</a>()</pre>
 </li>
 </ul>
 <a name="setBasefile(org.apache.archiva.common.utils.BaseFile)">
@@ -331,7 +374,7 @@ implements org.apache.commons.collections.Predicate</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>setBasefile</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.90">setBasefile</a>(<a href="../../../../../org/apache/archiva/common/utils/BaseFile.html" title="class in org.apache.archiva.common.utils">BaseFile</a>&nbsp;basefile)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.109">setBasefile</a>(<a href="../../../../../org/apache/archiva/common/utils/BaseFile.html" title="class in org.apache.archiva.common.utils">BaseFile</a>&nbsp;basefile)</pre>
 </li>
 </ul>
 <a name="setCaseSensitive(boolean)">
@@ -340,7 +383,7 @@ implements org.apache.commons.collections.Predicate</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>setCaseSensitive</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.96">setCaseSensitive</a>(boolean&nbsp;isCaseSensitive)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.115">setCaseSensitive</a>(boolean&nbsp;isCaseSensitive)</pre>
 </li>
 </ul>
 <a name="wantsFile(org.apache.archiva.consumers.RepositoryContentConsumer, java.lang.String)">
@@ -349,7 +392,7 @@ implements org.apache.commons.collections.Predicate</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>wantsFile</h4>
-<pre>private&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.101">wantsFile</a>(<a href="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html" title="interface in org.apache.archiva.consumers">RepositoryContentConsumer</a>&nbsp;consumer,
+<pre>private&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.120">wantsFile</a>(<a href="../../../../../org/apache/archiva/consumers/RepositoryContentConsumer.html" title="interface in org.apache.archiva.consumers">RepositoryContentConsumer</a>&nbsp;consumer,
                 <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;relativePath)</pre>
 </li>
 </ul>
@@ -359,7 +402,7 @@ implements org.apache.commons.collections.Predicate</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>setChangesSince</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.131">setChangesSince</a>(long&nbsp;changesSince)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/consumers/functors/ConsumerWantsFilePredicate.html#line.160">setChangesSince</a>(long&nbsp;changesSince)</pre>
 </li>
 </ul>
 </li>

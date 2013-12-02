@@ -36,7 +36,7 @@
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/archiva/scheduler/indexing/DownloadRemoteIndexScheduler.html" title="interface in org.apache.archiva.scheduler.indexing"><span class="strong">Prev Class</span></a></li>
-<li><a href="../../../../../org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.ZeroCopyConsumerListener.html" title="class in org.apache.archiva.scheduler.indexing"><span class="strong">Next Class</span></a></li>
+<li><a href="../../../../../org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.DownloadListener.html" title="class in org.apache.archiva.scheduler.indexing"><span class="strong">Next Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html" target="_top">Frames</a></li>
@@ -99,7 +99,7 @@
 </dl>
 <hr>
 <br>
-<pre>public class <a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.76">DownloadRemoteIndexTask</a>
+<pre>public class <a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.66">DownloadRemoteIndexTask</a>
 extends <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.html?is-external=true" title="class or interface in java.lang">Runnable</a></pre>
 <dl><dt><span class="strong">Since:</span></dt>
@@ -126,11 +126,11 @@ implements <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.h
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>private static class&nbsp;</code></td>
-<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.ZeroCopyConsumerListener.html" title="class in org.apache.archiva.scheduler.indexing">DownloadRemoteIndexTask.ZeroCopyConsumerListener</a></strong></code>&nbsp;</td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.DownloadListener.html" title="class in org.apache.archiva.scheduler.indexing">DownloadRemoteIndexTask.DownloadListener</a></strong></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>private static class&nbsp;</code></td>
-<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.ZeroCopyResourceFetcher.html" title="class in org.apache.archiva.scheduler.indexing">DownloadRemoteIndexTask.ZeroCopyResourceFetcher</a></strong></code>&nbsp;</td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.WagonResourceFetcher.html" title="class in org.apache.archiva.scheduler.indexing">DownloadRemoteIndexTask.WagonResourceFetcher</a></strong></code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -213,15 +213,10 @@ implements <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.h
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected static <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#addParameters(java.lang.String, org.apache.archiva.admin.model.beans.RemoteRepository)">addParameters</a></strong>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
-                          <a href="../../../../../org/apache/archiva/admin/model/beans/RemoteRepository.html" title="class in org.apache.archiva.admin.model.beans">RemoteRepository</a>&nbsp;remoteRepository)</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
 <td class="colFirst"><code>private void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#deleteDirectoryQuiet(java.io.File)">deleteDirectoryQuiet</a></strong>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;f)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../../../org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#run()">run</a></strong>()</code>&nbsp;</td>
 </tr>
@@ -253,7 +248,7 @@ implements <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>log</h4>
-<pre>private&nbsp;org.slf4j.Logger <a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.79">log</a></pre>
+<pre>private&nbsp;org.slf4j.Logger <a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.69">log</a></pre>
 </li>
 </ul>
 <a name="remoteRepository">
@@ -262,7 +257,7 @@ implements <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>remoteRepository</h4>
-<pre>private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/beans/RemoteRepository.html" title="class in org.apache.archiva.admin.model.beans">RemoteRepository</a> <a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.81">remoteRepository</a></pre>
+<pre>private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/beans/RemoteRepository.html" title="class in org.apache.archiva.admin.model.beans">RemoteRepository</a> <a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.71">remoteRepository</a></pre>
 </li>
 </ul>
 <a name="remoteRepositoryAdmin">
@@ -271,7 +266,7 @@ implements <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>remoteRepositoryAdmin</h4>
-<pre>private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/remote/RemoteRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.remote">RemoteRepositoryAdmin</a> <a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.83">remoteRepositoryAdmin</a></pre>
+<pre>private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/remote/RemoteRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.remote">RemoteRepositoryAdmin</a> <a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.73">remoteRepositoryAdmin</a></pre>
 </li>
 </ul>
 <a name="wagonFactory">
@@ -280,7 +275,7 @@ implements <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>wagonFactory</h4>
-<pre>private&nbsp;<a href="../../../../../org/apache/archiva/proxy/common/WagonFactory.html" title="interface in org.apache.archiva.proxy.common">WagonFactory</a> <a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.85">wagonFactory</a></pre>
+<pre>private&nbsp;<a href="../../../../../org/apache/archiva/proxy/common/WagonFactory.html" title="interface in org.apache.archiva.proxy.common">WagonFactory</a> <a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.75">wagonFactory</a></pre>
 </li>
 </ul>
 <a name="networkProxy">
@@ -289,7 +284,7 @@ implements <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>networkProxy</h4>
-<pre>private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/beans/NetworkProxy.html" title="class in org.apache.archiva.admin.model.beans">NetworkProxy</a> <a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.87">networkProxy</a></pre>
+<pre>private&nbsp;<a href="../../../../../org/apache/archiva/admin/model/beans/NetworkProxy.html" title="class in org.apache.archiva.admin.model.beans">NetworkProxy</a> <a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.77">networkProxy</a></pre>
 </li>
 </ul>
 <a name="fullDownload">
@@ -298,7 +293,7 @@ implements <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>fullDownload</h4>
-<pre>private&nbsp;boolean <a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.89">fullDownload</a></pre>
+<pre>private&nbsp;boolean <a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.79">fullDownload</a></pre>
 </li>
 </ul>
 <a name="runningRemoteDownloadIds">
@@ -307,7 +302,7 @@ implements <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>runningRemoteDownloadIds</h4>
-<pre>private&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt; <a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.91">runningRemoteDownloadIds</a></pre>
+<pre>private&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt; <a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.81">runningRemoteDownloadIds</a></pre>
 </li>
 </ul>
 <a name="indexUpdater">
@@ -316,7 +311,7 @@ implements <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.h
 <ul class="blockListLast">
 <li class="blockList">
 <h4>indexUpdater</h4>
-<pre>private&nbsp;org.apache.maven.index.updater.IndexUpdater <a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.93">indexUpdater</a></pre>
+<pre>private&nbsp;org.apache.maven.index.updater.IndexUpdater <a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.83">indexUpdater</a></pre>
 </li>
 </ul>
 </li>
@@ -333,7 +328,7 @@ implements <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.h
 <ul class="blockListLast">
 <li class="blockList">
 <h4>DownloadRemoteIndexTask</h4>
-<pre>public&nbsp;<a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.96">DownloadRemoteIndexTask</a>(<a href="../../../../../org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTaskRequest.html" title="class in org.apache.archiva.scheduler.indexing">DownloadRemoteIndexTaskRequest</a>&nbsp;downloadRemoteIndexTaskRequest,
+<pre>public&nbsp;<a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.86">DownloadRemoteIndexTask</a>(<a href="../../../../../org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTaskRequest.html" title="class in org.apache.archiva.scheduler.indexing">DownloadRemoteIndexTaskRequest</a>&nbsp;downloadRemoteIndexTaskRequest,
                        <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;runningRemoteDownloadIds)</pre>
 </li>
 </ul>
@@ -351,7 +346,7 @@ implements <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>run</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.108">run</a>()</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.98">run</a>()</pre>
 <dl>
 <dt><strong>Specified by:</strong></dt>
 <dd><code><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.html?is-external=true#run()" title="class or interface in java.lang">run</a></code>&nbsp;in interface&nbsp;<code><a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.html?is-external=true" title="class or interface in java.lang">Runnable</a></code></dd>
@@ -361,20 +356,10 @@ implements <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.h
 <a name="deleteDirectoryQuiet(java.io.File)">
 <!--   -->
 </a>
-<ul class="blockList">
-<li class="blockList">
-<h4>deleteDirectoryQuiet</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.269">deleteDirectoryQuiet</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;f)</pre>
-</li>
-</ul>
-<a name="addParameters(java.lang.String, org.apache.archiva.admin.model.beans.RemoteRepository)">
-<!--   -->
-</a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>addParameters</h4>
-<pre>protected static&nbsp;<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.508">addParameters</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
-                   <a href="../../../../../org/apache/archiva/admin/model/beans/RemoteRepository.html" title="class in org.apache.archiva.admin.model.beans">RemoteRepository</a>&nbsp;remoteRepository)</pre>
+<h4>deleteDirectoryQuiet</h4>
+<pre>private&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html#line.235">deleteDirectoryQuiet</a>(<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;f)</pre>
 </li>
 </ul>
 </li>
@@ -404,7 +389,7 @@ implements <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.h
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/archiva/scheduler/indexing/DownloadRemoteIndexScheduler.html" title="interface in org.apache.archiva.scheduler.indexing"><span class="strong">Prev Class</span></a></li>
-<li><a href="../../../../../org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.ZeroCopyConsumerListener.html" title="class in org.apache.archiva.scheduler.indexing"><span class="strong">Next Class</span></a></li>
+<li><a href="../../../../../org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.DownloadListener.html" title="class in org.apache.archiva.scheduler.indexing"><span class="strong">Next Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/archiva/scheduler/indexing/DownloadRemoteIndexTask.html" target="_top">Frames</a></li>
