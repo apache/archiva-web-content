@@ -58,8 +58,8 @@
             <li class="current">
               <a href="el_ns0_ldapConfiguration.html">ldapConfiguration element</a>
               <ul>
-                <li><a href="el_ns0_metadataAddRequest.html">metadataAddRequest element</a></li>
                 <li><a href="el_ns0_ldapConfiguration.html">ldapConfiguration element</a></li>
+                <li><a href="el_ns0_metadataAddRequest.html">metadataAddRequest element</a></li>
                 <li><a href="el_ns0_mailingList.html">mailingList element</a></li>
                 <li><a href="el_ns0_cacheEntry.html">cacheEntry element</a></li>
                 <li><a href="el_ns0_managedRepository.html">managedRepository element</a></li>
@@ -68,8 +68,8 @@
                 <li><a href="el_ns0_versionsList.html">versionsList element</a></li>
                 <li><a href="el_ns0_organisationInformation.html">organisationInformation element</a></li>
                 <li><a href="el_ns0_searchRequest.html">searchRequest element</a></li>
-                <li><a href="el_ns0_networkConfiguration.html">networkConfiguration element</a></li>
                 <li><a href="el_ns0_groupIdList.html">groupIdList element</a></li>
+                <li><a href="el_ns0_networkConfiguration.html">networkConfiguration element</a></li>
                 <li><a href="el_ns0_issueManagement.html">issueManagement element</a></li>
                 <li><a href="el_ns0_uiConfiguration.html">uiConfiguration element</a></li>
                 <li><a href="el_ns0_cacheConfiguration.html">cacheConfiguration element</a></li>
@@ -78,6 +78,7 @@
                 <li><a href="el_ns0_redbackRuntimeConfiguration.html">redbackRuntimeConfiguration element</a></li>
                 <li><a href="el_ns0_artifactTransferRequest.html">artifactTransferRequest element</a></li>
                 <li><a href="el_ns0_archivaRepositoryStatistics.html">archivaRepositoryStatistics element</a></li>
+                <li><a href="el_ns0_fileLockConfiguration.html">fileLockConfiguration element</a></li>
                 <li><a href="el_ns0_browseResultEntry.html">browseResultEntry element</a></li>
                 <li><a href="el_ns0_scm.html">scm element</a></li>
                 <li><a href="el_ns0_repositoryGroup.html">repositoryGroup element</a></li>
@@ -93,12 +94,12 @@
                 <li><a href="el_ns0_artifactContent.html">artifactContent element</a></li>
                 <li><a href="el_ns0_propertyEntry.html">propertyEntry element</a></li>
                 <li><a href="el_ns0_projectVersionMetadata.html">projectVersionMetadata element</a></li>
-                <li><a href="el_ns0_adminRepositoryConsumer.html">adminRepositoryConsumer element</a></li>
                 <li><a href="el_ns0_dependency.html">dependency element</a></li>
+                <li><a href="el_ns0_adminRepositoryConsumer.html">adminRepositoryConsumer element</a></li>
                 <li><a href="el_ns0_userManagerImplementationInformation.html">userManagerImplementationInformation element</a></li>
                 <li><a href="el_ns0_queueEntry.html">queueEntry element</a></li>
-                <li><a href="el_ns0_browseResult.html">browseResult element</a></li>
                 <li><a href="el_ns0_artifactContentEntry.html">artifactContentEntry element</a></li>
+                <li><a href="el_ns0_browseResult.html">browseResult element</a></li>
                 <li><a href="el_ns0_rbacManagerImplementationInformation.html">rbacManagerImplementationInformation element</a></li>
                 <li><a href="el_ns0_archivaRuntimeConfiguration.html">archivaRuntimeConfiguration element</a></li>
                 <li><a href="el_ns0_license.html">license element</a></li>
@@ -129,20 +130,11 @@
       <h2>Example XML</h2>
       <code class="prettyprint lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;ldapConfiguration&gt;
-  &lt;hostName&gt;...&lt;/hostName&gt;
-  &lt;writable&gt;...&lt;/writable&gt;
-  &lt;port&gt;...&lt;/port&gt;
-  &lt;extraPropertiesEntries&gt;
-    &lt;value&gt;...&lt;/value&gt;
-    &lt;key&gt;...&lt;/key&gt;
-  &lt;/extraPropertiesEntries&gt;
-  &lt;extraPropertiesEntries&gt;
-    &lt;!--...--&gt;
-  &lt;/extraPropertiesEntries&gt;
-  &lt;!--...more &quot;extraPropertiesEntries&quot; elements...--&gt;
+  &lt;baseDn&gt;...&lt;/baseDn&gt;
   &lt;authenticationMethod&gt;...&lt;/authenticationMethod&gt;
-  &lt;baseGroupsDn&gt;...&lt;/baseGroupsDn&gt;
   &lt;password&gt;...&lt;/password&gt;
+  &lt;baseGroupsDn&gt;...&lt;/baseGroupsDn&gt;
+  &lt;ssl&gt;...&lt;/ssl&gt;
   &lt;extraProperties&gt;
     &lt;entry&gt;
       &lt;key&gt;...&lt;/key&gt;
@@ -158,36 +150,22 @@
     &lt;/entry&gt;
     &lt;!--...more entries...--&gt;
   &lt;/extraProperties&gt;
-  &lt;contextFactory&gt;...&lt;/contextFactory&gt;
-  &lt;baseDn&gt;...&lt;/baseDn&gt;
-  &lt;bindAuthenticatorEnabled&gt;...&lt;/bindAuthenticatorEnabled&gt;
-  &lt;ssl&gt;...&lt;/ssl&gt;
-  &lt;useRoleNameAsGroup&gt;...&lt;/useRoleNameAsGroup&gt;
+  &lt;writable&gt;...&lt;/writable&gt;
+  &lt;hostName&gt;...&lt;/hostName&gt;
+  &lt;port&gt;...&lt;/port&gt;
   &lt;bindDn&gt;...&lt;/bindDn&gt;
+  &lt;bindAuthenticatorEnabled&gt;...&lt;/bindAuthenticatorEnabled&gt;
+  &lt;contextFactory&gt;...&lt;/contextFactory&gt;
+  &lt;extraPropertiesEntries&gt;
+    &lt;value&gt;...&lt;/value&gt;
+    &lt;key&gt;...&lt;/key&gt;
+  &lt;/extraPropertiesEntries&gt;
+  &lt;extraPropertiesEntries&gt;
+    &lt;!--...--&gt;
+  &lt;/extraPropertiesEntries&gt;
+  &lt;!--...more &quot;extraPropertiesEntries&quot; elements...--&gt;
+  &lt;useRoleNameAsGroup&gt;...&lt;/useRoleNameAsGroup&gt;
 &lt;/ldapConfiguration&gt;</code>
-      <h2>Example JSON</h2>
-      <code class="prettyprint lang-js">{
-  &quot;hostName&quot; : &quot;...&quot;,
-  &quot;writable&quot; : false,
-  &quot;port&quot; : ...,
-  &quot;extraPropertiesEntries&quot; : [ {
-    &quot;value&quot; : &quot;...&quot;,
-    &quot;key&quot; : &quot;...&quot;
-  }, ... ],
-  &quot;authenticationMethod&quot; : &quot;...&quot;,
-  &quot;baseGroupsDn&quot; : &quot;...&quot;,
-  &quot;password&quot; : &quot;...&quot;,
-  &quot;extraProperties&quot; : [ {
-    &quot;...&quot; : ...
-  }, {
-  } ],
-  &quot;contextFactory&quot; : &quot;...&quot;,
-  &quot;baseDn&quot; : &quot;...&quot;,
-  &quot;bindAuthenticatorEnabled&quot; : false,
-  &quot;ssl&quot; : false,
-  &quot;useRoleNameAsGroup&quot; : false,
-  &quot;bindDn&quot; : &quot;...&quot;
-}</code>
 
       <div class="clear" />
     </div>
