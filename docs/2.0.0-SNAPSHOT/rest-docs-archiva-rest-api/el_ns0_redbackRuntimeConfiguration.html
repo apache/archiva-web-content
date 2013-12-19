@@ -68,8 +68,8 @@
                 <li><a href="el_ns0_versionsList.html">versionsList element</a></li>
                 <li><a href="el_ns0_organisationInformation.html">organisationInformation element</a></li>
                 <li><a href="el_ns0_searchRequest.html">searchRequest element</a></li>
-                <li><a href="el_ns0_groupIdList.html">groupIdList element</a></li>
                 <li><a href="el_ns0_networkConfiguration.html">networkConfiguration element</a></li>
+                <li><a href="el_ns0_groupIdList.html">groupIdList element</a></li>
                 <li><a href="el_ns0_issueManagement.html">issueManagement element</a></li>
                 <li><a href="el_ns0_uiConfiguration.html">uiConfiguration element</a></li>
                 <li><a href="el_ns0_cacheConfiguration.html">cacheConfiguration element</a></li>
@@ -83,11 +83,11 @@
                 <li><a href="el_ns0_scm.html">scm element</a></li>
                 <li><a href="el_ns0_repositoryGroup.html">repositoryGroup element</a></li>
                 <li><a href="el_ns0_consumerScanningStatistics.html">consumerScanningStatistics element</a></li>
-                <li><a href="el_ns0_proxyConnector.html">proxyConnector element</a></li>
                 <li><a href="el_ns0_networkProxy.html">networkProxy element</a></li>
+                <li><a href="el_ns0_proxyConnector.html">proxyConnector element</a></li>
                 <li><a href="el_ns0_artifact.html">artifact element</a></li>
-                <li><a href="el_ns0_repositoryScannerStatistics.html">repositoryScannerStatistics element</a></li>
                 <li><a href="el_ns0_repositoryScanStatistics.html">repositoryScanStatistics element</a></li>
+                <li><a href="el_ns0_repositoryScannerStatistics.html">repositoryScannerStatistics element</a></li>
                 <li><a href="el_ns0_proxyConnectorRule.html">proxyConnectorRule element</a></li>
                 <li><a href="el_ns0_fileType.html">fileType element</a></li>
                 <li><a href="el_ns0_legacyArtifactPath.html">legacyArtifactPath element</a></li>
@@ -130,22 +130,10 @@
       <h2>Example XML</h2>
       <code class="prettyprint lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;redbackRuntimeConfiguration&gt;
-  &lt;configurationPropertiesEntries&gt;
-    &lt;value&gt;...&lt;/value&gt;
-    &lt;key&gt;...&lt;/key&gt;
-  &lt;/configurationPropertiesEntries&gt;
-  &lt;configurationPropertiesEntries&gt;
-    &lt;!--...--&gt;
-  &lt;/configurationPropertiesEntries&gt;
-  &lt;!--...more &quot;configurationPropertiesEntries&quot; elements...--&gt;
-  &lt;migratedFromRedbackConfiguration&gt;...&lt;/migratedFromRedbackConfiguration&gt;
   &lt;useUsersCache&gt;...&lt;/useUsersCache&gt;
-  &lt;usersCacheConfiguration&gt;
-    &lt;timeToLiveSeconds&gt;...&lt;/timeToLiveSeconds&gt;
-    &lt;maxElementsOnDisk&gt;...&lt;/maxElementsOnDisk&gt;
-    &lt;maxElementsInMemory&gt;...&lt;/maxElementsInMemory&gt;
-    &lt;timeToIdleSeconds&gt;...&lt;/timeToIdleSeconds&gt;
-  &lt;/usersCacheConfiguration&gt;
+  &lt;userManagerImpls&gt;...&lt;/userManagerImpls&gt;
+  &lt;userManagerImpls&gt;...&lt;/userManagerImpls&gt;
+  &lt;!--...more &quot;userManagerImpls&quot; elements...--&gt;
   &lt;configurationProperties&gt;
     &lt;entry&gt;
       &lt;key&gt;...&lt;/key&gt;
@@ -161,6 +149,7 @@
     &lt;/entry&gt;
     &lt;!--...more entries...--&gt;
   &lt;/configurationProperties&gt;
+  &lt;migratedFromRedbackConfiguration&gt;...&lt;/migratedFromRedbackConfiguration&gt;
   &lt;ldapGroupMappings&gt;
     &lt;group&gt;...&lt;/group&gt;
     &lt;roleNames&gt;...&lt;/roleNames&gt;
@@ -174,15 +163,34 @@
   &lt;rbacManagerImpls&gt;...&lt;/rbacManagerImpls&gt;
   &lt;rbacManagerImpls&gt;...&lt;/rbacManagerImpls&gt;
   &lt;!--...more &quot;rbacManagerImpls&quot; elements...--&gt;
-  &lt;userManagerImpls&gt;...&lt;/userManagerImpls&gt;
-  &lt;userManagerImpls&gt;...&lt;/userManagerImpls&gt;
-  &lt;!--...more &quot;userManagerImpls&quot; elements...--&gt;
+  &lt;usersCacheConfiguration&gt;
+    &lt;timeToLiveSeconds&gt;...&lt;/timeToLiveSeconds&gt;
+    &lt;maxElementsInMemory&gt;...&lt;/maxElementsInMemory&gt;
+    &lt;timeToIdleSeconds&gt;...&lt;/timeToIdleSeconds&gt;
+    &lt;maxElementsOnDisk&gt;...&lt;/maxElementsOnDisk&gt;
+  &lt;/usersCacheConfiguration&gt;
+  &lt;configurationPropertiesEntries&gt;
+    &lt;key&gt;...&lt;/key&gt;
+    &lt;value&gt;...&lt;/value&gt;
+  &lt;/configurationPropertiesEntries&gt;
+  &lt;configurationPropertiesEntries&gt;
+    &lt;!--...--&gt;
+  &lt;/configurationPropertiesEntries&gt;
+  &lt;!--...more &quot;configurationPropertiesEntries&quot; elements...--&gt;
   &lt;ldapConfiguration&gt;
-    &lt;baseDn&gt;...&lt;/baseDn&gt;
+    &lt;contextFactory&gt;...&lt;/contextFactory&gt;
+    &lt;hostName&gt;...&lt;/hostName&gt;
     &lt;authenticationMethod&gt;...&lt;/authenticationMethod&gt;
-    &lt;password&gt;...&lt;/password&gt;
-    &lt;baseGroupsDn&gt;...&lt;/baseGroupsDn&gt;
-    &lt;ssl&gt;...&lt;/ssl&gt;
+    &lt;port&gt;...&lt;/port&gt;
+    &lt;extraPropertiesEntries&gt;
+      &lt;key&gt;...&lt;/key&gt;
+      &lt;value&gt;...&lt;/value&gt;
+    &lt;/extraPropertiesEntries&gt;
+    &lt;extraPropertiesEntries&gt;
+      &lt;!--...--&gt;
+    &lt;/extraPropertiesEntries&gt;
+    &lt;!--...more &quot;extraPropertiesEntries&quot; elements...--&gt;
+    &lt;baseDn&gt;...&lt;/baseDn&gt;
     &lt;extraProperties&gt;
       &lt;entry&gt;
         &lt;key&gt;...&lt;/key&gt;
@@ -198,21 +206,13 @@
       &lt;/entry&gt;
       &lt;!--...more entries...--&gt;
     &lt;/extraProperties&gt;
-    &lt;writable&gt;...&lt;/writable&gt;
-    &lt;hostName&gt;...&lt;/hostName&gt;
-    &lt;port&gt;...&lt;/port&gt;
     &lt;bindDn&gt;...&lt;/bindDn&gt;
-    &lt;bindAuthenticatorEnabled&gt;...&lt;/bindAuthenticatorEnabled&gt;
-    &lt;contextFactory&gt;...&lt;/contextFactory&gt;
-    &lt;extraPropertiesEntries&gt;
-      &lt;value&gt;...&lt;/value&gt;
-      &lt;key&gt;...&lt;/key&gt;
-    &lt;/extraPropertiesEntries&gt;
-    &lt;extraPropertiesEntries&gt;
-      &lt;!--...--&gt;
-    &lt;/extraPropertiesEntries&gt;
-    &lt;!--...more &quot;extraPropertiesEntries&quot; elements...--&gt;
+    &lt;writable&gt;...&lt;/writable&gt;
+    &lt;password&gt;...&lt;/password&gt;
+    &lt;baseGroupsDn&gt;...&lt;/baseGroupsDn&gt;
     &lt;useRoleNameAsGroup&gt;...&lt;/useRoleNameAsGroup&gt;
+    &lt;bindAuthenticatorEnabled&gt;...&lt;/bindAuthenticatorEnabled&gt;
+    &lt;ssl&gt;...&lt;/ssl&gt;
   &lt;/ldapConfiguration&gt;
 &lt;/redbackRuntimeConfiguration&gt;</code>
 
