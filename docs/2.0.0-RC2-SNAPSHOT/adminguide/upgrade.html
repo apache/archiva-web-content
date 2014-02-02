@@ -7,7 +7,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="Date-Revision-yyyymmdd" content="20140121" />
+    <meta name="Date-Revision-yyyymmdd" content="20140203" />
     <meta http-equiv="Content-Language" content="en" />
     <title>Archiva Documentation - Upgrading Archiva</title>
     <link rel="stylesheet" href="../css/apache-maven-fluido-1.3.1.min.css" />
@@ -75,7 +75,7 @@
         
                 
                     
-                  <li id="publishDate" class="pull-right"><span class="divider">|</span> Last Published: 2014-01-21</li>
+                  <li id="publishDate" class="pull-right"><span class="divider">|</span> Last Published: 2014-02-03</li>
               <li id="projectVersion" class="pull-right">
                     Version: 2.0.0-RC2-SNAPSHOT
         </li>
@@ -362,7 +362,7 @@
 <li><tt>data/databases/archiva</tt> exists for Archiva 1.3.x and below. This can be retained through upgrades, but can also be regenerated at any time. This no longer exists in Archiva 1.4+.</li></ul></li></ul>
 <p>The following describes instructions specific to upgrading between different versions.</p>
 <div class="section">
-<h3>Upgrading Archiva to 1.4+<a name="Upgrading_Archiva_to_1.4"></a></h3>
+<h3>Upgrading Archiva to 2.0+<a name="Upgrading_Archiva_to_2.0"></a></h3>
 <div class="section">
 <h4>Metadata Repository<a name="Metadata_Repository"></a></h4><!-- TODO: metadata repository description --></div>
 <div class="section">
@@ -373,11 +373,9 @@
 <p>If you had used the undocumented ability to modify <tt>application.xml</tt> to alter the configuration search path, note that in Archiva 1.4+ you must use the <tt>org.apache.archiva</tt> configuration search path instead of <tt>org.apache.maven.archiva</tt>.</p></div>
 <div class="section">
 <h4>Updated Jetty configuration<a name="Updated_Jetty_configuration"></a></h4>
-<p>If you are using the Jetty standalone configuration with a custom <tt>jetty.xml</tt>, note that it has been upgraded to Jetty 7 as of Archiva 1.4-M2. You will need to recreate your customisations using the <tt>jetty.xml</tt> shipped with Archiva.</p>
-<p>In addition, you now need to ensure that a <tt>temp</tt> directory is created inside the Archiva application base directory (alongside <tt>conf</tt>, <tt>data</tt> and <tt>logs</tt>).</p></div></div>
-<div class="section">
-<h3>Upgrading Archiva to 1.2.2<a name="Upgrading_Archiva_to_1.2.2"></a></h3>
-<p>Since Archiva 1.2.2, the Jetty version has been upgraded to 6.1.19. If upgrading to Archiva 1.2.2 (or higher versions), there is a need to update the library contents listed in <tt>ARCHIVA_BASE/conf/wrapper.conf</tt> with the ones included in the new distribution if the <tt>ARCHIVA_BASE</tt> directory is separate from the installation.</p></div></div>
+<p>If you are using the Jetty standalone configuration with a custom <tt>jetty.xml</tt>, note that it has been upgraded to Jetty 8 as of Archiva 1.4-M2. You will need to recreate your customisations using the <tt>jetty.xml</tt> shipped with Archiva.</p>
+<p>In addition, you now need to ensure that a <tt>temp</tt> directory is created inside the Archiva application base directory (alongside <tt>conf</tt>, <tt>data</tt> and <tt>logs</tt>).</p>
+<p>The default webapp context is now / (see <a href="./adminguide/standalone.html"> Standalone Distribution</a>)</p></div></div></div>
                   </div>
             </div>
           </div>

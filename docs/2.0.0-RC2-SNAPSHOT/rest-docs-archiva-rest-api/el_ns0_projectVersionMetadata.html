@@ -68,8 +68,8 @@
                 <li><a href="el_ns0_versionsList.html">versionsList element</a></li>
                 <li><a href="el_ns0_organisationInformation.html">organisationInformation element</a></li>
                 <li><a href="el_ns0_searchRequest.html">searchRequest element</a></li>
-                <li><a href="el_ns0_groupIdList.html">groupIdList element</a></li>
                 <li><a href="el_ns0_networkConfiguration.html">networkConfiguration element</a></li>
+                <li><a href="el_ns0_groupIdList.html">groupIdList element</a></li>
                 <li><a href="el_ns0_issueManagement.html">issueManagement element</a></li>
                 <li><a href="el_ns0_uiConfiguration.html">uiConfiguration element</a></li>
                 <li><a href="el_ns0_cacheConfiguration.html">cacheConfiguration element</a></li>
@@ -83,11 +83,11 @@
                 <li><a href="el_ns0_scm.html">scm element</a></li>
                 <li><a href="el_ns0_repositoryGroup.html">repositoryGroup element</a></li>
                 <li><a href="el_ns0_consumerScanningStatistics.html">consumerScanningStatistics element</a></li>
-                <li><a href="el_ns0_proxyConnector.html">proxyConnector element</a></li>
                 <li><a href="el_ns0_networkProxy.html">networkProxy element</a></li>
+                <li><a href="el_ns0_proxyConnector.html">proxyConnector element</a></li>
                 <li><a href="el_ns0_artifact.html">artifact element</a></li>
-                <li><a href="el_ns0_repositoryScannerStatistics.html">repositoryScannerStatistics element</a></li>
                 <li><a href="el_ns0_repositoryScanStatistics.html">repositoryScanStatistics element</a></li>
+                <li><a href="el_ns0_repositoryScannerStatistics.html">repositoryScannerStatistics element</a></li>
                 <li><a href="el_ns0_proxyConnectorRule.html">proxyConnectorRule element</a></li>
                 <li><a href="el_ns0_fileType.html">fileType element</a></li>
                 <li><a href="el_ns0_legacyArtifactPath.html">legacyArtifactPath element</a></li>
@@ -130,11 +130,12 @@
       <h2>Example XML</h2>
       <code class="prettyprint lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;projectVersionMetadata&gt;
+  &lt;url&gt;...&lt;/url&gt;
   &lt;mailingLists&gt;
-    &lt;subscribeAddress&gt;...&lt;/subscribeAddress&gt;
     &lt;name&gt;...&lt;/name&gt;
-    &lt;mainArchiveUrl&gt;...&lt;/mainArchiveUrl&gt;
     &lt;postAddress&gt;...&lt;/postAddress&gt;
+    &lt;mainArchiveUrl&gt;...&lt;/mainArchiveUrl&gt;
+    &lt;subscribeAddress&gt;...&lt;/subscribeAddress&gt;
     &lt;otherArchives&gt;...&lt;/otherArchives&gt;
     &lt;otherArchives&gt;...&lt;/otherArchives&gt;
     &lt;!--...more &quot;otherArchives&quot; elements...--&gt;
@@ -144,18 +145,6 @@
     &lt;!--...--&gt;
   &lt;/mailingLists&gt;
   &lt;!--...more &quot;mailingLists&quot; elements...--&gt;
-  &lt;scm&gt;
-    &lt;url&gt;...&lt;/url&gt;
-    &lt;connection&gt;...&lt;/connection&gt;
-    &lt;developerConnection&gt;...&lt;/developerConnection&gt;
-  &lt;/scm&gt;
-  &lt;ciManagement&gt;
-    &lt;url&gt;...&lt;/url&gt;
-    &lt;system&gt;...&lt;/system&gt;
-  &lt;/ciManagement&gt;
-  &lt;url&gt;...&lt;/url&gt;
-  &lt;id&gt;...&lt;/id&gt;
-  &lt;incomplete&gt;...&lt;/incomplete&gt;
   &lt;licenses&gt;
     &lt;url&gt;...&lt;/url&gt;
     &lt;name&gt;...&lt;/name&gt;
@@ -164,30 +153,41 @@
     &lt;!--...--&gt;
   &lt;/licenses&gt;
   &lt;!--...more &quot;licenses&quot; elements...--&gt;
-  &lt;dependencies&gt;
-    &lt;optional&gt;...&lt;/optional&gt;
-    &lt;groupId&gt;...&lt;/groupId&gt;
-    &lt;type&gt;...&lt;/type&gt;
-    &lt;version&gt;...&lt;/version&gt;
-    &lt;artifactId&gt;...&lt;/artifactId&gt;
-    &lt;classifier&gt;...&lt;/classifier&gt;
-    &lt;scope&gt;...&lt;/scope&gt;
-    &lt;systemPath&gt;...&lt;/systemPath&gt;
-  &lt;/dependencies&gt;
-  &lt;dependencies&gt;
-    &lt;!--...--&gt;
-  &lt;/dependencies&gt;
-  &lt;!--...more &quot;dependencies&quot; elements...--&gt;
-  &lt;name&gt;...&lt;/name&gt;
   &lt;description&gt;...&lt;/description&gt;
   &lt;organization&gt;
     &lt;url&gt;...&lt;/url&gt;
     &lt;name&gt;...&lt;/name&gt;
   &lt;/organization&gt;
+  &lt;incomplete&gt;...&lt;/incomplete&gt;
   &lt;issueManagement&gt;
     &lt;system&gt;...&lt;/system&gt;
     &lt;url&gt;...&lt;/url&gt;
   &lt;/issueManagement&gt;
+  &lt;name&gt;...&lt;/name&gt;
+  &lt;id&gt;...&lt;/id&gt;
+  &lt;dependencies&gt;
+    &lt;scope&gt;...&lt;/scope&gt;
+    &lt;version&gt;...&lt;/version&gt;
+    &lt;optional&gt;...&lt;/optional&gt;
+    &lt;artifactId&gt;...&lt;/artifactId&gt;
+    &lt;groupId&gt;...&lt;/groupId&gt;
+    &lt;systemPath&gt;...&lt;/systemPath&gt;
+    &lt;classifier&gt;...&lt;/classifier&gt;
+    &lt;type&gt;...&lt;/type&gt;
+  &lt;/dependencies&gt;
+  &lt;dependencies&gt;
+    &lt;!--...--&gt;
+  &lt;/dependencies&gt;
+  &lt;!--...more &quot;dependencies&quot; elements...--&gt;
+  &lt;scm&gt;
+    &lt;developerConnection&gt;...&lt;/developerConnection&gt;
+    &lt;url&gt;...&lt;/url&gt;
+    &lt;connection&gt;...&lt;/connection&gt;
+  &lt;/scm&gt;
+  &lt;ciManagement&gt;
+    &lt;url&gt;...&lt;/url&gt;
+    &lt;system&gt;...&lt;/system&gt;
+  &lt;/ciManagement&gt;
 &lt;/projectVersionMetadata&gt;</code>
 
       <div class="clear" />
