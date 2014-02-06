@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="application" type="application"/>
+  <xs:element name="applicationRole" type="applicationRoles"/>
+  <xs:element name="errorMessage" type="errorMessage"/>
+  <xs:element name="ldapGroupMapping" type="ldapGroupMapping"/>
+  <xs:element name="ldapGroupMappingUpdateRequest" type="ldapGroupMappingUpdateRequest"/>
+  <xs:element name="loginRequest" type="loginRequest"/>
+  <xs:element name="operation" type="operation"/>
+  <xs:element name="permission" type="permission"/>
+  <xs:element name="redbackRestError" type="redbackRestError"/>
+  <xs:element name="registrationKey" type="registrationKey"/>
+  <xs:element name="resource" type="resource"/>
+  <xs:element name="role" type="role"/>
+  <xs:element name="roleTemplate" type="roleTemplate"/>
+  <xs:element name="stringList" type="stringList"/>
+  <xs:element name="user" type="user"/>
+  <xs:element name="userRegistrationRequest" type="userRegistrationRequest"/>
+  <xs:complexType name="application">
+    <xs:sequence>
+      <xs:element name="version" type="xs:string" minOccurs="0"/>
+      <xs:element name="id" type="xs:string" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="longDescription" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="applicationRoles">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="globalRoles" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="roleTemplates" type="roleTemplate" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="resources" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="errorMessage">
+    <xs:sequence>
+      <xs:element name="errorKey" type="xs:string" minOccurs="0"/>
+      <xs:element name="args" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ldapGroupMapping">
+    <xs:sequence>
+      <xs:element name="group" type="xs:string" minOccurs="0"/>
+      <xs:element name="roleNames" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ldapGroupMappingUpdateRequest">
+    <xs:sequence>
+      <xs:element name="ldapGroupMapping" type="ldapGroupMapping" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="loginRequest">
+    <xs:sequence>
+      <xs:element name="username" type="xs:string" minOccurs="0"/>
+      <xs:element name="password" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="operation">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="permanent" type="xs:boolean" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="permission">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="operation" type="operation" minOccurs="0"/>
+      <xs:element name="resource" type="resource" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="redbackRestError">
+    <xs:sequence>
+      <xs:element name="errorMessages" type="errorMessage" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="registrationKey">
+    <xs:sequence>
+      <xs:element name="key" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resource">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="pattern" type="xs:boolean" minOccurs="1"/>
+      <xs:element name="permanent" type="xs:boolean" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="role">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="assignable" type="xs:boolean" minOccurs="1"/>
+      <xs:element name="childRoleNames" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="permissions" type="permission" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="permanent" type="xs:boolean" minOccurs="1"/>
+      <xs:element name="parentRoleNames" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="parentsRolesUsers" type="user" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="users" type="user" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="otherUsers" type="user" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="removedUsers" type="user" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="roleTemplate">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string" minOccurs="0"/>
+      <xs:element name="namePrefix" type="xs:string" minOccurs="0"/>
+      <xs:element name="delimiter" type="xs:string" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="resource" type="xs:string" minOccurs="0"/>
+      <xs:element name="roles" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="stringList">
+    <xs:annotation>
+      <xs:documentation>
+        <![CDATA[jaxrs fail to return List<String> so use this contains for rest services returning that]]>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="strings" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="user">
+    <xs:sequence>
+      <xs:element name="username" type="xs:string" minOccurs="0"/>
+      <xs:element name="fullName" type="xs:string" minOccurs="0"/>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="validated" type="xs:boolean" minOccurs="1"/>
+      <xs:element name="locked" type="xs:boolean" minOccurs="1"/>
+      <xs:element name="password" type="xs:string" minOccurs="0"/>
+      <xs:element name="passwordChangeRequired" type="xs:boolean" minOccurs="1"/>
+      <xs:element name="permanent" type="xs:boolean" minOccurs="1"/>
+      <xs:element name="confirmPassword" type="xs:string" minOccurs="0"/>
+      <xs:element name="timestampAccountCreation" type="xs:string" minOccurs="0"/>
+      <xs:element name="timestampLastLogin" type="xs:string" minOccurs="0"/>
+      <xs:element name="timestampLastPasswordChange" type="xs:string" minOccurs="0"/>
+      <xs:element name="previousPassword" type="xs:string" minOccurs="0"/>
+      <xs:element name="assignedRoles" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="readOnly" type="xs:boolean" minOccurs="1"/>
+      <xs:element name="userManagerId" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userRegistrationRequest">
+    <xs:sequence>
+      <xs:element name="user" type="user" minOccurs="0"/>
+      <xs:element name="applicationUrl" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
