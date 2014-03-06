@@ -8,7 +8,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="2012-09-15" />
-    <meta name="Date-Revision-yyyymmdd" content="20140219" />
+    <meta name="Date-Revision-yyyymmdd" content="20140306" />
     <meta http-equiv="Content-Language" content="en" />
     <title>Archiva Documentation - Deploying to Repository</title>
     <link rel="stylesheet" href="../css/apache-maven-fluido-1.3.1.min.css" />
@@ -76,7 +76,7 @@
         
                 
                     
-                  <li id="publishDate" class="pull-right"><span class="divider">|</span> Last Published: 2014-02-19</li>
+                  <li id="publishDate" class="pull-right"><span class="divider">|</span> Last Published: 2014-03-06</li>
               <li id="projectVersion" class="pull-right">
                     Version: 2.0.1-SNAPSHOT
         </li>
@@ -359,7 +359,8 @@
     &lt;!-- omitted xml --&gt;
   &lt;/servers&gt;
   &lt;!-- omitted xml --&gt;
-&lt;/settings&gt;</pre></div></li></ol>
+&lt;/settings&gt;
+</pre></div></li></ol>
 <div class="section">
 <h4>Deploying to Archiva using HTTP<a name="Deploying_to_Archiva_using_HTTP"></a></h4>
 <p>Configure the <tt>distributionManagement</tt> part of your <tt>pom.xml</tt> (customising the URLs as needed). The <tt>id</tt> of the repository in <tt>distributionManagement</tt> <b>must</b> match the <tt>id</tt> of the <tt>server</tt> element in <tt>settings.xml</tt>.</p>
@@ -370,16 +371,17 @@
     &lt;repository&gt;
       &lt;id&gt;archiva.internal&lt;/id&gt;
       &lt;name&gt;Internal Release Repository&lt;/name&gt;
-      &lt;url&gt;http://reposerver.mycompany.com:8080/archiva/repository/internal/&lt;/url&gt;
+      &lt;url&gt;http://reposerver.mycompany.com:8080/repository/internal/&lt;/url&gt;
     &lt;/repository&gt;
     &lt;snapshotRepository&gt;
       &lt;id&gt;archiva.snapshots&lt;/id&gt;
       &lt;name&gt;Internal Snapshot Repository&lt;/name&gt;
-      &lt;url&gt;http://reposerver.mycompany.com:8080/archiva/repository/snapshots/&lt;/url&gt;
+      &lt;url&gt;http://reposerver.mycompany.com:8080/repository/snapshots/&lt;/url&gt;
     &lt;/snapshotRepository&gt;
   &lt;/distributionManagement&gt;
   &lt;!-- omitted xml --&gt;
-&lt;/project&gt;</pre></div></div>
+&lt;/project&gt;
+</pre></div></div>
 <div class="section">
 <h4>Deploying to Archiva using WebDAV<a name="Deploying_to_Archiva_using_WebDAV"></a></h4>
 <p>In some cases, you may want to use WebDAV to deploy instead of HTTP. If you find this is necessary, follow the same process as for HTTP, with these additional steps:</p>
@@ -392,16 +394,17 @@
     &lt;repository&gt;
       &lt;id&gt;archiva.internal&lt;/id&gt;
       &lt;name&gt;Internal Release Repository&lt;/name&gt;
-      &lt;url&gt;dav:http://reposerver.mycompany.com:8080/archiva/repository/internal/&lt;/url&gt;
+      &lt;url&gt;dav:http://reposerver.mycompany.com:8080/repository/internal/&lt;/url&gt;
     &lt;/repository&gt;
     &lt;snapshotRepository&gt;
       &lt;id&gt;archiva.snapshots&lt;/id&gt;
       &lt;name&gt;Internal Snapshot Repository&lt;/name&gt;
-      &lt;url&gt;dav:http://reposerver.mycompany.com:8080/archiva/repository/snapshots/&lt;/url&gt;
+      &lt;url&gt;dav:http://reposerver.mycompany.com:8080/repository/snapshots/&lt;/url&gt;
     &lt;/snapshotRepository&gt;
   &lt;/distributionManagement&gt;
   &lt;!-- omitted xml --&gt;
-&lt;/project&gt;</pre></div></li>
+&lt;/project&gt;
+</pre></div></li>
 <li>Add a build extension to your <tt>pom.xml</tt> (not required in Maven 2.0.9 and above)
 <div class="source">
 <pre>&lt;project&gt;
@@ -416,7 +419,8 @@
     &lt;/extensions&gt;
   &lt;/build&gt;
   &lt;!-- omitted xml --&gt;
-&lt;/project&gt;</pre></div></li></ol></div>
+&lt;/project&gt;
+</pre></div></li></ol></div>
 <div class="section">
 <h4>Deploying using other protocols<a name="Deploying_using_other_protocols"></a></h4>
 <p>You can also deploy to the Archiva server using traditional means such as SCP, FTP, etc. For more information on these deployment techniques, refer to the Maven documentation.</p>
@@ -427,7 +431,8 @@
 <div class="source">
 <pre>mvn deploy:deploy-file -Dfile=filename.jar -DpomFile=filename.pom
     -DrepositoryId=archiva.internal
-    -Durl=http://repo.mycompany.com:8080/repository/internal/</pre></div>
+    -Durl=http://repo.mycompany.com:8080/repository/internal/
+</pre></div>
 <p>For more information, consult the <a class="externalLink" href="http://maven.apache.org/plugins/maven-deploy-plugin/deploy-file-mojo.html"> documentation for the <tt>deploy:deploy-file</tt> goal</a></p>
 <p>If you wish to use WebDAV to deploy the file, add <tt>dav:</tt> to the start of the URL as in the previous instructions.</p>
 <p>However, on versions of Maven prior to 2.0.9, you will also need to create a file called <tt>pom.xml</tt> in the directory from which you intend to execute &quot;<tt>mvn deploy:deploy-file</tt>&quot;:</p>
@@ -449,7 +454,8 @@
       &lt;/extension&gt;
     &lt;/extensions&gt;
   &lt;/build&gt;
-&lt;/project&gt;</pre></div>
+&lt;/project&gt;
+</pre></div>
 <p>This pom will not be deployed with the artifact, it simply serves to make the WebDAV protocol available to the build process.</p>
 <p>Alternately, you can save this file somewhere else, and use &quot;<tt>mvn ... -f /path/to/filename</tt>&quot; to force the use of an alternate POM file.</p></div></div>
 <div class="section">

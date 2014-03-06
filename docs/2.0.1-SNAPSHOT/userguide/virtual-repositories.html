@@ -7,7 +7,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="Date-Revision-yyyymmdd" content="20140219" />
+    <meta name="Date-Revision-yyyymmdd" content="20140306" />
     <meta http-equiv="Content-Language" content="en" />
     <title>Archiva Documentation - Virtual Repositories</title>
     <link rel="stylesheet" href="../css/apache-maven-fluido-1.3.1.min.css" />
@@ -75,7 +75,7 @@
         
                 
                     
-                  <li id="publishDate" class="pull-right"><span class="divider">|</span> Last Published: 2014-02-19</li>
+                  <li id="publishDate" class="pull-right"><span class="divider">|</span> Last Published: 2014-03-06</li>
               <li id="projectVersion" class="pull-right">
                     Version: 2.0.1-SNAPSHOT
         </li>
@@ -343,7 +343,7 @@
       &lt;repositories&gt;
         &lt;repository&gt;
           &lt;id&gt;internal.releases&lt;/id&gt;
-          &lt;url&gt;http://localhost:8080/archiva/repository/internal.releases/&lt;/url&gt;
+          &lt;url&gt;http://localhost:8080/repository/internal.releases/&lt;/url&gt;
           &lt;releases&gt;
             &lt;enabled&gt;true&lt;/enabled&gt;
           &lt;/releases&gt;
@@ -353,7 +353,7 @@
         &lt;/repository&gt;
         &lt;repository&gt;
           &lt;id&gt;third.party.repo&lt;/id&gt;
-          &lt;url&gt;http://localhost:8080/archiva/repository/third.party.repo/&lt;/url&gt;
+          &lt;url&gt;http://localhost:8080/repository/third.party.repo/&lt;/url&gt;
           &lt;releases&gt;
             &lt;enabled&gt;true&lt;/enabled&gt;
           &lt;/releases&gt;
@@ -363,7 +363,7 @@
         &lt;/repository&gt;
         &lt;repository&gt;
           &lt;id&gt;snapshots&lt;/id&gt;
-          &lt;url&gt;http://localhost:8080/archiva/repository/snapshots/&lt;/url&gt;
+          &lt;url&gt;http://localhost:8080/repository/snapshots/&lt;/url&gt;
           &lt;releases&gt;
             &lt;enabled&gt;false&lt;/enabled&gt;
           &lt;/releases&gt;
@@ -376,7 +376,8 @@
     &lt;!-- omitted xml --&gt;
   &lt;/profiles&gt;
   &lt;!-- omitted xml --&gt;
-&lt;/settings&gt;</pre></div>
+&lt;/settings&gt;
+</pre></div>
 <p>If you have a virtual repository configured in Archiva, you only need to configure this in your <tt>settings.xml</tt>:</p>
 <div class="source">
 <pre>&lt;settings&gt;
@@ -390,14 +391,15 @@
       &lt;repositories&gt;
         &lt;repository&gt;
           &lt;id&gt;internal.releases&lt;/id&gt;
-          &lt;url&gt;http://localhost:8080/archiva/repository/[repository_group_id]/&lt;/url&gt;
+          &lt;url&gt;http://localhost:8080/repository/[repository_group_id]/&lt;/url&gt;
         &lt;/repository&gt;
       &lt;/repositories&gt;
     &lt;/profile&gt;
     &lt;!-- omitted xml --&gt;
   &lt;/profiles&gt;
   &lt;!-- omitted xml --&gt;
-&lt;/settings&gt;</pre></div>
+&lt;/settings&gt;
+</pre></div>
 <p>And you'll still be able to get all the artifacts that you need. See Configuring Virtual Repositories section for the steps on how to setup a virtual repo in Archiva.</p>
 <div class="section">
 <h3>How It Works<a name="How_It_Works"></a></h3>
@@ -409,7 +411,7 @@
 <ol style="list-style-type: decimal">
 <li>In the webapp, go to the <tt>Repository Groups</tt> page. To create a virtual repository or repository group, go to add tab</li>
 <li>To add a repository drag and drop available repositories.<img src="../images/repository-groups.png" alt="" /></li>
-<li>Now add the virtual repository URL <tt>http://[host]:[port]/archiva/repository/[repository_group_id]/</tt> into your settings.xml the same way you configure regular repositories -- as a <i>mirror</i> or as an additional <i>repository</i>.</li>
+<li>Now add the virtual repository URL <tt>http://[host]:[port]/repository/[repository_group_id]/</tt> into your settings.xml the same way you configure regular repositories -- as a <i>mirror</i> or as an additional <i>repository</i>.</li>
 <li>If the repositories under the group are secured, you must set your Archiva login credentials in your settings.xml as well. Please take note that the <i>server</i> id should match the repository group identifier.</li></ol></div>
 <div class="section">
 <h3>Webdav Browse<a name="Webdav_Browse"></a></h3>

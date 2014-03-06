@@ -10,7 +10,7 @@
     <meta name="author" content="Maria Odea Ching
 Olivier Lamy" />
     <meta name="Date-Creation-yyyymmdd" content="20130207" />
-    <meta name="Date-Revision-yyyymmdd" content="20140219" />
+    <meta name="Date-Revision-yyyymmdd" content="20140306" />
     <meta http-equiv="Content-Language" content="en" />
     <title>Archiva Documentation - Understanding Repository Configuration of Apache Archiva</title>
     <link rel="stylesheet" href="../css/apache-maven-fluido-1.3.1.min.css" />
@@ -78,7 +78,7 @@ Olivier Lamy" />
         
                 
                     
-                  <li id="publishDate" class="pull-right"><span class="divider">|</span> Last Published: 2014-02-19</li>
+                  <li id="publishDate" class="pull-right"><span class="divider">|</span> Last Published: 2014-03-06</li>
               <li id="projectVersion" class="pull-right">
                     Version: 2.0.1-SNAPSHOT
         </li>
@@ -448,7 +448,8 @@ Olivier Lamy" />
 <li><b> Skip Packed Index creation </b> - avoid creation of compressed index for IDE usage.</li></ul><img src="../images/managed-repositories.png" alt="Managed Repositories" />
 <p>Each repository has its own http(s)/webdav url. This allows the user to browse and access the repository via http(s)/webdav. The url has the following format:</p>
 <div class="source">
-<pre>http://[URL TO ARCHIVA]/repository/[REPOSITORY ID] (e.g. http://localhost:8080/archiva/repository/releases).</pre></div>
+<pre>http://[URL TO ARCHIVA]/repository/[REPOSITORY ID] (e.g. http://localhost:8080/repository/releases).
+</pre></div>
 <p>A pom snippet is also available for each repository. The &lt;distributionManagement&gt; section can be copied and pasted into a project's pom to specify that the project will be deployed in that managed repository. The &lt;repositories&gt; section on the other hand, can be copied and pasted to a project's pom.xml or to Maven's settings.xml to tell Maven to get artifacts from the managed repository when building the project.</p></div>
 <div class="section">
 <h3>Remote Repository<a name="Remote_Repository"></a></h3>
@@ -473,7 +474,7 @@ Olivier Lamy" />
 <p>You can also trigger an immediate download of remote index files.</p>
 <div class="section">
 <h4>Maven Index from Remote repositories<a name="Maven_Index_from_Remote_repositories"></a></h4>
-<p><b>Since 1.4-M4</b>: If you have configured download remote index, those files (Maven Indexer project format) will be available in the path http://archiva/repository/id/.index (you can consume those files for IDE)</p></div></div>
+<p><b>Since 1.4-M4</b>: If you have configured download remote index, those files (Maven Indexer project format) will be available in the path http://[URL TO ARCHIVA]/repository/id/.index (you can consume those files for IDE)</p></div></div>
 <div class="section">
 <h3>Scanning a Repository<a name="Scanning_a_Repository"></a></h3>
 <p>Repository scan can be executed on schedule or it can be explicitly executed by clicking the 'Scan Repository Now' button in the repositories page. By default, Archiva only processes new artifacts in the repository with respect to the last run of the repository scanner. Meaning that if the artifact's last modified date is newer than the last repository scan, then the artifact will be processed. Otherwise, it will be skipped. You can override this behavior and force Archiva to process all artifacts regardless of its age by ticking the 'Process All Artifacts' checkbox in the repositories page and clicking the 'Scan Repository Now' button.</p><img src="../images/repositories.png" alt="Repositories" />
@@ -491,7 +492,8 @@ Olivier Lamy" />
 ../artifact-x/2.0-SNAPSHOT/artifact-x-20070113.034619-3.jar
 ../artifact-x/2.0-SNAPSHOT/artifact-x-20070113.034619-3.pom
 ../artifact-x/2.0-SNAPSHOT/artifact-x-20070203.028902-4.jar
-../artifact-x/2.0-SNAPSHOT/artifact-x-20070203.028902-4.pom</pre></div>
+../artifact-x/2.0-SNAPSHOT/artifact-x-20070203.028902-4.pom
+</pre></div>
 <ol style="list-style-type: decimal">
 <li>Repository Purge By Number of Days Older
 <p>Using this criteria for the purge, Archiva will check how old an artifact is and if it is older than the set value in the repository purge by days older field, then the artifact will be deleted respecting the retention count of course.</p>
