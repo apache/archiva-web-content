@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="applicationRuntimeInfo" type="applicationRuntimeInfo"/>
+  <xs:element name="fileMetadata" type="fileMetadata"/>
+  <xs:element name="javascriptLog" type="javascriptLog"/>
+  <xs:complexType name="applicationRuntimeInfo">
+    <xs:sequence>
+      <xs:element name="devMode" type="xs:boolean" minOccurs="1"/>
+      <xs:element name="javascriptLog" type="xs:boolean" minOccurs="1"/>
+      <xs:element name="version" type="xs:string" minOccurs="0"/>
+      <xs:element name="buildNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="timestamp" type="xs:long" minOccurs="1"/>
+      <xs:element name="copyrightRange" type="xs:string" minOccurs="0"/>
+      <xs:element name="logMissingI18n" type="xs:boolean" minOccurs="1"/>
+      <xs:element name="baseUrl" type="xs:string" minOccurs="0"/>
+      <xs:element name="timestampStr" type="xs:string" minOccurs="0"/>
+      <xs:element name="cookieInformation" type="cookieInformation" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cookieInformation">
+    <xs:sequence>
+      <xs:element name="path" type="xs:string" minOccurs="0"/>
+      <xs:element name="domain" type="xs:string" minOccurs="0"/>
+      <xs:element name="secure" type="xs:string" minOccurs="0"/>
+      <xs:element name="timeout" type="xs:string" minOccurs="0"/>
+      <xs:element name="rememberMeEnabled" type="xs:boolean" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="fileMetadata">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="size" type="xs:long" minOccurs="1"/>
+      <xs:element name="url" type="xs:string" minOccurs="0"/>
+      <xs:element name="deleteUrl" type="xs:string" minOccurs="0"/>
+      <xs:element name="deleteType" type="xs:string" minOccurs="0"/>
+      <xs:element name="errorKey" type="xs:string" minOccurs="0"/>
+      <xs:element name="classifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="pomFile" type="xs:boolean" minOccurs="1"/>
+      <xs:element name="serverFileName" type="xs:string" minOccurs="0"/>
+      <xs:element name="packaging" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="javascriptLog">
+    <xs:sequence>
+      <xs:element name="loggerName" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
