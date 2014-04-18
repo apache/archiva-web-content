@@ -8,7 +8,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="Date-Creation-yyyymmdd" content="20120119" />
-    <meta name="Date-Revision-yyyymmdd" content="20140410" />
+    <meta name="Date-Revision-yyyymmdd" content="20140418" />
     <meta http-equiv="Content-Language" content="en" />
     <title>Archiva - Archiva release process</title>
     <link rel="stylesheet" href="../css/apache-maven-fluido-1.3.1.min.css" />
@@ -65,9 +65,9 @@
               <ul class="dropdown-menu">
                                   <li>      <a href="../docs/2.0.1/"  title="Release 2.0.1">Release 2.0.1</a>
 </li>
-                                  <li>      <a href="../docs/1.3.6/"  title="Preview 1.3.6">Preview 1.3.6</a>
+                                  <li>      <a href="../docs/1.3.8/"  title="Preview 1.3.8">Preview 1.3.8</a>
 </li>
-                                  <li>      <a href="../docs/2.0.2-SNAPSHOT/"  title="Dev 2.0.2-SNAPSHOT">Dev 2.0.2-SNAPSHOT</a>
+                                  <li>      <a href="../docs/2.1.0-SNAPSHOT/"  title="Dev 2.1.0-SNAPSHOT">Dev 2.1.0-SNAPSHOT</a>
 </li>
                               </ul>
             </li>
@@ -204,7 +204,7 @@
         
                 
                     
-                  <li id="publishDate" class="pull-right">Last Published: 10 Apr 2014</li>
+                  <li id="publishDate" class="pull-right">Last Published: 18 Apr 2014</li>
             
                             </ul>
       </div>
@@ -242,7 +242,10 @@
     &lt;gpg.passphrase&gt;[GPG_PASSWORD]&lt;/gpg.passphrase&gt;
   &lt;/properties&gt;
 &lt;/profile&gt;</pre></div>
-<p>Set your user credentials for the stage repo in the <i>servers</i> section of your settings.xml for vmbuild.staging Execute mvn release:prepare (check that it has been properly tagged. the tag name must be.. archiva-[VERSION]) Then execute mvn release:perform Download the uploaded files via wget:</p>
+<p>Set your user credentials for the stage repo in the <i>servers</i> section of your settings.xml for <a href="#archiva-repository.releases">archiva-repository.releases</a>.</p>
+<p>Execute mvn release:prepare (check that it has been properly tagged. the tag name must be.. archiva-[VERSION]).</p>
+<p>Next, execute mvn release:perform</p>
+<p>Download the uploaded files via wget:</p>
 <div class="source">
 <pre>ex.
 wget http://archiva-repository.apache.org/archiva/repository/staged-releases/org/apache/archiva/archiva-jetty/1.3/archiva-jetty-1.3-bin.tar.gz
