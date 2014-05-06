@@ -8,7 +8,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="Date-Creation-yyyymmdd" content="20090722" />
-    <meta name="Date-Revision-yyyymmdd" content="20140429" />
+    <meta name="Date-Revision-yyyymmdd" content="20140506" />
     <meta http-equiv="Content-Language" content="en" />
     <title>Archiva Documentation - Log Files</title>
     <link rel="stylesheet" href="../css/apache-maven-fluido-1.3.1.min.css" />
@@ -76,7 +76,7 @@
         
                 
                     
-                  <li id="publishDate" class="pull-right"><span class="divider">|</span> Last Published: 2014-04-29</li>
+                  <li id="publishDate" class="pull-right"><span class="divider">|</span> Last Published: 2014-05-06</li>
               <li id="projectVersion" class="pull-right">
                     Version: 2.1.0-SNAPSHOT
         </li>
@@ -358,7 +358,8 @@
 <li><a href="./archiva-logs.html"> <b>archiva.log</b></a> - contains all the start-up information and output logs for Archiva</li>
 <li><a href="./audit-logs.html"> <b>archiva-audit.log</b></a> - contains information regarding the operations performed against the repositories and configurations being modified. A good example is when an artifact is deployed to an Archiva repository. The operation will be logged in this file, with the date and timestamp of when the operation occurred, the userId of who performed the deployment, and the artifact that was deployed.</li>
 <li><a href="./security-logs.html"> <b>archiva-security-audit.log</b></a> - contains information regarding Archiva's security. For example, a successful login of a user or a user account is created.</li></ul>
-<p>Note since 1.4-M4, the log4j2 asyncLogger feature is configured as the default.</p>
+<p>Note since 2.1.0, the log4j2 asyncLogger feature is NOT anymore configured as the default.</p>
+<p>If you want to activate it as default add the system property <b>-DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector</b></p>
 <p>This means the default <b>AsyncLogger.WaitStrategy</b> and <b>AsyncLoggerConfig.WaitStrategy</b> option is Sleep.</p>
 <p>If you are in a constrained environment, you can change it to Block (or Yield) (<tt>-DAsyncLogger.WaitStrategy=Block</tt> and/or <tt>-DAsyncLoggerConfig.WaitStrategy=Block</tt>) </p>
 <p>(See <a class="externalLink" href="http://logging.apache.org/log4j/2.x/manual/async.html">log4j2 documentation</a> )</p></div>
