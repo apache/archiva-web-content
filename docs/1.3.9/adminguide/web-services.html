@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Archiva Documentation - Using Archiva Web Services</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Maria Odea Ching" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                            <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script>
+                                <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var pageTracker = _gat._getTracker("UA-140879-5");
+pageTracker._initData();
+pageTracker._trackPageview();</script>
+                    </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../../" id="bannerLeft">
+    
+                                    <img src="http://archiva.apache.org/images/archiva.png" alt="" />
+    
+            </a>
+                        <a href="http://www.apache.org/" id="bannerRight">
+    
+                                    <img src="http://www.apache.org/images/asf_logo_wide.png" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+          
+          <a href="http://www.apache.org/">Apache</a>
+              &gt;
+      
+          <a href="../../../">Archiva</a>
+              &gt;
+      
+          <a href="../index.html">1.3.9</a>
+                </div>
+            <div class="xright">      
+  
+
+  
+    
+  
+  
+            &nbsp;| Last Published: 25 Jun 2014
+            </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Introduction</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../quick-start.html">Quick Start</a>
+        </li>
+              
+    <li class="none">
+              <a href="../tour/index.html">Feature Tour</a>
+        </li>
+              
+    <li class="none">
+              <a href="../release-notes.html">Release Notes</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://archiva.apache.org/download.html">Downloads</a>
+        </li>
+          </ul>
+          <h5>Users Guide</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../userguide/browsing.html">Browsing</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/searching.html">Searching</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/find-artifact.html">Identifying an Artifact</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/delete-artifact.html">Deleting an Artifact</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/using-repository.html">Using as a repository</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/deploy.html">Deploying to repository</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/virtual-repositories.html">Configuring Virtual Repositories</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/rss.html">Rss Feeds in Archiva</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/auditlog-report.html">Audit Log Report</a>
+        </li>
+          </ul>
+          <h5>Administrators Guide</h5>
+        <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/installing.html">Installing Archiva</a>
+              </li>
+              
+    <li class="none">
+              <a href="../adminguide/databases.html">Databases</a>
+        </li>
+              
+                
+              
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/security.html">Security</a>
+              </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/configuration.html">Runtime Configuration</a>
+              </li>
+              
+    <li class="none">
+              <a href="../adminguide/configuration-files.html">Configuration Files</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/logging.html">Log Files</a>
+              </li>
+              
+    <li class="none">
+              <a href="../adminguide/reports.html">Reports</a>
+        </li>
+              
+    <li class="none">
+              <strong>Web Services</strong>
+        </li>
+          </ul>
+          <h5>Customising Archiva</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../customising/writing-consumer.html">Writing a Consumer Plugin</a>
+        </li>
+          </ul>
+          <h5>More Information</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="http://cwiki.apache.org/confluence/display/ARCHIVA/Index">Archiva Wiki</a>
+        </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy">
+            <img alt="Built by Maven" src="../images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Using Archiva Web Services</h2><p>Web services is a new feature for 1.2. Archiva exposes two types of services: administrative and search. A sample client that shows how to access these services is provided in the source code. You can check out the module for the sample client at:</p><div class="source"><pre>http://svn.apache.org/repos/asf/archiva/tags/archiva-1.2/archiva-modules/archiva-web/archiva-xmlrpc/archiva-xmlrpc-client/</pre></div><p>The SampleClient class shows how to connect to and invoke the Archiva web services. To execute the sample client, edit the following configuration in the archiva-xmlrpc-client module's pom.xml:</p><div class="source"><pre>&lt;project&gt;
+  ...
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
+        &lt;artifactId&gt;exec-maven-plugin&lt;/artifactId&gt;
+        &lt;configuration&gt;
+          &lt;executable&gt;java&lt;/executable&gt;
+          &lt;mainClass&gt;org.apache.archiva.web.xmlrpc.client.SampleClient&lt;/mainClass&gt;
+          &lt;arguments&gt;
+            &lt;!--
+                 URL: ex. http://127.0.0.1:8080/archiva/xmlrpc
+                 USERNAME &amp; PASSWORD: Archiva credentials
+            --&gt;
+            &lt;argument&gt;http://127.0.0.1:8080/archiva/xmlrpc&lt;/argument&gt;
+            &lt;argument&gt;admin&lt;/argument&gt;
+            &lt;argument&gt;${password}&lt;/argument&gt;
+          &lt;/arguments&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+&lt;/project&gt;</pre></div><p>In the first &lt;argument&gt;, set the url of the Archiva instance you are running but make sure that you have <i>/xmlrpc</i> appended at the end. For example if your Archiva instance is running in localhost and port 8080, then set it to http://localhost:8080/archiva/xmlrpc.</p><p>The second &lt;argument&gt; corresponds to the username of the existing Archiva user that will be used to access the services while the last &lt;argument&gt; is where you set the user's password.</p><p>After configuring the pom, you can now run the sample client by executing <b>mvn exec:java</b> in the command-line. You should be able to see the list of managed and remote repositories, the list of database and repository consumers and more printed on the command-line.</p><div class="section"><h3>Administration Service</h3><p>In order for a user to be able to access the Administration services, the user must have a <b>System Administrator</b> role in Archiva.</p><p>The Administration Service exposes the following methods:</p><ol type="1"><li>Boolean executeRepositoryScanner( String repoId ) - triggers the repository scanner to scan the specified repository.</li><li>Boolean executeDatabaseScanner() - triggers the database scanner to be executed.</li><li>List&lt;String&gt; getAllDatabaseConsumers() - retrieves all the Archiva database consumers associated with the database scanning.</li><li>Boolean configureDatabaseConsumer( String consumerId, boolean enable ) - enables or disables the specified database consumer.</li><li>List&lt;String&gt; getAllRepositoryConsumers() - retrieves all the Archiva repository consumers associated with the repository scanning.</li><li>Boolean configureRepositoryConsumer( String repoId, String consumerId, boolean enable ) - enables or disables the specified repository consumer.</li><li>List&lt;ManagedRepository&gt; getAllManagedRepositories() - retrieves all the managed repositories in Archiva.</li><li>List&lt;RemoteRepository&gt; getAllRemoteRepositories() - retrieves all the remote repositories in Archiva.</li><li>Boolean deleteArtifact( String repoId, String groupId, String artifactId, String version ) - deletes the specified artifact from the repository.</li></ol></div><div class="section"><h3>Search Service</h3><p>To access the Search Service, the user must have at least a <b>Repository Observer</b> role.</p><p>The Search Service exposes the following methods:</p><ol type="1"><li>List&lt;Artifact&gt; quickSearch( String queryString ) - search for the specified term. This behaves just like Archiva's Quick Search from the web app.</li><li>List&lt;Artifact&gt; getArtifactByChecksum( String checksum ) - search for artifact(s) matching the specified checksum. This behaves like the Find Artifact from the web app.</li><li>List&lt;Artifact&gt; getArtifactVersions( String groupId, String artifactId ) - retrieves all available versions of the artifact.</li><li>List&lt;Artifact&gt; getArtifactVersionsByDate( String groupId, String artifactId, String version, Date since ) - <i>not yet implemented</i></li><li>List&lt;Dependency&gt; getDependencies( String groupId, String artifactId, String version ) - retrieves all the dependencies of the specified artifact. This is the equivalent of the Dependencies tab in the Artifact Browse.</li><li>List&lt;Artifact&gt; getDependencyTree( String groupId, String artifactId, String version ) - <i>not yet implemented</i></li><li>List&lt;Artifact&gt; getDependees( String groupId, String artifactId, String version ) - retrieves all the artifacts with a dependency on the specified artifact. This is the equivalent of the Used By tab in the Artifact Browse.</li></ol></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2006-2014
+    
+          The Apache Software Foundation
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

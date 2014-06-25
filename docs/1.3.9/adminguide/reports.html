@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Archiva Documentation - Making the most of Reporting in Apache Archiva</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Maria Odea Ching" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                            <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script>
+                                <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var pageTracker = _gat._getTracker("UA-140879-5");
+pageTracker._initData();
+pageTracker._trackPageview();</script>
+                    </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../../" id="bannerLeft">
+    
+                                    <img src="http://archiva.apache.org/images/archiva.png" alt="" />
+    
+            </a>
+                        <a href="http://www.apache.org/" id="bannerRight">
+    
+                                    <img src="http://www.apache.org/images/asf_logo_wide.png" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+          
+          <a href="http://www.apache.org/">Apache</a>
+              &gt;
+      
+          <a href="../../../">Archiva</a>
+              &gt;
+      
+          <a href="../index.html">1.3.9</a>
+                </div>
+            <div class="xright">      
+  
+
+  
+    
+  
+  
+            &nbsp;| Last Published: 25 Jun 2014
+            </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Introduction</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../quick-start.html">Quick Start</a>
+        </li>
+              
+    <li class="none">
+              <a href="../tour/index.html">Feature Tour</a>
+        </li>
+              
+    <li class="none">
+              <a href="../release-notes.html">Release Notes</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://archiva.apache.org/download.html">Downloads</a>
+        </li>
+          </ul>
+          <h5>Users Guide</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../userguide/browsing.html">Browsing</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/searching.html">Searching</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/find-artifact.html">Identifying an Artifact</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/delete-artifact.html">Deleting an Artifact</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/using-repository.html">Using as a repository</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/deploy.html">Deploying to repository</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/virtual-repositories.html">Configuring Virtual Repositories</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/rss.html">Rss Feeds in Archiva</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/auditlog-report.html">Audit Log Report</a>
+        </li>
+          </ul>
+          <h5>Administrators Guide</h5>
+        <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/installing.html">Installing Archiva</a>
+              </li>
+              
+    <li class="none">
+              <a href="../adminguide/databases.html">Databases</a>
+        </li>
+              
+                
+              
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/security.html">Security</a>
+              </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/configuration.html">Runtime Configuration</a>
+              </li>
+              
+    <li class="none">
+              <a href="../adminguide/configuration-files.html">Configuration Files</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/logging.html">Log Files</a>
+              </li>
+              
+    <li class="none">
+              <strong>Reports</strong>
+        </li>
+              
+    <li class="none">
+              <a href="../adminguide/web-services.html">Web Services</a>
+        </li>
+          </ul>
+          <h5>Customising Archiva</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../customising/writing-consumer.html">Writing a Consumer Plugin</a>
+        </li>
+          </ul>
+          <h5>More Information</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="http://cwiki.apache.org/confluence/display/ARCHIVA/Index">Archiva Wiki</a>
+        </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy">
+            <img alt="Built by Maven" src="../images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Making the most of Reporting in Apache Archiva</h2><p>Archiva has two types of reports: Repository Statistics and Repository Health. Repository Statistics was just implemented in 1.2.</p><div class="section"><h3>Repository Statistics</h3><p>Repository statistics contains the detailed statistics such as number of artifacts, number of groups and projects, etc. of an Archiva managed repository.</p><div class="section"><h4>Configuring the Report</h4><p>The following fields are configurable for Repository Statistics:</p><p>1. Repositories to be Compared - the repositories whose latest statistics would be compared. If only one repository is selected, the different statistics based on the executed repository scanning and the specified Start Date and End Date will be shown. Otherwise, the latest statistics of the selected repositories on the specified dates will be displayed.</p><p>2. Row Count - the number of rows to be displayed on each page.</p><p>3. Start Date - the start date range of the statistics to be displayed.</p><p>4. End Date - the end date range of the statistics to be displayed.</p></div><div class="section"><h4>Contents of the Report</h4><p>The Repository Statistics Show Report button will display a table containing the statistics of the repository/repositories. See below for a sample Repository Statistics report comparing two repositories:</p><img src="../images/repository-statistics.jpg" alt="Repository Statistics" /><p>Repository Statistics can be exported to a CSV file. To do this, just click the link on the upper left hand corner above the report.</p></div></div><div class="section"><h3>Repository Health</h3><p>The Repository Health report is a detailed listing of the problematic artifacts in the different repositories. Problematic artifacts are those artifacts that were detected by Archiva to have defects (ex. the versions in the pom and in the artifact itself do not match). </p><div class="section"><h4>Configuring the Report</h4><p>There are 3 fields which can be configured when viewing the report. These are: the number of rows per page, the group id and the repository.</p><p>1. Setting the row count. This field is for configuring the number of rows or artifacts to be displayed per page of the report. By default, this is set to 100. The minimum number of rows per page is 10 and the maximum number of rows is 1000. </p><p>2. Setting the group id. The group id pertains to the group id of the artifact (ex. org.apache.maven.plugins). This field has a blank default value -- meaning, show defective artifacts which has any group id. </p><p>3. Setting the repository. You can view the defective artifacts found on specific repositories by setting the repository field. By default, it is set to All Repositories. Please note that the repository field options list only contains the repositories which have one or more defective artifacts in it. So not all the repositories you have configured in the Repositories section will show up in this list, unless of course they all contain defective artifacts. </p></div><div class="section"><h4>Contents of the Report</h4><p>The Repository Health Show Report button will display a detailed list of problematic artifacts filtered according to the configuration you've set. Below is a sample Repository Health report:</p><img src="../images/archiva-report.jpg" alt="Repository Health Report" /><p>You can see in the sample report that there are links to the groupId and artifactId directories of each artifact. Clicking on any of these links will bring you to the appropriate navigation page in the Repository Browse. Going back to the report, shown below the links is the specific problem or defect of the artifact. These are usually detected during repository or database scanning. The page number is also displayed on the lower left-hand part of the report.</p></div></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2006-2014
+    
+          The Apache Software Foundation
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

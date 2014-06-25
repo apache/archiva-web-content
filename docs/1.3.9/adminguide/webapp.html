@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Archiva Documentation - Installing Apache Archiva as a Web Application</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                            <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script>
+                                <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var pageTracker = _gat._getTracker("UA-140879-5");
+pageTracker._initData();
+pageTracker._trackPageview();</script>
+                    </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../../" id="bannerLeft">
+    
+                                    <img src="http://archiva.apache.org/images/archiva.png" alt="" />
+    
+            </a>
+                        <a href="http://www.apache.org/" id="bannerRight">
+    
+                                    <img src="http://www.apache.org/images/asf_logo_wide.png" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+          
+          <a href="http://www.apache.org/">Apache</a>
+              &gt;
+      
+          <a href="../../../">Archiva</a>
+              &gt;
+      
+          <a href="../index.html">1.3.9</a>
+                </div>
+            <div class="xright">      
+  
+
+  
+    
+  
+  
+            &nbsp;| Last Published: 25 Jun 2014
+            </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Introduction</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../quick-start.html">Quick Start</a>
+        </li>
+              
+    <li class="none">
+              <a href="../tour/index.html">Feature Tour</a>
+        </li>
+              
+    <li class="none">
+              <a href="../release-notes.html">Release Notes</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://archiva.apache.org/download.html">Downloads</a>
+        </li>
+          </ul>
+          <h5>Users Guide</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../userguide/browsing.html">Browsing</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/searching.html">Searching</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/find-artifact.html">Identifying an Artifact</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/delete-artifact.html">Deleting an Artifact</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/using-repository.html">Using as a repository</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/deploy.html">Deploying to repository</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/virtual-repositories.html">Configuring Virtual Repositories</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/rss.html">Rss Feeds in Archiva</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/auditlog-report.html">Audit Log Report</a>
+        </li>
+          </ul>
+          <h5>Administrators Guide</h5>
+        <ul>
+              
+                
+              
+      
+            
+            
+            
+      
+              
+            <li class="expanded">
+              <a href="../adminguide/installing.html">Installing Archiva</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../adminguide/standalone.html">Installing Standalone</a>
+        </li>
+                  
+    <li class="none">
+              <strong>Installing as a WAR</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="../adminguide/upgrade.html">Upgrading to a New Version</a>
+        </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+              <a href="../adminguide/databases.html">Databases</a>
+        </li>
+              
+                
+              
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/security.html">Security</a>
+              </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/configuration.html">Runtime Configuration</a>
+              </li>
+              
+    <li class="none">
+              <a href="../adminguide/configuration-files.html">Configuration Files</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/logging.html">Log Files</a>
+              </li>
+              
+    <li class="none">
+              <a href="../adminguide/reports.html">Reports</a>
+        </li>
+              
+    <li class="none">
+              <a href="../adminguide/web-services.html">Web Services</a>
+        </li>
+          </ul>
+          <h5>Customising Archiva</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../customising/writing-consumer.html">Writing a Consumer Plugin</a>
+        </li>
+          </ul>
+          <h5>More Information</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="http://cwiki.apache.org/confluence/display/ARCHIVA/Index">Archiva Wiki</a>
+        </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy">
+            <img alt="Built by Maven" src="../images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Installing Apache Archiva as a Web Application</h2><p>Archiva can be deployed as a web application into any Java EE application server. This document will show an example of doing so with Tomcat 5.5 and Tomcat 6.0.x.</p><p><b>Note</b>: When you first start Archiva, you will see an Exception that schema SA does not exist - however it doesn't cause a problem. If you use a username other than 'sa', such as 'archiva', then you seem to get the same error but Tomcat fails to start the context and you have to shutdown and restart again.</p></div><div class="section"><h2>To deploy Archiva on Tomcat 5.5 and Tomcat 6.0</h2><ul><li>Create a directory in tomcat called archiva, at the same level as bin, conf, logs and the others.</li><li>Copy the war file into the new directory</li><li>Create a <tt>&lt;tomcat home&gt;/conf/Catalina/localhost/archiva.xml</tt> file with the following data (replace the database paths with a suitable location). When using Tomcat 6.0+, do not include the first line (XML encoding) in the <tt>archiva.xml</tt> configuration specified below to avoid parsing errors during startup: <div class="source"><pre> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+ &lt;Context path=&quot;/archiva&quot;
+          docBase=&quot;${catalina.home}/archiva/apache-archiva-1.1.war&quot;&gt;
+
+ &lt;Resource name=&quot;jdbc/users&quot; auth=&quot;Container&quot; type=&quot;javax.sql.DataSource&quot;
+           username=&quot;sa&quot;
+           password=&quot;&quot;
+           driverClassName=&quot;org.apache.derby.jdbc.EmbeddedDriver&quot;
+           url=&quot;jdbc:derby:/path/to/database/users;create=true&quot; /&gt;
+
+ &lt;Resource name=&quot;jdbc/archiva&quot; auth=&quot;Container&quot; type=&quot;javax.sql.DataSource&quot;
+           username=&quot;sa&quot;
+           password=&quot;&quot;
+           driverClassName=&quot;org.apache.derby.jdbc.EmbeddedDriver&quot;
+           url=&quot;jdbc:derby:/path/to/database/archiva;create=true&quot; /&gt;
+
+ &lt;Resource name=&quot;mail/Session&quot; auth=&quot;Container&quot;
+            type=&quot;javax.mail.Session&quot;
+            mail.smtp.host=&quot;localhost&quot;/&gt;
+ &lt;/Context&gt;</pre></div></li><li>Install <tt>derby-10.1.3.1.jar</tt> (or later), <tt>activation-1.1.jar</tt> and <tt>mail-1.4.jar</tt> into the Tomcat 5.5 <tt>common/lib</tt> or Tomcat 6.0 <tt>lib</tt> directory. This is required since the data sources are instantiated before the web application.<p><b>Note</b>: Tomcat 5.5.20 and 5.5.23 are missing MailSessionFactory and a few other classes. JNDI mail sessions will <i>not</i> work. Use Tomcat 5.5.25 instead, or see <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=40668"> Bug 40668</a> for a workaround.</p></li><li>The $<a name="appserver.base">appserver.base</a> java property is used by the Archiva internal logging configuration to determine where to output its logs to. It is important to define this property either in the $CATALINA_OPTS system environment variable if Tomcat is being launched via the command line) or the service properties (if being launched as a service or daemon). The format typically expected is -Dappserver.base=<i>SOMEWHERE</i>. In this example, we'll put the logs in Tomcat's <tt>logs</tt> directory so we need to set appserver.base property to where Tomcat is installed:<div class="source"><pre>export CATALINA_OPTS=&quot;-Dappserver.home=$CATALINA_HOME -Dappserver.base=$CATALINA_HOME&quot; (for UNIX)
+
+OR
+
+set CATALINA_OPTS=&quot;-Dappserver.home=%CATALINA_HOME% -Dappserver.base=%CATALINA_HOME%&quot; (for Windows)</pre></div></li><li>If setting the $<a name="appserver.base">appserver.base</a> and $<a name="appserver.home">appserver.home</a> using the previous step does not work, you can set it in the unpacked Archiva web application's <tt>WEB-INF/classes/application.properties</tt> as follows:<div class="source"><pre># for Windows:
+appserver.base=%CATALINA_HOME%
+appserver.base=%CATALINA_BASE%
+
+# or, for UNIX:
+appserver.base=$CATALINA_HOME
+appserver.home=$CATALINA_BASE</pre></div></li><li>When running Tomcat as a <b>Windows</b> service, you need to edit <tt>regedit</tt> and then, in <tt>HKEY_LOCAL_MACHINE &gt; SOFTWARE &gt; Apache Software Foundation &gt; Procrun 2.0 &gt; TomcatX &gt; Parameters &gt; Java</tt>, modify the <tt>Options</tt> variable. Set the $<a name="appserver.base">appserver.base</a> property by adding the following parameters at the end:<div class="source"><pre>-Dappserver.base=%CATALINA_HOME% -Dappserver.home=%CATALINA_HOME%</pre></div></li></ul><p>For more information, see <a href="http://cwiki.apache.org/confluence/display/ARCHIVA/Archiva+on+Tomcat"> Archiva on Tomcat</a> in the wiki.</p></div><div class="section"><h2>Archiva Configuration</h2><p>Archiva is configured using the <tt>~/.m2/archiva.xml</tt> configuration file by default when using a Java EE application server. </p></div><div class="section"><h2>Upgrading Archiva</h2><p>To upgrade the Archiva web application, simply replace the web application with an alternative. Since the database and configuration files are stored externally to the application, no further maintainance is needed.</p><p>For general information about upgrading Archiva, see the relevant section in the <a href="standalone.html#Upgrading%20Archiva"> Installing standalone</a> guide.</p></div><div class="section"><h2>Configuring and Running Archiva</h2><p>Once Archiva is running, it is configured in the same way as the standalone instance. See the <a href="../quick-start.html#Setting%20up%20your%20Archiva%20instance"> quick start</a> guide for more information.</p></div><div class="section"><h2>Troubleshooting</h2><div class="section"><h3>Error During Startup</h3><p>There are cases when the Tomcat logs only shows the following error during startup:</p><div class="source"><pre>...
+Aug 17, 2009 11:04:02 AM org.apache.catalina.core.StandardContext start
+SEVERE: Error listenerStart
+Aug 17, 2009 11:04:02 AM org.apache.catalina.core.StandardContext start
+SEVERE: Context [/archiva] startup failed due to previous errors
+Aug 17, 2009 11:04:04 AM org.apache.coyote.http11.Http11BaseProtocol start
+...</pre></div><p>One of the common causes for this <tt>listenerStart Error</tt> is a failure during Spring's initialization. One way to diagnose or confirm the exact cause of the error is by adding the following configuration to the unpacked Archiva webapp's <tt>WEB-INF/classes/log4j.xml</tt>:</p><div class="source"><pre>&lt;appender name=&quot;console&quot; class=&quot;org.apache.log4j.ConsoleAppender&quot;&gt;
+  &lt;layout class=&quot;org.apache.log4j.PatternLayout&quot;&gt;
+    &lt;param name=&quot;ConversionPattern&quot; value=&quot;%d [%t] %-5p %c %x - %m%n&quot;/&gt;
+  &lt;/layout&gt;
+&lt;/appender&gt;
+
+&lt;logger name=&quot;org.springframework.web&quot;&gt;
+  &lt;level value=&quot;debug&quot;/&gt;
+  &lt;appender-ref ref=&quot;console&quot;/&gt;
+&lt;/logger&gt;</pre></div><p>The above configuration directs Spring's output logs to the Tomcat console and be recorded in Tomcat's log files. </p></div><div class="section"><h3>Diagnosing Errors</h3><p>One of the least decipherable errors you can get from Tomcat is a <tt>404</tt> when the deployment fails. In <tt>&lt;tomcat home&gt;/logs/catalina.out</tt> you will only find that it fails, but not why. Also Archiva's logs will not tell you.</p><p>The log messages and stack traces in case of a <tt>404</tt> can be found in <tt>&lt;tomcat home&gt;/logs/localhost.&lt;date&gt;</tt>.</p></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2006-2014
+    
+          The Apache Software Foundation
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

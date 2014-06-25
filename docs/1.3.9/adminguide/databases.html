@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Archiva Documentation - Apache Archiva Databases</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                            <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script>
+                                <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var pageTracker = _gat._getTracker("UA-140879-5");
+pageTracker._initData();
+pageTracker._trackPageview();</script>
+                    </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../../" id="bannerLeft">
+    
+                                    <img src="http://archiva.apache.org/images/archiva.png" alt="" />
+    
+            </a>
+                        <a href="http://www.apache.org/" id="bannerRight">
+    
+                                    <img src="http://www.apache.org/images/asf_logo_wide.png" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+          
+          <a href="http://www.apache.org/">Apache</a>
+              &gt;
+      
+          <a href="../../../">Archiva</a>
+              &gt;
+      
+          <a href="../index.html">1.3.9</a>
+                </div>
+            <div class="xright">      
+  
+
+  
+    
+  
+  
+            &nbsp;| Last Published: 25 Jun 2014
+            </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Introduction</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../quick-start.html">Quick Start</a>
+        </li>
+              
+    <li class="none">
+              <a href="../tour/index.html">Feature Tour</a>
+        </li>
+              
+    <li class="none">
+              <a href="../release-notes.html">Release Notes</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://archiva.apache.org/download.html">Downloads</a>
+        </li>
+          </ul>
+          <h5>Users Guide</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../userguide/browsing.html">Browsing</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/searching.html">Searching</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/find-artifact.html">Identifying an Artifact</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/delete-artifact.html">Deleting an Artifact</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/using-repository.html">Using as a repository</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/deploy.html">Deploying to repository</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/virtual-repositories.html">Configuring Virtual Repositories</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/rss.html">Rss Feeds in Archiva</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/auditlog-report.html">Audit Log Report</a>
+        </li>
+          </ul>
+          <h5>Administrators Guide</h5>
+        <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/installing.html">Installing Archiva</a>
+              </li>
+              
+    <li class="none">
+              <strong>Databases</strong>
+        </li>
+              
+                
+              
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/security.html">Security</a>
+              </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/configuration.html">Runtime Configuration</a>
+              </li>
+              
+    <li class="none">
+              <a href="../adminguide/configuration-files.html">Configuration Files</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/logging.html">Log Files</a>
+              </li>
+              
+    <li class="none">
+              <a href="../adminguide/reports.html">Reports</a>
+        </li>
+              
+    <li class="none">
+              <a href="../adminguide/web-services.html">Web Services</a>
+        </li>
+          </ul>
+          <h5>Customising Archiva</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../customising/writing-consumer.html">Writing a Consumer Plugin</a>
+        </li>
+          </ul>
+          <h5>More Information</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="http://cwiki.apache.org/confluence/display/ARCHIVA/Index">Archiva Wiki</a>
+        </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy">
+            <img alt="Built by Maven" src="../images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Apache Archiva Databases</h2><p>Archiva uses an external database for two purposes:</p><ul><li>Storing artifact information</li><li>As a default user store for security</li></ul><p>Generally, it is unnecessary to configure anything - the built in embedded database is suitable for the artifact management, and if an external authentication mechanism is not needed, the user database.</p><p>However, it is possible to configure an external database as needed.</p><div class="section"><h3>Configuring an external database</h3><p>Archiva uses JNDI data sources to locate the databases to use:</p><ul><li><tt>jdbc/archiva</tt> - the repository database</li><li><tt>jdbc/users</tt> - the user store</li></ul><p>Configuring an external database for either or both of these sources depends is configured in <tt>jetty.xml</tt> if you are using the <a href="standalone.html"> standalone installation</a>, or in the application server configuration if you are using the <a href="webapp.html"> web application installation</a>.</p><p>By default the archiva and users databases are stored in the <tt>databases</tt> directory where Archiva is installed. To change the path, just edit all instances of the &quot;DatabaseName&quot; property in <tt>conf/jetty.xml</tt> (see below). </p><p><b>Note:</b> If you are using MySQL as your database, Archiva fails when the users database created is initially set to UTF-8 for the character encoding. As a workaround, set the database to UTF-8 encoding after it has been populated. See <a href="http://jira.codehaus.org/browse/MRM-1373"> MRM-1373</a> for more details.</p><div class="source"><pre>...
+&lt;New id=&quot;archiva&quot; class=&quot;org.mortbay.jetty.plus.naming.Resource&quot;&gt;
+  &lt;Arg&gt;jdbc/archiva&lt;/Arg&gt;
+  &lt;Arg&gt;
+    &lt;New class=&quot;org.apache.derby.jdbc.EmbeddedDataSource&quot;&gt;
+      &lt;Set name=&quot;DatabaseName&quot;&gt;/path/to/database/directory/archiva&lt;/Set&gt;
+      &lt;Set name=&quot;user&quot;&gt;sa&lt;/Set&gt;
+      &lt;Set name=&quot;createDatabase&quot;&gt;create&lt;/Set&gt;
+    &lt;/New&gt;
+  &lt;/Arg&gt;
+&lt;/New&gt;
+
+&lt;New id=&quot;archivaShutdown&quot; class=&quot;org.mortbay.jetty.plus.naming.Resource&quot;&gt;
+  &lt;Arg&gt;jdbc/archivaShutdown&lt;/Arg&gt;
+  &lt;Arg&gt;
+    &lt;New class=&quot;org.apache.derby.jdbc.EmbeddedDataSource&quot;&gt;
+      &lt;Set name=&quot;DatabaseName&quot;&gt;/path/to/database/directory/archiva&lt;/Set&gt;
+      &lt;Set name=&quot;user&quot;&gt;sa&lt;/Set&gt;
+      &lt;Set name=&quot;shutdownDatabase&quot;&gt;shutdown&lt;/Set&gt;
+    &lt;/New&gt;
+  &lt;/Arg&gt;
+&lt;/New&gt;
+
+&lt;New id=&quot;users&quot; class=&quot;org.mortbay.jetty.plus.naming.Resource&quot;&gt;
+  &lt;Arg&gt;jdbc/users&lt;/Arg&gt;
+  &lt;Arg&gt;
+    &lt;New class=&quot;org.apache.derby.jdbc.EmbeddedDataSource&quot;&gt;
+      &lt;Set name=&quot;DatabaseName&quot;&gt;/path/to/database/directory/users&lt;/Set&gt;
+      &lt;Set name=&quot;user&quot;&gt;sa&lt;/Set&gt;
+      &lt;Set name=&quot;createDatabase&quot;&gt;create&lt;/Set&gt;
+    &lt;/New&gt;
+  &lt;/Arg&gt;
+&lt;/New&gt;
+
+&lt;New id=&quot;usersShutdown&quot; class=&quot;org.mortbay.jetty.plus.naming.Resource&quot;&gt;
+  &lt;Arg&gt;jdbc/usersShutdown&lt;/Arg&gt;
+  &lt;Arg&gt;
+    &lt;New class=&quot;org.apache.derby.jdbc.EmbeddedDataSource&quot;&gt;
+      &lt;Set name=&quot;DatabaseName&quot;&gt;/path/to/database/directory/users&lt;/Set&gt;
+      &lt;Set name=&quot;user&quot;&gt;sa&lt;/Set&gt;
+      &lt;Set name=&quot;shutdownDatabase&quot;&gt;shutdown&lt;/Set&gt;
+    &lt;/New&gt;
+  &lt;/Arg&gt;
+&lt;/New&gt;
+...</pre></div></div><div class="section"><h3>Backing up the database</h3><p>While it is a good idea to back up both databases, it is not strictly necessary to back up the repository database on a regular basis. Should any data loss be suffered, this database can be regenerated by deleting it's contents and re-scanning the repositories.</p><p>If you are using the default user security mechanism, it is important to back up the users database on a regular basis to ensure that the user passwords and information are not lost in the event of corruption. With the default embedded storage this is simply a matter of making a copy of the database directory on the filesystem. If you have configured an external database as the source for user information, please refer to your database documentation for backup instructions.</p></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2006-2014
+    
+          The Apache Software Foundation
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Archiva Documentation - Upgrading Archiva</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                            <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script>
+                                <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var pageTracker = _gat._getTracker("UA-140879-5");
+pageTracker._initData();
+pageTracker._trackPageview();</script>
+                    </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../../" id="bannerLeft">
+    
+                                    <img src="http://archiva.apache.org/images/archiva.png" alt="" />
+    
+            </a>
+                        <a href="http://www.apache.org/" id="bannerRight">
+    
+                                    <img src="http://www.apache.org/images/asf_logo_wide.png" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+          
+          <a href="http://www.apache.org/">Apache</a>
+              &gt;
+      
+          <a href="../../../">Archiva</a>
+              &gt;
+      
+          <a href="../index.html">1.3.9</a>
+                </div>
+            <div class="xright">      
+  
+
+  
+    
+  
+  
+            &nbsp;| Last Published: 25 Jun 2014
+            </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Introduction</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../quick-start.html">Quick Start</a>
+        </li>
+              
+    <li class="none">
+              <a href="../tour/index.html">Feature Tour</a>
+        </li>
+              
+    <li class="none">
+              <a href="../release-notes.html">Release Notes</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://archiva.apache.org/download.html">Downloads</a>
+        </li>
+          </ul>
+          <h5>Users Guide</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../userguide/browsing.html">Browsing</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/searching.html">Searching</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/find-artifact.html">Identifying an Artifact</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/delete-artifact.html">Deleting an Artifact</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/using-repository.html">Using as a repository</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/deploy.html">Deploying to repository</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/virtual-repositories.html">Configuring Virtual Repositories</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/rss.html">Rss Feeds in Archiva</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/auditlog-report.html">Audit Log Report</a>
+        </li>
+          </ul>
+          <h5>Administrators Guide</h5>
+        <ul>
+              
+                
+              
+      
+            
+      
+            
+            
+              
+            <li class="expanded">
+              <a href="../adminguide/installing.html">Installing Archiva</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../adminguide/standalone.html">Installing Standalone</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../adminguide/webapp.html">Installing as a WAR</a>
+        </li>
+                  
+    <li class="none">
+              <strong>Upgrading to a New Version</strong>
+        </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+              <a href="../adminguide/databases.html">Databases</a>
+        </li>
+              
+                
+              
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/security.html">Security</a>
+              </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/configuration.html">Runtime Configuration</a>
+              </li>
+              
+    <li class="none">
+              <a href="../adminguide/configuration-files.html">Configuration Files</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/logging.html">Log Files</a>
+              </li>
+              
+    <li class="none">
+              <a href="../adminguide/reports.html">Reports</a>
+        </li>
+              
+    <li class="none">
+              <a href="../adminguide/web-services.html">Web Services</a>
+        </li>
+          </ul>
+          <h5>Customising Archiva</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../customising/writing-consumer.html">Writing a Consumer Plugin</a>
+        </li>
+          </ul>
+          <h5>More Information</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="http://cwiki.apache.org/confluence/display/ARCHIVA/Index">Archiva Wiki</a>
+        </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy">
+            <img alt="Built by Maven" src="../images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Upgrading Archiva</h2><p>Upgrading Archiva is straightforward if the directions for separating the base from the installation above are followed. Simply retain the <tt>data/repositories</tt> and <tt>data/databases/users</tt> directories, and the configuration files (in the conf directory, or the other locations specified above) and use a new extracted installation of Archiva.</p><p>Note that the <tt>users</tt> database must always be retained as it contains the permissions and user information across versions. However, in order to take advantage of the improvements in search in Archiva 1.1 (and higher versions), s.a. search by java class/package/method, the archiva database must be re-created. So you need to delete the <tt>data/databases/archiva</tt> directory, delete the <tt>.index</tt> directories of your respective repositories, and execute the repository and database scanners after starting Archiva.</p><p>The repository data is portable across versions, and multiple versions can be configured to look at the same repositories (though not run simultaneously).</p><div class="section"><h3>Upgrading Archiva from 1.1.x to 1.2.x</h3><p>Because of the changes in the search implementation starting in 1.2, a few additional steps need to be performed when upgrading Archiva from 1.1.x to 1.2.x. Since the format of the index has changed in 1.2.x, the old index directory (which is located at <tt>/path/to/repo/.index</tt> by default) needs to be removed. And in order for the artifacts in the repository to be indexed again, the last modified date of the artifacts need to be updated. To do this, you can force Archiva to scan all the artifacts by ticking the <tt>Process All Artifacts</tt> checkbox then clicking the <tt>Scan Repository Now</tt> button in the Repositories page. Take note though that this feature is only available starting with version 1.3. Otherwise, you must execute <b>find [REPOSITORY_DIRECTORY_NAME] | xargs touch</b> at the base directory where the repository resides and then force execute the repository scanning so that the new index will be generated.</p><p>In 1.2.2, the length of the specified fields in the database tables below were changed to 1020:</p><ul><li>ARCHIVA_PROJECT - URL</li><li>ARCHIVA_MAILING_LISTS - MAIN_ARCHIVE_URL</li><li>ARCHIVA_ORGANIZATION - URL, FAV_ICON_URL</li><li>ARCHIVA_LICENSES - URL</li><li>ARCHIVA_ISSUE_MANAGEMENT - ISSUE_MANAGEMENT_URL</li><li>ARCHIVA_CIMANAGEMENT - CI_URL</li><li>ARCHIVA_INDIVIDUAL - URL, ORGANIZATION_URL</li><li>ARCHIVA_DEPENDENCY - URL</li><li>ARCHIVA_SCM - SCM_URL, DEVELOPER_CONNECTION, URL</li><li>ARCHIVA_PROJECT_REPOSITORIES - URL</li></ul><p>If upgrading from a version lower than 1.2.2, you might also need to alter the lengths of the above fields as there is no upgrade task currently available for this.</p><p>Since Archiva 1.2.2, the Jetty version has been upgraded to 6.1.19. If upgrading to Archiva 1.2.2 (or higher versions), there is a need to update the library contents listed in <tt>$ARCHIVA_BASE/conf/wrapper.conf</tt> with the ones included in the new distribution especially if the <tt>$ARCHIVA_BASE</tt> directory is separate from the installation.</p></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2006-2014
+    
+          The Apache Software Foundation
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

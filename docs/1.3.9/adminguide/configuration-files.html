@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Archiva Documentation - Configuration Files of Apache Archiva</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                            <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script>
+                                <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var pageTracker = _gat._getTracker("UA-140879-5");
+pageTracker._initData();
+pageTracker._trackPageview();</script>
+                    </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../../" id="bannerLeft">
+    
+                                    <img src="http://archiva.apache.org/images/archiva.png" alt="" />
+    
+            </a>
+                        <a href="http://www.apache.org/" id="bannerRight">
+    
+                                    <img src="http://www.apache.org/images/asf_logo_wide.png" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+          
+          <a href="http://www.apache.org/">Apache</a>
+              &gt;
+      
+          <a href="../../../">Archiva</a>
+              &gt;
+      
+          <a href="../index.html">1.3.9</a>
+                </div>
+            <div class="xright">      
+  
+
+  
+    
+  
+  
+            &nbsp;| Last Published: 25 Jun 2014
+            </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Introduction</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../quick-start.html">Quick Start</a>
+        </li>
+              
+    <li class="none">
+              <a href="../tour/index.html">Feature Tour</a>
+        </li>
+              
+    <li class="none">
+              <a href="../release-notes.html">Release Notes</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://archiva.apache.org/download.html">Downloads</a>
+        </li>
+          </ul>
+          <h5>Users Guide</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../userguide/browsing.html">Browsing</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/searching.html">Searching</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/find-artifact.html">Identifying an Artifact</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/delete-artifact.html">Deleting an Artifact</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/using-repository.html">Using as a repository</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/deploy.html">Deploying to repository</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/virtual-repositories.html">Configuring Virtual Repositories</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/rss.html">Rss Feeds in Archiva</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/auditlog-report.html">Audit Log Report</a>
+        </li>
+          </ul>
+          <h5>Administrators Guide</h5>
+        <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/installing.html">Installing Archiva</a>
+              </li>
+              
+    <li class="none">
+              <a href="../adminguide/databases.html">Databases</a>
+        </li>
+              
+                
+              
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/security.html">Security</a>
+              </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/configuration.html">Runtime Configuration</a>
+              </li>
+              
+    <li class="none">
+              <strong>Configuration Files</strong>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/logging.html">Log Files</a>
+              </li>
+              
+    <li class="none">
+              <a href="../adminguide/reports.html">Reports</a>
+        </li>
+              
+    <li class="none">
+              <a href="../adminguide/web-services.html">Web Services</a>
+        </li>
+          </ul>
+          <h5>Customising Archiva</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../customising/writing-consumer.html">Writing a Consumer Plugin</a>
+        </li>
+          </ul>
+          <h5>More Information</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="http://cwiki.apache.org/confluence/display/ARCHIVA/Index">Archiva Wiki</a>
+        </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy">
+            <img alt="Built by Maven" src="../images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Configuration Files of Apache Archiva</h2><p>While Archiva is primarily configured via the graphical administration interface, it stores all configuration in XML configuration files that can be hand edited and used for backup and migration.</p><p>The following files compose the configuration for Archiva:</p><ul><li><tt>archiva.xml</tt> - this is the primary Archiva configuration file</li><li><tt>security.properties</tt> - this configures the security as described in the <a href="security.html"> security configuration documentation</a></li></ul><p>This section will focus on the <tt>archiva.xml</tt> file.</p><div class="section"><h3>The Archiva configuration file</h3><p>The Archiva configuration file is stored in one of two locations:</p><ul><li>The application server configuration directory (see <a href="standalone.html"> installing Archiva standalone</a> for more information)</li><li>The user home directory (<tt>~/.m2/archiva.xml</tt>). </li></ul><p>When modified in the GUI, the file is written back to the location it was initially read from, with the home directory taking priority if both exist. When using a standalone installation, it is highly recommended that a configuration file is only maintained in one of the locations.</p><p>The following shows a basic configuration file:</p><div class="source"><pre>&lt;configuration&gt;
+  &lt;version&gt;2&lt;/version&gt;
+  &lt;managedRepositories&gt;
+    &lt;managedRepository&gt;
+      &lt;location&gt;${appserver.base}/repositories/internal&lt;/location&gt;
+      &lt;daysOlder&gt;30&lt;/daysOlder&gt;
+      &lt;id&gt;internal&lt;/id&gt;
+      &lt;name&gt;Archiva Managed Internal Repository&lt;/name&gt;
+    &lt;/managedRepository&gt;
+  &lt;/managedRepositories&gt;
+  &lt;remoteRepositories&gt;
+    &lt;remoteRepository&gt;
+      &lt;url&gt;http://repo1.maven.org/maven2&lt;/url&gt;
+      &lt;id&gt;central&lt;/id&gt;
+      &lt;name&gt;Central Repository&lt;/name&gt;
+    &lt;/remoteRepository&gt;
+  &lt;/remoteRepositories&gt;
+  &lt;proxyConnectors&gt;
+    &lt;proxyConnector&gt;
+      &lt;sourceRepoId&gt;internal&lt;/sourceRepoId&gt;
+      &lt;targetRepoId&gt;central&lt;/targetRepoId&gt;
+      &lt;policies&gt;
+        &lt;releases&gt;always&lt;/releases&gt;
+        &lt;checksum&gt;fix&lt;/checksum&gt;
+        &lt;snapshots&gt;never&lt;/snapshots&gt;
+        &lt;cache-failures&gt;no&lt;/cache-failures&gt;
+      &lt;/policies&gt;
+    &lt;/proxyConnector&gt;
+  &lt;/proxyConnectors&gt;
+&lt;/configuration&gt;</pre></div></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2006-2014
+    
+          The Apache Software Foundation
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

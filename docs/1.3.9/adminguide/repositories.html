@@ -1,0 +1,295 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Archiva Documentation - Understanding Repository Configuration of Apache Archiva</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Maria Odea Ching" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                            <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script>
+                                <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var pageTracker = _gat._getTracker("UA-140879-5");
+pageTracker._initData();
+pageTracker._trackPageview();</script>
+                    </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../../" id="bannerLeft">
+    
+                                    <img src="http://archiva.apache.org/images/archiva.png" alt="" />
+    
+            </a>
+                        <a href="http://www.apache.org/" id="bannerRight">
+    
+                                    <img src="http://www.apache.org/images/asf_logo_wide.png" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+          
+          <a href="http://www.apache.org/">Apache</a>
+              &gt;
+      
+          <a href="../../../">Archiva</a>
+              &gt;
+      
+          <a href="../index.html">1.3.9</a>
+                </div>
+            <div class="xright">      
+  
+
+  
+    
+  
+  
+            &nbsp;| Last Published: 25 Jun 2014
+            </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Introduction</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../quick-start.html">Quick Start</a>
+        </li>
+              
+    <li class="none">
+              <a href="../tour/index.html">Feature Tour</a>
+        </li>
+              
+    <li class="none">
+              <a href="../release-notes.html">Release Notes</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://archiva.apache.org/download.html">Downloads</a>
+        </li>
+          </ul>
+          <h5>Users Guide</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../userguide/browsing.html">Browsing</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/searching.html">Searching</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/find-artifact.html">Identifying an Artifact</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/delete-artifact.html">Deleting an Artifact</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/using-repository.html">Using as a repository</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/deploy.html">Deploying to repository</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/virtual-repositories.html">Configuring Virtual Repositories</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/rss.html">Rss Feeds in Archiva</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/auditlog-report.html">Audit Log Report</a>
+        </li>
+          </ul>
+          <h5>Administrators Guide</h5>
+        <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/installing.html">Installing Archiva</a>
+              </li>
+              
+    <li class="none">
+              <a href="../adminguide/databases.html">Databases</a>
+        </li>
+              
+                
+              
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/security.html">Security</a>
+              </li>
+              
+                
+              
+            
+            
+      
+            
+      
+            
+      
+            
+      
+              
+            <li class="expanded">
+              <a href="../adminguide/configuration.html">Runtime Configuration</a>
+                <ul>
+                  
+    <li class="none">
+              <strong>Repositories</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="../adminguide/proxy-connectors.html">Proxy Connectors</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../adminguide/network-proxies.html">Network Proxies</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../adminguide/legacy.html">Legacy (Maven 1) Support</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../adminguide/consumers.html">Consumers</a>
+        </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+              <a href="../adminguide/configuration-files.html">Configuration Files</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/logging.html">Log Files</a>
+              </li>
+              
+    <li class="none">
+              <a href="../adminguide/reports.html">Reports</a>
+        </li>
+              
+    <li class="none">
+              <a href="../adminguide/web-services.html">Web Services</a>
+        </li>
+          </ul>
+          <h5>Customising Archiva</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../customising/writing-consumer.html">Writing a Consumer Plugin</a>
+        </li>
+          </ul>
+          <h5>More Information</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="http://cwiki.apache.org/confluence/display/ARCHIVA/Index">Archiva Wiki</a>
+        </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy">
+            <img alt="Built by Maven" src="../images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Understanding Repository Configuration of Apache Archiva</h2><p>Archiva has two types of repository configuration: managed repository and remote repository. </p><div class="section"><h3>Managed Repository</h3><p>A managed repository is a repository which resides locally to the server where Archiva is running. It could serve as a proxy repository, an internal deployment repository or a local mirror repository. </p><p>Managed repository fields: </p><ul><li><i>identifier</i> - the id of the repository. This must be unique.</li><li><i>name</i> - the name of the repository.</li><li><i>directory</i> - the location of the repository. If the path specified does not exist, Archiva will create the missing directories.</li><li><i>index directory</i> - the location of the index files generated by Archiva. If no location is specified, then the index directory (named <tt>.indexer</tt>) will be created at the root of the repository directory. Another directory named <tt>.index</tt> is also created at the root of the repository directory. This is not configurable though as it contains the packaged/bundled index which is consumed by different consumers of the index such as M2Eclipse.</li><li><i>type</i> - the repository layout (maven 2 or maven 1)</li><li><i>cron</i> - the <a href="http://quartz.sourceforge.net/javadoc/org/quartz/CronTrigger.html">cron schedule</a> when repository scanning will be executed.</li><li><i>repository purge by days older</i> - the first option for repository purge. Archiva will check how old the artifact is and if it is older than the set number of days in this field, then the artifact will be deleted respecting the retention count (see #7) of course. In order to disable the purge by number of days old and set Archiva to purge by retention count, just set the repository purge field to 0. The maximum number of days which can be set here is 1000. See the Repository Purge section below for more details. </li><li><i>repository purge by retention count</i> - the second option for repository purge. When running the repository purge, Archiva will retain only the number of artifacts set for this field for a specific snapshot version. See the Repository Purge section below for more details. </li><li><i>releases included</i> - specifies whether there are released artifacts in the repository.</li><li><i>block re-deployment of released artifacts</i> - specifies whether released artifacts that are already existing in the repository can be overwritten. Note that this only take effects for non-snapshot deployments.</li><li><i>snapshots included</i> - specifies whether there are snapshot artifacts in the repository.</li><li><i>scannable</i> - specifies whether the repository can be scanned, meaning it is a local repository which can be indexed, browsed, purged, etc.</li><li><i>delete released snapshots</i> - specifies whether to remove those snapshot artifacts which already has release versions of it in the repository during repository purge. </li></ul><p>Each repository has its own Webdav url. This allows the user to browse and access the repository via webdav. The url has the following format: </p><div class="source"><pre>http://[URL TO ARCHIVA]/repository/[REPOSITORY ID] (e.g. http://localhost:8080/archiva/repository/releases).</pre></div><p>A pom snippet is also available for each repository. The &lt;distributionManagement&gt; section can be copied and pasted into a project's pom to specify that the project will be deployed in that managed repository. The &lt;repositories&gt; section on the other hand, can be copied and pasted to a project's pom.xml or to Maven's settings.xml to tell Maven to get artifacts from the managed repository when building the project. </p></div><div class="section"><h3>Remote Repository</h3><p>A remote repository is a repository which resides remotely. These repositories are usually the proxied repositories. See Proxy Connectors on how to proxy a repository.</p><p>Remote repository fields: </p><ul><li><i>identifier</i> - the id of the remote repository.</li><li><i>name</i> - the name of the remote repository.</li><li><i>url</i> - the url of the remote repository. It is also possible to use a 'file://' url to proxy a local repository. Be careful that if this local repository is a managed repository of archiva which has some proxies connectors, those ones won't be triggered. </li><li><i>username</i> - the username (if authentication is needed) to be used to access the repository.</li><li><i>password</i> - the password (if authentication is needed) to be used to access the repository.</li><li><i>type</i> - the layout (maven 2 or maven 1) of the remote repository. </li></ul></div><div class="section"><h3>Scanning a Repository</h3><p>Repository scan can be executed on schedule or it can be explicitly executed by clicking the 'Scan Repository Now' button in the repositories page. By default, Archiva only processes new artifacts in the repository with respect to the last run of the repository scanner. Meaning that if the artifact's last modified date is newer than the last repository scan, then the artifact will be processed. Otherwise, it will be skipped. You can override this behavior and force Archiva to process all artifacts regardless of its age by ticking the 'Process All Artifacts' checkbox in the repositories page and clicking the 'Scan Repository Now' button.</p><img src="../images/repositories.png" alt="Repositories" /><p>For every artifact found by the repository scanner, processing is done on this artifact by different consumers. Examples of the processing done are: indexing, repository purge and database update. Details about consumers are available in the <a href="consumers.html"> Consumers</a> page.</p></div><div class="section"><h3>Repository Purge</h3><p>Repository purge is the process of cleaning up the repository of old snapshots. When deploying a snapshot to a repository, Maven deploys the project/artifact with a timestamped version. Doing daily/nightly builds of the project then tends to bloat the repository. What if the artifact is large? Then disk space will definitely be a problem. That's where Archiva's repository purge feature comes in. Given a criteria to use -- by the number of days old and by retention count, it would clean up the repository by removing old snapshots.</p><p>Please take note that the by number of days old criteria is activated by default (set to 100 days). In order to de-activate it and use the by retention count criteria, you must set the Repository Purge By Days Older field to 0. Another thing to note here is that if the by number of days old criteria is activated, the retention count would still be respected (See the Repository Purge By Days Older section below for more details) but not the other way around.</p><p>Let's take a look at different behaviours for repository purge using the following scenario:</p><div class="source"><pre>Artifacts in the repository:
+
+../artifact-x/2.0-SNAPSHOT/artifact-x-20061118.060401-2.jar
+../artifact-x/2.0-SNAPSHOT/artifact-x-20061118.060401-2.pom
+../artifact-x/2.0-SNAPSHOT/artifact-x-20070113.034619-3.jar
+../artifact-x/2.0-SNAPSHOT/artifact-x-20070113.034619-3.pom
+../artifact-x/2.0-SNAPSHOT/artifact-x-20070203.028902-4.jar
+../artifact-x/2.0-SNAPSHOT/artifact-x-20070203.028902-4.pom</pre></div><ol type="1"><li>Repository Purge By Number of Days Older<p>Using this criteria for the purge, Archiva will check how old an artifact is and if it is older than the set value in the repository purge by days older field, then the artifact will be deleted respecting the retention count of course.</p><p>If repository purge by days older is set to 100 days (with repository purge by retention count field set to 1), and the current date is let's say 03-01-2007, given the scenario above.. the following artifacts will be retained: artifact-x-20070113.034619-3.jar, artifact-x-20070113.034619-3.pom, artifact-x-20070203.028902-4.jar and artifact-x-20070203.028902-4.pom. It is clear in the version timestamps that these 4 artifacts are not more than 100 days old from the current date (which is 03-01-2007 in our example) so they are all retained. In this case the retention count doesn't have any effect since the priority is the age of the artifact. </p><p>Now, if the repository purge by days older is set to 30 days (with repository purge by retention count field still set to 1) and the current date is still 03-01-2007, then given the same scenario above.. only the following artifacts will be retained: artifact-x-20070203.028902-4.jar and artifact-x-20070203.028902-4.pom. In this case, we can see that the retained artifacts are still not older by the number of days set in the repository purge by days older field and the retention count is still met.</p><p>Now, let's set the repository purge by days older to 10 days (with repository purge by retention count field still set to 1) and the current date is still 03-01-2007, then still given the same repository contents above.. the following artifacts will still be retained: artifact-x-20070203.028902-4.jar and artifact-x-20070203.028902-4.pom. It is clear from the version timestamps that the artifacts ARE MORE THAN the repository purge by days older value, which is 10 days. Why is it still retained? Recall the value of the repository purge by retention count -- 1 :) This ensures that there is ALWAYS 1 artifact timestamped version retained for every unique version snapshot directory of an artifact. </p></li><li>Repository Purge By Retention Count<p>If the repository purge by retention count field is set to 2, then only the artifacts artifact-x-20070113.034619-3.jar, artifact-x-20070113.034619-3.pom, artifact-x-20070203.028902-4.jar and artifact-x-20070203.028902-4.pom will be retained in the repository. The oldest snapshots will be deleted maintaining only a number of snapshots equivalent to the set retention count (regardless of how old or new the artifact is).</p></li></ol><div class="section"><h4>Deleting Released Snapshots</h4><p>You can also configure Archiva to clean up snapshot artifacts that have already been released. This can be done by ticking the Delete Released Snapshots checkbox in the Repository Configuration form.</p><p>Once this feature is enabled, if Archiva encounters a snapshot artifact during repository scanning, it would check <b>all</b> the repositories configured for a released version of that snapshot. If it finds one, then it would delete the entire snapshot version directory.</p><p>It should be noted that this feature is entirely separate from the repository purge by number of days older and by retention count.</p></div></div><div class="section"><h3>Scanning a Database</h3><p>Another scanning process also occurs in Archiva, the database scanning. Same as with repository scanning, it can also be executed on schedule or explicitly. This can be configured in the 'Database' page, via the 'Database - Unprocessed Artifacts Scanning' section.</p><p>It is essential that the database scan occur after the repo scan as this is where the pom information of the artifacts in the database will be processed by the consumers and in turn, added to the database (as ArchivaProjectModel objects). For more details about the different database consumers, please see the <a href="consumers.html"> Consumers</a> page.</p></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2006-2014
+    
+          The Apache Software Foundation
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

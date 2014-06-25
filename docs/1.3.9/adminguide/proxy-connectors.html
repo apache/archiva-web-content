@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>Archiva Documentation - Understanding Proxy Connector Configuration of Apache Archiva</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                            <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script>
+                                <?xml version="1.0" encoding="UTF-8"?>
+<script type="text/javascript">var pageTracker = _gat._getTracker("UA-140879-5");
+pageTracker._initData();
+pageTracker._trackPageview();</script>
+                    </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="../../" id="bannerLeft">
+    
+                                    <img src="http://archiva.apache.org/images/archiva.png" alt="" />
+    
+            </a>
+                        <a href="http://www.apache.org/" id="bannerRight">
+    
+                                    <img src="http://www.apache.org/images/asf_logo_wide.png" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+            <div class="xleft">
+          
+          <a href="http://www.apache.org/">Apache</a>
+              &gt;
+      
+          <a href="../../../">Archiva</a>
+              &gt;
+      
+          <a href="../index.html">1.3.9</a>
+                </div>
+            <div class="xright">      
+  
+
+  
+    
+  
+  
+            &nbsp;| Last Published: 25 Jun 2014
+            </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+                   <h5>Introduction</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../quick-start.html">Quick Start</a>
+        </li>
+              
+    <li class="none">
+              <a href="../tour/index.html">Feature Tour</a>
+        </li>
+              
+    <li class="none">
+              <a href="../release-notes.html">Release Notes</a>
+        </li>
+              
+    <li class="none">
+              <a href="http://archiva.apache.org/download.html">Downloads</a>
+        </li>
+          </ul>
+          <h5>Users Guide</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../userguide/browsing.html">Browsing</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/searching.html">Searching</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/find-artifact.html">Identifying an Artifact</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/delete-artifact.html">Deleting an Artifact</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/using-repository.html">Using as a repository</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/deploy.html">Deploying to repository</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/virtual-repositories.html">Configuring Virtual Repositories</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/rss.html">Rss Feeds in Archiva</a>
+        </li>
+              
+    <li class="none">
+              <a href="../userguide/auditlog-report.html">Audit Log Report</a>
+        </li>
+          </ul>
+          <h5>Administrators Guide</h5>
+        <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/installing.html">Installing Archiva</a>
+              </li>
+              
+    <li class="none">
+              <a href="../adminguide/databases.html">Databases</a>
+        </li>
+              
+                
+              
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/security.html">Security</a>
+              </li>
+              
+                
+              
+      
+            
+            
+            
+      
+            
+      
+            
+      
+              
+            <li class="expanded">
+              <a href="../adminguide/configuration.html">Runtime Configuration</a>
+                <ul>
+                  
+    <li class="none">
+              <a href="../adminguide/repositories.html">Repositories</a>
+        </li>
+                  
+    <li class="none">
+              <strong>Proxy Connectors</strong>
+        </li>
+                  
+    <li class="none">
+              <a href="../adminguide/network-proxies.html">Network Proxies</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../adminguide/legacy.html">Legacy (Maven 1) Support</a>
+        </li>
+                  
+    <li class="none">
+              <a href="../adminguide/consumers.html">Consumers</a>
+        </li>
+              </ul>
+        </li>
+              
+    <li class="none">
+              <a href="../adminguide/configuration-files.html">Configuration Files</a>
+        </li>
+              
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+              <a href="../adminguide/logging.html">Log Files</a>
+              </li>
+              
+    <li class="none">
+              <a href="../adminguide/reports.html">Reports</a>
+        </li>
+              
+    <li class="none">
+              <a href="../adminguide/web-services.html">Web Services</a>
+        </li>
+          </ul>
+          <h5>Customising Archiva</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="../customising/writing-consumer.html">Writing a Consumer Plugin</a>
+        </li>
+          </ul>
+          <h5>More Information</h5>
+        <ul>
+              
+    <li class="none">
+              <a href="http://cwiki.apache.org/confluence/display/ARCHIVA/Index">Archiva Wiki</a>
+        </li>
+          </ul>
+                                       <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy">
+            <img alt="Built by Maven" src="../images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Understanding Proxy Connector Configuration of Apache Archiva</h2><p>Archiva uses the terminology &quot;proxy&quot; for two different concepts:</p><ul><li>The remote repository proxying cache, as configured through proxy connectors between repositories</li><li><a href="network-proxies.html"> Network proxies</a>, which are traditional protocol based proxies (primarily for HTTP access to remote repositories over a firewall)</li></ul><p>A proxy connector is used to link a managed repository (stored on the Archiva machine) to a remote repository (accessed via a URL). This will mean that when a request is received by the managed repository, the connector is consulted to decide whether it should request the resource from the remote repository (and potentially cache the result locally for future requests).</p><p>Each managed repository can proxy multiple remote repositories to allow grouping of repositories through a single interface inside the Archiva instance. For instance, it is common to proxy all remote releases through a single repository for Archiva, as well as a single snapshot repository for all remote snapshot repositories.</p><p>A basic proxy connector configuration simply links the remote repository to the managed repository (with an optional network proxy for access through a firewall). However, the behaviour of different types of artifacts and paths can be specifically managed by the proxy connectors to make access to remote repositories more flexibly controlled.</p><div class="section"><h3>Configuring policies</h3><p>When an artifact is requested from the managed repository and a proxy connector is configured, the policies for the connector are first consulted to decide whether to retrieve and cache the remote artifact or not. Which policies are applied depends on the type of artifact.</p><p>By default, Archiva comes with the following policies:</p><ul><li><tt>Releases</tt> - how to behave for released artifact metadata (those not carrying a <tt>SNAPSHOT</tt> version). This can be set to <tt>always</tt> (default), <tt>hourly</tt>, <tt>daily</tt>, <tt>once</tt> and <tt>never</tt>.</li><li><tt>Snapshots</tt> - how to behave for snapshot artifact metadata (those carrying a <tt>SNAPSHOT</tt> version). This can be set to <tt>always</tt> (default), <tt>hourly</tt>, <tt>daily</tt>, <tt>once</tt> and <tt>never</tt>.</li><li><tt>Checksum</tt> - how to handle incorrect checksums when downloading an artifact from the remote repository (ie, the checksum of the artifact does not match the corresponding detached checksum file). The options are to fail the request for the remote artifact, fix the checksum on the fly (default), or simply ignore the incorrect checksum</li><li><tt>Cache failures</tt> - whether failures retrieving the remote artifact should be cached (to save network bandwidth for missing or bad artifacts), or uncached (default).</li><li><tt>Return error when</tt> - if a remote proxy causes an error, this option determines whether an existing artifact should be returned (error when <tt>artifact not already present</tt>), or the error passed on regardless (<tt>always</tt>).</li><li><tt>On remote error</tt> - if a remote error is encountered, <tt>stop</tt> causes the error to be returned immediately, <tt>queue error</tt> will return all errors after checking for other successful remote repositories first, and <tt>ignore</tt> will disregard ay errors.</li></ul></div><div class="section"><h3>Configuring whitelists and blacklists</h3><p>By default, all artifact requests to the managed repository are proxied to the remote repository via the proxy connector if the policies pass. However, it can be more efficient to configure whitelists and blacklists for a given remote repository that match the expected artifacts to be retrieved.</p><p>If only a whitelist is configured, all requests not matching one of the whitelisted elements will be rejected. Conversely, if only a blacklist is configured, all requests not matching one of the blacklisted elements will be accepted (while those matching will be rejected). If both a whitelist and blacklist are defined, a path must be listed in the whitelist and not in the blacklist to be accepted - all other requests are rejected.</p><p>The path in the whitelist or blacklist is a repository path, and not an artifact path, and matches the request and format of the remote repository. The characters <tt>*</tt> and <tt>**</tt> are wildcards, with <tt>*</tt> matching anything in the current path, while <tt>**</tt> matches anything in the current path and deeper in the directory hierarchy.</p><p>For instance, to only retrieve artifacts in the Apache group ID from a repository, but no artifacts from the Maven group ID, you would configure the following:</p><ul><li>White list: <tt>org/apache/**</tt></li><li>Black list: <tt>org/apache/maven/**</tt></li></ul></div></div>
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2006-2014
+    
+          The Apache Software Foundation
+          
+  
+
+  
+    
+  
+  
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>
