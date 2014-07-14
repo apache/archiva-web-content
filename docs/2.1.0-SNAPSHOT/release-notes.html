@@ -7,7 +7,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="Date-Revision-yyyymmdd" content="20140521" />
+    <meta name="Date-Revision-yyyymmdd" content="20140715" />
     <meta http-equiv="Content-Language" content="en" />
     <title>Archiva Documentation - Release Notes for Archiva 2.1.0-SNAPSHOT</title>
     <link rel="stylesheet" href="./css/apache-maven-fluido-1.3.1.min.css" />
@@ -75,7 +75,7 @@
         
                 
                     
-                  <li id="publishDate" class="pull-right"><span class="divider">|</span> Last Published: 2014-05-21</li>
+                  <li id="publishDate" class="pull-right"><span class="divider">|</span> Last Published: 2014-07-15</li>
               <li id="projectVersion" class="pull-right">
                     Version: 2.1.0-SNAPSHOT
         </li>
@@ -362,43 +362,31 @@
 <div class="section">
 <h4>Improvement<a name="Improvement"></a></h4>
 <ul>
-<li>[MRM-1126] - warning on changing repo location is confusing if it exists</li>
-<li>[MRM-1746] - build merged index for groups with a cron schedule</li>
-<li>[MRM-1764] - #users &gt; edit roles -- please sort repository list for ease of use</li>
-<li>[MRM-1765] - #users &gt; edit -- please sort effective roles</li>
-<li>[MRM-1798] - upgrade to last Spring 4.0.0</li></ul></div>
-<div class="section">
-<h4>New Feature<a name="New_Feature"></a></h4>
-<ul>
-<li>[MRM-676] - Provide 302 redirect for latest SNAPSHOT</li>
-<li>[MRM-1750] - Add remote repository health check</li></ul></div>
+<li>[MRM-1210] - Dependency tree should include the artifact type</li>
+<li>[MRM-1558] - Please provide some UI element which shows degraded and/or badly connected remote repository</li>
+<li>[MRM-1802] - Find a cache solution for browsing part (especially root browsing)</li>
+<li>[MRM-1829] - Change default value of of AysncLogger strategy for log4j async</li>
+<li>[MRM-1834] - Add limit to index search query to prevent unnecessary calculations</li>
+<li>[MRM-1836] - Make search limit (maxCount) configurable via UI</li>
+<li>[MRM-1843] - provide mechanism to obtain the latest version of an artifact</li></ul></div>
 <div class="section">
 <h4>Bug<a name="Bug"></a></h4>
 <ul>
-<li>[MRM-1702] - Race condition caused by retrieving the same artifact from a Proxy from muliple threads</li>
-<li>[MRM-1761] - Returned URL in search result does not work for SNAPSHOTS</li>
-<li>[MRM-1762] - Upload Artifact page allows to uploading SNAPSHOT versions to non snapshot repositories</li>
-<li>[MRM-1766] - Clicking the &quot;..&quot; when browsing should take you up one level in the group chain and not &quot;Home&quot;</li>
-<li>[MRM-1769] - Can't uploads multiple artifacts of different types</li>
-<li>[MRM-1773] - log4j2 beta8 cause out of heap space with java-1.7.0_25</li>
-<li>[MRM-1776] - UI Upload. The generated pom.xml is the artifact!</li>
-<li>[MRM-1777] - User updating their own password doesn't gets error, but the password has not been changed.</li>
-<li>[MRM-1779] - pom artifacts cannot be searched on Archiva 1.4-M4</li>
-<li>[MRM-1780] - Filtering on Artifact Id</li>
-<li>[MRM-1781] - Error viewing artifact information</li>
-<li>[MRM-1782] - SNAPSHOTS not getting purged</li>
-<li>[MRM-1783] - The words &quot;choosen&quot; and &quot;availables&quot; used within the Users Runtime Configuration</li>
-<li>[MRM-1784] - Users Runtime Configuration - Unclear distinction between User Manager and Rbac Manager</li>
-<li>[MRM-1787] - Deletion of a repository, while users have the repository manager role assigned causes errors</li>
-<li>[MRM-1789] - Register link appears after logging in and back out even &quot;Disable registration Link&quot; is checked</li>
-<li>[MRM-1791] - ldap group mapping support for active directory</li>
-<li>[MRM-1793] - trailing spaces not trimmed in upload form</li>
-<li>[MRM-1795] - window.archivaRuntimeInfo.version is null in archiva/archiva.js</li>
-<li>[MRM-1796] - Can't download large archive file due to java.lang.NumberFormatException</li></ul></div>
-<div class="section">
-<h4>Task<a name="Task"></a></h4>
-<ul>
-<li>[MRM-1794] - update quartz to 2.x</li></ul></div></div>
+<li>[MRM-887] - Start script has no valid &quot;uname&quot; option</li>
+<li>[MRM-1809] - Users - Manage section sort by name doesn't work as expected</li>
+<li>[MRM-1812] - Users - Manage section needs Sort by User Name, Sort by Full Name, and Sort by Email buttons</li>
+<li>[MRM-1813] - Users - Manage section filters don't seem to work</li>
+<li>[MRM-1823] - java 1.7 as prerequisite</li>
+<li>[MRM-1824] - metadata storage using Cassandra</li>
+<li>[MRM-1825] - MD5 hashes are for wrong file name</li>
+<li>[MRM-1826] - Force Internet Explorer into Standards Mode</li>
+<li>[MRM-1830] - Charset applied to binary repository HTTP responses</li>
+<li>[MRM-1833] - Nullpointer when browsing artifacts which have dependencies with scope &quot;import&quot;</li>
+<li>[MRM-1837] - DefaultArchivaConfiguration holds references to classes</li>
+<li>[MRM-1841] - &quot;Remember me&quot; not working</li>
+<li>[MRM-1842] - Remove per default log4j2 Async Logging</li>
+<li>[MRM-1846] - Regression in 2.0.1 : uniqueVersion false not supported</li>
+<li>[MRM-1849] - Unable to download -SNAPSHOT jars after 2.0.1 Upgrade</li></ul></div></div>
 <div class="section">
 <h3>History<a name="History"></a></h3>
 <p>Archiva was started in November 2005, building a simple framework on top of some existing repository conversion tools within the Maven project. Initial development focused on repository conversion, error reporting, and indexing. From January 2006 a web application was started to visualise the information and to start incorporating functionality from the unmaintained maven-proxy project.</p>
