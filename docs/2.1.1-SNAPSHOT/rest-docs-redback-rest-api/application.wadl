@@ -1,0 +1,746 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wadl:application xmlns:wadl="http://wadl.dev.java.net/2009/02" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <wadl:doc xmlns:enunciate="http://enunciate.codehaus.org/" enunciate:generatedBy="Enunciate-1.26.1"/>
+  <wadl:grammars>
+    <wadl:include href="ns0.xsd"/>
+  </wadl:grammars>
+  <wadl:resources base="http://localhost:8080/redback-rest-api">
+    <wadl:resource path="/redbackServices/ldapGroupMappingService">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+      <wadl:method name="PUT">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="ldapGroupMapping"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="ldapGroupMappingUpdateRequest"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/ldapGroupMappingService/ldapGroups">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="stringList"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/ldapGroupMappingService/{group}">
+      <wadl:param name="group" style="template"/>
+      <wadl:method name="DELETE">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/loginService/addAuthenticationKey">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="providerKey" style="query"/>
+          <wadl:param name="principal" style="query"/>
+          <wadl:param name="purpose" style="query"/>
+          <wadl:param name="expirationMinutes" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/loginService/isLogged">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[simply check if current user has an http session opened with authz passed and return user data]]>
+        </wadl:doc>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="user"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/loginService/logIn">
+      <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[check username/password and create a http session.
+So no more need of reuse username/password for all ajaxRequest]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:representation mediaType="*/*" element="loginRequest"/>
+          <wadl:representation mediaType="application/xml" element="loginRequest"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="user"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/loginService/logout">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[clear user http session]]>
+        </wadl:doc>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/loginService/ping">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/loginService/pingWithAutz">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/passwordService/changePassword">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[used to change the password on passwordChangeRequired state.]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="userName" style="query"/>
+          <wadl:param name="previousPassword" style="query"/>
+          <wadl:param name="password" style="query"/>
+          <wadl:param name="passwordConfirmation" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="user"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/passwordService/changePasswordWithKey">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[used to change the password on first user connection after registration use.
+the key is mandatory and a control will be done on the username provided.
+<b>need to be logged by UserService#validateUserFromKey(String)</b>]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="password" style="query"/>
+          <wadl:param name="passwordConfirmation" style="query"/>
+          <wadl:param name="key" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:doc>
+            <![CDATA[username]]>
+          </wadl:doc>
+          <wadl:representation mediaType="application/xml" element="user"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/allRoles">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/assignRole">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[Assigns the role indicated by the roleId to the given principal]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="roleId" style="query"/>
+          <wadl:param name="principal" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/assignRoleByName">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[Assigns the role indicated by the roleName to the given principal]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="roleName" style="query"/>
+          <wadl:param name="principal" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/assignTemplatedRole">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[Assigns the templated role indicated by the templateId
+<p/>
+fails if the templated role has not been created]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="templateId" style="query"/>
+          <wadl:param name="resource" style="query"/>
+          <wadl:param name="principal" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/createTemplatedRole">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="templateId" style="query"/>
+          <wadl:param name="resource" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/detailledAllRoles">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/removeTemplatedRole">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[removes a role corresponding to the role Id that was manufactured with the given resource
+<p/>
+it also removes any user assignments for that role]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="templateId" style="query"/>
+          <wadl:param name="resource" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/roleExists">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[true of a role exists with the given roleId]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="roleId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/templatedRoleExists">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[true of a role exists with the given roleId]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="templateId" style="query"/>
+          <wadl:param name="resource" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/unassignRole">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[Unassigns the role indicated by the role id from the given principal]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="roleId" style="query"/>
+          <wadl:param name="principal" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/unassignRoleByName">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[Unassigns the role indicated by the role name from the given principal]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="roleName" style="query"/>
+          <wadl:param name="principal" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/updateRole">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[allows for a role coming from a template to be renamed effectively swapping out the bits of it that
+were labeled with the oldResource with the newResource
+<p/>
+it also manages any user assignments for that role]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="templateId" style="query"/>
+          <wadl:param name="oldResource" style="query"/>
+          <wadl:param name="newResource" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/updateRoleDescription">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="roleName" style="query"/>
+          <wadl:param name="roleDescription" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/updateRoleUsers">
+      <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[update users assigned to a role]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="role"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/updateUserRoles">
+      <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[update roles assigned to a user]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="user"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/verifyTemplatedRole">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[Check a role template is complete in the RBAC store.]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="templateId" style="query">
+            <wadl:doc>
+              <![CDATA[the templated role]]>
+            </wadl:doc>
+          </wadl:param>
+          <wadl:param name="resource" style="query">
+            <wadl:doc>
+              <![CDATA[the resource to verify]]>
+            </wadl:doc>
+          </wadl:param>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/createAdminUser">
+      <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[will create admin user only if not exists !! if exists will return false]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="user"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/createGuestUser">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="user"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/createUser">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="user"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/getCurrentUserOperations">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:doc>
+            <![CDATA[the current logged user operations, if no logged user guest operations are returned]]>
+          </wadl:doc>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/getCurrentUserPermissions">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:doc>
+            <![CDATA[the current logged user permissions, if no logged user guest permissions are returned]]>
+          </wadl:doc>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/getGuestUser">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="user"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/getUsers">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/isAdminUserExists">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/ping">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/registerUser">
+      <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[if redback is not configured for email validation is required, -1 is returned as key]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:representation mediaType="*/*" element="userRegistrationRequest"/>
+          <wadl:representation mediaType="application/xml" element="userRegistrationRequest"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="registrationKey"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/resetPassword">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:doc>
+            <![CDATA[contains username for send a password reset email]]>
+          </wadl:doc>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/updateMe">
+      <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[update only the current user and this fields: fullname, email, password.
+the service verify the curent logged user with the one passed in the method]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:representation mediaType="*/*" element="user"/>
+          <wadl:representation mediaType="application/xml" element="user"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/updateUser">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="*/*" element="user"/>
+          <wadl:representation mediaType="application/xml" element="user"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/utilServices/getBundleResources">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="locale" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="text/plain"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/getApplicationRoles/{username}">
+      <wadl:param name="username" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/getApplications/{username}">
+      <wadl:param name="username" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/getEffectivelyAssignedRoles/{username}">
+      <wadl:param name="username" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/roleManagementService/getRole/{roleName}">
+      <wadl:param name="roleName" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="role"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/deleteUser/{userName}">
+      <wadl:param name="userName" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/getUser/{userName}">
+      <wadl:param name="userName" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="user"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/getUserOperations/{userName}">
+      <wadl:param name="userName" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/getUserPermissions/{userName}">
+      <wadl:param name="userName" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/lockUser/{username}">
+      <wadl:param name="username" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/passwordChangeNotRequired/{username}">
+      <wadl:param name="username" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/passwordChangeRequired/{username}">
+      <wadl:param name="username" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/removeFromCache/{userName}">
+      <wadl:param name="userName" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/unlockUser/{username}">
+      <wadl:param name="username" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/redbackServices/userService/validateKey/{key}">
+      <wadl:param name="key" style="template">
+        <wadl:doc>
+          <![CDATA[authentication key]]>
+        </wadl:doc>
+      </wadl:param>
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[validate the key and the user with forcing a password change for next login.
+http session is created.]]>
+        </wadl:doc>
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+  </wadl:resources>
+</wadl:application>
