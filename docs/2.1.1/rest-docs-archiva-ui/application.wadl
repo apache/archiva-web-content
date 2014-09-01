@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wadl:application xmlns:wadl="http://wadl.dev.java.net/2009/02" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <wadl:doc xmlns:enunciate="http://enunciate.codehaus.org/" enunciate:generatedBy="Enunciate-1.28"/>
+  <wadl:grammars>
+    <wadl:include href="ns0.xsd"/>
+  </wadl:grammars>
+  <wadl:resources base="http://localhost:8080/archiva-web-common">
+    <wadl:resource path="/archivaUiServices/fileUploadService">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="multipart/form-data"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="fileMetadata"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/archivaUiServices/dataValidatorService/managedRepositoryIdNotExists">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="id" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/archivaUiServices/dataValidatorService/networkProxyIdNotExists">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="id" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/archivaUiServices/dataValidatorService/remoteRepositoryIdNotExists">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="id" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/archivaUiServices/fileUploadService/clearUploadedFiles">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/archivaUiServices/fileUploadService/sessionFileMetadatas">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/archivaUiServices/fileUploadService/{fileName}">
+      <wadl:param name="fileName" style="template"/>
+      <wadl:method name="DELETE">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/archivaUiServices/javascriptLogger/debug">
+      <wadl:method name="PUT">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="javascriptLog"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/archivaUiServices/javascriptLogger/error">
+      <wadl:method name="PUT">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="javascriptLog"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/archivaUiServices/javascriptLogger/info">
+      <wadl:method name="PUT">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="javascriptLog"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/archivaUiServices/javascriptLogger/trace">
+      <wadl:method name="PUT">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="javascriptLog"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/archivaUiServices/javascriptLogger/warn">
+      <wadl:method name="PUT">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="javascriptLog"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/archivaUiServices/runtimeInfoService/logMissingI18n">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="key" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/archivaUiServices/runtimeInfoService/archivaRuntimeInfo/{locale}">
+      <wadl:param name="locale" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="applicationRuntimeInfo"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/archivaUiServices/fileUploadService/save/{repositoryId}/{groupId}/{artifactId}/{version}/{packaging}">
+      <wadl:param name="repositoryId" style="template"/>
+      <wadl:param name="groupId" style="template"/>
+      <wadl:param name="artifactId" style="template"/>
+      <wadl:param name="version" style="template"/>
+      <wadl:param name="packaging" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="generatePom" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+  </wadl:resources>
+</wadl:application>

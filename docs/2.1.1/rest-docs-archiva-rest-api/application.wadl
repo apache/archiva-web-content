@@ -1,0 +1,1482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wadl:application xmlns:wadl="http://wadl.dev.java.net/2009/02" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <wadl:doc xmlns:enunciate="http://enunciate.codehaus.org/" enunciate:generatedBy="Enunciate-1.28"/>
+  <wadl:grammars>
+    <wadl:include href="ns0.xsd"/>
+  </wadl:grammars>
+  <wadl:resources base="http://localhost:8080/archiva-rest-api">
+    <wadl:resource path="/restServices/archivaAdministrationService/addFileType">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="fileType"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/addFileTypePattern">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="fileTypeId" style="query"/>
+          <wadl:param name="pattern" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/addLegacyArtifactPath">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="legacyArtifactPath"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/applicationUrl">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="text/plain"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/deleteLegacyArtifactPath">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="path" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/enabledInvalidContentConsumers">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/enabledKnownContentConsumers">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/getFileType">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="fileTypeId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="fileType"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/getFileTypes">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/getInvalidContentAdminRepositoryConsumers">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/getInvalidContentConsumers">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/getKnownContentAdminRepositoryConsumers">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/getKnownContentConsumers">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/getLegacyArtifactPaths">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/getNetworkConfiguration">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="networkConfiguration"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/getOrganisationInformation">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="organisationInformation"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/getUiConfiguration">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="uiConfiguration"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/registrationDisabled">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/removeFileType">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="fileTypeId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/removeFileTypePattern">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="fileTypeId" style="query"/>
+          <wadl:param name="pattern" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/setNetworkConfiguration">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="networkConfiguration"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/setOrganisationInformation">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="organisationInformation"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/setUiConfiguration">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="uiConfiguration"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaRuntimeConfigurationService/archivaRuntimeConfiguration">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="archivaRuntimeConfiguration"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+      <wadl:method name="PUT">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="archivaRuntimeConfiguration"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/browseService/importMetadata">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="*/*" element="metadataAddRequest"/>
+          <wadl:representation mediaType="application/xml" element="metadataAddRequest"/>
+          <wadl:param name="repository" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="*/*"/>
+          <wadl:representation mediaType="application/xml"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/browseService/rootGroups">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="repositoryId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="browseResult"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/browseService/userRepositories">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:doc>
+            <![CDATA[List of managed repositories current user can read]]>
+          </wadl:doc>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/commonServices/getAllI18nResources">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[will return properties available in org/apache/archiva/i18n/default.properties
+load default (en) then override with locale used so at least en are returned if no
+translation in the locale asked.
+This method will add redback resources too. note Archva wins]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="locale" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="text/plain"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/commonServices/getI18nResources">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[will return properties available in org/apache/archiva/i18n/default.properties
+load default (en) then override with locale used so at least en are returned if no
+translation in the locale asked.]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="locale" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="text/plain"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/commonServices/validateCronExpression">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="cronExpression" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/managedRepositoriesService/addManagedRepository">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="managedRepository"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="managedRepository"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/managedRepositoriesService/deleteManagedRepository">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="repositoryId" style="query"/>
+          <wadl:param name="deleteContent" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/managedRepositoriesService/fileLocationExists">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="fileLocation" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/managedRepositoriesService/getManagedRepositories">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/managedRepositoriesService/updateManagedRepository">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="managedRepository"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/networkProxyService/addNetworkProxy">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="networkProxy"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/networkProxyService/getNetworkProxies">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/networkProxyService/updateNetworkProxy">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="networkProxy"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/pingService/ping">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[ping service to monitor Archiva with a nice returned message :-)]]>
+        </wadl:doc>
+        <wadl:response>
+          <wadl:doc>
+            <![CDATA[Yeah Baby It rocks!]]>
+          </wadl:doc>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/pingService/pingWithAuthz">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[same as #ping but check authz]]>
+        </wadl:doc>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/pluginsService/getAdminPlugins">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="text/plain"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/proxyConnectorRuleService/deleteProxyConnectorRule">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="proxyConnectorRule"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/proxyConnectorRuleService/proxyConnectorRule">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="proxyConnectorRule"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/proxyConnectorRuleService/proxyConnectorRules">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/proxyConnectorRuleService/updateProxyConnectorRule">
+      <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[<b>only to update attached proxy connectors to update pattern use delete then add</b>]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="proxyConnectorRule"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/proxyConnectorService/addProxyConnector">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="proxyConnector"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/proxyConnectorService/allPolicies">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/proxyConnectorService/deleteProxyConnector">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="proxyConnector"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/proxyConnectorService/getProxyConnector">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="sourceRepoId" style="query"/>
+          <wadl:param name="targetRepoId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="proxyConnector"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/proxyConnectorService/getProxyConnectors">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/proxyConnectorService/removeProxyConnector">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="sourceRepoId" style="query"/>
+          <wadl:param name="targetRepoId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/proxyConnectorService/updateProxyConnector">
+      <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[<b>only for enabled/disable or changing bean values except target/source</b>]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="proxyConnector"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/redbackRuntimeConfigurationService/checkLdapConnection">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="ldapConfiguration"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/redbackRuntimeConfigurationService/rbacManagerImplementationInformations">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/redbackRuntimeConfigurationService/redbackImplementationsInformations">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="redbackImplementationsInformations"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/redbackRuntimeConfigurationService/redbackRuntimeConfiguration">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="redbackRuntimeConfiguration"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+      <wadl:method name="PUT">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="redbackRuntimeConfiguration"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/redbackRuntimeConfigurationService/userManagerImplementationInformations">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/remoteRepositoriesService/addRemoteRepository">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="remoteRepository"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/remoteRepositoriesService/getRemoteRepositories">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/remoteRepositoriesService/updateRemoteRepository">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="remoteRepository"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/reportServices/getStatisticsReport">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="repository" style="query"/>
+          <wadl:param name="rowCount" style="query"/>
+          <wadl:param name="startDate" style="query"/>
+          <wadl:param name="endDate" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoriesService/copyArtifact">
+      <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[permissions are checked in impl
+will copy an artifact from the source repository to the target repository]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="artifactTransferRequest"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoriesService/deleteArtifact">
+      <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[<b>permissions are checked in impl</b>]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="artifact"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoriesService/deleteGroupId">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[<b>permissions are checked in impl</b>]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="groupId" style="query"/>
+          <wadl:param name="repositoryId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoriesService/runningRemoteDownloadIds">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="stringList"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoriesService/scanRepository">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[index repository]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="repositoryId" style="query"/>
+          <wadl:param name="fullScan" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoriesService/scanRepositoryNow">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="repositoryId" style="query"/>
+          <wadl:param name="fullScan" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoriesService/scheduleDownloadRemoteIndex">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="repositoryId" style="query"/>
+          <wadl:param name="now" style="query"/>
+          <wadl:param name="fullDownload" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoryGroupService/addRepositoryGroup">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="repositoryGroup"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoryGroupService/addRepositoryToGroup">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="repositoryGroupId" style="query"/>
+          <wadl:param name="repositoryId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="repositoryGroupId" style="query"/>
+          <wadl:param name="repositoryId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoryGroupService/getRepositoriesGroups">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoryGroupService/updateRepositoryGroup">
+      <wadl:method name="POST">
+        <wadl:request>
+          <wadl:representation mediaType="application/xml" element="repositoryGroup"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/searchService/artifact">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="r" style="query"/>
+          <wadl:param name="g" style="query"/>
+          <wadl:param name="a" style="query"/>
+          <wadl:param name="v" style="query"/>
+          <wadl:param name="p" style="query"/>
+          <wadl:param name="c" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="text/html"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/searchService/getAllGroupIds">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[<b>this method applies on Maven Indexer lucene index, so datas not yet indexed won't be available</b>]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="selectedRepos" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="groupIdList"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/searchService/getArtifactVersions">
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[<b>search will be apply on all repositories the current user has karma</b>]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="groupId" style="query"/>
+          <wadl:param name="artifactId" style="query"/>
+          <wadl:param name="packaging" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/searchService/observableRepoIds">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="stringList"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/searchService/quickSearch">
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="queryString" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/searchService/quickSearchWithRepositories">
+      <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[<b>if not repositories in SearchRequest: search will be apply on all repositories the current user has karma</b>]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:representation mediaType="*/*" element="searchRequest"/>
+          <wadl:representation mediaType="application/xml" element="searchRequest"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/searchService/searchArtifacts">
+      <wadl:method name="POST">
+        <wadl:doc>
+          <![CDATA[If searchRequest contains repositories, the search will be done only on those repositories.
+<b>if no repositories, the search will be apply on all repositories the current user has karma</b>]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:representation mediaType="*/*" element="searchRequest"/>
+          <wadl:representation mediaType="application/xml" element="searchRequest"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/systemStatusService/cacheEntries">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/systemStatusService/clearAllCaches">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/systemStatusService/memoryStatus">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="text/plain"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/systemStatusService/queueEntries">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/systemStatusService/repositoryScannerStatistics">
+      <wadl:method name="GET">
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/disabledInvalidContentConsumer/{invalidContentConsumer}">
+      <wadl:param name="invalidContentConsumer" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/disabledKnownContentConsumer/{knownContentConsumer}">
+      <wadl:param name="knownContentConsumer" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/enabledInvalidContentConsumer/{invalidContentConsumer}">
+      <wadl:param name="invalidContentConsumer" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/archivaAdministrationService/enabledKnownContentConsumer/{knownContentConsumer}">
+      <wadl:param name="knownContentConsumer" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/browseService/artifacts/{r}">
+      <wadl:param name="r" style="template"/>
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[return List of all artifacts from this repository]]>
+        </wadl:doc>
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/browseService/browseGroupId/{groupId}">
+      <wadl:param name="groupId" style="template">
+        <wadl:doc>
+          <![CDATA[groupId to browse]]>
+        </wadl:doc>
+      </wadl:param>
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="repositoryId" style="query">
+            <wadl:doc>
+              <![CDATA[optionnal (repository to browse if <tt>null</tt> all available user repositories are used)]]>
+            </wadl:doc>
+          </wadl:param>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="browseResult"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/managedRepositoriesService/getManagedRepository/{repositoryId}">
+      <wadl:param name="repositoryId" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="managedRepository"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/managedRepositoriesService/getPomSnippet/{repositoryId}">
+      <wadl:param name="repositoryId" style="template"/>
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[return a pom snippet to use this repository with entities escaped (&lt; &gt;)]]>
+        </wadl:doc>
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="text/plain"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/networkProxyService/deleteNetworkProxy/{networkProxyId}">
+      <wadl:param name="networkProxyId" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/networkProxyService/getNetworkProxy/{networkProxyId}">
+      <wadl:param name="networkProxyId" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="networkProxy"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/remoteRepositoriesService/checkRemoteConnectivity/{repositoryId}">
+      <wadl:param name="repositoryId" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/remoteRepositoriesService/deleteRemoteRepository/{repositoryId}">
+      <wadl:param name="repositoryId" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/remoteRepositoriesService/getRemoteRepository/{repositoryId}">
+      <wadl:param name="repositoryId" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="remoteRepository"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoriesService/alreadyScanning/{repositoryId}">
+      <wadl:param name="repositoryId" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoriesService/isAuthorizedToDeleteArtifacts/{repositoryId}">
+      <wadl:param name="repositoryId" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoriesService/removeScanningTaskFromQueue/{repositoryId}">
+      <wadl:param name="repositoryId" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoriesService/scanRepositoryDirectoriesNow/{repositoryId}">
+      <wadl:param name="repositoryId" style="template"/>
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[scan directories]]>
+        </wadl:doc>
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="repositoryScanStatistics"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoryGroupService/deleteRepositoryGroup/{repositoryGroupId}">
+      <wadl:param name="repositoryGroupId" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoryGroupService/getRepositoryGroup/{repositoryGroupId}">
+      <wadl:param name="repositoryGroupId" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="repositoryGroup"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/systemStatusService/clearCache/{key}">
+      <wadl:param name="key" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/systemStatusService/currentServerTime/{locale}">
+      <wadl:param name="locale" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="text/plain"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/browseService/projectVersionMetadata/{g}/{a}">
+      <wadl:param name="g" style="template"/>
+      <wadl:param name="a" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="repositoryId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="projectVersionMetadata"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/browseService/versionsList/{g}/{a}">
+      <wadl:param name="g" style="template"/>
+      <wadl:param name="a" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="repositoryId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="versionsList"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/managedRepositoriesService/getManagedRepositoryStatistics/{repositoryId}/{lang}">
+      <wadl:param name="repositoryId" style="template"/>
+      <wadl:param name="lang" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="archivaRepositoryStatistics"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/mergeRepositoriesService/mergeConflictedArtifacts/{sourceRepositoryId}/{targetRepositoryId}">
+      <wadl:param name="sourceRepositoryId" style="template"/>
+      <wadl:param name="targetRepositoryId" style="template"/>
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[<b>permissions are checked in impl</b>]]>
+        </wadl:doc>
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/reportServices/getHealthReports/{repository}/{rowCount}">
+      <wadl:param name="repository" style="template"/>
+      <wadl:param name="rowCount" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="groupId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/browseService/artifactAvailable/{g}/{a}/{v}">
+      <wadl:param name="g" style="template"/>
+      <wadl:param name="a" style="template"/>
+      <wadl:param name="v" style="template"/>
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[verify if an artifact is available locally if not download from proxies will be try]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="repositoryId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/browseService/artifactContentEntries/{g}/{a}/{v}">
+      <wadl:param name="g" style="template"/>
+      <wadl:param name="a" style="template"/>
+      <wadl:param name="v" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="c" style="query"/>
+          <wadl:param name="t" style="query"/>
+          <wadl:param name="p" style="query"/>
+          <wadl:param name="repositoryId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/browseService/artifactContentText/{g}/{a}/{v}">
+      <wadl:param name="g" style="template"/>
+      <wadl:param name="a" style="template"/>
+      <wadl:param name="v" style="template"/>
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[if path is empty content of the file is returned (for pom view)]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="c" style="query"/>
+          <wadl:param name="t" style="query"/>
+          <wadl:param name="p" style="query"/>
+          <wadl:param name="repositoryId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="artifactContent"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/browseService/artifactDownloadInfos/{g}/{a}/{v}">
+      <wadl:param name="g" style="template"/>
+      <wadl:param name="a" style="template"/>
+      <wadl:param name="v" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="repositoryId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/browseService/dependees/{g}/{a}/{v}">
+      <wadl:param name="g" style="template"/>
+      <wadl:param name="a" style="template"/>
+      <wadl:param name="v" style="template"/>
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[List of artifacts using the artifact passed in parameter.]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="repositoryId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/browseService/metadatas/{g}/{a}/{v}">
+      <wadl:param name="g" style="template"/>
+      <wadl:param name="a" style="template"/>
+      <wadl:param name="v" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="repositoryId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/browseService/projectVersionMetadata/{g}/{a}/{v}">
+      <wadl:param name="g" style="template"/>
+      <wadl:param name="a" style="template"/>
+      <wadl:param name="v" style="template"/>
+      <wadl:method name="GET">
+        <wadl:request>
+          <wadl:param name="repositoryId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml" element="projectVersionMetadata"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/browseService/treeEntries/{g}/{a}/{v}">
+      <wadl:param name="g" style="template"/>
+      <wadl:param name="a" style="template"/>
+      <wadl:param name="v" style="template"/>
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[return the dependency Tree for an artifacts
+<b>the List result has only one entry</b>]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="repositoryId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/mergeRepositoriesService/mergeRepositories/{sourceRepositoryId}/{targetRepositoryId}/{skipConflicts}">
+      <wadl:param name="sourceRepositoryId" style="template"/>
+      <wadl:param name="targetRepositoryId" style="template"/>
+      <wadl:param name="skipConflicts" style="template"/>
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[<b>permissions are checked in impl</b>]]>
+        </wadl:doc>
+        <wadl:request/>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoriesService/project/{repositoryId}/{groupId}/{projectId}">
+      <wadl:param name="groupId" style="template"/>
+      <wadl:param name="projectId" style="template"/>
+      <wadl:param name="repositoryId" style="template"/>
+      <wadl:method name="DELETE">
+        <wadl:doc>
+          <![CDATA[<b>permissions are checked in impl</b>]]>
+        </wadl:doc>
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/browseService/artifactAvailable/{g}/{a}/{v}/{c}">
+      <wadl:param name="g" style="template"/>
+      <wadl:param name="a" style="template"/>
+      <wadl:param name="v" style="template"/>
+      <wadl:param name="c" style="template"/>
+      <wadl:method name="GET">
+        <wadl:doc>
+          <![CDATA[verify if an artifact is available locally if not download from proxies will be try]]>
+        </wadl:doc>
+        <wadl:request>
+          <wadl:param name="repositoryId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/browseService/metadata/{g}/{a}/{v}/{key}">
+      <wadl:param name="g" style="template"/>
+      <wadl:param name="a" style="template"/>
+      <wadl:param name="v" style="template"/>
+      <wadl:param name="key" style="template"/>
+      <wadl:method name="DELETE">
+        <wadl:request>
+          <wadl:param name="repositoryId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/repositoriesService/projectVersion/{repositoryId}/{namespace}/{projectId}/{version}">
+      <wadl:param name="repositoryId" style="template"/>
+      <wadl:param name="namespace" style="template"/>
+      <wadl:param name="projectId" style="template"/>
+      <wadl:param name="version" style="template"/>
+      <wadl:method name="DELETE">
+        <wadl:doc>
+          <![CDATA[<b>permissions are checked in impl</b>]]>
+        </wadl:doc>
+        <wadl:request/>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="text/plain"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+    <wadl:resource path="/restServices/browseService/metadata/{g}/{a}/{v}/{key}/{value}">
+      <wadl:param name="g" style="template"/>
+      <wadl:param name="a" style="template"/>
+      <wadl:param name="v" style="template"/>
+      <wadl:param name="key" style="template"/>
+      <wadl:param name="value" style="template"/>
+      <wadl:method name="PUT">
+        <wadl:request>
+          <wadl:param name="repositoryId" style="query"/>
+        </wadl:request>
+        <wadl:response>
+          <wadl:representation mediaType="application/xml"/>
+          <wadl:representation mediaType="application/json"/>
+        </wadl:response>
+      </wadl:method>
+    </wadl:resource>
+  </wadl:resources>
+</wadl:application>
