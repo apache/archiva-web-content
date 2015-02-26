@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Olivier Lamy" />
     <meta name="Date-Creation-yyyymmdd" content="20120119" />
-    <meta name="Date-Revision-yyyymmdd" content="20150224" />
+    <meta name="Date-Revision-yyyymmdd" content="20150226" />
     <meta http-equiv="Content-Language" content="en" />
     <title>Archiva - REST Services</title>
     <link rel="stylesheet" href="../css/apache-maven-fluido-1.3.1.min.css" />
@@ -205,7 +205,7 @@
         
                 
                     
-                  <li id="publishDate" class="pull-right">Last Published: 24 Feb 2015</li>
+                  <li id="publishDate" class="pull-right">Last Published: 26 Feb 2015</li>
             
                             </ul>
       </div>
@@ -250,7 +250,8 @@ public class Artifact
     implements Serializable
 
 All services will be able to return json or xml
-@Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )</pre></div></div>
+@Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
+</pre></div></div>
 <div class="section">
 <h5>JAXRS annotations<a name="JAXRS_annotations"></a></h5>
 <p>As we use interfaces/implementations pattern jaxrs annotations are only in interfaces level.</p>
@@ -280,7 +281,8 @@ public interface ManagedRepositoriesService
     @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
     @RedbackAuthorization( permissions = ArchivaRoleConstants.OPERATION_MANAGE_CONFIGURATION )
     ManagedRepository addManagedRepository( ManagedRepository managedRepository )
-        throws ArchivaRestServiceException;</pre></div></div></div>
+        throws ArchivaRestServiceException;
+</pre></div></div></div>
 <div class="section">
 <h4>CXF/Spring configuration<a name="CXFSpring_configuration"></a></h4>
 <p>REST services implementations are marked with the Spring annotation @Service</p>
@@ -290,7 +292,8 @@ public interface ManagedRepositoriesService
 @Service( &quot;managedRepositoriesService#rest&quot; )
 public class DefaultManagedRepositoriesService
     extends AbstractRestService
-    implements ManagedRepositoriesService</pre></div>
+    implements ManagedRepositoriesService
+</pre></div>
 <p>Spring beans are declared as REST/CXF services in the Spring configuration</p>
 <div class="source">
 <pre>  &lt;jaxrs:server id=&quot;archivaServices&quot; address=&quot;/archivaServices&quot;&gt;
@@ -314,7 +317,8 @@ public class DefaultManagedRepositoriesService
       base-package=&quot;org.apache.archiva.rest.services&quot;/&gt;
 
 ...
-&lt;/beans&gt;</pre></div>
+&lt;/beans&gt;
+</pre></div>
 <p>CXF servlet is declared as:</p>
 <div class="source">
 <pre>  &lt;servlet&gt;
@@ -326,7 +330,8 @@ public class DefaultManagedRepositoriesService
   &lt;servlet-mapping&gt;
     &lt;servlet-name&gt;CXFServlet&lt;/servlet-name&gt;
     &lt;url-pattern&gt;/restServices/*&lt;/url-pattern&gt;
-  &lt;/servlet-mapping&gt;</pre></div>
+  &lt;/servlet-mapping&gt;
+</pre></div>
 <p>So as it, REST services are availble in the following url <b>restServices/archivaServices/</b>.</p></div>
 <div class="section">
 <h4>Redback security annotation<a name="Redback_security_annotation"></a></h4>
@@ -335,7 +340,8 @@ public class DefaultManagedRepositoriesService
 <pre>
     @RedbackAuthorization( permissions = ArchivaRoleConstants.OPERATION_MANAGE_CONFIGURATION )
     ManagedRepository addManagedRepository( ManagedRepository managedRepository )
-        throws ArchivaRestServiceException;</pre></div>
+        throws ArchivaRestServiceException;
+</pre></div>
 <p>This method will need the current user to have the operation manage-configuration level.</p>
 <p>For more details, have a look at <a class="externalLink" href="http://archiva.apache.org/redback/integration/rest.html">Redback REST</a>.</p></div></div></div>
                   </div>

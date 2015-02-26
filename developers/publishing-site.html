@@ -7,7 +7,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="Date-Revision-yyyymmdd" content="20150224" />
+    <meta name="Date-Revision-yyyymmdd" content="20150226" />
     <meta http-equiv="Content-Language" content="en" />
     <title>Archiva - Archiva Sites Publishing</title>
     <link rel="stylesheet" href="../css/apache-maven-fluido-1.3.1.min.css" />
@@ -203,7 +203,7 @@
         
                 
                     
-                  <li id="publishDate" class="pull-right">Last Published: 24 Feb 2015</li>
+                  <li id="publishDate" class="pull-right">Last Published: 26 Feb 2015</li>
             
                             </ul>
       </div>
@@ -223,12 +223,13 @@
 <p>The site displayed at the root of <a class="externalLink" href="http://archiva.apache.org">http://archiva.apache.org</a> (where you are reading this) has its source code in Git at <a class="externalLink" href="https://git-wip-us.apache.org/repos/asf/archiva-site.git">https://git-wip-us.apache.org/repos/asf/archiva-site.git</a>.</p>
 <p>To edit and publish the site, do the following:</p>
 <ol style="list-style-type: decimal">
-<li>Checkout the source code from Subversion (if you follow the instructions in <a href="./building.html"> Building Archiva</a>, you will already have it.</li>
+<li>Checkout the source code from Git (if you follow the instructions in <a href="./building.html"> Building Archiva</a>, you know how to have it.</li>
 <li>Make edits and check them using <tt>mvn site</tt> or <tt>mvn site:run</tt> until satisfied.</li>
 <li>Commit your changes (making sure your working copy is completely up to date first)</li>
 <li>Publish the site:
 <div>
-<pre>mvn site-deploy</pre></div></li></ol>
+<pre>mvn site-deploy
+</pre></div></li></ol>
 <p>This site deployment can be done at any time, and is not tied to releases.</p>
 <p>Note that since the main site also contains the (large!) <tt>docs</tt> and <tt>ref</tt> directories in the <tt>site-publish</tt> directory, there is a special <tt>setup-checkout</tt> profile in place to get the initial checkout without those directories. This will normally be activated whenever the <tt>site-publish</tt> directory is missing - if you happen to have active profiles from your <tt>settings.xml</tt> you may need to enable it explicitly whenever you do a deployment and that checkout is missing: <tt>mvn site-deploy -Psetup-checkout</tt> </p></div>
 <div class="section">
@@ -236,7 +237,8 @@
 <p>The documentation displayed under the subdirectories of <a class="externalLink" href="http://archiva.apache.org/docs/">http://archiva.apache.org/docs/</a> has its source code in Git at <a class="externalLink" href="https://git-wip-us.apache.org/repos/asf/archiva.git">https://git-wip-us.apache.org/repos/asf/archiva.git</a> directory archiva-docs, which is part of the main project checkout.</p>
 <p>The instructions for managing the documentation is the same as for the main site, being published from the directory using:</p>
 <div>
-<pre>mvn site-deploy</pre></div>
+<pre>mvn site-deploy
+</pre></div>
 <p>However, in this case it is typically done as part of a release process - see <a href="./releasing.html"> Releasing Archiva</a> for instructions on doing this.</p>
 <p>The documentation remains versioned based on the release it is related to. To best manage this with svnpubsub, the site is always published into a directory <tt>docs/latest</tt>, only requiring a small number of modifications to be made. Then, as part of the release instructions, the <tt>latest</tt> directory is copied to the versioned location - for example, <tt>http://svn.apache.org/repos/asf/archiva/site-content/docs/1.4-M4</tt>.</p>
 <p>For <tt>site:stage</tt> to apply correctly without needing a full checkout, a workaround is applied by setting the <tt>distributionManagement/site/url</tt> element to match that of the parent site. The value is then overridden with the correct value in the <tt>maven-scm-publish-plugin</tt> configuration. This avoids the Site plugin attempting to relativize links incorrectly.</p></div>
@@ -248,7 +250,8 @@
 <pre>cd archiva-modules
 mvn site site:stage scm-publish:publish-scm
 or
-sh ./deploySite.sh</pre></div>
+sh ./deploySite.sh
+</pre></div>
 <p>This will likely cause a very large commit, and should be done infrequently. Once per release is likely to be adequate.</p></div>
 <div class="section">
 <h3>Publishing Redback site<a name="Publishing_Redback_site"></a></h3>
@@ -256,7 +259,8 @@ sh ./deploySite.sh</pre></div>
 <p>It's displayed under the URL <a class="externalLink" href="http://archiva.apache.org/redback">http://archiva.apache.org/redback</a>.</p>
 <p>To publish documentation, you need to run:</p>
 <div>
-<pre>mvn site-deploy</pre></div></div>
+<pre>mvn site-deploy
+</pre></div></div>
 <div class="section">
 <h3>Publishing Redback Core reference<a name="Publishing_Redback_Core_reference"></a></h3>
 <p>The Redback core reference is displayed under the URL <a class="externalLink" href="http://archiva.apache.org/redback/core">http://archiva.apache.org/redback/core</a>.</p>
@@ -265,7 +269,8 @@ sh ./deploySite.sh</pre></div>
 <div>
 <pre>mvn clean site-deploy scm-publish:publish-scm
 or
-sh ./deploySite.sh</pre></div></div>
+sh ./deploySite.sh
+</pre></div></div>
 <div class="section">
 <h3>Publishing Redback Components reference<a name="Publishing_Redback_Components_reference"></a></h3>
 <p>The Redback components reference is displayed under the URL <a class="externalLink" href="http://archiva.apache.org/redback/components">http://archiva.apache.org/redback/components</a>.</p>
@@ -274,7 +279,8 @@ sh ./deploySite.sh</pre></div></div>
 <div>
 <pre>mvn clean site-deploy scm-publish:publish-scm
 or
-sh ./deploySite.sh</pre></div></div></div>
+sh ./deploySite.sh
+</pre></div></div></div>
                   </div>
           </div>
 

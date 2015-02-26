@@ -8,7 +8,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="Date-Creation-yyyymmdd" content="20120119" />
-    <meta name="Date-Revision-yyyymmdd" content="20150224" />
+    <meta name="Date-Revision-yyyymmdd" content="20150226" />
     <meta http-equiv="Content-Language" content="en" />
     <title>Archiva - Archiva release process</title>
     <link rel="stylesheet" href="../css/apache-maven-fluido-1.3.1.min.css" />
@@ -204,7 +204,7 @@
         
                 
                     
-                  <li id="publishDate" class="pull-right">Last Published: 24 Feb 2015</li>
+                  <li id="publishDate" class="pull-right">Last Published: 26 Feb 2015</li>
             
                             </ul>
       </div>
@@ -223,7 +223,8 @@
      &lt;id&gt;archiva-repository.releases&lt;/id&gt;
      &lt;username&gt;&lt;/username&gt;
      &lt;password&gt;&lt;/password&gt;
-   &lt;/server&gt;</pre></div></li>
+   &lt;/server&gt;
+</pre></div></li>
 <li>If there are changes in the parent pom, release parent pom &#x2013; https://svn.apache.org/repos/asf/archiva/parent
 <ul>
 <li>mvn release:prepare (verify that it has been properly tagged)</li>
@@ -241,7 +242,8 @@
   &lt;properties&gt;
     &lt;gpg.passphrase&gt;[GPG_PASSWORD]&lt;/gpg.passphrase&gt;
   &lt;/properties&gt;
-&lt;/profile&gt;</pre></div>
+&lt;/profile&gt;
+</pre></div>
 <p>Set your user credentials for the stage repo in the <i>servers</i> section of your settings.xml for <a href="#archiva-repository.releases">archiva-repository.releases</a>.</p>
 <p>Execute mvn release:prepare (check that it has been properly tagged. the tag name must be.. archiva-[VERSION]).</p>
 <p>Next, execute mvn release:perform</p>
@@ -251,18 +253,21 @@
 wget http://archiva-repository.apache.org/archiva/repository/staged-releases/org/apache/archiva/archiva-jetty/1.3/archiva-jetty-1.3-bin.tar.gz
 Verify the signatures:
 ex.
-gpg -v archiva-jetty-1.3-bin.zip.asc</pre></div>
+gpg -v archiva-jetty-1.3-bin.zip.asc
+</pre></div>
 <p>The documentation is deployed as part of the process to the final location for review in the vote: http://archiva.apache.org/docs/1.3/. If the vote doesn't pass, the documentation will need to be removed from the server for redeployment. Commit the sources and binaries from org/apache/archiva/archiva-jetty, and org/apache/archiva/archiva to the svn distribution tree. First in dev tree: https://dist.apache.org/repos/dist/dev/archiva/ (if the vote pass they will be copied to release tree) https://dist.apache.org/repos/dist/release/archiva</p>
 <div class="source">
 <pre>svn co https://dist.apache.org/repos/dist/dev/archiva/ archiva-dev-release
 cd archiva-dev-release
-sh ./release-script-svn.sh VERSION STAGING_URL</pre></div>
+sh ./release-script-svn.sh VERSION STAGING_URL
+</pre></div>
 <p>Call for a vote in the dev list and wait for 72 hrs. for the vote results. 3 binding votes are necessary for the release to be finalized. example If the vote fails or needs to be canceled, the version number should not be re-used if the version was made available for public download. After the vote has passed, move the files from dist dev to dist release: svn mv https://dist.apache.org/repos/dist/dev/archiva/ to https://dist.apache.org/repos/dist/relase/archiva/ To sync the jars to ibiblio, execute:</p>
 <p><b>NOTE: the stage plugin doesn't work with maven3 you must use maven 2.2.1</b></p>
 <div class="source">
 <pre>  mvn stage:copy -Dsource=&quot;https://archiva-repository.apache.org/archiva/repository/archiva-releases-stage/&quot;
      -Dtarget=&quot;scp://[APACHE_USERNAME]@people.apache.org/www/people.apache.org/repo/m2-ibiblio-rsync-repository&quot;
-     -Dversion=1.3 -DrepositoryId=apache.releases</pre></div>
+     -Dversion=1.3 -DrepositoryId=apache.releases
+</pre></div>
 <p>mark the appropriate release version in JIRA as complete Update the archiva site (https://svn.apache.org/repos/asf/archiva/site/) for the versions and release notes URL and run mvn site-deploy. The 3 properties to change are at the bottom of pom.xml before generating the site. Once mirroring done (can be 24H): remove previous versions from https://dist.apache.org/repos/dist/release/archiva/</p>
 <p>Publish the reference docs (sh ./deploySite.sh in the archiva-modules directory) from the release tag. You may have to exclude the archiva-webapp module to do this, and will require MAVEN_OPTS=-Xmx256m. You may need to use Maven 2.2.1 instead of Maven 3.x for this.</p>
 <p>Send out an announcement of the release to:</p>
