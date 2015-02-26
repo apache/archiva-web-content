@@ -265,7 +265,6 @@ mapping function (to map the json result to your javascript beans)
                                  data.blockRedeployments,data.cronExpression,
                                  data.scanned,data.daysOlder,data.retentionCount,data.deleteReleasedSnapshots,data.stageRepoNeeded);
   }
-
 </pre></div>
 <p><tt>NOTE to have access to field values you must now managedRepository.name() </tt></p></div>
 <div class="section">
@@ -274,8 +273,7 @@ mapping function (to map the json result to your javascript beans)
 <h4>First you must insert your template in the #main-content div<a name="First_you_must_insert_your_template_in_the_main-content_div"></a></h4>
 <div class="source">
 <pre>// it's a jquery template as we do some i18n transformations
-$(&quot;#main-content&quot;).html($(&quot;#repositoriesMain&quot;).tmpl());
-</pre></div></div>
+$(&quot;#main-content&quot;).html($(&quot;#repositoriesMain&quot;).tmpl());</pre></div></div>
 <div class="section">
 <h4>You can now create your view model.<a name="You_can_now_create_your_view_model."></a></h4>
 <div class="source">
@@ -293,8 +291,7 @@ $(&quot;#main-content&quot;).html($(&quot;#repositoriesMain&quot;).tmpl());
   removeManagedRepository=function(managedRepository){
     ......
   }
-}
-</pre></div></div>
+}</pre></div></div>
 <div class="section">
 <h4>Grid binding<a name="Grid_binding"></a></h4>
 <p>The ManagedRepositoriesViewModel is used as it with a custom grid binding (knockout has a feature to create own binding so we use one called <tt>simpleGrid</tt> which will display grids.</p>
@@ -338,8 +335,7 @@ $(&quot;#main-content&quot;).html($(&quot;#repositoriesMain&quot;).tmpl());
           ko.applyBindings(managedRepositoriesViewModel,$(&quot;#main-content #managed-repositories-table&quot;).get(0));
         }
       }
-    );
-</pre></div></div></div>
+    );</pre></div></div></div>
 <div class="section">
 <h3>View definition<a name="View_definition"></a></h3>
 <div class="section">
@@ -348,8 +344,7 @@ $(&quot;#main-content&quot;).html($(&quot;#repositoriesMain&quot;).tmpl());
 <div class="source">
 <pre>  &lt;table class=&quot;bordered-table zebra-striped&quot; id=&quot;managed-repositories-table&quot;
          data-bind=&quot;simpleGrid: gridViewModel,simpleGridTemplate:'ko_managed-repositoriesGrid',pageLinksId:'managed-repositoriesPagination',data:'managedRepositories'&quot;&gt;
-  &lt;/table&gt;
-</pre></div>
+  &lt;/table&gt;</pre></div>
 <ul>
 <li>simpleGrid: gridViewModel = field name for the view model (see sample above)</li>
 <li>simpleGridTemplate:'ko_managed-repositoriesGrid' = name of the template to use (see below)</li>
@@ -400,7 +395,6 @@ $(&quot;#main-content&quot;).html($(&quot;#repositoriesMain&quot;).tmpl());
           &lt;/tr&gt;
       {{/each}}
   &lt;/tbody&gt;
-
 </pre></div></div></div></div>
                   </div>
           </div>
