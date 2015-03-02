@@ -8,10 +8,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Olivier Lamy" />
-    <meta name="Date-Revision-yyyymmdd" content="20150226" />
+    <meta name="Date-Revision-yyyymmdd" content="20150302" />
     <meta http-equiv="Content-Language" content="en" />
-    <title>Archiva - 
-    Archiva Javascript application General design</title>
+    <title>Archiva &#x2013; Archiva Javascript application General design</title>
     <link rel="stylesheet" href="../css/apache-maven-fluido-1.3.1.min.css" />
     <link rel="stylesheet" href="../css/site.css" />
     <link rel="stylesheet" href="../css/print.css" media="print" />
@@ -29,7 +28,21 @@
         pageTracker._initData();
         pageTracker._trackPageview();</script>
           
-                  </head>
+              <!-- Google Analytics -->
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-140879-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+          </head>
         <body class="topBarEnabled">
           
                         
@@ -64,11 +77,11 @@
                       <li class="dropdown-submenu">
                                       <a href="../"  title="Documentation">Documentation</a>
               <ul class="dropdown-menu">
-                                  <li>      <a href="../docs/2.1.1/"  title="Release 2.1.1">Release 2.1.1</a>
+                                  <li>      <a href="../docs/2.2.0/"  title="Release 2.2.0">Release 2.2.0</a>
 </li>
                                   <li>      <a href="../docs/1.3.9/"  title="Preview 1.3.9">Preview 1.3.9</a>
 </li>
-                                  <li>      <a href="../docs/2.2.0-SNAPSHOT/"  title="Dev 2.2.0-SNAPSHOT">Dev 2.2.0-SNAPSHOT</a>
+                                  <li>      <a href="../docs/2.2.1-SNAPSHOT/"  title="Dev 2.2.1-SNAPSHOT">Dev 2.2.1-SNAPSHOT</a>
 </li>
                               </ul>
             </li>
@@ -201,12 +214,11 @@
         Archiva</a>
                     <span class="divider">/</span>
       </li>
-        <li class="active ">
-    Archiva Javascript application General design</li>
+        <li class="active ">Archiva Javascript application General design</li>
         
                 
                     
-                  <li id="publishDate" class="pull-right">Last Published: 26 Feb 2015</li>
+                  <li id="publishDate" class="pull-right">Last Published: 02 Mar 2015</li>
             
                             </ul>
       </div>
@@ -253,10 +265,10 @@
 
     
 <div class="section">
-<h2>Archiva Javascript Web Application<a name="Archiva_Javascript_Web_Application"></a></h2>
+<h2><a name="Archiva_Javascript_Web_Application"></a>Archiva Javascript Web Application</h2>
       
 <div class="section">
-<h3>General design<a name="General_design"></a></h3>
+<h3><a name="General_design"></a>General design</h3>
         
 <p>
           The goal is to have a &quot;one page loading&quot; javascript application.
@@ -273,7 +285,7 @@
       </div>
       
 <div class="section">
-<h3>Runtime Properties<a name="Runtime_Properties"></a></h3>
+<h3><a name="Runtime_Properties"></a>Runtime Properties</h3>
         
 <p>The application is designed to use http cache mechanism for css, javascript. Except REST call to get datas which will never use cache as a query timestamp parameter is used.
           But as this can cause issue in developpement phase, two system properties (disabled by default) prevent can prevent caching and/or help debuging
@@ -290,7 +302,7 @@
       </div>
       
 <div class="section">
-<h3>Used Javascript frameworks<a name="Used_Javascript_frameworks"></a></h3>
+<h3><a name="Used_Javascript_frameworks"></a>Used Javascript frameworks</h3>
         
 <p>
         We use some well known javascript framework librairies :
@@ -321,7 +333,7 @@
       </div>
       
 <div class="section">
-<h3>Sources organisation<a name="Sources_organisation"></a></h3>
+<h3><a name="Sources_organisation"></a>Sources organisation</h3>
         
 <p>
           Sources are located in src/main/webapp of the archiva-webapp module :
@@ -337,7 +349,7 @@
         
         </div>
 <div class="section">
-<h3>js directory<a name="js_directory"></a></h3>
+<h3><a name="js_directory"></a>js directory</h3>
           
 <p>
             Root directory contains external libraries.
@@ -355,7 +367,7 @@
 
       
 <div class="section">
-<h3>Start page<a name="Start_page"></a></h3>
+<h3><a name="Start_page"></a>Start page</h3>
         
 <p>
           The main page will load javascript files, load <a href="./i18n.html">i18n</a>, <a href="./template-loading.html">load templates</a> and insert menu.
@@ -404,7 +416,7 @@ Support single value:
 
       
 <div class="section">
-<h3>Grid/edit model<a name="Gridedit_model"></a></h3>
+<h3><a name="Gridedit_model"></a>Grid/edit model</h3>
         
 <p>We use a tab/pill models to display grid of datas and edit/add form:
           </p>

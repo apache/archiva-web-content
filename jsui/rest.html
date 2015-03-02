@@ -9,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Olivier Lamy" />
     <meta name="Date-Creation-yyyymmdd" content="20120119" />
-    <meta name="Date-Revision-yyyymmdd" content="20150226" />
+    <meta name="Date-Revision-yyyymmdd" content="20150302" />
     <meta http-equiv="Content-Language" content="en" />
-    <title>Archiva - REST Services</title>
+    <title>Archiva &#x2013; REST Services</title>
     <link rel="stylesheet" href="../css/apache-maven-fluido-1.3.1.min.css" />
     <link rel="stylesheet" href="../css/site.css" />
     <link rel="stylesheet" href="../css/print.css" media="print" />
@@ -29,7 +29,21 @@
         pageTracker._initData();
         pageTracker._trackPageview();</script>
           
-                  </head>
+              <!-- Google Analytics -->
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-140879-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+          </head>
         <body class="topBarEnabled">
           
                         
@@ -64,11 +78,11 @@
                       <li class="dropdown-submenu">
                                       <a href="../"  title="Documentation">Documentation</a>
               <ul class="dropdown-menu">
-                                  <li>      <a href="../docs/2.1.1/"  title="Release 2.1.1">Release 2.1.1</a>
+                                  <li>      <a href="../docs/2.2.0/"  title="Release 2.2.0">Release 2.2.0</a>
 </li>
                                   <li>      <a href="../docs/1.3.9/"  title="Preview 1.3.9">Preview 1.3.9</a>
 </li>
-                                  <li>      <a href="../docs/2.2.0-SNAPSHOT/"  title="Dev 2.2.0-SNAPSHOT">Dev 2.2.0-SNAPSHOT</a>
+                                  <li>      <a href="../docs/2.2.1-SNAPSHOT/"  title="Dev 2.2.1-SNAPSHOT">Dev 2.2.1-SNAPSHOT</a>
 </li>
                               </ul>
             </li>
@@ -205,7 +219,7 @@
         
                 
                     
-                  <li id="publishDate" class="pull-right">Last Published: 26 Feb 2015</li>
+                  <li id="publishDate" class="pull-right">Last Published: 02 Mar 2015</li>
             
                             </ul>
       </div>
@@ -215,7 +229,7 @@
         <div id="bodyColumn" >
                                   
             <!-- Licensed to the Apache Software Foundation (ASF) under one --><!-- or more contributor license agreements.  See the NOTICE file --><!-- distributed with this work for additional information --><!-- regarding copyright ownership.  The ASF licenses this file --><!-- to you under the Apache License, Version 2.0 (the --><!-- "License"); you may not use this file except in compliance --><!-- with the License.  You may obtain a copy of the License at --><!--  --><!-- http://www.apache.org/licenses/LICENSE-2.0 --><!--  --><!-- Unless required by applicable law or agreed to in writing, --><!-- software distributed under the License is distributed on an --><!-- "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY --><!-- KIND, either express or implied.  See the License for the --><!-- specific language governing permissions and limitations --><!-- under the License. --><!-- NOTE: For help with the syntax of this file, see: --><!-- http://maven.apache.org/guides/mini/guide-apt-format.html --><div class="section">
-<h2>Expose Rest Services<a name="Expose_Rest_Services"></a></h2>
+<h2><a name="Expose_Rest_Services"></a>Expose Rest Services</h2>
 <p>The <a class="externalLink" href="http://cxf.apache.org">Apache CXF</a> is used to expose some classes/methods as REST Services.</p>
 <p>Services use the standard interface/implementation pattern:</p>
 <ul>
@@ -233,16 +247,16 @@
 <li><a href="#CXFSpring_configuration">CXF/Spring configuration</a></li>
 <li><a href="#Redback_security_annotation">Redback security annotation</a></li></ul></li></ul></li></ul>
 <div class="section">
-<h3>Steps to expose your class as a REST Service.<a name="Steps_to_expose_your_class_as_a_REST_Service."></a></h3>
+<h3><a name="Steps_to_expose_your_class_as_a_REST_Service."></a>Steps to expose your class as a REST Service.</h3>
 <p>Here all the steps to expose a new class as a REST service.</p>
 <div class="section">
-<h4>Interface and data beans<a name="Interface_and_data_beans"></a></h4>
+<h4><a name="Interface_and_data_beans"></a>Interface and data beans</h4>
 <p>All interfaces and data beans are added in the module archiva-rest-api:</p>
 <ul>
 <li>interface in the package: org.apache.archiva.rest.api.services .</li>
 <li>data beans in the package: org.apache.archiva.rest.api.model .</li></ul>
 <div class="section">
-<h5>Beans<a name="Beans"></a></h5>
+<h5><a name="Beans"></a>Beans</h5>
 <p>As we want to be able to expose result as json or xml type, all beans use javax.xml.bind.annotation root element :</p>
 <div class="source">
 <pre>@XmlRootElement( name = &quot;artifact&quot; )
@@ -252,7 +266,7 @@ public class Artifact
 All services will be able to return json or xml
 @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )</pre></div></div>
 <div class="section">
-<h5>JAXRS annotations<a name="JAXRS_annotations"></a></h5>
+<h5><a name="JAXRS_annotations"></a>JAXRS annotations</h5>
 <p>As we use interfaces/implementations pattern jaxrs annotations are only in interfaces level.</p>
 <div class="source">
 <pre>@Path( &quot;/managedRepositoriesService/&quot; )
@@ -282,7 +296,7 @@ public interface ManagedRepositoriesService
     ManagedRepository addManagedRepository( ManagedRepository managedRepository )
         throws ArchivaRestServiceException;</pre></div></div></div>
 <div class="section">
-<h4>CXF/Spring configuration<a name="CXFSpring_configuration"></a></h4>
+<h4><a name="CXFSpring_configuration"></a>CXF/Spring configuration</h4>
 <p>REST services implementations are marked with the Spring annotation @Service</p>
 <div class="source">
 <pre>package org.apache.archiva.rest.services;
@@ -329,7 +343,7 @@ public class DefaultManagedRepositoriesService
   &lt;/servlet-mapping&gt;</pre></div>
 <p>So as it, REST services are availble in the following url <b>restServices/archivaServices/</b>.</p></div>
 <div class="section">
-<h4>Redback security annotation<a name="Redback_security_annotation"></a></h4>
+<h4><a name="Redback_security_annotation"></a>Redback security annotation</h4>
 <p>Some REST methods need some karma, so to prevent anonymous access methods can be marked as it:</p>
 <div class="source">
 <pre>
