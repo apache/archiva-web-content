@@ -9,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Olivier Lamy" />
     <meta name="Date-Creation-yyyymmdd" content="20110811" />
-    <meta name="Date-Revision-yyyymmdd" content="20140523" />
+    <meta name="Date-Revision-yyyymmdd" content="20150408" />
     <meta http-equiv="Content-Language" content="en" />
-    <title>Apache Redback - Redback Rest Support</title>
+    <title>Apache Redback &#x2013; Redback Rest Support</title>
     <link rel="stylesheet" href="../css/apache-maven-fluido-1.3.1.min.css" />
     <link rel="stylesheet" href="../css/site.css" />
     <link rel="stylesheet" href="../css/print.css" media="print" />
@@ -182,7 +182,7 @@
         <ul class="breadcrumb">
                 
                     
-                  <li id="publishDate">Last Published: 2014-05-23
+                  <li id="publishDate">Last Published: 2015-04-08
                       <span class="divider">|</span>
                    </li>
                                       <li class="">
@@ -208,11 +208,11 @@
         <div id="bodyColumn" >
                                   
             <!-- Licensed to the Apache Software Foundation (ASF) under one --><!-- or more contributor license agreements.  See the NOTICE file --><!-- distributed with this work for additional information --><!-- regarding copyright ownership.  The ASF licenses this file --><!-- to you under the Apache License, Version 2.0 (the --><!-- "License"); you may not use this file except in compliance --><!-- with the License.  You may obtain a copy of the License at --><!--  --><!-- http://www.apache.org/licenses/LICENSE-2.0 --><!--  --><!-- Unless required by applicable law or agreed to in writing, --><!-- software distributed under the License is distributed on an --><!-- "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY --><!-- KIND, either express or implied.  See the License for the --><!-- specific language governing permissions and limitations --><!-- under the License. --><!-- NOTE: For help with the syntax of this file, see: --><!-- http://maven.apache.org/doxia/references/apt-format.html --><div class="section">
-<h2>Redback Rest Support<a name="Redback_Rest_Support"></a></h2>
+<h2><a name="Redback_Rest_Support"></a>Redback Rest Support</h2>
 <p>Prior to 1.3 version some redback services are available trough rest request.</p>
 <p>We use jaxrs annotations and authz/karma are verified through cxf interceptors.</p>
 <div class="section">
-<h3>Maven Module<a name="Maven_Module"></a></h3>
+<h3><a name="Maven_Module"></a>Maven Module</h3>
 <p>You must add the following maven dependency</p>
 <div class="source">
 <pre>
@@ -223,7 +223,7 @@
     &lt;/dependency&gt;
 </pre></div></div>
 <div class="section">
-<h3>CXF setup<a name="CXF_setup"></a></h3>
+<h3><a name="CXF_setup"></a>CXF setup</h3>
 <p>The spring file is in the redback-rest-services module. You must add META-INF/spring-context.xml in your spring configuration.</p>
 <p>And add cxf servlet in your web.xml :</p>
 <div class="source">
@@ -240,7 +240,7 @@
     &lt;/servlet-mapping&gt;
 </pre></div></div>
 <div class="section">
-<h3>CXF interceptors<a name="CXF_interceptors"></a></h3>
+<h3><a name="CXF_interceptors"></a>CXF interceptors</h3>
 <p>Rest services are declared as it in the cxf configuration :</p>
 <div class="source">
 <pre>
@@ -256,10 +256,10 @@
    &lt;/jaxrs:server&gt;
 </pre></div>
 <div class="section">
-<h4>AuthenticationInterceptor<a name="AuthenticationInterceptor"></a></h4>
+<h4><a name="AuthenticationInterceptor"></a>AuthenticationInterceptor</h4>
 <p>This interceptor is basic on HTTP BASIC authz with using HttpBasicAuthentication spring component.</p></div>
 <div class="section">
-<h4>PermissionInterceptor<a name="PermissionInterceptor"></a></h4>
+<h4><a name="PermissionInterceptor"></a>PermissionInterceptor</h4>
 <p>This inceptor will use a new created annotation named @RedbackAuthorization which supports attributes : permissions, resource and noRestriction.</p>
 <p>You can use it :</p>
 <div class="source">
@@ -275,7 +275,7 @@
    public Boolean ping()
 </pre></div></div></div>
 <div class="section">
-<h3>Client Usage<a name="Client_Usage"></a></h3>
+<h3><a name="Client_Usage"></a>Client Usage</h3>
 <p>Dependencies to add in order to use those REST Services</p>
 <div class="source">
 <pre>
@@ -312,7 +312,7 @@
     <footer>
             <div class="container">
                       <div class="row">
-                              <p >Copyright &copy;                    2006&#x2013;2014
+                              <p >Copyright &copy;                    2006&#x2013;2015
                         <a href="http://www.apache.org/">The Apache Software Foundation</a>.
             All rights reserved.      
                     
