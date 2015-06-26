@@ -29,7 +29,21 @@
         pageTracker._initData();
         pageTracker._trackPageview();</script>
           
-                  </head>
+              <!-- Google Analytics -->
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-140879-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+          </head>
         <body class="topBarEnabled">
           
                         
@@ -133,6 +147,29 @@
 </li>
                           </ul>
       </li>
+                <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project Documentation <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+        
+                      <li class="dropdown-submenu">
+                                      <a href="../project-info.html"  title="Project Information">Project Information</a>
+              <ul class="dropdown-menu">
+                                  <li>      <a href="../integration.html"  title="Continuous Integration">Continuous Integration</a>
+</li>
+                                  <li>      <a href="../mail-lists.html"  title="Mailing Lists">Mailing Lists</a>
+</li>
+                                  <li>      <a href="../issue-tracking.html"  title="Issue Tracking">Issue Tracking</a>
+</li>
+                                  <li>      <a href="../license.html"  title="Project License">Project License</a>
+</li>
+                                  <li>      <a href="../team-list.html"  title="Project Team">Project Team</a>
+</li>
+                                  <li>      <a href="../source-repository.html"  title="Source Repository">Source Repository</a>
+</li>
+                              </ul>
+            </li>
+                          </ul>
+      </li>
                   </ul>
           
                       <form id="search-form" action="https://www.google.com/search" method="get"  class="navbar-search pull-right" >
@@ -153,11 +190,14 @@
         <div class="container">
           <div id="banner">
         <div class="pull-left">
-                                <div id="bannerLeft">
-                <h2>Archiva</h2>
-                </div>
+                                                  <a href="../index.html" id="bannerLeft">
+                                                                                                <img src="../images/archiva.png"  alt="Apache Archiva"/>
+                </a>
                       </div>
-        <div class="pull-right">  </div>
+        <div class="pull-right">                  <a href="http://www.apache.org/" id="bannerRight">
+                                                                                        <img src="http://www.apache.org/images/asf_logo_wide.png"  alt="Apache Software Foundation"/>
+                </a>
+      </div>
         <div class="clear"><hr/></div>
       </div>
 
@@ -165,15 +205,22 @@
         <ul class="breadcrumb">
                 
                     
-                  <li id="publishDate">Last Published: 2015-06-25
-                      <span class="divider">|</span>
-                   </li>
-                  <li id="projectVersion">Version: 1-SNAPSHOT
-                      </li>
-                      
+                              <li class="">
+                    <a href="http://www.apache.org/" class="externalLink" title="Apache">
+        Apache</a>
+                    <span class="divider">/</span>
+      </li>
+            <li class="">
+                    <a href="../" title="Archiva">
+        Archiva</a>
+                    <span class="divider">/</span>
+      </li>
+        <li class="active ">REST Services</li>
+        
                 
                     
-      
+                  <li id="publishDate" class="pull-right">Last Published: 25 Jun 2015</li>
+            
                             </ul>
       </div>
 
@@ -216,8 +263,7 @@ public class Artifact
     implements Serializable
 
 All services will be able to return json or xml
-@Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
-</pre></div></div>
+@Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )</pre></div></div>
 <div class="section">
 <h5><a name="JAXRS_annotations"></a>JAXRS annotations</h5>
 <p>As we use interfaces/implementations pattern jaxrs annotations are only in interfaces level.</p>
@@ -246,8 +292,7 @@ public interface ManagedRepositoriesService
     @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
     @RedbackAuthorization( permissions = ArchivaRoleConstants.OPERATION_MANAGE_CONFIGURATION )
     ManagedRepository addManagedRepository( ManagedRepository managedRepository )
-        throws ArchivaRestServiceException;
-</pre></div></div></div>
+        throws ArchivaRestServiceException;</pre></div></div></div>
 <div class="section">
 <h4><a name="CXFSpring_configuration"></a>CXF/Spring configuration</h4>
 <p>REST services implementations are marked with the Spring annotation @Service</p>
@@ -256,8 +301,7 @@ public interface ManagedRepositoriesService
 @Service( &quot;managedRepositoriesService#rest&quot; )
 public class DefaultManagedRepositoriesService
     extends AbstractRestService
-    implements ManagedRepositoriesService
-</pre></div>
+    implements ManagedRepositoriesService</pre></div>
 <p>Spring beans are declared as REST/CXF services in the Spring configuration</p>
 <div class="source"><pre class="prettyprint">  &lt;jaxrs:server id=&quot;archivaServices&quot; address=&quot;/archivaServices&quot;&gt;
     .....
@@ -280,8 +324,7 @@ public class DefaultManagedRepositoriesService
       base-package=&quot;org.apache.archiva.rest.services&quot;/&gt;
 
 ...
-&lt;/beans&gt;
-</pre></div>
+&lt;/beans&gt;</pre></div>
 <p>CXF servlet is declared as:</p>
 <div class="source"><pre class="prettyprint">  &lt;servlet&gt;
     &lt;servlet-name&gt;CXFServlet&lt;/servlet-name&gt;
@@ -292,8 +335,7 @@ public class DefaultManagedRepositoriesService
   &lt;servlet-mapping&gt;
     &lt;servlet-name&gt;CXFServlet&lt;/servlet-name&gt;
     &lt;url-pattern&gt;/restServices/*&lt;/url-pattern&gt;
-  &lt;/servlet-mapping&gt;
-</pre></div>
+  &lt;/servlet-mapping&gt;</pre></div>
 <p>So as it, REST services are availble in the following url <b>restServices/archivaServices/</b>.</p></div>
 <div class="section">
 <h4><a name="Redback_security_annotation"></a>Redback security annotation</h4>
@@ -301,8 +343,7 @@ public class DefaultManagedRepositoriesService
 <div class="source"><pre class="prettyprint">
     @RedbackAuthorization( permissions = ArchivaRoleConstants.OPERATION_MANAGE_CONFIGURATION )
     ManagedRepository addManagedRepository( ManagedRepository managedRepository )
-        throws ArchivaRestServiceException;
-</pre></div>
+        throws ArchivaRestServiceException;</pre></div>
 <p>This method will need the current user to have the operation manage-configuration level.</p>
 <p>For more details, have a look at <a class="externalLink" href="http://archiva.apache.org/redback/integration/rest.html">Redback REST</a>.</p></div></div></div>
                   </div>
