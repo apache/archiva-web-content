@@ -352,7 +352,7 @@
 <ul>
 <li>If using the Cassandra backend, the metadatafacet column 'key' has been renamed to 'facetKey' in 2.2.0 so you should copy the data to the new column manually.</li>
 <li>If upgrading from earlier versions of Archiva, the list of libraries in <tt>wrapper.conf</tt> has changed. If you have customized your copy of <tt>wrapper.conf</tt>, please update it for compatibility with the version distributed with the current release.</li>
-<li>As the database storage has been removed, you can remove the JNDI entry for <tt>jdbc/archiva</tt>. After upgrading from a previous version, you will have to run a full scan to populate the new JCR Repository. This will be done on first start of Archiva.
+<li>As the database storage has been removed, you can remove the JNDI entry for <tt>jdbc/archiva</tt>. 
 <p>Refer to the <a href="./adminguide/upgrade.html"> Upgrading Archiva guide</a> for more information.</p></li></ul></div>
 <div class="section">
 <h3><a name="Release_Notes"></a>Release Notes</h3>
@@ -361,41 +361,22 @@
 <h3><a name="Changes_in_Archiva_2.2.1"></a>Changes in Archiva 2.2.1</h3>
 <p>Released: <b>???</b></p>
 <div class="section">
-<h4><a name="New_Feature"></a>New Feature</h4>
-<ul>
-<li>[MRM-1867] - Adding a find jar by checksum functionality to the REST api</li></ul></div>
-<div class="section">
 <h4><a name="Improvement"></a>Improvement</h4>
 <ul>
-<li>[MRM-1390] - Generic metadata should be searcheable in Archiva search</li>
-<li>[MRM-1844] - Allow LDAP groupOfNames</li></ul></div>
+<li>[MRM-1201] - Artifact upload success message should mention the classifier</li>
+<li>[MRM-1906] - Allowing filtering of LDAP groups</li></ul></div>
 <div class="section">
 <h4><a name="Bug"></a>Bug</h4>
 <ul>
-<li>[MRM-770] - Archiva web client does not recognize classifier</li>
-<li>[MRM-813] - Audit log is reporting &quot;Modify File (proxied)&quot; when no proxy connectors exist and the file has not changed</li>
-<li>[MRM-837] - Cannot download SNAPSHOT version</li>
-<li>[MRM-935] - Archiva doesn't supports artifact with &lt;version&gt;SNAPSHOT&lt;/version&gt;</li>
-<li>[MRM-1145] - RSS tests do not correctly check responses</li>
-<li>[MRM-1311] - Logging in ArtifactMissingChecksumsConsumer does not appear in the logs even if configured properly</li>
-<li>[MRM-1486] - ldap.config.mapper.attribute.user.filter using ldap not working correctly with commas.</li>
-<li>[MRM-1767] - When selecting a specific repository to browse, I get an error that I don't have sufficient privileges.</li>
-<li>[MRM-1807] - Archiva wrapper fail to start</li>
-<li>[MRM-1810] - LDAP - groups config not available in Users Runtime Configuration - Properties</li>
-<li>[MRM-1811] - Users - Manage section: pagination needs to change</li>
-<li>[MRM-1846] - Regression in 2.0.1 : uniqueVersion false not supported</li>
-<li>[MRM-1848] - download links for files mult-dot extensions incorrect in Browse view</li>
-<li>[MRM-1851] - generic metadata GUI broken</li>
-<li>[MRM-1860] - ClassNotFound exception with JBoss</li>
-<li>[MRM-1863] - RepositoryGroup URL is not build using the Application URL</li>
-<li>[MRM-1864] - Default configuration for central should now use SSL</li>
-<li>[MRM-1871] - ConcurrentModificationException in DefaultRepositoryProxyConnectors</li>
-<li>[MRM-1873] - archiva doesn't recognise ldap-group to ldap-users mapping</li></ul></div>
-<div class="section">
-<h4><a name="Task"></a>Task</h4>
-<ul>
-<li>[MRM-1359] - Remove Maven 1.x functionality</li>
-<li>[MRM-1865] - remove isPermanent from Consumer API</li></ul></div></div>
+<li>[MRM-1873] - archiva doesn't recognise ldap-group to ldap-users mapping</li>
+<li>[MRM-1877] - Checksum files always recreated</li>
+<li>[MRM-1879] - Bug in create-missing-checksum consumer</li>
+<li>[MRM-1886] - View Artifact Content Action does not Work </li>
+<li>[MRM-1887] - Syntax error in DOAP file release section; wrong bug- database URL</li>
+<li>[MRM-1892] - Only One Page of Proxy Connector Rules Shown</li>
+<li>[MRM-1893] - Please delete old releases from mirroring system</li>
+<li>[MRM-1896] - Invalid link to license</li>
+<li>[MRM-1914] - Maven cannot find dependency</li></ul></div></div>
 <div class="section">
 <h3><a name="History"></a>History</h3>
 <p>Archiva was started in November 2005, building a simple framework on top of some existing repository conversion tools within the Maven project. Initial development focused on repository conversion, error reporting, and indexing. From January 2006 a web application was started to visualise the information and to start incorporating functionality from the unmaintained maven-proxy project.</p>

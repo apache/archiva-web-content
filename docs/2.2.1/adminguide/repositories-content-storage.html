@@ -350,12 +350,44 @@
 <p>Prior to version 1.4-M1, repository content is now stored in a jcr repository (based on Apache Jackrabbit implementation).</p>
 <p>A default Jackrabbit configuration is provided :</p>
 <div class="source">
-<pre>Error during retrieving content skip as ignoreDownloadError activated.</pre></div>
+<pre>&lt;Repository&gt;
+  &lt;FileSystem class=&quot;org.apache.jackrabbit.core.fs.local.LocalFileSystem&quot;&gt;
+    &lt;param name=&quot;path&quot; value=&quot;${rep.home}/repository&quot;/&gt;
+  &lt;/FileSystem&gt;
+  &lt;Security appName=&quot;Jackrabbit&quot;&gt;
+    &lt;SecurityManager class=&quot;org.apache.jackrabbit.core.security.simple.SimpleSecurityManager&quot; workspaceName=&quot;security&quot;/&gt;
+    &lt;AccessManager class=&quot;org.apache.jackrabbit.core.security.simple.SimpleAccessManager&quot;/&gt;
+    &lt;LoginModule class=&quot;org.apache.jackrabbit.core.security.simple.SimpleLoginModule&quot;/&gt;
+  &lt;/Security&gt;
+  &lt;Workspaces rootPath=&quot;${rep.home}/workspaces&quot; defaultWorkspace=&quot;default&quot;/&gt;
+  &lt;Workspace name=&quot;${wsp.name}&quot;&gt;
+    &lt;FileSystem class=&quot;org.apache.jackrabbit.core.fs.local.LocalFileSystem&quot;&gt;
+      &lt;param name=&quot;path&quot; value=&quot;${wsp.home}&quot;/&gt;
+    &lt;/FileSystem&gt;
+    &lt;PersistenceManager class=&quot;org.apache.jackrabbit.core.persistence.bundle.BundleFsPersistenceManager&quot;/&gt;
+    &lt;SearchIndex class=&quot;org.apache.jackrabbit.core.query.lucene.SearchIndex&quot;&gt;
+      &lt;param name=&quot;path&quot; value=&quot;${wsp.home}/index&quot;/&gt;
+    &lt;/SearchIndex&gt;
+  &lt;/Workspace&gt;
+  &lt;Versioning rootPath=&quot;${rep.home}/version&quot;&gt;
+    &lt;FileSystem class=&quot;org.apache.jackrabbit.core.fs.local.LocalFileSystem&quot;&gt;
+      &lt;param name=&quot;path&quot; value=&quot;${rep.home}/version&quot;/&gt;
+    &lt;/FileSystem&gt;
+    &lt;PersistenceManager class=&quot;org.apache.jackrabbit.core.persistence.bundle.BundleFsPersistenceManager&quot;/&gt;
+  &lt;/Versioning&gt;
+&lt;/Repository&gt;
+</pre></div>
 <p>You can use your own configuration by adding a file repository.xml in ${appserver.base}/conf.</p>
 <p>By default, the Jcr repository is stored ${appserver.base}/data/jcr.</p>
 <p>If you want to change this default location, you must edit the file WEB-INF/applicationContext.xml, uncomment/edit lines and change with your values:</p>
 <div class="source">
-<pre>Error during retrieving content skip as ignoreDownloadError activated.</pre></div></div>
+<pre>&lt;!--
+&lt;bean id=&quot;jcr-config&quot; class=&quot;org.apache.archiva.metadata.repository.jcr.ArchivaJcrRepositoryConfig&quot; factory-method=&quot;create&quot;&gt;
+  &lt;constructor-arg value=&quot;${appserver.base}/conf/repository.xml&quot;/&gt;
+  &lt;constructor-arg value=&quot;${appserver.base}/data/jcr&quot;/&gt;
+&lt;/bean&gt;
+--&gt;
+</pre></div></div>
 <div class="section">
 <h3><a name="Cassandra"></a>Cassandra</h3>
 <p>With the distribution including the embeded Jetty, you can configure Cassandra runtime in the file conf/archiva-cassandra.properties.</p>

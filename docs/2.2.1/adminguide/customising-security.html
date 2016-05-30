@@ -389,7 +389,46 @@ security.policy.password.rule.nowhitespace.enabled=true</pre></div>
 <p><b>Note:</b> If installed standalone, Archiva's list of configuration files is <i>itself</i> configurable, and can be found in: <tt>apps/archiva/WEB-INF/applicationContext.xml</tt></p>
 <p>Values from sources</p>
 <div class="source">
-<pre>Error during retrieving content skip as ignoreDownloadError activated.</pre></div></div>
+<pre>&lt;bean name=&quot;commons-configuration&quot; class=&quot;org.apache.archiva.redback.components.registry.commons.CommonsConfigurationRegistry&quot;
+  init-method=&quot;initialize&quot;&gt;
+  &lt;property name=&quot;properties&quot;&gt;
+    &lt;value&gt;
+      &lt;![CDATA[
+      &lt;configuration&gt;
+        &lt;system/&gt;
+        &lt;jndi prefix=&quot;java:comp/env&quot; config-optional=&quot;true&quot;/&gt;
+        &lt;xml fileName=&quot;${user.home}/.m2/archiva.xml&quot; config-optional=&quot;true&quot;
+             config-name=&quot;org.apache.archiva.user&quot;
+             config-at=&quot;org.apache.archiva&quot;/&gt;
+        &lt;xml fileName=&quot;${user.home}/.m2/shared.xml&quot; config-optional=&quot;true&quot;
+             config-name=&quot;org.apache.maven.shared.app.user&quot; config-at=&quot;org.apache.maven.shared.app&quot;
+             config-forceCreate=&quot;true&quot;/&gt;
+        &lt;properties fileName=&quot;${user.home}/.m2/security.properties&quot; config-optional=&quot;true&quot;
+                    config-at=&quot;org.apache.archiva.redback&quot;/&gt;
+        &lt;properties fileName=&quot;${user.home}/.m2/archiva.properties&quot; config-optional=&quot;true&quot;
+                    config-at=&quot;org.apache.archiva.redback&quot;/&gt;
+        &lt;xml fileName=&quot;${appserver.base}/conf/archiva.xml&quot; config-optional=&quot;true&quot;
+             config-name=&quot;org.apache.archiva.base&quot;
+             config-at=&quot;org.apache.archiva&quot;/&gt;
+        &lt;xml fileName=&quot;${appserver.base}/conf/shared.xml&quot; config-optional=&quot;true&quot;
+             config-name=&quot;org.apache.maven.shared.app.base&quot; config-at=&quot;org.apache.maven.shared.app&quot;/&gt;
+        &lt;xml fileName=&quot;${appserver.base}/conf/common.xml&quot; config-optional=&quot;true&quot;/&gt;
+        &lt;properties fileName=&quot;${appserver.base}/conf/security.properties&quot; config-optional=&quot;true&quot;
+                    config-at=&quot;org.apache.archiva.redback&quot;/&gt;
+        &lt;xml fileName=&quot;${appserver.home}/conf/archiva.xml&quot; config-optional=&quot;true&quot;
+             config-at=&quot;org.apache.archiva&quot;/&gt;
+        &lt;xml fileName=&quot;${appserver.home}/conf/shared.xml&quot; config-optional=&quot;true&quot;
+             config-at=&quot;org.apache.maven.shared.app&quot;/&gt;
+        &lt;xml fileName=&quot;${appserver.home}/conf/common.xml&quot; config-optional=&quot;true&quot;/&gt;
+        &lt;properties fileName=&quot;${appserver.home}/conf/security.properties&quot; config-optional=&quot;true&quot;
+                    config-at=&quot;org.apache.archiva.redback&quot;/&gt;
+        &lt;properties fileName=&quot;org/apache/archiva/redback-security.properties&quot; config-at=&quot;org.apache.archiva.redback&quot;/&gt;
+      &lt;/configuration&gt;
+      ]]&gt;
+    &lt;/value&gt;
+  &lt;/property&gt;    
+&lt;/bean&gt;
+</pre></div></div>
                   </div>
             </div>
           </div>
