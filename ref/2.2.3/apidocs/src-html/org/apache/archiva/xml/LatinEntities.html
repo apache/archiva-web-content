@@ -1,0 +1,398 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="de">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>package org.apache.archiva.xml;<a name="line.1"></a>
+<span class="sourceLineNo">002</span><a name="line.2"></a>
+<span class="sourceLineNo">003</span>/*<a name="line.3"></a>
+<span class="sourceLineNo">004</span> * Licensed to the Apache Software Foundation (ASF) under one<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * or more contributor license agreements.  See the NOTICE file<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * distributed with this work for additional information<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * regarding copyright ownership.  The ASF licenses this file<a name="line.7"></a>
+<span class="sourceLineNo">008</span> * to you under the Apache License, Version 2.0 (the<a name="line.8"></a>
+<span class="sourceLineNo">009</span> * "License"); you may not use this file except in compliance<a name="line.9"></a>
+<span class="sourceLineNo">010</span> * with the License.  You may obtain a copy of the License at<a name="line.10"></a>
+<span class="sourceLineNo">011</span> *<a name="line.11"></a>
+<span class="sourceLineNo">012</span> *  http://www.apache.org/licenses/LICENSE-2.0<a name="line.12"></a>
+<span class="sourceLineNo">013</span> *<a name="line.13"></a>
+<span class="sourceLineNo">014</span> * Unless required by applicable law or agreed to in writing,<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * software distributed under the License is distributed on an<a name="line.15"></a>
+<span class="sourceLineNo">016</span> * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY<a name="line.16"></a>
+<span class="sourceLineNo">017</span> * KIND, either express or implied.  See the License for the<a name="line.17"></a>
+<span class="sourceLineNo">018</span> * specific language governing permissions and limitations<a name="line.18"></a>
+<span class="sourceLineNo">019</span> * under the License.<a name="line.19"></a>
+<span class="sourceLineNo">020</span> */<a name="line.20"></a>
+<span class="sourceLineNo">021</span><a name="line.21"></a>
+<span class="sourceLineNo">022</span>import java.util.HashMap;<a name="line.22"></a>
+<span class="sourceLineNo">023</span>import java.util.Map;<a name="line.23"></a>
+<span class="sourceLineNo">024</span><a name="line.24"></a>
+<span class="sourceLineNo">025</span>/**<a name="line.25"></a>
+<span class="sourceLineNo">026</span> * LatinEntities - simple utility class to handle latin entity conversion. <a name="line.26"></a>
+<span class="sourceLineNo">027</span> *<a name="line.27"></a>
+<span class="sourceLineNo">028</span> *<a name="line.28"></a>
+<span class="sourceLineNo">029</span> */<a name="line.29"></a>
+<span class="sourceLineNo">030</span>public class LatinEntities<a name="line.30"></a>
+<span class="sourceLineNo">031</span>{<a name="line.31"></a>
+<span class="sourceLineNo">032</span>    private static final Map&lt;String, String&gt; defaultEntityMap;<a name="line.32"></a>
+<span class="sourceLineNo">033</span><a name="line.33"></a>
+<span class="sourceLineNo">034</span>    static<a name="line.34"></a>
+<span class="sourceLineNo">035</span>    {<a name="line.35"></a>
+<span class="sourceLineNo">036</span>        defaultEntityMap = new HashMap&lt;&gt;();<a name="line.36"></a>
+<span class="sourceLineNo">037</span><a name="line.37"></a>
+<span class="sourceLineNo">038</span>        defaultEntityMap.put( "nbsp", "\u00a0" );<a name="line.38"></a>
+<span class="sourceLineNo">039</span>        defaultEntityMap.put( "iexcl", "\u00a1" );<a name="line.39"></a>
+<span class="sourceLineNo">040</span>        defaultEntityMap.put( "cent", "\u00a2" );<a name="line.40"></a>
+<span class="sourceLineNo">041</span>        defaultEntityMap.put( "pound", "\u00a3" );<a name="line.41"></a>
+<span class="sourceLineNo">042</span>        defaultEntityMap.put( "curren", "\u00a4" );<a name="line.42"></a>
+<span class="sourceLineNo">043</span>        defaultEntityMap.put( "yen", "\u00a5" );<a name="line.43"></a>
+<span class="sourceLineNo">044</span>        defaultEntityMap.put( "brvbar", "\u00a6" );<a name="line.44"></a>
+<span class="sourceLineNo">045</span>        defaultEntityMap.put( "sect", "\u00a7" );<a name="line.45"></a>
+<span class="sourceLineNo">046</span>        defaultEntityMap.put( "uml", "\u00a8" );<a name="line.46"></a>
+<span class="sourceLineNo">047</span>        defaultEntityMap.put( "copy", "\u00a9" );<a name="line.47"></a>
+<span class="sourceLineNo">048</span>        defaultEntityMap.put( "ordf", "\u00aa" );<a name="line.48"></a>
+<span class="sourceLineNo">049</span>        defaultEntityMap.put( "laquo", "\u00ab" );<a name="line.49"></a>
+<span class="sourceLineNo">050</span>        defaultEntityMap.put( "not", "\u00ac" );<a name="line.50"></a>
+<span class="sourceLineNo">051</span>        defaultEntityMap.put( "shy", "\u00ad" );<a name="line.51"></a>
+<span class="sourceLineNo">052</span>        defaultEntityMap.put( "reg", "\u00ae" );<a name="line.52"></a>
+<span class="sourceLineNo">053</span>        defaultEntityMap.put( "macr", "\u00af" );<a name="line.53"></a>
+<span class="sourceLineNo">054</span>        defaultEntityMap.put( "deg", "\u00b0" );<a name="line.54"></a>
+<span class="sourceLineNo">055</span>        defaultEntityMap.put( "plusmn", "\u00b1" );<a name="line.55"></a>
+<span class="sourceLineNo">056</span>        defaultEntityMap.put( "sup2", "\u00b2" );<a name="line.56"></a>
+<span class="sourceLineNo">057</span>        defaultEntityMap.put( "sup3", "\u00b3" );<a name="line.57"></a>
+<span class="sourceLineNo">058</span>        defaultEntityMap.put( "acute", "\u00b4" );<a name="line.58"></a>
+<span class="sourceLineNo">059</span>        defaultEntityMap.put( "micro", "\u00b5" );<a name="line.59"></a>
+<span class="sourceLineNo">060</span>        defaultEntityMap.put( "para", "\u00b6" );<a name="line.60"></a>
+<span class="sourceLineNo">061</span>        defaultEntityMap.put( "middot", "\u00b7" );<a name="line.61"></a>
+<span class="sourceLineNo">062</span>        defaultEntityMap.put( "cedil", "\u00b8" );<a name="line.62"></a>
+<span class="sourceLineNo">063</span>        defaultEntityMap.put( "sup1", "\u00b9" );<a name="line.63"></a>
+<span class="sourceLineNo">064</span>        defaultEntityMap.put( "ordm", "\u00ba" );<a name="line.64"></a>
+<span class="sourceLineNo">065</span>        defaultEntityMap.put( "raquo", "\u00bb" );<a name="line.65"></a>
+<span class="sourceLineNo">066</span>        defaultEntityMap.put( "frac14", "\u00bc" );<a name="line.66"></a>
+<span class="sourceLineNo">067</span>        defaultEntityMap.put( "frac12", "\u00bd" );<a name="line.67"></a>
+<span class="sourceLineNo">068</span>        defaultEntityMap.put( "frac34", "\u00be" );<a name="line.68"></a>
+<span class="sourceLineNo">069</span>        defaultEntityMap.put( "iquest", "\u00bf" );<a name="line.69"></a>
+<span class="sourceLineNo">070</span>        defaultEntityMap.put( "Agrave", "\u00c0" );<a name="line.70"></a>
+<span class="sourceLineNo">071</span>        defaultEntityMap.put( "Aacute", "\u00c1" );<a name="line.71"></a>
+<span class="sourceLineNo">072</span>        defaultEntityMap.put( "Acirc", "\u00c2" );<a name="line.72"></a>
+<span class="sourceLineNo">073</span>        defaultEntityMap.put( "Atilde", "\u00c3" );<a name="line.73"></a>
+<span class="sourceLineNo">074</span>        defaultEntityMap.put( "Auml", "\u00c4" );<a name="line.74"></a>
+<span class="sourceLineNo">075</span>        defaultEntityMap.put( "Aring", "\u00c5" );<a name="line.75"></a>
+<span class="sourceLineNo">076</span>        defaultEntityMap.put( "AElig", "\u00c6" );<a name="line.76"></a>
+<span class="sourceLineNo">077</span>        defaultEntityMap.put( "Ccedil", "\u00c7" );<a name="line.77"></a>
+<span class="sourceLineNo">078</span>        defaultEntityMap.put( "Egrave", "\u00c8" );<a name="line.78"></a>
+<span class="sourceLineNo">079</span>        defaultEntityMap.put( "Eacute", "\u00c9" );<a name="line.79"></a>
+<span class="sourceLineNo">080</span>        defaultEntityMap.put( "Ecirc", "\u00ca" );<a name="line.80"></a>
+<span class="sourceLineNo">081</span>        defaultEntityMap.put( "Euml", "\u00cb" );<a name="line.81"></a>
+<span class="sourceLineNo">082</span>        defaultEntityMap.put( "Igrave", "\u00cc" );<a name="line.82"></a>
+<span class="sourceLineNo">083</span>        defaultEntityMap.put( "Iacute", "\u00cd" );<a name="line.83"></a>
+<span class="sourceLineNo">084</span>        defaultEntityMap.put( "Icirc", "\u00ce" );<a name="line.84"></a>
+<span class="sourceLineNo">085</span>        defaultEntityMap.put( "Iuml", "\u00cf" );<a name="line.85"></a>
+<span class="sourceLineNo">086</span>        defaultEntityMap.put( "ETH", "\u00d0" );<a name="line.86"></a>
+<span class="sourceLineNo">087</span>        defaultEntityMap.put( "Ntilde", "\u00d1" );<a name="line.87"></a>
+<span class="sourceLineNo">088</span>        defaultEntityMap.put( "Ograve", "\u00d2" );<a name="line.88"></a>
+<span class="sourceLineNo">089</span>        defaultEntityMap.put( "Oacute", "\u00d3" );<a name="line.89"></a>
+<span class="sourceLineNo">090</span>        defaultEntityMap.put( "Ocirc", "\u00d4" );<a name="line.90"></a>
+<span class="sourceLineNo">091</span>        defaultEntityMap.put( "Otilde", "\u00d5" );<a name="line.91"></a>
+<span class="sourceLineNo">092</span>        defaultEntityMap.put( "Ouml", "\u00d6" );<a name="line.92"></a>
+<span class="sourceLineNo">093</span>        defaultEntityMap.put( "times", "\u00d7" );<a name="line.93"></a>
+<span class="sourceLineNo">094</span>        defaultEntityMap.put( "Oslash", "\u00d8" );<a name="line.94"></a>
+<span class="sourceLineNo">095</span>        defaultEntityMap.put( "Ugrave", "\u00d9" );<a name="line.95"></a>
+<span class="sourceLineNo">096</span>        defaultEntityMap.put( "Uacute", "\u00da" );<a name="line.96"></a>
+<span class="sourceLineNo">097</span>        defaultEntityMap.put( "Ucirc", "\u00db" );<a name="line.97"></a>
+<span class="sourceLineNo">098</span>        defaultEntityMap.put( "Uuml", "\u00dc" );<a name="line.98"></a>
+<span class="sourceLineNo">099</span>        defaultEntityMap.put( "Yacute", "\u00dd" );<a name="line.99"></a>
+<span class="sourceLineNo">100</span>        defaultEntityMap.put( "THORN", "\u00de" );<a name="line.100"></a>
+<span class="sourceLineNo">101</span>        defaultEntityMap.put( "szlig", "\u00df" );<a name="line.101"></a>
+<span class="sourceLineNo">102</span>        defaultEntityMap.put( "agrave", "\u00e0" );<a name="line.102"></a>
+<span class="sourceLineNo">103</span>        defaultEntityMap.put( "aacute", "\u00e1" );<a name="line.103"></a>
+<span class="sourceLineNo">104</span>        defaultEntityMap.put( "acirc", "\u00e2" );<a name="line.104"></a>
+<span class="sourceLineNo">105</span>        defaultEntityMap.put( "atilde", "\u00e3" );<a name="line.105"></a>
+<span class="sourceLineNo">106</span>        defaultEntityMap.put( "auml", "\u00e4" );<a name="line.106"></a>
+<span class="sourceLineNo">107</span>        defaultEntityMap.put( "aring", "\u00e5" );<a name="line.107"></a>
+<span class="sourceLineNo">108</span>        defaultEntityMap.put( "aelig", "\u00e6" );<a name="line.108"></a>
+<span class="sourceLineNo">109</span>        defaultEntityMap.put( "ccedil", "\u00e7" );<a name="line.109"></a>
+<span class="sourceLineNo">110</span>        defaultEntityMap.put( "egrave", "\u00e8" );<a name="line.110"></a>
+<span class="sourceLineNo">111</span>        defaultEntityMap.put( "eacute", "\u00e9" );<a name="line.111"></a>
+<span class="sourceLineNo">112</span>        defaultEntityMap.put( "ecirc", "\u00ea" );<a name="line.112"></a>
+<span class="sourceLineNo">113</span>        defaultEntityMap.put( "euml", "\u00eb" );<a name="line.113"></a>
+<span class="sourceLineNo">114</span>        defaultEntityMap.put( "igrave", "\u00ec" );<a name="line.114"></a>
+<span class="sourceLineNo">115</span>        defaultEntityMap.put( "iacute", "\u00ed" );<a name="line.115"></a>
+<span class="sourceLineNo">116</span>        defaultEntityMap.put( "icirc", "\u00ee" );<a name="line.116"></a>
+<span class="sourceLineNo">117</span>        defaultEntityMap.put( "iuml", "\u00ef" );<a name="line.117"></a>
+<span class="sourceLineNo">118</span>        defaultEntityMap.put( "eth", "\u00f0" );<a name="line.118"></a>
+<span class="sourceLineNo">119</span>        defaultEntityMap.put( "ntilde", "\u00f1" );<a name="line.119"></a>
+<span class="sourceLineNo">120</span>        defaultEntityMap.put( "ograve", "\u00f2" );<a name="line.120"></a>
+<span class="sourceLineNo">121</span>        defaultEntityMap.put( "oacute", "\u00f3" );<a name="line.121"></a>
+<span class="sourceLineNo">122</span>        defaultEntityMap.put( "ocirc", "\u00f4" );<a name="line.122"></a>
+<span class="sourceLineNo">123</span>        defaultEntityMap.put( "otilde", "\u00f5" );<a name="line.123"></a>
+<span class="sourceLineNo">124</span>        defaultEntityMap.put( "ouml", "\u00f6" );<a name="line.124"></a>
+<span class="sourceLineNo">125</span>        defaultEntityMap.put( "divide", "\u00f7" );<a name="line.125"></a>
+<span class="sourceLineNo">126</span>        defaultEntityMap.put( "oslash", "\u00f8" );<a name="line.126"></a>
+<span class="sourceLineNo">127</span>        defaultEntityMap.put( "ugrave", "\u00f9" );<a name="line.127"></a>
+<span class="sourceLineNo">128</span>        defaultEntityMap.put( "uacute", "\u00fa" );<a name="line.128"></a>
+<span class="sourceLineNo">129</span>        defaultEntityMap.put( "ucirc", "\u00fb" );<a name="line.129"></a>
+<span class="sourceLineNo">130</span>        defaultEntityMap.put( "uuml", "\u00fc" );<a name="line.130"></a>
+<span class="sourceLineNo">131</span>        defaultEntityMap.put( "yacute", "\u00fd" );<a name="line.131"></a>
+<span class="sourceLineNo">132</span>        defaultEntityMap.put( "thorn", "\u00fe" );<a name="line.132"></a>
+<span class="sourceLineNo">133</span>        defaultEntityMap.put( "yuml", "\u00ff" );<a name="line.133"></a>
+<span class="sourceLineNo">134</span><a name="line.134"></a>
+<span class="sourceLineNo">135</span>        // ----------------------------------------------------------------------<a name="line.135"></a>
+<span class="sourceLineNo">136</span>        // Special entities<a name="line.136"></a>
+<span class="sourceLineNo">137</span>        // ----------------------------------------------------------------------<a name="line.137"></a>
+<span class="sourceLineNo">138</span><a name="line.138"></a>
+<span class="sourceLineNo">139</span>        defaultEntityMap.put( "OElig", "\u0152" );<a name="line.139"></a>
+<span class="sourceLineNo">140</span>        defaultEntityMap.put( "oelig", "\u0153" );<a name="line.140"></a>
+<span class="sourceLineNo">141</span>        defaultEntityMap.put( "Scaron", "\u0160" );<a name="line.141"></a>
+<span class="sourceLineNo">142</span>        defaultEntityMap.put( "scaron", "\u0161" );<a name="line.142"></a>
+<span class="sourceLineNo">143</span>        defaultEntityMap.put( "Yuml", "\u0178" );<a name="line.143"></a>
+<span class="sourceLineNo">144</span>        defaultEntityMap.put( "circ", "\u02c6" );<a name="line.144"></a>
+<span class="sourceLineNo">145</span>        defaultEntityMap.put( "tilde", "\u02dc" );<a name="line.145"></a>
+<span class="sourceLineNo">146</span>        defaultEntityMap.put( "ensp", "\u2002" );<a name="line.146"></a>
+<span class="sourceLineNo">147</span>        defaultEntityMap.put( "emsp", "\u2003" );<a name="line.147"></a>
+<span class="sourceLineNo">148</span>        defaultEntityMap.put( "thinsp", "\u2009" );<a name="line.148"></a>
+<span class="sourceLineNo">149</span>        defaultEntityMap.put( "zwnj", "\u200c" );<a name="line.149"></a>
+<span class="sourceLineNo">150</span>        defaultEntityMap.put( "zwj", "\u200d" );<a name="line.150"></a>
+<span class="sourceLineNo">151</span>        defaultEntityMap.put( "lrm", "\u200e" );<a name="line.151"></a>
+<span class="sourceLineNo">152</span>        defaultEntityMap.put( "rlm", "\u200f" );<a name="line.152"></a>
+<span class="sourceLineNo">153</span>        defaultEntityMap.put( "ndash", "\u2013" );<a name="line.153"></a>
+<span class="sourceLineNo">154</span>        defaultEntityMap.put( "mdash", "\u2014" );<a name="line.154"></a>
+<span class="sourceLineNo">155</span>        defaultEntityMap.put( "lsquo", "\u2018" );<a name="line.155"></a>
+<span class="sourceLineNo">156</span>        defaultEntityMap.put( "rsquo", "\u2019" );<a name="line.156"></a>
+<span class="sourceLineNo">157</span>        defaultEntityMap.put( "sbquo", "\u201a" );<a name="line.157"></a>
+<span class="sourceLineNo">158</span>        defaultEntityMap.put( "ldquo", "\u201c" );<a name="line.158"></a>
+<span class="sourceLineNo">159</span>        defaultEntityMap.put( "rdquo", "\u201d" );<a name="line.159"></a>
+<span class="sourceLineNo">160</span>        defaultEntityMap.put( "bdquo", "\u201e" );<a name="line.160"></a>
+<span class="sourceLineNo">161</span>        defaultEntityMap.put( "dagger", "\u2020" );<a name="line.161"></a>
+<span class="sourceLineNo">162</span>        defaultEntityMap.put( "Dagger", "\u2021" );<a name="line.162"></a>
+<span class="sourceLineNo">163</span>        defaultEntityMap.put( "permil", "\u2030" );<a name="line.163"></a>
+<span class="sourceLineNo">164</span>        defaultEntityMap.put( "lsaquo", "\u2039" );<a name="line.164"></a>
+<span class="sourceLineNo">165</span>        defaultEntityMap.put( "rsaquo", "\u203a" );<a name="line.165"></a>
+<span class="sourceLineNo">166</span>        defaultEntityMap.put( "euro", "\u20ac" );<a name="line.166"></a>
+<span class="sourceLineNo">167</span><a name="line.167"></a>
+<span class="sourceLineNo">168</span>        // ----------------------------------------------------------------------<a name="line.168"></a>
+<span class="sourceLineNo">169</span>        // Symbol entities<a name="line.169"></a>
+<span class="sourceLineNo">170</span>        // ----------------------------------------------------------------------<a name="line.170"></a>
+<span class="sourceLineNo">171</span><a name="line.171"></a>
+<span class="sourceLineNo">172</span>        defaultEntityMap.put( "fnof", "\u0192" );<a name="line.172"></a>
+<span class="sourceLineNo">173</span>        defaultEntityMap.put( "Alpha", "\u0391" );<a name="line.173"></a>
+<span class="sourceLineNo">174</span>        defaultEntityMap.put( "Beta", "\u0392" );<a name="line.174"></a>
+<span class="sourceLineNo">175</span>        defaultEntityMap.put( "Gamma", "\u0393" );<a name="line.175"></a>
+<span class="sourceLineNo">176</span>        defaultEntityMap.put( "Delta", "\u0394" );<a name="line.176"></a>
+<span class="sourceLineNo">177</span>        defaultEntityMap.put( "Epsilon", "\u0395" );<a name="line.177"></a>
+<span class="sourceLineNo">178</span>        defaultEntityMap.put( "Zeta", "\u0396" );<a name="line.178"></a>
+<span class="sourceLineNo">179</span>        defaultEntityMap.put( "Eta", "\u0397" );<a name="line.179"></a>
+<span class="sourceLineNo">180</span>        defaultEntityMap.put( "Theta", "\u0398" );<a name="line.180"></a>
+<span class="sourceLineNo">181</span>        defaultEntityMap.put( "Iota", "\u0399" );<a name="line.181"></a>
+<span class="sourceLineNo">182</span>        defaultEntityMap.put( "Kappa", "\u039a" );<a name="line.182"></a>
+<span class="sourceLineNo">183</span>        defaultEntityMap.put( "Lambda", "\u039b" );<a name="line.183"></a>
+<span class="sourceLineNo">184</span>        defaultEntityMap.put( "Mu", "\u039c" );<a name="line.184"></a>
+<span class="sourceLineNo">185</span>        defaultEntityMap.put( "Nu", "\u039d" );<a name="line.185"></a>
+<span class="sourceLineNo">186</span>        defaultEntityMap.put( "Xi", "\u039e" );<a name="line.186"></a>
+<span class="sourceLineNo">187</span>        defaultEntityMap.put( "Omicron", "\u039f" );<a name="line.187"></a>
+<span class="sourceLineNo">188</span>        defaultEntityMap.put( "Pi", "\u03a0" );<a name="line.188"></a>
+<span class="sourceLineNo">189</span>        defaultEntityMap.put( "Rho", "\u03a1" );<a name="line.189"></a>
+<span class="sourceLineNo">190</span>        defaultEntityMap.put( "Sigma", "\u03a3" );<a name="line.190"></a>
+<span class="sourceLineNo">191</span>        defaultEntityMap.put( "Tau", "\u03a4" );<a name="line.191"></a>
+<span class="sourceLineNo">192</span>        defaultEntityMap.put( "Upsilon", "\u03a5" );<a name="line.192"></a>
+<span class="sourceLineNo">193</span>        defaultEntityMap.put( "Phi", "\u03a6" );<a name="line.193"></a>
+<span class="sourceLineNo">194</span>        defaultEntityMap.put( "Chi", "\u03a7" );<a name="line.194"></a>
+<span class="sourceLineNo">195</span>        defaultEntityMap.put( "Psi", "\u03a8" );<a name="line.195"></a>
+<span class="sourceLineNo">196</span>        defaultEntityMap.put( "Omega", "\u03a9" );<a name="line.196"></a>
+<span class="sourceLineNo">197</span>        defaultEntityMap.put( "alpha", "\u03b1" );<a name="line.197"></a>
+<span class="sourceLineNo">198</span>        defaultEntityMap.put( "beta", "\u03b2" );<a name="line.198"></a>
+<span class="sourceLineNo">199</span>        defaultEntityMap.put( "gamma", "\u03b3" );<a name="line.199"></a>
+<span class="sourceLineNo">200</span>        defaultEntityMap.put( "delta", "\u03b4" );<a name="line.200"></a>
+<span class="sourceLineNo">201</span>        defaultEntityMap.put( "epsilon", "\u03b5" );<a name="line.201"></a>
+<span class="sourceLineNo">202</span>        defaultEntityMap.put( "zeta", "\u03b6" );<a name="line.202"></a>
+<span class="sourceLineNo">203</span>        defaultEntityMap.put( "eta", "\u03b7" );<a name="line.203"></a>
+<span class="sourceLineNo">204</span>        defaultEntityMap.put( "theta", "\u03b8" );<a name="line.204"></a>
+<span class="sourceLineNo">205</span>        defaultEntityMap.put( "iota", "\u03b9" );<a name="line.205"></a>
+<span class="sourceLineNo">206</span>        defaultEntityMap.put( "kappa", "\u03ba" );<a name="line.206"></a>
+<span class="sourceLineNo">207</span>        defaultEntityMap.put( "lambda", "\u03bb" );<a name="line.207"></a>
+<span class="sourceLineNo">208</span>        defaultEntityMap.put( "mu", "\u03bc" );<a name="line.208"></a>
+<span class="sourceLineNo">209</span>        defaultEntityMap.put( "nu", "\u03bd" );<a name="line.209"></a>
+<span class="sourceLineNo">210</span>        defaultEntityMap.put( "xi", "\u03be" );<a name="line.210"></a>
+<span class="sourceLineNo">211</span>        defaultEntityMap.put( "omicron", "\u03bf" );<a name="line.211"></a>
+<span class="sourceLineNo">212</span>        defaultEntityMap.put( "pi", "\u03c0" );<a name="line.212"></a>
+<span class="sourceLineNo">213</span>        defaultEntityMap.put( "rho", "\u03c1" );<a name="line.213"></a>
+<span class="sourceLineNo">214</span>        defaultEntityMap.put( "sigmaf", "\u03c2" );<a name="line.214"></a>
+<span class="sourceLineNo">215</span>        defaultEntityMap.put( "sigma", "\u03c3" );<a name="line.215"></a>
+<span class="sourceLineNo">216</span>        defaultEntityMap.put( "tau", "\u03c4" );<a name="line.216"></a>
+<span class="sourceLineNo">217</span>        defaultEntityMap.put( "upsilon", "\u03c5" );<a name="line.217"></a>
+<span class="sourceLineNo">218</span>        defaultEntityMap.put( "phi", "\u03c6" );<a name="line.218"></a>
+<span class="sourceLineNo">219</span>        defaultEntityMap.put( "chi", "\u03c7" );<a name="line.219"></a>
+<span class="sourceLineNo">220</span>        defaultEntityMap.put( "psi", "\u03c8" );<a name="line.220"></a>
+<span class="sourceLineNo">221</span>        defaultEntityMap.put( "omega", "\u03c9" );<a name="line.221"></a>
+<span class="sourceLineNo">222</span>        defaultEntityMap.put( "thetasym", "\u03d1" );<a name="line.222"></a>
+<span class="sourceLineNo">223</span>        defaultEntityMap.put( "upsih", "\u03d2" );<a name="line.223"></a>
+<span class="sourceLineNo">224</span>        defaultEntityMap.put( "piv", "\u03d6" );<a name="line.224"></a>
+<span class="sourceLineNo">225</span>        defaultEntityMap.put( "bull", "\u2022" );<a name="line.225"></a>
+<span class="sourceLineNo">226</span>        defaultEntityMap.put( "hellip", "\u2026" );<a name="line.226"></a>
+<span class="sourceLineNo">227</span>        defaultEntityMap.put( "prime", "\u2032" );<a name="line.227"></a>
+<span class="sourceLineNo">228</span>        defaultEntityMap.put( "Prime", "\u2033" );<a name="line.228"></a>
+<span class="sourceLineNo">229</span>        defaultEntityMap.put( "oline", "\u203e" );<a name="line.229"></a>
+<span class="sourceLineNo">230</span>        defaultEntityMap.put( "frasl", "\u2044" );<a name="line.230"></a>
+<span class="sourceLineNo">231</span>        defaultEntityMap.put( "weierp", "\u2118" );<a name="line.231"></a>
+<span class="sourceLineNo">232</span>        defaultEntityMap.put( "image", "\u2111" );<a name="line.232"></a>
+<span class="sourceLineNo">233</span>        defaultEntityMap.put( "real", "\u211c" );<a name="line.233"></a>
+<span class="sourceLineNo">234</span>        defaultEntityMap.put( "trade", "\u2122" );<a name="line.234"></a>
+<span class="sourceLineNo">235</span>        defaultEntityMap.put( "alefsym", "\u2135" );<a name="line.235"></a>
+<span class="sourceLineNo">236</span>        defaultEntityMap.put( "larr", "\u2190" );<a name="line.236"></a>
+<span class="sourceLineNo">237</span>        defaultEntityMap.put( "uarr", "\u2191" );<a name="line.237"></a>
+<span class="sourceLineNo">238</span>        defaultEntityMap.put( "rarr", "\u2192" );<a name="line.238"></a>
+<span class="sourceLineNo">239</span>        defaultEntityMap.put( "darr", "\u2193" );<a name="line.239"></a>
+<span class="sourceLineNo">240</span>        defaultEntityMap.put( "harr", "\u2194" );<a name="line.240"></a>
+<span class="sourceLineNo">241</span>        defaultEntityMap.put( "crarr", "\u21b5" );<a name="line.241"></a>
+<span class="sourceLineNo">242</span>        defaultEntityMap.put( "lArr", "\u21d0" );<a name="line.242"></a>
+<span class="sourceLineNo">243</span>        defaultEntityMap.put( "uArr", "\u21d1" );<a name="line.243"></a>
+<span class="sourceLineNo">244</span>        defaultEntityMap.put( "rArr", "\u21d2" );<a name="line.244"></a>
+<span class="sourceLineNo">245</span>        defaultEntityMap.put( "dArr", "\u21d3" );<a name="line.245"></a>
+<span class="sourceLineNo">246</span>        defaultEntityMap.put( "hArr", "\u21d4" );<a name="line.246"></a>
+<span class="sourceLineNo">247</span>        defaultEntityMap.put( "forall", "\u2200" );<a name="line.247"></a>
+<span class="sourceLineNo">248</span>        defaultEntityMap.put( "part", "\u2202" );<a name="line.248"></a>
+<span class="sourceLineNo">249</span>        defaultEntityMap.put( "exist", "\u2203" );<a name="line.249"></a>
+<span class="sourceLineNo">250</span>        defaultEntityMap.put( "empty", "\u2205" );<a name="line.250"></a>
+<span class="sourceLineNo">251</span>        defaultEntityMap.put( "nabla", "\u2207" );<a name="line.251"></a>
+<span class="sourceLineNo">252</span>        defaultEntityMap.put( "isin", "\u2208" );<a name="line.252"></a>
+<span class="sourceLineNo">253</span>        defaultEntityMap.put( "notin", "\u2209" );<a name="line.253"></a>
+<span class="sourceLineNo">254</span>        defaultEntityMap.put( "ni", "\u220b" );<a name="line.254"></a>
+<span class="sourceLineNo">255</span>        defaultEntityMap.put( "prod", "\u220f" );<a name="line.255"></a>
+<span class="sourceLineNo">256</span>        defaultEntityMap.put( "sum", "\u2211" );<a name="line.256"></a>
+<span class="sourceLineNo">257</span>        defaultEntityMap.put( "minus", "\u2212" );<a name="line.257"></a>
+<span class="sourceLineNo">258</span>        defaultEntityMap.put( "lowast", "\u2217" );<a name="line.258"></a>
+<span class="sourceLineNo">259</span>        defaultEntityMap.put( "radic", "\u221a" );<a name="line.259"></a>
+<span class="sourceLineNo">260</span>        defaultEntityMap.put( "prop", "\u221d" );<a name="line.260"></a>
+<span class="sourceLineNo">261</span>        defaultEntityMap.put( "infin", "\u221e" );<a name="line.261"></a>
+<span class="sourceLineNo">262</span>        defaultEntityMap.put( "ang", "\u2220" );<a name="line.262"></a>
+<span class="sourceLineNo">263</span>        defaultEntityMap.put( "and", "\u2227" );<a name="line.263"></a>
+<span class="sourceLineNo">264</span>        defaultEntityMap.put( "or", "\u2228" );<a name="line.264"></a>
+<span class="sourceLineNo">265</span>        defaultEntityMap.put( "cap", "\u2229" );<a name="line.265"></a>
+<span class="sourceLineNo">266</span>        defaultEntityMap.put( "cup", "\u222a" );<a name="line.266"></a>
+<span class="sourceLineNo">267</span>        defaultEntityMap.put( "int", "\u222b" );<a name="line.267"></a>
+<span class="sourceLineNo">268</span>        defaultEntityMap.put( "there4", "\u2234" );<a name="line.268"></a>
+<span class="sourceLineNo">269</span>        defaultEntityMap.put( "sim", "\u223c" );<a name="line.269"></a>
+<span class="sourceLineNo">270</span>        defaultEntityMap.put( "cong", "\u2245" );<a name="line.270"></a>
+<span class="sourceLineNo">271</span>        defaultEntityMap.put( "asymp", "\u2248" );<a name="line.271"></a>
+<span class="sourceLineNo">272</span>        defaultEntityMap.put( "ne", "\u2260" );<a name="line.272"></a>
+<span class="sourceLineNo">273</span>        defaultEntityMap.put( "equiv", "\u2261" );<a name="line.273"></a>
+<span class="sourceLineNo">274</span>        defaultEntityMap.put( "le", "\u2264" );<a name="line.274"></a>
+<span class="sourceLineNo">275</span>        defaultEntityMap.put( "ge", "\u2265" );<a name="line.275"></a>
+<span class="sourceLineNo">276</span>        defaultEntityMap.put( "sub", "\u2282" );<a name="line.276"></a>
+<span class="sourceLineNo">277</span>        defaultEntityMap.put( "sup", "\u2283" );<a name="line.277"></a>
+<span class="sourceLineNo">278</span>        defaultEntityMap.put( "nsub", "\u2284" );<a name="line.278"></a>
+<span class="sourceLineNo">279</span>        defaultEntityMap.put( "sube", "\u2286" );<a name="line.279"></a>
+<span class="sourceLineNo">280</span>        defaultEntityMap.put( "supe", "\u2287" );<a name="line.280"></a>
+<span class="sourceLineNo">281</span>        defaultEntityMap.put( "oplus", "\u2295" );<a name="line.281"></a>
+<span class="sourceLineNo">282</span>        defaultEntityMap.put( "otimes", "\u2297" );<a name="line.282"></a>
+<span class="sourceLineNo">283</span>        defaultEntityMap.put( "perp", "\u22a5" );<a name="line.283"></a>
+<span class="sourceLineNo">284</span>        defaultEntityMap.put( "sdot", "\u22c5" );<a name="line.284"></a>
+<span class="sourceLineNo">285</span>        defaultEntityMap.put( "lceil", "\u2308" );<a name="line.285"></a>
+<span class="sourceLineNo">286</span>        defaultEntityMap.put( "rceil", "\u2309" );<a name="line.286"></a>
+<span class="sourceLineNo">287</span>        defaultEntityMap.put( "lfloor", "\u230a" );<a name="line.287"></a>
+<span class="sourceLineNo">288</span>        defaultEntityMap.put( "rfloor", "\u230b" );<a name="line.288"></a>
+<span class="sourceLineNo">289</span>        defaultEntityMap.put( "lang", "\u2329" );<a name="line.289"></a>
+<span class="sourceLineNo">290</span>        defaultEntityMap.put( "rang", "\u232a" );<a name="line.290"></a>
+<span class="sourceLineNo">291</span>        defaultEntityMap.put( "loz", "\u25ca" );<a name="line.291"></a>
+<span class="sourceLineNo">292</span>        defaultEntityMap.put( "spades", "\u2660" );<a name="line.292"></a>
+<span class="sourceLineNo">293</span>        defaultEntityMap.put( "clubs", "\u2663" );<a name="line.293"></a>
+<span class="sourceLineNo">294</span>        defaultEntityMap.put( "hearts", "\u2665" );<a name="line.294"></a>
+<span class="sourceLineNo">295</span>        defaultEntityMap.put( "diams", "\u2666" );<a name="line.295"></a>
+<span class="sourceLineNo">296</span>    }<a name="line.296"></a>
+<span class="sourceLineNo">297</span><a name="line.297"></a>
+<span class="sourceLineNo">298</span>    public static String resolveEntity( String entity )<a name="line.298"></a>
+<span class="sourceLineNo">299</span>    {<a name="line.299"></a>
+<span class="sourceLineNo">300</span>        if ( entity == null )<a name="line.300"></a>
+<span class="sourceLineNo">301</span>        {<a name="line.301"></a>
+<span class="sourceLineNo">302</span>            // Invalid. null.<a name="line.302"></a>
+<span class="sourceLineNo">303</span>            return entity;<a name="line.303"></a>
+<span class="sourceLineNo">304</span>        }<a name="line.304"></a>
+<span class="sourceLineNo">305</span><a name="line.305"></a>
+<span class="sourceLineNo">306</span>        if ( entity.trim().length() &lt;= 0 )<a name="line.306"></a>
+<span class="sourceLineNo">307</span>        {<a name="line.307"></a>
+<span class="sourceLineNo">308</span>            // Invalid. empty.<a name="line.308"></a>
+<span class="sourceLineNo">309</span>            return entity;<a name="line.309"></a>
+<span class="sourceLineNo">310</span>        }<a name="line.310"></a>
+<span class="sourceLineNo">311</span><a name="line.311"></a>
+<span class="sourceLineNo">312</span>        if ( !( entity.charAt( 0 ) == '&amp;' ) &amp;&amp; ( entity.charAt( entity.length() ) == ';' ) )<a name="line.312"></a>
+<span class="sourceLineNo">313</span>        {<a name="line.313"></a>
+<span class="sourceLineNo">314</span>            // Invalid, not an entity.<a name="line.314"></a>
+<span class="sourceLineNo">315</span>            return entity;<a name="line.315"></a>
+<span class="sourceLineNo">316</span>        }<a name="line.316"></a>
+<span class="sourceLineNo">317</span><a name="line.317"></a>
+<span class="sourceLineNo">318</span>        String result = (String) defaultEntityMap.get( entity.substring( 1, entity.length() - 1 ) );<a name="line.318"></a>
+<span class="sourceLineNo">319</span>        if ( result == null )<a name="line.319"></a>
+<span class="sourceLineNo">320</span>        {<a name="line.320"></a>
+<span class="sourceLineNo">321</span>            return entity;<a name="line.321"></a>
+<span class="sourceLineNo">322</span>        }<a name="line.322"></a>
+<span class="sourceLineNo">323</span><a name="line.323"></a>
+<span class="sourceLineNo">324</span>        return result;<a name="line.324"></a>
+<span class="sourceLineNo">325</span>    }<a name="line.325"></a>
+<span class="sourceLineNo">326</span>}<a name="line.326"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>
