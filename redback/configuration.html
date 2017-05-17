@@ -7,7 +7,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="Date-Revision-yyyymmdd" content="20150408" />
+    <meta name="Date-Revision-yyyymmdd" content="20170517" />
     <meta http-equiv="Content-Language" content="en" />
     <title>Apache Redback &#x2013; Configuration</title>
     <link rel="stylesheet" href="./css/apache-maven-fluido-1.3.1.min.css" />
@@ -170,7 +170,7 @@
                 </a>
                       </div>
         <div class="pull-right">                  <a href="http://www.apache.org/" id="bannerRight">
-                                                                                        <img src="http://www.apache.org/images/asf_logo_wide.png"  alt="Apache Software Foundation"/>
+                                                                                        <img src="https://www.apache.org/images/asf_logo_wide_2016.png"  alt="Apache Software Foundation"/>
                 </a>
       </div>
         <div class="clear"><hr/></div>
@@ -180,7 +180,7 @@
         <ul class="breadcrumb">
                 
                     
-                  <li id="publishDate">Last Published: 2015-04-08
+                  <li id="publishDate">Last Published: 2017-05-17
                       <span class="divider">|</span>
                    </li>
                                       <li class="">
@@ -225,7 +225,10 @@
 <ul>
 <li><a href="#ldap_options_for_configuration_via_properties_file">ldap options for configuration via properties file</a></li></ul></li>
 <li><a href="#User_Manager_Implementations_to_use">User Manager Implementation(s) to use</a></li>
-<li><a href="#RBAC_Manager_Implementations_to_use">RBAC Manager Implementation(s) to use</a></li></ul></li></ul></li></ul>
+<li><a href="#RBAC_Manager_Implementations_to_use">RBAC Manager Implementation(s) to use</a></li>
+<li><a href="#REST_security_settings">REST security settings</a>
+<ul>
+<li><a href="#Cross_Site_Request_Forgery_CSRF_Prevention">Cross Site Request Forgery (CSRF) Prevention</a></li></ul></li></ul></li></ul></li></ul>
 <div class="section">
 <h3><a name="Configuration_File_Locations"></a>Configuration File Locations</h3>
 <p>Configuration file location can depend on the application that is embedding Redback. Since Redback is currently built up off of Plexus, it would be ideal to check out the application.xml of the relevant application and look for an entry similar to the following.</p>
@@ -248,79 +251,79 @@
 <div class="section">
 <h4><a name="Application_Configuration"></a>Application Configuration</h4>
 <ul>
-<li>application.timestamp=EEE d MMM yyyy HH:mm:ss Z</li>
-<li>application.url=http://myurl.mycompany.com
+<li><tt>application.timestamp=EEE d MMM yyyy HH:mm:ss Z</tt></li>
+<li><tt>application.url=http://myurl.mycompany.com</tt>
 <ul>
 <li>Set the application base URL. The default is to derive it from the HTTP request</li></ul></li></ul></div>
 <div class="section">
 <h4><a name="JDBC_Setup"></a>JDBC Setup</h4>
 <p>By default Redback uses Apache Derby for persistence of user and role information. This can be configured with the following options.</p>
 <ul>
-<li>jdbc.driver.name=org.apache.derby.jdbc.EmbeddedDriver</li>
-<li>jdbc.url=jdbc:derby:$<a name="plexus.home">plexus.home</a>/database;create=true</li>
-<li>jdbc.username=sa</li>
-<li>jdbc.password=</li></ul>
+<li><tt>jdbc.driver.name=org.apache.derby.jdbc.EmbeddedDriver</tt></li>
+<li><tt>jdbc.url=jdbc:derby:$<a name="plexus.home">plexus.home</a>/database;create=true</tt></li>
+<li><tt>jdbc.username=sa</tt></li>
+<li><tt>jdbc.password=</tt></li></ul>
 <p>By default Redback uses Apache Derby for persistence of user and role information. This can be configured with the following options.</p>
 <p><b>Note:</b> If you are using MySQL as your database, the database will not be populated if the encoding is initially set to UTF-8. As a workaround, set the database to UTF-8 encoding after it has been populated. See <a class="externalLink" href="http://jira.codehaus.org/browse/REDBACK-267"> REDBACK-267</a> for more details.</p></div>
 <div class="section">
 <h4><a name="Email_Settings"></a>Email Settings</h4>
 <ul>
-<li>email.jndiSessionName=java:comp/env/mail/Session</li>
-<li>email.smtp.host=localhost</li>
-<li>email.smtp.port=25</li>
-<li>email.smtp.ssl.enabled=false</li>
-<li>email.smtp.tls.enabled=false</li>
-<li>email.smtp.username=</li>
-<li>email.smtp.password=</li>
-<li>email.from.address=$<a name="user.name">user.name</a>@localhost
+<li><tt>email.jndiSessionName=java:comp/env/mail/Session</tt></li>
+<li><tt>email.smtp.host=localhost</tt></li>
+<li><tt>email.smtp.port=25</tt></li>
+<li><tt>email.smtp.ssl.enabled=false</tt></li>
+<li><tt>email.smtp.tls.enabled=false</tt></li>
+<li><tt>email.smtp.username=</tt></li>
+<li><tt>email.smtp.password=</tt></li>
+<li><tt>email.from.address=$<a name="user.name">user.name</a>@localhost</tt>
 <ul>
 <li>All emails sent by the system will be from the following address</li></ul></li>
-<li>email.from.name=Unconfigured Username</li>
-<li>email.validation.required=true
+<li><tt>email.from.name=Unconfigured Username</tt></li>
+<li><tt>email.validation.required=true</tt>
 <ul>
 <li>If all email addresses (from new user registration) require an account validation email. </li></ul></li>
-<li>email.validation.timeout=2880
+<li><tt>email.validation.timeout=2880</tt>
 <ul>
 <li>Timeout (in minutes) for the key generated for an email validation to remain valid.</li>
 <li>2880 minutes = 48 hours</li></ul></li>
-<li>email.validation.subject=Welcome</li>
-<li>email.feedback.path=/feedback.action
+<li><tt>email.validation.subject=Welcome</tt></li>
+<li><tt>email.feedback.path=/feedback.action</tt>
 <ul>
 <li>Get the Feedback to use for any outgoing emails.</li>
 <li>Feedback path starts with a &quot;/&quot; it is appended to the end of the value provided in application.url. This value can be in the format/syntax of &quot;/feedback.action&quot; or even &quot;mailto:feedback@application.com&quot;</li></ul></li></ul></div>
 <div class="section">
 <h4><a name="Auto_Login_Settings"></a>Auto Login Settings</h4>
 <ul>
-<li>security.rememberme.enabled=true</li>
-<li>security.rememberme.timeout=365
+<li><tt>security.rememberme.enabled=true</tt></li>
+<li><tt>security.rememberme.timeout=365</tt>
 <ul>
 <li>Timeout in days</li></ul></li>
-<li>security.signon.timeout=30
+<li><tt>security.signon.timeout=30</tt>
 <ul>
 <li>Single Sign On</li>
 <li>Timeout is in minutes</li></ul></li></ul></div>
 <div class="section">
 <h4><a name="Default_Username_Values"></a>Default Username Values</h4>
 <ul>
-<li>redback.default.admin=admin
+<li><tt>redback.default.admin=admin</tt>
 <ul>
 <li>name for the admin user, by default this is 'admin' and can not easily be changed after the fact at this point. However any number of people may be assigned full administrator roles.</li></ul></li>
-<li>redback.default.guest=guest (currently guest is an hardcoded value so not possible to configure it)
+<li><tt>redback.default.guest=guest</tt> (currently guest is an hardcoded value so not possible to configure it)
 <ul>
 <li>name of the guest user</li></ul></li></ul></div>
 <div class="section">
 <h4><a name="Security_Policies"></a>Security Policies</h4>
 <ul>
-<li>security.policy.password.encoder=</li>
-<li>security.policy.password.previous.count=6</li>
-<li>security.policy.password.expiration.enabled=true</li>
-<li>security.policy.password.expiration.days=90</li>
-<li>security.policy.password.expiration.notify.days=10</li>
-<li>security.policy.allowed.login.attempt=10</li>
-<li>security.policy.strict.enforcement.enabled=true
+<li><tt>security.policy.password.encoder=</tt></li>
+<li><tt>security.policy.password.previous.count=6</tt></li>
+<li><tt>security.policy.password.expiration.enabled=true</tt></li>
+<li><tt>security.policy.password.expiration.days=90</tt></li>
+<li><tt>security.policy.password.expiration.notify.days=10</tt></li>
+<li><tt>security.policy.allowed.login.attempt=10</tt></li>
+<li><tt>security.policy.strict.enforcement.enabled=true</tt>
 <ul>
 <li>turn off the perclick enforcement of various security policies, slightly more heavyweight since it will ensure that the User object on each click is up to date</li></ul></li>
-<li>security.policy.strict.force.password.change.enabled=true
+<li><tt>security.policy.strict.force.password.change.enabled=true</tt>
 <ul>
 <li>forces the user to change their password immediately should their account be flagged for a password change.</li></ul></li>
 <li>security.policy.unlockable.accounts
@@ -329,49 +332,67 @@
 <div class="section">
 <h4><a name="Password_Rules"></a>Password Rules</h4>
 <ul>
-<li>security.policy.password.rule.alphanumeric.enabled=false</li>
-<li>security.policy.password.rule.alphacount.enabled=true</li>
-<li>security.policy.password.rule.alphacount.minimum=1</li>
-<li>security.policy.password.rule.characterlength.enabled=true</li>
-<li>security.policy.password.rule.characterlength.minimum=1</li>
-<li>security.policy.password.rule.characterlength.maximum=24</li>
-<li>security.policy.password.rule.musthave.enabled=true</li>
-<li>security.policy.password.rule.numericalcount.enabled=true</li>
-<li>security.policy.password.rule.numericalcount.minimum=1</li>
-<li>security.policy.password.rule.reuse.enabled=true</li>
-<li>security.policy.password.rule.nowhitespace.enabled=true</li></ul></div>
+<li><tt>security.policy.password.rule.alphanumeric.enabled=false</tt></li>
+<li><tt>security.policy.password.rule.alphacount.enabled=true</tt></li>
+<li><tt>security.policy.password.rule.alphacount.minimum=1</tt></li>
+<li><tt>security.policy.password.rule.characterlength.enabled=true</tt></li>
+<li><tt>security.policy.password.rule.characterlength.minimum=1</tt></li>
+<li><tt>security.policy.password.rule.characterlength.maximum=24</tt></li>
+<li><tt>security.policy.password.rule.musthave.enabled=true</tt></li>
+<li><tt>security.policy.password.rule.numericalcount.enabled=true</tt></li>
+<li><tt>security.policy.password.rule.numericalcount.minimum=1</tt></li>
+<li><tt>security.policy.password.rule.reuse.enabled=true</tt></li>
+<li><tt>security.policy.password.rule.nowhitespace.enabled=true</tt></li></ul></div>
 <div class="section">
 <h4><a name="LDAP_settings"></a>LDAP settings</h4>
 <p>Ldap can be used as a readonly user manager, however the role assignment is still managed entirely within the given database store. This should be fixed in the future sometime but likely not before ldap is switched over as the default user and role store entirely.</p>
 <ul>
-<li>ldap.user.store.enabled=false</li>
-<li>ldap.bind.authenticator.enabled=false</li></ul>
+<li><tt>ldap.user.store.enabled=false</tt></li>
+<li><tt>ldap.bind.authenticator.enabled=false</tt></li></ul>
 <div class="section">
 <h5><a name="ldap_options_for_configuration_via_properties_file"></a>ldap options for configuration via properties file</h5>
 <ul>
-<li>ldap.config.hostname=</li>
-<li>ldap.config.port=</li>
-<li>ldap.config.base.dn=</li>
-<li>ldap.config.context.factory=</li>
-<li>ldap.config.bind.dn=</li>
-<li>ldap.config.password=</li>
-<li>ldap.config.authentication.method=</li>
-<li>ldap.config.groups.class= object class for groups (default: groupOfUniqueNames)</li>
-<li>ldap.config.groups.base.dn= basedn for groups, dn with list of groups ( dc=archiva,dc=apache,dc=org ) (if empty default will be ldap.config.base.dn)</li>
-<li>ldap.config.groups.role.*(ldap group)=*(roles) (mapping ldap group <i>-</i> redback roles comma separated) (example: ldap.config.groups.role.archiva-admin=Archiva System Administrator, Foo)</li>
-<li>ldap.config.writable=true/false will write datas to ldap (default false)</li>
-<li>ldap.config.groups.use.rolename=true/false will create/use groups in ldap with default role if no group<i>-</i>role mapping found (default false)</li>
-<li>ldap.config.user.attribute= attribute name to use for user (default uid=)</li></ul></div></div>
+<li><tt>ldap.config.hostname=</tt></li>
+<li><tt>ldap.config.port=</tt></li>
+<li><tt>ldap.config.base.dn=</tt></li>
+<li><tt>ldap.config.context.factory=</tt></li>
+<li><tt>ldap.config.bind.dn=</tt></li>
+<li><tt>ldap.config.password=</tt></li>
+<li><tt>ldap.config.authentication.method=</tt></li>
+<li><tt>ldap.config.groups.class=</tt> object class for groups (default: groupOfUniqueNames)</li>
+<li><tt>ldap.config.groups.base.dn= basedn</tt> for groups, dn with list of groups ( dc=archiva,dc=apache,dc=org ) (if empty default will be ldap.config.base.dn)</li>
+<li><tt>ldap.config.groups.role.*(ldap group)=*(roles)</tt> (mapping ldap group <i>-</i> redback roles comma separated) (example: ldap.config.groups.role.archiva-admin=Archiva System Administrator, Foo)</li>
+<li><tt>ldap.config.writable=true/false</tt> will write datas to ldap (default false)</li>
+<li><tt>ldap.config.groups.use.rolename=true/false</tt> will create/use groups in ldap with default role if no group<i>-</i>role mapping found (default false)</li>
+<li><tt>ldap.config.user.attribute=</tt> attribute name to use for user (default uid=)</li></ul></div></div>
 <div class="section">
 <h4><a name="User_Manager_Implementations_to_use"></a>User Manager Implementation(s) to use</h4>
 <ul>
-<li>user.manager.impl=cached (since 1.4-M4: Archiva support more than one value comma separated)
+<li><tt>user.manager.impl=cached</tt> (since 1.4-M4: Archiva support more than one value comma separated)
 <ul>
 <li>valid values for realistic usage are 'cached' and then further configuring the cached instance to use another underlying user manager like ldap or the jdo one which is used by default. Placing 'ldap' here will check with the ldap system for a fair amount of checks and would likely be a performance issue</li></ul></li></ul></div>
 <div class="section">
 <h4><a name="RBAC_Manager_Implementations_to_use"></a>RBAC Manager Implementation(s) to use</h4>
 <ul>
-<li>rbac.manager.impl=cached (since 1.4-M4: Archiva support more than one value comma separated)</li></ul></div></div></div>
+<li><tt>rbac.manager.impl=cached</tt> (since 1.4-M4: Archiva support more than one value comma separated)</li></ul></div>
+<div class="section">
+<h4><a name="REST_security_settings"></a>REST security settings</h4>
+<div class="section">
+<h5><a name="Cross_Site_Request_Forgery_CSRF_Prevention"></a>Cross Site Request Forgery (CSRF) Prevention</h5>
+<p>There are multiple checks implemented to prevent CSRF attacks from other sides that are opened in the same browser. If you use the REST services from non-Browser clients or very old Browser versions you may need to deactivate some of these checks. If you deactivate these checks your archiva site will be more vulnerable to these attacks.</p>
+<ul>
+<li><tt>rest.csrffilter.enabled=true</tt>
+<ul>
+<li>Enable/disable the filter for CSRF prevention. Possible values: true, false</li></ul></li>
+<li><tt>rest.baseUrl=</tt>
+<ul>
+<li>Set the base URL to which the Origin/Referer header are matched against. If it's empty, the URL is determined dynamically.</li></ul></li>
+<li><tt>rest.csrffilter.absentorigin.deny=true</tt>
+<ul>
+<li>Defines what happens, if the client request does not contain a Origin or Referer header. This may happen with native REST clients. Browsers normally add these headers to the request, if it is initiated from another site. Possible values: true, false</li></ul></li>
+<li><tt>rest.csrffilter.disableTokenValidation=false</tt>
+<ul>
+<li>Token validation means, that each REST request must send a validation token that is returned during the first login. If you have REST clients that cannot send this token you may have to disable this feature. Possible values: true, false</li></ul></li></ul></div></div></div></div>
                   </div>
           </div>
 
@@ -380,7 +401,7 @@
     <footer>
             <div class="container">
                       <div class="row">
-                              <p >Copyright &copy;                    2006&#x2013;2015
+                              <p >Copyright &copy;                    2006&#x2013;2017
                         <a href="http://www.apache.org/">The Apache Software Foundation</a>.
             All rights reserved.      
                     

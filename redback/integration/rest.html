@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Olivier Lamy" />
     <meta name="Date-Creation-yyyymmdd" content="20110811" />
-    <meta name="Date-Revision-yyyymmdd" content="20150408" />
+    <meta name="Date-Revision-yyyymmdd" content="20170517" />
     <meta http-equiv="Content-Language" content="en" />
     <title>Apache Redback &#x2013; Redback Rest Support</title>
     <link rel="stylesheet" href="../css/apache-maven-fluido-1.3.1.min.css" />
@@ -172,7 +172,7 @@
                 </a>
                       </div>
         <div class="pull-right">                  <a href="http://www.apache.org/" id="bannerRight">
-                                                                                        <img src="http://www.apache.org/images/asf_logo_wide.png"  alt="Apache Software Foundation"/>
+                                                                                        <img src="https://www.apache.org/images/asf_logo_wide_2016.png"  alt="Apache Software Foundation"/>
                 </a>
       </div>
         <div class="clear"><hr/></div>
@@ -182,7 +182,7 @@
         <ul class="breadcrumb">
                 
                     
-                  <li id="publishDate">Last Published: 2015-04-08
+                  <li id="publishDate">Last Published: 2017-05-17
                       <span class="divider">|</span>
                    </li>
                                       <li class="">
@@ -209,8 +209,37 @@
                                   
             <!-- Licensed to the Apache Software Foundation (ASF) under one --><!-- or more contributor license agreements.  See the NOTICE file --><!-- distributed with this work for additional information --><!-- regarding copyright ownership.  The ASF licenses this file --><!-- to you under the Apache License, Version 2.0 (the --><!-- "License"); you may not use this file except in compliance --><!-- with the License.  You may obtain a copy of the License at --><!--  --><!-- http://www.apache.org/licenses/LICENSE-2.0 --><!--  --><!-- Unless required by applicable law or agreed to in writing, --><!-- software distributed under the License is distributed on an --><!-- "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY --><!-- KIND, either express or implied.  See the License for the --><!-- specific language governing permissions and limitations --><!-- under the License. --><!-- NOTE: For help with the syntax of this file, see: --><!-- http://maven.apache.org/doxia/references/apt-format.html --><div class="section">
 <h2><a name="Redback_Rest_Support"></a>Redback Rest Support</h2>
-<p>Prior to 1.3 version some redback services are available trough rest request.</p>
-<p>We use jaxrs annotations and authz/karma are verified through cxf interceptors.</p>
+<p>Starting with version 1.3 some redback services are available trough rest request.</p>
+<p>Starting with version 2.5 we added some filters to prevent CSRF attacks.</p>
+<p>We use JAXRS annotations and authz/karma are verified through cxf interceptors.</p>
+<ul>
+<li><a href="#Redback_Rest_Support">Redback Rest Support</a>
+<ul>
+<li><a href="#Cross_Site_Request_Forgery_CSRF_prevention">Cross Site Request Forgery (CSRF) prevention</a>
+<ul>
+<li><a href="#Header_validation">Header validation</a></li>
+<li><a href="#Validation_Token">Validation Token</a></li></ul></li>
+<li><a href="#Maven_Module">Maven Module</a></li>
+<li><a href="#CXF_setup">CXF setup</a></li>
+<li><a href="#CXF_interceptors">CXF interceptors</a>
+<ul>
+<li><a href="#AuthenticationInterceptor">AuthenticationInterceptor</a></li>
+<li><a href="#PermissionInterceptor">PermissionInterceptor</a></li>
+<li><a href="#RequestValidationIntercepter">RequestValidationIntercepter</a></li></ul></li>
+<li><a href="#Client_Usage">Client Usage</a></li></ul></li></ul>
+<div class="section">
+<h3><a name="Cross_Site_Request_Forgery_CSRF_prevention"></a>Cross Site Request Forgery (<a name="CSRF">CSRF</a>) prevention</h3>
+<p>Starting with version 2.5 there has been added an interceptor that tries to check for CSRF attacks. CSRF can be initiated by malicious sites that let your browser execute HTTP requests or JavaScript-Code aimed to your redback site. Without CSRF prevention only the login cookie is checked for proper authorization and which is sent automatically from your browser after login. The redback REST services are not checking if the request is from the same origin as the login request.</p>
+<p>For more information see <a class="externalLink" href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">the OWASP info</a> .</p>
+<p>Redback uses two mechanisms for checking cross site requests: Header validation and a validation token.</p>
+<p>The behaviour of the filter can be configured, see <a href="../configuration.html#REST_security_settings">REST configuration</a> .</p>
+<div class="section">
+<h4><a name="Header_validation"></a>Header validation</h4>
+<p>The header validation uses a base URL where the incoming requests are checked against. Per default the base URL is determined dynamically, but can be configured.</p>
+<p>Each client request is checked for the HTTP headers <tt>Origin</tt> and <tt>Referer</tt> header. If the Origin header is existent and the base URL does not match the header value the request will be denied. After that the Referer header is checked and matched against the base URL. If the header is existent and does not the base URL the request is denied. If neither Origin nor Referer header are presented, the request is denied (can be configured).</p></div>
+<div class="section">
+<h4><a name="Validation_Token"></a>Validation Token</h4>
+<p>If the header validation was successful, the request is checked for the <tt>X-XSRF-TOKEN</tt> header. This header must contain a token that is returned from the login REST service together with the user information (<tt>validationToken</tt> element of the user element returned from the Login service). The token is encrypted with a key that is generated dynamically during startup of the redback service. That means that after restart of the redback services all tokens generated before will be invalid. Validation tokens have a lifetime of 3 hours. After that you have to login again.</p></div></div>
 <div class="section">
 <h3><a name="Maven_Module"></a>Maven Module</h3>
 <p>You must add the following maven dependency</p>
@@ -273,7 +302,10 @@
 <pre>
    @RedbackAuthorization(noRestriction = true)
    public Boolean ping()
-</pre></div></div></div>
+</pre></div></div>
+<div class="section">
+<h4><a name="RequestValidationIntercepter"></a>RequestValidationIntercepter</h4>
+<p>This is the interceptor used for CSRF prevention. See info <a href="#CSRF">above</a>.</p></div></div>
 <div class="section">
 <h3><a name="Client_Usage"></a>Client Usage</h3>
 <p>Dependencies to add in order to use those REST Services</p>
@@ -312,7 +344,7 @@
     <footer>
             <div class="container">
                       <div class="row">
-                              <p >Copyright &copy;                    2006&#x2013;2015
+                              <p >Copyright &copy;                    2006&#x2013;2017
                         <a href="http://www.apache.org/">The Apache Software Foundation</a>.
             All rights reserved.      
                     
