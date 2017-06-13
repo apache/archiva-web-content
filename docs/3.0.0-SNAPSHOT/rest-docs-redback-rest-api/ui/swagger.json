@@ -1,0 +1,2277 @@
+{
+  "swagger": "2.0",
+  "info" : {
+    "description" : "<h1>Redback :: Integration :: REST :: Api<\/h1><p>Archiva is an application for managing one or more remote\n      repositories, including administration, artifact handling,\n      browsing and searching.<\/p>",
+    "contact" : {
+      "name" : "Steffen Grunwald"
+    },
+    "license" : {
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.txt",
+      "name" : "The Apache Software License, Version 2.0"
+    },
+    "version" : "3.0.0-SNAPSHOT",
+    "title" : "Redback :: Integration :: REST :: Api"
+  },
+  "tags" : [
+    {
+      "name" : "LdapGroupMappingService",
+      "description" : ""
+    }
+    ,
+    {
+      "name" : "LoginService",
+      "description" : ""
+    }
+    ,
+    {
+      "name" : "PasswordService",
+      "description" : ""
+    }
+    ,
+    {
+      "name" : "RoleManagementService",
+      "description" : ""
+    }
+    ,
+    {
+      "name" : "UserService",
+      "description" : ""
+    }
+    ,
+    {
+      "name" : "UtilServices",
+      "description" : ""
+    }
+  ],
+  "definitions" : {
+    "xml_ns0_application" : {
+      "type" : "object",
+      "title" : "application",
+      "allOf" : [
+        {
+          "properties" : {
+            "description" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "id" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "longDescription" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "version" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_applicationRoles" : {
+      "type" : "object",
+      "title" : "applicationRoles",
+      "allOf" : [
+        {
+          "properties" : {
+            "description" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "globalRoles" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "name" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "resources" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "roleTemplates" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"$ref" : "#/definitions/xml_ns0_roleTemplate"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_ldapGroupMapping" : {
+      "type" : "object",
+      "title" : "ldapGroupMapping",
+      "allOf" : [
+        {
+          "properties" : {
+            "group" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "roleNames" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_ldapGroupMappingUpdateRequest" : {
+      "type" : "object",
+      "title" : "ldapGroupMappingUpdateRequest",
+      "allOf" : [
+        {
+          "properties" : {
+            "ldapGroupMapping" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"$ref" : "#/definitions/xml_ns0_ldapGroupMapping"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_loginRequest" : {
+      "type" : "object",
+      "title" : "loginRequest",
+      "allOf" : [
+        {
+          "properties" : {
+            "password" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "username" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_operation" : {
+      "type" : "object",
+      "title" : "operation",
+      "allOf" : [
+        {
+          "properties" : {
+            "description" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "name" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "permanent" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "boolean"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_permission" : {
+      "type" : "object",
+      "title" : "permission",
+      "allOf" : [
+        {
+          "properties" : {
+            "name" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "operation" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"$ref" : "#/definitions/xml_ns0_operation"
+            },
+            "resource" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"$ref" : "#/definitions/xml_ns0_resource"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_registrationKey" : {
+      "type" : "object",
+      "title" : "registrationKey",
+      "allOf" : [
+        {
+          "properties" : {
+            "key" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_resetPasswordRequest" : {
+      "type" : "object",
+      "title" : "resetPasswordRequest",
+      "allOf" : [
+        {
+          "properties" : {
+            "applicationUrl" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "username" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_resource" : {
+      "type" : "object",
+      "title" : "resource",
+      "allOf" : [
+        {
+          "properties" : {
+            "identifier" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "pattern" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "boolean"
+            },
+            "permanent" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "boolean"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_role" : {
+      "type" : "object",
+      "title" : "role",
+      "allOf" : [
+        {
+          "properties" : {
+            "assignable" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "boolean"
+            },
+            "childRoleNames" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "description" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "name" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "otherUsers" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"$ref" : "#/definitions/xml_ns0_user"
+            },
+            "parentRoleNames" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "parentsRolesUsers" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"$ref" : "#/definitions/xml_ns0_user"
+            },
+            "permanent" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "boolean"
+            },
+            "permissions" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"$ref" : "#/definitions/xml_ns0_permission"
+            },
+            "removedUsers" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"$ref" : "#/definitions/xml_ns0_user"
+            },
+            "users" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"$ref" : "#/definitions/xml_ns0_user"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_roleTemplate" : {
+      "type" : "object",
+      "title" : "roleTemplate",
+      "allOf" : [
+        {
+          "properties" : {
+            "delimiter" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "description" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "id" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "namePrefix" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "resource" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "roles" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_stringList" : {
+      "type" : "object",
+      "title" : "stringList",
+      "allOf" : [
+        {
+          "properties" : {
+            "strings" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : "jaxrs fail to return List {@link String} so use this contains for rest services returning that"
+    }
+    ,
+    "xml_ns0_user" : {
+      "type" : "object",
+      "title" : "user",
+      "allOf" : [
+        {
+          "properties" : {
+            "assignedRoles" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "confirmPassword" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "email" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "fullName" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "locked" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "boolean"
+            },
+            "password" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "passwordChangeRequired" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "boolean"
+            },
+            "permanent" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "boolean"
+            },
+            "previousPassword" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "readOnly" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "boolean"
+            },
+            "timestampAccountCreation" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "timestampLastLogin" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "timestampLastPasswordChange" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "userManagerId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "username" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "validated" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "boolean"
+            },
+            "validationToken" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_userRegistrationRequest" : {
+      "type" : "object",
+      "title" : "userRegistrationRequest",
+      "allOf" : [
+        {
+          "properties" : {
+            "applicationUrl" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"type" : "string"
+            },
+            "user" : {
+              "xml" : {
+                "namespace" : ""
+              },
+"description" : "",
+"$ref" : "#/definitions/xml_ns0_user"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+  },
+  "paths": {
+    "/ldapGroupMappingService/{group}" : {
+      "delete" : {
+        "tags" : [ "LdapGroupMappingService" ],
+        "description" : "",
+        "operationId" : "resource_LdapGroupMappingService_removeLdapGroupMapping_DELETE",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "group",
+            "in" : "path",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "201" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/ldapGroupMappingService/ldapGroups" : {
+      "get" : {
+        "tags" : [ "LdapGroupMappingService" ],
+        "description" : "",
+        "operationId" : "resource_LdapGroupMappingService_getLdapGroups_GET",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/ldapGroupMappingService" : {
+      "get" : {
+        "tags" : [ "LdapGroupMappingService" ],
+        "description" : "",
+        "operationId" : "resource_LdapGroupMappingService_getLdapGroupMappings_GET",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+      ,
+      "put" : {
+        "tags" : [ "LdapGroupMappingService" ],
+        "description" : "",
+        "operationId" : "resource_LdapGroupMappingService_addLdapGroupMapping_PUT",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+              "type" : "object"
+            },
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "201" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+      ,
+      "post" : {
+        "tags" : [ "LdapGroupMappingService" ],
+        "description" : "",
+        "operationId" : "resource_LdapGroupMappingService_updateLdapGroupMapping_POST",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+              "type" : "object"
+            },
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "201" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/loginService/isLogged" : {
+      "get" : {
+        "tags" : [ "LoginService" ],
+        "description" : "simply check if current user has an http session opened with authz passed and return user data",
+        "operationId" : "resource_LoginService_isLogged_GET",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/loginService/logout" : {
+      "get" : {
+        "tags" : [ "LoginService" ],
+        "description" : "clear user http session",
+        "operationId" : "resource_LoginService_logout_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/loginService/logIn" : {
+      "post" : {
+        "tags" : [ "LoginService" ],
+        "description" : "check username/password and create a http session.\nSo no more need of reuse username/password for all ajaxRequest",
+        "operationId" : "resource_LoginService_logIn_POST",
+        "consumes" : [ "application/xml" ],
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+"description" : "",
+"$ref" : "#/definitions/xml_ns0_loginRequest"
+            },
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "201" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/loginService/ping" : {
+      "get" : {
+        "tags" : [ "LoginService" ],
+        "description" : "",
+        "operationId" : "resource_LoginService_ping_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/loginService/pingWithAutz" : {
+      "get" : {
+        "tags" : [ "LoginService" ],
+        "description" : "",
+        "operationId" : "resource_LoginService_pingWithAutz_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/loginService/addAuthenticationKey" : {
+      "get" : {
+        "tags" : [ "LoginService" ],
+        "description" : "",
+        "operationId" : "resource_LoginService_addAuthenticationKey_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "expirationMinutes",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "principal",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "providerKey",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "purpose",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/passwordService/changePasswordWithKey" : {
+      "get" : {
+        "tags" : [ "PasswordService" ],
+        "description" : "used to change the password on first user connection after registration use.\nthe key is mandatory and a control will be done on the username provided.\n<b>need to be logged by {@link UserService#validateUserFromKey(String)}<\/b>",
+        "operationId" : "resource_PasswordService_changePasswordWithKey_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "key",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "password",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "passwordConfirmation",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/passwordService/changePassword" : {
+      "get" : {
+        "tags" : [ "PasswordService" ],
+        "description" : "used to change the password on passwordChangeRequired state.",
+        "operationId" : "resource_PasswordService_changePassword_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "password",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "passwordConfirmation",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "previousPassword",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "userName",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/removeTemplatedRole" : {
+      "get" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "removes a role corresponding to the role Id that was manufactured with the given resource\n\nit also removes any user assignments for that role",
+        "operationId" : "resource_RoleManagementService_removeTemplatedRole_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "resource",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "templateId",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/templatedRoleExists" : {
+      "get" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "true of a role exists with the given roleId",
+        "operationId" : "resource_RoleManagementService_templatedRoleExists_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "resource",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "templateId",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/verifyTemplatedRole" : {
+      "get" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "Check a role template is complete in the RBAC store.",
+        "operationId" : "resource_RoleManagementService_verifyTemplatedRole_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "resource",
+            "in" : "query",
+            "type" : "string",
+            "description" : "the resource to verify"
+          },
+          {
+            "name" : "templateId",
+            "in" : "query",
+            "type" : "string",
+            "description" : "the templated role"
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/getApplicationRoles/{username}" : {
+      "get" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "",
+        "operationId" : "resource_RoleManagementService_getApplicationRoles_GET",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "username",
+            "in" : "path",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/getRole/{roleName}" : {
+      "get" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "",
+        "operationId" : "resource_RoleManagementService_getRole_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "roleName",
+            "in" : "path",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/createTemplatedRole" : {
+      "get" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "",
+        "operationId" : "resource_RoleManagementService_createTemplatedRole_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "resource",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "templateId",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/assignRole" : {
+      "get" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "Assigns the role indicated by the roleId to the given principal",
+        "operationId" : "resource_RoleManagementService_assignRole_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "principal",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "roleId",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/getEffectivelyAssignedRoles/{username}" : {
+      "get" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "",
+        "operationId" : "resource_RoleManagementService_getEffectivelyAssignedRoles_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "username",
+            "in" : "path",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/updateUserRoles" : {
+      "post" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "update roles assigned to a user",
+        "operationId" : "resource_RoleManagementService_updateUserRoles_POST",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+              "type" : "object"
+            },
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "201" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/assignTemplatedRole" : {
+      "get" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "Assigns the templated role indicated by the templateId\n\nfails if the templated role has not been created",
+        "operationId" : "resource_RoleManagementService_assignTemplatedRole_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "principal",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "resource",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "templateId",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/getApplications/{username}" : {
+      "get" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "",
+        "operationId" : "resource_RoleManagementService_getApplications_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "username",
+            "in" : "path",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/allRoles" : {
+      "get" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "",
+        "operationId" : "resource_RoleManagementService_getAllRoles_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/unassignRole" : {
+      "get" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "Unassigns the role indicated by the role id from the given principal",
+        "operationId" : "resource_RoleManagementService_unassignRole_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "principal",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "roleId",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/updateRoleDescription" : {
+      "get" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "",
+        "operationId" : "resource_RoleManagementService_updateRoleDescription_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "roleDescription",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "roleName",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/roleExists" : {
+      "get" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "true of a role exists with the given roleId",
+        "operationId" : "resource_RoleManagementService_roleExists_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "roleId",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/assignRoleByName" : {
+      "get" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "Assigns the role indicated by the roleName to the given principal",
+        "operationId" : "resource_RoleManagementService_assignRoleByName_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "principal",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "roleName",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/detailledAllRoles" : {
+      "get" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "",
+        "operationId" : "resource_RoleManagementService_getDetailedAllRoles_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/unassignRoleByName" : {
+      "get" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "Unassigns the role indicated by the role name from the given principal",
+        "operationId" : "resource_RoleManagementService_unassignRoleByName_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "principal",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "roleName",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/updateRole" : {
+      "get" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "allows for a role coming from a template to be renamed effectively swapping out the bits of it that\nwere labeled with the oldResource with the newResource\n\nit also manages any user assignments for that role",
+        "operationId" : "resource_RoleManagementService_updateRole_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "newResource",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "oldResource",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          },
+          {
+            "name" : "templateId",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/roleManagementService/updateRoleUsers" : {
+      "post" : {
+        "tags" : [ "RoleManagementService" ],
+        "description" : "update users assigned to a role",
+        "operationId" : "resource_RoleManagementService_updateRoleUsers_POST",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+              "type" : "object"
+            },
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "201" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/registerUser" : {
+      "post" : {
+        "tags" : [ "UserService" ],
+        "description" : "if redback is not configured for email validation is required, -1 is returned as key",
+        "operationId" : "resource_UserService_registerUser_POST",
+        "consumes" : [ "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+"description" : "",
+"$ref" : "#/definitions/xml_ns0_userRegistrationRequest"
+            },
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "201" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/getCurrentUserOperations" : {
+      "get" : {
+        "tags" : [ "UserService" ],
+        "description" : "",
+        "operationId" : "resource_UserService_getCurrentUserOperations_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/createAdminUser" : {
+      "post" : {
+        "tags" : [ "UserService" ],
+        "description" : "will create admin user only if not exists !! if exists will return false",
+        "operationId" : "resource_UserService_createAdminUser_POST",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+              "type" : "object"
+            },
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "201" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/removeFromCache/{userName}" : {
+      "get" : {
+        "tags" : [ "UserService" ],
+        "description" : "",
+        "operationId" : "resource_UserService_removeFromCache_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "userName",
+            "in" : "path",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/isAdminUserExists" : {
+      "get" : {
+        "tags" : [ "UserService" ],
+        "description" : "",
+        "operationId" : "resource_UserService_isAdminUserExists_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/getGuestUser" : {
+      "get" : {
+        "tags" : [ "UserService" ],
+        "description" : "",
+        "operationId" : "resource_UserService_getGuestUser_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/updateUser" : {
+      "post" : {
+        "tags" : [ "UserService" ],
+        "description" : "",
+        "operationId" : "resource_UserService_updateUser_POST",
+        "consumes" : [ "application/xml" ],
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+"description" : "",
+"$ref" : "#/definitions/xml_ns0_user"
+            },
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "201" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/getCurrentUserPermissions" : {
+      "get" : {
+        "tags" : [ "UserService" ],
+        "description" : "",
+        "operationId" : "resource_UserService_getCurrentUserPermissions_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/getUserOperations/{userName}" : {
+      "get" : {
+        "tags" : [ "UserService" ],
+        "description" : "",
+        "operationId" : "resource_UserService_getUserOperations_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "userName",
+            "in" : "path",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/getUsers" : {
+      "get" : {
+        "tags" : [ "UserService" ],
+        "description" : "",
+        "operationId" : "resource_UserService_getUsers_GET",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/unlockUser/{username}" : {
+      "get" : {
+        "tags" : [ "UserService" ],
+        "description" : "",
+        "operationId" : "resource_UserService_unlockUser_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "username",
+            "in" : "path",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/updateMe" : {
+      "post" : {
+        "tags" : [ "UserService" ],
+        "description" : "update only the current user and this fields: fullname, email, password.\nthe service verify the curent logged user with the one passed in the method",
+        "operationId" : "resource_UserService_updateMe_POST",
+        "consumes" : [ "application/xml" ],
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+"description" : "",
+"$ref" : "#/definitions/xml_ns0_user"
+            },
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "201" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/passwordChangeRequired/{username}" : {
+      "get" : {
+        "tags" : [ "UserService" ],
+        "description" : "",
+        "operationId" : "resource_UserService_passwordChangeRequired_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "username",
+            "in" : "path",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/deleteUser/{userName}" : {
+      "get" : {
+        "tags" : [ "UserService" ],
+        "description" : "",
+        "operationId" : "resource_UserService_deleteUser_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "userName",
+            "in" : "path",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/passwordChangeNotRequired/{username}" : {
+      "get" : {
+        "tags" : [ "UserService" ],
+        "description" : "",
+        "operationId" : "resource_UserService_passwordChangeNotRequired_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "username",
+            "in" : "path",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/resetPassword" : {
+      "post" : {
+        "tags" : [ "UserService" ],
+        "description" : "",
+        "operationId" : "resource_UserService_resetPassword_POST",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+              "type" : "object"
+            },
+            "description" : "contains username for send a password reset email"
+          }
+        ],
+        "responses" : {
+          "201" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/validateKey/{key}" : {
+      "get" : {
+        "tags" : [ "UserService" ],
+        "description" : "validate the key and the user with forcing a password change for next login.\nhttp session is created.",
+        "operationId" : "resource_UserService_validateUserFromKey_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "key",
+            "in" : "path",
+            "type" : "string",
+            "description" : "authentication key"
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/ping" : {
+      "get" : {
+        "tags" : [ "UserService" ],
+        "description" : "",
+        "operationId" : "resource_UserService_ping_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/lockUser/{username}" : {
+      "get" : {
+        "tags" : [ "UserService" ],
+        "description" : "",
+        "operationId" : "resource_UserService_lockUser_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "username",
+            "in" : "path",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/createGuestUser" : {
+      "get" : {
+        "tags" : [ "UserService" ],
+        "description" : "",
+        "operationId" : "resource_UserService_createGuestUser_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/getUser/{userName}" : {
+      "get" : {
+        "tags" : [ "UserService" ],
+        "description" : "",
+        "operationId" : "resource_UserService_getUser_GET",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "userName",
+            "in" : "path",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/createUser" : {
+      "post" : {
+        "tags" : [ "UserService" ],
+        "description" : "",
+        "operationId" : "resource_UserService_createUser_POST",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema" : {
+              "type" : "object"
+            },
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "201" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/userService/getUserPermissions/{userName}" : {
+      "get" : {
+        "tags" : [ "UserService" ],
+        "description" : "",
+        "operationId" : "resource_UserService_getUserPermissions_GET",
+        "produces" : [ "application/json", "application/xml", "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "userName",
+            "in" : "path",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+    ,
+    "/utilServices/getBundleResources" : {
+      "get" : {
+        "tags" : [ "UtilServices" ],
+        "description" : "",
+        "operationId" : "resource_UtilServices_getI18nResources_GET",
+        "produces" : [ "text/plain" ],
+        "parameters" : [
+          {
+            "name" : "locale",
+            "in" : "query",
+            "type" : "string",
+            "description" : ""
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "headers" : {
+            },
+            "description" : "Success"
+          },
+          "default" : {
+            "description" : "Unexpected error."
+          }
+        }
+      }
+    }
+  }
+}
