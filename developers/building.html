@@ -7,7 +7,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="Date-Creation-yyyymmdd" content="20120119" />
+    <meta name="Date-Creation-yyyymmdd" content="20170801" />
     <meta http-equiv="Content-Language" content="en" />
     <title>Archiva &#x2013; Building Archiva</title>
     <link rel="stylesheet" href="../css/apache-maven-fluido-1.6.min.css" />
@@ -25,6 +25,11 @@
         </script>
       </head>
     <body class="topBarEnabled">
+                      <a href="https://github.com/apache/archiva">
+      <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
+        alt="Fork me on GitHub">
+    </a>
       <div id="topbar" class="navbar navbar-fixed-top ">
       <div class="navbar-inner">
             <div class="container"><div class="nav-collapse">
@@ -115,7 +120,7 @@
         <li class=""><a href="http://www.apache.org/" class="externalLink" title="Apache">Apache</a><span class="divider">/</span></li>
       <li class=""><a href="../index.html" title="Archiva">Archiva</a><span class="divider">/</span></li>
     <li class="active ">Building Archiva</li>
-        <li id="publishDate" class="pull-right">Last Published: 17 Jun 2017</li>
+        <li id="publishDate" class="pull-right">Last Published: 07 Apr 2018</li>
         </ul>
       </div>
         <div id="bodyColumn" >
@@ -129,9 +134,14 @@
 <p>After the build completes, you can find the Archiva distribution in <tt>archiva-jetty/target</tt> and the Archiva webapp in <tt>archiva-modules/archiva-web/archiva-webapp/target</tt></p>
 <p>Usually, it's that simple. :) Occasionally, Archiva may depend on a snapshot of another project such as <a class="externalLink" href="http://archiva.apache.org/redback">Redback</a>, and you may need to build that first, or configure a snapshot repository. If you're having trouble building Archiva, ask on the <a href="../mail-lists.html">Development mailing list</a> and we'll point you in the right direction.</p></div>
 <div class="section">
+<h2><a name="Merging_Github_Pull_requests"></a>Merging Github Pull requests</h2>
+<p>When somebody creates a pull request for archiva on github an email is sent to the developer list.</p>
+<p>First review the changes and check for style and impact of the changes. And check the build on the jenkins server for this pull request (archiva-master-build-pr-builder).</p>
+<p>We have moved to gitbox, so merging the PR should be done on the github web site by using the PR merge features.</p></div>
+<div class="section">
 <h2><a name="Documentation"></a>Documentation</h2>
 <p>The version-specific documentation for the latest version of Archiva can be found in <tt>archiva/archiva-docs</tt>, and the top-level Archiva website --including the page you're reading now -- is in the <tt>site</tt> directory.</p>
-<p>To work on the documentation, execute <tt>mvn site:run</tt> in one of these directories, and then visit http://localhost:8080 to view pages as you edit them. When you're done, submit a patch in the <a href="../issue-tracking.html">issue tracker</a>.</p></div>
+<p>To work on the documentation, execute <tt>mvn site:run</tt> in one of these directories, and then visit <a class="externalLink" href="http://localhost:8080">http://localhost:8080</a> to view pages as you edit them. When you're done, submit a patch in the <a href="../issue-tracking.html">issue tracker</a>.</p></div>
 <div class="section">
 <h2><a name="git_clone"></a>git clone</h2>
 <div class="source"><pre class="prettyprint">git clone git://github.com/apache/archiva.git
@@ -140,10 +150,16 @@ git clone https://github.com/apache/archiva.git</pre></div></div>
 <div class="section">
 <h2><a name="Running_Javascript_webapp_with_jetty-maven-plugin"></a>Running Javascript webapp with jetty-maven-plugin</h2>
 <p>You can use <a class="externalLink" href="https://www.eclipse.org/jetty/documentation/current/maven-and-jetty.html">jetty-maven-plugin</a> to run the webapp without installing the war in a container. With maven3 in the top directory :</p>
-<div class="source"><pre class="prettyprint">mvn jetty:run -pl :archiva-webapp -am (use mvnDebug if you want to attach a debugger)
+<div class="source"><pre class="prettyprint">mvn jetty:run -pl :archiva-webapp -am # use mvnDebug if you want to attach a debugger
 or
-sh ./jetty.sh (use sh ./jetty-debug.sh if you want to attach a debugger)</pre></div>
-<p>Hit your browser : http://localhost:9091/archiva/index.html</p></div>
+sh ./jetty.sh # use sh ./jetty-debug.sh if you want to attach a debugger</pre></div>
+<p>Hit your browser: <a class="externalLink" href="http://localhost:9091/archiva/index.html">http://localhost:9091/archiva/index.html</a></p></div>
+<div class="section">
+<h2><a name="Running_the_selenium_tests_Web_UI_tests_locally"></a>Running the selenium tests (Web UI tests) locally</h2>
+<p>The selenium tests use docker containers for the selenium and browser installation. To run the tests locally you should have docker installed on your developer machine. The docker container can be built locally or pulled from the apachearchiva Dockerhub repository. To start the docker container, run the following script:</p>
+<div class="source"><pre class="prettyprint">  ./src/ci/scripts/container_webtest.sh start</pre></div>
+<p>The UI tests can be run with:</p>
+<div class="source"><pre class="prettyprint">mvn clean install -DmaxWaitTimeInMs=2000 -DseleniumRemote=true -Pci-server -Pit-js -Pchrome -pl :archiva-webapp-test</pre></div></div>
         </div>
     </div>
     <hr/>
@@ -151,14 +167,19 @@ sh ./jetty.sh (use sh ./jetty-debug.sh if you want to attach a debugger)</pre></
       <div class="container">
         <div class="row">
 <div class="row pull-left">Apache Archiva, Archiva, Apache, the Apache feather logo, and the Apache Archiva project logos are trademarks of The Apache Software Foundation.</div>
-      <div class="row pull-left">
+      <div class="row">
+        &nbsp;
+      </div>
+      <div class="row">
+      <p>
         <a href="http://archiva.apache.org/privacy-policy.html">Privacy Policy</a>
+        </p>
       </div>
         </div>
         <p id="poweredBy" class="pull-right">  <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy"><img class="builtBy" alt="Built by Maven" src="../images/logos/maven-feather.png" /></a>
   </p>
                           <div id="ohloh" class="pull-right">
-      <script type="text/javascript" src="https://www.ohloh.net/p/6670/widgets/project_basic_stats.js"></script>
+      <script type="text/javascript" src="https://www.ohloh.net/p/6670/widgets/project_thin_badge.js"></script>
     </div>
         </div>
     </footer>

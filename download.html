@@ -24,6 +24,11 @@
         </script>
       </head>
     <body class="topBarEnabled">
+                      <a href="https://github.com/apache/archiva">
+      <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
+        alt="Fork me on GitHub">
+    </a>
       <div id="topbar" class="navbar navbar-fixed-top ">
       <div class="navbar-inner">
             <div class="container"><div class="nav-collapse">
@@ -114,7 +119,7 @@
         <li class=""><a href="http://www.apache.org/" class="externalLink" title="Apache">Apache</a><span class="divider">/</span></li>
       <li class=""><a href="index.html" title="Archiva">Archiva</a><span class="divider">/</span></li>
     <li class="active ">Download Apache Archiva</li>
-        <li id="publishDate" class="pull-right">Last Published: 17 Jun 2017</li>
+        <li id="publishDate" class="pull-right">Last Published: 07 Apr 2018</li>
         </ul>
       </div>
         <div id="bodyColumn" >
@@ -231,11 +236,13 @@
                 
 <th>Archiva 2.2.3 </th>
                 
-<th>Mirrors</th>
+<th>File-Type</th>
                 
 <th>MD5 Checksum</th>
                 
 <th>SHA1 Checksum</th>
+                
+<th>SHA256 Checksum</th>
                 
 <th>Signature</th>
               </tr>
@@ -252,6 +259,8 @@
                 
 <td><a class="externalLink" href="http://www.apache.org/dist/archiva/2.2.3/binaries/apache-archiva-2.2.3-bin.tar.gz.sha1">sha1</a></td>
                 
+<td><a class="externalLink" href="http://www.apache.org/dist/archiva/2.2.3/binaries/apache-archiva-2.2.3-bin.tar.gz.sha256">sha256</a></td>
+                
 <td><a class="externalLink" href="http://www.apache.org/dist/archiva/2.2.3/binaries/apache-archiva-2.2.3-bin.tar.gz.asc">asc</a></td>
               </tr>
               
@@ -264,6 +273,8 @@
 <td><a class="externalLink" href="http://www.apache.org/dist/archiva/2.2.3/binaries/apache-archiva-2.2.3-bin.zip.md5">md5</a></td>
                 
 <td><a class="externalLink" href="http://www.apache.org/dist/archiva/2.2.3/binaries/apache-archiva-2.2.3-bin.zip.sha1">sha1</a></td>
+                
+<td><a class="externalLink" href="http://www.apache.org/dist/archiva/2.2.3/binaries/apache-archiva-2.2.3-bin.zip.sha256">sha256</a></td>
                 
 <td><a class="externalLink" href="http://www.apache.org/dist/archiva/2.2.3/binaries/apache-archiva-2.2.3-bin.zip.asc">asc</a></td>
               </tr>
@@ -278,6 +289,8 @@
                 
 <td><a class="externalLink" href="http://www.apache.org/dist/archiva/2.2.3/binaries/apache-archiva-2.2.3.war.sha1">sha1</a></td>
                 
+<td><a class="externalLink" href="http://www.apache.org/dist/archiva/2.2.3/binaries/apache-archiva-2.2.3.war.sha256">sha256</a></td>
+                
 <td><a class="externalLink" href="http://www.apache.org/dist/archiva/2.2.3/binaries/apache-archiva-2.2.3.war.asc">asc</a></td>
               </tr>
               
@@ -290,6 +303,8 @@
 <td><a class="externalLink" href="http://www.apache.org/dist/archiva/2.2.3/src/apache-archiva-2.2.3-src.zip.md5">md5</a></td>
                 
 <td><a class="externalLink" href="http://www.apache.org/dist/archiva/2.2.3/src/apache-archiva-2.2.3-src.zip.sha1">sha1</a></td>
+                
+<td><a class="externalLink" href="http://www.apache.org/dist/archiva/2.2.3/src/apache-archiva-2.2.3-src.zip.sha256">sha256</a></td>
                 
 <td><a class="externalLink" href="http://www.apache.org/dist/archiva/2.2.3/src/apache-archiva-2.2.3-src.zip.asc">asc</a></td>
               </tr>
@@ -314,7 +329,7 @@
 <h3><a name="Verify_the_integrity_of_the_files"></a>Verify the integrity of the files</h3>
         
 <p>
-          We recommend that you verify the integrity of the downloaded files using the PGP signatures and MD5 checksums.
+          We recommend that you verify the integrity of the downloaded files using the PGP signatures and SHA, MD5 checksums.
 
           The PGP signatures can be verified using PGP or GPG. First download the <a class="externalLink" href="http://www.apache.org/dist/archiva/KEYS">KEYS</a>
           as well as the asc signature file for the particular distribution. Make sure you get these files from
@@ -336,10 +351,10 @@
           </pre></div>
         
 <p>
-          You can also verify the MD5 signature on the files. A Unix program called md5 or md5sum is included in many
+          Please use the SHA checksum for verification if available, use MD5 only for the older versions, that have no SHA checksum available.
+          To verify the SHA signature on the files, you can use utilities for your platform. A Unix program called sha1sum or sha256sum (md5sum) is included in many
           Unix distributions. It is also available as part of <a class="externalLink" href="http://www.gnu.org/software/coreutils/">GNU Coreutils</a>.
-          Windows users can get binary md5 programs from <a class="externalLink" href="http://www.fourmilab.ch/md5/">Fourmilab</a>,
-          <a class="externalLink" href="http://www.pc-tools.net/win32/md5sums">PC-Tools</a> or <a class="externalLink" href="http://www.slavasoft.com/fsum/">SlavaSoft</a>
+          Windows users can get binary checksum utility e.g. from <a class="externalLink" href="http://www.slavasoft.com/hashcalc/">SlavaSoft</a>.
         </p>
       </div>
     </div>
@@ -352,14 +367,19 @@
       <div class="container">
         <div class="row">
 <div class="row pull-left">Apache Archiva, Archiva, Apache, the Apache feather logo, and the Apache Archiva project logos are trademarks of The Apache Software Foundation.</div>
-      <div class="row pull-left">
+      <div class="row">
+        &nbsp;
+      </div>
+      <div class="row">
+      <p>
         <a href="http://archiva.apache.org/privacy-policy.html">Privacy Policy</a>
+        </p>
       </div>
         </div>
         <p id="poweredBy" class="pull-right">  <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy"><img class="builtBy" alt="Built by Maven" src="./images/logos/maven-feather.png" /></a>
   </p>
                           <div id="ohloh" class="pull-right">
-      <script type="text/javascript" src="https://www.ohloh.net/p/6670/widgets/project_basic_stats.js"></script>
+      <script type="text/javascript" src="https://www.ohloh.net/p/6670/widgets/project_thin_badge.js"></script>
     </div>
         </div>
     </footer>

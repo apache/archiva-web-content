@@ -24,6 +24,11 @@
         </script>
       </head>
     <body class="topBarEnabled">
+                      <a href="https://github.com/apache/archiva">
+      <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
+        alt="Fork me on GitHub">
+    </a>
       <div id="topbar" class="navbar navbar-fixed-top ">
       <div class="navbar-inner">
             <div class="container"><div class="nav-collapse">
@@ -114,7 +119,7 @@
         <li class=""><a href="http://www.apache.org/" class="externalLink" title="Apache">Apache</a><span class="divider">/</span></li>
       <li class=""><a href="../index.html" title="Archiva">Archiva</a><span class="divider">/</span></li>
     <li class="active ">Archiva Sites Publishing</li>
-        <li id="publishDate" class="pull-right">Last Published: 17 Jun 2017</li>
+        <li id="publishDate" class="pull-right">Last Published: 07 Apr 2018</li>
         </ul>
       </div>
         <div id="bodyColumn" >
@@ -126,7 +131,7 @@
 <p>Each site checks out the production site data into the <tt>site-publish</tt> directory of the current project, to avoid being cleaned as part of the build. It is ignored by <tt>svn</tt> operations, but you should ensure that the checkout is clean if you ever cancel or have a failure during a publish operation. You can check it is clean by ensuring there is no data from <tt>git status</tt> in that directory, or by removing it and having it get checked out again.</p>
 <div class="section">
 <h3><a name="Editing_and_Publishing_the_Main_Site"></a>Editing and Publishing the Main Site</h3>
-<p>The site displayed at the root of <a class="externalLink" href="http://archiva.apache.org">http://archiva.apache.org</a> (where you are reading this) has its source code in Git at <a class="externalLink" href="https://git-wip-us.apache.org/repos/asf/archiva-site.git">https://git-wip-us.apache.org/repos/asf/archiva-site.git</a>.</p>
+<p>The site displayed at the root of <a class="externalLink" href="http://archiva.apache.org">http://archiva.apache.org</a> (where you are reading this) has its source code in Git at <a class="externalLink" href="https://gitbox.apache.org/repos/asf/archiva-site.git">https://gitbox.apache.org/repos/asf/archiva-site.git</a>.</p>
 <p>To edit and publish the site, do the following:</p>
 <ol style="list-style-type: decimal">
 <li>Checkout the source code from Git (if you follow the instructions in <a href="./building.html"> Building Archiva</a>, you know how to have it.</li>
@@ -139,7 +144,7 @@
 <p>Note that since the main site also contains the (large!) <tt>docs</tt> and <tt>ref</tt> directories in the <tt>site-publish</tt> directory, there is a special <tt>setup-checkout</tt> profile in place to get the initial checkout without those directories. This will normally be activated whenever the <tt>site-publish</tt> directory is missing - if you happen to have active profiles from your <tt>settings.xml</tt> you may need to enable it explicitly whenever you do a deployment and that checkout is missing: <tt>mvn site-deploy -Psetup-checkout</tt> </p></div>
 <div class="section">
 <h3><a name="Editing_and_Publishing_the_Archiva_Documentation"></a>Editing and Publishing the Archiva Documentation</h3>
-<p>The documentation displayed under the subdirectories of <a class="externalLink" href="http://archiva.apache.org/docs/">http://archiva.apache.org/docs/</a> has its source code in Git at <a class="externalLink" href="https://git-wip-us.apache.org/repos/asf/archiva.git">https://git-wip-us.apache.org/repos/asf/archiva.git</a> directory archiva-docs, which is part of the main project checkout.</p>
+<p>The documentation displayed under the subdirectories of <a class="externalLink" href="http://archiva.apache.org/docs/">http://archiva.apache.org/docs/</a> has its source code in Git at <a class="externalLink" href="https://gitbox.apache.org/repos/asf/archiva.git">https://gitbox.apache.org/repos/asf/archiva.git</a> directory archiva-docs, which is part of the main project checkout.</p>
 <p>The instructions for managing the documentation is the same as for the main site, being published from the directory using:</p>
 <div>
 <pre>mvn site-deploy</pre></div>
@@ -188,14 +193,19 @@ sh ./deploySite.sh</pre></div></div></div>
       <div class="container">
         <div class="row">
 <div class="row pull-left">Apache Archiva, Archiva, Apache, the Apache feather logo, and the Apache Archiva project logos are trademarks of The Apache Software Foundation.</div>
-      <div class="row pull-left">
+      <div class="row">
+        &nbsp;
+      </div>
+      <div class="row">
+      <p>
         <a href="http://archiva.apache.org/privacy-policy.html">Privacy Policy</a>
+        </p>
       </div>
         </div>
         <p id="poweredBy" class="pull-right">  <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy"><img class="builtBy" alt="Built by Maven" src="../images/logos/maven-feather.png" /></a>
   </p>
                           <div id="ohloh" class="pull-right">
-      <script type="text/javascript" src="https://www.ohloh.net/p/6670/widgets/project_basic_stats.js"></script>
+      <script type="text/javascript" src="https://www.ohloh.net/p/6670/widgets/project_thin_badge.js"></script>
     </div>
         </div>
     </footer>
