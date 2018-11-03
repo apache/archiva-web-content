@@ -41,7 +41,7 @@
       <li class=""><a href="../../index.html" title="Apache Archiva">Apache Archiva</a><span class="divider">/</span></li>
       <li class=""><a href="../../../../index.html" title="Apache Archiva">Apache Archiva</a><span class="divider">/</span></li>
     <li class="active ">Using REST Services</li>
-        <li id="publishDate" class="pull-right"><span class="divider">|</span> Last Published: 2017-06-13</li>
+        <li id="publishDate" class="pull-right"><span class="divider">|</span> Last Published: 2018-11-03</li>
           <li id="projectVersion" class="pull-right">Version: 3.0.0-SNAPSHOT</li>
         </ul>
       </div>
@@ -140,7 +140,7 @@ if ( authzHeader != null )
     WebClient.client( service ).header( &quot;Authorization&quot;, authzHeader );
 }
 // Set the Referer header to your archiva server url
-WebClient.client(service).header(&quot;Referer&quot;,&quot;http://localhost:&quot;+port);
+WebClient.client(service).header(&quot;Referer&quot;,&quot;http://localhost:&quot;+getServerPort());
 // to configure read timeout
 WebClient.getConfig( service ).getHttpConduit().getClient().setReceiveTimeout( 100000000 );
 // if you want to use json as exchange format xml is supported too
@@ -204,7 +204,7 @@ Boolean res = repositoriesService.copyArtifact( artifactTransferRequest );
             WebClient.client( service ).header( &quot;Authorization&quot;, authzHeader );
         }
         // Set the Referer header to your archiva server url
-        WebClient.client(service).header(&quot;Referer&quot;,&quot;http://localhost:&quot;+port);
+        WebClient.client(service).header(&quot;Referer&quot;,&quot;http://localhost:&quot;+getServerPort());
 
         WebClient.getConfig( service ).getHttpConduit().getClient().setReceiveTimeout( 100000000 );
         if ( useXml )

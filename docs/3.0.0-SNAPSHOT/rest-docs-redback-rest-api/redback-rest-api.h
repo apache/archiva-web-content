@@ -21,8 +21,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 2.1
-
+ *  @since 2.1
  */
 @interface REDBACK_REST_APINS0LdapGroupMapping : NSObject <EnunciateXML>
 {
@@ -58,8 +57,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 2.0
-
+ *  @since 2.0
  */
 @interface REDBACK_REST_APINS0LoginRequest : NSObject <EnunciateXML>
 {
@@ -95,8 +93,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 1.4
-
+ *  @since 1.4
  */
 @interface REDBACK_REST_APINS0Permission : NSObject <EnunciateXML>
 {
@@ -143,7 +140,6 @@
 
 /**
  *  @author Olivier Lamy
-
  */
 @interface REDBACK_REST_APINS0ResetPasswordRequest : NSObject
 {
@@ -179,8 +175,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 1.4
-
+ *  @since 1.4
  */
 @interface REDBACK_REST_APINS0Role : NSObject <EnunciateXML>
 {
@@ -315,10 +310,9 @@
 
 /**
  *  jaxrs fail to return List {@link String} so use this contains for rest services returning that
-
- @author Olivier Lamy
- @since 2.1
-
+ * 
+ *  @author Olivier Lamy
+ *  @since 2.1
  */
 @interface REDBACK_REST_APINS0StringList : NSObject <EnunciateXML>
 {
@@ -343,8 +337,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 2.0
-
+ *  @since 2.0
  */
 @interface REDBACK_REST_APINS0UserRegistrationRequest : NSObject <EnunciateXML>
 {
@@ -580,8 +573,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 2.0
-
+ *  @since 2.0
  */
 @interface REDBACK_REST_APINS0RoleTemplate : NSObject <EnunciateXML>
 {
@@ -661,8 +653,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 1.4
-
+ *  @since 1.4
  */
 @interface REDBACK_REST_APINS0Resource : NSObject <EnunciateXML>
 {
@@ -709,8 +700,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 1.4
-
+ *  @since 1.4
  */
 @interface REDBACK_REST_APINS0RegistrationKey : NSObject <EnunciateXML>
 {
@@ -735,8 +725,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 1.4
-
+ *  @since 1.4
  */
 @interface REDBACK_REST_APINS0Operation : NSObject <EnunciateXML>
 {
@@ -783,7 +772,6 @@
 
 /**
  *  @author Olivier Lamy
-
  */
 @interface REDBACK_REST_APINS0LdapGroupMappingUpdateRequest : NSObject <EnunciateXML>
 {
@@ -808,8 +796,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 2.0
-
+ *  @since 2.0
  */
 @interface REDBACK_REST_APINS0ApplicationRoles : NSObject <EnunciateXML>
 {
@@ -878,7 +865,6 @@
 
 /**
  *  @author Olivier Lamy
-
  */
 @interface REDBACK_REST_APINS0Application : NSObject <EnunciateXML>
 {

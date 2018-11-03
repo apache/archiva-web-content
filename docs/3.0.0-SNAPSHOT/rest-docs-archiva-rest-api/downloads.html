@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-  <title>Archiva Web :: REST support :: Api: Files and Libraries</title>
+  <title>Apache Archiva REST API: Files and Libraries</title>
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
 
   <!--custom css for these pages-->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/enunciate.css">
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.css" type="text/css">
 
@@ -31,7 +31,7 @@
   <header>
  
    <div id="header" class="column first last span-20">
-        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">Archiva Web :: REST support :: Api: Files and Libraries</a></div>
+        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">Apache Archiva REST API: Files and Libraries</a></div>
         <div id="primary" class="column span-18 append-1 prepend-1 first last">
           <ul class="navigation">
             <li id="nav-rest"><a href="resources.html">REST</a></li>
@@ -60,7 +60,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Archiva Web :: REST support :: Api: Files and Libraries</a>
+        <a class="navbar-brand" href="index.html">Apache Archiva REST API: Files and Libraries</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
@@ -76,8 +76,64 @@
   
   <h1 class="page-header">Files and Libraries</h1>
 
+  <h3 id="artifact_java_json_client_library">Java JSON Client Library</h3>
+  <p class="lead">Created November 3, 2018</p>
+  <p><p>
+  The Java client-side library is used to provide the set of Java objects that can be serialized
+  to/from JSON using <a href="http://jackson.codehaus.org/">Jackson</a>.  This is useful for accessing the
+  JSON REST endpoints that are published by this application.
+</p>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Resources Example (Raw JAXB)</div>
+  <div class="panel-body">
+    <pre class="prettyprint lang-java">
+java.net.URL url = new java.net.URL(baseURL + "/archivaRuntimeConfigurationService/archivaRuntimeConfiguration");
+ObjectMapper mapper = new ObjectMapper();
+java.net.URLConnection connection = url.openConnection();
+connection.setDoOutput(true);
+connection.connect();
+
+mapper.writeValue(connection.getOutputStream(), archivaRuntimeConfiguration);
+Object result = (Object) mapper.readValue( connection.getInputStream(), Object.class );
+//handle the result as needed...
+    </pre>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Resources Example (Jersey client)</div>
+  <div class="panel-body">
+    <pre class="prettyprint lang-java">
+javax.ws.rs.client.Client client = javax.ws.rs.client.ClientBuilder.newClient();
+
+Object result = client.target(baseUrl + "/archivaRuntimeConfigurationService/archivaRuntimeConfiguration")
+  .put(javax.ws.rs.client.Entity.entity(archivaRuntimeConfiguration, "application/json"), Object.class);
+
+//handle the result as needed...
+    </pre>
+  </div>
+</div>
+</p>
+  <table class="table table-hover">
+    <caption>Files</caption>
+    <thead>
+    <tr>
+      <th>name</th>
+      <th>size</th>
+      <th>description</th>
+    </tr>
+    </thead>
+    <tbody data-link="row" class="rowlink">
+    <tr class="clickable-row" data-href="archiva-rest-api-json-client-json-sources.jar">
+      <td>archiva-rest-api-json-client-json-sources.jar</td>
+      <td>46,17K</td>
+      <td>The sources for the Java JSON client library.</td>
+    </tr>
+    </tbody>
+  </table>
   <h3 id="artifact_java_xml_client_library">Java XML Client Library</h3>
-  <p class="lead">Created 13. Juni 2017</p>
+  <p class="lead">Created November 3, 2018</p>
   <p><p>
   The Java client-side library is used to access the Web service API for this application using Java.
 </p>
@@ -133,53 +189,49 @@ Object result = client.target(baseUrl + "/archivaRuntimeConfigurationService/arc
     <tbody data-link="row" class="rowlink">
     <tr class="clickable-row" data-href="archiva-rest-api-xml-client.jar">
       <td>archiva-rest-api-xml-client.jar</td>
-      <td>53,62K</td>
+      <td>51,19K</td>
       <td>The binaries for the Java XML client library.</td>
     </tr>
     <tr class="clickable-row" data-href="archiva-rest-api-xml-client-xml-sources.jar">
       <td>archiva-rest-api-xml-client-xml-sources.jar</td>
-      <td>44,96K</td>
+      <td>42,20K</td>
       <td>The sources for the Java XML client library.</td>
     </tr>
     </tbody>
   </table>
-  <h3 id="artifact_php_xml_client_library">PHP XML Client Library</h3>
-  <p class="lead">Created 13. Juni 2017</p>
+  <h3 id="artifact_js_client_library">JavaScript Client Library</h3>
+  <p class="lead">Created November 3, 2018</p>
   <p><p>
-  The PHP client-side library defines the PHP classes that can be (de)serialized to/from XML.
+  The JavaScript client-side library defines classes that can be (de)serialized to/from JSON.
   This is useful for accessing the resources that are published by this application, but only
-  those that produce a XML representation of their resources.
+  those that produce a JSON representation of their resources (content type "application/json").
 </p>
-
 <p>
-  This library leverages the <a href="http://php.net/manual/en/book.xmlreader.php">XMLReader</a> and
-  <a href="http://php.net/manual/en/book.xmlwriter.php">XMLWriter</a> tools that were included in PHP
-  versions 5.1.0+.
+  The library uses ES6 class syntax which has limited support. See 
+  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#Browser_compatibility">MDN</a>
+  and the <a href="https://kangax.github.io/compat-table/es6/">ES6 Compatibility Table</a>
+  for more details.
 </p>
-
+<p>
+  The library contains a UMD loader which supports AMD, CommonJS and browser globals.
+  The browser global variable name for this library is "javascriptClient".
+</p>
 
 <div class="panel panel-default">
-  <div class="panel-heading">PHP XML Example</div>
+  <div class="panel-heading">JavaScript Example</div>
   <div class="panel-body">
-    <pre class="prettyprint lang-php">
-//read the resource in XML form:
-$xml = ...;
+    <pre class="prettyprint lang-js">
+//read the resource in JSON:
+var json = JSON.parse(jsonString);
 
-$reader = new \XMLReader();
+//create an object
+var object = new Object(json);
 
-if (!$reader->open($xml)) {
-  throw new \Exception('Unable to open ' . $xml);
-}
-$result = new Object($reader);
+//retreive the json again
+var newJson = object.toJSON();
 
-//open a writer for the xml
-$out = ...;
-$writer = new \XMLWriter();
-$writer->openUri($out);
-$writer->startDocument();
-$writer->setIndent(4);
-$result->toXml($writer);
-$writer->flush();
+//serialize the json
+var newJsonString = JSON.stringify(newJson);
     </pre>
   </div>
 </div>
@@ -194,9 +246,9 @@ $writer->flush();
     </tr>
     </thead>
     <tbody data-link="row" class="rowlink">
-    <tr class="clickable-row" data-href="archiva-rest-api-php.zip">
-      <td>archiva-rest-api-php.zip</td>
-      <td>23,00K</td>
+    <tr class="clickable-row" data-href="archiva-rest-api-js.zip">
+      <td>archiva-rest-api-js.zip</td>
+      <td>18,29K</td>
       <td>&nbsp;</td>
     </tr>
     </tbody>

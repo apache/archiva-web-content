@@ -4,8 +4,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 2.1
-
+ *  @since 2.1
  */
 @implementation REDBACK_REST_APINS0LdapGroupMapping
 
@@ -437,8 +436,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 2.0
-
+ *  @since 2.0
  */
 @implementation REDBACK_REST_APINS0LoginRequest
 
@@ -860,8 +858,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 1.4
-
+ *  @since 1.4
  */
 @implementation REDBACK_REST_APINS0Permission
 
@@ -1339,7 +1336,6 @@
 
 /**
  *  @author Olivier Lamy
-
  */
 @implementation REDBACK_REST_APINS0ResetPasswordRequest
 
@@ -1602,8 +1598,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 1.4
-
+ *  @since 1.4
  */
 @implementation REDBACK_REST_APINS0Role
 
@@ -2599,10 +2594,9 @@
 
 /**
  *  jaxrs fail to return List {@link String} so use this contains for rest services returning that
-
- @author Olivier Lamy
- @since 2.1
-
+ * 
+ *  @author Olivier Lamy
+ *  @since 2.1
  */
 @implementation REDBACK_REST_APINS0StringList
 
@@ -2978,8 +2972,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 2.0
-
+ *  @since 2.0
  */
 @implementation REDBACK_REST_APINS0UserRegistrationRequest
 
@@ -4672,8 +4665,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 2.0
-
+ *  @since 2.0
  */
 @implementation REDBACK_REST_APINS0RoleTemplate
 
@@ -5329,8 +5321,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 1.4
-
+ *  @since 1.4
  */
 @implementation REDBACK_REST_APINS0Resource
 
@@ -5808,8 +5799,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 1.4
-
+ *  @since 1.4
  */
 @implementation REDBACK_REST_APINS0RegistrationKey
 
@@ -6175,8 +6165,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 1.4
-
+ *  @since 1.4
  */
 @implementation REDBACK_REST_APINS0Operation
 
@@ -6654,7 +6643,6 @@
 
 /**
  *  @author Olivier Lamy
-
  */
 @implementation REDBACK_REST_APINS0LdapGroupMappingUpdateRequest
 
@@ -7030,8 +7018,7 @@
 
 /**
  *  @author Olivier Lamy
- @since 2.0
-
+ *  @since 2.0
  */
 @implementation REDBACK_REST_APINS0ApplicationRoles
 
@@ -7651,7 +7638,6 @@
 
 /**
  *  @author Olivier Lamy
-
  */
 @implementation REDBACK_REST_APINS0Application
 
