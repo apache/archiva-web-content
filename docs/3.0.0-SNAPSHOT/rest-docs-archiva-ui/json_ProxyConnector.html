@@ -112,6 +112,18 @@
         </tr>
         <tbody>
         <tr>
+          <td>policies</td>
+          <td>map of string
+</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>whiteListPatterns</td>
+          <td>array of string
+</td>
+          <td></td>
+        </tr>
+        <tr>
           <td>targetRepoId</td>
           <td>string
 </td>
@@ -130,20 +142,8 @@
           <td></td>
         </tr>
         <tr>
-          <td>whiteListPatterns</td>
-          <td>array of string
-</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>policiesEntries</td>
+          <td>propertiesEntries</td>
           <td>array of <a href="json_PropertyEntry.html">PropertyEntry</a>
-</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>disabled</td>
-          <td>boolean
 </td>
           <td></td>
         </tr>
@@ -154,20 +154,20 @@
           <td></td>
         </tr>
         <tr>
-          <td>policies</td>
-          <td>map of string
+          <td>disabled</td>
+          <td>boolean
+</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>policiesEntries</td>
+          <td>array of <a href="json_PropertyEntry.html">PropertyEntry</a>
 </td>
           <td></td>
         </tr>
         <tr>
           <td>properties</td>
           <td>map of string
-</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>propertiesEntries</td>
-          <td>array of <a href="json_PropertyEntry.html">PropertyEntry</a>
 </td>
           <td></td>
         </tr>
@@ -178,10 +178,23 @@
 
       <pre class="prettyprint lang-js">{
   &quot;order&quot; : 12345,
+  &quot;policies&quot; : {
+    &quot;property1&quot; : &quot;...&quot;,
+    &quot;property2&quot; : &quot;...&quot;
+  },
+  &quot;whiteListPatterns&quot; : [ &quot;...&quot;, &quot;...&quot; ],
   &quot;targetRepoId&quot; : &quot;...&quot;,
   &quot;sourceRepoId&quot; : &quot;...&quot;,
   &quot;proxyId&quot; : &quot;...&quot;,
-  &quot;whiteListPatterns&quot; : [ &quot;...&quot;, &quot;...&quot; ],
+  &quot;propertiesEntries&quot; : [ {
+    &quot;key&quot; : &quot;...&quot;,
+    &quot;value&quot; : &quot;...&quot;
+  }, {
+    &quot;key&quot; : &quot;...&quot;,
+    &quot;value&quot; : &quot;...&quot;
+  } ],
+  &quot;blackListPatterns&quot; : [ &quot;...&quot;, &quot;...&quot; ],
+  &quot;disabled&quot; : true,
   &quot;policiesEntries&quot; : [ {
     &quot;key&quot; : &quot;...&quot;,
     &quot;value&quot; : &quot;...&quot;
@@ -189,23 +202,10 @@
     &quot;key&quot; : &quot;...&quot;,
     &quot;value&quot; : &quot;...&quot;
   } ],
-  &quot;disabled&quot; : true,
-  &quot;blackListPatterns&quot; : [ &quot;...&quot;, &quot;...&quot; ],
-  &quot;policies&quot; : {
-    &quot;property1&quot; : &quot;...&quot;,
-    &quot;property2&quot; : &quot;...&quot;
-  },
   &quot;properties&quot; : {
     &quot;property1&quot; : &quot;...&quot;,
     &quot;property2&quot; : &quot;...&quot;
-  },
-  &quot;propertiesEntries&quot; : [ {
-    &quot;key&quot; : &quot;...&quot;,
-    &quot;value&quot; : &quot;...&quot;
-  }, {
-    &quot;key&quot; : &quot;...&quot;,
-    &quot;value&quot; : &quot;...&quot;
-  } ]
+  }
 }</pre>
         
         <footer>

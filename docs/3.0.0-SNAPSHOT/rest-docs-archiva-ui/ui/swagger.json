@@ -119,15 +119,15 @@
       "type" : "object",
       "title" : "AbstractImplementationInformation",
           "properties" : {
-            "readOnly" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "boolean"
-            },
             "beanId" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
+            },
+            "readOnly" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
             },
             "descriptionKey" : {
             "readOnly" : false,
@@ -136,8 +136,8 @@
             }
           },
       "example" : {
-  "readOnly" : true,
   "beanId" : "...",
+  "readOnly" : true,
   "descriptionKey" : "..."
 },
       "description" : ""
@@ -147,17 +147,20 @@
       "type" : "object",
       "title" : "AbstractRepository",
           "properties" : {
-            "id" : {
+            "indexDirectory" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
+            },
+            "descriptions" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "object",
+"additionalProperties" : {
+  "type" : "string"
+}
             },
             "name" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "packedIndexDirectory" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
@@ -167,12 +170,12 @@
 "description" : "",
 "type" : "string"
             },
-            "indexDirectory" : {
+            "id" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
             },
-            "description" : {
+            "packedIndexDirectory" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
@@ -190,31 +193,28 @@
 "description" : "",
 "type" : "string"
             },
-            "descriptions" : {
+            "description" : {
             "readOnly" : false,
 "description" : "",
-"type" : "object",
-"additionalProperties" : {
-  "type" : "string"
-}
+"type" : "string"
             }
           },
       "example" : {
-  "id" : "...",
-  "name" : "...",
-  "packedIndexDirectory" : "...",
-  "layout" : "...",
   "indexDirectory" : "...",
-  "description" : "...",
+  "descriptions" : {
+    "property1" : "...",
+    "property2" : "..."
+  },
+  "name" : "...",
+  "layout" : "...",
+  "id" : "...",
+  "packedIndexDirectory" : "...",
   "names" : {
     "property1" : "...",
     "property2" : "..."
   },
   "type" : "...",
-  "descriptions" : {
-    "property1" : "...",
-    "property2" : "..."
-  }
+  "description" : "..."
 },
       "description" : ""
     }
@@ -223,6 +223,22 @@
       "type" : "object",
       "title" : "AbstractRepositoryConnector",
           "properties" : {
+            "policies" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "object",
+"additionalProperties" : {
+  "type" : "string"
+}
+            },
+            "whiteListPatterns" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "type" : "string"
+}
+            },
             "targetRepoId" : {
             "readOnly" : false,
 "description" : "",
@@ -238,26 +254,13 @@
 "description" : "",
 "type" : "string"
             },
-            "whiteListPatterns" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "array",
-"items" : {
-  "type" : "string"
-}
-            },
-            "policiesEntries" : {
+            "propertiesEntries" : {
             "readOnly" : false,
 "description" : "",
 "type" : "array",
 "items" : {
   "$ref" : "#/definitions/json_PropertyEntry"
 }
-            },
-            "disabled" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "boolean"
             },
             "blackListPatterns" : {
             "readOnly" : false,
@@ -267,12 +270,17 @@
   "type" : "string"
 }
             },
-            "policies" : {
+            "disabled" : {
             "readOnly" : false,
 "description" : "",
-"type" : "object",
-"additionalProperties" : {
-  "type" : "string"
+"type" : "boolean"
+            },
+            "policiesEntries" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_PropertyEntry"
 }
             },
             "properties" : {
@@ -282,21 +290,26 @@
 "additionalProperties" : {
   "type" : "string"
 }
-            },
-            "propertiesEntries" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "array",
-"items" : {
-  "$ref" : "#/definitions/json_PropertyEntry"
-}
             }
           },
       "example" : {
+  "policies" : {
+    "property1" : "...",
+    "property2" : "..."
+  },
+  "whiteListPatterns" : [ "...", "..." ],
   "targetRepoId" : "...",
   "sourceRepoId" : "...",
   "proxyId" : "...",
-  "whiteListPatterns" : [ "...", "..." ],
+  "propertiesEntries" : [ {
+    "key" : "...",
+    "value" : "..."
+  }, {
+    "key" : "...",
+    "value" : "..."
+  } ],
+  "blackListPatterns" : [ "...", "..." ],
+  "disabled" : true,
   "policiesEntries" : [ {
     "key" : "...",
     "value" : "..."
@@ -304,23 +317,10 @@
     "key" : "...",
     "value" : "..."
   } ],
-  "disabled" : true,
-  "blackListPatterns" : [ "...", "..." ],
-  "policies" : {
-    "property1" : "...",
-    "property2" : "..."
-  },
   "properties" : {
     "property1" : "...",
     "property2" : "..."
-  },
-  "propertiesEntries" : [ {
-    "key" : "...",
-    "value" : "..."
-  }, {
-    "key" : "...",
-    "value" : "..."
-  } ]
+  }
 },
       "description" : ""
     }
@@ -562,17 +562,7 @@
       "type" : "object",
       "title" : "Artifact",
           "properties" : {
-            "bundleExportService" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "version" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "packaging" : {
+            "bundleRequireBundle" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
@@ -582,12 +572,22 @@
 "description" : "",
 "type" : "string"
             },
-            "scope" : {
+            "groupId" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
             },
-            "context" : {
+            "bundleImportPackage" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "id" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "artifactId" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
@@ -597,7 +597,17 @@
 "description" : "",
 "type" : "string"
             },
-            "prefix" : {
+            "bundleExportPackage" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "size" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "version" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
@@ -607,7 +617,17 @@
 "description" : "",
 "type" : "string"
             },
-            "bundleRequireBundle" : {
+            "bundleName" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "classifier" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "bundleExportService" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
@@ -625,6 +645,26 @@
   "type" : "string"
 }
             },
+            "prefix" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "url" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "scope" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "packaging" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
             "bundleDescription" : {
             "readOnly" : false,
 "description" : "",
@@ -635,32 +675,12 @@
 "description" : "",
 "type" : "string"
             },
+            "context" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
             "path" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "bundleExportPackage" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "bundleImportPackage" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "groupId" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "size" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "url" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
@@ -670,59 +690,39 @@
 "description" : "",
 "type" : "string"
             },
-            "artifactId" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "id" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "classifier" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
             "type" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "bundleName" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
             }
           },
       "example" : {
-  "bundleExportService" : "...",
-  "version" : "...",
-  "packaging" : "...",
-  "bundleVersion" : "...",
-  "scope" : "...",
-  "context" : "...",
-  "fileExtension" : "...",
-  "prefix" : "...",
-  "bundleLicense" : "...",
   "bundleRequireBundle" : "...",
+  "bundleVersion" : "...",
+  "groupId" : "...",
+  "bundleImportPackage" : "...",
+  "id" : "...",
+  "artifactId" : "...",
+  "fileExtension" : "...",
+  "bundleExportPackage" : "...",
+  "size" : "...",
+  "version" : "...",
+  "bundleLicense" : "...",
+  "bundleName" : "...",
+  "classifier" : "...",
+  "bundleExportService" : "...",
   "repositoryId" : "...",
   "goals" : [ "...", "..." ],
+  "prefix" : "...",
+  "url" : "...",
+  "scope" : "...",
+  "packaging" : "...",
   "bundleDescription" : "...",
   "bundleDocUrl" : "...",
+  "context" : "...",
   "path" : "...",
-  "bundleExportPackage" : "...",
-  "bundleImportPackage" : "...",
-  "groupId" : "...",
-  "size" : "...",
-  "url" : "...",
   "bundleSymbolicName" : "...",
-  "artifactId" : "...",
-  "id" : "...",
-  "classifier" : "...",
-  "type" : "...",
-  "bundleName" : "..."
+  "type" : "..."
 },
       "description" : ""
     }
@@ -793,22 +793,7 @@
         },
         {
           "properties" : {
-            "version" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "projectVersion" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "project" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "md5" : {
+            "repositoryId" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
@@ -819,22 +804,7 @@
 "type" : "integer",
 "format" : "int64"
             },
-            "whenGathered" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "number"
-            },
             "sha1" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "repositoryId" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "namespace" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
@@ -848,34 +818,64 @@
             "readOnly" : false,
 "description" : "",
 "type" : "string"
+            },
+            "md5" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "whenGathered" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number"
+            },
+            "projectVersion" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "version" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "project" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "namespace" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
             }
           }
         }
       ],
       "example" : {
-  "version" : "...",
-  "projectVersion" : "...",
-  "project" : "...",
-  "md5" : "...",
-  "size" : 12345,
-  "whenGathered" : 12345,
-  "sha1" : "...",
   "repositoryId" : "...",
-  "namespace" : "...",
+  "size" : 12345,
+  "sha1" : "...",
   "fileLastModified" : 12345,
   "id" : "...",
+  "md5" : "...",
+  "whenGathered" : 12345,
+  "projectVersion" : "...",
+  "version" : "...",
+  "project" : "...",
+  "namespace" : "...",
+  "facets" : {
+    "property1" : { },
+    "property2" : { }
+  },
+  "facetIds" : [ "...", "..." ],
   "facetList" : [ {
     "name" : "...",
     "facetId" : "..."
   }, {
     "name" : "...",
     "facetId" : "..."
-  } ],
-  "facets" : {
-    "property1" : { },
-    "property2" : { }
-  },
-  "facetIds" : [ "...", "..." ]
+  } ]
 },
       "description" : ""
     }
@@ -899,32 +899,32 @@
       ],
       "example" : {
   "targetRepositoryId" : "...",
-  "bundleExportService" : "...",
-  "version" : "...",
-  "packaging" : "...",
-  "bundleVersion" : "...",
-  "scope" : "...",
-  "context" : "...",
-  "fileExtension" : "...",
-  "prefix" : "...",
-  "bundleLicense" : "...",
   "bundleRequireBundle" : "...",
+  "bundleVersion" : "...",
+  "groupId" : "...",
+  "bundleImportPackage" : "...",
+  "id" : "...",
+  "artifactId" : "...",
+  "fileExtension" : "...",
+  "bundleExportPackage" : "...",
+  "size" : "...",
+  "version" : "...",
+  "bundleLicense" : "...",
+  "bundleName" : "...",
+  "classifier" : "...",
+  "bundleExportService" : "...",
   "repositoryId" : "...",
   "goals" : [ "...", "..." ],
+  "prefix" : "...",
+  "url" : "...",
+  "scope" : "...",
+  "packaging" : "...",
   "bundleDescription" : "...",
   "bundleDocUrl" : "...",
+  "context" : "...",
   "path" : "...",
-  "bundleExportPackage" : "...",
-  "bundleImportPackage" : "...",
-  "groupId" : "...",
-  "size" : "...",
-  "url" : "...",
   "bundleSymbolicName" : "...",
-  "artifactId" : "...",
-  "id" : "...",
-  "classifier" : "...",
-  "type" : "...",
-  "bundleName" : "..."
+  "type" : "..."
 },
       "description" : ""
     }
@@ -1084,11 +1084,6 @@
       "type" : "object",
       "title" : "ChecksumSearch",
           "properties" : {
-            "checksum" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
             "repositories" : {
             "readOnly" : false,
 "description" : "",
@@ -1096,11 +1091,16 @@
 "items" : {
   "type" : "string"
 }
+            },
+            "checksum" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
             }
           },
       "example" : {
-  "checksum" : "...",
-  "repositories" : [ "...", "..." ]
+  "repositories" : [ "...", "..." ],
+  "checksum" : "..."
 },
       "description" : ""
     }
@@ -1109,20 +1109,20 @@
       "type" : "object",
       "title" : "CiManagement",
           "properties" : {
-            "system" : {
+            "url" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
             },
-            "url" : {
+            "system" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
             }
           },
       "example" : {
-  "system" : "...",
-  "url" : "..."
+  "url" : "...",
+  "system" : "..."
 },
       "description" : ""
     }
@@ -1207,17 +1207,7 @@
       "type" : "object",
       "title" : "Dependency",
           "properties" : {
-            "scope" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "optional" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "boolean"
-            },
-            "classifier" : {
+            "artifactId" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
@@ -1227,7 +1217,22 @@
 "description" : "",
 "type" : "string"
             },
-            "systemPath" : {
+            "version" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "optional" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            },
+            "scope" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "classifier" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
@@ -1237,26 +1242,21 @@
 "description" : "",
 "type" : "string"
             },
-            "version" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "artifactId" : {
+            "systemPath" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
             }
           },
       "example" : {
-  "scope" : "...",
-  "optional" : true,
-  "classifier" : "...",
+  "artifactId" : "...",
   "type" : "...",
-  "systemPath" : "...",
-  "groupId" : "...",
   "version" : "...",
-  "artifactId" : "..."
+  "optional" : true,
+  "scope" : "...",
+  "classifier" : "...",
+  "groupId" : "...",
+  "systemPath" : "..."
 },
       "description" : ""
     }
@@ -1287,14 +1287,6 @@
       "type" : "object",
       "title" : "FacetedMetadata",
           "properties" : {
-            "facetList" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "array",
-"items" : {
-  "$ref" : "#/definitions/json_MetadataFacet"
-}
-            },
             "facets" : {
             "readOnly" : false,
 "description" : "",
@@ -1310,21 +1302,29 @@
 "items" : {
   "type" : "string"
 }
+            },
+            "facetList" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_MetadataFacet"
+}
             }
           },
       "example" : {
+  "facets" : {
+    "property1" : { },
+    "property2" : { }
+  },
+  "facetIds" : [ "...", "..." ],
   "facetList" : [ {
     "name" : "...",
     "facetId" : "..."
   }, {
     "name" : "...",
     "facetId" : "..."
-  } ],
-  "facets" : {
-    "property1" : { },
-    "property2" : { }
-  },
-  "facetIds" : [ "...", "..." ]
+  } ]
 },
       "description" : ""
     }
@@ -1471,20 +1471,20 @@
       "type" : "object",
       "title" : "IssueManagement",
           "properties" : {
-            "system" : {
+            "url" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
             },
-            "url" : {
+            "system" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
             }
           },
       "example" : {
-  "system" : "...",
-  "url" : "..."
+  "url" : "...",
+  "system" : "..."
 },
       "description" : ""
     }
@@ -1625,6 +1625,11 @@
       "type" : "object",
       "title" : "LdapGroupMapping",
           "properties" : {
+            "group" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
             "roleNames" : {
             "readOnly" : false,
 "description" : "",
@@ -1632,16 +1637,11 @@
 "items" : {
   "type" : "string"
 }
-            },
-            "group" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
             }
           },
       "example" : {
-  "roleNames" : [ "...", "..." ],
-  "group" : "..."
+  "group" : "...",
+  "roleNames" : [ "...", "..." ]
 },
       "description" : ""
     }
@@ -1729,17 +1729,12 @@
 "description" : "",
 "type" : "string"
             },
-            "unsubscribeAddress" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
             "name" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
             },
-            "subscribeAddress" : {
+            "mainArchiveUrl" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
@@ -1752,7 +1747,12 @@
   "type" : "string"
 }
             },
-            "mainArchiveUrl" : {
+            "unsubscribeAddress" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "subscribeAddress" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
@@ -1760,11 +1760,11 @@
           },
       "example" : {
   "postAddress" : "...",
-  "unsubscribeAddress" : "...",
   "name" : "...",
-  "subscribeAddress" : "...",
+  "mainArchiveUrl" : "...",
   "otherArchives" : [ "...", "..." ],
-  "mainArchiveUrl" : "..."
+  "unsubscribeAddress" : "...",
+  "subscribeAddress" : "..."
 },
       "description" : ""
     }
@@ -1867,21 +1867,21 @@
     "stageRepoNeeded" : true,
     "resetStats" : true,
     "skipPackedIndexCreation" : true,
-    "id" : "...",
-    "name" : "...",
-    "packedIndexDirectory" : "...",
-    "layout" : "...",
     "indexDirectory" : "...",
-    "description" : "...",
+    "descriptions" : {
+      "property1" : "...",
+      "property2" : "..."
+    },
+    "name" : "...",
+    "layout" : "...",
+    "id" : "...",
+    "packedIndexDirectory" : "...",
     "names" : {
       "property1" : "...",
       "property2" : "..."
     },
     "type" : "...",
-    "descriptions" : {
-      "property1" : "...",
-      "property2" : "..."
-    }
+    "description" : "..."
   },
   "scanned" : true,
   "retentionPeriod" : 12345,
@@ -1890,21 +1890,21 @@
   "stageRepoNeeded" : true,
   "resetStats" : true,
   "skipPackedIndexCreation" : true,
-  "id" : "...",
-  "name" : "...",
-  "packedIndexDirectory" : "...",
-  "layout" : "...",
   "indexDirectory" : "...",
-  "description" : "...",
+  "descriptions" : {
+    "property1" : "...",
+    "property2" : "..."
+  },
+  "name" : "...",
+  "layout" : "...",
+  "id" : "...",
+  "packedIndexDirectory" : "...",
   "names" : {
     "property1" : "...",
     "property2" : "..."
   },
   "type" : "...",
-  "descriptions" : {
-    "property1" : "...",
-    "property2" : "..."
-  }
+  "description" : "..."
 },
       "description" : ""
     }
@@ -2086,20 +2086,20 @@
       "type" : "object",
       "title" : "Organization",
           "properties" : {
-            "name" : {
+            "url" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
             },
-            "url" : {
+            "name" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
             }
           },
       "example" : {
-  "name" : "...",
-  "url" : "..."
+  "url" : "...",
+  "name" : "..."
 },
       "description" : ""
     }
@@ -2150,27 +2150,6 @@
         },
         {
           "properties" : {
-            "properties" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "object",
-"additionalProperties" : {
-  "type" : "string"
-}
-            },
-            "description" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "licenses" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "array",
-"items" : {
-  "$ref" : "#/definitions/json_License"
-}
-            },
             "organization" : {
             "readOnly" : false,
 "$ref" : "#/definitions/json_Organization"
@@ -2180,17 +2159,50 @@
 "description" : "",
 "type" : "string"
             },
+            "url" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "properties" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "object",
+"additionalProperties" : {
+  "type" : "string"
+}
+            },
             "issueManagement" : {
             "readOnly" : false,
 "$ref" : "#/definitions/json_IssueManagement"
             },
-            "dependencies" : {
+            "incomplete" : {
             "readOnly" : false,
 "description" : "",
-"type" : "array",
-"items" : {
-  "$ref" : "#/definitions/json_Dependency"
-}
+"type" : "boolean"
+            },
+            "description" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "scm" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_Scm"
+            },
+            "ciManagement" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_CiManagement"
+            },
+            "version" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "id" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
             },
             "mailingLists" : {
             "readOnly" : false,
@@ -2200,43 +2212,87 @@
   "$ref" : "#/definitions/json_MailingList"
 }
             },
-            "id" : {
+            "dependencies" : {
             "readOnly" : false,
 "description" : "",
-"type" : "string"
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_Dependency"
+}
             },
-            "incomplete" : {
+            "licenses" : {
             "readOnly" : false,
 "description" : "",
-"type" : "boolean"
-            },
-            "ciManagement" : {
-            "readOnly" : false,
-"$ref" : "#/definitions/json_CiManagement"
-            },
-            "scm" : {
-            "readOnly" : false,
-"$ref" : "#/definitions/json_Scm"
-            },
-            "url" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "version" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_License"
+}
             }
           }
         }
       ],
       "example" : {
+  "organization" : {
+    "url" : "...",
+    "name" : "..."
+  },
+  "name" : "...",
+  "url" : "...",
   "properties" : {
     "property1" : "...",
     "property2" : "..."
   },
+  "issueManagement" : {
+    "url" : "...",
+    "system" : "..."
+  },
+  "incomplete" : true,
   "description" : "...",
+  "scm" : {
+    "developerConnection" : "...",
+    "url" : "...",
+    "connection" : "..."
+  },
+  "ciManagement" : {
+    "url" : "...",
+    "system" : "..."
+  },
+  "version" : "...",
+  "id" : "...",
+  "mailingLists" : [ {
+    "postAddress" : "...",
+    "name" : "...",
+    "mainArchiveUrl" : "...",
+    "otherArchives" : [ "...", "..." ],
+    "unsubscribeAddress" : "...",
+    "subscribeAddress" : "..."
+  }, {
+    "postAddress" : "...",
+    "name" : "...",
+    "mainArchiveUrl" : "...",
+    "otherArchives" : [ "...", "..." ],
+    "unsubscribeAddress" : "...",
+    "subscribeAddress" : "..."
+  } ],
+  "dependencies" : [ {
+    "artifactId" : "...",
+    "type" : "...",
+    "version" : "...",
+    "optional" : true,
+    "scope" : "...",
+    "classifier" : "...",
+    "groupId" : "...",
+    "systemPath" : "..."
+  }, {
+    "artifactId" : "...",
+    "type" : "...",
+    "version" : "...",
+    "optional" : true,
+    "scope" : "...",
+    "classifier" : "...",
+    "groupId" : "...",
+    "systemPath" : "..."
+  } ],
   "licenses" : [ {
     "name" : "...",
     "url" : "..."
@@ -2244,74 +2300,18 @@
     "name" : "...",
     "url" : "..."
   } ],
-  "organization" : {
-    "name" : "...",
-    "url" : "..."
+  "facets" : {
+    "property1" : { },
+    "property2" : { }
   },
-  "name" : "...",
-  "issueManagement" : {
-    "system" : "...",
-    "url" : "..."
-  },
-  "dependencies" : [ {
-    "scope" : "...",
-    "optional" : true,
-    "classifier" : "...",
-    "type" : "...",
-    "systemPath" : "...",
-    "groupId" : "...",
-    "version" : "...",
-    "artifactId" : "..."
-  }, {
-    "scope" : "...",
-    "optional" : true,
-    "classifier" : "...",
-    "type" : "...",
-    "systemPath" : "...",
-    "groupId" : "...",
-    "version" : "...",
-    "artifactId" : "..."
-  } ],
-  "mailingLists" : [ {
-    "postAddress" : "...",
-    "unsubscribeAddress" : "...",
-    "name" : "...",
-    "subscribeAddress" : "...",
-    "otherArchives" : [ "...", "..." ],
-    "mainArchiveUrl" : "..."
-  }, {
-    "postAddress" : "...",
-    "unsubscribeAddress" : "...",
-    "name" : "...",
-    "subscribeAddress" : "...",
-    "otherArchives" : [ "...", "..." ],
-    "mainArchiveUrl" : "..."
-  } ],
-  "id" : "...",
-  "incomplete" : true,
-  "ciManagement" : {
-    "system" : "...",
-    "url" : "..."
-  },
-  "scm" : {
-    "developerConnection" : "...",
-    "connection" : "...",
-    "url" : "..."
-  },
-  "url" : "...",
-  "version" : "...",
+  "facetIds" : [ "...", "..." ],
   "facetList" : [ {
     "name" : "...",
     "facetId" : "..."
   }, {
     "name" : "...",
     "facetId" : "..."
-  } ],
-  "facets" : {
-    "property1" : { },
-    "property2" : { }
-  },
-  "facetIds" : [ "...", "..." ]
+  } ]
 },
       "description" : ""
     }
@@ -2358,10 +2358,23 @@
       ],
       "example" : {
   "order" : 12345,
+  "policies" : {
+    "property1" : "...",
+    "property2" : "..."
+  },
+  "whiteListPatterns" : [ "...", "..." ],
   "targetRepoId" : "...",
   "sourceRepoId" : "...",
   "proxyId" : "...",
-  "whiteListPatterns" : [ "...", "..." ],
+  "propertiesEntries" : [ {
+    "key" : "...",
+    "value" : "..."
+  }, {
+    "key" : "...",
+    "value" : "..."
+  } ],
+  "blackListPatterns" : [ "...", "..." ],
+  "disabled" : true,
   "policiesEntries" : [ {
     "key" : "...",
     "value" : "..."
@@ -2369,23 +2382,10 @@
     "key" : "...",
     "value" : "..."
   } ],
-  "disabled" : true,
-  "blackListPatterns" : [ "...", "..." ],
-  "policies" : {
-    "property1" : "...",
-    "property2" : "..."
-  },
   "properties" : {
     "property1" : "...",
     "property2" : "..."
-  },
-  "propertiesEntries" : [ {
-    "key" : "...",
-    "value" : "..."
-  }, {
-    "key" : "...",
-    "value" : "..."
-  } ]
+  }
 },
       "description" : ""
     }
@@ -2414,13 +2414,26 @@
           },
       "example" : {
   "pattern" : "...",
-  "proxyConnectorRuleType" : "BLACK_LIST",
+  "proxyConnectorRuleType" : "WHITE_LIST",
   "proxyConnectors" : [ {
     "order" : 12345,
+    "policies" : {
+      "property1" : "...",
+      "property2" : "..."
+    },
+    "whiteListPatterns" : [ "...", "..." ],
     "targetRepoId" : "...",
     "sourceRepoId" : "...",
     "proxyId" : "...",
-    "whiteListPatterns" : [ "...", "..." ],
+    "propertiesEntries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "blackListPatterns" : [ "...", "..." ],
+    "disabled" : true,
     "policiesEntries" : [ {
       "key" : "...",
       "value" : "..."
@@ -2428,29 +2441,29 @@
       "key" : "...",
       "value" : "..."
     } ],
-    "disabled" : true,
-    "blackListPatterns" : [ "...", "..." ],
-    "policies" : {
-      "property1" : "...",
-      "property2" : "..."
-    },
     "properties" : {
       "property1" : "...",
       "property2" : "..."
-    },
-    "propertiesEntries" : [ {
-      "key" : "...",
-      "value" : "..."
-    }, {
-      "key" : "...",
-      "value" : "..."
-    } ]
+    }
   }, {
     "order" : 12345,
+    "policies" : {
+      "property1" : "...",
+      "property2" : "..."
+    },
+    "whiteListPatterns" : [ "...", "..." ],
     "targetRepoId" : "...",
     "sourceRepoId" : "...",
     "proxyId" : "...",
-    "whiteListPatterns" : [ "...", "..." ],
+    "propertiesEntries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "blackListPatterns" : [ "...", "..." ],
+    "disabled" : true,
     "policiesEntries" : [ {
       "key" : "...",
       "value" : "..."
@@ -2458,23 +2471,10 @@
       "key" : "...",
       "value" : "..."
     } ],
-    "disabled" : true,
-    "blackListPatterns" : [ "...", "..." ],
-    "policies" : {
-      "property1" : "...",
-      "property2" : "..."
-    },
     "properties" : {
       "property1" : "...",
       "property2" : "..."
-    },
-    "propertiesEntries" : [ {
-      "key" : "...",
-      "value" : "..."
-    }, {
-      "key" : "...",
-      "value" : "..."
-    } ]
+    }
   } ]
 },
       "description" : ""
@@ -2524,8 +2524,8 @@
         }
       ],
       "example" : {
-  "readOnly" : true,
   "beanId" : "...",
+  "readOnly" : true,
   "descriptionKey" : "..."
 },
       "description" : ""
@@ -2554,21 +2554,21 @@
           },
       "example" : {
   "userManagerImplementationInformations" : [ {
-    "readOnly" : true,
     "beanId" : "...",
+    "readOnly" : true,
     "descriptionKey" : "..."
   }, {
-    "readOnly" : true,
     "beanId" : "...",
+    "readOnly" : true,
     "descriptionKey" : "..."
   } ],
   "rbacManagerImplementationInformations" : [ {
-    "readOnly" : true,
     "beanId" : "...",
+    "readOnly" : true,
     "descriptionKey" : "..."
   }, {
-    "readOnly" : true,
     "beanId" : "...",
+    "readOnly" : true,
     "descriptionKey" : "..."
   } ]
 },
@@ -2686,11 +2686,11 @@
   },
   "rbacManagerImpls" : [ "...", "..." ],
   "ldapGroupMappings" : [ {
-    "roleNames" : [ "...", "..." ],
-    "group" : "..."
+    "group" : "...",
+    "roleNames" : [ "...", "..." ]
   }, {
-    "roleNames" : [ "...", "..." ],
-    "group" : "..."
+    "group" : "...",
+    "roleNames" : [ "...", "..." ]
   } ]
 },
       "description" : ""
@@ -2831,21 +2831,21 @@
     "value" : "..."
   } ],
   "checkPath" : "...",
-  "id" : "...",
-  "name" : "...",
-  "packedIndexDirectory" : "...",
-  "layout" : "...",
   "indexDirectory" : "...",
-  "description" : "...",
+  "descriptions" : {
+    "property1" : "...",
+    "property2" : "..."
+  },
+  "name" : "...",
+  "layout" : "...",
+  "id" : "...",
+  "packedIndexDirectory" : "...",
   "names" : {
     "property1" : "...",
     "property2" : "..."
   },
   "type" : "...",
-  "descriptions" : {
-    "property1" : "...",
-    "property2" : "..."
-  }
+  "description" : "..."
 },
       "description" : ""
     }
@@ -2898,12 +2898,12 @@
       "type" : "object",
       "title" : "RepositoryProblemFacet",
           "properties" : {
-            "message" : {
+            "namespace" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
             },
-            "facetId" : {
+            "message" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
@@ -2913,12 +2913,12 @@
 "description" : "",
 "type" : "string"
             },
-            "name" : {
+            "problem" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
             },
-            "problem" : {
+            "project" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
@@ -2928,32 +2928,32 @@
 "description" : "",
 "type" : "string"
             },
+            "name" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
             "repositoryId" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
             },
-            "namespace" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
-            "project" : {
+            "facetId" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
             }
           },
       "example" : {
-  "message" : "...",
-  "facetId" : "...",
-  "version" : "...",
-  "name" : "...",
-  "problem" : "...",
-  "id" : "...",
-  "repositoryId" : "...",
   "namespace" : "...",
-  "project" : "..."
+  "message" : "...",
+  "version" : "...",
+  "problem" : "...",
+  "project" : "...",
+  "id" : "...",
+  "name" : "...",
+  "repositoryId" : "...",
+  "facetId" : "..."
 },
       "description" : ""
     }
@@ -2962,10 +2962,16 @@
       "type" : "object",
       "title" : "RepositoryScanStatistics",
           "properties" : {
-            "whenGathered" : {
+            "repositoryId" : {
             "readOnly" : false,
 "description" : "",
-"type" : "number"
+"type" : "string"
+            },
+            "newFileCount" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "integer",
+"format" : "int64"
             },
             "totalSize" : {
             "readOnly" : false,
@@ -2973,22 +2979,16 @@
 "type" : "integer",
 "format" : "int64"
             },
-            "repositoryId" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "string"
-            },
             "duration" : {
             "readOnly" : false,
 "description" : "",
 "type" : "integer",
 "format" : "int64"
             },
-            "newFileCount" : {
+            "whenGathered" : {
             "readOnly" : false,
 "description" : "",
-"type" : "integer",
-"format" : "int64"
+"type" : "number"
             },
             "totalFileCount" : {
             "readOnly" : false,
@@ -2998,11 +2998,11 @@
             }
           },
       "example" : {
-  "whenGathered" : 12345,
-  "totalSize" : 12345,
   "repositoryId" : "...",
-  "duration" : 12345,
   "newFileCount" : 12345,
+  "totalSize" : 12345,
+  "duration" : 12345,
+  "whenGathered" : 12345,
   "totalFileCount" : 12345
 },
       "description" : ""
@@ -3052,21 +3052,21 @@
     "stageRepoNeeded" : true,
     "resetStats" : true,
     "skipPackedIndexCreation" : true,
-    "id" : "...",
-    "name" : "...",
-    "packedIndexDirectory" : "...",
-    "layout" : "...",
     "indexDirectory" : "...",
-    "description" : "...",
+    "descriptions" : {
+      "property1" : "...",
+      "property2" : "..."
+    },
+    "name" : "...",
+    "layout" : "...",
+    "id" : "...",
+    "packedIndexDirectory" : "...",
     "names" : {
       "property1" : "...",
       "property2" : "..."
     },
     "type" : "...",
-    "descriptions" : {
-      "property1" : "...",
-      "property2" : "..."
-    }
+    "description" : "..."
   },
   "consumerScanningStatistics" : [ {
     "consumerKey" : "...",
@@ -3089,6 +3089,32 @@
       "type" : "object",
       "title" : "RepositoryStatistics",
           "properties" : {
+            "totalArtifactFileSize" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "integer",
+"format" : "int64"
+            },
+            "totalCountForType" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "object",
+"additionalProperties" : {
+  "type" : "number"
+}
+            },
+            "totalArtifactCount" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "integer",
+"format" : "int64"
+            },
+            "duration" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "integer",
+"format" : "int64"
+            },
             "scanEndTime" : {
             "readOnly" : false,
 "description" : "",
@@ -3100,41 +3126,15 @@
 "type" : "integer",
 "format" : "int64"
             },
-            "totalArtifactCount" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "integer",
-"format" : "int64"
-            },
-            "totalFileCount" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "integer",
-"format" : "int64"
-            },
             "repositoryId" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
             },
-            "totalArtifactFileSize" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "integer",
-"format" : "int64"
-            },
             "scanStartTime" : {
             "readOnly" : false,
 "description" : "",
 "type" : "number"
-            },
-            "totalCountForType" : {
-            "readOnly" : false,
-"description" : "",
-"type" : "object",
-"additionalProperties" : {
-  "type" : "number"
-}
             },
             "totalProjectCount" : {
             "readOnly" : false,
@@ -3148,7 +3148,7 @@
 "type" : "integer",
 "format" : "int64"
             },
-            "duration" : {
+            "totalFileCount" : {
             "readOnly" : false,
 "description" : "",
 "type" : "integer",
@@ -3156,20 +3156,20 @@
             }
           },
       "example" : {
-  "scanEndTime" : 12345,
-  "totalGroupCount" : 12345,
-  "totalArtifactCount" : 12345,
-  "totalFileCount" : 12345,
-  "repositoryId" : "...",
   "totalArtifactFileSize" : 12345,
-  "scanStartTime" : 12345,
   "totalCountForType" : {
     "property1" : 12345,
     "property2" : 12345
   },
+  "totalArtifactCount" : 12345,
+  "duration" : 12345,
+  "scanEndTime" : 12345,
+  "totalGroupCount" : 12345,
+  "repositoryId" : "...",
+  "scanStartTime" : 12345,
   "totalProjectCount" : 12345,
   "newFileCount" : 12345,
-  "duration" : 12345
+  "totalFileCount" : 12345
 },
       "description" : ""
     }
@@ -3183,12 +3183,12 @@
 "description" : "",
 "type" : "string"
             },
-            "connection" : {
+            "url" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
             },
-            "url" : {
+            "connection" : {
             "readOnly" : false,
 "description" : "",
 "type" : "string"
@@ -3196,8 +3196,8 @@
           },
       "example" : {
   "developerConnection" : "...",
-  "connection" : "...",
-  "url" : "..."
+  "url" : "...",
+  "connection" : "..."
 },
       "description" : ""
     }
@@ -3342,10 +3342,6 @@
       "type" : "object",
       "title" : "TreeEntry",
           "properties" : {
-            "artifact" : {
-            "readOnly" : false,
-"$ref" : "#/definitions/json_Artifact"
-            },
             "childs" : {
             "readOnly" : false,
 "description" : "",
@@ -3353,98 +3349,102 @@
 "items" : {
   "$ref" : "#/definitions/json_TreeEntry"
 }
+            },
+            "artifact" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_Artifact"
             }
           },
       "example" : {
+  "childs" : [ {
+    "childs" : [ { }, { } ],
+    "artifact" : {
+      "bundleRequireBundle" : "...",
+      "bundleVersion" : "...",
+      "groupId" : "...",
+      "bundleImportPackage" : "...",
+      "id" : "...",
+      "artifactId" : "...",
+      "fileExtension" : "...",
+      "bundleExportPackage" : "...",
+      "size" : "...",
+      "version" : "...",
+      "bundleLicense" : "...",
+      "bundleName" : "...",
+      "classifier" : "...",
+      "bundleExportService" : "...",
+      "repositoryId" : "...",
+      "goals" : [ "...", "..." ],
+      "prefix" : "...",
+      "url" : "...",
+      "scope" : "...",
+      "packaging" : "...",
+      "bundleDescription" : "...",
+      "bundleDocUrl" : "...",
+      "context" : "...",
+      "path" : "...",
+      "bundleSymbolicName" : "...",
+      "type" : "..."
+    }
+  }, {
+    "childs" : [ { }, { } ],
+    "artifact" : {
+      "bundleRequireBundle" : "...",
+      "bundleVersion" : "...",
+      "groupId" : "...",
+      "bundleImportPackage" : "...",
+      "id" : "...",
+      "artifactId" : "...",
+      "fileExtension" : "...",
+      "bundleExportPackage" : "...",
+      "size" : "...",
+      "version" : "...",
+      "bundleLicense" : "...",
+      "bundleName" : "...",
+      "classifier" : "...",
+      "bundleExportService" : "...",
+      "repositoryId" : "...",
+      "goals" : [ "...", "..." ],
+      "prefix" : "...",
+      "url" : "...",
+      "scope" : "...",
+      "packaging" : "...",
+      "bundleDescription" : "...",
+      "bundleDocUrl" : "...",
+      "context" : "...",
+      "path" : "...",
+      "bundleSymbolicName" : "...",
+      "type" : "..."
+    }
+  } ],
   "artifact" : {
-    "bundleExportService" : "...",
-    "version" : "...",
-    "packaging" : "...",
-    "bundleVersion" : "...",
-    "scope" : "...",
-    "context" : "...",
-    "fileExtension" : "...",
-    "prefix" : "...",
-    "bundleLicense" : "...",
     "bundleRequireBundle" : "...",
+    "bundleVersion" : "...",
+    "groupId" : "...",
+    "bundleImportPackage" : "...",
+    "id" : "...",
+    "artifactId" : "...",
+    "fileExtension" : "...",
+    "bundleExportPackage" : "...",
+    "size" : "...",
+    "version" : "...",
+    "bundleLicense" : "...",
+    "bundleName" : "...",
+    "classifier" : "...",
+    "bundleExportService" : "...",
     "repositoryId" : "...",
     "goals" : [ "...", "..." ],
+    "prefix" : "...",
+    "url" : "...",
+    "scope" : "...",
+    "packaging" : "...",
     "bundleDescription" : "...",
     "bundleDocUrl" : "...",
+    "context" : "...",
     "path" : "...",
-    "bundleExportPackage" : "...",
-    "bundleImportPackage" : "...",
-    "groupId" : "...",
-    "size" : "...",
-    "url" : "...",
     "bundleSymbolicName" : "...",
-    "artifactId" : "...",
-    "id" : "...",
-    "classifier" : "...",
-    "type" : "...",
-    "bundleName" : "..."
-  },
-  "childs" : [ {
-    "artifact" : {
-      "bundleExportService" : "...",
-      "version" : "...",
-      "packaging" : "...",
-      "bundleVersion" : "...",
-      "scope" : "...",
-      "context" : "...",
-      "fileExtension" : "...",
-      "prefix" : "...",
-      "bundleLicense" : "...",
-      "bundleRequireBundle" : "...",
-      "repositoryId" : "...",
-      "goals" : [ "...", "..." ],
-      "bundleDescription" : "...",
-      "bundleDocUrl" : "...",
-      "path" : "...",
-      "bundleExportPackage" : "...",
-      "bundleImportPackage" : "...",
-      "groupId" : "...",
-      "size" : "...",
-      "url" : "...",
-      "bundleSymbolicName" : "...",
-      "artifactId" : "...",
-      "id" : "...",
-      "classifier" : "...",
-      "type" : "...",
-      "bundleName" : "..."
-    },
-    "childs" : [ { }, { } ]
-  }, {
-    "artifact" : {
-      "bundleExportService" : "...",
-      "version" : "...",
-      "packaging" : "...",
-      "bundleVersion" : "...",
-      "scope" : "...",
-      "context" : "...",
-      "fileExtension" : "...",
-      "prefix" : "...",
-      "bundleLicense" : "...",
-      "bundleRequireBundle" : "...",
-      "repositoryId" : "...",
-      "goals" : [ "...", "..." ],
-      "bundleDescription" : "...",
-      "bundleDocUrl" : "...",
-      "path" : "...",
-      "bundleExportPackage" : "...",
-      "bundleImportPackage" : "...",
-      "groupId" : "...",
-      "size" : "...",
-      "url" : "...",
-      "bundleSymbolicName" : "...",
-      "artifactId" : "...",
-      "id" : "...",
-      "classifier" : "...",
-      "type" : "...",
-      "bundleName" : "..."
-    },
-    "childs" : [ { }, { } ]
-  } ]
+    "type" : "..."
+  }
 },
       "description" : ""
     }
@@ -3500,8 +3500,8 @@
         }
       ],
       "example" : {
-  "readOnly" : true,
   "beanId" : "...",
+  "readOnly" : true,
   "descriptionKey" : "..."
 },
       "description" : ""
@@ -8156,32 +8156,32 @@
 }
             },
             "example" : {
-  "bundleExportService" : "...",
-  "version" : "...",
-  "packaging" : "...",
-  "bundleVersion" : "...",
-  "scope" : "...",
-  "context" : "...",
-  "fileExtension" : "...",
-  "prefix" : "...",
-  "bundleLicense" : "...",
   "bundleRequireBundle" : "...",
+  "bundleVersion" : "...",
+  "groupId" : "...",
+  "bundleImportPackage" : "...",
+  "id" : "...",
+  "artifactId" : "...",
+  "fileExtension" : "...",
+  "bundleExportPackage" : "...",
+  "size" : "...",
+  "version" : "...",
+  "bundleLicense" : "...",
+  "bundleName" : "...",
+  "classifier" : "...",
+  "bundleExportService" : "...",
   "repositoryId" : "...",
   "goals" : [ "...", "..." ],
+  "prefix" : "...",
+  "url" : "...",
+  "scope" : "...",
+  "packaging" : "...",
   "bundleDescription" : "...",
   "bundleDocUrl" : "...",
+  "context" : "...",
   "path" : "...",
-  "bundleExportPackage" : "...",
-  "bundleImportPackage" : "...",
-  "groupId" : "...",
-  "size" : "...",
-  "url" : "...",
   "bundleSymbolicName" : "...",
-  "artifactId" : "...",
-  "id" : "...",
-  "classifier" : "...",
-  "type" : "...",
-  "bundleName" : "..."
+  "type" : "..."
 },
             "description" : ""
           }
@@ -8215,32 +8215,32 @@
 }
             },
             "example" : {
-  "bundleExportService" : "...",
-  "version" : "...",
-  "packaging" : "...",
-  "bundleVersion" : "...",
-  "scope" : "...",
-  "context" : "...",
-  "fileExtension" : "...",
-  "prefix" : "...",
-  "bundleLicense" : "...",
   "bundleRequireBundle" : "...",
+  "bundleVersion" : "...",
+  "groupId" : "...",
+  "bundleImportPackage" : "...",
+  "id" : "...",
+  "artifactId" : "...",
+  "fileExtension" : "...",
+  "bundleExportPackage" : "...",
+  "size" : "...",
+  "version" : "...",
+  "bundleLicense" : "...",
+  "bundleName" : "...",
+  "classifier" : "...",
+  "bundleExportService" : "...",
   "repositoryId" : "...",
   "goals" : [ "...", "..." ],
+  "prefix" : "...",
+  "url" : "...",
+  "scope" : "...",
+  "packaging" : "...",
   "bundleDescription" : "...",
   "bundleDocUrl" : "...",
+  "context" : "...",
   "path" : "...",
-  "bundleExportPackage" : "...",
-  "bundleImportPackage" : "...",
-  "groupId" : "...",
-  "size" : "...",
-  "url" : "...",
   "bundleSymbolicName" : "...",
-  "artifactId" : "...",
-  "id" : "...",
-  "classifier" : "...",
-  "type" : "...",
-  "bundleName" : "..."
+  "type" : "..."
 },
             "description" : ""
           }
@@ -8288,32 +8288,32 @@
 }
             },
             "example" : {
-  "bundleExportService" : "...",
-  "version" : "...",
-  "packaging" : "...",
-  "bundleVersion" : "...",
-  "scope" : "...",
-  "context" : "...",
-  "fileExtension" : "...",
-  "prefix" : "...",
-  "bundleLicense" : "...",
   "bundleRequireBundle" : "...",
+  "bundleVersion" : "...",
+  "groupId" : "...",
+  "bundleImportPackage" : "...",
+  "id" : "...",
+  "artifactId" : "...",
+  "fileExtension" : "...",
+  "bundleExportPackage" : "...",
+  "size" : "...",
+  "version" : "...",
+  "bundleLicense" : "...",
+  "bundleName" : "...",
+  "classifier" : "...",
+  "bundleExportService" : "...",
   "repositoryId" : "...",
   "goals" : [ "...", "..." ],
+  "prefix" : "...",
+  "url" : "...",
+  "scope" : "...",
+  "packaging" : "...",
   "bundleDescription" : "...",
   "bundleDocUrl" : "...",
+  "context" : "...",
   "path" : "...",
-  "bundleExportPackage" : "...",
-  "bundleImportPackage" : "...",
-  "groupId" : "...",
-  "size" : "...",
-  "url" : "...",
   "bundleSymbolicName" : "...",
-  "artifactId" : "...",
-  "id" : "...",
-  "classifier" : "...",
-  "type" : "...",
-  "bundleName" : "..."
+  "type" : "..."
 },
             "description" : ""
           }
@@ -8361,32 +8361,32 @@
 }
             },
             "example" : {
-  "bundleExportService" : "...",
-  "version" : "...",
-  "packaging" : "...",
-  "bundleVersion" : "...",
-  "scope" : "...",
-  "context" : "...",
-  "fileExtension" : "...",
-  "prefix" : "...",
-  "bundleLicense" : "...",
   "bundleRequireBundle" : "...",
+  "bundleVersion" : "...",
+  "groupId" : "...",
+  "bundleImportPackage" : "...",
+  "id" : "...",
+  "artifactId" : "...",
+  "fileExtension" : "...",
+  "bundleExportPackage" : "...",
+  "size" : "...",
+  "version" : "...",
+  "bundleLicense" : "...",
+  "bundleName" : "...",
+  "classifier" : "...",
+  "bundleExportService" : "...",
   "repositoryId" : "...",
   "goals" : [ "...", "..." ],
+  "prefix" : "...",
+  "url" : "...",
+  "scope" : "...",
+  "packaging" : "...",
   "bundleDescription" : "...",
   "bundleDocUrl" : "...",
+  "context" : "...",
   "path" : "...",
-  "bundleExportPackage" : "...",
-  "bundleImportPackage" : "...",
-  "groupId" : "...",
-  "size" : "...",
-  "url" : "...",
   "bundleSymbolicName" : "...",
-  "artifactId" : "...",
-  "id" : "...",
-  "classifier" : "...",
-  "type" : "...",
-  "bundleName" : "..."
+  "type" : "..."
 },
             "description" : ""
           }
@@ -8434,32 +8434,32 @@
 }
             },
             "example" : {
-  "bundleExportService" : "...",
-  "version" : "...",
-  "packaging" : "...",
-  "bundleVersion" : "...",
-  "scope" : "...",
-  "context" : "...",
-  "fileExtension" : "...",
-  "prefix" : "...",
-  "bundleLicense" : "...",
   "bundleRequireBundle" : "...",
+  "bundleVersion" : "...",
+  "groupId" : "...",
+  "bundleImportPackage" : "...",
+  "id" : "...",
+  "artifactId" : "...",
+  "fileExtension" : "...",
+  "bundleExportPackage" : "...",
+  "size" : "...",
+  "version" : "...",
+  "bundleLicense" : "...",
+  "bundleName" : "...",
+  "classifier" : "...",
+  "bundleExportService" : "...",
   "repositoryId" : "...",
   "goals" : [ "...", "..." ],
+  "prefix" : "...",
+  "url" : "...",
+  "scope" : "...",
+  "packaging" : "...",
   "bundleDescription" : "...",
   "bundleDocUrl" : "...",
+  "context" : "...",
   "path" : "...",
-  "bundleExportPackage" : "...",
-  "bundleImportPackage" : "...",
-  "groupId" : "...",
-  "size" : "...",
-  "url" : "...",
   "bundleSymbolicName" : "...",
-  "artifactId" : "...",
-  "id" : "...",
-  "classifier" : "...",
-  "type" : "...",
-  "bundleName" : "..."
+  "type" : "..."
 },
             "description" : ""
           }
@@ -8560,32 +8560,32 @@
 }
             },
             "example" : {
-  "bundleExportService" : "...",
-  "version" : "...",
-  "packaging" : "...",
-  "bundleVersion" : "...",
-  "scope" : "...",
-  "context" : "...",
-  "fileExtension" : "...",
-  "prefix" : "...",
-  "bundleLicense" : "...",
   "bundleRequireBundle" : "...",
+  "bundleVersion" : "...",
+  "groupId" : "...",
+  "bundleImportPackage" : "...",
+  "id" : "...",
+  "artifactId" : "...",
+  "fileExtension" : "...",
+  "bundleExportPackage" : "...",
+  "size" : "...",
+  "version" : "...",
+  "bundleLicense" : "...",
+  "bundleName" : "...",
+  "classifier" : "...",
+  "bundleExportService" : "...",
   "repositoryId" : "...",
   "goals" : [ "...", "..." ],
+  "prefix" : "...",
+  "url" : "...",
+  "scope" : "...",
+  "packaging" : "...",
   "bundleDescription" : "...",
   "bundleDocUrl" : "...",
+  "context" : "...",
   "path" : "...",
-  "bundleExportPackage" : "...",
-  "bundleImportPackage" : "...",
-  "groupId" : "...",
-  "size" : "...",
-  "url" : "...",
   "bundleSymbolicName" : "...",
-  "artifactId" : "...",
-  "id" : "...",
-  "classifier" : "...",
-  "type" : "...",
-  "bundleName" : "..."
+  "type" : "..."
 },
             "description" : ""
           }
@@ -8836,11 +8836,67 @@
 "$ref" : "#/definitions/json_ProjectVersionMetadata"
             },
             "example" : {
+  "organization" : {
+    "url" : "...",
+    "name" : "..."
+  },
+  "name" : "...",
+  "url" : "...",
   "properties" : {
     "property1" : "...",
     "property2" : "..."
   },
+  "issueManagement" : {
+    "url" : "...",
+    "system" : "..."
+  },
+  "incomplete" : true,
   "description" : "...",
+  "scm" : {
+    "developerConnection" : "...",
+    "url" : "...",
+    "connection" : "..."
+  },
+  "ciManagement" : {
+    "url" : "...",
+    "system" : "..."
+  },
+  "version" : "...",
+  "id" : "...",
+  "mailingLists" : [ {
+    "postAddress" : "...",
+    "name" : "...",
+    "mainArchiveUrl" : "...",
+    "otherArchives" : [ "...", "..." ],
+    "unsubscribeAddress" : "...",
+    "subscribeAddress" : "..."
+  }, {
+    "postAddress" : "...",
+    "name" : "...",
+    "mainArchiveUrl" : "...",
+    "otherArchives" : [ "...", "..." ],
+    "unsubscribeAddress" : "...",
+    "subscribeAddress" : "..."
+  } ],
+  "dependencies" : [ {
+    "artifactId" : "...",
+    "type" : "...",
+    "version" : "...",
+    "optional" : true,
+    "scope" : "...",
+    "classifier" : "...",
+    "groupId" : "...",
+    "systemPath" : "..."
+  }, {
+    "artifactId" : "...",
+    "type" : "...",
+    "version" : "...",
+    "optional" : true,
+    "scope" : "...",
+    "classifier" : "...",
+    "groupId" : "...",
+    "systemPath" : "..."
+  } ],
   "licenses" : [ {
     "name" : "...",
     "url" : "..."
@@ -8848,74 +8904,18 @@
     "name" : "...",
     "url" : "..."
   } ],
-  "organization" : {
-    "name" : "...",
-    "url" : "..."
+  "facets" : {
+    "property1" : { },
+    "property2" : { }
   },
-  "name" : "...",
-  "issueManagement" : {
-    "system" : "...",
-    "url" : "..."
-  },
-  "dependencies" : [ {
-    "scope" : "...",
-    "optional" : true,
-    "classifier" : "...",
-    "type" : "...",
-    "systemPath" : "...",
-    "groupId" : "...",
-    "version" : "...",
-    "artifactId" : "..."
-  }, {
-    "scope" : "...",
-    "optional" : true,
-    "classifier" : "...",
-    "type" : "...",
-    "systemPath" : "...",
-    "groupId" : "...",
-    "version" : "...",
-    "artifactId" : "..."
-  } ],
-  "mailingLists" : [ {
-    "postAddress" : "...",
-    "unsubscribeAddress" : "...",
-    "name" : "...",
-    "subscribeAddress" : "...",
-    "otherArchives" : [ "...", "..." ],
-    "mainArchiveUrl" : "..."
-  }, {
-    "postAddress" : "...",
-    "unsubscribeAddress" : "...",
-    "name" : "...",
-    "subscribeAddress" : "...",
-    "otherArchives" : [ "...", "..." ],
-    "mainArchiveUrl" : "..."
-  } ],
-  "id" : "...",
-  "incomplete" : true,
-  "ciManagement" : {
-    "system" : "...",
-    "url" : "..."
-  },
-  "scm" : {
-    "developerConnection" : "...",
-    "connection" : "...",
-    "url" : "..."
-  },
-  "url" : "...",
-  "version" : "...",
+  "facetIds" : [ "...", "..." ],
   "facetList" : [ {
     "name" : "...",
     "facetId" : "..."
   }, {
     "name" : "...",
     "facetId" : "..."
-  } ],
-  "facets" : {
-    "property1" : { },
-    "property2" : { }
-  },
-  "facetIds" : [ "...", "..." ]
+  } ]
 },
             "description" : ""
           }
@@ -8965,11 +8965,67 @@
 "$ref" : "#/definitions/json_ProjectVersionMetadata"
             },
             "example" : {
+  "organization" : {
+    "url" : "...",
+    "name" : "..."
+  },
+  "name" : "...",
+  "url" : "...",
   "properties" : {
     "property1" : "...",
     "property2" : "..."
   },
+  "issueManagement" : {
+    "url" : "...",
+    "system" : "..."
+  },
+  "incomplete" : true,
   "description" : "...",
+  "scm" : {
+    "developerConnection" : "...",
+    "url" : "...",
+    "connection" : "..."
+  },
+  "ciManagement" : {
+    "url" : "...",
+    "system" : "..."
+  },
+  "version" : "...",
+  "id" : "...",
+  "mailingLists" : [ {
+    "postAddress" : "...",
+    "name" : "...",
+    "mainArchiveUrl" : "...",
+    "otherArchives" : [ "...", "..." ],
+    "unsubscribeAddress" : "...",
+    "subscribeAddress" : "..."
+  }, {
+    "postAddress" : "...",
+    "name" : "...",
+    "mainArchiveUrl" : "...",
+    "otherArchives" : [ "...", "..." ],
+    "unsubscribeAddress" : "...",
+    "subscribeAddress" : "..."
+  } ],
+  "dependencies" : [ {
+    "artifactId" : "...",
+    "type" : "...",
+    "version" : "...",
+    "optional" : true,
+    "scope" : "...",
+    "classifier" : "...",
+    "groupId" : "...",
+    "systemPath" : "..."
+  }, {
+    "artifactId" : "...",
+    "type" : "...",
+    "version" : "...",
+    "optional" : true,
+    "scope" : "...",
+    "classifier" : "...",
+    "groupId" : "...",
+    "systemPath" : "..."
+  } ],
   "licenses" : [ {
     "name" : "...",
     "url" : "..."
@@ -8977,74 +9033,18 @@
     "name" : "...",
     "url" : "..."
   } ],
-  "organization" : {
-    "name" : "...",
-    "url" : "..."
+  "facets" : {
+    "property1" : { },
+    "property2" : { }
   },
-  "name" : "...",
-  "issueManagement" : {
-    "system" : "...",
-    "url" : "..."
-  },
-  "dependencies" : [ {
-    "scope" : "...",
-    "optional" : true,
-    "classifier" : "...",
-    "type" : "...",
-    "systemPath" : "...",
-    "groupId" : "...",
-    "version" : "...",
-    "artifactId" : "..."
-  }, {
-    "scope" : "...",
-    "optional" : true,
-    "classifier" : "...",
-    "type" : "...",
-    "systemPath" : "...",
-    "groupId" : "...",
-    "version" : "...",
-    "artifactId" : "..."
-  } ],
-  "mailingLists" : [ {
-    "postAddress" : "...",
-    "unsubscribeAddress" : "...",
-    "name" : "...",
-    "subscribeAddress" : "...",
-    "otherArchives" : [ "...", "..." ],
-    "mainArchiveUrl" : "..."
-  }, {
-    "postAddress" : "...",
-    "unsubscribeAddress" : "...",
-    "name" : "...",
-    "subscribeAddress" : "...",
-    "otherArchives" : [ "...", "..." ],
-    "mainArchiveUrl" : "..."
-  } ],
-  "id" : "...",
-  "incomplete" : true,
-  "ciManagement" : {
-    "system" : "...",
-    "url" : "..."
-  },
-  "scm" : {
-    "developerConnection" : "...",
-    "connection" : "...",
-    "url" : "..."
-  },
-  "url" : "...",
-  "version" : "...",
+  "facetIds" : [ "...", "..." ],
   "facetList" : [ {
     "name" : "...",
     "facetId" : "..."
   }, {
     "name" : "...",
     "facetId" : "..."
-  } ],
-  "facets" : {
-    "property1" : { },
-    "property2" : { }
-  },
-  "facetIds" : [ "...", "..." ]
+  } ]
 },
             "description" : ""
           }
@@ -9138,32 +9138,32 @@
 }
             },
             "example" : {
-  "bundleExportService" : "...",
-  "version" : "...",
-  "packaging" : "...",
-  "bundleVersion" : "...",
-  "scope" : "...",
-  "context" : "...",
-  "fileExtension" : "...",
-  "prefix" : "...",
-  "bundleLicense" : "...",
   "bundleRequireBundle" : "...",
+  "bundleVersion" : "...",
+  "groupId" : "...",
+  "bundleImportPackage" : "...",
+  "id" : "...",
+  "artifactId" : "...",
+  "fileExtension" : "...",
+  "bundleExportPackage" : "...",
+  "size" : "...",
+  "version" : "...",
+  "bundleLicense" : "...",
+  "bundleName" : "...",
+  "classifier" : "...",
+  "bundleExportService" : "...",
   "repositoryId" : "...",
   "goals" : [ "...", "..." ],
+  "prefix" : "...",
+  "url" : "...",
+  "scope" : "...",
+  "packaging" : "...",
   "bundleDescription" : "...",
   "bundleDocUrl" : "...",
+  "context" : "...",
   "path" : "...",
-  "bundleExportPackage" : "...",
-  "bundleImportPackage" : "...",
-  "groupId" : "...",
-  "size" : "...",
-  "url" : "...",
   "bundleSymbolicName" : "...",
-  "artifactId" : "...",
-  "id" : "...",
-  "classifier" : "...",
-  "type" : "...",
-  "bundleName" : "..."
+  "type" : "..."
 },
             "description" : ""
           }
@@ -9211,32 +9211,32 @@
 }
             },
             "example" : {
-  "bundleExportService" : "...",
-  "version" : "...",
-  "packaging" : "...",
-  "bundleVersion" : "...",
-  "scope" : "...",
-  "context" : "...",
-  "fileExtension" : "...",
-  "prefix" : "...",
-  "bundleLicense" : "...",
   "bundleRequireBundle" : "...",
+  "bundleVersion" : "...",
+  "groupId" : "...",
+  "bundleImportPackage" : "...",
+  "id" : "...",
+  "artifactId" : "...",
+  "fileExtension" : "...",
+  "bundleExportPackage" : "...",
+  "size" : "...",
+  "version" : "...",
+  "bundleLicense" : "...",
+  "bundleName" : "...",
+  "classifier" : "...",
+  "bundleExportService" : "...",
   "repositoryId" : "...",
   "goals" : [ "...", "..." ],
+  "prefix" : "...",
+  "url" : "...",
+  "scope" : "...",
+  "packaging" : "...",
   "bundleDescription" : "...",
   "bundleDocUrl" : "...",
+  "context" : "...",
   "path" : "...",
-  "bundleExportPackage" : "...",
-  "bundleImportPackage" : "...",
-  "groupId" : "...",
-  "size" : "...",
-  "url" : "...",
   "bundleSymbolicName" : "...",
-  "artifactId" : "...",
-  "id" : "...",
-  "classifier" : "...",
-  "type" : "...",
-  "bundleName" : "..."
+  "type" : "..."
 },
             "description" : ""
           }
@@ -9291,95 +9291,95 @@
 }
             },
             "example" : {
+  "childs" : [ {
+    "childs" : [ { }, { } ],
+    "artifact" : {
+      "bundleRequireBundle" : "...",
+      "bundleVersion" : "...",
+      "groupId" : "...",
+      "bundleImportPackage" : "...",
+      "id" : "...",
+      "artifactId" : "...",
+      "fileExtension" : "...",
+      "bundleExportPackage" : "...",
+      "size" : "...",
+      "version" : "...",
+      "bundleLicense" : "...",
+      "bundleName" : "...",
+      "classifier" : "...",
+      "bundleExportService" : "...",
+      "repositoryId" : "...",
+      "goals" : [ "...", "..." ],
+      "prefix" : "...",
+      "url" : "...",
+      "scope" : "...",
+      "packaging" : "...",
+      "bundleDescription" : "...",
+      "bundleDocUrl" : "...",
+      "context" : "...",
+      "path" : "...",
+      "bundleSymbolicName" : "...",
+      "type" : "..."
+    }
+  }, {
+    "childs" : [ { }, { } ],
+    "artifact" : {
+      "bundleRequireBundle" : "...",
+      "bundleVersion" : "...",
+      "groupId" : "...",
+      "bundleImportPackage" : "...",
+      "id" : "...",
+      "artifactId" : "...",
+      "fileExtension" : "...",
+      "bundleExportPackage" : "...",
+      "size" : "...",
+      "version" : "...",
+      "bundleLicense" : "...",
+      "bundleName" : "...",
+      "classifier" : "...",
+      "bundleExportService" : "...",
+      "repositoryId" : "...",
+      "goals" : [ "...", "..." ],
+      "prefix" : "...",
+      "url" : "...",
+      "scope" : "...",
+      "packaging" : "...",
+      "bundleDescription" : "...",
+      "bundleDocUrl" : "...",
+      "context" : "...",
+      "path" : "...",
+      "bundleSymbolicName" : "...",
+      "type" : "..."
+    }
+  } ],
   "artifact" : {
-    "bundleExportService" : "...",
-    "version" : "...",
-    "packaging" : "...",
-    "bundleVersion" : "...",
-    "scope" : "...",
-    "context" : "...",
-    "fileExtension" : "...",
-    "prefix" : "...",
-    "bundleLicense" : "...",
     "bundleRequireBundle" : "...",
+    "bundleVersion" : "...",
+    "groupId" : "...",
+    "bundleImportPackage" : "...",
+    "id" : "...",
+    "artifactId" : "...",
+    "fileExtension" : "...",
+    "bundleExportPackage" : "...",
+    "size" : "...",
+    "version" : "...",
+    "bundleLicense" : "...",
+    "bundleName" : "...",
+    "classifier" : "...",
+    "bundleExportService" : "...",
     "repositoryId" : "...",
     "goals" : [ "...", "..." ],
+    "prefix" : "...",
+    "url" : "...",
+    "scope" : "...",
+    "packaging" : "...",
     "bundleDescription" : "...",
     "bundleDocUrl" : "...",
+    "context" : "...",
     "path" : "...",
-    "bundleExportPackage" : "...",
-    "bundleImportPackage" : "...",
-    "groupId" : "...",
-    "size" : "...",
-    "url" : "...",
     "bundleSymbolicName" : "...",
-    "artifactId" : "...",
-    "id" : "...",
-    "classifier" : "...",
-    "type" : "...",
-    "bundleName" : "..."
-  },
-  "childs" : [ {
-    "artifact" : {
-      "bundleExportService" : "...",
-      "version" : "...",
-      "packaging" : "...",
-      "bundleVersion" : "...",
-      "scope" : "...",
-      "context" : "...",
-      "fileExtension" : "...",
-      "prefix" : "...",
-      "bundleLicense" : "...",
-      "bundleRequireBundle" : "...",
-      "repositoryId" : "...",
-      "goals" : [ "...", "..." ],
-      "bundleDescription" : "...",
-      "bundleDocUrl" : "...",
-      "path" : "...",
-      "bundleExportPackage" : "...",
-      "bundleImportPackage" : "...",
-      "groupId" : "...",
-      "size" : "...",
-      "url" : "...",
-      "bundleSymbolicName" : "...",
-      "artifactId" : "...",
-      "id" : "...",
-      "classifier" : "...",
-      "type" : "...",
-      "bundleName" : "..."
-    },
-    "childs" : [ { }, { } ]
-  }, {
-    "artifact" : {
-      "bundleExportService" : "...",
-      "version" : "...",
-      "packaging" : "...",
-      "bundleVersion" : "...",
-      "scope" : "...",
-      "context" : "...",
-      "fileExtension" : "...",
-      "prefix" : "...",
-      "bundleLicense" : "...",
-      "bundleRequireBundle" : "...",
-      "repositoryId" : "...",
-      "goals" : [ "...", "..." ],
-      "bundleDescription" : "...",
-      "bundleDocUrl" : "...",
-      "path" : "...",
-      "bundleExportPackage" : "...",
-      "bundleImportPackage" : "...",
-      "groupId" : "...",
-      "size" : "...",
-      "url" : "...",
-      "bundleSymbolicName" : "...",
-      "artifactId" : "...",
-      "id" : "...",
-      "classifier" : "...",
-      "type" : "...",
-      "bundleName" : "..."
-    },
-    "childs" : [ { }, { } ]
-  } ]
+    "type" : "..."
+  }
 },
             "description" : ""
           }
@@ -9424,21 +9424,21 @@
     "stageRepoNeeded" : true,
     "resetStats" : true,
     "skipPackedIndexCreation" : true,
-    "id" : "...",
-    "name" : "...",
-    "packedIndexDirectory" : "...",
-    "layout" : "...",
     "indexDirectory" : "...",
-    "description" : "...",
+    "descriptions" : {
+      "property1" : "...",
+      "property2" : "..."
+    },
+    "name" : "...",
+    "layout" : "...",
+    "id" : "...",
+    "packedIndexDirectory" : "...",
     "names" : {
       "property1" : "...",
       "property2" : "..."
     },
     "type" : "...",
-    "descriptions" : {
-      "property1" : "...",
-      "property2" : "..."
-    }
+    "description" : "..."
   },
   "scanned" : true,
   "retentionPeriod" : 12345,
@@ -9447,21 +9447,21 @@
   "stageRepoNeeded" : true,
   "resetStats" : true,
   "skipPackedIndexCreation" : true,
-  "id" : "...",
-  "name" : "...",
-  "packedIndexDirectory" : "...",
-  "layout" : "...",
   "indexDirectory" : "...",
-  "description" : "...",
+  "descriptions" : {
+    "property1" : "...",
+    "property2" : "..."
+  },
+  "name" : "...",
+  "layout" : "...",
+  "id" : "...",
+  "packedIndexDirectory" : "...",
   "names" : {
     "property1" : "...",
     "property2" : "..."
   },
   "type" : "...",
-  "descriptions" : {
-    "property1" : "...",
-    "property2" : "..."
-  }
+  "description" : "..."
 },
             "description" : "List of repositories current user can manage"
           }
@@ -9506,21 +9506,21 @@
     "stageRepoNeeded" : true,
     "resetStats" : true,
     "skipPackedIndexCreation" : true,
-    "id" : "...",
-    "name" : "...",
-    "packedIndexDirectory" : "...",
-    "layout" : "...",
     "indexDirectory" : "...",
-    "description" : "...",
+    "descriptions" : {
+      "property1" : "...",
+      "property2" : "..."
+    },
+    "name" : "...",
+    "layout" : "...",
+    "id" : "...",
+    "packedIndexDirectory" : "...",
     "names" : {
       "property1" : "...",
       "property2" : "..."
     },
     "type" : "...",
-    "descriptions" : {
-      "property1" : "...",
-      "property2" : "..."
-    }
+    "description" : "..."
   },
   "scanned" : true,
   "retentionPeriod" : 12345,
@@ -9529,21 +9529,21 @@
   "stageRepoNeeded" : true,
   "resetStats" : true,
   "skipPackedIndexCreation" : true,
-  "id" : "...",
-  "name" : "...",
-  "packedIndexDirectory" : "...",
-  "layout" : "...",
   "indexDirectory" : "...",
-  "description" : "...",
+  "descriptions" : {
+    "property1" : "...",
+    "property2" : "..."
+  },
+  "name" : "...",
+  "layout" : "...",
+  "id" : "...",
+  "packedIndexDirectory" : "...",
   "names" : {
     "property1" : "...",
     "property2" : "..."
   },
   "type" : "...",
-  "descriptions" : {
-    "property1" : "...",
-    "property2" : "..."
-  }
+  "description" : "..."
 },
             "description" : "List of managed repositories current user can read"
           }
@@ -10127,21 +10127,21 @@
     "stageRepoNeeded" : true,
     "resetStats" : true,
     "skipPackedIndexCreation" : true,
-    "id" : "...",
-    "name" : "...",
-    "packedIndexDirectory" : "...",
-    "layout" : "...",
     "indexDirectory" : "...",
-    "description" : "...",
+    "descriptions" : {
+      "property1" : "...",
+      "property2" : "..."
+    },
+    "name" : "...",
+    "layout" : "...",
+    "id" : "...",
+    "packedIndexDirectory" : "...",
     "names" : {
       "property1" : "...",
       "property2" : "..."
     },
     "type" : "...",
-    "descriptions" : {
-      "property1" : "...",
-      "property2" : "..."
-    }
+    "description" : "..."
   },
   "scanned" : true,
   "retentionPeriod" : 12345,
@@ -10150,21 +10150,21 @@
   "stageRepoNeeded" : true,
   "resetStats" : true,
   "skipPackedIndexCreation" : true,
-  "id" : "...",
-  "name" : "...",
-  "packedIndexDirectory" : "...",
-  "layout" : "...",
   "indexDirectory" : "...",
-  "description" : "...",
+  "descriptions" : {
+    "property1" : "...",
+    "property2" : "..."
+  },
+  "name" : "...",
+  "layout" : "...",
+  "id" : "...",
+  "packedIndexDirectory" : "...",
   "names" : {
     "property1" : "...",
     "property2" : "..."
   },
   "type" : "...",
-  "descriptions" : {
-    "property1" : "...",
-    "property2" : "..."
-  }
+  "description" : "..."
 },
             "description" : ""
           }
@@ -10270,21 +10270,21 @@
     "stageRepoNeeded" : true,
     "resetStats" : true,
     "skipPackedIndexCreation" : true,
-    "id" : "...",
-    "name" : "...",
-    "packedIndexDirectory" : "...",
-    "layout" : "...",
     "indexDirectory" : "...",
-    "description" : "...",
+    "descriptions" : {
+      "property1" : "...",
+      "property2" : "..."
+    },
+    "name" : "...",
+    "layout" : "...",
+    "id" : "...",
+    "packedIndexDirectory" : "...",
     "names" : {
       "property1" : "...",
       "property2" : "..."
     },
     "type" : "...",
-    "descriptions" : {
-      "property1" : "...",
-      "property2" : "..."
-    }
+    "description" : "..."
   },
   "scanned" : true,
   "retentionPeriod" : 12345,
@@ -10293,21 +10293,21 @@
   "stageRepoNeeded" : true,
   "resetStats" : true,
   "skipPackedIndexCreation" : true,
-  "id" : "...",
-  "name" : "...",
-  "packedIndexDirectory" : "...",
-  "layout" : "...",
   "indexDirectory" : "...",
-  "description" : "...",
+  "descriptions" : {
+    "property1" : "...",
+    "property2" : "..."
+  },
+  "name" : "...",
+  "layout" : "...",
+  "id" : "...",
+  "packedIndexDirectory" : "...",
   "names" : {
     "property1" : "...",
     "property2" : "..."
   },
   "type" : "...",
-  "descriptions" : {
-    "property1" : "...",
-    "property2" : "..."
-  }
+  "description" : "..."
 },
             "description" : ""
           }
@@ -10355,21 +10355,21 @@
     "stageRepoNeeded" : true,
     "resetStats" : true,
     "skipPackedIndexCreation" : true,
-    "id" : "...",
-    "name" : "...",
-    "packedIndexDirectory" : "...",
-    "layout" : "...",
     "indexDirectory" : "...",
-    "description" : "...",
+    "descriptions" : {
+      "property1" : "...",
+      "property2" : "..."
+    },
+    "name" : "...",
+    "layout" : "...",
+    "id" : "...",
+    "packedIndexDirectory" : "...",
     "names" : {
       "property1" : "...",
       "property2" : "..."
     },
     "type" : "...",
-    "descriptions" : {
-      "property1" : "...",
-      "property2" : "..."
-    }
+    "description" : "..."
   },
   "scanned" : true,
   "retentionPeriod" : 12345,
@@ -10378,21 +10378,21 @@
   "stageRepoNeeded" : true,
   "resetStats" : true,
   "skipPackedIndexCreation" : true,
-  "id" : "...",
-  "name" : "...",
-  "packedIndexDirectory" : "...",
-  "layout" : "...",
   "indexDirectory" : "...",
-  "description" : "...",
+  "descriptions" : {
+    "property1" : "...",
+    "property2" : "..."
+  },
+  "name" : "...",
+  "layout" : "...",
+  "id" : "...",
+  "packedIndexDirectory" : "...",
   "names" : {
     "property1" : "...",
     "property2" : "..."
   },
   "type" : "...",
-  "descriptions" : {
-    "property1" : "...",
-    "property2" : "..."
-  }
+  "description" : "..."
 },
             "description" : ""
           }
@@ -10543,32 +10543,32 @@
 }
             },
             "example" : {
-  "bundleExportService" : "...",
-  "version" : "...",
-  "packaging" : "...",
-  "bundleVersion" : "...",
-  "scope" : "...",
-  "context" : "...",
-  "fileExtension" : "...",
-  "prefix" : "...",
-  "bundleLicense" : "...",
   "bundleRequireBundle" : "...",
+  "bundleVersion" : "...",
+  "groupId" : "...",
+  "bundleImportPackage" : "...",
+  "id" : "...",
+  "artifactId" : "...",
+  "fileExtension" : "...",
+  "bundleExportPackage" : "...",
+  "size" : "...",
+  "version" : "...",
+  "bundleLicense" : "...",
+  "bundleName" : "...",
+  "classifier" : "...",
+  "bundleExportService" : "...",
   "repositoryId" : "...",
   "goals" : [ "...", "..." ],
+  "prefix" : "...",
+  "url" : "...",
+  "scope" : "...",
+  "packaging" : "...",
   "bundleDescription" : "...",
   "bundleDocUrl" : "...",
+  "context" : "...",
   "path" : "...",
-  "bundleExportPackage" : "...",
-  "bundleImportPackage" : "...",
-  "groupId" : "...",
-  "size" : "...",
-  "url" : "...",
   "bundleSymbolicName" : "...",
-  "artifactId" : "...",
-  "id" : "...",
-  "classifier" : "...",
-  "type" : "...",
-  "bundleName" : "..."
+  "type" : "..."
 },
             "description" : ""
           }
@@ -10894,13 +10894,26 @@
             },
             "example" : {
   "pattern" : "...",
-  "proxyConnectorRuleType" : "BLACK_LIST",
+  "proxyConnectorRuleType" : "WHITE_LIST",
   "proxyConnectors" : [ {
     "order" : 12345,
+    "policies" : {
+      "property1" : "...",
+      "property2" : "..."
+    },
+    "whiteListPatterns" : [ "...", "..." ],
     "targetRepoId" : "...",
     "sourceRepoId" : "...",
     "proxyId" : "...",
-    "whiteListPatterns" : [ "...", "..." ],
+    "propertiesEntries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "blackListPatterns" : [ "...", "..." ],
+    "disabled" : true,
     "policiesEntries" : [ {
       "key" : "...",
       "value" : "..."
@@ -10908,29 +10921,29 @@
       "key" : "...",
       "value" : "..."
     } ],
-    "disabled" : true,
-    "blackListPatterns" : [ "...", "..." ],
-    "policies" : {
-      "property1" : "...",
-      "property2" : "..."
-    },
     "properties" : {
       "property1" : "...",
       "property2" : "..."
-    },
-    "propertiesEntries" : [ {
-      "key" : "...",
-      "value" : "..."
-    }, {
-      "key" : "...",
-      "value" : "..."
-    } ]
+    }
   }, {
     "order" : 12345,
+    "policies" : {
+      "property1" : "...",
+      "property2" : "..."
+    },
+    "whiteListPatterns" : [ "...", "..." ],
     "targetRepoId" : "...",
     "sourceRepoId" : "...",
     "proxyId" : "...",
-    "whiteListPatterns" : [ "...", "..." ],
+    "propertiesEntries" : [ {
+      "key" : "...",
+      "value" : "..."
+    }, {
+      "key" : "...",
+      "value" : "..."
+    } ],
+    "blackListPatterns" : [ "...", "..." ],
+    "disabled" : true,
     "policiesEntries" : [ {
       "key" : "...",
       "value" : "..."
@@ -10938,23 +10951,10 @@
       "key" : "...",
       "value" : "..."
     } ],
-    "disabled" : true,
-    "blackListPatterns" : [ "...", "..." ],
-    "policies" : {
-      "property1" : "...",
-      "property2" : "..."
-    },
     "properties" : {
       "property1" : "...",
       "property2" : "..."
-    },
-    "propertiesEntries" : [ {
-      "key" : "...",
-      "value" : "..."
-    }, {
-      "key" : "...",
-      "value" : "..."
-    } ]
+    }
   } ]
 },
             "description" : ""
@@ -11109,10 +11109,23 @@
             },
             "example" : {
   "order" : 12345,
+  "policies" : {
+    "property1" : "...",
+    "property2" : "..."
+  },
+  "whiteListPatterns" : [ "...", "..." ],
   "targetRepoId" : "...",
   "sourceRepoId" : "...",
   "proxyId" : "...",
-  "whiteListPatterns" : [ "...", "..." ],
+  "propertiesEntries" : [ {
+    "key" : "...",
+    "value" : "..."
+  }, {
+    "key" : "...",
+    "value" : "..."
+  } ],
+  "blackListPatterns" : [ "...", "..." ],
+  "disabled" : true,
   "policiesEntries" : [ {
     "key" : "...",
     "value" : "..."
@@ -11120,23 +11133,10 @@
     "key" : "...",
     "value" : "..."
   } ],
-  "disabled" : true,
-  "blackListPatterns" : [ "...", "..." ],
-  "policies" : {
-    "property1" : "...",
-    "property2" : "..."
-  },
   "properties" : {
     "property1" : "...",
     "property2" : "..."
-  },
-  "propertiesEntries" : [ {
-    "key" : "...",
-    "value" : "..."
-  }, {
-    "key" : "...",
-    "value" : "..."
-  } ]
+  }
 },
             "description" : ""
           }
@@ -11163,10 +11163,23 @@
             },
             "example" : {
   "order" : 12345,
+  "policies" : {
+    "property1" : "...",
+    "property2" : "..."
+  },
+  "whiteListPatterns" : [ "...", "..." ],
   "targetRepoId" : "...",
   "sourceRepoId" : "...",
   "proxyId" : "...",
-  "whiteListPatterns" : [ "...", "..." ],
+  "propertiesEntries" : [ {
+    "key" : "...",
+    "value" : "..."
+  }, {
+    "key" : "...",
+    "value" : "..."
+  } ],
+  "blackListPatterns" : [ "...", "..." ],
+  "disabled" : true,
   "policiesEntries" : [ {
     "key" : "...",
     "value" : "..."
@@ -11174,23 +11187,10 @@
     "key" : "...",
     "value" : "..."
   } ],
-  "disabled" : true,
-  "blackListPatterns" : [ "...", "..." ],
-  "policies" : {
-    "property1" : "...",
-    "property2" : "..."
-  },
   "properties" : {
     "property1" : "...",
     "property2" : "..."
-  },
-  "propertiesEntries" : [ {
-    "key" : "...",
-    "value" : "..."
-  }, {
-    "key" : "...",
-    "value" : "..."
-  } ]
+  }
 },
             "description" : ""
           }
@@ -11327,8 +11327,8 @@
 }
             },
             "example" : {
-  "readOnly" : true,
   "beanId" : "...",
+  "readOnly" : true,
   "descriptionKey" : "..."
 },
             "description" : ""
@@ -11352,21 +11352,21 @@
             },
             "example" : {
   "userManagerImplementationInformations" : [ {
-    "readOnly" : true,
     "beanId" : "...",
+    "readOnly" : true,
     "descriptionKey" : "..."
   }, {
-    "readOnly" : true,
     "beanId" : "...",
+    "readOnly" : true,
     "descriptionKey" : "..."
   } ],
   "rbacManagerImplementationInformations" : [ {
-    "readOnly" : true,
     "beanId" : "...",
+    "readOnly" : true,
     "descriptionKey" : "..."
   }, {
-    "readOnly" : true,
     "beanId" : "...",
+    "readOnly" : true,
     "descriptionKey" : "..."
   } ]
 },
@@ -11437,11 +11437,11 @@
   },
   "rbacManagerImpls" : [ "...", "..." ],
   "ldapGroupMappings" : [ {
-    "roleNames" : [ "...", "..." ],
-    "group" : "..."
+    "group" : "...",
+    "roleNames" : [ "...", "..." ]
   }, {
-    "roleNames" : [ "...", "..." ],
-    "group" : "..."
+    "group" : "...",
+    "roleNames" : [ "...", "..." ]
   } ]
 },
             "description" : ""
@@ -11495,8 +11495,8 @@
 }
             },
             "example" : {
-  "readOnly" : true,
   "beanId" : "...",
+  "readOnly" : true,
   "descriptionKey" : "..."
 },
             "description" : ""
@@ -11639,21 +11639,21 @@
     "value" : "..."
   } ],
   "checkPath" : "...",
-  "id" : "...",
-  "name" : "...",
-  "packedIndexDirectory" : "...",
-  "layout" : "...",
   "indexDirectory" : "...",
-  "description" : "...",
+  "descriptions" : {
+    "property1" : "...",
+    "property2" : "..."
+  },
+  "name" : "...",
+  "layout" : "...",
+  "id" : "...",
+  "packedIndexDirectory" : "...",
   "names" : {
     "property1" : "...",
     "property2" : "..."
   },
   "type" : "...",
-  "descriptions" : {
-    "property1" : "...",
-    "property2" : "..."
-  }
+  "description" : "..."
 },
             "description" : ""
           }
@@ -11715,21 +11715,21 @@
     "value" : "..."
   } ],
   "checkPath" : "...",
-  "id" : "...",
-  "name" : "...",
-  "packedIndexDirectory" : "...",
-  "layout" : "...",
   "indexDirectory" : "...",
-  "description" : "...",
+  "descriptions" : {
+    "property1" : "...",
+    "property2" : "..."
+  },
+  "name" : "...",
+  "layout" : "...",
+  "id" : "...",
+  "packedIndexDirectory" : "...",
   "names" : {
     "property1" : "...",
     "property2" : "..."
   },
   "type" : "...",
-  "descriptions" : {
-    "property1" : "...",
-    "property2" : "..."
-  }
+  "description" : "..."
 },
             "description" : ""
           }
@@ -11806,15 +11806,15 @@
 }
             },
             "example" : {
-  "message" : "...",
-  "facetId" : "...",
-  "version" : "...",
-  "name" : "...",
-  "problem" : "...",
-  "id" : "...",
-  "repositoryId" : "...",
   "namespace" : "...",
-  "project" : "..."
+  "message" : "...",
+  "version" : "...",
+  "problem" : "...",
+  "project" : "...",
+  "id" : "...",
+  "name" : "...",
+  "repositoryId" : "...",
+  "facetId" : "..."
 },
             "description" : ""
           }
@@ -11873,20 +11873,20 @@
 }
             },
             "example" : {
-  "scanEndTime" : 12345,
-  "totalGroupCount" : 12345,
-  "totalArtifactCount" : 12345,
-  "totalFileCount" : 12345,
-  "repositoryId" : "...",
   "totalArtifactFileSize" : 12345,
-  "scanStartTime" : 12345,
   "totalCountForType" : {
     "property1" : 12345,
     "property2" : 12345
   },
+  "totalArtifactCount" : 12345,
+  "duration" : 12345,
+  "scanEndTime" : 12345,
+  "totalGroupCount" : 12345,
+  "repositoryId" : "...",
+  "scanStartTime" : 12345,
   "totalProjectCount" : 12345,
   "newFileCount" : 12345,
-  "duration" : 12345
+  "totalFileCount" : 12345
 },
             "description" : ""
           }
@@ -12240,11 +12240,11 @@
 "$ref" : "#/definitions/json_RepositoryScanStatistics"
             },
             "example" : {
-  "whenGathered" : 12345,
-  "totalSize" : 12345,
   "repositoryId" : "...",
-  "duration" : 12345,
   "newFileCount" : 12345,
+  "totalSize" : 12345,
+  "duration" : 12345,
+  "whenGathered" : 12345,
   "totalFileCount" : 12345
 },
             "description" : ""
@@ -12703,32 +12703,32 @@
 }
             },
             "example" : {
-  "bundleExportService" : "...",
-  "version" : "...",
-  "packaging" : "...",
-  "bundleVersion" : "...",
-  "scope" : "...",
-  "context" : "...",
-  "fileExtension" : "...",
-  "prefix" : "...",
-  "bundleLicense" : "...",
   "bundleRequireBundle" : "...",
+  "bundleVersion" : "...",
+  "groupId" : "...",
+  "bundleImportPackage" : "...",
+  "id" : "...",
+  "artifactId" : "...",
+  "fileExtension" : "...",
+  "bundleExportPackage" : "...",
+  "size" : "...",
+  "version" : "...",
+  "bundleLicense" : "...",
+  "bundleName" : "...",
+  "classifier" : "...",
+  "bundleExportService" : "...",
   "repositoryId" : "...",
   "goals" : [ "...", "..." ],
+  "prefix" : "...",
+  "url" : "...",
+  "scope" : "...",
+  "packaging" : "...",
   "bundleDescription" : "...",
   "bundleDocUrl" : "...",
+  "context" : "...",
   "path" : "...",
-  "bundleExportPackage" : "...",
-  "bundleImportPackage" : "...",
-  "groupId" : "...",
-  "size" : "...",
-  "url" : "...",
   "bundleSymbolicName" : "...",
-  "artifactId" : "...",
-  "id" : "...",
-  "classifier" : "...",
-  "type" : "...",
-  "bundleName" : "..."
+  "type" : "..."
 },
             "description" : ""
           }
@@ -12810,32 +12810,32 @@
 }
             },
             "example" : {
-  "bundleExportService" : "...",
-  "version" : "...",
-  "packaging" : "...",
-  "bundleVersion" : "...",
-  "scope" : "...",
-  "context" : "...",
-  "fileExtension" : "...",
-  "prefix" : "...",
-  "bundleLicense" : "...",
   "bundleRequireBundle" : "...",
+  "bundleVersion" : "...",
+  "groupId" : "...",
+  "bundleImportPackage" : "...",
+  "id" : "...",
+  "artifactId" : "...",
+  "fileExtension" : "...",
+  "bundleExportPackage" : "...",
+  "size" : "...",
+  "version" : "...",
+  "bundleLicense" : "...",
+  "bundleName" : "...",
+  "classifier" : "...",
+  "bundleExportService" : "...",
   "repositoryId" : "...",
   "goals" : [ "...", "..." ],
+  "prefix" : "...",
+  "url" : "...",
+  "scope" : "...",
+  "packaging" : "...",
   "bundleDescription" : "...",
   "bundleDocUrl" : "...",
+  "context" : "...",
   "path" : "...",
-  "bundleExportPackage" : "...",
-  "bundleImportPackage" : "...",
-  "groupId" : "...",
-  "size" : "...",
-  "url" : "...",
   "bundleSymbolicName" : "...",
-  "artifactId" : "...",
-  "id" : "...",
-  "classifier" : "...",
-  "type" : "...",
-  "bundleName" : "..."
+  "type" : "..."
 },
             "description" : ""
           }
@@ -12890,32 +12890,32 @@
 }
             },
             "example" : {
-  "bundleExportService" : "...",
-  "version" : "...",
-  "packaging" : "...",
-  "bundleVersion" : "...",
-  "scope" : "...",
-  "context" : "...",
-  "fileExtension" : "...",
-  "prefix" : "...",
-  "bundleLicense" : "...",
   "bundleRequireBundle" : "...",
+  "bundleVersion" : "...",
+  "groupId" : "...",
+  "bundleImportPackage" : "...",
+  "id" : "...",
+  "artifactId" : "...",
+  "fileExtension" : "...",
+  "bundleExportPackage" : "...",
+  "size" : "...",
+  "version" : "...",
+  "bundleLicense" : "...",
+  "bundleName" : "...",
+  "classifier" : "...",
+  "bundleExportService" : "...",
   "repositoryId" : "...",
   "goals" : [ "...", "..." ],
+  "prefix" : "...",
+  "url" : "...",
+  "scope" : "...",
+  "packaging" : "...",
   "bundleDescription" : "...",
   "bundleDocUrl" : "...",
+  "context" : "...",
   "path" : "...",
-  "bundleExportPackage" : "...",
-  "bundleImportPackage" : "...",
-  "groupId" : "...",
-  "size" : "...",
-  "url" : "...",
   "bundleSymbolicName" : "...",
-  "artifactId" : "...",
-  "id" : "...",
-  "classifier" : "...",
-  "type" : "...",
-  "bundleName" : "..."
+  "type" : "..."
 },
             "description" : ""
           }
@@ -12951,32 +12951,32 @@
 }
             },
             "example" : {
-  "bundleExportService" : "...",
-  "version" : "...",
-  "packaging" : "...",
-  "bundleVersion" : "...",
-  "scope" : "...",
-  "context" : "...",
-  "fileExtension" : "...",
-  "prefix" : "...",
-  "bundleLicense" : "...",
   "bundleRequireBundle" : "...",
+  "bundleVersion" : "...",
+  "groupId" : "...",
+  "bundleImportPackage" : "...",
+  "id" : "...",
+  "artifactId" : "...",
+  "fileExtension" : "...",
+  "bundleExportPackage" : "...",
+  "size" : "...",
+  "version" : "...",
+  "bundleLicense" : "...",
+  "bundleName" : "...",
+  "classifier" : "...",
+  "bundleExportService" : "...",
   "repositoryId" : "...",
   "goals" : [ "...", "..." ],
+  "prefix" : "...",
+  "url" : "...",
+  "scope" : "...",
+  "packaging" : "...",
   "bundleDescription" : "...",
   "bundleDocUrl" : "...",
+  "context" : "...",
   "path" : "...",
-  "bundleExportPackage" : "...",
-  "bundleImportPackage" : "...",
-  "groupId" : "...",
-  "size" : "...",
-  "url" : "...",
   "bundleSymbolicName" : "...",
-  "artifactId" : "...",
-  "id" : "...",
-  "classifier" : "...",
-  "type" : "...",
-  "bundleName" : "..."
+  "type" : "..."
 },
             "description" : ""
           }
@@ -13012,32 +13012,32 @@
 }
             },
             "example" : {
-  "bundleExportService" : "...",
-  "version" : "...",
-  "packaging" : "...",
-  "bundleVersion" : "...",
-  "scope" : "...",
-  "context" : "...",
-  "fileExtension" : "...",
-  "prefix" : "...",
-  "bundleLicense" : "...",
   "bundleRequireBundle" : "...",
+  "bundleVersion" : "...",
+  "groupId" : "...",
+  "bundleImportPackage" : "...",
+  "id" : "...",
+  "artifactId" : "...",
+  "fileExtension" : "...",
+  "bundleExportPackage" : "...",
+  "size" : "...",
+  "version" : "...",
+  "bundleLicense" : "...",
+  "bundleName" : "...",
+  "classifier" : "...",
+  "bundleExportService" : "...",
   "repositoryId" : "...",
   "goals" : [ "...", "..." ],
+  "prefix" : "...",
+  "url" : "...",
+  "scope" : "...",
+  "packaging" : "...",
   "bundleDescription" : "...",
   "bundleDocUrl" : "...",
+  "context" : "...",
   "path" : "...",
-  "bundleExportPackage" : "...",
-  "bundleImportPackage" : "...",
-  "groupId" : "...",
-  "size" : "...",
-  "url" : "...",
   "bundleSymbolicName" : "...",
-  "artifactId" : "...",
-  "id" : "...",
-  "classifier" : "...",
-  "type" : "...",
-  "bundleName" : "..."
+  "type" : "..."
 },
             "description" : ""
           }
@@ -13229,21 +13229,21 @@
     "stageRepoNeeded" : true,
     "resetStats" : true,
     "skipPackedIndexCreation" : true,
-    "id" : "...",
-    "name" : "...",
-    "packedIndexDirectory" : "...",
-    "layout" : "...",
     "indexDirectory" : "...",
-    "description" : "...",
+    "descriptions" : {
+      "property1" : "...",
+      "property2" : "..."
+    },
+    "name" : "...",
+    "layout" : "...",
+    "id" : "...",
+    "packedIndexDirectory" : "...",
     "names" : {
       "property1" : "...",
       "property2" : "..."
     },
     "type" : "...",
-    "descriptions" : {
-      "property1" : "...",
-      "property2" : "..."
-    }
+    "description" : "..."
   },
   "consumerScanningStatistics" : [ {
     "consumerKey" : "...",
