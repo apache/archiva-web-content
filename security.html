@@ -126,6 +126,8 @@
 <p>For more information about reporting vulnerabilities, see the <a class="externalLink" href="http://www.apache.org/security/"> Apache Security Team</a> page.</p>
 <p>This is a list of known issues</p>
 <ul>
+<li><a href="#CVE-2019-0213:_Apache_Archiva_XSS_may_be_stored_in_central_UI_configuration">CVE-2019-0213: Apache Archiva XSS may be stored in central UI configuration</a></li>
+<li><a href="#CVE-2019-0214:_Apache_Archiva_arbitrary_file_write_and_delete_on_the_server">CVE-2019-0214: Apache Archiva arbitrary file write and delete on the server</a></li>
 <li><a href="#CVE-2017-5657:_Apache_Archiva_CSRF_vulnerabilities_for_various_REST_endpoints">CVE-2017-5657: Apache Archiva CSRF vulnerabilities for various REST endpoints</a></li>
 <li><a href="#CVE-2013-2251:_Apache_Archiva_Remote_Command_Execution">CVE-2013-2251: Apache Archiva Remote Command Execution</a></li>
 <li><a href="#CVE-2013-2187:_Apache_Archiva_Cross-Site_Scripting_vulnerability">CVE-2013-2187: Apache Archiva Cross-Site Scripting vulnerability</a></li>
@@ -134,6 +136,26 @@
 <li><a href="#CVE-2011-1026:_Multiple_CSRF_issues">CVE-2011-1026: Multiple CSRF issues</a></li>
 <li><a href="#CVE-2011-0533:_Apache_Archiva_cross-site_scripting_vulnerability">CVE-2011-0533: Apache Archiva cross-site scripting vulnerability</a></li>
 <li><a href="#CVE-2010-3449:_Apache_Archiva_CSRF_Vulnerability">CVE-2010-3449: Apache Archiva CSRF Vulnerability</a></li></ul>
+<div class="section">
+<h3><a name="CVE-2019-0213:_Apache_Archiva_XSS_may_be_stored_in_central_UI_configuration"></a><a name="CVE-2019-0213">CVE-2019-0213</a>: Apache Archiva XSS may be stored in central UI configuration</h3>
+<p>It may be possible to store malicious XSS code into central configuration entries, i.e. the logo URL. The vulnerability is considered as minor risk, as only users with admin role can change the configuration, or the communication between the browser and the Archiva server must be compromised. </p>
+<p>Versions Affected:</p>
+<ul>
+<li>All versions before 2.2.4</li></ul>
+<p>Mitigation:</p>
+<ul>
+<li>Upgrade to <a href="./download.cgi"> Archiva 2.2.4 or higher</a></li>
+<li>Make sure, that communication between Archiva server and browser is secure by using TLS and only certain users are assigned to admin role.</li></ul></div>
+<div class="section">
+<h3><a name="CVE-2019-0214:_Apache_Archiva_arbitrary_file_write_and_delete_on_the_server"></a><a name="CVE-2019-0214">CVE-2019-0214</a>: Apache Archiva arbitrary file write and delete on the server</h3>
+<p>It is possible to write files to the archiva server at arbitrary locations by using the artifact upload mechanism. Existing files can be overwritten, if the archiva run user has appropriate permission on the filesystem for the target file.</p>
+<p>Versions Affected:</p>
+<ul>
+<li>All versions before 2.2.4</li></ul>
+<p>Mitigation:</p>
+<ul>
+<li>It is highly recommended to upgrade to <a href="./download.cgi"> Archiva 2.2.4 or higher</a>, where additional validations are implemented to prevent such malicious parameter values.</li>
+<li>As intermediate action you may reduce the number of users that are allowed to upload to archiva and make sure, that the archiva run user may have only write permission to the directories needed.</li></ul></div>
 <div class="section">
 <h3><a name="CVE-2017-5657:_Apache_Archiva_CSRF_vulnerabilities_for_various_REST_endpoints"></a><a name="CVE-2017-5657">CVE-2017-5657</a>: Apache Archiva CSRF vulnerabilities for various REST endpoints</h3>
 <p>Several REST service endpoints of Apache Archiva are not protected against CSRF attacks. A malicious site opened in the same browser as the archiva site, may send HTML response that performs arbitrary actions on archiva services, with the same rights as the active archiva session (e.g. adminstrator rights).</p>

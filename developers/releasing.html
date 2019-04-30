@@ -160,7 +160,9 @@ gpg -v archiva-jetty-${ARCHV}-bin.zip.asc</pre></div>
 <p>The documentation is deployed as part of the process to the final location for review in the vote:</p>
 <div class="source"><pre class="prettyprint">git checkout archiva-${ARCHV} # Checkout the release version of archiva
 cd archiva-doc
-mvn site-deploy</pre></div>
+mvn site:site
+mvn site:stage  # Check the content in target/staging
+cp -r target/staging/* &lt;web-content-git&gt;/docs/${ARCHV}/ # Copy to the git web content repository</pre></div>
 <p>If the vote doesn't pass, the documentation will need to be removed from the server for redeployment.</p>
 <p>Commit the sources and binaries from <tt>org/apache/archiva/archiva-jetty</tt> and <tt>org/apache/archiva/archiva</tt> to the svn distribution tree. First in dev tree: <tt>https://dist.apache.org/repos/dist/dev/archiva/</tt></p>
 <div class="source"><pre class="prettyprint">svn co https://dist.apache.org/repos/dist/dev/archiva/ archiva-dev-release
@@ -174,17 +176,17 @@ REDBV=2.6 # New redback version
 sh ./release-script-redback-svn.sh $REDBV ${RELEASE_URL}/</pre></div>
 <p>If the vote pass they will be copied to release tree: <tt>https://dist.apache.org/repos/dist/release/archiva</tt></p>
 <p>Call for a vote in the dev list and wait for 72 hrs. for the vote results. 3 binding votes are necessary for the release to be finalized. If the vote fails or needs to be canceled, the version number should not be re-used if the version was made available for public download. After the vote has passed, move the files from dist dev to dist release:</p>
-<div class="source"><pre class="prettyprint">svn mv https://dist.apache.org/repos/dist/dev/archiva/${ARCHV} https://dist.apache.org/repos/dist/relase/archiva/
+<div class="source"><pre class="prettyprint">svn mv https://dist.apache.org/repos/dist/dev/archiva/${ARCHV} https://dist.apache.org/repos/dist/release/archiva/
 
 # Move also the POM and Redback and Redback Component releases, if there are new ones.</pre></div>
 <p>To sync the jars to Maven Central, you need to merge the repository archiva-releases-stage to &quot;Central Rsync Repository&quot;</p>
 <p>Mark the appropriate release version in JIRA as complete.</p>
-<p>Update the archiva site (https://svn.apache.org/repos/asf/archiva/site/) for the versions and release notes URL:</p>
+<p>Update the archiva site (https://gitbox.apache.org/repos/asf/archiva-site.git) for the versions and release notes URL:</p>
 <p>Mostly these properties of the pom.xml should be edited:</p>
 <div class="source"><pre class="prettyprint">  &lt;archivaReleaseVersion&gt;2.2.3&lt;/archivaReleaseVersion&gt;
   &lt;archivaReleaseDate&gt;16th May 2017&lt;/archivaReleaseDate&gt;
   &lt;archivaCurrentDevVersion&gt;3.0.0-SNAPSHOT&lt;/archivaCurrentDevVersion&gt;</pre></div>
-<p>Run <tt>mvn site:run</tt> and verify the changes. Commit your changes. Then run <tt>mvn site-deploy</tt>.</p>
+<p>Run <b>deploySite.sh</b>. The script will give the information where to check the content locally and asks before pushing to the remote repository.</p>
 <p>Once mirroring done (can be 24H): remove previous versions from https://dist.apache.org/repos/dist/release/archiva/</p>
 <p>Publish the reference docs (sh ./deploySite.sh in the archiva-modules directory) from the release tag. You may have to exclude the archiva-webapp module to do this, and will require MAVEN_OPTS=-Xmx256m. You may need to use Maven 2.2.1 instead of Maven 3.x for this.</p>
 <p>Send out an announcement of the release to:</p>
