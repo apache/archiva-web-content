@@ -15,7 +15,7 @@
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
 
   <!--custom css for these pages-->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/enunciate.css">
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.css" type="text/css">
 
@@ -77,7 +77,7 @@
   <h1 class="page-header">Files and Libraries</h1>
 
   <h3 id="artifact_c_client_library">C Client Library</h3>
-  <p class="lead">Created 13. Juni 2017</p>
+  <p class="lead">Created October 31, 2018</p>
   <p><p>
   The C module generates the source code for the ANSI-C-compatible data structures and (de)serialization
   functions that can be used in conjunction with <a href="http://xmlsoft.org/">libxml2</a> to (de)serialize
@@ -103,18 +103,18 @@
     <tbody data-link="row" class="rowlink">
     <tr class="clickable-row" data-href="redback-rest-api.c">
       <td>redback-rest-api.c</td>
-      <td>290,87K</td>
+      <td>290.87K</td>
       <td>&nbsp;</td>
     </tr>
     <tr class="clickable-row" data-href="enunciate-common.c">
       <td>enunciate-common.c</td>
-      <td>39,68K</td>
+      <td>39.68K</td>
       <td>Common code needed for all projects.</td>
     </tr>
     </tbody>
   </table>
   <h3 id="artifact_csharp_client_library">C# Client Library</h3>
-  <p class="lead">Created 13. Juni 2017</p>
+  <p class="lead">Created October 31, 2018</p>
   <p>
 <p>
   The C# client-side library defines the classes that can be (de)serialized to/from XML.
@@ -157,13 +157,13 @@ byte[] result = (byte[]) s.Deserialize( r );
     <tbody data-link="row" class="rowlink">
     <tr class="clickable-row" data-href="redback-rest-api-dotnet.zip">
       <td>redback-rest-api-dotnet.zip</td>
-      <td>2,54K</td>
+      <td>2.54K</td>
       <td>The C# source code for the C# client library.</td>
     </tr>
     </tbody>
   </table>
   <h3 id="artifact_java_xml_client_library">Java XML Client Library</h3>
-  <p class="lead">Created 13. Juni 2017</p>
+  <p class="lead">Created October 31, 2018</p>
   <p><p>
   The Java client-side library is used to access the Web service API for this application using Java.
 </p>
@@ -186,7 +186,7 @@ connection.connect();
 
 Unmarshaller unmarshaller = context.createUnmarshaller();
 Marshaller marshaller = context.createMarshaller();
-marshaller.marshal(ldapGroupMapping, connection.getOutputStream());
+marshaller.marshal(ldapGroupMappingUpdateRequest, connection.getOutputStream());
 Object result = (Object) unmarshaller.unmarshal( connection.getInputStream() );
 //handle the result as needed...
     </pre>
@@ -200,7 +200,7 @@ Object result = (Object) unmarshaller.unmarshal( connection.getInputStream() );
 javax.ws.rs.client.Client client = javax.ws.rs.client.ClientBuilder.newClient();
 
 Object result = client.target(baseUrl + "/ldapGroupMappingService")
-  .put(javax.ws.rs.client.Entity.entity(ldapGroupMapping, "application/xml"), Object.class);
+  .post(javax.ws.rs.client.Entity.entity(ldapGroupMappingUpdateRequest, "application/xml"), Object.class);
 
 //handle the result as needed...
     </pre>
@@ -219,18 +219,37 @@ Object result = client.target(baseUrl + "/ldapGroupMappingService")
     <tbody data-link="row" class="rowlink">
     <tr class="clickable-row" data-href="redback-rest-api-xml-client.jar">
       <td>redback-rest-api-xml-client.jar</td>
-      <td>13,75K</td>
+      <td>13.73K</td>
       <td>The binaries for the Java XML client library.</td>
     </tr>
     <tr class="clickable-row" data-href="redback-rest-api-xml-client-xml-sources.jar">
       <td>redback-rest-api-xml-client-xml-sources.jar</td>
-      <td>11,67K</td>
+      <td>11.65K</td>
       <td>The sources for the Java XML client library.</td>
     </tr>
     </tbody>
   </table>
+  <h3 id="artifact_ns0_xsd">ns0.xsd</h3>
+  <p class="lead">Created October 31, 2018</p>
+  <table class="table table-hover">
+    <caption>Files</caption>
+    <thead>
+    <tr>
+      <th>name</th>
+      <th>size</th>
+      <th>description</th>
+    </tr>
+    </thead>
+    <tbody data-link="row" class="rowlink">
+    <tr class="clickable-row" data-href="ns0.xsd">
+      <td>ns0.xsd</td>
+      <td>9.27K</td>
+      <td>&nbsp;</td>
+    </tr>
+    </tbody>
+  </table>
   <h3 id="artifact_objc_client_library">Objective C Client Library</h3>
-  <p class="lead">Created 13. Juni 2017</p>
+  <p class="lead">Created October 31, 2018</p>
   <p><p>
   The Objective C module generates the source code for the Objective C classes and (de)serialization
   functions that can be used in conjunction with <a href="http://xmlsoft.org/">libxml2</a> to (de)serialize
@@ -255,28 +274,28 @@ Object result = client.target(baseUrl + "/ldapGroupMappingService")
     <tbody data-link="row" class="rowlink">
     <tr class="clickable-row" data-href="redback-rest-api.h">
       <td>redback-rest-api.h</td>
-      <td>17,05K</td>
+      <td>17.08K</td>
       <td>&nbsp;</td>
     </tr>
     <tr class="clickable-row" data-href="redback-rest-api.m">
       <td>redback-rest-api.m</td>
-      <td>219,52K</td>
+      <td>219.54K</td>
       <td>&nbsp;</td>
     </tr>
     <tr class="clickable-row" data-href="enunciate-common.h">
       <td>enunciate-common.h</td>
-      <td>12,83K</td>
+      <td>12.83K</td>
       <td>Common header needed for all projects.</td>
     </tr>
     <tr class="clickable-row" data-href="enunciate-common.m">
       <td>enunciate-common.m</td>
-      <td>42,34K</td>
+      <td>42.34K</td>
       <td>Common implementation code needed for all projects.</td>
     </tr>
     </tbody>
   </table>
   <h3 id="artifact_php_xml_client_library">PHP XML Client Library</h3>
-  <p class="lead">Created 13. Juni 2017</p>
+  <p class="lead">Created October 31, 2018</p>
   <p><p>
   The PHP client-side library defines the PHP classes that can be (de)serialized to/from XML.
   This is useful for accessing the resources that are published by this application, but only
@@ -328,7 +347,7 @@ $writer->flush();
     <tbody data-link="row" class="rowlink">
     <tr class="clickable-row" data-href="redback-rest-api-php.zip">
       <td>redback-rest-api-php.zip</td>
-      <td>6,22K</td>
+      <td>6.22K</td>
       <td>&nbsp;</td>
     </tr>
     </tbody>

@@ -15,7 +15,7 @@
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
 
   <!--custom css for these pages-->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/enunciate.css">
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.css" type="text/css">
 
@@ -83,6 +83,8 @@
       <p></p>
 
       <dl class="dl-horizontal">
+        <dt>Namespace</dt>
+        <dd>(Default)</dd>
         <dt>Schema</dt>
         <dd><a href="ns0.xsd">ns0.xsd</a></dd>
       </dl>
@@ -103,7 +105,7 @@
         <tr>
           <td>  blackListPatterns
 </td>
-          <td>  string
+          <td>  list of string
 
 </td>
           <td>  element
@@ -157,7 +159,7 @@
         <tr>
           <td>  policiesEntries
 </td>
-          <td>  <a href="xml_ns0_propertyEntry.html">propertyEntry</a>
+          <td>  list of <a href="xml_ns0_propertyEntry.html">propertyEntry</a>
 
 </td>
           <td>  element
@@ -193,7 +195,7 @@
         <tr>
           <td>  propertiesEntries
 </td>
-          <td>  <a href="xml_ns0_propertyEntry.html">propertyEntry</a>
+          <td>  list of <a href="xml_ns0_propertyEntry.html">propertyEntry</a>
 
 </td>
           <td>  element
@@ -265,7 +267,7 @@
         <tr>
           <td>  whiteListPatterns
 </td>
-          <td>  string
+          <td>  list of string
 
 </td>
           <td>  element
@@ -286,22 +288,22 @@
       <h2>Example</h2>
 
       <pre class="prettyprint lang-xml">&lt;a-----&gt;
+  &lt;whiteListPatterns&gt;...&lt;/whiteListPatterns&gt;
   &lt;disabled&gt;...&lt;/disabled&gt;
   &lt;targetRepoId&gt;...&lt;/targetRepoId&gt;
-  &lt;policiesEntries&gt;
-    &lt;key&gt;...&lt;/key&gt;
-    &lt;value&gt;...&lt;/value&gt;
-  &lt;/policiesEntries&gt;
-  &lt;sourceRepoId&gt;...&lt;/sourceRepoId&gt;
-  &lt;policies&gt;...&lt;/policies&gt;
-  &lt;whiteListPatterns&gt;...&lt;/whiteListPatterns&gt;
-  &lt;properties&gt;...&lt;/properties&gt;
-  &lt;proxyId&gt;...&lt;/proxyId&gt;
   &lt;blackListPatterns&gt;...&lt;/blackListPatterns&gt;
   &lt;propertiesEntries&gt;
     &lt;key&gt;...&lt;/key&gt;
     &lt;value&gt;...&lt;/value&gt;
   &lt;/propertiesEntries&gt;
+  &lt;proxyId&gt;...&lt;/proxyId&gt;
+  &lt;policiesEntries&gt;
+    &lt;key&gt;...&lt;/key&gt;
+    &lt;value&gt;...&lt;/value&gt;
+  &lt;/policiesEntries&gt;
+  &lt;sourceRepoId&gt;...&lt;/sourceRepoId&gt;
+  &lt;properties&gt;...&lt;/properties&gt;
+  &lt;policies&gt;...&lt;/policies&gt;
 &lt;/a-----&gt;
 </pre>
         

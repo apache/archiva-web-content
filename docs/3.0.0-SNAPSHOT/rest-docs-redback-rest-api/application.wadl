@@ -10,17 +10,18 @@
 
   <wadl:resources base="./">
 
-    <wadl:resource path="/ldapGroupMappingService">
+    <wadl:resource path="ldapGroupMappingService">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="ldapGroupMapping"/>
         </wadl:response>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/ldapGroupMappingService">
+    <wadl:resource path="ldapGroupMappingService">
       <wadl:method name="PUT">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
@@ -30,13 +31,14 @@
           </wadl:representation>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
         </wadl:response>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/ldapGroupMappingService">
+    <wadl:resource path="ldapGroupMappingService">
       <wadl:method name="POST">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
@@ -46,35 +48,41 @@
           </wadl:representation>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
         </wadl:response>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/ldapGroupMappingService/ldapGroups">
+    <wadl:resource path="ldapGroupMappingService/ldapGroups">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="stringList"/>
         </wadl:response>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/ldapGroupMappingService/{group}">
+    <wadl:resource path="ldapGroupMappingService/{group}">
       <wadl:method name="DELETE">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
         </wadl:response>
       </wadl:method>
+      <wadl:param name="group" style="template">
+        <wadl:doc><![CDATA[]]></wadl:doc>
+      </wadl:param>
     </wadl:resource>
 
-    <wadl:resource path="/loginService/addAuthenticationKey">
+    <wadl:resource path="loginService/addAuthenticationKey">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
@@ -92,6 +100,7 @@
           </wadl:param>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -99,17 +108,18 @@
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/loginService/isLogged">
+    <wadl:resource path="loginService/isLogged">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[simply check if current user has an http session opened with authz passed and return user data]]></wadl:doc>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="user"/>
         </wadl:response>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/loginService/logIn">
+    <wadl:resource path="loginService/logIn">
       <wadl:method name="POST">
         <wadl:doc><![CDATA[check username/password and create a http session.
 So no more need of reuse username/password for all ajaxRequest]]></wadl:doc>
@@ -118,6 +128,7 @@ So no more need of reuse username/password for all ajaxRequest]]></wadl:doc>
           </wadl:representation>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="user"/>
           <wadl:representation mediaType="text/plain"/>
@@ -125,10 +136,11 @@ So no more need of reuse username/password for all ajaxRequest]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/loginService/logout">
+    <wadl:resource path="loginService/logout">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[clear user http session]]></wadl:doc>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -136,10 +148,11 @@ So no more need of reuse username/password for all ajaxRequest]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/loginService/ping">
+    <wadl:resource path="loginService/ping">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -147,10 +160,11 @@ So no more need of reuse username/password for all ajaxRequest]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/loginService/pingWithAutz">
+    <wadl:resource path="loginService/pingWithAutz">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -158,7 +172,7 @@ So no more need of reuse username/password for all ajaxRequest]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/passwordService/changePassword">
+    <wadl:resource path="passwordService/changePassword">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[used to change the password on passwordChangeRequired state.]]></wadl:doc>
         <wadl:request>
@@ -176,6 +190,7 @@ So no more need of reuse username/password for all ajaxRequest]]></wadl:doc>
           </wadl:param>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="user"/>
           <wadl:representation mediaType="text/plain"/>
@@ -183,11 +198,11 @@ So no more need of reuse username/password for all ajaxRequest]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/passwordService/changePasswordWithKey">
+    <wadl:resource path="passwordService/changePasswordWithKey">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[used to change the password on first user connection after registration use.
 the key is mandatory and a control will be done on the username provided.
-<b>need to be logged by {@link UserService#validateUserFromKey(String)}</b>]]></wadl:doc>
+<b>need to be logged by UserService#validateUserFromKey(String)</b>]]></wadl:doc>
         <wadl:request>
           <wadl:param name="key" style="query">
             <wadl:doc><![CDATA[]]></wadl:doc>
@@ -200,6 +215,7 @@ the key is mandatory and a control will be done on the username provided.
           </wadl:param>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[username]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="user"/>
           <wadl:representation mediaType="text/plain"/>
@@ -207,10 +223,11 @@ the key is mandatory and a control will be done on the username provided.
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/allRoles">
+    <wadl:resource path="roleManagementService/allRoles">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="role"/>
           <wadl:representation mediaType="text/plain"/>
@@ -218,7 +235,7 @@ the key is mandatory and a control will be done on the username provided.
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/assignRole">
+    <wadl:resource path="roleManagementService/assignRole">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[Assigns the role indicated by the roleId to the given principal]]></wadl:doc>
         <wadl:request>
@@ -230,6 +247,7 @@ the key is mandatory and a control will be done on the username provided.
           </wadl:param>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -237,7 +255,7 @@ the key is mandatory and a control will be done on the username provided.
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/assignRoleByName">
+    <wadl:resource path="roleManagementService/assignRoleByName">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[Assigns the role indicated by the roleName to the given principal]]></wadl:doc>
         <wadl:request>
@@ -249,6 +267,7 @@ the key is mandatory and a control will be done on the username provided.
           </wadl:param>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -256,7 +275,7 @@ the key is mandatory and a control will be done on the username provided.
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/assignTemplatedRole">
+    <wadl:resource path="roleManagementService/assignTemplatedRole">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[Assigns the templated role indicated by the templateId
 
@@ -273,6 +292,7 @@ fails if the templated role has not been created]]></wadl:doc>
           </wadl:param>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -280,7 +300,7 @@ fails if the templated role has not been created]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/createTemplatedRole">
+    <wadl:resource path="roleManagementService/createTemplatedRole">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
@@ -292,6 +312,7 @@ fails if the templated role has not been created]]></wadl:doc>
           </wadl:param>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -299,10 +320,11 @@ fails if the templated role has not been created]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/detailledAllRoles">
+    <wadl:resource path="roleManagementService/detailledAllRoles">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="role"/>
           <wadl:representation mediaType="text/plain"/>
@@ -310,7 +332,7 @@ fails if the templated role has not been created]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/removeTemplatedRole">
+    <wadl:resource path="roleManagementService/removeTemplatedRole">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[removes a role corresponding to the role Id that was manufactured with the given resource
 
@@ -324,6 +346,7 @@ it also removes any user assignments for that role]]></wadl:doc>
           </wadl:param>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -331,7 +354,7 @@ it also removes any user assignments for that role]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/roleExists">
+    <wadl:resource path="roleManagementService/roleExists">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[true of a role exists with the given roleId]]></wadl:doc>
         <wadl:request>
@@ -340,6 +363,7 @@ it also removes any user assignments for that role]]></wadl:doc>
           </wadl:param>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -347,7 +371,7 @@ it also removes any user assignments for that role]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/templatedRoleExists">
+    <wadl:resource path="roleManagementService/templatedRoleExists">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[true of a role exists with the given roleId]]></wadl:doc>
         <wadl:request>
@@ -359,6 +383,7 @@ it also removes any user assignments for that role]]></wadl:doc>
           </wadl:param>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -366,7 +391,7 @@ it also removes any user assignments for that role]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/unassignRole">
+    <wadl:resource path="roleManagementService/unassignRole">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[Unassigns the role indicated by the role id from the given principal]]></wadl:doc>
         <wadl:request>
@@ -378,6 +403,7 @@ it also removes any user assignments for that role]]></wadl:doc>
           </wadl:param>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -385,7 +411,7 @@ it also removes any user assignments for that role]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/unassignRoleByName">
+    <wadl:resource path="roleManagementService/unassignRoleByName">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[Unassigns the role indicated by the role name from the given principal]]></wadl:doc>
         <wadl:request>
@@ -397,6 +423,7 @@ it also removes any user assignments for that role]]></wadl:doc>
           </wadl:param>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -404,7 +431,7 @@ it also removes any user assignments for that role]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/updateRole">
+    <wadl:resource path="roleManagementService/updateRole">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[allows for a role coming from a template to be renamed effectively swapping out the bits of it that
 were labeled with the oldResource with the newResource
@@ -422,6 +449,7 @@ it also manages any user assignments for that role]]></wadl:doc>
           </wadl:param>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -429,7 +457,7 @@ it also manages any user assignments for that role]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/updateRoleDescription">
+    <wadl:resource path="roleManagementService/updateRoleDescription">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
@@ -441,6 +469,7 @@ it also manages any user assignments for that role]]></wadl:doc>
           </wadl:param>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -448,7 +477,7 @@ it also manages any user assignments for that role]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/updateRoleUsers">
+    <wadl:resource path="roleManagementService/updateRoleUsers">
       <wadl:method name="POST">
         <wadl:doc><![CDATA[update users assigned to a role]]></wadl:doc>
         <wadl:request>
@@ -458,13 +487,14 @@ it also manages any user assignments for that role]]></wadl:doc>
           </wadl:representation>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
         </wadl:response>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/updateUserRoles">
+    <wadl:resource path="roleManagementService/updateUserRoles">
       <wadl:method name="POST">
         <wadl:doc><![CDATA[update roles assigned to a user]]></wadl:doc>
         <wadl:request>
@@ -474,13 +504,14 @@ it also manages any user assignments for that role]]></wadl:doc>
           </wadl:representation>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
         </wadl:response>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/verifyTemplatedRole">
+    <wadl:resource path="roleManagementService/verifyTemplatedRole">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[Check a role template is complete in the RBAC store.]]></wadl:doc>
         <wadl:request>
@@ -492,6 +523,7 @@ it also manages any user assignments for that role]]></wadl:doc>
           </wadl:param>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -499,7 +531,7 @@ it also manages any user assignments for that role]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/userService/createAdminUser">
+    <wadl:resource path="userService/createAdminUser">
       <wadl:method name="POST">
         <wadl:doc><![CDATA[will create admin user only if not exists !! if exists will return false]]></wadl:doc>
         <wadl:request>
@@ -509,6 +541,7 @@ it also manages any user assignments for that role]]></wadl:doc>
           </wadl:representation>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -516,10 +549,11 @@ it also manages any user assignments for that role]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/userService/createGuestUser">
+    <wadl:resource path="userService/createGuestUser">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="user"/>
           <wadl:representation mediaType="text/plain"/>
@@ -527,7 +561,7 @@ it also manages any user assignments for that role]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/userService/createUser">
+    <wadl:resource path="userService/createUser">
       <wadl:method name="POST">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
@@ -537,6 +571,7 @@ it also manages any user assignments for that role]]></wadl:doc>
           </wadl:representation>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -544,10 +579,11 @@ it also manages any user assignments for that role]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/userService/getCurrentUserOperations">
+    <wadl:resource path="userService/getCurrentUserOperations">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:response>
+          <wadl:doc><![CDATA[the current logged user operations, if no logged user guest operations are returned]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="operation"/>
           <wadl:representation mediaType="text/plain"/>
@@ -555,10 +591,11 @@ it also manages any user assignments for that role]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/userService/getCurrentUserPermissions">
+    <wadl:resource path="userService/getCurrentUserPermissions">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:response>
+          <wadl:doc><![CDATA[the current logged user permissions, if no logged user guest permissions are returned]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="permission"/>
           <wadl:representation mediaType="text/plain"/>
@@ -566,10 +603,11 @@ it also manages any user assignments for that role]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/userService/getGuestUser">
+    <wadl:resource path="userService/getGuestUser">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="user"/>
           <wadl:representation mediaType="text/plain"/>
@@ -577,20 +615,22 @@ it also manages any user assignments for that role]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/userService/getUsers">
+    <wadl:resource path="userService/getUsers">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="user"/>
         </wadl:response>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/userService/isAdminUserExists">
+    <wadl:resource path="userService/isAdminUserExists">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -598,10 +638,11 @@ it also manages any user assignments for that role]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/userService/ping">
+    <wadl:resource path="userService/ping">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -609,7 +650,7 @@ it also manages any user assignments for that role]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/userService/registerUser">
+    <wadl:resource path="userService/registerUser">
       <wadl:method name="POST">
         <wadl:doc><![CDATA[if redback is not configured for email validation is required, -1 is returned as key]]></wadl:doc>
         <wadl:request>
@@ -617,13 +658,14 @@ it also manages any user assignments for that role]]></wadl:doc>
           </wadl:representation>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="registrationKey"/>
         </wadl:response>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/userService/resetPassword">
+    <wadl:resource path="userService/resetPassword">
       <wadl:method name="POST">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
@@ -634,6 +676,7 @@ it also manages any user assignments for that role]]></wadl:doc>
           </wadl:representation>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -641,7 +684,7 @@ it also manages any user assignments for that role]]></wadl:doc>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/userService/updateMe">
+    <wadl:resource path="userService/updateMe">
       <wadl:method name="POST">
         <wadl:doc><![CDATA[update only the current user and this fields: fullname, email, password.
 the service verify the curent logged user with the one passed in the method]]></wadl:doc>
@@ -650,6 +693,7 @@ the service verify the curent logged user with the one passed in the method]]></
           </wadl:representation>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -657,7 +701,7 @@ the service verify the curent logged user with the one passed in the method]]></
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/userService/updateUser">
+    <wadl:resource path="userService/updateUser">
       <wadl:method name="POST">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
@@ -665,6 +709,7 @@ the service verify the curent logged user with the one passed in the method]]></
           </wadl:representation>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
@@ -672,7 +717,7 @@ the service verify the curent logged user with the one passed in the method]]></
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/utilServices/getBundleResources">
+    <wadl:resource path="utilServices/getBundleResources">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
@@ -681,190 +726,247 @@ the service verify the curent logged user with the one passed in the method]]></
           </wadl:param>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="text/plain"/>
         </wadl:response>
       </wadl:method>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/getApplicationRoles/{username}">
+    <wadl:resource path="roleManagementService/getApplicationRoles/{username}">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="applicationRole"/>
         </wadl:response>
       </wadl:method>
+      <wadl:param name="username" style="template">
+        <wadl:doc><![CDATA[]]></wadl:doc>
+      </wadl:param>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/getApplications/{username}">
+    <wadl:resource path="roleManagementService/getApplications/{username}">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="application"/>
           <wadl:representation mediaType="text/plain"/>
         </wadl:response>
       </wadl:method>
+      <wadl:param name="username" style="template">
+        <wadl:doc><![CDATA[]]></wadl:doc>
+      </wadl:param>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/getEffectivelyAssignedRoles/{username}">
+    <wadl:resource path="roleManagementService/getEffectivelyAssignedRoles/{username}">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="role"/>
           <wadl:representation mediaType="text/plain"/>
         </wadl:response>
       </wadl:method>
+      <wadl:param name="username" style="template">
+        <wadl:doc><![CDATA[]]></wadl:doc>
+      </wadl:param>
     </wadl:resource>
 
-    <wadl:resource path="/roleManagementService/getRole/{roleName}">
+    <wadl:resource path="roleManagementService/getRole/{roleName}">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="role"/>
           <wadl:representation mediaType="text/plain"/>
         </wadl:response>
       </wadl:method>
+      <wadl:param name="roleName" style="template">
+        <wadl:doc><![CDATA[]]></wadl:doc>
+      </wadl:param>
     </wadl:resource>
 
-    <wadl:resource path="/userService/deleteUser/{userName}">
+    <wadl:resource path="userService/deleteUser/{userName}">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
         </wadl:response>
       </wadl:method>
+      <wadl:param name="userName" style="template">
+        <wadl:doc><![CDATA[]]></wadl:doc>
+      </wadl:param>
     </wadl:resource>
 
-    <wadl:resource path="/userService/getUser/{userName}">
+    <wadl:resource path="userService/getUser/{userName}">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="user"/>
         </wadl:response>
       </wadl:method>
+      <wadl:param name="userName" style="template">
+        <wadl:doc><![CDATA[]]></wadl:doc>
+      </wadl:param>
     </wadl:resource>
 
-    <wadl:resource path="/userService/getUserOperations/{userName}">
+    <wadl:resource path="userService/getUserOperations/{userName}">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="operation"/>
           <wadl:representation mediaType="text/plain"/>
         </wadl:response>
       </wadl:method>
+      <wadl:param name="userName" style="template">
+        <wadl:doc><![CDATA[]]></wadl:doc>
+      </wadl:param>
     </wadl:resource>
 
-    <wadl:resource path="/userService/getUserPermissions/{userName}">
+    <wadl:resource path="userService/getUserPermissions/{userName}">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml" element="permission"/>
           <wadl:representation mediaType="text/plain"/>
         </wadl:response>
       </wadl:method>
+      <wadl:param name="userName" style="template">
+        <wadl:doc><![CDATA[]]></wadl:doc>
+      </wadl:param>
     </wadl:resource>
 
-    <wadl:resource path="/userService/lockUser/{username}">
+    <wadl:resource path="userService/lockUser/{username}">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
         </wadl:response>
       </wadl:method>
+      <wadl:param name="username" style="template">
+        <wadl:doc><![CDATA[]]></wadl:doc>
+      </wadl:param>
     </wadl:resource>
 
-    <wadl:resource path="/userService/passwordChangeNotRequired/{username}">
+    <wadl:resource path="userService/passwordChangeNotRequired/{username}">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
         </wadl:response>
       </wadl:method>
+      <wadl:param name="username" style="template">
+        <wadl:doc><![CDATA[]]></wadl:doc>
+      </wadl:param>
     </wadl:resource>
 
-    <wadl:resource path="/userService/passwordChangeRequired/{username}">
+    <wadl:resource path="userService/passwordChangeRequired/{username}">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
         </wadl:response>
       </wadl:method>
+      <wadl:param name="username" style="template">
+        <wadl:doc><![CDATA[]]></wadl:doc>
+      </wadl:param>
     </wadl:resource>
 
-    <wadl:resource path="/userService/removeFromCache/{userName}">
+    <wadl:resource path="userService/removeFromCache/{userName}">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
         </wadl:response>
       </wadl:method>
+      <wadl:param name="userName" style="template">
+        <wadl:doc><![CDATA[]]></wadl:doc>
+      </wadl:param>
     </wadl:resource>
 
-    <wadl:resource path="/userService/unlockUser/{username}">
+    <wadl:resource path="userService/unlockUser/{username}">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[]]></wadl:doc>
         <wadl:request>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
         </wadl:response>
       </wadl:method>
+      <wadl:param name="username" style="template">
+        <wadl:doc><![CDATA[]]></wadl:doc>
+      </wadl:param>
     </wadl:resource>
 
-    <wadl:resource path="/userService/validateKey/{key}">
+    <wadl:resource path="userService/validateKey/{key}">
       <wadl:method name="GET">
         <wadl:doc><![CDATA[validate the key and the user with forcing a password change for next login.
 http session is created.]]></wadl:doc>
         <wadl:request>
         </wadl:request>
         <wadl:response>
+          <wadl:doc><![CDATA[]]></wadl:doc>
           <wadl:representation mediaType="application/json"/>
           <wadl:representation mediaType="application/xml"/>
           <wadl:representation mediaType="text/plain"/>
         </wadl:response>
       </wadl:method>
+      <wadl:param name="key" style="template">
+        <wadl:doc><![CDATA[authentication key]]></wadl:doc>
+      </wadl:param>
     </wadl:resource>
   </wadl:resources>
 </wadl:application>
