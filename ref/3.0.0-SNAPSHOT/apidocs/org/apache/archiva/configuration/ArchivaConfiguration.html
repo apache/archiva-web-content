@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -150,7 +150,7 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#addChangeListener-org.apache.archiva.redback.components.registry.RegistryListener-">addChangeListener</a></span>(org.apache.archiva.redback.components.registry.RegistryListener&nbsp;listener)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#addChangeListener-org.apache.archiva.components.registry.RegistryListener-">addChangeListener</a></span>(org.apache.archiva.components.registry.RegistryListener&nbsp;listener)</code>
 <div class="block">Add a registry listener to notify of events in spring-registry.</div>
 </td>
 </tr>
@@ -197,28 +197,34 @@ var activeTableTab = "activeTableTab";
 </td>
 </tr>
 <tr id="i9" class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#getRepositoryGroupBaseDir--">getRepositoryGroupBaseDir</a></span>()</code>
+<div class="block">Returns the base directory for repository group files.</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#isDefaulted--">isDefaulted</a></span>()</code>
 <div class="block">Determines if the configuration in use was as a result of a defaulted configuration.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#reload--">reload</a></span>()</code>
 <div class="block">reload configuration from file included registry</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#removeChangeListener-org.apache.archiva.redback.components.registry.RegistryListener-">removeChangeListener</a></span>(org.apache.archiva.redback.components.registry.RegistryListener&nbsp;listener)</code>&nbsp;</td>
-</tr>
 <tr id="i12" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#removeChangeListener-org.apache.archiva.components.registry.RegistryListener-">removeChangeListener</a></span>(org.apache.archiva.components.registry.RegistryListener&nbsp;listener)</code>&nbsp;</td>
+</tr>
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#removeListener-org.apache.archiva.configuration.ConfigurationListener-">removeListener</a></span>(<a href="../../../../org/apache/archiva/configuration/ConfigurationListener.html" title="interface in org.apache.archiva.configuration">ConfigurationListener</a>&nbsp;listener)</code>
 <div class="block">Remove a configuration listener to stop notifications of changes to the configuration.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#save-org.apache.archiva.configuration.Configuration-">save</a></span>(<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;configuration)</code>
 <div class="block">Save any updated configuration.</div>
@@ -294,14 +300,14 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>save</h4>
 <pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/ArchivaConfiguration.html#line.55">save</a>(<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;configuration)
-   throws org.apache.archiva.redback.components.registry.RegistryException,
+   throws org.apache.archiva.components.registry.RegistryException,
           <a href="../../../../org/apache/archiva/configuration/IndeterminateConfigurationException.html" title="class in org.apache.archiva.configuration">IndeterminateConfigurationException</a></pre>
 <div class="block">Save any updated configuration.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>configuration</code> - the configuration to save</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>org.apache.archiva.redback.components.registry.RegistryException</code> - if there is a problem saving the registry data</dd>
+<dd><code>org.apache.archiva.components.registry.RegistryException</code> - if there is a problem saving the registry data</dd>
 <dd><code><a href="../../../../org/apache/archiva/configuration/IndeterminateConfigurationException.html" title="class in org.apache.archiva.configuration">IndeterminateConfigurationException</a></code> - if the configuration cannot be saved because it was read from two sources</dd>
 </dl>
 </li>
@@ -350,13 +356,13 @@ var activeTableTab = "activeTableTab";
 </dl>
 </li>
 </ul>
-<a name="addChangeListener-org.apache.archiva.redback.components.registry.RegistryListener-">
+<a name="addChangeListener-org.apache.archiva.components.registry.RegistryListener-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>addChangeListener</h4>
-<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/ArchivaConfiguration.html#line.87">addChangeListener</a>(org.apache.archiva.redback.components.registry.RegistryListener&nbsp;listener)</pre>
+<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/ArchivaConfiguration.html#line.87">addChangeListener</a>(org.apache.archiva.components.registry.RegistryListener&nbsp;listener)</pre>
 <div class="block">Add a registry listener to notify of events in spring-registry.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -365,13 +371,13 @@ var activeTableTab = "activeTableTab";
 </dl>
 </li>
 </ul>
-<a name="removeChangeListener-org.apache.archiva.redback.components.registry.RegistryListener-">
+<a name="removeChangeListener-org.apache.archiva.components.registry.RegistryListener-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>removeChangeListener</h4>
-<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/ArchivaConfiguration.html#line.89">removeChangeListener</a>(org.apache.archiva.redback.components.registry.RegistryListener&nbsp;listener)</pre>
+<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/ArchivaConfiguration.html#line.89">removeChangeListener</a>(org.apache.archiva.components.registry.RegistryListener&nbsp;listener)</pre>
 </li>
 </ul>
 <a name="reload--">
@@ -441,13 +447,26 @@ var activeTableTab = "activeTableTab";
 </dl>
 </li>
 </ul>
+<a name="getRepositoryGroupBaseDir--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRepositoryGroupBaseDir</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/ArchivaConfiguration.html#line.120">getRepositoryGroupBaseDir</a>()</pre>
+<div class="block">Returns the base directory for repository group files.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+</dl>
+</li>
+</ul>
 <a name="getDataDirectory--">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>getDataDirectory</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/ArchivaConfiguration.html#line.120">getDataDirectory</a>()</pre>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/ArchivaConfiguration.html#line.126">getDataDirectory</a>()</pre>
 <div class="block">Returns the data directory where repositories and metadata reside</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -523,6 +542,6 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

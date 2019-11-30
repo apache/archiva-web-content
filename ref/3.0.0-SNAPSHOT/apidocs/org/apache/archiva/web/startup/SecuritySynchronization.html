@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -75,13 +75,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -109,14 +109,14 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd>org.apache.archiva.redback.components.registry.RegistryListener</dd>
+<dd>org.apache.archiva.components.registry.RegistryListener</dd>
 </dl>
 <hr>
 <br>
 <pre>@Service
 public class <a href="../../../../../src-html/org/apache/archiva/web/startup/SecuritySynchronization.html#line.56">SecuritySynchronization</a>
 extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
-implements org.apache.archiva.redback.components.registry.RegistryListener</pre>
+implements org.apache.archiva.components.registry.RegistryListener</pre>
 <div class="block">ConfigurationSynchronization</div>
 </li>
 </ul>
@@ -124,45 +124,6 @@ implements org.apache.archiva.redback.components.registry.RegistryListener</pre>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- =========== FIELD SUMMARY =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private org.springframework.context.ApplicationContext</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/web/startup/SecuritySynchronization.html#applicationContext">applicationContext</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="../../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/web/startup/SecuritySynchronization.html#archivaConfiguration">archivaConfiguration</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,org.apache.archiva.redback.system.check.EnvironmentCheck&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/web/startup/SecuritySynchronization.html#checkers">checkers</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private org.slf4j.Logger</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/web/startup/SecuritySynchronization.html#log">log</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private org.apache.archiva.redback.rbac.RBACManager</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/web/startup/SecuritySynchronization.html#rbacManager">rbacManager</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private org.apache.archiva.redback.role.RoleManager</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/web/startup/SecuritySynchronization.html#roleManager">roleManager</a></span></code>&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -194,43 +155,27 @@ implements org.apache.archiva.redback.components.registry.RegistryListener</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/web/startup/SecuritySynchronization.html#afterConfigurationChange-org.apache.archiva.redback.components.registry.Registry-java.lang.String-java.lang.Object-">afterConfigurationChange</a></span>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/web/startup/SecuritySynchronization.html#afterConfigurationChange-org.apache.archiva.components.registry.Registry-java.lang.String-java.lang.Object-">afterConfigurationChange</a></span>(org.apache.archiva.components.registry.Registry&nbsp;registry,
                         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;propertyName,
                         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;propertyValue)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/web/startup/SecuritySynchronization.html#assignRepositoryObserverToGuestUser-java.util.List-">assignRepositoryObserverToGuestUser</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&gt;&nbsp;repos)</code>&nbsp;</td>
-</tr>
-<tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/web/startup/SecuritySynchronization.html#beforeConfigurationChange-org.apache.archiva.redback.components.registry.Registry-java.lang.String-java.lang.Object-">beforeConfigurationChange</a></span>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/web/startup/SecuritySynchronization.html#beforeConfigurationChange-org.apache.archiva.components.registry.Registry-java.lang.String-java.lang.Object-">beforeConfigurationChange</a></span>(org.apache.archiva.components.registry.Registry&nbsp;registry,
                          <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;propertyName,
                          <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;propertyValue)</code>&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/web/startup/SecuritySynchronization.html#executeEnvironmentChecks--">executeEnvironmentChecks</a></span>()</code>&nbsp;</td>
-</tr>
-<tr id="i4" class="altColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>protected &lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,T&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/web/startup/SecuritySynchronization.html#getBeansOfType-java.lang.Class-">getBeansOfType</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;T&gt;&nbsp;clazz)</code>&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/web/startup/SecuritySynchronization.html#initialize--">initialize</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/web/startup/SecuritySynchronization.html#startup--">startup</a></span>()</code>&nbsp;</td>
-</tr>
-<tr id="i7" class="rowColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/web/startup/SecuritySynchronization.html#synchConfiguration-java.util.List-">synchConfiguration</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&gt;&nbsp;repos)</code>&nbsp;</td>
-</tr>
-<tr id="i8" class="altColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/web/startup/SecuritySynchronization.html#syncRepoConfiguration-java.lang.String-">syncRepoConfiguration</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -248,73 +193,6 @@ implements org.apache.archiva.redback.components.registry.RegistryListener</pre>
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a name="log">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>log</h4>
-<pre>private&nbsp;org.slf4j.Logger <a href="../../../../../src-html/org/apache/archiva/web/startup/SecuritySynchronization.html#line.59">log</a></pre>
-</li>
-</ul>
-<a name="roleManager">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>roleManager</h4>
-<pre>@Inject
-private&nbsp;org.apache.archiva.redback.role.RoleManager <a href="../../../../../src-html/org/apache/archiva/web/startup/SecuritySynchronization.html#line.62">roleManager</a></pre>
-</li>
-</ul>
-<a name="rbacManager">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>rbacManager</h4>
-<pre>@Inject
- @Named(value="rbacManager#cached")
-private&nbsp;org.apache.archiva.redback.rbac.RBACManager <a href="../../../../../src-html/org/apache/archiva/web/startup/SecuritySynchronization.html#line.66">rbacManager</a></pre>
-</li>
-</ul>
-<a name="checkers">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>checkers</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,org.apache.archiva.redback.system.check.EnvironmentCheck&gt; <a href="../../../../../src-html/org/apache/archiva/web/startup/SecuritySynchronization.html#line.68">checkers</a></pre>
-</li>
-</ul>
-<a name="archivaConfiguration">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>archivaConfiguration</h4>
-<pre>@Inject
-private&nbsp;<a href="../../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a> <a href="../../../../../src-html/org/apache/archiva/web/startup/SecuritySynchronization.html#line.71">archivaConfiguration</a></pre>
-</li>
-</ul>
-<a name="applicationContext">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>applicationContext</h4>
-<pre>@Inject
-private&nbsp;org.springframework.context.ApplicationContext <a href="../../../../../src-html/org/apache/archiva/web/startup/SecuritySynchronization.html#line.74">applicationContext</a></pre>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
@@ -357,58 +235,40 @@ public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/st
 <pre>protected&nbsp;&lt;T&gt;&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,T&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/startup/SecuritySynchronization.html#line.82">getBeansOfType</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;T&gt;&nbsp;clazz)</pre>
 </li>
 </ul>
-<a name="afterConfigurationChange-org.apache.archiva.redback.components.registry.Registry-java.lang.String-java.lang.Object-">
+<a name="afterConfigurationChange-org.apache.archiva.components.registry.Registry-java.lang.String-java.lang.Object-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>afterConfigurationChange</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/startup/SecuritySynchronization.html#line.100">afterConfigurationChange</a>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry,
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/startup/SecuritySynchronization.html#line.100">afterConfigurationChange</a>(org.apache.archiva.components.registry.Registry&nbsp;registry,
                                      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;propertyName,
                                      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;propertyValue)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code>afterConfigurationChange</code>&nbsp;in interface&nbsp;<code>org.apache.archiva.redback.components.registry.RegistryListener</code></dd>
+<dd><code>afterConfigurationChange</code>&nbsp;in interface&nbsp;<code>org.apache.archiva.components.registry.RegistryListener</code></dd>
 </dl>
 </li>
 </ul>
-<a name="beforeConfigurationChange-org.apache.archiva.redback.components.registry.Registry-java.lang.String-java.lang.Object-">
+<a name="beforeConfigurationChange-org.apache.archiva.components.registry.Registry-java.lang.String-java.lang.Object-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>beforeConfigurationChange</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/startup/SecuritySynchronization.html#line.113">beforeConfigurationChange</a>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry,
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/startup/SecuritySynchronization.html#line.113">beforeConfigurationChange</a>(org.apache.archiva.components.registry.Registry&nbsp;registry,
                                       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;propertyName,
                                       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;propertyValue)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code>beforeConfigurationChange</code>&nbsp;in interface&nbsp;<code>org.apache.archiva.redback.components.registry.RegistryListener</code></dd>
+<dd><code>beforeConfigurationChange</code>&nbsp;in interface&nbsp;<code>org.apache.archiva.components.registry.RegistryListener</code></dd>
 </dl>
-</li>
-</ul>
-<a name="synchConfiguration-java.util.List-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>synchConfiguration</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/startup/SecuritySynchronization.html#line.119">synchConfiguration</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&gt;&nbsp;repos)</pre>
-</li>
-</ul>
-<a name="syncRepoConfiguration-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>syncRepoConfiguration</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/startup/SecuritySynchronization.html#line.129">syncRepoConfiguration</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id)</pre>
 </li>
 </ul>
 <a name="startup--">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>startup</h4>
 <pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/startup/SecuritySynchronization.html#line.159">startup</a>()
@@ -417,29 +277,6 @@ public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/st
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../../../../org/apache/archiva/common/ArchivaException.html" title="class in org.apache.archiva.common">ArchivaException</a></code></dd>
 </dl>
-</li>
-</ul>
-<a name="executeEnvironmentChecks--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>executeEnvironmentChecks</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/startup/SecuritySynchronization.html#line.173">executeEnvironmentChecks</a>()
-                               throws <a href="../../../../../org/apache/archiva/common/ArchivaException.html" title="class in org.apache.archiva.common">ArchivaException</a></pre>
-<dl>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="../../../../../org/apache/archiva/common/ArchivaException.html" title="class in org.apache.archiva.common">ArchivaException</a></code></dd>
-</dl>
-</li>
-</ul>
-<a name="assignRepositoryObserverToGuestUser-java.util.List-">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>assignRepositoryObserverToGuestUser</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/startup/SecuritySynchronization.html#line.226">assignRepositoryObserverToGuestUser</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/configuration/ManagedRepositoryConfiguration.html" title="class in org.apache.archiva.configuration">ManagedRepositoryConfiguration</a>&gt;&nbsp;repos)</pre>
 </li>
 </ul>
 </li>
@@ -496,13 +333,13 @@ public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/st
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -511,6 +348,6 @@ public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/web/st
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

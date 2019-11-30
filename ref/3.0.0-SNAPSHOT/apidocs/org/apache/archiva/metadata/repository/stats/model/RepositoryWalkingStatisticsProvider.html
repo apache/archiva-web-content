@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10};
+var methods = {"i0":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -113,7 +113,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <hr>
 <br>
-<pre>public class <a href="../../../../../../../src-html/org/apache/archiva/metadata/repository/stats/model/RepositoryWalkingStatisticsProvider.html#line.40">RepositoryWalkingStatisticsProvider</a>
+<pre>public class <a href="../../../../../../../src-html/org/apache/archiva/metadata/repository/stats/model/RepositoryWalkingStatisticsProvider.html#line.41">RepositoryWalkingStatisticsProvider</a>
 extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements <a href="../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatisticsProvider.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatisticsProvider</a></pre>
 <div class="block">This is a default implementation of a statistics provider that walks the tree and
@@ -162,18 +162,12 @@ implements <a href="../../../../../../../org/apache/archiva/metadata/repository/
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryWalkingStatisticsProvider.html#populateStatistics-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-org.apache.archiva.metadata.repository.stats.model.RepositoryStatistics-">populateStatistics</a></span>(<a href="../../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryWalkingStatisticsProvider.html#populateStatistics-org.apache.archiva.metadata.repository.RepositorySession-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-org.apache.archiva.metadata.repository.stats.model.RepositoryStatistics-">populateStatistics</a></span>(<a href="../../../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;repositorySession,
+                  <a href="../../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
                   <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
                   <a href="../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatistics.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatistics</a>&nbsp;repositoryStatistics)</code>
 <div class="block">Walks each namespace of the given repository id and counts the artifacts.</div>
 </td>
-</tr>
-<tr id="i1" class="rowColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryWalkingStatisticsProvider.html#walkRepository-org.apache.archiva.metadata.repository.MetadataRepository-org.apache.archiva.metadata.repository.stats.model.RepositoryStatistics-java.lang.String-java.lang.String-">walkRepository</a></span>(<a href="../../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
-              <a href="../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatistics.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatistics</a>&nbsp;stats,
-              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
-              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;ns)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -203,7 +197,7 @@ implements <a href="../../../../../../../org/apache/archiva/metadata/repository/
 <ul class="blockListLast">
 <li class="blockList">
 <h4>RepositoryWalkingStatisticsProvider</h4>
-<pre>public&nbsp;<a href="../../../../../../../src-html/org/apache/archiva/metadata/repository/stats/model/RepositoryWalkingStatisticsProvider.html#line.40">RepositoryWalkingStatisticsProvider</a>()</pre>
+<pre>public&nbsp;<a href="../../../../../../../src-html/org/apache/archiva/metadata/repository/stats/model/RepositoryWalkingStatisticsProvider.html#line.41">RepositoryWalkingStatisticsProvider</a>()</pre>
 </li>
 </ul>
 </li>
@@ -214,43 +208,28 @@ implements <a href="../../../../../../../org/apache/archiva/metadata/repository/
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="populateStatistics-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-org.apache.archiva.metadata.repository.stats.model.RepositoryStatistics-">
+<a name="populateStatistics-org.apache.archiva.metadata.repository.RepositorySession-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-org.apache.archiva.metadata.repository.stats.model.RepositoryStatistics-">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>populateStatistics</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../../../src-html/org/apache/archiva/metadata/repository/stats/model/RepositoryWalkingStatisticsProvider.html#line.52">populateStatistics</a>(<a href="../../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
+<pre>public&nbsp;void&nbsp;<a href="../../../../../../../src-html/org/apache/archiva/metadata/repository/stats/model/RepositoryWalkingStatisticsProvider.html#line.55">populateStatistics</a>(<a href="../../../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;repositorySession,
+                               <a href="../../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
                                <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
                                <a href="../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatistics.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatistics</a>&nbsp;repositoryStatistics)
                         throws <a href="../../../../../../../org/apache/archiva/metadata/repository/MetadataRepositoryException.html" title="class in org.apache.archiva.metadata.repository">MetadataRepositoryException</a></pre>
 <div class="block">Walks each namespace of the given repository id and counts the artifacts.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatisticsProvider.html#populateStatistics-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-org.apache.archiva.metadata.repository.stats.model.RepositoryStatistics-">populateStatistics</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatisticsProvider.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatisticsProvider</a></code></dd>
+<dd><code><a href="../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatisticsProvider.html#populateStatistics-org.apache.archiva.metadata.repository.RepositorySession-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-org.apache.archiva.metadata.repository.stats.model.RepositoryStatistics-">populateStatistics</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatisticsProvider.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatisticsProvider</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>repositorySession</code> - </dd>
 <dd><code>metadataRepository</code> - The repository implementation</dd>
 <dd><code>repositoryId</code> - The repository Id</dd>
 <dd><code>repositoryStatistics</code> - The statistics object that must be populated</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../../../../../../org/apache/archiva/metadata/repository/MetadataRepositoryException.html" title="class in org.apache.archiva.metadata.repository">MetadataRepositoryException</a></code> - Throws the repository exception, if an error occurs while accessing the repository.</dd>
-</dl>
-</li>
-</ul>
-<a name="walkRepository-org.apache.archiva.metadata.repository.MetadataRepository-org.apache.archiva.metadata.repository.stats.model.RepositoryStatistics-java.lang.String-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>walkRepository</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../../../../src-html/org/apache/archiva/metadata/repository/stats/model/RepositoryWalkingStatisticsProvider.html#line.69">walkRepository</a>(<a href="../../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
-                            <a href="../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatistics.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatistics</a>&nbsp;stats,
-                            <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
-                            <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;ns)
-                     throws <a href="../../../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</a></pre>
-<dl>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="../../../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -323,6 +302,6 @@ implements <a href="../../../../../../../org/apache/archiva/metadata/repository/
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

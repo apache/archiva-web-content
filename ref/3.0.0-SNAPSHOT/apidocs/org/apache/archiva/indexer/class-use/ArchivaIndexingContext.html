@@ -91,7 +91,23 @@
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><a href="#org.apache.archiva.indexer.merger">org.apache.archiva.indexer.merger</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.archiva.indexer.merger.base">org.apache.archiva.indexer.merger.base</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><a href="#org.apache.archiva.repository">org.apache.archiva.repository</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.archiva.repository.base">org.apache.archiva.repository.base</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#org.apache.archiva.repository.maven2">org.apache.archiva.repository.maven2</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
@@ -116,29 +132,24 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
-<td class="colLast"><span class="typeNameLabel">GenericIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/GenericIndexManager.html#createContext-org.apache.archiva.repository.Repository-">createContext</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository)</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
 <td class="colLast"><span class="typeNameLabel">ArchivaIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#createContext-org.apache.archiva.repository.Repository-">createContext</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository)</code>
 <div class="block">Creates the indexing context for the given repository.</div>
 </td>
 </tr>
-<tr class="altColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
-<td class="colLast"><span class="typeNameLabel">GenericIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/GenericIndexManager.html#move-org.apache.archiva.indexer.ArchivaIndexingContext-org.apache.archiva.repository.Repository-">move</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
-    <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo)</code>&nbsp;</td>
-</tr>
 <tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ArchivaIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#mergeContexts-org.apache.archiva.repository.Repository-java.util.List-boolean-">mergeContexts</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;destinationRepo,
+             <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&gt;&nbsp;contexts,
+             boolean&nbsp;packIndex)</code>
+<div class="block">Merges a list of contexts into a single one.</div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
 <td class="colLast"><span class="typeNameLabel">ArchivaIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#move-org.apache.archiva.indexer.ArchivaIndexingContext-org.apache.archiva.repository.Repository-">move</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
     <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo)</code>
 <div class="block">Moves the context to a new directory.</div>
 </td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
-<td class="colLast"><span class="typeNameLabel">GenericIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/GenericIndexManager.html#reset-org.apache.archiva.indexer.ArchivaIndexingContext-">reset</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
@@ -157,20 +168,10 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">GenericIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/GenericIndexManager.html#addArtifactsToIndex-org.apache.archiva.indexer.ArchivaIndexingContext-java.util.Collection-">addArtifactsToIndex</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
-                   <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&gt;&nbsp;artifactReference)</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">ArchivaIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#addArtifactsToIndex-org.apache.archiva.indexer.ArchivaIndexingContext-java.util.Collection-">addArtifactsToIndex</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
                    <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&gt;&nbsp;artifactReference)</code>
 <div class="block">Adds a list of artifacts to the index.</div>
 </td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
-<td class="colLast"><span class="typeNameLabel">GenericIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/GenericIndexManager.html#move-org.apache.archiva.indexer.ArchivaIndexingContext-org.apache.archiva.repository.Repository-">move</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
-    <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
@@ -181,18 +182,9 @@
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">GenericIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/GenericIndexManager.html#pack-org.apache.archiva.indexer.ArchivaIndexingContext-">pack</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">ArchivaIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#pack-org.apache.archiva.indexer.ArchivaIndexingContext-">pack</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)</code>
 <div class="block">Compresses the index to a more dense packed format.</div>
 </td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">GenericIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/GenericIndexManager.html#removeArtifactsFromIndex-org.apache.archiva.indexer.ArchivaIndexingContext-java.util.Collection-">removeArtifactsFromIndex</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
-                        <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&gt;&nbsp;artifactReference)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
@@ -203,17 +195,9 @@
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
-<td class="colLast"><span class="typeNameLabel">GenericIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/GenericIndexManager.html#reset-org.apache.archiva.indexer.ArchivaIndexingContext-">reset</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
 <td class="colLast"><span class="typeNameLabel">ArchivaIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#reset-org.apache.archiva.indexer.ArchivaIndexingContext-">reset</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)</code>
 <div class="block">Reinitializes the index.</div>
 </td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">GenericIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/GenericIndexManager.html#scan-org.apache.archiva.indexer.ArchivaIndexingContext-">scan</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
@@ -223,14 +207,26 @@
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">GenericIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/GenericIndexManager.html#update-org.apache.archiva.indexer.ArchivaIndexingContext-boolean-">update</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
-      boolean&nbsp;fullUpdate)</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">ArchivaIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#update-org.apache.archiva.indexer.ArchivaIndexingContext-boolean-">update</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
       boolean&nbsp;fullUpdate)</code>
 <div class="block">Updates the index from the remote url.</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Method parameters in <a href="../../../../../org/apache/archiva/indexer/package-summary.html">org.apache.archiva.indexer</a> with type arguments of type <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ArchivaIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#mergeContexts-org.apache.archiva.repository.Repository-java.util.List-boolean-">mergeContexts</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;destinationRepo,
+             <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&gt;&nbsp;contexts,
+             boolean&nbsp;packIndex)</code>
+<div class="block">Merges a list of contexts into a single one.</div>
 </td>
 </tr>
 </tbody>
@@ -268,10 +264,16 @@
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
+<td class="colLast"><span class="typeNameLabel">MavenIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexManager.html#mergeContexts-org.apache.archiva.repository.Repository-java.util.List-boolean-">mergeContexts</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;destinationRepo,
+             <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&gt;&nbsp;contexts,
+             boolean&nbsp;packIndex)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
 <td class="colLast"><span class="typeNameLabel">MavenIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexManager.html#move-org.apache.archiva.indexer.ArchivaIndexingContext-org.apache.archiva.repository.Repository-">move</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
     <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo)</code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
 <td class="colLast"><span class="typeNameLabel">MavenIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexManager.html#reset-org.apache.archiva.indexer.ArchivaIndexingContext-">reset</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)</code>&nbsp;</td>
 </tr>
@@ -288,15 +290,6 @@
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MavenIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexManager.html#addArtifactsToIndex-org.apache.archiva.indexer.ArchivaIndexingContext-java.util.Collection-">addArtifactsToIndex</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
                    <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&gt;&nbsp;artifactReference)</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><span class="typeNameLabel">MavenIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexManager.html#executeUpdateFunction-org.apache.archiva.indexer.ArchivaIndexingContext-org.apache.archiva.indexer.maven.MavenIndexManager.IndexUpdateConsumer-">executeUpdateFunction</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
-                     <a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexManager.IndexUpdateConsumer.html" title="interface in org.apache.archiva.indexer.maven">MavenIndexManager.IndexUpdateConsumer</a>&nbsp;function)</code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
-<td class="colLast"><span class="typeNameLabel">MavenIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexManager.html#getIndexPath-org.apache.archiva.indexer.ArchivaIndexingContext-">getIndexPath</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;ctx)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static org.apache.maven.index.context.IndexingContext</code></td>
@@ -331,24 +324,90 @@
 </tr>
 </tbody>
 </table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Method parameters in <a href="../../../../../org/apache/archiva/indexer/maven/package-summary.html">org.apache.archiva.indexer.maven</a> with type arguments of type <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
+<td class="colLast"><span class="typeNameLabel">MavenIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexManager.html#mergeContexts-org.apache.archiva.repository.Repository-java.util.List-boolean-">mergeContexts</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;destinationRepo,
+             <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&gt;&nbsp;contexts,
+             boolean&nbsp;packIndex)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.archiva.indexer.merger">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a> in <a href="../../../../../org/apache/archiva/indexer/merger/package-summary.html">org.apache.archiva.indexer.merger</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/archiva/indexer/merger/package-summary.html">org.apache.archiva.indexer.merger</a> that return <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
+<td class="colLast"><span class="typeNameLabel">IndexMerger.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/merger/IndexMerger.html#buildMergedIndex-org.apache.archiva.indexer.merger.IndexMergerRequest-">buildMergedIndex</a></span>(<a href="../../../../../org/apache/archiva/indexer/merger/IndexMergerRequest.html" title="class in org.apache.archiva.indexer.merger">IndexMergerRequest</a>&nbsp;indexMergerRequest)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.archiva.indexer.merger.base">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a> in <a href="../../../../../org/apache/archiva/indexer/merger/base/package-summary.html">org.apache.archiva.indexer.merger.base</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/archiva/indexer/merger/base/package-summary.html">org.apache.archiva.indexer.merger.base</a> that return <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DefaultIndexMerger.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/merger/base/DefaultIndexMerger.html#buildMergedIndex-org.apache.archiva.indexer.merger.IndexMergerRequest-">buildMergedIndex</a></span>(<a href="../../../../../org/apache/archiva/indexer/merger/IndexMergerRequest.html" title="class in org.apache.archiva.indexer.merger">IndexMergerRequest</a>&nbsp;indexMergerRequest)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
+<td class="colLast"><span class="typeNameLabel">MergedRemoteIndexesTaskResult.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/merger/base/MergedRemoteIndexesTaskResult.html#getIndexingContext--">getIndexingContext</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/archiva/indexer/merger/base/package-summary.html">org.apache.archiva.indexer.merger.base</a> with parameters of type <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">MergedRemoteIndexesTaskResult.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/merger/base/MergedRemoteIndexesTaskResult.html#setIndexingContext-org.apache.archiva.indexer.ArchivaIndexingContext-">setIndexingContext</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;indexingContext)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing constructors, and an explanation">
+<caption><span>Constructors in <a href="../../../../../org/apache/archiva/indexer/merger/base/package-summary.html">org.apache.archiva.indexer.merger.base</a> with parameters of type <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/merger/base/MergedRemoteIndexesTaskResult.html#MergedRemoteIndexesTaskResult-org.apache.archiva.indexer.ArchivaIndexingContext-">MergedRemoteIndexesTaskResult</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;indexingContext)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 </li>
 <li class="blockList"><a name="org.apache.archiva.repository">
 <!--   -->
 </a>
 <h3>Uses of <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a> in <a href="../../../../../org/apache/archiva/repository/package-summary.html">org.apache.archiva.repository</a></h3>
-<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing fields, and an explanation">
-<caption><span>Fields in <a href="../../../../../org/apache/archiva/repository/package-summary.html">org.apache.archiva.repository</a> declared as <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tbody>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
-<td class="colLast"><span class="typeNameLabel">AbstractRepository.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#indexingContext">indexingContext</a></span></code>&nbsp;</td>
-</tr>
-</tbody>
-</table>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
 <caption><span>Methods in <a href="../../../../../org/apache/archiva/repository/package-summary.html">org.apache.archiva.repository</a> that return <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
@@ -357,10 +416,6 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
-<td class="colLast"><span class="typeNameLabel">AbstractRepository.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#getIndexingContext--">getIndexingContext</a></span>()</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
 <td class="colLast"><span class="typeNameLabel">Repository.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/Repository.html#getIndexingContext--">getIndexingContext</a></span>()</code>
 <div class="block">Returns a indexing context.</div>
@@ -377,13 +432,58 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">AbstractRepository.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#setIndexingContext-org.apache.archiva.indexer.ArchivaIndexingContext-">setIndexingContext</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">EditableRepository.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/EditableRepository.html#setIndexingContext-org.apache.archiva.indexer.ArchivaIndexingContext-">setIndexingContext</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)</code>
 <div class="block">Sets the indexing context reference.</div>
 </td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.archiva.repository.base">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a> in <a href="../../../../../org/apache/archiva/repository/base/package-summary.html">org.apache.archiva.repository.base</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/archiva/repository/base/package-summary.html">org.apache.archiva.repository.base</a> that return <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
+<td class="colLast"><span class="typeNameLabel">AbstractRepository.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#getIndexingContext--">getIndexingContext</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/archiva/repository/base/package-summary.html">org.apache.archiva.repository.base</a> with parameters of type <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">AbstractRepository.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#setIndexingContext-org.apache.archiva.indexer.ArchivaIndexingContext-">setIndexingContext</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.archiva.repository.maven2">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a> in <a href="../../../../../org/apache/archiva/repository/maven2/package-summary.html">org.apache.archiva.repository.maven2</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/archiva/repository/maven2/package-summary.html">org.apache.archiva.repository.maven2</a> with parameters of type <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">MavenManagedRepository.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/maven2/MavenManagedRepository.html#setIndexingContext-org.apache.archiva.indexer.ArchivaIndexingContext-">setIndexingContext</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -392,19 +492,6 @@
 <!--   -->
 </a>
 <h3>Uses of <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a> in <a href="../../../../../org/apache/archiva/scheduler/indexing/package-summary.html">org.apache.archiva.scheduler.indexing</a></h3>
-<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing fields, and an explanation">
-<caption><span>Fields in <a href="../../../../../org/apache/archiva/scheduler/indexing/package-summary.html">org.apache.archiva.scheduler.indexing</a> declared as <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tbody>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
-<td class="colLast"><span class="typeNameLabel">ArtifactIndexingTask.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/scheduler/indexing/ArtifactIndexingTask.html#context">context</a></span></code>&nbsp;</td>
-</tr>
-</tbody>
-</table>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
 <caption><span>Methods in <a href="../../../../../org/apache/archiva/scheduler/indexing/package-summary.html">org.apache.archiva.scheduler.indexing</a> that return <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
@@ -499,6 +586,6 @@
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

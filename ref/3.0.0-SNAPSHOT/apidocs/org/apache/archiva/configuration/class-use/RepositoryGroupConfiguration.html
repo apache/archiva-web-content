@@ -87,11 +87,15 @@
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><a href="#org.apache.archiva.configuration.io.registry">org.apache.archiva.configuration.io.registry</a></td>
+<td class="colFirst"><a href="#org.apache.archiva.repository">org.apache.archiva.repository</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><a href="#org.apache.archiva.webdav">org.apache.archiva.webdav</a></td>
+<td class="colFirst"><a href="#org.apache.archiva.repository.base">org.apache.archiva.repository.base</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.archiva.repository.maven2">org.apache.archiva.repository.maven2</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 </tbody>
@@ -103,21 +107,6 @@
 <!--   -->
 </a>
 <h3>Uses of <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a> in <a href="../../../../../org/apache/archiva/configuration/package-summary.html">org.apache.archiva.configuration</a></h3>
-<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing fields, and an explanation">
-<caption><span>Fields in <a href="../../../../../org/apache/archiva/configuration/package-summary.html">org.apache.archiva.configuration</a> with type parameters of type <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a></span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tbody>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">Configuration.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/configuration/Configuration.html#repositoryGroups">repositoryGroups</a></span></code>
-<div class="block">Field repositoryGroups.</div>
-</td>
-</tr>
-</tbody>
-</table>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
 <caption><span>Methods in <a href="../../../../../org/apache/archiva/configuration/package-summary.html">org.apache.archiva.configuration</a> that return <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
@@ -187,73 +176,116 @@
 </tbody>
 </table>
 </li>
-<li class="blockList"><a name="org.apache.archiva.configuration.io.registry">
+<li class="blockList"><a name="org.apache.archiva.repository">
 <!--   -->
 </a>
-<h3>Uses of <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a> in <a href="../../../../../org/apache/archiva/configuration/io/registry/package-summary.html">org.apache.archiva.configuration.io.registry</a></h3>
+<h3>Uses of <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a> in <a href="../../../../../org/apache/archiva/repository/package-summary.html">org.apache.archiva.repository</a></h3>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
-<caption><span>Methods in <a href="../../../../../org/apache/archiva/configuration/io/registry/package-summary.html">org.apache.archiva.configuration.io.registry</a> that return <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a></span><span class="tabEnd">&nbsp;</span></caption>
+<caption><span>Methods in <a href="../../../../../org/apache/archiva/repository/package-summary.html">org.apache.archiva.repository</a> that return <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code>private <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a></code></td>
-<td class="colLast"><span class="typeNameLabel">ConfigurationRegistryReader.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/configuration/io/registry/ConfigurationRegistryReader.html#readRepositoryGroupConfiguration-java.lang.String-org.apache.archiva.redback.components.registry.Registry-">readRepositoryGroupConfiguration</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;prefix,
-                                org.apache.archiva.redback.components.registry.Registry&nbsp;registry)</code>&nbsp;</td>
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a></code></td>
+<td class="colLast"><span class="typeNameLabel">RepositoryProvider.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryProvider.html#getRepositoryGroupConfiguration-org.apache.archiva.repository.RepositoryGroup-">getRepositoryGroupConfiguration</a></span>(<a href="../../../../../org/apache/archiva/repository/RepositoryGroup.html" title="interface in org.apache.archiva.repository">RepositoryGroup</a>&nbsp;repositoryGroup)</code>
+<div class="block">Returns a configuration object from the given repository group instance.</div>
+</td>
 </tr>
 </tbody>
 </table>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
-<caption><span>Methods in <a href="../../../../../org/apache/archiva/configuration/io/registry/package-summary.html">org.apache.archiva.configuration.io.registry</a> with parameters of type <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a></span><span class="tabEnd">&nbsp;</span></caption>
+<caption><span>Methods in <a href="../../../../../org/apache/archiva/repository/package-summary.html">org.apache.archiva.repository</a> with parameters of type <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><span class="typeNameLabel">ConfigurationRegistryWriter.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/configuration/io/registry/ConfigurationRegistryWriter.html#writeRepositoryGroupConfiguration-java.lang.String-org.apache.archiva.configuration.RepositoryGroupConfiguration-org.apache.archiva.redback.components.registry.Registry-">writeRepositoryGroupConfiguration</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;prefix,
-                                 <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a>&nbsp;value,
-                                 org.apache.archiva.redback.components.registry.Registry&nbsp;registry)</code>&nbsp;</td>
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/RepositoryGroup.html" title="interface in org.apache.archiva.repository">RepositoryGroup</a></code></td>
+<td class="colLast"><span class="typeNameLabel">RepositoryProvider.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryProvider.html#createRepositoryGroup-org.apache.archiva.configuration.RepositoryGroupConfiguration-">createRepositoryGroup</a></span>(<a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a>&nbsp;configuration)</code>
+<div class="block">Creates a new repository group instance from the given configuration.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/RepositoryGroup.html" title="interface in org.apache.archiva.repository">RepositoryGroup</a></code></td>
+<td class="colLast"><span class="typeNameLabel">RepositoryRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryRegistry.html#putRepositoryGroup-org.apache.archiva.configuration.RepositoryGroupConfiguration-">putRepositoryGroup</a></span>(<a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a>&nbsp;repositoryGroupConfiguration)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/RepositoryGroup.html" title="interface in org.apache.archiva.repository">RepositoryGroup</a></code></td>
+<td class="colLast"><span class="typeNameLabel">RepositoryRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryRegistry.html#putRepositoryGroup-org.apache.archiva.configuration.RepositoryGroupConfiguration-org.apache.archiva.configuration.Configuration-">putRepositoryGroup</a></span>(<a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a>&nbsp;repositoryGroupConfiguration,
+                  <a href="../../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;configuration)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">RepositoryProvider.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryProvider.html#updateRepositoryGroupInstance-org.apache.archiva.repository.EditableRepositoryGroup-org.apache.archiva.configuration.RepositoryGroupConfiguration-">updateRepositoryGroupInstance</a></span>(<a href="../../../../../org/apache/archiva/repository/EditableRepositoryGroup.html" title="interface in org.apache.archiva.repository">EditableRepositoryGroup</a>&nbsp;repositoryGroup,
+                             <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a>&nbsp;configuration)</code>
+<div class="block">Updates the given remote repository instance from the given configuration.</div>
+</td>
 </tr>
 </tbody>
 </table>
 </li>
-<li class="blockList"><a name="org.apache.archiva.webdav">
+<li class="blockList"><a name="org.apache.archiva.repository.base">
 <!--   -->
 </a>
-<h3>Uses of <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a> in <a href="../../../../../org/apache/archiva/webdav/package-summary.html">org.apache.archiva.webdav</a></h3>
+<h3>Uses of <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a> in <a href="../../../../../org/apache/archiva/repository/base/package-summary.html">org.apache.archiva.repository.base</a></h3>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
-<caption><span>Methods in <a href="../../../../../org/apache/archiva/webdav/package-summary.html">org.apache.archiva.webdav</a> with parameters of type <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a></span><span class="tabEnd">&nbsp;</span></caption>
+<caption><span>Methods in <a href="../../../../../org/apache/archiva/repository/base/package-summary.html">org.apache.archiva.repository.base</a> with parameters of type <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
-<td class="colLast"><span class="typeNameLabel">ArchivaDavResourceFactory.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#buildMergedIndexDirectory-java.util.List-java.lang.String-org.apache.jackrabbit.webdav.DavServletRequest-org.apache.archiva.configuration.RepositoryGroupConfiguration-">buildMergedIndexDirectory</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositories,
-                         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;activePrincipal,
-                         org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
-                         <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a>&nbsp;repositoryGroupConfiguration)</code>&nbsp;</td>
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/RepositoryGroup.html" title="interface in org.apache.archiva.repository">RepositoryGroup</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ArchivaRepositoryRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/base/ArchivaRepositoryRegistry.html#putRepositoryGroup-org.apache.archiva.configuration.RepositoryGroupConfiguration-">putRepositoryGroup</a></span>(<a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a>&nbsp;repositoryGroupConfiguration)</code>
+<div class="block">Adds a new repository group or updates the repository with the same id, if it exists already.</div>
+</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>private org.apache.jackrabbit.webdav.DavResource</code></td>
-<td class="colLast"><span class="typeNameLabel">ArchivaDavResourceFactory.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#getResourceFromGroup-org.apache.jackrabbit.webdav.DavServletRequest-java.util.List-org.apache.archiva.webdav.ArchivaDavResourceLocator-org.apache.archiva.configuration.RepositoryGroupConfiguration-">getResourceFromGroup</a></span>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
-                    <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositories,
-                    <a href="../../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</a>&nbsp;locator,
-                    <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a>&nbsp;repositoryGroupConfiguration)</code>&nbsp;</td>
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/RepositoryGroup.html" title="interface in org.apache.archiva.repository">RepositoryGroup</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ArchivaRepositoryRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/base/ArchivaRepositoryRegistry.html#putRepositoryGroup-org.apache.archiva.configuration.RepositoryGroupConfiguration-org.apache.archiva.configuration.Configuration-">putRepositoryGroup</a></span>(<a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a>&nbsp;repositoryGroupConfiguration,
+                  <a href="../../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;configuration)</code>
+<div class="block">Adds a new repository group or updates the repository group with the same id.</div>
+</td>
 </tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.archiva.repository.maven2">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a> in <a href="../../../../../org/apache/archiva/repository/maven2/package-summary.html">org.apache.archiva.repository.maven2</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/archiva/repository/maven2/package-summary.html">org.apache.archiva.repository.maven2</a> that return <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
 <tr class="altColor">
-<td class="colFirst"><code>private org.apache.jackrabbit.webdav.DavResource</code></td>
-<td class="colLast"><span class="typeNameLabel">ArchivaDavResourceFactory.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/webdav/ArchivaDavResourceFactory.html#processRepositoryGroup-org.apache.jackrabbit.webdav.DavServletRequest-org.apache.archiva.webdav.ArchivaDavResourceLocator-java.util.List-java.lang.String-java.util.List-org.apache.archiva.configuration.RepositoryGroupConfiguration-">processRepositoryGroup</a></span>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request,
-                      <a href="../../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</a>&nbsp;archivaLocator,
-                      <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositories,
-                      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;activePrincipal,
-                      <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;resourcesInAbsolutePath,
-                      <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a>&nbsp;repoGroupConfig)</code>&nbsp;</td>
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a></code></td>
+<td class="colLast"><span class="typeNameLabel">MavenRepositoryProvider.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/maven2/MavenRepositoryProvider.html#getRepositoryGroupConfiguration-org.apache.archiva.repository.RepositoryGroup-">getRepositoryGroupConfiguration</a></span>(<a href="../../../../../org/apache/archiva/repository/RepositoryGroup.html" title="interface in org.apache.archiva.repository">RepositoryGroup</a>&nbsp;repositoryGroup)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/archiva/repository/maven2/package-summary.html">org.apache.archiva.repository.maven2</a> with parameters of type <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/RepositoryGroup.html" title="interface in org.apache.archiva.repository">RepositoryGroup</a></code></td>
+<td class="colLast"><span class="typeNameLabel">MavenRepositoryProvider.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/maven2/MavenRepositoryProvider.html#createRepositoryGroup-org.apache.archiva.configuration.RepositoryGroupConfiguration-">createRepositoryGroup</a></span>(<a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a>&nbsp;configuration)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">MavenRepositoryProvider.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/maven2/MavenRepositoryProvider.html#updateRepositoryGroupInstance-org.apache.archiva.repository.EditableRepositoryGroup-org.apache.archiva.configuration.RepositoryGroupConfiguration-">updateRepositoryGroupInstance</a></span>(<a href="../../../../../org/apache/archiva/repository/EditableRepositoryGroup.html" title="interface in org.apache.archiva.repository">EditableRepositoryGroup</a>&nbsp;repositoryGroup,
+                             <a href="../../../../../org/apache/archiva/configuration/RepositoryGroupConfiguration.html" title="class in org.apache.archiva.configuration">RepositoryGroupConfiguration</a>&nbsp;configuration)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -309,6 +341,6 @@
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

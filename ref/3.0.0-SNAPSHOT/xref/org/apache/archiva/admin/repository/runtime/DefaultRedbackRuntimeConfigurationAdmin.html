@@ -16,7 +16,7 @@
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> * "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * with the License.  You may obtain a copy of the License at</em>
 <a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2." target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.</a>0</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing,</em>
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * software distributed under the License is distributed on an</em>
@@ -36,12 +36,12 @@
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.configuration.ArchivaConfiguration;
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.configuration.Configuration;
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.configuration.IndeterminateConfigurationException;
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.components.cache.Cache;
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.components.registry.RegistryException;
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.components.cache.Cache;
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.components.registry.RegistryException;
 <a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.configuration.UserConfiguration;
 <a class="jxr_linenumber" name="L34" href="#L34">34</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.configuration.UserConfigurationException;
 <a class="jxr_linenumber" name="L35" href="#L35">35</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.configuration.UserConfigurationKeys;
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.lang.StringUtils;
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.lang3.StringUtils;
 <a class="jxr_linenumber" name="L37" href="#L37">37</a>  <strong class="jxr_keyword">import</strong> org.slf4j.Logger;
 <a class="jxr_linenumber" name="L38" href="#L38">38</a>  <strong class="jxr_keyword">import</strong> org.slf4j.LoggerFactory;
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>  <strong class="jxr_keyword">import</strong> org.springframework.stereotype.Service;
@@ -62,21 +62,21 @@
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>  <em class="jxr_javadoccomment"> * @since 1.4-M4</em>
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_javadoccomment"> */</em>
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>  @Service( <span class="jxr_string">"redbackRuntimeConfigurationAdmin#default"</span> )
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/apache/archiva/admin/repository/runtime/DefaultRedbackRuntimeConfigurationAdmin.html">DefaultRedbackRuntimeConfigurationAdmin</a>
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>      <strong class="jxr_keyword">extends</strong> <a href="../../../../../../org/apache/archiva/admin/repository/AbstractRepositoryAdmin.html">AbstractRepositoryAdmin</a>
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="DefaultRedbackRuntimeConfigurationAdmin" href="../../../../../../org/apache/archiva/admin/repository/runtime/DefaultRedbackRuntimeConfigurationAdmin.html#DefaultRedbackRuntimeConfigurationAdmin">DefaultRedbackRuntimeConfigurationAdmin</a>
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>      <strong class="jxr_keyword">extends</strong> <a name="AbstractRepositoryAdmin" href="../../../../../../org/apache/archiva/admin/repository/AbstractRepositoryAdmin.html#AbstractRepositoryAdmin">AbstractRepositoryAdmin</a>
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>      <strong class="jxr_keyword">implements</strong> RedbackRuntimeConfigurationAdmin, UserConfiguration
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>  {
 <a class="jxr_linenumber" name="L61" href="#L61">61</a>  
 <a class="jxr_linenumber" name="L62" href="#L62">62</a>      <strong class="jxr_keyword">protected</strong> Logger log = LoggerFactory.getLogger( getClass() );
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>  
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../../org/apache/archiva/configuration/ArchivaConfiguration.html">ArchivaConfiguration</a> archivaConfiguration;
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>      <strong class="jxr_keyword">private</strong> <a name="ArchivaConfiguration" href="../../../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#ArchivaConfiguration">ArchivaConfiguration</a> archivaConfiguration;
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>  
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>      <strong class="jxr_keyword">private</strong> UserConfiguration userConfiguration;
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>  
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>      <strong class="jxr_keyword">private</strong> Cache usersCache;
 <a class="jxr_linenumber" name="L69" href="#L69">69</a>  
 <a class="jxr_linenumber" name="L70" href="#L70">70</a>      @Inject
-<a class="jxr_linenumber" name="L71" href="#L71">71</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/apache/archiva/admin/repository/runtime/DefaultRedbackRuntimeConfigurationAdmin.html">DefaultRedbackRuntimeConfigurationAdmin</a>( ArchivaConfiguration archivaConfiguration,<em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>      <strong class="jxr_keyword">public</strong> <a name="DefaultRedbackRuntimeConfigurationAdmin" href="../../../../../../org/apache/archiva/admin/repository/runtime/DefaultRedbackRuntimeConfigurationAdmin.html#DefaultRedbackRuntimeConfigurationAdmin">DefaultRedbackRuntimeConfigurationAdmin</a>( <a name="ArchivaConfiguration" href="../../../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#ArchivaConfiguration">ArchivaConfiguration</a> archivaConfiguration,<em class="jxr_comment">//</em>
 <a class="jxr_linenumber" name="L72" href="#L72">72</a>                                                      @Named( value = <span class="jxr_string">"userConfiguration#redback"</span> ) <em class="jxr_comment">//</em>
 <a class="jxr_linenumber" name="L73" href="#L73">73</a>                                                          UserConfiguration userConfiguration,
 <a class="jxr_linenumber" name="L74" href="#L74">74</a>                                                      @Named( value = <span class="jxr_string">"cache#users"</span> ) Cache usersCache )
@@ -93,12 +93,12 @@
 <a class="jxr_linenumber" name="L85" href="#L85">85</a>      {
 <a class="jxr_linenumber" name="L86" href="#L86">86</a>          <strong class="jxr_keyword">try</strong>
 <a class="jxr_linenumber" name="L87" href="#L87">87</a>          {
-<a class="jxr_linenumber" name="L88" href="#L88">88</a>              <a href="../../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html">RedbackRuntimeConfiguration</a> redbackRuntimeConfiguration = getRedbackRuntimeConfiguration();
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>              <a name="RedbackRuntimeConfiguration" href="../../../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration">RedbackRuntimeConfiguration</a> redbackRuntimeConfiguration = getRedbackRuntimeConfiguration();
 <a class="jxr_linenumber" name="L89" href="#L89">89</a>              <em class="jxr_comment">// migrate or not data from redback</em>
 <a class="jxr_linenumber" name="L90" href="#L90">90</a>              <strong class="jxr_keyword">if</strong> ( !redbackRuntimeConfiguration.isMigratedFromRedbackConfiguration() )
 <a class="jxr_linenumber" name="L91" href="#L91">91</a>              {
 <a class="jxr_linenumber" name="L92" href="#L92">92</a>                  <em class="jxr_comment">// not migrated so build a new fresh one</em>
-<a class="jxr_linenumber" name="L93" href="#L93">93</a>                  redbackRuntimeConfiguration = <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html">RedbackRuntimeConfiguration</a>();
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>                  redbackRuntimeConfiguration = <strong class="jxr_keyword">new</strong> <a name="RedbackRuntimeConfiguration" href="../../../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration">RedbackRuntimeConfiguration</a>();
 <a class="jxr_linenumber" name="L94" href="#L94">94</a>                  <em class="jxr_comment">// so migrate if available</em>
 <a class="jxr_linenumber" name="L95" href="#L95">95</a>                  String userManagerImpl =
 <a class="jxr_linenumber" name="L96" href="#L96">96</a>                      userConfiguration.getConcatenatedList( UserConfigurationKeys.USER_MANAGER_IMPL, <em class="jxr_comment">//</em>
@@ -143,10 +143,10 @@
 <a class="jxr_linenumber" name="L135" href="#L135">135</a> 
 <a class="jxr_linenumber" name="L136" href="#L136">136</a>                 <em class="jxr_comment">// now ldap</em>
 <a class="jxr_linenumber" name="L137" href="#L137">137</a> 
-<a class="jxr_linenumber" name="L138" href="#L138">138</a>                 <a href="../../../../../../org/apache/archiva/admin/model/beans/LdapConfiguration.html">LdapConfiguration</a> ldapConfiguration = redbackRuntimeConfiguration.getLdapConfiguration();
+<a class="jxr_linenumber" name="L138" href="#L138">138</a>                 <a name="LdapConfiguration" href="../../../../../../org/apache/archiva/configuration/LdapConfiguration.html#LdapConfiguration">LdapConfiguration</a> ldapConfiguration = redbackRuntimeConfiguration.getLdapConfiguration();
 <a class="jxr_linenumber" name="L139" href="#L139">139</a>                 <strong class="jxr_keyword">if</strong> ( ldapConfiguration == <strong class="jxr_keyword">null</strong> )
 <a class="jxr_linenumber" name="L140" href="#L140">140</a>                 {
-<a class="jxr_linenumber" name="L141" href="#L141">141</a>                     ldapConfiguration = <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/apache/archiva/admin/model/beans/LdapConfiguration.html">LdapConfiguration</a>();
+<a class="jxr_linenumber" name="L141" href="#L141">141</a>                     ldapConfiguration = <strong class="jxr_keyword">new</strong> <a name="LdapConfiguration" href="../../../../../../org/apache/archiva/configuration/LdapConfiguration.html#LdapConfiguration">LdapConfiguration</a>();
 <a class="jxr_linenumber" name="L142" href="#L142">142</a>                     redbackRuntimeConfiguration.setLdapConfiguration( ldapConfiguration );
 <a class="jxr_linenumber" name="L143" href="#L143">143</a>                 }
 <a class="jxr_linenumber" name="L144" href="#L144">144</a> 
@@ -201,7 +201,7 @@
 <a class="jxr_linenumber" name="L193" href="#L193">193</a>                         <strong class="jxr_keyword">if</strong> ( !StringUtils.isEmpty( val ) )
 <a class="jxr_linenumber" name="L194" href="#L194">194</a>                         {
 <a class="jxr_linenumber" name="L195" href="#L195">195</a>                             String[] roles = StringUtils.split( val, ',' );
-<a class="jxr_linenumber" name="L196" href="#L196">196</a>                             ldapGroupMappings.add( <strong class="jxr_keyword">new</strong> LdapGroupMapping( group, roles ) );
+<a class="jxr_linenumber" name="L196" href="#L196">196</a>                             ldapGroupMappings.add( <strong class="jxr_keyword">new</strong> <a name="LdapGroupMapping" href="../../../../../../org/apache/archiva/configuration/LdapGroupMapping.html#LdapGroupMapping">LdapGroupMapping</a>( group, roles ) );
 <a class="jxr_linenumber" name="L197" href="#L197">197</a>                         }
 <a class="jxr_linenumber" name="L198" href="#L198">198</a>                     }
 <a class="jxr_linenumber" name="L199" href="#L199">199</a>                 }
@@ -244,7 +244,7 @@
 <a class="jxr_linenumber" name="L236" href="#L236">236</a>             <em class="jxr_comment">// NPE free</em>
 <a class="jxr_linenumber" name="L237" href="#L237">237</a>             <strong class="jxr_keyword">if</strong> ( redbackRuntimeConfiguration.getUsersCacheConfiguration() == <strong class="jxr_keyword">null</strong> )
 <a class="jxr_linenumber" name="L238" href="#L238">238</a>             {
-<a class="jxr_linenumber" name="L239" href="#L239">239</a>                 redbackRuntimeConfiguration.setUsersCacheConfiguration( <strong class="jxr_keyword">new</strong> CacheConfiguration() );
+<a class="jxr_linenumber" name="L239" href="#L239">239</a>                 redbackRuntimeConfiguration.setUsersCacheConfiguration( <strong class="jxr_keyword">new</strong> <a name="CacheConfiguration" href="../../../../../../org/apache/archiva/configuration/CacheConfiguration.html#CacheConfiguration">CacheConfiguration</a>() );
 <a class="jxr_linenumber" name="L240" href="#L240">240</a>             }
 <a class="jxr_linenumber" name="L241" href="#L241">241</a>             <em class="jxr_comment">// if -1 it means non initialized to take values from the spring bean</em>
 <a class="jxr_linenumber" name="L242" href="#L242">242</a>             <strong class="jxr_keyword">if</strong> ( redbackRuntimeConfiguration.getUsersCacheConfiguration().getTimeToIdleSeconds() &lt; 0 )
@@ -291,7 +291,7 @@
 <a class="jxr_linenumber" name="L283" href="#L283">283</a>             }
 <a class="jxr_linenumber" name="L284" href="#L284">284</a> 
 <a class="jxr_linenumber" name="L285" href="#L285">285</a>         }
-<a class="jxr_linenumber" name="L286" href="#L286">286</a>         <strong class="jxr_keyword">catch</strong> ( RepositoryAdminException e )
+<a class="jxr_linenumber" name="L286" href="#L286">286</a>         <strong class="jxr_keyword">catch</strong> ( <a name="RepositoryAdminException" href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html#RepositoryAdminException">RepositoryAdminException</a> e )
 <a class="jxr_linenumber" name="L287" href="#L287">287</a>         {
 <a class="jxr_linenumber" name="L288" href="#L288">288</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> UserConfigurationException( e.getMessage(), e );
 <a class="jxr_linenumber" name="L289" href="#L289">289</a>         }
@@ -311,18 +311,18 @@
 <a class="jxr_linenumber" name="L303" href="#L303">303</a>     }
 <a class="jxr_linenumber" name="L304" href="#L304">304</a> 
 <a class="jxr_linenumber" name="L305" href="#L305">305</a>     @Override
-<a class="jxr_linenumber" name="L306" href="#L306">306</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html">RedbackRuntimeConfiguration</a> getRedbackRuntimeConfiguration()
+<a class="jxr_linenumber" name="L306" href="#L306">306</a>     <strong class="jxr_keyword">public</strong> <a name="RedbackRuntimeConfiguration" href="../../../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration">RedbackRuntimeConfiguration</a> getRedbackRuntimeConfiguration()
 <a class="jxr_linenumber" name="L307" href="#L307">307</a>     {
 <a class="jxr_linenumber" name="L308" href="#L308">308</a>         <strong class="jxr_keyword">return</strong> build( archivaConfiguration.getConfiguration().getRedbackRuntimeConfiguration() );
 <a class="jxr_linenumber" name="L309" href="#L309">309</a>     }
 <a class="jxr_linenumber" name="L310" href="#L310">310</a> 
 <a class="jxr_linenumber" name="L311" href="#L311">311</a>     @Override
-<a class="jxr_linenumber" name="L312" href="#L312">312</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> updateRedbackRuntimeConfiguration( RedbackRuntimeConfiguration redbackRuntimeConfiguration )
-<a class="jxr_linenumber" name="L313" href="#L313">313</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html">RepositoryAdminException</a>
+<a class="jxr_linenumber" name="L312" href="#L312">312</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> updateRedbackRuntimeConfiguration( <a name="RedbackRuntimeConfiguration" href="../../../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration">RedbackRuntimeConfiguration</a> redbackRuntimeConfiguration )
+<a class="jxr_linenumber" name="L313" href="#L313">313</a>         <strong class="jxr_keyword">throws</strong> <a name="RepositoryAdminException" href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html#RepositoryAdminException">RepositoryAdminException</a>
 <a class="jxr_linenumber" name="L314" href="#L314">314</a>     {
 <a class="jxr_linenumber" name="L315" href="#L315">315</a>         org.apache.archiva.configuration.RedbackRuntimeConfiguration runtimeConfiguration =
 <a class="jxr_linenumber" name="L316" href="#L316">316</a>             build( redbackRuntimeConfiguration );
-<a class="jxr_linenumber" name="L317" href="#L317">317</a>         <a href="../../../../../../org/apache/archiva/configuration/Configuration.html">Configuration</a> configuration = archivaConfiguration.getConfiguration();
+<a class="jxr_linenumber" name="L317" href="#L317">317</a>         <a name="Configuration" href="../../../../../../org/apache/archiva/configuration/Configuration.html#Configuration">Configuration</a> configuration = archivaConfiguration.getConfiguration();
 <a class="jxr_linenumber" name="L318" href="#L318">318</a>         configuration.setRedbackRuntimeConfiguration( runtimeConfiguration );
 <a class="jxr_linenumber" name="L319" href="#L319">319</a>         <strong class="jxr_keyword">try</strong>
 <a class="jxr_linenumber" name="L320" href="#L320">320</a>         {
@@ -330,18 +330,18 @@
 <a class="jxr_linenumber" name="L322" href="#L322">322</a>         }
 <a class="jxr_linenumber" name="L323" href="#L323">323</a>         <strong class="jxr_keyword">catch</strong> ( RegistryException e )
 <a class="jxr_linenumber" name="L324" href="#L324">324</a>         {
-<a class="jxr_linenumber" name="L325" href="#L325">325</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html">RepositoryAdminException</a>( e.getMessage(), e );
+<a class="jxr_linenumber" name="L325" href="#L325">325</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="RepositoryAdminException" href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html#RepositoryAdminException">RepositoryAdminException</a>( e.getMessage(), e );
 <a class="jxr_linenumber" name="L326" href="#L326">326</a>         }
-<a class="jxr_linenumber" name="L327" href="#L327">327</a>         <strong class="jxr_keyword">catch</strong> ( IndeterminateConfigurationException e )
+<a class="jxr_linenumber" name="L327" href="#L327">327</a>         <strong class="jxr_keyword">catch</strong> ( <a name="IndeterminateConfigurationException" href="../../../../../../org/apache/archiva/configuration/IndeterminateConfigurationException.html#IndeterminateConfigurationException">IndeterminateConfigurationException</a> e )
 <a class="jxr_linenumber" name="L328" href="#L328">328</a>         {
-<a class="jxr_linenumber" name="L329" href="#L329">329</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html">RepositoryAdminException</a>( e.getMessage(), e );
+<a class="jxr_linenumber" name="L329" href="#L329">329</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="RepositoryAdminException" href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html#RepositoryAdminException">RepositoryAdminException</a>( e.getMessage(), e );
 <a class="jxr_linenumber" name="L330" href="#L330">330</a>         }
 <a class="jxr_linenumber" name="L331" href="#L331">331</a>     }
 <a class="jxr_linenumber" name="L332" href="#L332">332</a> 
-<a class="jxr_linenumber" name="L333" href="#L333">333</a>     <strong class="jxr_keyword">private</strong> <a href="../../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html">RedbackRuntimeConfiguration</a> build(
+<a class="jxr_linenumber" name="L333" href="#L333">333</a>     <strong class="jxr_keyword">private</strong> <a name="RedbackRuntimeConfiguration" href="../../../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration">RedbackRuntimeConfiguration</a> build(
 <a class="jxr_linenumber" name="L334" href="#L334">334</a>         org.apache.archiva.configuration.RedbackRuntimeConfiguration runtimeConfiguration )
 <a class="jxr_linenumber" name="L335" href="#L335">335</a>     {
-<a class="jxr_linenumber" name="L336" href="#L336">336</a>         <a href="../../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html">RedbackRuntimeConfiguration</a> redbackRuntimeConfiguration =
+<a class="jxr_linenumber" name="L336" href="#L336">336</a>         <a name="RedbackRuntimeConfiguration" href="../../../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration">RedbackRuntimeConfiguration</a> redbackRuntimeConfiguration =
 <a class="jxr_linenumber" name="L337" href="#L337">337</a>             getModelMapper().map( runtimeConfiguration, RedbackRuntimeConfiguration.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L338" href="#L338">338</a> 
 <a class="jxr_linenumber" name="L339" href="#L339">339</a>         <strong class="jxr_keyword">if</strong> ( runtimeConfiguration.getLdapConfiguration() != <strong class="jxr_keyword">null</strong> )
@@ -359,12 +359,12 @@
 <a class="jxr_linenumber" name="L351" href="#L351">351</a>         <strong class="jxr_keyword">if</strong> ( redbackRuntimeConfiguration.getLdapConfiguration() == <strong class="jxr_keyword">null</strong> )
 <a class="jxr_linenumber" name="L352" href="#L352">352</a>         {
 <a class="jxr_linenumber" name="L353" href="#L353">353</a>             <em class="jxr_comment">// prevent NPE</em>
-<a class="jxr_linenumber" name="L354" href="#L354">354</a>             redbackRuntimeConfiguration.setLdapConfiguration( <strong class="jxr_keyword">new</strong> LdapConfiguration() );
+<a class="jxr_linenumber" name="L354" href="#L354">354</a>             redbackRuntimeConfiguration.setLdapConfiguration( <strong class="jxr_keyword">new</strong> <a name="LdapConfiguration" href="../../../../../../org/apache/archiva/configuration/LdapConfiguration.html#LdapConfiguration">LdapConfiguration</a>() );
 <a class="jxr_linenumber" name="L355" href="#L355">355</a>         }
 <a class="jxr_linenumber" name="L356" href="#L356">356</a> 
 <a class="jxr_linenumber" name="L357" href="#L357">357</a>         <strong class="jxr_keyword">if</strong> ( redbackRuntimeConfiguration.getUsersCacheConfiguration() == <strong class="jxr_keyword">null</strong> )
 <a class="jxr_linenumber" name="L358" href="#L358">358</a>         {
-<a class="jxr_linenumber" name="L359" href="#L359">359</a>             redbackRuntimeConfiguration.setUsersCacheConfiguration( <strong class="jxr_keyword">new</strong> CacheConfiguration() );
+<a class="jxr_linenumber" name="L359" href="#L359">359</a>             redbackRuntimeConfiguration.setUsersCacheConfiguration( <strong class="jxr_keyword">new</strong> <a name="CacheConfiguration" href="../../../../../../org/apache/archiva/configuration/CacheConfiguration.html#CacheConfiguration">CacheConfiguration</a>() );
 <a class="jxr_linenumber" name="L360" href="#L360">360</a>         }
 <a class="jxr_linenumber" name="L361" href="#L361">361</a> 
 <a class="jxr_linenumber" name="L362" href="#L362">362</a>         List&lt;org.apache.archiva.configuration.LdapGroupMapping&gt; mappings = runtimeConfiguration.getLdapGroupMappings();
@@ -375,7 +375,7 @@
 <a class="jxr_linenumber" name="L367" href="#L367">367</a> 
 <a class="jxr_linenumber" name="L368" href="#L368">368</a>             <strong class="jxr_keyword">for</strong> ( org.apache.archiva.configuration.LdapGroupMapping mapping : mappings )
 <a class="jxr_linenumber" name="L369" href="#L369">369</a>             {
-<a class="jxr_linenumber" name="L370" href="#L370">370</a>                 ldapGroupMappings.add( <strong class="jxr_keyword">new</strong> LdapGroupMapping( mapping.getGroup(), mapping.getRoleNames() ) );
+<a class="jxr_linenumber" name="L370" href="#L370">370</a>                 ldapGroupMappings.add( <strong class="jxr_keyword">new</strong> <a name="LdapGroupMapping" href="../../../../../../org/apache/archiva/configuration/LdapGroupMapping.html#LdapGroupMapping">LdapGroupMapping</a>( mapping.getGroup(), mapping.getRoleNames() ) );
 <a class="jxr_linenumber" name="L371" href="#L371">371</a>             }
 <a class="jxr_linenumber" name="L372" href="#L372">372</a> 
 <a class="jxr_linenumber" name="L373" href="#L373">373</a>             redbackRuntimeConfiguration.setLdapGroupMappings( ldapGroupMappings );
@@ -391,7 +391,7 @@
 <a class="jxr_linenumber" name="L383" href="#L383">383</a> <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="L384" href="#L384">384</a> <em class="jxr_javadoccomment">     * @param redbackRuntimeConfiguration</em>
 <a class="jxr_linenumber" name="L385" href="#L385">385</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L386" href="#L386">386</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> cleanupProperties( RedbackRuntimeConfiguration redbackRuntimeConfiguration )
+<a class="jxr_linenumber" name="L386" href="#L386">386</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> cleanupProperties( <a name="RedbackRuntimeConfiguration" href="../../../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration">RedbackRuntimeConfiguration</a> redbackRuntimeConfiguration )
 <a class="jxr_linenumber" name="L387" href="#L387">387</a>     {
 <a class="jxr_linenumber" name="L388" href="#L388">388</a>         Map&lt;String, String&gt; properties = redbackRuntimeConfiguration.getConfigurationProperties();
 <a class="jxr_linenumber" name="L389" href="#L389">389</a>         properties.remove( UserConfigurationKeys.LDAP_HOSTNAME );
@@ -418,7 +418,7 @@
 <a class="jxr_linenumber" name="L410" href="#L410">410</a>     }
 <a class="jxr_linenumber" name="L411" href="#L411">411</a> 
 <a class="jxr_linenumber" name="L412" href="#L412">412</a>     <strong class="jxr_keyword">private</strong> org.apache.archiva.configuration.RedbackRuntimeConfiguration build(
-<a class="jxr_linenumber" name="L413" href="#L413">413</a>         <a href="../../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html">RedbackRuntimeConfiguration</a> redbackRuntimeConfiguration )
+<a class="jxr_linenumber" name="L413" href="#L413">413</a>         <a name="RedbackRuntimeConfiguration" href="../../../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration">RedbackRuntimeConfiguration</a> redbackRuntimeConfiguration )
 <a class="jxr_linenumber" name="L414" href="#L414">414</a>     {
 <a class="jxr_linenumber" name="L415" href="#L415">415</a>         org.apache.archiva.configuration.RedbackRuntimeConfiguration res =
 <a class="jxr_linenumber" name="L416" href="#L416">416</a>             getModelMapper().map( redbackRuntimeConfiguration,
@@ -426,14 +426,14 @@
 <a class="jxr_linenumber" name="L418" href="#L418">418</a> 
 <a class="jxr_linenumber" name="L419" href="#L419">419</a>         <strong class="jxr_keyword">if</strong> ( redbackRuntimeConfiguration.getLdapConfiguration() == <strong class="jxr_keyword">null</strong> )
 <a class="jxr_linenumber" name="L420" href="#L420">420</a>         {
-<a class="jxr_linenumber" name="L421" href="#L421">421</a>             redbackRuntimeConfiguration.setLdapConfiguration( <strong class="jxr_keyword">new</strong> LdapConfiguration() );
+<a class="jxr_linenumber" name="L421" href="#L421">421</a>             redbackRuntimeConfiguration.setLdapConfiguration( <strong class="jxr_keyword">new</strong> <a name="LdapConfiguration" href="../../../../../../org/apache/archiva/configuration/LdapConfiguration.html#LdapConfiguration">LdapConfiguration</a>() );
 <a class="jxr_linenumber" name="L422" href="#L422">422</a>         }
 <a class="jxr_linenumber" name="L423" href="#L423">423</a>         res.setLdapConfiguration( getModelMapper().map( redbackRuntimeConfiguration.getLdapConfiguration(),
 <a class="jxr_linenumber" name="L424" href="#L424">424</a>                                                         org.apache.archiva.configuration.LdapConfiguration.<strong class="jxr_keyword">class</strong> ) );
 <a class="jxr_linenumber" name="L425" href="#L425">425</a> 
 <a class="jxr_linenumber" name="L426" href="#L426">426</a>         <strong class="jxr_keyword">if</strong> ( redbackRuntimeConfiguration.getUsersCacheConfiguration() == <strong class="jxr_keyword">null</strong> )
 <a class="jxr_linenumber" name="L427" href="#L427">427</a>         {
-<a class="jxr_linenumber" name="L428" href="#L428">428</a>             redbackRuntimeConfiguration.setUsersCacheConfiguration( <strong class="jxr_keyword">new</strong> CacheConfiguration() );
+<a class="jxr_linenumber" name="L428" href="#L428">428</a>             redbackRuntimeConfiguration.setUsersCacheConfiguration( <strong class="jxr_keyword">new</strong> <a name="CacheConfiguration" href="../../../../../../org/apache/archiva/configuration/CacheConfiguration.html#CacheConfiguration">CacheConfiguration</a>() );
 <a class="jxr_linenumber" name="L429" href="#L429">429</a>         }
 <a class="jxr_linenumber" name="L430" href="#L430">430</a> 
 <a class="jxr_linenumber" name="L431" href="#L431">431</a>         res.setUsersCacheConfiguration( getModelMapper().map( redbackRuntimeConfiguration.getUsersCacheConfiguration(),
@@ -447,7 +447,7 @@
 <a class="jxr_linenumber" name="L439" href="#L439">439</a>             List&lt;org.apache.archiva.configuration.LdapGroupMapping&gt; mappings =
 <a class="jxr_linenumber" name="L440" href="#L440">440</a>                 <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;( ldapGroupMappings.size() );
 <a class="jxr_linenumber" name="L441" href="#L441">441</a> 
-<a class="jxr_linenumber" name="L442" href="#L442">442</a>             <strong class="jxr_keyword">for</strong> ( LdapGroupMapping ldapGroupMapping : ldapGroupMappings )
+<a class="jxr_linenumber" name="L442" href="#L442">442</a>             <strong class="jxr_keyword">for</strong> ( <a name="LdapGroupMapping" href="../../../../../../org/apache/archiva/configuration/LdapGroupMapping.html#LdapGroupMapping">LdapGroupMapping</a> ldapGroupMapping : ldapGroupMappings )
 <a class="jxr_linenumber" name="L443" href="#L443">443</a>             {
 <a class="jxr_linenumber" name="L444" href="#L444">444</a> 
 <a class="jxr_linenumber" name="L445" href="#L445">445</a>                 org.apache.archiva.configuration.LdapGroupMapping mapping =
@@ -476,8 +476,8 @@
 <a class="jxr_linenumber" name="L468" href="#L468">468</a> 
 <a class="jxr_linenumber" name="L469" href="#L469">469</a>         <strong class="jxr_keyword">if</strong> ( StringUtils.startsWith( key, UserConfigurationKeys.LDAP_GROUPS_ROLE_START_KEY ) )
 <a class="jxr_linenumber" name="L470" href="#L470">470</a>         {
-<a class="jxr_linenumber" name="L471" href="#L471">471</a>             <a href="../../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html">RedbackRuntimeConfiguration</a> redbackRuntimeConfiguration = getRedbackRuntimeConfiguration();
-<a class="jxr_linenumber" name="L472" href="#L472">472</a>             <strong class="jxr_keyword">int</strong> index = redbackRuntimeConfiguration.getLdapGroupMappings().indexOf( <strong class="jxr_keyword">new</strong> LdapGroupMapping(
+<a class="jxr_linenumber" name="L471" href="#L471">471</a>             <a name="RedbackRuntimeConfiguration" href="../../../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration">RedbackRuntimeConfiguration</a> redbackRuntimeConfiguration = getRedbackRuntimeConfiguration();
+<a class="jxr_linenumber" name="L472" href="#L472">472</a>             <strong class="jxr_keyword">int</strong> index = redbackRuntimeConfiguration.getLdapGroupMappings().indexOf( <strong class="jxr_keyword">new</strong> <a name="LdapGroupMapping" href="../../../../../../org/apache/archiva/configuration/LdapGroupMapping.html#LdapGroupMapping">LdapGroupMapping</a>(
 <a class="jxr_linenumber" name="L473" href="#L473">473</a>                 StringUtils.substringAfter( key, UserConfigurationKeys.LDAP_GROUPS_ROLE_START_KEY ) ) );
 <a class="jxr_linenumber" name="L474" href="#L474">474</a>             <strong class="jxr_keyword">if</strong> ( index &gt; -1 )
 <a class="jxr_linenumber" name="L475" href="#L475">475</a>             {
@@ -486,7 +486,7 @@
 <a class="jxr_linenumber" name="L478" href="#L478">478</a>             }
 <a class="jxr_linenumber" name="L479" href="#L479">479</a>         }
 <a class="jxr_linenumber" name="L480" href="#L480">480</a> 
-<a class="jxr_linenumber" name="L481" href="#L481">481</a>         <a href="../../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html">RedbackRuntimeConfiguration</a> conf = getRedbackRuntimeConfiguration();
+<a class="jxr_linenumber" name="L481" href="#L481">481</a>         <a name="RedbackRuntimeConfiguration" href="../../../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration">RedbackRuntimeConfiguration</a> conf = getRedbackRuntimeConfiguration();
 <a class="jxr_linenumber" name="L482" href="#L482">482</a> 
 <a class="jxr_linenumber" name="L483" href="#L483">483</a>         <strong class="jxr_keyword">if</strong> ( conf.getConfigurationProperties().containsKey( key ) )
 <a class="jxr_linenumber" name="L484" href="#L484">484</a>         {
@@ -504,7 +504,7 @@
 <a class="jxr_linenumber" name="L496" href="#L496">496</a>         {
 <a class="jxr_linenumber" name="L497" href="#L497">497</a>             updateRedbackRuntimeConfiguration( conf );
 <a class="jxr_linenumber" name="L498" href="#L498">498</a>         }
-<a class="jxr_linenumber" name="L499" href="#L499">499</a>         <strong class="jxr_keyword">catch</strong> ( RepositoryAdminException e )
+<a class="jxr_linenumber" name="L499" href="#L499">499</a>         <strong class="jxr_keyword">catch</strong> ( <a name="RepositoryAdminException" href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html#RepositoryAdminException">RepositoryAdminException</a> e )
 <a class="jxr_linenumber" name="L500" href="#L500">500</a>         {
 <a class="jxr_linenumber" name="L501" href="#L501">501</a>             log.error( <span class="jxr_string">"fail to save RedbackRuntimeConfiguration: {}"</span>, e.getMessage(), e );
 <a class="jxr_linenumber" name="L502" href="#L502">502</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> RuntimeException( e.getMessage(), e );
@@ -533,7 +533,7 @@
 <a class="jxr_linenumber" name="L525" href="#L525">525</a>             <strong class="jxr_keyword">return</strong> getRedbackRuntimeConfiguration().getLdapConfiguration().getAuthenticationMethod();
 <a class="jxr_linenumber" name="L526" href="#L526">526</a>         }
 <a class="jxr_linenumber" name="L527" href="#L527">527</a> 
-<a class="jxr_linenumber" name="L528" href="#L528">528</a>         <a href="../../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html">RedbackRuntimeConfiguration</a> conf = getRedbackRuntimeConfiguration();
+<a class="jxr_linenumber" name="L528" href="#L528">528</a>         <a name="RedbackRuntimeConfiguration" href="../../../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration">RedbackRuntimeConfiguration</a> conf = getRedbackRuntimeConfiguration();
 <a class="jxr_linenumber" name="L529" href="#L529">529</a> 
 <a class="jxr_linenumber" name="L530" href="#L530">530</a>         <strong class="jxr_keyword">if</strong> ( conf.getConfigurationProperties().containsKey( key ) )
 <a class="jxr_linenumber" name="L531" href="#L531">531</a>         {
@@ -552,7 +552,7 @@
 <a class="jxr_linenumber" name="L544" href="#L544">544</a>         {
 <a class="jxr_linenumber" name="L545" href="#L545">545</a>             updateRedbackRuntimeConfiguration( conf );
 <a class="jxr_linenumber" name="L546" href="#L546">546</a>         }
-<a class="jxr_linenumber" name="L547" href="#L547">547</a>         <strong class="jxr_keyword">catch</strong> ( RepositoryAdminException e )
+<a class="jxr_linenumber" name="L547" href="#L547">547</a>         <strong class="jxr_keyword">catch</strong> ( <a name="RepositoryAdminException" href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html#RepositoryAdminException">RepositoryAdminException</a> e )
 <a class="jxr_linenumber" name="L548" href="#L548">548</a>         {
 <a class="jxr_linenumber" name="L549" href="#L549">549</a>             log.error( <span class="jxr_string">"fail to save RedbackRuntimeConfiguration: {}"</span>, e.getMessage(), e );
 <a class="jxr_linenumber" name="L550" href="#L550">550</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> RuntimeException( e.getMessage(), e );
@@ -564,7 +564,7 @@
 <a class="jxr_linenumber" name="L556" href="#L556">556</a>     @Override
 <a class="jxr_linenumber" name="L557" href="#L557">557</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> getInt( String key )
 <a class="jxr_linenumber" name="L558" href="#L558">558</a>     {
-<a class="jxr_linenumber" name="L559" href="#L559">559</a>         <a href="../../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html">RedbackRuntimeConfiguration</a> conf = getRedbackRuntimeConfiguration();
+<a class="jxr_linenumber" name="L559" href="#L559">559</a>         <a name="RedbackRuntimeConfiguration" href="../../../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration">RedbackRuntimeConfiguration</a> conf = getRedbackRuntimeConfiguration();
 <a class="jxr_linenumber" name="L560" href="#L560">560</a> 
 <a class="jxr_linenumber" name="L561" href="#L561">561</a>         <strong class="jxr_keyword">if</strong> ( conf.getConfigurationProperties().containsKey( key ) )
 <a class="jxr_linenumber" name="L562" href="#L562">562</a>         {
@@ -578,7 +578,7 @@
 <a class="jxr_linenumber" name="L570" href="#L570">570</a>         {
 <a class="jxr_linenumber" name="L571" href="#L571">571</a>             updateRedbackRuntimeConfiguration( conf );
 <a class="jxr_linenumber" name="L572" href="#L572">572</a>         }
-<a class="jxr_linenumber" name="L573" href="#L573">573</a>         <strong class="jxr_keyword">catch</strong> ( RepositoryAdminException e )
+<a class="jxr_linenumber" name="L573" href="#L573">573</a>         <strong class="jxr_keyword">catch</strong> ( <a name="RepositoryAdminException" href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html#RepositoryAdminException">RepositoryAdminException</a> e )
 <a class="jxr_linenumber" name="L574" href="#L574">574</a>         {
 <a class="jxr_linenumber" name="L575" href="#L575">575</a>             log.error( <span class="jxr_string">"fail to save RedbackRuntimeConfiguration: {}"</span>, e.getMessage(), e );
 <a class="jxr_linenumber" name="L576" href="#L576">576</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> RuntimeException( e.getMessage(), e );
@@ -595,7 +595,7 @@
 <a class="jxr_linenumber" name="L587" href="#L587">587</a>             <strong class="jxr_keyword">return</strong> getRedbackRuntimeConfiguration().getLdapConfiguration().getPort();
 <a class="jxr_linenumber" name="L588" href="#L588">588</a>         }
 <a class="jxr_linenumber" name="L589" href="#L589">589</a> 
-<a class="jxr_linenumber" name="L590" href="#L590">590</a>         <a href="../../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html">RedbackRuntimeConfiguration</a> conf = getRedbackRuntimeConfiguration();
+<a class="jxr_linenumber" name="L590" href="#L590">590</a>         <a name="RedbackRuntimeConfiguration" href="../../../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration">RedbackRuntimeConfiguration</a> conf = getRedbackRuntimeConfiguration();
 <a class="jxr_linenumber" name="L591" href="#L591">591</a> 
 <a class="jxr_linenumber" name="L592" href="#L592">592</a>         <strong class="jxr_keyword">if</strong> ( conf.getConfigurationProperties().containsKey( key ) )
 <a class="jxr_linenumber" name="L593" href="#L593">593</a>         {
@@ -609,7 +609,7 @@
 <a class="jxr_linenumber" name="L601" href="#L601">601</a>         {
 <a class="jxr_linenumber" name="L602" href="#L602">602</a>             updateRedbackRuntimeConfiguration( conf );
 <a class="jxr_linenumber" name="L603" href="#L603">603</a>         }
-<a class="jxr_linenumber" name="L604" href="#L604">604</a>         <strong class="jxr_keyword">catch</strong> ( RepositoryAdminException e )
+<a class="jxr_linenumber" name="L604" href="#L604">604</a>         <strong class="jxr_keyword">catch</strong> ( <a name="RepositoryAdminException" href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html#RepositoryAdminException">RepositoryAdminException</a> e )
 <a class="jxr_linenumber" name="L605" href="#L605">605</a>         {
 <a class="jxr_linenumber" name="L606" href="#L606">606</a>             log.error( <span class="jxr_string">"fail to save RedbackRuntimeConfiguration: {}"</span>, e.getMessage(), e );
 <a class="jxr_linenumber" name="L607" href="#L607">607</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> RuntimeException( e.getMessage(), e );
@@ -621,7 +621,7 @@
 <a class="jxr_linenumber" name="L613" href="#L613">613</a>     @Override
 <a class="jxr_linenumber" name="L614" href="#L614">614</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> getBoolean( String key )
 <a class="jxr_linenumber" name="L615" href="#L615">615</a>     {
-<a class="jxr_linenumber" name="L616" href="#L616">616</a>         <a href="../../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html">RedbackRuntimeConfiguration</a> conf = getRedbackRuntimeConfiguration();
+<a class="jxr_linenumber" name="L616" href="#L616">616</a>         <a name="RedbackRuntimeConfiguration" href="../../../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration">RedbackRuntimeConfiguration</a> conf = getRedbackRuntimeConfiguration();
 <a class="jxr_linenumber" name="L617" href="#L617">617</a> 
 <a class="jxr_linenumber" name="L618" href="#L618">618</a>         <strong class="jxr_keyword">if</strong> ( UserConfigurationKeys.LDAP_WRITABLE.equals( key ) )
 <a class="jxr_linenumber" name="L619" href="#L619">619</a>         {
@@ -650,7 +650,7 @@
 <a class="jxr_linenumber" name="L642" href="#L642">642</a>         {
 <a class="jxr_linenumber" name="L643" href="#L643">643</a>             updateRedbackRuntimeConfiguration( conf );
 <a class="jxr_linenumber" name="L644" href="#L644">644</a>         }
-<a class="jxr_linenumber" name="L645" href="#L645">645</a>         <strong class="jxr_keyword">catch</strong> ( RepositoryAdminException e )
+<a class="jxr_linenumber" name="L645" href="#L645">645</a>         <strong class="jxr_keyword">catch</strong> ( <a name="RepositoryAdminException" href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html#RepositoryAdminException">RepositoryAdminException</a> e )
 <a class="jxr_linenumber" name="L646" href="#L646">646</a>         {
 <a class="jxr_linenumber" name="L647" href="#L647">647</a>             log.error( <span class="jxr_string">"fail to save RedbackRuntimeConfiguration: {}"</span>, e.getMessage(), e );
 <a class="jxr_linenumber" name="L648" href="#L648">648</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> RuntimeException( e.getMessage(), e );
@@ -682,7 +682,7 @@
 <a class="jxr_linenumber" name="L674" href="#L674">674</a>             <strong class="jxr_keyword">return</strong> getRedbackRuntimeConfiguration().getLdapConfiguration().isBindAuthenticatorEnabled();
 <a class="jxr_linenumber" name="L675" href="#L675">675</a>         }
 <a class="jxr_linenumber" name="L676" href="#L676">676</a> 
-<a class="jxr_linenumber" name="L677" href="#L677">677</a>         <a href="../../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html">RedbackRuntimeConfiguration</a> conf = getRedbackRuntimeConfiguration();
+<a class="jxr_linenumber" name="L677" href="#L677">677</a>         <a name="RedbackRuntimeConfiguration" href="../../../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration">RedbackRuntimeConfiguration</a> conf = getRedbackRuntimeConfiguration();
 <a class="jxr_linenumber" name="L678" href="#L678">678</a> 
 <a class="jxr_linenumber" name="L679" href="#L679">679</a>         <strong class="jxr_keyword">if</strong> ( conf.getConfigurationProperties().containsKey( key ) )
 <a class="jxr_linenumber" name="L680" href="#L680">680</a>         {
@@ -696,7 +696,7 @@
 <a class="jxr_linenumber" name="L688" href="#L688">688</a>         {
 <a class="jxr_linenumber" name="L689" href="#L689">689</a>             updateRedbackRuntimeConfiguration( conf );
 <a class="jxr_linenumber" name="L690" href="#L690">690</a>         }
-<a class="jxr_linenumber" name="L691" href="#L691">691</a>         <strong class="jxr_keyword">catch</strong> ( RepositoryAdminException e )
+<a class="jxr_linenumber" name="L691" href="#L691">691</a>         <strong class="jxr_keyword">catch</strong> ( <a name="RepositoryAdminException" href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html#RepositoryAdminException">RepositoryAdminException</a> e )
 <a class="jxr_linenumber" name="L692" href="#L692">692</a>         {
 <a class="jxr_linenumber" name="L693" href="#L693">693</a>             log.error( <span class="jxr_string">"fail to save RedbackRuntimeConfiguration: {}"</span>, e.getMessage(), e );
 <a class="jxr_linenumber" name="L694" href="#L694">694</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> RuntimeException( e.getMessage(), e );
@@ -708,7 +708,7 @@
 <a class="jxr_linenumber" name="L700" href="#L700">700</a>     @Override
 <a class="jxr_linenumber" name="L701" href="#L701">701</a>     <strong class="jxr_keyword">public</strong> List&lt;String&gt; getList( String key )
 <a class="jxr_linenumber" name="L702" href="#L702">702</a>     {
-<a class="jxr_linenumber" name="L703" href="#L703">703</a>         <a href="../../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html">RedbackRuntimeConfiguration</a> conf = getRedbackRuntimeConfiguration();
+<a class="jxr_linenumber" name="L703" href="#L703">703</a>         <a name="RedbackRuntimeConfiguration" href="../../../../../../org/apache/archiva/configuration/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration">RedbackRuntimeConfiguration</a> conf = getRedbackRuntimeConfiguration();
 <a class="jxr_linenumber" name="L704" href="#L704">704</a>         <strong class="jxr_keyword">if</strong> (conf.getConfigurationProperties().containsKey(key)) {
 <a class="jxr_linenumber" name="L705" href="#L705">705</a>             <strong class="jxr_keyword">return</strong> Arrays.asList(conf.getConfigurationProperties().get(key).split(<span class="jxr_string">","</span>));
 <a class="jxr_linenumber" name="L706" href="#L706">706</a>         }
@@ -720,7 +720,7 @@
 <a class="jxr_linenumber" name="L712" href="#L712">712</a>         {
 <a class="jxr_linenumber" name="L713" href="#L713">713</a>             updateRedbackRuntimeConfiguration( conf );
 <a class="jxr_linenumber" name="L714" href="#L714">714</a>         }
-<a class="jxr_linenumber" name="L715" href="#L715">715</a>         <strong class="jxr_keyword">catch</strong> ( RepositoryAdminException e )
+<a class="jxr_linenumber" name="L715" href="#L715">715</a>         <strong class="jxr_keyword">catch</strong> ( <a name="RepositoryAdminException" href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html#RepositoryAdminException">RepositoryAdminException</a> e )
 <a class="jxr_linenumber" name="L716" href="#L716">716</a>         {
 <a class="jxr_linenumber" name="L717" href="#L717">717</a>             log.error( <span class="jxr_string">"fail to save RedbackRuntimeConfiguration: {}"</span>, e.getMessage(), e );
 <a class="jxr_linenumber" name="L718" href="#L718">718</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> RuntimeException( e.getMessage(), e );
@@ -763,6 +763,6 @@
 <a class="jxr_linenumber" name="L755" href="#L755">755</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
 </body>
 </html>

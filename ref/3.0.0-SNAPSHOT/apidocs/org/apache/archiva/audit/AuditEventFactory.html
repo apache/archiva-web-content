@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -100,7 +100,12 @@ var activeTableTab = "activeTableTab";
 <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
+<li><a href="../../../../org/apache/archiva/metadata/model/facets/AbstractMetadataFacetFactory.html" title="class in org.apache.archiva.metadata.model.facets">org.apache.archiva.metadata.model.facets.AbstractMetadataFacetFactory</a>&lt;<a href="../../../../org/apache/archiva/metadata/model/facets/AuditEvent.html" title="class in org.apache.archiva.metadata.model.facets">AuditEvent</a>&gt;</li>
+<li>
+<ul class="inheritance">
 <li>org.apache.archiva.audit.AuditEventFactory</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -109,14 +114,13 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html" title="interface in org.apache.archiva.metadata.model">MetadataFacetFactory</a></dd>
+<dd><a href="../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html" title="interface in org.apache.archiva.metadata.model">MetadataFacetFactory</a>&lt;<a href="../../../../org/apache/archiva/metadata/model/facets/AuditEvent.html" title="class in org.apache.archiva.metadata.model.facets">AuditEvent</a>&gt;</dd>
 </dl>
 <hr>
 <br>
 <pre>@Service(value="metadataFacetFactory#org.apache.archiva.audit")
 public class <a href="../../../../src-html/org/apache/archiva/audit/AuditEventFactory.html#line.31">AuditEventFactory</a>
-extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
-implements <a href="../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html" title="interface in org.apache.archiva.metadata.model">MetadataFacetFactory</a></pre>
+extends <a href="../../../../org/apache/archiva/metadata/model/facets/AbstractMetadataFacetFactory.html" title="class in org.apache.archiva.metadata.model.facets">AbstractMetadataFacetFactory</a>&lt;<a href="../../../../org/apache/archiva/metadata/model/facets/AuditEvent.html" title="class in org.apache.archiva.metadata.model.facets">AuditEvent</a>&gt;</pre>
 </li>
 </ul>
 </div>
@@ -153,15 +157,30 @@ implements <a href="../../../../org/apache/archiva/metadata/model/MetadataFacetF
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="../../../../org/apache/archiva/metadata/model/MetadataFacet.html" title="interface in org.apache.archiva.metadata.model">MetadataFacet</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/audit/AuditEventFactory.html#createMetadataFacet--">createMetadataFacet</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/audit/AuditEventFactory.html#assignsFacet-java.lang.Class-">assignsFacet</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;clazz)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="../../../../org/apache/archiva/metadata/model/MetadataFacet.html" title="interface in org.apache.archiva.metadata.model">MetadataFacet</a></code></td>
+<td class="colFirst"><code><a href="../../../../org/apache/archiva/metadata/model/facets/AuditEvent.html" title="class in org.apache.archiva.metadata.model.facets">AuditEvent</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/audit/AuditEventFactory.html#createMetadataFacet--">createMetadataFacet</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/archiva/metadata/model/facets/AuditEvent.html" title="class in org.apache.archiva.metadata.model.facets">AuditEvent</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/audit/AuditEventFactory.html#createMetadataFacet-java.lang.String-java.lang.String-">createMetadataFacet</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
                    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</code>&nbsp;</td>
 </tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;<a href="../../../../org/apache/archiva/metadata/model/facets/AuditEvent.html" title="class in org.apache.archiva.metadata.model.facets">AuditEvent</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/audit/AuditEventFactory.html#getFacetClass--">getFacetClass</a></span>()</code>&nbsp;</td>
+</tr>
 </table>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.org.apache.archiva.metadata.model.facets.AbstractMetadataFacetFactory">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.archiva.metadata.model.facets.<a href="../../../../org/apache/archiva/metadata/model/facets/AbstractMetadataFacetFactory.html" title="class in org.apache.archiva.metadata.model.facets">AbstractMetadataFacetFactory</a></h3>
+<code><a href="../../../../org/apache/archiva/metadata/model/facets/AbstractMetadataFacetFactory.html#getFacetId--">getFacetId</a></code></li>
+</ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
@@ -189,7 +208,7 @@ implements <a href="../../../../org/apache/archiva/metadata/model/MetadataFacetF
 <ul class="blockListLast">
 <li class="blockList">
 <h4>AuditEventFactory</h4>
-<pre>public&nbsp;<a href="../../../../src-html/org/apache/archiva/audit/AuditEventFactory.html#line.31">AuditEventFactory</a>()</pre>
+<pre>public&nbsp;<a href="../../../../src-html/org/apache/archiva/audit/AuditEventFactory.html#line.34">AuditEventFactory</a>()</pre>
 </li>
 </ul>
 </li>
@@ -206,24 +225,52 @@ implements <a href="../../../../org/apache/archiva/metadata/model/MetadataFacetF
 <ul class="blockList">
 <li class="blockList">
 <h4>createMetadataFacet</h4>
-<pre>public&nbsp;<a href="../../../../org/apache/archiva/metadata/model/MetadataFacet.html" title="interface in org.apache.archiva.metadata.model">MetadataFacet</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/audit/AuditEventFactory.html#line.35">createMetadataFacet</a>()</pre>
+<pre>public&nbsp;<a href="../../../../org/apache/archiva/metadata/model/facets/AuditEvent.html" title="class in org.apache.archiva.metadata.model.facets">AuditEvent</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/audit/AuditEventFactory.html#line.39">createMetadataFacet</a>()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html#createMetadataFacet--">createMetadataFacet</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html" title="interface in org.apache.archiva.metadata.model">MetadataFacetFactory</a></code></dd>
+<dd><code><a href="../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html#createMetadataFacet--">createMetadataFacet</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html" title="interface in org.apache.archiva.metadata.model">MetadataFacetFactory</a>&lt;<a href="../../../../org/apache/archiva/metadata/model/facets/AuditEvent.html" title="class in org.apache.archiva.metadata.model.facets">AuditEvent</a>&gt;</code></dd>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../org/apache/archiva/metadata/model/facets/AbstractMetadataFacetFactory.html#createMetadataFacet--">createMetadataFacet</a></code>&nbsp;in class&nbsp;<code><a href="../../../../org/apache/archiva/metadata/model/facets/AbstractMetadataFacetFactory.html" title="class in org.apache.archiva.metadata.model.facets">AbstractMetadataFacetFactory</a>&lt;<a href="../../../../org/apache/archiva/metadata/model/facets/AuditEvent.html" title="class in org.apache.archiva.metadata.model.facets">AuditEvent</a>&gt;</code></dd>
 </dl>
 </li>
 </ul>
 <a name="createMetadataFacet-java.lang.String-java.lang.String-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>createMetadataFacet</h4>
-<pre>public&nbsp;<a href="../../../../org/apache/archiva/metadata/model/MetadataFacet.html" title="interface in org.apache.archiva.metadata.model">MetadataFacet</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/audit/AuditEventFactory.html#line.41">createMetadataFacet</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
-                                         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</pre>
+<pre>public&nbsp;<a href="../../../../org/apache/archiva/metadata/model/facets/AuditEvent.html" title="class in org.apache.archiva.metadata.model.facets">AuditEvent</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/audit/AuditEventFactory.html#line.45">createMetadataFacet</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
+                                      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html#createMetadataFacet-java.lang.String-java.lang.String-">createMetadataFacet</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html" title="interface in org.apache.archiva.metadata.model">MetadataFacetFactory</a></code></dd>
+<dd><code><a href="../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html#createMetadataFacet-java.lang.String-java.lang.String-">createMetadataFacet</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html" title="interface in org.apache.archiva.metadata.model">MetadataFacetFactory</a>&lt;<a href="../../../../org/apache/archiva/metadata/model/facets/AuditEvent.html" title="class in org.apache.archiva.metadata.model.facets">AuditEvent</a>&gt;</code></dd>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../org/apache/archiva/metadata/model/facets/AbstractMetadataFacetFactory.html#createMetadataFacet-java.lang.String-java.lang.String-">createMetadataFacet</a></code>&nbsp;in class&nbsp;<code><a href="../../../../org/apache/archiva/metadata/model/facets/AbstractMetadataFacetFactory.html" title="class in org.apache.archiva.metadata.model.facets">AbstractMetadataFacetFactory</a>&lt;<a href="../../../../org/apache/archiva/metadata/model/facets/AuditEvent.html" title="class in org.apache.archiva.metadata.model.facets">AuditEvent</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="assignsFacet-java.lang.Class-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>assignsFacet</h4>
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/audit/AuditEventFactory.html#line.51">assignsFacet</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;clazz)</pre>
+</li>
+</ul>
+<a name="getFacetClass--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getFacetClass</h4>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;<a href="../../../../org/apache/archiva/metadata/model/facets/AuditEvent.html" title="class in org.apache.archiva.metadata.model.facets">AuditEvent</a>&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/audit/AuditEventFactory.html#line.57">getFacetClass</a>()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html#getFacetClass--">getFacetClass</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html" title="interface in org.apache.archiva.metadata.model">MetadataFacetFactory</a>&lt;<a href="../../../../org/apache/archiva/metadata/model/facets/AuditEvent.html" title="class in org.apache.archiva.metadata.model.facets">AuditEvent</a>&gt;</code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../org/apache/archiva/metadata/model/facets/AbstractMetadataFacetFactory.html#getFacetClass--">getFacetClass</a></code>&nbsp;in class&nbsp;<code><a href="../../../../org/apache/archiva/metadata/model/facets/AbstractMetadataFacetFactory.html" title="class in org.apache.archiva.metadata.model.facets">AbstractMetadataFacetFactory</a>&lt;<a href="../../../../org/apache/archiva/metadata/model/facets/AuditEvent.html" title="class in org.apache.archiva.metadata.model.facets">AuditEvent</a>&gt;</code></dd>
 </dl>
 </li>
 </ul>
@@ -296,6 +343,6 @@ implements <a href="../../../../org/apache/archiva/metadata/model/MetadataFacetF
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

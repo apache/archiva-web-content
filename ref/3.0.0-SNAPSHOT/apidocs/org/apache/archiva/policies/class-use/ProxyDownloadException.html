@@ -116,7 +116,7 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">RepositoryStorage.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/repository/storage/RepositoryStorage.html#applyServerSideRelocation-org.apache.archiva.repository.ManagedRepositoryContent-org.apache.archiva.model.ArtifactReference-">applyServerSideRelocation</a></span>(<a href="../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;managedRepository,
+<td class="colLast"><span class="typeNameLabel">RepositoryStorage.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/repository/storage/RepositoryStorage.html#applyServerSideRelocation-org.apache.archiva.repository.ManagedRepository-org.apache.archiva.model.ArtifactReference-">applyServerSideRelocation</a></span>(<a href="../../../../../org/apache/archiva/repository/ManagedRepository.html" title="interface in org.apache.archiva.repository">ManagedRepository</a>&nbsp;managedRepository,
                          <a href="../../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&nbsp;artifact)</code>
 <div class="block">A relocation capable client will request the POM prior to the artifact, and will then read meta-data and do
  client side relocation.</div>
@@ -138,7 +138,7 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">Maven2RepositoryStorage.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/repository/storage/maven2/Maven2RepositoryStorage.html#applyServerSideRelocation-org.apache.archiva.repository.ManagedRepositoryContent-org.apache.archiva.model.ArtifactReference-">applyServerSideRelocation</a></span>(<a href="../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;managedRepository,
+<td class="colLast"><span class="typeNameLabel">Maven2RepositoryStorage.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/repository/storage/maven2/Maven2RepositoryStorage.html#applyServerSideRelocation-org.apache.archiva.repository.ManagedRepository-org.apache.archiva.model.ArtifactReference-">applyServerSideRelocation</a></span>(<a href="../../../../../org/apache/archiva/repository/ManagedRepository.html" title="interface in org.apache.archiva.repository">ManagedRepository</a>&nbsp;managedRepository,
                          <a href="../../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&nbsp;artifact)</code>&nbsp;</td>
 </tr>
 </tbody>
@@ -156,20 +156,9 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
-<td class="colLast"><span class="typeNameLabel">DefaultRepositoryProxyConnectors.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#fetchFromProxies-org.apache.archiva.repository.ManagedRepositoryContent-org.apache.archiva.model.ArtifactReference-">fetchFromProxies</a></span>(<a href="../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;repository,
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DefaultRepositoryProxyHandler.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/proxy/DefaultRepositoryProxyHandler.html#fetchFromProxies-org.apache.archiva.repository.ManagedRepository-org.apache.archiva.model.ArtifactReference-">fetchFromProxies</a></span>(<a href="../../../../../org/apache/archiva/repository/ManagedRepository.html" title="interface in org.apache.archiva.repository">ManagedRepository</a>&nbsp;repository,
                 <a href="../../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&nbsp;artifact)</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><span class="typeNameLabel">DefaultRepositoryProxyConnectors.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/proxy/DefaultRepositoryProxyConnectors.html#validatePolicies-java.util.Map-java.util.Map-java.util.Properties-org.apache.archiva.model.ArtifactReference-org.apache.archiva.repository.RemoteRepositoryContent-java.nio.file.Path-java.lang.Exception-java.util.Map-">validatePolicies</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../../org/apache/archiva/policies/DownloadErrorPolicy.html" title="interface in org.apache.archiva.policies">DownloadErrorPolicy</a>&gt;&nbsp;policies,
-                <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;settings,
-                <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;request,
-                <a href="../../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&nbsp;artifact,
-                <a href="../../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</a>&nbsp;content,
-                <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;localFile,
-                <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a>&nbsp;exception,
-                <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a>&gt;&nbsp;previousExceptions)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -186,8 +175,8 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
-<td class="colLast"><span class="typeNameLabel">RepositoryProxyConnectors.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/proxy/model/RepositoryProxyConnectors.html#fetchFromProxies-org.apache.archiva.repository.ManagedRepositoryContent-org.apache.archiva.model.ArtifactReference-">fetchFromProxies</a></span>(<a href="../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;repository,
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a></code></td>
+<td class="colLast"><span class="typeNameLabel">RepositoryProxyHandler.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/proxy/model/RepositoryProxyHandler.html#fetchFromProxies-org.apache.archiva.repository.ManagedRepository-org.apache.archiva.model.ArtifactReference-">fetchFromProxies</a></span>(<a href="../../../../../org/apache/archiva/repository/ManagedRepository.html" title="interface in org.apache.archiva.repository">ManagedRepository</a>&nbsp;repository,
                 <a href="../../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&nbsp;artifact)</code>
 <div class="block">Performs the artifact fetch operation against the target repositories
  of the provided source repository.</div>
@@ -247,6 +236,6 @@
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10};
+var methods = {"i0":10,"i1":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -75,13 +75,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -109,14 +109,14 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd>org.apache.archiva.redback.components.taskqueue.execution.TaskExecutor</dd>
+<dd>org.apache.archiva.components.taskqueue.execution.TaskExecutor</dd>
 </dl>
 <hr>
 <br>
 <pre>@Service(value="taskExecutor#indexing")
 public class <a href="../../../../../../src-html/org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#line.62">ArchivaIndexingTaskExecutor</a>
 extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
-implements org.apache.archiva.redback.components.taskqueue.execution.TaskExecutor</pre>
+implements org.apache.archiva.components.taskqueue.execution.TaskExecutor</pre>
 <div class="block">ArchivaIndexingTaskExecutor Executes all indexing tasks. Adding, updating and removing artifacts from the index are
  all performed by this executor. Add and update artifact in index tasks are added in the indexing task queue by the
  NexusIndexerConsumer while remove artifact from index tasks are added by the LuceneCleanupRemoveIndexedConsumer.</div>
@@ -126,45 +126,6 @@ implements org.apache.archiva.redback.components.taskqueue.execution.TaskExecuto
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- =========== FIELD SUMMARY =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private org.apache.maven.index.ArtifactContextProducer</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#artifactContextProducer">artifactContextProducer</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private org.apache.maven.index.Indexer</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#indexer">indexer</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>(package private) org.apache.maven.index.IndexerEngine</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#indexerEngine">indexerEngine</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private org.apache.maven.index.packer.IndexPacker</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#indexPacker">indexPacker</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private org.slf4j.Logger</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#log">log</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private org.apache.maven.index.Scanner</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#scanner">scanner</a></span></code>&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -196,17 +157,11 @@ implements org.apache.archiva.redback.components.taskqueue.execution.TaskExecuto
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#executeTask-org.apache.archiva.redback.components.taskqueue.Task-">executeTask</a></span>(org.apache.archiva.redback.components.taskqueue.Task&nbsp;task)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#executeTask-org.apache.archiva.components.taskqueue.Task-">executeTask</a></span>(org.apache.archiva.components.taskqueue.Task&nbsp;task)</code>
 <div class="block">depending on current <code>Task</code> you have.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#finishIndexingTask-org.apache.archiva.scheduler.indexing.ArtifactIndexingTask-org.apache.archiva.repository.ManagedRepository-org.apache.maven.index.context.IndexingContext-">finishIndexingTask</a></span>(<a href="../../../../../../org/apache/archiva/scheduler/indexing/ArtifactIndexingTask.html" title="class in org.apache.archiva.scheduler.indexing">ArtifactIndexingTask</a>&nbsp;indexingTask,
-                  <a href="../../../../../../org/apache/archiva/repository/ManagedRepository.html" title="interface in org.apache.archiva.repository">ManagedRepository</a>&nbsp;repository,
-                  org.apache.maven.index.context.IndexingContext&nbsp;context)</code>&nbsp;</td>
-</tr>
-<tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#setIndexPacker-org.apache.maven.index.packer.IndexPacker-">setIndexPacker</a></span>(org.apache.maven.index.packer.IndexPacker&nbsp;indexPacker)</code>&nbsp;</td>
 </tr>
@@ -226,73 +181,6 @@ implements org.apache.archiva.redback.components.taskqueue.execution.TaskExecuto
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a name="log">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>log</h4>
-<pre>private&nbsp;org.slf4j.Logger <a href="../../../../../../src-html/org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#line.65">log</a></pre>
-</li>
-</ul>
-<a name="indexPacker">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>indexPacker</h4>
-<pre>@Inject
-private&nbsp;org.apache.maven.index.packer.IndexPacker <a href="../../../../../../src-html/org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#line.68">indexPacker</a></pre>
-</li>
-</ul>
-<a name="artifactContextProducer">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>artifactContextProducer</h4>
-<pre>@Inject
-private&nbsp;org.apache.maven.index.ArtifactContextProducer <a href="../../../../../../src-html/org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#line.71">artifactContextProducer</a></pre>
-</li>
-</ul>
-<a name="indexer">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>indexer</h4>
-<pre>@Inject
-private&nbsp;org.apache.maven.index.Indexer <a href="../../../../../../src-html/org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#line.74">indexer</a></pre>
-</li>
-</ul>
-<a name="scanner">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>scanner</h4>
-<pre>@Inject
-private&nbsp;org.apache.maven.index.Scanner <a href="../../../../../../src-html/org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#line.77">scanner</a></pre>
-</li>
-</ul>
-<a name="indexerEngine">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>indexerEngine</h4>
-<pre>@Inject
-org.apache.maven.index.IndexerEngine <a href="../../../../../../src-html/org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#line.80">indexerEngine</a></pre>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
@@ -316,40 +204,24 @@ org.apache.maven.index.IndexerEngine <a href="../../../../../../src-html/org/apa
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="executeTask-org.apache.archiva.redback.components.taskqueue.Task-">
+<a name="executeTask-org.apache.archiva.components.taskqueue.Task-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>executeTask</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#line.91">executeTask</a>(org.apache.archiva.redback.components.taskqueue.Task&nbsp;task)
-                 throws org.apache.archiva.redback.components.taskqueue.execution.TaskExecutionException</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#line.91">executeTask</a>(org.apache.archiva.components.taskqueue.Task&nbsp;task)
+                 throws org.apache.archiva.components.taskqueue.execution.TaskExecutionException</pre>
 <div class="block">depending on current <code>Task</code> you have.
  If <a href="../../../../../../org/apache/archiva/scheduler/indexing/ArtifactIndexingTask.Action.html#FINISH"><code>ArtifactIndexingTask.Action.FINISH</code></a> &amp;&amp; isExecuteOnEntireRepo:
  repository will be scanned.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code>executeTask</code>&nbsp;in interface&nbsp;<code>org.apache.archiva.redback.components.taskqueue.execution.TaskExecutor</code></dd>
+<dd><code>executeTask</code>&nbsp;in interface&nbsp;<code>org.apache.archiva.components.taskqueue.execution.TaskExecutor</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>task</code> - </dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>org.apache.archiva.redback.components.taskqueue.execution.TaskExecutionException</code></dd>
-</dl>
-</li>
-</ul>
-<a name="finishIndexingTask-org.apache.archiva.scheduler.indexing.ArtifactIndexingTask-org.apache.archiva.repository.ManagedRepository-org.apache.maven.index.context.IndexingContext-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>finishIndexingTask</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/scheduler/indexing/maven/ArchivaIndexingTaskExecutor.html#line.252">finishIndexingTask</a>(<a href="../../../../../../org/apache/archiva/scheduler/indexing/ArtifactIndexingTask.html" title="class in org.apache.archiva.scheduler.indexing">ArtifactIndexingTask</a>&nbsp;indexingTask,
-                                <a href="../../../../../../org/apache/archiva/repository/ManagedRepository.html" title="interface in org.apache.archiva.repository">ManagedRepository</a>&nbsp;repository,
-                                org.apache.maven.index.context.IndexingContext&nbsp;context)
-                         throws org.apache.archiva.redback.components.taskqueue.execution.TaskExecutionException</pre>
-<dl>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>org.apache.archiva.redback.components.taskqueue.execution.TaskExecutionException</code></dd>
+<dd><code>org.apache.archiva.components.taskqueue.execution.TaskExecutionException</code></dd>
 </dl>
 </li>
 </ul>
@@ -416,13 +288,13 @@ org.apache.maven.index.IndexerEngine <a href="../../../../../../src-html/org/apa
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -431,6 +303,6 @@ org.apache.maven.index.IndexerEngine <a href="../../../../../../src-html/org/apa
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

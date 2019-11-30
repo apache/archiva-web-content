@@ -17,7 +17,7 @@
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> * with the License.  You may obtain a copy of the License at</em>
 <a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> *  <a href="http://www.apache.org/licenses/LICENSE-2." target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.</a>0</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> *  <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing,</em>
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> * software distributed under the License is distributed on an</em>
@@ -41,8 +41,8 @@
 <a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.repository.ReleaseScheme;
 <a class="jxr_linenumber" name="L34" href="#L34">34</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.repository.RepositoryException;
 <a class="jxr_linenumber" name="L35" href="#L35">35</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.repository.RepositoryRegistry;
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.repository.events.RepositoryListener;
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.repository.metadata.MetadataTools;
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.metadata.audit.RepositoryListener;
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.repository.metadata.base.MetadataTools;
 <a class="jxr_linenumber" name="L38" href="#L38">38</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.repository.metadata.RepositoryMetadataException;
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>  
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>  <strong class="jxr_keyword">import</strong> java.io.IOException;
@@ -74,16 +74,16 @@
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>  <em class="jxr_javadoccomment"> * the snapshots from 1.0-SNAPSHOT, 1.1-SNAPSHOT, 1.2.1-SNAPSHOT, and 2.0-SNAPSHOT can</em>
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>  <em class="jxr_javadoccomment"> * be purged.  Leaving 2.1-SNAPSHOT in alone.</em>
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L69" href="#L69">69</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/apache/archiva/consumers/core/repository/CleanupReleasedSnapshotsRepositoryPurge.html">CleanupReleasedSnapshotsRepositoryPurge</a>
-<a class="jxr_linenumber" name="L70" href="#L70">70</a>      <strong class="jxr_keyword">extends</strong> <a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html">AbstractRepositoryPurge</a>
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="CleanupReleasedSnapshotsRepositoryPurge" href="../../../../../../org/apache/archiva/consumers/core/repository/CleanupReleasedSnapshotsRepositoryPurge.html#CleanupReleasedSnapshotsRepositoryPurge">CleanupReleasedSnapshotsRepositoryPurge</a>
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>      <strong class="jxr_keyword">extends</strong> <a name="AbstractRepositoryPurge" href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#AbstractRepositoryPurge">AbstractRepositoryPurge</a>
 <a class="jxr_linenumber" name="L71" href="#L71">71</a>  {
-<a class="jxr_linenumber" name="L72" href="#L72">72</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../../org/apache/archiva/repository/metadata/MetadataTools.html">MetadataTools</a> metadataTools;
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>      <strong class="jxr_keyword">private</strong> <a name="MetadataTools" href="../../../../../../org/apache/archiva/repository/metadata/base/MetadataTools.html#MetadataTools">MetadataTools</a> metadataTools;
 <a class="jxr_linenumber" name="L73" href="#L73">73</a>  
-<a class="jxr_linenumber" name="L74" href="#L74">74</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../../org/apache/archiva/repository/RepositoryRegistry.html">RepositoryRegistry</a> repositoryRegistry;
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>      <strong class="jxr_keyword">private</strong> <a name="RepositoryRegistry" href="../../../../../../org/apache/archiva/repository/RepositoryRegistry.html#RepositoryRegistry">RepositoryRegistry</a> repositoryRegistry;
 <a class="jxr_linenumber" name="L75" href="#L75">75</a>  
-<a class="jxr_linenumber" name="L76" href="#L76">76</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/apache/archiva/consumers/core/repository/CleanupReleasedSnapshotsRepositoryPurge.html">CleanupReleasedSnapshotsRepositoryPurge</a>( ManagedRepositoryContent repository, MetadataTools metadataTools,
-<a class="jxr_linenumber" name="L77" href="#L77">77</a>                                                      <a href="../../../../../../org/apache/archiva/repository/RepositoryRegistry.html">RepositoryRegistry</a> repositoryRegistry,
-<a class="jxr_linenumber" name="L78" href="#L78">78</a>                                                      <a href="../../../../../../org/apache/archiva/metadata/repository/RepositorySession.html">RepositorySession</a> repositorySession,
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>      <strong class="jxr_keyword">public</strong> <a name="CleanupReleasedSnapshotsRepositoryPurge" href="../../../../../../org/apache/archiva/consumers/core/repository/CleanupReleasedSnapshotsRepositoryPurge.html#CleanupReleasedSnapshotsRepositoryPurge">CleanupReleasedSnapshotsRepositoryPurge</a>( <a name="ManagedRepositoryContent" href="../../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#ManagedRepositoryContent">ManagedRepositoryContent</a> repository, <a name="MetadataTools" href="../../../../../../org/apache/archiva/repository/metadata/base/MetadataTools.html#MetadataTools">MetadataTools</a> metadataTools,
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>                                                      <a name="RepositoryRegistry" href="../../../../../../org/apache/archiva/repository/RepositoryRegistry.html#RepositoryRegistry">RepositoryRegistry</a> repositoryRegistry,
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>                                                      <a name="RepositorySession" href="../../../../../../org/apache/archiva/metadata/repository/RepositorySession.html#RepositorySession">RepositorySession</a> repositorySession,
 <a class="jxr_linenumber" name="L79" href="#L79">79</a>                                                      List&lt;RepositoryListener&gt; listeners )
 <a class="jxr_linenumber" name="L80" href="#L80">80</a>      {
 <a class="jxr_linenumber" name="L81" href="#L81">81</a>          <strong class="jxr_keyword">super</strong>( repository, repositorySession, listeners );
@@ -93,7 +93,7 @@
 <a class="jxr_linenumber" name="L85" href="#L85">85</a>  
 <a class="jxr_linenumber" name="L86" href="#L86">86</a>      @Override
 <a class="jxr_linenumber" name="L87" href="#L87">87</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> process( String path )
-<a class="jxr_linenumber" name="L88" href="#L88">88</a>          <strong class="jxr_keyword">throws</strong> <a href="../../../../../../org/apache/archiva/consumers/core/repository/RepositoryPurgeException.html">RepositoryPurgeException</a>
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>          <strong class="jxr_keyword">throws</strong> <a name="RepositoryPurgeException" href="../../../../../../org/apache/archiva/consumers/core/repository/RepositoryPurgeException.html#RepositoryPurgeException">RepositoryPurgeException</a>
 <a class="jxr_linenumber" name="L89" href="#L89">89</a>      {
 <a class="jxr_linenumber" name="L90" href="#L90">90</a>          <strong class="jxr_keyword">try</strong>
 <a class="jxr_linenumber" name="L91" href="#L91">91</a>          {
@@ -105,7 +105,7 @@
 <a class="jxr_linenumber" name="L97" href="#L97">97</a>                  <strong class="jxr_keyword">return</strong>;
 <a class="jxr_linenumber" name="L98" href="#L98">98</a>              }
 <a class="jxr_linenumber" name="L99" href="#L99">99</a>  
-<a class="jxr_linenumber" name="L100" href="#L100">100</a>             <a href="../../../../../../org/apache/archiva/model/ArtifactReference.html">ArtifactReference</a> artifactRef = repository.toArtifactReference( path );
+<a class="jxr_linenumber" name="L100" href="#L100">100</a>             <a name="ArtifactReference" href="../../../../../../org/apache/archiva/model/ArtifactReference.html#ArtifactReference">ArtifactReference</a> artifactRef = repository.toArtifactReference( path );
 <a class="jxr_linenumber" name="L101" href="#L101">101</a> 
 <a class="jxr_linenumber" name="L102" href="#L102">102</a>             <strong class="jxr_keyword">if</strong> ( !VersionUtil.isSnapshot( artifactRef.getVersion( ) ) )
 <a class="jxr_linenumber" name="L103" href="#L103">103</a>             {
@@ -113,7 +113,7 @@
 <a class="jxr_linenumber" name="L105" href="#L105">105</a>                 <strong class="jxr_keyword">return</strong>;
 <a class="jxr_linenumber" name="L106" href="#L106">106</a>             }
 <a class="jxr_linenumber" name="L107" href="#L107">107</a> 
-<a class="jxr_linenumber" name="L108" href="#L108">108</a>             <a href="../../../../../../org/apache/archiva/model/ProjectReference.html">ProjectReference</a> reference = <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/apache/archiva/model/ProjectReference.html">ProjectReference</a>( );
+<a class="jxr_linenumber" name="L108" href="#L108">108</a>             <a name="ProjectReference" href="../../../../../../org/apache/archiva/<a name="ProjectReference" href="../../../../../../org/apache/archiva/model/ProjectReference.html#ProjectReference">ProjectReference</a>erence.html#ProjectReference">ProjectReference</a> reference = <strong class="jxr_keyword">new</strong> <a name="ProjectReference" href="../../../../../../org/apache/archiva/model/ProjectReference.html#ProjectReference">ProjectReference</a>( );
 <a class="jxr_linenumber" name="L109" href="#L109">109</a>             reference.setGroupId( artifactRef.getGroupId( ) );
 <a class="jxr_linenumber" name="L110" href="#L110">110</a>             reference.setArtifactId( artifactRef.getArtifactId( ) );
 <a class="jxr_linenumber" name="L111" href="#L111">111</a> 
@@ -128,7 +128,7 @@
 <a class="jxr_linenumber" name="L120" href="#L120">120</a>                 {
 <a class="jxr_linenumber" name="L121" href="#L121">121</a>                     <strong class="jxr_keyword">try</strong>
 <a class="jxr_linenumber" name="L122" href="#L122">122</a>                     {
-<a class="jxr_linenumber" name="L123" href="#L123">123</a>                         <a href="../../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html">ManagedRepositoryContent</a> repoContent = repo.getContent();
+<a class="jxr_linenumber" name="L123" href="#L123">123</a>                         <a name="ManagedRepositoryContent" href="../../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#ManagedRepositoryContent">ManagedRepositoryContent</a> repoContent = repo.getContent();
 <a class="jxr_linenumber" name="L124" href="#L124">124</a>                         <strong class="jxr_keyword">for</strong> ( String version : repoContent.getVersions( reference ) )
 <a class="jxr_linenumber" name="L125" href="#L125">125</a>                         {
 <a class="jxr_linenumber" name="L126" href="#L126">126</a>                             <strong class="jxr_keyword">if</strong> ( !VersionUtil.isSnapshot( version ) )
@@ -137,7 +137,7 @@
 <a class="jxr_linenumber" name="L129" href="#L129">129</a>                             }
 <a class="jxr_linenumber" name="L130" href="#L130">130</a>                         }
 <a class="jxr_linenumber" name="L131" href="#L131">131</a>                     }
-<a class="jxr_linenumber" name="L132" href="#L132">132</a>                     <strong class="jxr_keyword">catch</strong> ( RepositoryException e )
+<a class="jxr_linenumber" name="L132" href="#L132">132</a>                     <strong class="jxr_keyword">catch</strong> ( <a name="RepositoryException" href="../../../../../../org/apache/archiva/repository/RepositoryException.html#RepositoryException">RepositoryException</a> e )
 <a class="jxr_linenumber" name="L133" href="#L133">133</a>                     {
 <a class="jxr_linenumber" name="L134" href="#L134">134</a>                         <em class="jxr_comment">// swallow</em>
 <a class="jxr_linenumber" name="L135" href="#L135">135</a>                     }
@@ -149,25 +149,25 @@
 <a class="jxr_linenumber" name="L141" href="#L141">141</a>             <em class="jxr_comment">// Now clean out any version that is earlier than the highest released version.</em>
 <a class="jxr_linenumber" name="L142" href="#L142">142</a>             <strong class="jxr_keyword">boolean</strong> needsMetadataUpdate = false;
 <a class="jxr_linenumber" name="L143" href="#L143">143</a> 
-<a class="jxr_linenumber" name="L144" href="#L144">144</a>             <a href="../../../../../../org/apache/archiva/model/VersionedReference.html">VersionedReference</a> versionRef = <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/apache/archiva/model/VersionedReference.html">VersionedReference</a>( );
+<a class="jxr_linenumber" name="L144" href="#L144">144</a>             <a name="VersionedReference" href="../../../../../../org/apache/archiva/m<a name="VersionedReference" href="../../../../../../org/apache/archiva/model/VersionedReference.html#VersionedReference">VersionedReference</a>rence.html#VersionedReference">VersionedReference</a> versionRef = <strong class="jxr_keyword">new</strong> <a name="VersionedReference" href="../../../../../../org/apache/archiva/model/VersionedReference.html#VersionedReference">VersionedReference</a>( );
 <a class="jxr_linenumber" name="L145" href="#L145">145</a>             versionRef.setGroupId( artifactRef.getGroupId( ) );
 <a class="jxr_linenumber" name="L146" href="#L146">146</a>             versionRef.setArtifactId( artifactRef.getArtifactId( ) );
 <a class="jxr_linenumber" name="L147" href="#L147">147</a> 
-<a class="jxr_linenumber" name="L148" href="#L148">148</a>             <a href="../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html">MetadataRepository</a> metadataRepository = repositorySession.getRepository( );
+<a class="jxr_linenumber" name="L148" href="#L148">148</a>             <a name="MetadataRepository" href="../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html#MetadataRepository">MetadataRepository</a> metadataRepository = repositorySession.getRepository( );
 <a class="jxr_linenumber" name="L149" href="#L149">149</a> 
 <a class="jxr_linenumber" name="L150" href="#L150">150</a>             <strong class="jxr_keyword">if</strong> ( releasedVersions.contains( VersionUtil.getReleaseVersion( artifactRef.getVersion( ) ) ) )
 <a class="jxr_linenumber" name="L151" href="#L151">151</a>             {
 <a class="jxr_linenumber" name="L152" href="#L152">152</a>                 versionRef.setVersion( artifactRef.getVersion( ) );
 <a class="jxr_linenumber" name="L153" href="#L153">153</a>                 repository.deleteVersion( versionRef );
 <a class="jxr_linenumber" name="L154" href="#L154">154</a> 
-<a class="jxr_linenumber" name="L155" href="#L155">155</a>                 <strong class="jxr_keyword">for</strong> ( RepositoryListener listener : listeners )
+<a class="jxr_linenumber" name="L155" href="#L155">155</a>                 <strong class="jxr_keyword">for</strong> ( <a name="RepositoryListener" href="../../../../../../org/apache/archiva/metadata/audit/RepositoryListener.html#RepositoryListener">RepositoryListener</a> listener : listeners )
 <a class="jxr_linenumber" name="L156" href="#L156">156</a>                 {
 <a class="jxr_linenumber" name="L157" href="#L157">157</a>                     listener.deleteArtifact( metadataRepository, repository.getId( ), artifactRef.getGroupId( ),
 <a class="jxr_linenumber" name="L158" href="#L158">158</a>                         artifactRef.getArtifactId( ), artifactRef.getVersion( ),
 <a class="jxr_linenumber" name="L159" href="#L159">159</a>                         artifactFile.getFileName().toString() );
 <a class="jxr_linenumber" name="L160" href="#L160">160</a>                 }
-<a class="jxr_linenumber" name="L161" href="#L161">161</a>                 metadataRepository.removeProjectVersion( repository.getId( ), artifactRef.getGroupId( ),
-<a class="jxr_linenumber" name="L162" href="#L162">162</a>                     artifactRef.getArtifactId( ), artifactRef.getVersion( ) );
+<a class="jxr_linenumber" name="L161" href="#L161">161</a>                 metadataRepository.removeProjectVersion( repositorySession, repository.getId( ),
+<a class="jxr_linenumber" name="L162" href="#L162">162</a>                     artifactRef.getGroupId( ), artifactRef.getArtifactId( ), artifactRef.getVersion( ) );
 <a class="jxr_linenumber" name="L163" href="#L163">163</a> 
 <a class="jxr_linenumber" name="L164" href="#L164">164</a>                 needsMetadataUpdate = <strong class="jxr_keyword">true</strong>;
 <a class="jxr_linenumber" name="L165" href="#L165">165</a>             }
@@ -177,15 +177,15 @@
 <a class="jxr_linenumber" name="L169" href="#L169">169</a>                 updateMetadata( artifactRef );
 <a class="jxr_linenumber" name="L170" href="#L170">170</a>             }
 <a class="jxr_linenumber" name="L171" href="#L171">171</a>         }
-<a class="jxr_linenumber" name="L172" href="#L172">172</a>         <strong class="jxr_keyword">catch</strong> ( LayoutException e )
+<a class="jxr_linenumber" name="L172" href="#L172">172</a>         <strong class="jxr_keyword">catch</strong> ( <a name="LayoutException" href="../../../../../../org/apache/archiva/repository/LayoutException.html#LayoutException">LayoutException</a> e )
 <a class="jxr_linenumber" name="L173" href="#L173">173</a>         {
 <a class="jxr_linenumber" name="L174" href="#L174">174</a>             log.debug( <span class="jxr_string">"Not processing file that is not an artifact: {}"</span>, e.getMessage( ) );
 <a class="jxr_linenumber" name="L175" href="#L175">175</a>         }
-<a class="jxr_linenumber" name="L176" href="#L176">176</a>         <strong class="jxr_keyword">catch</strong> ( ContentNotFoundException e )
+<a class="jxr_linenumber" name="L176" href="#L176">176</a>         <strong class="jxr_keyword">catch</strong> ( <a name="ContentNotFoundException" href="../../../../../../org/apache/archiva/repository/ContentNotFoundException.html#ContentNotFoundException">ContentNotFoundException</a> e )
 <a class="jxr_linenumber" name="L177" href="#L177">177</a>         {
-<a class="jxr_linenumber" name="L178" href="#L178">178</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/apache/archiva/consumers/core/repository/RepositoryPurgeException.html">RepositoryPurgeException</a>( e.getMessage( ), e );
+<a class="jxr_linenumber" name="L178" href="#L178">178</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="RepositoryPurgeException" href="../../../../../../org/apache/archiva/consumers/core/repository/RepositoryPurgeException.html#RepositoryPurgeException">RepositoryPurgeException</a>( e.getMessage( ), e );
 <a class="jxr_linenumber" name="L179" href="#L179">179</a>         }
-<a class="jxr_linenumber" name="L180" href="#L180">180</a>         <strong class="jxr_keyword">catch</strong> ( MetadataRepositoryException e )
+<a class="jxr_linenumber" name="L180" href="#L180">180</a>         <strong class="jxr_keyword">catch</strong> ( <a name="MetadataRepositoryException" href="../../../../../../org/apache/archiva/metadata/repository/MetadataRepositoryException.html#MetadataRepositoryException">MetadataRepositoryException</a> e )
 <a class="jxr_linenumber" name="L181" href="#L181">181</a>         {
 <a class="jxr_linenumber" name="L182" href="#L182">182</a>             log.error( <span class="jxr_string">"Could not remove metadata during cleanup of released snapshots of {}"</span>, path, e );
 <a class="jxr_linenumber" name="L183" href="#L183">183</a>         }
@@ -197,14 +197,14 @@
 <a class="jxr_linenumber" name="L189" href="#L189">189</a> <em class="jxr_comment">     * -&gt; not sure what needs to be changed here.</em>
 <a class="jxr_linenumber" name="L190" href="#L190">190</a> <em class="jxr_comment">     */</em>
 <a class="jxr_linenumber" name="L191" href="#L191">191</a>     @SuppressWarnings( <span class="jxr_string">"deprecation"</span> )
-<a class="jxr_linenumber" name="L192" href="#L192">192</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> updateMetadata( ArtifactReference artifact )
+<a class="jxr_linenumber" name="L192" href="#L192">192</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> updateMetadata( <a name="ArtifactReference" href="../../../../../../org/apache/archiva/model/ArtifactReference.html#ArtifactReference">ArtifactReference</a> artifact )
 <a class="jxr_linenumber" name="L193" href="#L193">193</a>     {
-<a class="jxr_linenumber" name="L194" href="#L194">194</a>         <a href="../../../../../../org/apache/archiva/model/VersionedReference.html">VersionedReference</a> versionRef = <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/apache/archiva/model/VersionedReference.html">VersionedReference</a>( );
+<a class="jxr_linenumber" name="L194" href="#L194">194</a>         <a name="VersionedReference" href="../../../../../../org/apache/archiva/m<a name="VersionedReference" href="../../../../../../org/apache/archiva/model/VersionedReference.html#VersionedReference">VersionedReference</a>rence.html#VersionedReference">VersionedReference</a> versionRef = <strong class="jxr_keyword">new</strong> <a name="VersionedReference" href="../../../../../../org/apache/archiva/model/VersionedReference.html#VersionedReference">VersionedReference</a>( );
 <a class="jxr_linenumber" name="L195" href="#L195">195</a>         versionRef.setGroupId( artifact.getGroupId( ) );
 <a class="jxr_linenumber" name="L196" href="#L196">196</a>         versionRef.setArtifactId( artifact.getArtifactId( ) );
 <a class="jxr_linenumber" name="L197" href="#L197">197</a>         versionRef.setVersion( artifact.getVersion( ) );
 <a class="jxr_linenumber" name="L198" href="#L198">198</a> 
-<a class="jxr_linenumber" name="L199" href="#L199">199</a>         <a href="../../../../../../org/apache/archiva/model/ProjectReference.html">ProjectReference</a> projectRef = <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/apache/archiva/model/ProjectReference.html">ProjectReference</a>( );
+<a class="jxr_linenumber" name="L199" href="#L199">199</a>         <a name="ProjectReference" href="../../../../../../org/apache/archiva/m<a name="ProjectReference" href="../../../../../../org/apache/archiva/model/ProjectReference.html#ProjectReference">ProjectReference</a>rence.html#ProjectReference">ProjectReference</a> projectRef = <strong class="jxr_keyword">new</strong> <a name="ProjectReference" href="../../../../../../org/apache/archiva/model/ProjectReference.html#ProjectReference">ProjectReference</a>( );
 <a class="jxr_linenumber" name="L200" href="#L200">200</a>         projectRef.setGroupId( artifact.getGroupId( ) );
 <a class="jxr_linenumber" name="L201" href="#L201">201</a>         projectRef.setArtifactId( artifact.getArtifactId( ) );
 <a class="jxr_linenumber" name="L202" href="#L202">202</a> 
@@ -212,11 +212,11 @@
 <a class="jxr_linenumber" name="L204" href="#L204">204</a>         {
 <a class="jxr_linenumber" name="L205" href="#L205">205</a>             metadataTools.updateMetadata( repository, versionRef );
 <a class="jxr_linenumber" name="L206" href="#L206">206</a>         }
-<a class="jxr_linenumber" name="L207" href="#L207">207</a>         <strong class="jxr_keyword">catch</strong> ( ContentNotFoundException e )
+<a class="jxr_linenumber" name="L207" href="#L207">207</a>         <strong class="jxr_keyword">catch</strong> ( <a name="ContentNotFoundException" href="../../../../../../org/apache/archiva/repository/ContentNotFoundException.html#ContentNotFoundException">ContentNotFoundException</a> e )
 <a class="jxr_linenumber" name="L208" href="#L208">208</a>         {
 <a class="jxr_linenumber" name="L209" href="#L209">209</a>             <em class="jxr_comment">// Ignore. (Just means we have no snapshot versions left to reference).</em>
 <a class="jxr_linenumber" name="L210" href="#L210">210</a>         }
-<a class="jxr_linenumber" name="L211" href="#L211">211</a>         <strong class="jxr_keyword">catch</strong> ( RepositoryMetadataException e )
+<a class="jxr_linenumber" name="L211" href="#L211">211</a>         <strong class="jxr_keyword">catch</strong> ( <a name="RepositoryMetadataException" href="../../../../../../org/apache/archiva/repository/metadata/RepositoryMetadataException.html#RepositoryMetadataException">RepositoryMetadataException</a> e )
 <a class="jxr_linenumber" name="L212" href="#L212">212</a>         {
 <a class="jxr_linenumber" name="L213" href="#L213">213</a>             <em class="jxr_comment">// Ignore.</em>
 <a class="jxr_linenumber" name="L214" href="#L214">214</a>         }
@@ -224,7 +224,7 @@
 <a class="jxr_linenumber" name="L216" href="#L216">216</a>         {
 <a class="jxr_linenumber" name="L217" href="#L217">217</a>             <em class="jxr_comment">// Ignore.</em>
 <a class="jxr_linenumber" name="L218" href="#L218">218</a>         }
-<a class="jxr_linenumber" name="L219" href="#L219">219</a>         <strong class="jxr_keyword">catch</strong> ( LayoutException e )
+<a class="jxr_linenumber" name="L219" href="#L219">219</a>         <strong class="jxr_keyword">catch</strong> ( <a name="LayoutException" href="../../../../../../org/apache/archiva/repository/LayoutException.html#LayoutException">LayoutException</a> e )
 <a class="jxr_linenumber" name="L220" href="#L220">220</a>         {
 <a class="jxr_linenumber" name="L221" href="#L221">221</a>             <em class="jxr_comment">// Ignore.</em>
 <a class="jxr_linenumber" name="L222" href="#L222">222</a>         }
@@ -233,11 +233,11 @@
 <a class="jxr_linenumber" name="L225" href="#L225">225</a>         {
 <a class="jxr_linenumber" name="L226" href="#L226">226</a>             metadataTools.updateMetadata( repository, projectRef );
 <a class="jxr_linenumber" name="L227" href="#L227">227</a>         }
-<a class="jxr_linenumber" name="L228" href="#L228">228</a>         <strong class="jxr_keyword">catch</strong> ( ContentNotFoundException e )
+<a class="jxr_linenumber" name="L228" href="#L228">228</a>         <strong class="jxr_keyword">catch</strong> ( <a name="ContentNotFoundException" href="../../../../../../org/apache/archiva/repository/ContentNotFoundException.html#ContentNotFoundException">ContentNotFoundException</a> e )
 <a class="jxr_linenumber" name="L229" href="#L229">229</a>         {
 <a class="jxr_linenumber" name="L230" href="#L230">230</a>             <em class="jxr_comment">// Ignore. (Just means we have no snapshot versions left to reference).</em>
 <a class="jxr_linenumber" name="L231" href="#L231">231</a>         }
-<a class="jxr_linenumber" name="L232" href="#L232">232</a>         <strong class="jxr_keyword">catch</strong> ( RepositoryMetadataException e )
+<a class="jxr_linenumber" name="L232" href="#L232">232</a>         <strong class="jxr_keyword">catch</strong> ( <a name="RepositoryMetadataException" href="../../../../../../org/apache/archiva/repository/metadata/RepositoryMetadataException.html#RepositoryMetadataException">RepositoryMetadataException</a> e )
 <a class="jxr_linenumber" name="L233" href="#L233">233</a>         {
 <a class="jxr_linenumber" name="L234" href="#L234">234</a>             <em class="jxr_comment">// Ignore.</em>
 <a class="jxr_linenumber" name="L235" href="#L235">235</a>         }
@@ -245,7 +245,7 @@
 <a class="jxr_linenumber" name="L237" href="#L237">237</a>         {
 <a class="jxr_linenumber" name="L238" href="#L238">238</a>             <em class="jxr_comment">// Ignore.</em>
 <a class="jxr_linenumber" name="L239" href="#L239">239</a>         }
-<a class="jxr_linenumber" name="L240" href="#L240">240</a>         <strong class="jxr_keyword">catch</strong> ( LayoutException e )
+<a class="jxr_linenumber" name="L240" href="#L240">240</a>         <strong class="jxr_keyword">catch</strong> ( <a name="LayoutException" href="../../../../../../org/apache/archiva/repository/LayoutException.html#LayoutException">LayoutException</a> e )
 <a class="jxr_linenumber" name="L241" href="#L241">241</a>         {
 <a class="jxr_linenumber" name="L242" href="#L242">242</a>             <em class="jxr_comment">// Ignore.</em>
 <a class="jxr_linenumber" name="L243" href="#L243">243</a>         }
@@ -253,6 +253,6 @@
 <a class="jxr_linenumber" name="L245" href="#L245">245</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
 </body>
 </html>

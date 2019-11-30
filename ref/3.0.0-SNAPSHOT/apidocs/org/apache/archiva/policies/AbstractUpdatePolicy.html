@@ -49,7 +49,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li>Prev&nbsp;Class</li>
+<li><a href="../../../../org/apache/archiva/policies/AbstractPolicy.html" title="class in org.apache.archiva.policies"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../org/apache/archiva/policies/CachedFailuresPolicy.html" title="class in org.apache.archiva.policies"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -100,7 +100,12 @@ var activeTableTab = "activeTableTab";
 <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
+<li><a href="../../../../org/apache/archiva/policies/AbstractPolicy.html" title="class in org.apache.archiva.policies">org.apache.archiva.policies.AbstractPolicy</a></li>
+<li>
+<ul class="inheritance">
 <li>org.apache.archiva.policies.AbstractUpdatePolicy</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -117,8 +122,8 @@ var activeTableTab = "activeTableTab";
 </dl>
 <hr>
 <br>
-<pre>public abstract class <a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.41">AbstractUpdatePolicy</a>
-extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+<pre>public abstract class <a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.38">AbstractUpdatePolicy</a>
+extends <a href="../../../../org/apache/archiva/policies/AbstractPolicy.html" title="class in org.apache.archiva.policies">AbstractPolicy</a>
 implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.html" title="interface in org.apache.archiva.policies">PreDownloadPolicy</a></pre>
 <div class="block">AbstractUpdatePolicy</div>
 </li>
@@ -140,13 +145,13 @@ implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.ht
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>static <a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/AbstractUpdatePolicy.html#ALWAYS">ALWAYS</a></span></code>
-<div class="block">The ALWAYS policy setting means that the artifact is always uipdated from the remote repo.</div>
+<div class="block">The ALWAYS policy setting means that the artifact is always updated from the remote repo.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>static <a href="../../../../org/apache/archiva/policies/UpdateOption.html" title="enum in org.apache.archiva.policies">UpdateOption</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/AbstractUpdatePolicy.html#DAILY">DAILY</a></span></code>
 <div class="block">
  The DAILY policy means that the artifact retrieval occurs only if one of
@@ -154,7 +159,7 @@ implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.ht
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>static <a href="../../../../org/apache/archiva/policies/UpdateOption.html" title="enum in org.apache.archiva.policies">UpdateOption</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/AbstractUpdatePolicy.html#HOURLY">HOURLY</a></span></code>
 <div class="block">
  The HOURLY policy means that the artifact retrieval occurs only if one of
@@ -162,27 +167,26 @@ implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.ht
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>private org.slf4j.Logger</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/AbstractUpdatePolicy.html#log">log</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>static <a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/AbstractUpdatePolicy.html#NEVER">NEVER</a></span></code>
 <div class="block">The NEVER policy setting means that the artifact is never updated from the remote repo.</div>
 </td>
 </tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../org/apache/archiva/policies/UpdateOption.html" title="enum in org.apache.archiva.policies">UpdateOption</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/AbstractUpdatePolicy.html#ONCE">ONCE</a></span></code>
 <div class="block">The ONCE policy means that the artifact retrieval occurs only if the
  local artifact is not present.</div>
 </td>
 </tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/AbstractUpdatePolicy.html#options">options</a></span></code>&nbsp;</td>
-</tr>
 </table>
+<ul class="blockList">
+<li class="blockList"><a name="fields.inherited.from.class.org.apache.archiva.policies.Policy">
+<!--   -->
+</a>
+<h3>Fields inherited from interface&nbsp;org.apache.archiva.policies.<a href="../../../../org/apache/archiva/policies/Policy.html" title="interface in org.apache.archiva.policies">Policy</a></h3>
+<code><a href="../../../../org/apache/archiva/policies/Policy.html#RESOURCE_BUNDLE">RESOURCE_BUNDLE</a></code></li>
+</ul>
 </li>
 </ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
@@ -216,14 +220,14 @@ implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.ht
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/AbstractUpdatePolicy.html#applyPolicy-java.lang.String-java.util.Properties-java.nio.file.Path-">applyPolicy</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;policySetting,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/AbstractUpdatePolicy.html#applyPolicy-org.apache.archiva.policies.PolicyOption-java.util.Properties-org.apache.archiva.repository.storage.StorageAsset-">applyPolicy</a></span>(<a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a>&nbsp;policySetting,
            <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;request,
-           <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;localFile)</code>
+           <a href="../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;localFile)</code>
 <div class="block">Apply the download policy.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/AbstractUpdatePolicy.html#getOptions--">getOptions</a></span>()</code>
 <div class="block">Get the list of options for this policy.</div>
 </td>
@@ -238,6 +242,13 @@ implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.ht
 </tr>
 </table>
 <ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.org.apache.archiva.policies.AbstractPolicy">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.archiva.policies.<a href="../../../../org/apache/archiva/policies/AbstractPolicy.html" title="class in org.apache.archiva.policies">AbstractPolicy</a></h3>
+<code><a href="../../../../org/apache/archiva/policies/AbstractPolicy.html#getDescription-java.util.Locale-">getDescription</a>, <a href="../../../../org/apache/archiva/policies/AbstractPolicy.html#getName--">getName</a>, <a href="../../../../org/apache/archiva/policies/AbstractPolicy.html#getName-java.util.Locale-">getName</a>, <a href="../../../../org/apache/archiva/policies/AbstractPolicy.html#getOptionDescription-java.util.Locale-org.apache.archiva.policies.PolicyOption-">getOptionDescription</a>, <a href="../../../../org/apache/archiva/policies/AbstractPolicy.html#getOptionName-java.util.Locale-org.apache.archiva.policies.PolicyOption-">getOptionName</a>, <a href="../../../../org/apache/archiva/policies/AbstractPolicy.html#getOptionPrefix--">getOptionPrefix</a>, <a href="../../../../org/apache/archiva/policies/AbstractPolicy.html#getPolicyPrefix--">getPolicyPrefix</a>, <a href="../../../../org/apache/archiva/policies/AbstractPolicy.html#setOptionPrefix-java.lang.String-">setOptionPrefix</a>, <a href="../../../../org/apache/archiva/policies/AbstractPolicy.html#setPolicyPrefix-java.lang.String-">setPolicyPrefix</a></code></li>
+</ul>
+<ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
@@ -249,7 +260,7 @@ implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.ht
 <!--   -->
 </a>
 <h3>Methods inherited from interface&nbsp;org.apache.archiva.policies.<a href="../../../../org/apache/archiva/policies/Policy.html" title="interface in org.apache.archiva.policies">Policy</a></h3>
-<code><a href="../../../../org/apache/archiva/policies/Policy.html#getDefaultOption--">getDefaultOption</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getId--">getId</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getName--">getName</a></code></li>
+<code><a href="../../../../org/apache/archiva/policies/Policy.html#getDefaultOption--">getDefaultOption</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getDescription-java.util.Locale-">getDescription</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getId--">getId</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getName--">getName</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getName-java.util.Locale-">getName</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getOptionDescription-java.util.Locale-org.apache.archiva.policies.PolicyOption-">getOptionDescription</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getOptionName-java.util.Locale-org.apache.archiva.policies.PolicyOption-">getOptionName</a></code></li>
 </ul>
 </li>
 </ul>
@@ -265,27 +276,14 @@ implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.ht
 <!--   -->
 </a>
 <h3>Field Detail</h3>
-<a name="log">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>log</h4>
-<pre>private&nbsp;org.slf4j.Logger <a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.44">log</a></pre>
-</li>
-</ul>
 <a name="ALWAYS">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>ALWAYS</h4>
-<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.49">ALWAYS</a></pre>
-<div class="block">The ALWAYS policy setting means that the artifact is always uipdated from the remote repo.</div>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../constant-values.html#org.apache.archiva.policies.AbstractUpdatePolicy.ALWAYS">Constant Field Values</a></dd>
-</dl>
+<pre>public static final&nbsp;<a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a> <a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.46">ALWAYS</a></pre>
+<div class="block">The ALWAYS policy setting means that the artifact is always updated from the remote repo.</div>
 </li>
 </ul>
 <a name="NEVER">
@@ -294,12 +292,8 @@ implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.ht
 <ul class="blockList">
 <li class="blockList">
 <h4>NEVER</h4>
-<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.54">NEVER</a></pre>
+<pre>public static final&nbsp;<a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a> <a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.51">NEVER</a></pre>
 <div class="block">The NEVER policy setting means that the artifact is never updated from the remote repo.</div>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../constant-values.html#org.apache.archiva.policies.AbstractUpdatePolicy.NEVER">Constant Field Values</a></dd>
-</dl>
 </li>
 </ul>
 <a name="DAILY">
@@ -308,7 +302,7 @@ implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.ht
 <ul class="blockList">
 <li class="blockList">
 <h4>DAILY</h4>
-<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.66">DAILY</a></pre>
+<pre>public static final&nbsp;<a href="../../../../org/apache/archiva/policies/UpdateOption.html" title="enum in org.apache.archiva.policies">UpdateOption</a> <a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.63">DAILY</a></pre>
 <div class="block"><p>
  The DAILY policy means that the artifact retrieval occurs only if one of
  the following conditions are met...
@@ -317,10 +311,6 @@ implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.ht
  <li>The local artifact is not present.</li>
  <li>The local artifact has a last modified timestamp older than (now - 1 day).</li>
  </ul></div>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../constant-values.html#org.apache.archiva.policies.AbstractUpdatePolicy.DAILY">Constant Field Values</a></dd>
-</dl>
 </li>
 </ul>
 <a name="HOURLY">
@@ -329,7 +319,7 @@ implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.ht
 <ul class="blockList">
 <li class="blockList">
 <h4>HOURLY</h4>
-<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.78">HOURLY</a></pre>
+<pre>public static final&nbsp;<a href="../../../../org/apache/archiva/policies/UpdateOption.html" title="enum in org.apache.archiva.policies">UpdateOption</a> <a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.75">HOURLY</a></pre>
 <div class="block"><p>
  The HOURLY policy means that the artifact retrieval occurs only if one of
  the following conditions are met...
@@ -338,35 +328,18 @@ implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.ht
  <li>The local artifact is not present.</li>
  <li>The local artifact has a last modified timestamp older than (now - 1 hour).</li>
  </ul></div>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../constant-values.html#org.apache.archiva.policies.AbstractUpdatePolicy.HOURLY">Constant Field Values</a></dd>
-</dl>
 </li>
 </ul>
 <a name="ONCE">
 <!--   -->
 </a>
-<ul class="blockList">
-<li class="blockList">
-<h4>ONCE</h4>
-<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.85">ONCE</a></pre>
-<div class="block">The ONCE policy means that the artifact retrieval occurs only if the
- local artifact is not present.  This means that the retreival can only
- occur once.</div>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../constant-values.html#org.apache.archiva.policies.AbstractUpdatePolicy.ONCE">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a name="options">
-<!--   -->
-</a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>options</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt; <a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.87">options</a></pre>
+<h4>ONCE</h4>
+<pre>public static final&nbsp;<a href="../../../../org/apache/archiva/policies/UpdateOption.html" title="enum in org.apache.archiva.policies">UpdateOption</a> <a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.82">ONCE</a></pre>
+<div class="block">The ONCE policy means that the artifact retrieval occurs only if the
+ local artifact is not present.  This means that the retrieval can only
+ occur once.</div>
 </li>
 </ul>
 </li>
@@ -383,7 +356,7 @@ implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.ht
 <ul class="blockListLast">
 <li class="blockList">
 <h4>AbstractUpdatePolicy</h4>
-<pre>public&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.89">AbstractUpdatePolicy</a>()</pre>
+<pre>public&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.86">AbstractUpdatePolicy</a>()</pre>
 </li>
 </ul>
 </li>
@@ -400,7 +373,7 @@ implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.ht
 <ul class="blockList">
 <li class="blockList">
 <h4>isSnapshotPolicy</h4>
-<pre>protected abstract&nbsp;boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.98">isSnapshotPolicy</a>()</pre>
+<pre>protected abstract&nbsp;boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.97">isSnapshotPolicy</a>()</pre>
 </li>
 </ul>
 <a name="getUpdateMode--">
@@ -409,7 +382,7 @@ implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.ht
 <ul class="blockList">
 <li class="blockList">
 <h4>getUpdateMode</h4>
-<pre>protected abstract&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.100">getUpdateMode</a>()</pre>
+<pre>protected abstract&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.99">getUpdateMode</a>()</pre>
 </li>
 </ul>
 <a name="getOptions--">
@@ -418,7 +391,7 @@ implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.ht
 <ul class="blockList">
 <li class="blockList">
 <h4>getOptions</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.103">getOptions</a>()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a>&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.102">getOptions</a>()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/policies/Policy.html#getOptions--">Policy</a></code></span></div>
 <div class="block">Get the list of options for this policy.</div>
 <dl>
@@ -429,22 +402,22 @@ implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.ht
 </dl>
 </li>
 </ul>
-<a name="applyPolicy-java.lang.String-java.util.Properties-java.nio.file.Path-">
+<a name="applyPolicy-org.apache.archiva.policies.PolicyOption-java.util.Properties-org.apache.archiva.repository.storage.StorageAsset-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>applyPolicy</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.109">applyPolicy</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;policySetting,
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/AbstractUpdatePolicy.html#line.108">applyPolicy</a>(<a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a>&nbsp;policySetting,
                         <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;request,
-                        <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;localFile)
+                        <a href="../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;localFile)
                  throws <a href="../../../../org/apache/archiva/policies/PolicyViolationException.html" title="class in org.apache.archiva.policies">PolicyViolationException</a>,
                         <a href="../../../../org/apache/archiva/policies/PolicyConfigurationException.html" title="class in org.apache.archiva.policies">PolicyConfigurationException</a></pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/policies/DownloadPolicy.html#applyPolicy-java.lang.String-java.util.Properties-java.nio.file.Path-">DownloadPolicy</a></code></span></div>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/policies/DownloadPolicy.html#applyPolicy-org.apache.archiva.policies.PolicyOption-java.util.Properties-org.apache.archiva.repository.storage.StorageAsset-">DownloadPolicy</a></code></span></div>
 <div class="block">Apply the download policy.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/archiva/policies/DownloadPolicy.html#applyPolicy-java.lang.String-java.util.Properties-java.nio.file.Path-">applyPolicy</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/archiva/policies/DownloadPolicy.html" title="interface in org.apache.archiva.policies">DownloadPolicy</a></code></dd>
+<dd><code><a href="../../../../org/apache/archiva/policies/DownloadPolicy.html#applyPolicy-org.apache.archiva.policies.PolicyOption-java.util.Properties-org.apache.archiva.repository.storage.StorageAsset-">applyPolicy</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/archiva/policies/DownloadPolicy.html" title="interface in org.apache.archiva.policies">DownloadPolicy</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>policySetting</code> - the policy setting.</dd>
 <dd><code>request</code> - the list of request properties that the policy might use.</dd>
@@ -482,7 +455,7 @@ implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.ht
 </div>
 <div class="subNav">
 <ul class="navList">
-<li>Prev&nbsp;Class</li>
+<li><a href="../../../../org/apache/archiva/policies/AbstractPolicy.html" title="class in org.apache.archiva.policies"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../org/apache/archiva/policies/CachedFailuresPolicy.html" title="class in org.apache.archiva.policies"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -523,6 +496,6 @@ implements <a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.ht
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

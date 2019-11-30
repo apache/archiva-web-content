@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
+var methods = {"i0":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.ArtifactInfo.html" title="class in org.apache.archiva.consumers.core.repository"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../org/apache/archiva/consumers/core/repository/CleanupReleasedSnapshotsRepositoryPurge.html" title="class in org.apache.archiva.consumers.core.repository"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../index.html?org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html" target="_top">Frames</a></li>
@@ -74,7 +74,7 @@ var activeTableTab = "activeTableTab";
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
 <li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
@@ -117,7 +117,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <hr>
 <br>
-<pre>public abstract class <a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.51">AbstractRepositoryPurge</a>
+<pre>public abstract class <a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.48">AbstractRepositoryPurge</a>
 extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements <a href="../../../../../../org/apache/archiva/consumers/core/repository/RepositoryPurge.html" title="interface in org.apache.archiva.consumers.core.repository">RepositoryPurge</a></pre>
 <div class="block">Base class for all repository purge tasks.</div>
@@ -127,25 +127,6 @@ implements <a href="../../../../../../org/apache/archiva/consumers/core/reposito
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- ======== NESTED CLASS SUMMARY ======== -->
-<ul class="blockList">
-<li class="blockList"><a name="nested.class.summary">
-<!--   -->
-</a>
-<h3>Nested Class Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Nested Class Summary table, listing nested classes, and an explanation">
-<caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Class and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>(package private) class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.ArtifactInfo.html" title="class in org.apache.archiva.consumers.core.repository">AbstractRepositoryPurge.ArtifactInfo</a></span></code>&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
 <!-- =========== FIELD SUMMARY =========== -->
 <ul class="blockList">
 <li class="blockList"><a name="field.summary">
@@ -159,20 +140,12 @@ implements <a href="../../../../../../org/apache/archiva/consumers/core/reposito
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>private static char</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#DELIM">DELIM</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/archiva/repository/events/RepositoryListener.html" title="interface in org.apache.archiva.repository.events">RepositoryListener</a>&gt;</code></td>
+<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/archiva/metadata/audit/RepositoryListener.html" title="interface in org.apache.archiva.metadata.audit">RepositoryListener</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#listeners">listeners</a></span></code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>protected org.slf4j.Logger</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#log">log</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private org.slf4j.Logger</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#logger">logger</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>protected <a href="../../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a></code></td>
@@ -199,7 +172,7 @@ implements <a href="../../../../../../org/apache/archiva/consumers/core/reposito
 <tr class="altColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#AbstractRepositoryPurge-org.apache.archiva.repository.ManagedRepositoryContent-org.apache.archiva.metadata.repository.RepositorySession-java.util.List-">AbstractRepositoryPurge</a></span>(<a href="../../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;repository,
                        <a href="../../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;repositorySession,
-                       <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/archiva/repository/events/RepositoryListener.html" title="interface in org.apache.archiva.repository.events">RepositoryListener</a>&gt;&nbsp;listeners)</code>&nbsp;</td>
+                       <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/archiva/metadata/audit/RepositoryListener.html" title="interface in org.apache.archiva.metadata.audit">RepositoryListener</a>&gt;&nbsp;listeners)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -217,38 +190,10 @@ implements <a href="../../../../../../org/apache/archiva/consumers/core/reposito
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#deleteSilently-java.nio.file.Path-">deleteSilently</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;path)</code>&nbsp;</td>
-</tr>
-<tr id="i1" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#purge-java.util.Set-">purge</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&gt;&nbsp;references)</code>
 <div class="block">Purge the repo.</div>
 </td>
-</tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#purgeMetadata-org.apache.archiva.metadata.repository.MetadataRepository-java.util.Map-">purgeMetadata</a></span>(<a href="../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
-             <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.ArtifactInfo.html" title="class in org.apache.archiva.consumers.core.repository">AbstractRepositoryPurge.ArtifactInfo</a>,<a href="../../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</a>&gt;&nbsp;dataList)</code>&nbsp;</td>
-</tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#purgeSupportFiles-java.nio.file.Path-">purgeSupportFiles</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;artifactFile)</code>
-<div class="block">
- This find support files for the artifactFile and deletes them.</div>
-</td>
-</tr>
-<tr id="i4" class="altColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#removeArtifact-org.apache.archiva.metadata.repository.MetadataRepository-org.apache.archiva.consumers.core.repository.AbstractRepositoryPurge.ArtifactInfo-org.apache.archiva.metadata.model.ArtifactMetadata-">removeArtifact</a></span>(<a href="../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
-              <a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.ArtifactInfo.html" title="class in org.apache.archiva.consumers.core.repository">AbstractRepositoryPurge.ArtifactInfo</a>&nbsp;artifactInfo,
-              <a href="../../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</a>&nbsp;artifactMetadata)</code>&nbsp;</td>
-</tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#triggerAuditEvent-java.lang.String-java.lang.String-java.lang.String-">triggerAuditEvent</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId,
-                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;resource,
-                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;action)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -285,7 +230,7 @@ implements <a href="../../../../../../org/apache/archiva/consumers/core/reposito
 <ul class="blockList">
 <li class="blockList">
 <h4>log</h4>
-<pre>protected&nbsp;org.slf4j.Logger <a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.54">log</a></pre>
+<pre>protected&nbsp;org.slf4j.Logger <a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.51">log</a></pre>
 </li>
 </ul>
 <a name="repository">
@@ -294,7 +239,7 @@ implements <a href="../../../../../../org/apache/archiva/consumers/core/reposito
 <ul class="blockList">
 <li class="blockList">
 <h4>repository</h4>
-<pre>protected final&nbsp;<a href="../../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a> <a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.56">repository</a></pre>
+<pre>protected final&nbsp;<a href="../../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a> <a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.53">repository</a></pre>
 </li>
 </ul>
 <a name="repositorySession">
@@ -303,38 +248,16 @@ implements <a href="../../../../../../org/apache/archiva/consumers/core/reposito
 <ul class="blockList">
 <li class="blockList">
 <h4>repositorySession</h4>
-<pre>protected final&nbsp;<a href="../../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a> <a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.58">repositorySession</a></pre>
+<pre>protected final&nbsp;<a href="../../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a> <a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.55">repositorySession</a></pre>
 </li>
 </ul>
 <a name="listeners">
 <!--   -->
 </a>
-<ul class="blockList">
-<li class="blockList">
-<h4>listeners</h4>
-<pre>protected final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/archiva/repository/events/RepositoryListener.html" title="interface in org.apache.archiva.repository.events">RepositoryListener</a>&gt; <a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.60">listeners</a></pre>
-</li>
-</ul>
-<a name="logger">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>logger</h4>
-<pre>private&nbsp;org.slf4j.Logger <a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.62">logger</a></pre>
-</li>
-</ul>
-<a name="DELIM">
-<!--   -->
-</a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>DELIM</h4>
-<pre>private static final&nbsp;char <a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.64">DELIM</a></pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../../constant-values.html#org.apache.archiva.consumers.core.repository.AbstractRepositoryPurge.DELIM">Constant Field Values</a></dd>
-</dl>
+<h4>listeners</h4>
+<pre>protected final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/archiva/metadata/audit/RepositoryListener.html" title="interface in org.apache.archiva.metadata.audit">RepositoryListener</a>&gt; <a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.57">listeners</a></pre>
 </li>
 </ul>
 </li>
@@ -351,9 +274,9 @@ implements <a href="../../../../../../org/apache/archiva/consumers/core/reposito
 <ul class="blockListLast">
 <li class="blockList">
 <h4>AbstractRepositoryPurge</h4>
-<pre>public&nbsp;<a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.66">AbstractRepositoryPurge</a>(<a href="../../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;repository,
+<pre>public&nbsp;<a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.63">AbstractRepositoryPurge</a>(<a href="../../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;repository,
                                <a href="../../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;repositorySession,
-                               <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/archiva/repository/events/RepositoryListener.html" title="interface in org.apache.archiva.repository.events">RepositoryListener</a>&gt;&nbsp;listeners)</pre>
+                               <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/archiva/metadata/audit/RepositoryListener.html" title="interface in org.apache.archiva.metadata.audit">RepositoryListener</a>&gt;&nbsp;listeners)</pre>
 </li>
 </ul>
 </li>
@@ -367,80 +290,15 @@ implements <a href="../../../../../../org/apache/archiva/consumers/core/reposito
 <a name="purge-java.util.Set-">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>purge</h4>
-<pre>protected&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.189">purge</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&gt;&nbsp;references)</pre>
+<pre>protected&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.186">purge</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&gt;&nbsp;references)</pre>
 <div class="block">Purge the repo. Update db and index of removed artifacts.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>references</code> - </dd>
 </dl>
-</li>
-</ul>
-<a name="purgeMetadata-org.apache.archiva.metadata.repository.MetadataRepository-java.util.Map-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>purgeMetadata</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.293">purgeMetadata</a>(<a href="../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
-                           <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.ArtifactInfo.html" title="class in org.apache.archiva.consumers.core.repository">AbstractRepositoryPurge.ArtifactInfo</a>,<a href="../../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</a>&gt;&nbsp;dataList)</pre>
-</li>
-</ul>
-<a name="removeArtifact-org.apache.archiva.metadata.repository.MetadataRepository-org.apache.archiva.consumers.core.repository.AbstractRepositoryPurge.ArtifactInfo-org.apache.archiva.metadata.model.ArtifactMetadata-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>removeArtifact</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.338">removeArtifact</a>(<a href="../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
-                            <a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.ArtifactInfo.html" title="class in org.apache.archiva.consumers.core.repository">AbstractRepositoryPurge.ArtifactInfo</a>&nbsp;artifactInfo,
-                            <a href="../../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</a>&nbsp;artifactMetadata)
-                     throws <a href="../../../../../../org/apache/archiva/metadata/repository/MetadataRepositoryException.html" title="class in org.apache.archiva.metadata.repository">MetadataRepositoryException</a></pre>
-<dl>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="../../../../../../org/apache/archiva/metadata/repository/MetadataRepositoryException.html" title="class in org.apache.archiva.metadata.repository">MetadataRepositoryException</a></code></dd>
-</dl>
-</li>
-</ul>
-<a name="deleteSilently-java.nio.file.Path-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>deleteSilently</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.367">deleteSilently</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;path)</pre>
-</li>
-</ul>
-<a name="purgeSupportFiles-java.nio.file.Path-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>purgeSupportFiles</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.390">purgeSupportFiles</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;artifactFile)</pre>
-<div class="block"><p>
- This find support files for the artifactFile and deletes them.
- </p>
- <p>
- Support Files are things like ".sha1", ".md5", ".asc", etc.
- </p></div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>artifactFile</code> - the file to base off of.</dd>
-</dl>
-</li>
-</ul>
-<a name="triggerAuditEvent-java.lang.String-java.lang.String-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>triggerAuditEvent</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html#line.414">triggerAuditEvent</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId,
-                               <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;resource,
-                               <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;action)</pre>
 </li>
 </ul>
 </li>
@@ -472,7 +330,7 @@ implements <a href="../../../../../../org/apache/archiva/consumers/core/reposito
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.ArtifactInfo.html" title="class in org.apache.archiva.consumers.core.repository"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../org/apache/archiva/consumers/core/repository/CleanupReleasedSnapshotsRepositoryPurge.html" title="class in org.apache.archiva.consumers.core.repository"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../index.html?org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html" target="_top">Frames</a></li>
@@ -496,7 +354,7 @@ implements <a href="../../../../../../org/apache/archiva/consumers/core/reposito
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
 <li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
@@ -512,6 +370,6 @@ implements <a href="../../../../../../org/apache/archiva/consumers/core/reposito
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<title>NexusIndexerConsumerTest xref</title>
+<title>/home/martin/git/archiva/bra/master/archiva/archiva-modules/archiva-base/archiva-consumers/archiva-lucene-consumers/src/test/java/org/apache/archiva/consumers/lucene/NexusIndexerConsumerTest.java xref</title>
 <link type="text/css" rel="stylesheet" href="../../../../../stylesheet.css" />
 </head>
 <body>
-<div id="overview"><a href="../../../../../../testapidocs/org/apache/archiva/consumers/lucene/NexusIndexerConsumerTest.html">View Javadoc</a></div><pre>
+<div id="overview"><a href="../../../../../../testapidocs/org/apache/archiva/consumers/lucene">View Javadoc</a></div><pre>
 <a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> org.apache.archiva.consumers.lucene;
 <a class="jxr_linenumber" name="L2" href="#L2">2</a>   
 <a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_comment">/*</em>
@@ -17,7 +17,7 @@
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> * with the License.  You may obtain a copy of the License at</em>
 <a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> *  <a href="http://www.apache.org/licenses/LICENSE-2." target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.</a>0</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> *  <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing,</em>
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> * software distributed under the License is distributed on an</em>
@@ -31,10 +31,10 @@
 <a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.common.utils.PathUtil;
 <a class="jxr_linenumber" name="L24" href="#L24">24</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.configuration.ArchivaConfiguration;
 <a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.configuration.FileTypes;
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.components.taskqueue.TaskQueueException;
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.repository.BasicManagedRepository;
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.repository.ReleaseScheme;
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.repository.RepositoryRegistry;
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.components.taskqueue.TaskQueueException;
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.repository.base.ArchivaRepositoryRegistry;
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.repository.base.BasicManagedRepository;
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.repository.ReleaseScheme;
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.ArchivaTaskScheduler;
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.scheduler.indexing.ArtifactIndexingTask;
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.test.utils.ArchivaSpringJUnit4ClassRunner;
@@ -58,10 +58,10 @@
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>  <em class="jxr_javadoccomment"> */</em>
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>  @RunWith( ArchivaSpringJUnit4ClassRunner.<strong class="jxr_keyword">class</strong> )
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>  @ContextConfiguration( locations = { <span class="jxr_string">"classpath*:/META-INF/spring-context.xml"</span>, <span class="jxr_string">"classpath*:/spring-context.xml"</span> } )
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/apache/archiva/consumers/lucene/NexusIndexerConsumerTest.html">NexusIndexerConsumerTest</a>
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> NexusIndexerConsumerTest
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>      <strong class="jxr_keyword">extends</strong> TestCase
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>  {
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/apache/archiva/consumers/lucene/NexusIndexerConsumerTest.html">ArchivaTaskSchedulerStub</a>
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> ArchivaTaskSchedulerStub
 <a class="jxr_linenumber" name="L57" href="#L57">57</a>          <strong class="jxr_keyword">implements</strong> ArchivaTaskScheduler&lt;ArtifactIndexingTask&gt;
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>      {
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>          Set&lt;Path&gt; indexed = <strong class="jxr_keyword">new</strong> HashSet&lt;&gt;();
@@ -96,13 +96,13 @@
 <a class="jxr_linenumber" name="L88" href="#L88">88</a>  
 <a class="jxr_linenumber" name="L89" href="#L89">89</a>      <strong class="jxr_keyword">private</strong> BasicManagedRepository repositoryConfig;
 <a class="jxr_linenumber" name="L90" href="#L90">90</a>  
-<a class="jxr_linenumber" name="L91" href="#L91">91</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../org/apache/archiva/consumers/lucene/NexusIndexerConsumerTest.html">ArchivaTaskSchedulerStub</a> scheduler;
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>      <strong class="jxr_keyword">private</strong> ArchivaTaskSchedulerStub scheduler;
 <a class="jxr_linenumber" name="L92" href="#L92">92</a>  
 <a class="jxr_linenumber" name="L93" href="#L93">93</a>      @Inject
 <a class="jxr_linenumber" name="L94" href="#L94">94</a>      <strong class="jxr_keyword">private</strong> ApplicationContext applicationContext;
 <a class="jxr_linenumber" name="L95" href="#L95">95</a>  
 <a class="jxr_linenumber" name="L96" href="#L96">96</a>      @Inject
-<a class="jxr_linenumber" name="L97" href="#L97">97</a>      RepositoryRegistry repositoryRegistry;
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>      ArchivaRepositoryRegistry repositoryRegistry;
 <a class="jxr_linenumber" name="L98" href="#L98">98</a>  
 <a class="jxr_linenumber" name="L99" href="#L99">99</a>  
 <a class="jxr_linenumber" name="L100" href="#L100">100</a>     @Override
@@ -112,7 +112,7 @@
 <a class="jxr_linenumber" name="L104" href="#L104">104</a>     {
 <a class="jxr_linenumber" name="L105" href="#L105">105</a>         <strong class="jxr_keyword">super</strong>.setUp();
 <a class="jxr_linenumber" name="L106" href="#L106">106</a> 
-<a class="jxr_linenumber" name="L107" href="#L107">107</a>         scheduler = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/consumers/lucene/NexusIndexerConsumerTest.html">ArchivaTaskSchedulerStub</a>();
+<a class="jxr_linenumber" name="L107" href="#L107">107</a>         scheduler = <strong class="jxr_keyword">new</strong> ArchivaTaskSchedulerStub();
 <a class="jxr_linenumber" name="L108" href="#L108">108</a> 
 <a class="jxr_linenumber" name="L109" href="#L109">109</a>         ArchivaConfiguration configuration = applicationContext.getBean( ArchivaConfiguration.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L110" href="#L110">110</a> 
@@ -124,7 +124,7 @@
 <a class="jxr_linenumber" name="L116" href="#L116">116</a>         <em class="jxr_comment">// initialize to set the file types to be processed</em>
 <a class="jxr_linenumber" name="L117" href="#L117">117</a>         nexusIndexerConsumer.initialize();
 <a class="jxr_linenumber" name="L118" href="#L118">118</a> 
-<a class="jxr_linenumber" name="L119" href="#L119">119</a>         repositoryConfig = <strong class="jxr_keyword">new</strong> BasicManagedRepository( <span class="jxr_string">"test-repo"</span>, <span class="jxr_string">"Test Repository"</span>, Paths.get(<span class="jxr_string">"target/test-classes"</span>)  );
+<a class="jxr_linenumber" name="L119" href="#L119">119</a>         repositoryConfig = BasicManagedRepository.newFilesystemInstance( <span class="jxr_string">"test-repo"</span>, <span class="jxr_string">"Test Repository"</span>, Paths.get(<span class="jxr_string">"target/test-classes"</span>).resolve(<span class="jxr_string">"test-repo"</span>) );
 <a class="jxr_linenumber" name="L120" href="#L120">120</a>         repositoryConfig.setLocation( <strong class="jxr_keyword">new</strong> URI(<span class="jxr_string">"target/test-classes/test-repo"</span>) );
 <a class="jxr_linenumber" name="L121" href="#L121">121</a>         repositoryConfig.setLayout( <span class="jxr_string">"default"</span> );
 <a class="jxr_linenumber" name="L122" href="#L122">122</a>         repositoryConfig.setScanned( <strong class="jxr_keyword">true</strong> );
@@ -245,6 +245,6 @@
 <a class="jxr_linenumber" name="L237" href="#L237">237</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
 </body>
 </html>

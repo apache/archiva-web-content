@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -105,7 +105,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <hr>
 <br>
-<pre>public interface <a href="../../../../../src-html/org/apache/archiva/stagerepository/merge/RepositoryMerger.html#line.28">RepositoryMerger</a></pre>
+<pre>public interface <a href="../../../../../src-html/org/apache/archiva/stagerepository/merge/RepositoryMerger.html#line.29">RepositoryMerger</a></pre>
 </li>
 </ul>
 </div>
@@ -138,10 +138,14 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/stagerepository/merge/RepositoryMerger.html#merge-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-java.lang.String-org.apache.archiva.metadata.repository.filter.Filter-">merge</a></span>(<a href="../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/stagerepository/merge/RepositoryMerger.html#merge-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-java.lang.String-org.apache.archiva.filter.Filter-">merge</a></span>(<a href="../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceRepoId,
      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;targetRepoId,
-     <a href="../../../../../org/apache/archiva/metadata/repository/filter/Filter.html" title="interface in org.apache.archiva.metadata.repository.filter">Filter</a>&lt;<a href="../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</a>&gt;&nbsp;filter)</code>&nbsp;</td>
+     <a href="../../../../../org/apache/archiva/filter/Filter.html" title="interface in org.apache.archiva.filter">Filter</a>&lt;<a href="../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</a>&gt;&nbsp;filter)</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/stagerepository/merge/RepositoryMerger.html#supportsRepository-org.apache.archiva.repository.RepositoryType-">supportsRepository</a></span>(<a href="../../../../../org/apache/archiva/repository/RepositoryType.html" title="enum in org.apache.archiva.repository">RepositoryType</a>&nbsp;type)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -158,13 +162,22 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="supportsRepository-org.apache.archiva.repository.RepositoryType-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>supportsRepository</h4>
+<pre>boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/stagerepository/merge/RepositoryMerger.html#line.31">supportsRepository</a>(<a href="../../../../../org/apache/archiva/repository/RepositoryType.html" title="enum in org.apache.archiva.repository">RepositoryType</a>&nbsp;type)</pre>
+</li>
+</ul>
 <a name="merge-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-java.lang.String-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>merge</h4>
-<pre>void&nbsp;<a href="../../../../../src-html/org/apache/archiva/stagerepository/merge/RepositoryMerger.html#line.30">merge</a>(<a href="../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
+<pre>void&nbsp;<a href="../../../../../src-html/org/apache/archiva/stagerepository/merge/RepositoryMerger.html#line.33">merge</a>(<a href="../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
            <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceRepoId,
            <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;targetRepoId)
     throws <a href="../../../../../org/apache/archiva/stagerepository/merge/RepositoryMergerException.html" title="class in org.apache.archiva.stagerepository.merge">RepositoryMergerException</a></pre>
@@ -174,16 +187,16 @@ var activeTableTab = "activeTableTab";
 </dl>
 </li>
 </ul>
-<a name="merge-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-java.lang.String-org.apache.archiva.metadata.repository.filter.Filter-">
+<a name="merge-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-java.lang.String-org.apache.archiva.filter.Filter-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>merge</h4>
-<pre>void&nbsp;<a href="../../../../../src-html/org/apache/archiva/stagerepository/merge/RepositoryMerger.html#line.33">merge</a>(<a href="../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
+<pre>void&nbsp;<a href="../../../../../src-html/org/apache/archiva/stagerepository/merge/RepositoryMerger.html#line.36">merge</a>(<a href="../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
            <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceRepoId,
            <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;targetRepoId,
-           <a href="../../../../../org/apache/archiva/metadata/repository/filter/Filter.html" title="interface in org.apache.archiva.metadata.repository.filter">Filter</a>&lt;<a href="../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</a>&gt;&nbsp;filter)
+           <a href="../../../../../org/apache/archiva/filter/Filter.html" title="interface in org.apache.archiva.filter">Filter</a>&lt;<a href="../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</a>&gt;&nbsp;filter)
     throws <a href="../../../../../org/apache/archiva/stagerepository/merge/RepositoryMergerException.html" title="class in org.apache.archiva.stagerepository.merge">RepositoryMergerException</a></pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
@@ -197,7 +210,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockListLast">
 <li class="blockList">
 <h4>getConflictingArtifacts</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/stagerepository/merge/RepositoryMerger.html#line.37">getConflictingArtifacts</a>(<a href="../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/stagerepository/merge/RepositoryMerger.html#line.40">getConflictingArtifacts</a>(<a href="../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
                                                <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceRepo,
                                                <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;targetRepo)
                                         throws <a href="../../../../../org/apache/archiva/stagerepository/merge/RepositoryMergerException.html" title="class in org.apache.archiva.stagerepository.merge">RepositoryMergerException</a></pre>
@@ -276,6 +289,6 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

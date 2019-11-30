@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -75,13 +75,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -113,7 +113,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <hr>
 <br>
-<pre>public class <a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.37">MavenIndexContext</a>
+<pre>public class <a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.45">MavenIndexContext</a>
 extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></pre>
 <div class="block">Maven implementation of index context</div>
@@ -123,29 +123,6 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- =========== FIELD SUMMARY =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private org.apache.maven.index.context.IndexingContext</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexContext.html#delegate">delegate</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexContext.html#repository">repository</a></span></code>&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -155,10 +132,12 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
 <caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
-<th class="colOne" scope="col">Constructor and Description</th>
+<th class="colFirst" scope="col">Modifier</th>
+<th class="colLast" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexContext.html#MavenIndexContext-org.apache.archiva.repository.Repository-org.apache.maven.index.context.IndexingContext-">MavenIndexContext</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository,
+<td class="colFirst"><code>protected </code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexContext.html#MavenIndexContext-org.apache.archiva.repository.Repository-org.apache.maven.index.context.IndexingContext-">MavenIndexContext</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository,
                  org.apache.maven.index.context.IndexingContext&nbsp;delegate)</code>&nbsp;</td>
 </tr>
 </table>
@@ -213,7 +192,7 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 </td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a></code></td>
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexContext.html#getPath--">getPath</a></span>()</code>
 <div class="block">The path where the index is stored.</div>
 </td>
@@ -231,37 +210,43 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 </td>
 </tr>
 <tr id="i9" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexContext.html#isOpen--">isOpen</a></span>()</code>
+<div class="block">Returns the status of this context.</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexContext.html#optimize--">optimize</a></span>()</code>
 <div class="block">Optimizes the index</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexContext.html#purge--">purge</a></span>()</code>
 <div class="block">Removes all entries from the index.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexContext.html#rollback--">rollback</a></span>()</code>
 <div class="block">Throws away the last changes.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexContext.html#supports-java.lang.Class-">supports</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;clazz)</code>
 <div class="block">Returns true, if this index implementation has support for the given repository specific
  implementation class.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexContext.html#updateTimestamp-boolean-">updateTimestamp</a></span>(boolean&nbsp;save)</code>
 <div class="block">Updates the timestamp of the index.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexContext.html#updateTimestamp-boolean-java.time.ZonedDateTime-">updateTimestamp</a></span>(boolean&nbsp;save,
                <a href="https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html?is-external=true" title="class or interface in java.time">ZonedDateTime</a>&nbsp;time)</code>
@@ -284,32 +269,6 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a name="delegate">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>delegate</h4>
-<pre>private&nbsp;org.apache.maven.index.context.IndexingContext <a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.39">delegate</a></pre>
-</li>
-</ul>
-<a name="repository">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>repository</h4>
-<pre>private&nbsp;<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a> <a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.40">repository</a></pre>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
@@ -322,8 +281,8 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <ul class="blockListLast">
 <li class="blockList">
 <h4>MavenIndexContext</h4>
-<pre><a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.42">MavenIndexContext</a>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository,
-                  org.apache.maven.index.context.IndexingContext&nbsp;delegate)</pre>
+<pre>protected&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.55">MavenIndexContext</a>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository,
+                            org.apache.maven.index.context.IndexingContext&nbsp;delegate)</pre>
 </li>
 </ul>
 </li>
@@ -340,7 +299,7 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <ul class="blockList">
 <li class="blockList">
 <h4>getId</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.49">getId</a>()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.63">getId</a>()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html#getId--">ArchivaIndexingContext</a></code></span></div>
 <div class="block">The identifier of the context</div>
 <dl>
@@ -356,7 +315,7 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <ul class="blockList">
 <li class="blockList">
 <h4>getRepository</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.54">getRepository</a>()</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.68">getRepository</a>()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html#getRepository--">ArchivaIndexingContext</a></code></span></div>
 <div class="block">Returns the repository this index context is associated to.</div>
 <dl>
@@ -372,7 +331,7 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <ul class="blockList">
 <li class="blockList">
 <h4>getPath</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.59">getPath</a>()</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.73">getPath</a>()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html#getPath--">ArchivaIndexingContext</a></code></span></div>
 <div class="block">The path where the index is stored.</div>
 <dl>
@@ -388,7 +347,7 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <ul class="blockList">
 <li class="blockList">
 <h4>isEmpty</h4>
-<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.64">isEmpty</a>()
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.93">isEmpty</a>()
                 throws <a href="https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html#isEmpty--">ArchivaIndexingContext</a></code></span></div>
 <div class="block">Returns true, if the index has no entries or is not initialized.</div>
@@ -407,7 +366,7 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <ul class="blockList">
 <li class="blockList">
 <h4>commit</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.69">commit</a>()
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.98">commit</a>()
             throws <a href="https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html#commit--">ArchivaIndexingContext</a></code></span></div>
 <div class="block">Writes the last changes to the index.</div>
@@ -425,7 +384,7 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <ul class="blockList">
 <li class="blockList">
 <h4>rollback</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.74">rollback</a>()
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.103">rollback</a>()
               throws <a href="https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html#rollback--">ArchivaIndexingContext</a></code></span></div>
 <div class="block">Throws away the last changes.</div>
@@ -443,7 +402,7 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <ul class="blockList">
 <li class="blockList">
 <h4>optimize</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.79">optimize</a>()
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.108">optimize</a>()
               throws <a href="https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html#optimize--">ArchivaIndexingContext</a></code></span></div>
 <div class="block">Optimizes the index</div>
@@ -461,7 +420,7 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <ul class="blockList">
 <li class="blockList">
 <h4>close</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.84">close</a>(boolean&nbsp;deleteFiles)
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.113">close</a>(boolean&nbsp;deleteFiles)
            throws <a href="https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html#close-boolean-">ArchivaIndexingContext</a></code></span></div>
 <div class="block">Closes any resources, this context has open.</div>
@@ -481,7 +440,7 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <ul class="blockList">
 <li class="blockList">
 <h4>close</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.93">close</a>()
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.124">close</a>()
            throws <a href="https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html#close--">ArchivaIndexingContext</a></code></span></div>
 <div class="block">Closes the context without deleting the files.
@@ -494,13 +453,31 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 </dl>
 </li>
 </ul>
+<a name="isOpen--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isOpen</h4>
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.135">isOpen</a>()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html#isOpen--">ArchivaIndexingContext</a></code></span></div>
+<div class="block">Returns the status of this context. This method will return <code>false</code>, after the <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html#close--"><code>ArchivaIndexingContext.close()</code></a> method
+ has been called.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html#isOpen--">isOpen</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd><code>true</code>, if the <code>close()</code> method has not been called, otherwise <code>false</code></dd>
+</dl>
+</li>
+</ul>
 <a name="purge--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>purge</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.102">purge</a>()
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.140">purge</a>()
            throws <a href="https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html#purge--">ArchivaIndexingContext</a></code></span></div>
 <div class="block">Removes all entries from the index. After this method finished,
@@ -519,7 +496,7 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <ul class="blockList">
 <li class="blockList">
 <h4>supports</h4>
-<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.107">supports</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;clazz)</pre>
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.145">supports</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;clazz)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html#supports-java.lang.Class-">ArchivaIndexingContext</a></code></span></div>
 <div class="block">Returns true, if this index implementation has support for the given repository specific
  implementation class.</div>
@@ -536,7 +513,7 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <ul class="blockList">
 <li class="blockList">
 <h4>getBaseContext</h4>
-<pre>public&nbsp;&lt;T&gt;&nbsp;T&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.113">getBaseContext</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;T&gt;&nbsp;clazz)
+<pre>public&nbsp;&lt;T&gt;&nbsp;T&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.151">getBaseContext</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;T&gt;&nbsp;clazz)
                      throws <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true" title="class or interface in java.lang">UnsupportedOperationException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html#getBaseContext-java.lang.Class-">ArchivaIndexingContext</a></code></span></div>
 <div class="block">Returns the repository specific implementation of the index. E.g. the maven index class.</div>
@@ -558,7 +535,7 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <ul class="blockList">
 <li class="blockList">
 <h4>getGroups</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.122">getGroups</a>()
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.160">getGroups</a>()
                       throws <a href="https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html#getGroups--">ArchivaIndexingContext</a></code></span></div>
 <div class="block">Returns the list of groups that are assigned to this index</div>
@@ -577,7 +554,7 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <ul class="blockList">
 <li class="blockList">
 <h4>updateTimestamp</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.127">updateTimestamp</a>(boolean&nbsp;save)
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.165">updateTimestamp</a>(boolean&nbsp;save)
                      throws <a href="https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html#updateTimestamp-boolean-">ArchivaIndexingContext</a></code></span></div>
 <div class="block">Updates the timestamp of the index.</div>
@@ -595,7 +572,7 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <ul class="blockListLast">
 <li class="blockList">
 <h4>updateTimestamp</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.132">updateTimestamp</a>(boolean&nbsp;save,
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/maven/MavenIndexContext.html#line.170">updateTimestamp</a>(boolean&nbsp;save,
                             <a href="https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html?is-external=true" title="class or interface in java.time">ZonedDateTime</a>&nbsp;time)
                      throws <a href="https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html#updateTimestamp-boolean-java.time.ZonedDateTime-">ArchivaIndexingContext</a></code></span></div>
@@ -662,13 +639,13 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -677,6 +654,6 @@ implements <a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingCon
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

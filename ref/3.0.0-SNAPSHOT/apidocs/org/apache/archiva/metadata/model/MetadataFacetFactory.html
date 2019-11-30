@@ -18,8 +18,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
+var methods = {"i0":18,"i1":6,"i2":6,"i3":6,"i4":6};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],16:["t5","Default Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/archiva/metadata/model/MetadataFacet.html" title="interface in org.apache.archiva.metadata.model"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/archiva/metadata/model/Organization.html" title="class in org.apache.archiva.metadata.model"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/archiva/metadata/model/ModelInfo.html" title="interface in org.apache.archiva.metadata.model"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/archiva/metadata/model/MetadataFacetFactory.html" target="_top">Frames</a></li>
@@ -93,7 +93,7 @@ var activeTableTab = "activeTableTab";
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="subTitle">org.apache.archiva.metadata.model</div>
-<h2 title="Interface MetadataFacetFactory" class="title">Interface MetadataFacetFactory</h2>
+<h2 title="Interface MetadataFacetFactory" class="title">Interface MetadataFacetFactory&lt;T extends <a href="../../../../../org/apache/archiva/metadata/model/MetadataFacet.html" title="interface in org.apache.archiva.metadata.model">MetadataFacet</a>&gt;</h2>
 </div>
 <div class="contentContainer">
 <div class="description">
@@ -101,11 +101,11 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../../org/apache/archiva/audit/AuditEventFactory.html" title="class in org.apache.archiva.audit">AuditEventFactory</a>, <a href="../../../../../org/apache/archiva/metadata/generic/GenericMetadataFacetFactory.html" title="class in org.apache.archiva.metadata.generic">GenericMetadataFacetFactory</a>, <a href="../../../../../org/apache/archiva/metadata/repository/storage/maven2/MavenArtifactFacetFactory.html" title="class in org.apache.archiva.metadata.repository.storage.maven2">MavenArtifactFacetFactory</a>, <a href="../../../../../org/apache/archiva/metadata/repository/storage/maven2/MavenProjectFacetFactory.html" title="class in org.apache.archiva.metadata.repository.storage.maven2">MavenProjectFacetFactory</a>, <a href="../../../../../org/apache/archiva/reports/RepositoryProblemFacetFactory.html" title="class in org.apache.archiva.reports">RepositoryProblemFacetFactory</a>, <a href="../../../../../org/apache/archiva/metadata/repository/stats/RepositoryStatisticsFactory.html" title="class in org.apache.archiva.metadata.repository.stats">RepositoryStatisticsFactory</a></dd>
+<dd><a href="../../../../../org/apache/archiva/metadata/model/facets/AbstractMetadataFacetFactory.html" title="class in org.apache.archiva.metadata.model.facets">AbstractMetadataFacetFactory</a>, <a href="../../../../../org/apache/archiva/audit/AuditEventFactory.html" title="class in org.apache.archiva.audit">AuditEventFactory</a>, <a href="../../../../../org/apache/archiva/metadata/generic/GenericMetadataFacetFactory.html" title="class in org.apache.archiva.metadata.generic">GenericMetadataFacetFactory</a>, <a href="../../../../../org/apache/archiva/metadata/repository/storage/maven2/MavenArtifactFacetFactory.html" title="class in org.apache.archiva.metadata.repository.storage.maven2">MavenArtifactFacetFactory</a>, <a href="../../../../../org/apache/archiva/metadata/repository/storage/maven2/MavenProjectFacetFactory.html" title="class in org.apache.archiva.metadata.repository.storage.maven2">MavenProjectFacetFactory</a>, <a href="../../../../../org/apache/archiva/reports/RepositoryProblemFacetFactory.html" title="class in org.apache.archiva.reports">RepositoryProblemFacetFactory</a>, <a href="../../../../../org/apache/archiva/metadata/repository/stats/RepositoryStatisticsFactory.html" title="class in org.apache.archiva.metadata.repository.stats">RepositoryStatisticsFactory</a></dd>
 </dl>
 <hr>
 <br>
-<pre>public interface <a href="../../../../../src-html/org/apache/archiva/metadata/model/MetadataFacetFactory.html#line.22">MetadataFacetFactory</a></pre>
+<pre>public interface <a href="../../../../../src-html/org/apache/archiva/metadata/model/MetadataFacetFactory.html#line.22">MetadataFacetFactory</a>&lt;T extends <a href="../../../../../org/apache/archiva/metadata/model/MetadataFacet.html" title="interface in org.apache.archiva.metadata.model">MetadataFacet</a>&gt;</pre>
 </li>
 </ul>
 </div>
@@ -119,19 +119,31 @@ var activeTableTab = "activeTableTab";
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t5" class="tableTab"><span><a href="javascript:show(16);">Default Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/archiva/metadata/model/MetadataFacet.html" title="interface in org.apache.archiva.metadata.model">MetadataFacet</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html#createMetadataFacet--">createMetadataFacet</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>default boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html#assignsFacet-java.lang.Class-">assignsFacet</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;clazz)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/archiva/metadata/model/MetadataFacet.html" title="interface in org.apache.archiva.metadata.model">MetadataFacet</a></code></td>
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html" title="type parameter in MetadataFacetFactory">T</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html#createMetadataFacet--">createMetadataFacet</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html" title="type parameter in MetadataFacetFactory">T</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html#createMetadataFacet-java.lang.String-java.lang.String-">createMetadataFacet</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
                    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;<a href="../../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html" title="type parameter in MetadataFacetFactory">T</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html#getFacetClass--">getFacetClass</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html#getFacetId--">getFacetId</a></span>()</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -154,17 +166,44 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>createMetadataFacet</h4>
-<pre><a href="../../../../../org/apache/archiva/metadata/model/MetadataFacet.html" title="interface in org.apache.archiva.metadata.model">MetadataFacet</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/model/MetadataFacetFactory.html#line.24">createMetadataFacet</a>()</pre>
+<pre><a href="../../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html" title="type parameter in MetadataFacetFactory">T</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/model/MetadataFacetFactory.html#line.24">createMetadataFacet</a>()</pre>
 </li>
 </ul>
 <a name="createMetadataFacet-java.lang.String-java.lang.String-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>createMetadataFacet</h4>
-<pre><a href="../../../../../org/apache/archiva/metadata/model/MetadataFacet.html" title="interface in org.apache.archiva.metadata.model">MetadataFacet</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/model/MetadataFacetFactory.html#line.26">createMetadataFacet</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
-                                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</pre>
+<pre><a href="../../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html" title="type parameter in MetadataFacetFactory">T</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/model/MetadataFacetFactory.html#line.26">createMetadataFacet</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
+                      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</pre>
+</li>
+</ul>
+<a name="assignsFacet-java.lang.Class-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>assignsFacet</h4>
+<pre>default&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/model/MetadataFacetFactory.html#line.28">assignsFacet</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;clazz)</pre>
+</li>
+</ul>
+<a name="getFacetClass--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getFacetClass</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;<a href="../../../../../org/apache/archiva/metadata/model/MetadataFacetFactory.html" title="type parameter in MetadataFacetFactory">T</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/model/MetadataFacetFactory.html#line.32">getFacetClass</a>()</pre>
+</li>
+</ul>
+<a name="getFacetId--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getFacetId</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/model/MetadataFacetFactory.html#line.34">getFacetId</a>()</pre>
 </li>
 </ul>
 </li>
@@ -196,7 +235,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/archiva/metadata/model/MetadataFacet.html" title="interface in org.apache.archiva.metadata.model"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/archiva/metadata/model/Organization.html" title="class in org.apache.archiva.metadata.model"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/archiva/metadata/model/ModelInfo.html" title="interface in org.apache.archiva.metadata.model"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/archiva/metadata/model/MetadataFacetFactory.html" target="_top">Frames</a></li>
@@ -236,6 +275,6 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

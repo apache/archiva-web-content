@@ -16,7 +16,7 @@
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> * "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * with the License.  You may obtain a copy of the License at</em>
 <a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2." target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.</a>0</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing,</em>
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * software distributed under the License is distributed on an</em>
@@ -46,7 +46,7 @@
 <a class="jxr_linenumber" name="L38" href="#L38">38</a>  <em class="jxr_javadoccomment"> * @since 1.4-M4</em>
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment"> */</em>
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>  @Service( <span class="jxr_string">"ldapConnectionFactory#archiva"</span> )
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/apache/archiva/web/runtime/ldap/ArchivaLdapConnectionFactory.html">ArchivaLdapConnectionFactory</a>
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="ArchivaLdapConnectionFactory" href="../../../../../../org/apache/archiva/web/runtime/ldap/ArchivaLdapConnectionFactory.html#ArchivaLdapConnectionFactory">ArchivaLdapConnectionFactory</a>
 <a class="jxr_linenumber" name="L42" href="#L42">42</a>      <strong class="jxr_keyword">extends</strong> ConfigurableLdapConnectionFactory
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>  {
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>  
@@ -55,7 +55,7 @@
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> valid = false;
 <a class="jxr_linenumber" name="L48" href="#L48">48</a>  
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>      @Inject
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../../org/apache/archiva/admin/model/runtime/RedbackRuntimeConfigurationAdmin.html">RedbackRuntimeConfigurationAdmin</a> redbackRuntimeConfigurationAdmin;
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>      <strong class="jxr_keyword">private</strong> <a name="RedbackRuntimeConfigurationAdmin" href="../../../../../../org/apache/archiva/admin/model/runtime/RedbackRuntimeConfigurationAdmin.html#RedbackRuntimeConfigurationAdmin">RedbackRuntimeConfigurationAdmin</a> redbackRuntimeConfigurationAdmin;
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>  
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>      <strong class="jxr_keyword">private</strong> LdapConnectionConfiguration ldapConnectionConfiguration;
 <a class="jxr_linenumber" name="L53" href="#L53">53</a>  
@@ -65,7 +65,7 @@
 <a class="jxr_linenumber" name="L57" href="#L57">57</a>      {
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>          <strong class="jxr_keyword">try</strong>
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>          {
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>              <a href="../../../../../../org/apache/archiva/admin/model/beans/LdapConfiguration.html">LdapConfiguration</a> ldapConfiguration =
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>              <a name="LdapConfiguration" href="../../../../../../org/apache/archiva/admin/model/beans/LdapConfiguration.html#LdapConfiguration">LdapConfiguration</a> ldapConfiguration =
 <a class="jxr_linenumber" name="L61" href="#L61">61</a>                  redbackRuntimeConfigurationAdmin.getRedbackRuntimeConfiguration().getLdapConfiguration();
 <a class="jxr_linenumber" name="L62" href="#L62">62</a>              ldapConnectionConfiguration = <strong class="jxr_keyword">new</strong> LdapConnectionConfiguration();
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>              ldapConnectionConfiguration.setHostname( ldapConfiguration.getHostName() );
@@ -84,7 +84,7 @@
 <a class="jxr_linenumber" name="L76" href="#L76">76</a>              log.error( <span class="jxr_string">"Error during initialization of LdapConnectionFactory {}"</span>, e.getMessage(), e );
 <a class="jxr_linenumber" name="L77" href="#L77">77</a>              <em class="jxr_comment">// throw new RuntimeException( "Error while initializing connection factory.", e );</em>
 <a class="jxr_linenumber" name="L78" href="#L78">78</a>          }
-<a class="jxr_linenumber" name="L79" href="#L79">79</a>          <strong class="jxr_keyword">catch</strong> ( RepositoryAdminException e )
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>          <strong class="jxr_keyword">catch</strong> ( <a name="RepositoryAdminException" href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html#RepositoryAdminException">RepositoryAdminException</a> e )
 <a class="jxr_linenumber" name="L80" href="#L80">80</a>          {
 <a class="jxr_linenumber" name="L81" href="#L81">81</a>              <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> RuntimeException( <span class="jxr_string">"Error while initializing ldapConnectionConfiguration: "</span> + e.getMessage(), e );
 <a class="jxr_linenumber" name="L82" href="#L82">82</a>          }
@@ -123,6 +123,6 @@
 <a class="jxr_linenumber" name="L115" href="#L115">115</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
 </body>
 </html>

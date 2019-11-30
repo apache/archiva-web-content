@@ -49,7 +49,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../org/apache/archiva/repository/features/IndexCreationEvent.Index.html" title="enum in org.apache.archiva.repository.features"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/archiva/repository/features/ArtifactCleanupFeature.html" title="class in org.apache.archiva.repository.features"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../org/apache/archiva/repository/features/RemoteIndexFeature.html" title="class in org.apache.archiva.repository.features"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -75,13 +75,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -118,63 +118,26 @@ var activeTableTab = "activeTableTab";
 </dl>
 <hr>
 <br>
-<pre>public class <a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.36">IndexCreationFeature</a>
+<pre>public class <a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.50">IndexCreationFeature</a>
 extends <a href="../../../../../org/apache/archiva/repository/features/AbstractFeature.html" title="class in org.apache.archiva.repository.features">AbstractFeature</a>
 implements <a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html" title="interface in org.apache.archiva.repository.features">RepositoryFeature</a>&lt;<a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html" title="class in org.apache.archiva.repository.features">IndexCreationFeature</a>&gt;</pre>
-<div class="block">This feature provides some information about index creation.</div>
+<div class="block">This feature provides information about index creation.
+
+ Repositories that support this feature are able to create indexes and download them from remote repositories.
+
+ Repositories may have a normal and packed index. A normal index is used by repository search utilities, the packed
+ index is for downloading purpose.
+
+ A index may have a remote and a local representation. The remote representation is used for downloading and
+ updating the local representation.
+
+ The feature is throwing a <a href="../../../../../org/apache/archiva/repository/event/RepositoryIndexEvent.html" title="class in org.apache.archiva.repository.event"><code>RepositoryIndexEvent</code></a>, if the URI of the index has been changed.</div>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- =========== FIELD SUMMARY =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#DEFAULT_INDEX_PATH">DEFAULT_INDEX_PATH</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#DEFAULT_PACKED_INDEX_PATH">DEFAULT_PACKED_INDEX_PATH</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#indexPath">indexPath</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#localIndexPath">localIndexPath</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#localPackedIndexPath">localPackedIndexPath</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#packedIndexPath">packedIndexPath</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#repo">repo</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#skipPackedIndexCreation">skipPackedIndexCreation</a></span></code>&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -190,8 +153,8 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#IndexCreationFeature-boolean-">IndexCreationFeature</a></span>(boolean&nbsp;skipPackedIndexCreation)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#IndexCreationFeature-org.apache.archiva.repository.Repository-org.apache.archiva.repository.RepositoryEventListener-">IndexCreationFeature</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repoId,
-                    <a href="../../../../../org/apache/archiva/repository/RepositoryEventListener.html" title="interface in org.apache.archiva.repository">RepositoryEventListener</a>&nbsp;listener)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#IndexCreationFeature-org.apache.archiva.repository.Repository-org.apache.archiva.event.EventHandler-">IndexCreationFeature</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository,
+                    <a href="../../../../../org/apache/archiva/event/EventHandler.html" title="interface in org.apache.archiva.event">EventHandler</a>&nbsp;listener)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -210,7 +173,9 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html" title="class in org.apache.archiva.repository.features">IndexCreationFeature</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#get--">get</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#get--">get</a></span>()</code>
+<div class="block">Returns the concrete feature instance.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a></code></td>
@@ -219,13 +184,13 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#getLocalIndexPath--">getLocalIndexPath</a></span>()</code>
 <div class="block">Returns the path where the index is stored physically.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#getLocalPackedIndexPath--">getLocalPackedIndexPath</a></span>()</code>
 <div class="block">Returns the directory where the packed index is stored.</div>
 </td>
@@ -238,7 +203,9 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#hasIndex--">hasIndex</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#hasIndex--">hasIndex</a></span>()</code>
+<div class="block">Returns true, if this repository has a index defined.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
@@ -254,13 +221,13 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#setLocalIndexPath-java.nio.file.Path-">setLocalIndexPath</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;localIndexPath)</code>
-<div class="block">Sets the path where the index is stored physically.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#setLocalIndexPath-org.apache.archiva.repository.storage.StorageAsset-">setLocalIndexPath</a></span>(<a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;localIndexPath)</code>
+<div class="block">Sets the path where the index is stored locally.</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#setLocalPackedIndexPath-java.nio.file.Path-">setLocalPackedIndexPath</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;localPackedIndexPath)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#setLocalPackedIndexPath-org.apache.archiva.repository.storage.StorageAsset-">setLocalPackedIndexPath</a></span>(<a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;localPackedIndexPath)</code>
 <div class="block">Sets the path where the packed index is stored physically.</div>
 </td>
 </tr>
@@ -286,7 +253,7 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;org.apache.archiva.repository.features.<a href="../../../../../org/apache/archiva/repository/features/AbstractFeature.html" title="class in org.apache.archiva.repository.features">AbstractFeature</a></h3>
-<code><a href="../../../../../org/apache/archiva/repository/features/AbstractFeature.html#addListener-org.apache.archiva.repository.RepositoryEventListener-">addListener</a>, <a href="../../../../../org/apache/archiva/repository/features/AbstractFeature.html#clearListeners--">clearListeners</a>, <a href="../../../../../org/apache/archiva/repository/features/AbstractFeature.html#raiseEvent-org.apache.archiva.repository.RepositoryEvent-">raiseEvent</a>, <a href="../../../../../org/apache/archiva/repository/features/AbstractFeature.html#removeListener-org.apache.archiva.repository.RepositoryEventListener-">removeListener</a></code></li>
+<code><a href="../../../../../org/apache/archiva/repository/features/AbstractFeature.html#addListener-org.apache.archiva.event.EventHandler-">addListener</a>, <a href="../../../../../org/apache/archiva/repository/features/AbstractFeature.html#clearListeners--">clearListeners</a>, <a href="../../../../../org/apache/archiva/repository/features/AbstractFeature.html#pushEvent-org.apache.archiva.event.Event-">pushEvent</a>, <a href="../../../../../org/apache/archiva/repository/features/AbstractFeature.html#removeListener-org.apache.archiva.event.EventHandler-">removeListener</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -310,108 +277,20 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a name="DEFAULT_INDEX_PATH">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>DEFAULT_INDEX_PATH</h4>
-<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.38">DEFAULT_INDEX_PATH</a></pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#org.apache.archiva.repository.features.IndexCreationFeature.DEFAULT_INDEX_PATH">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a name="DEFAULT_PACKED_INDEX_PATH">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>DEFAULT_PACKED_INDEX_PATH</h4>
-<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.39">DEFAULT_PACKED_INDEX_PATH</a></pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#org.apache.archiva.repository.features.IndexCreationFeature.DEFAULT_PACKED_INDEX_PATH">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a name="skipPackedIndexCreation">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>skipPackedIndexCreation</h4>
-<pre>private&nbsp;boolean <a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.41">skipPackedIndexCreation</a></pre>
-</li>
-</ul>
-<a name="indexPath">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>indexPath</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a> <a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.43">indexPath</a></pre>
-</li>
-</ul>
-<a name="packedIndexPath">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>packedIndexPath</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a> <a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.45">packedIndexPath</a></pre>
-</li>
-</ul>
-<a name="localIndexPath">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>localIndexPath</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a> <a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.47">localIndexPath</a></pre>
-</li>
-</ul>
-<a name="localPackedIndexPath">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>localPackedIndexPath</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a> <a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.49">localPackedIndexPath</a></pre>
-</li>
-</ul>
-<a name="repo">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>repo</h4>
-<pre>private&nbsp;<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a> <a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.51">repo</a></pre>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="IndexCreationFeature-org.apache.archiva.repository.Repository-org.apache.archiva.repository.RepositoryEventListener-">
+<a name="IndexCreationFeature-org.apache.archiva.repository.Repository-org.apache.archiva.event.EventHandler-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>IndexCreationFeature</h4>
-<pre>public&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.53">IndexCreationFeature</a>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repoId,
-                            <a href="../../../../../org/apache/archiva/repository/RepositoryEventListener.html" title="interface in org.apache.archiva.repository">RepositoryEventListener</a>&nbsp;listener)</pre>
+<pre>public&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.65">IndexCreationFeature</a>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository,
+                            <a href="../../../../../org/apache/archiva/event/EventHandler.html" title="interface in org.apache.archiva.event">EventHandler</a>&nbsp;listener)</pre>
 </li>
 </ul>
 <a name="IndexCreationFeature-boolean-">
@@ -420,7 +299,7 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 <ul class="blockListLast">
 <li class="blockList">
 <h4>IndexCreationFeature</h4>
-<pre>public&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.65">IndexCreationFeature</a>(boolean&nbsp;skipPackedIndexCreation)</pre>
+<pre>public&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.77">IndexCreationFeature</a>(boolean&nbsp;skipPackedIndexCreation)</pre>
 </li>
 </ul>
 </li>
@@ -437,10 +316,14 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 <ul class="blockList">
 <li class="blockList">
 <h4>get</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html" title="class in org.apache.archiva.repository.features">IndexCreationFeature</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.77">get</a>()</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html" title="class in org.apache.archiva.repository.features">IndexCreationFeature</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.89">get</a>()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html#get--">RepositoryFeature</a></code></span></div>
+<div class="block">Returns the concrete feature instance.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html#get--">get</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html" title="interface in org.apache.archiva.repository.features">RepositoryFeature</a>&lt;<a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html" title="class in org.apache.archiva.repository.features">IndexCreationFeature</a>&gt;</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the feature instance.</dd>
 </dl>
 </li>
 </ul>
@@ -450,7 +333,7 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 <ul class="blockList">
 <li class="blockList">
 <h4>isSkipPackedIndexCreation</h4>
-<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.85">isSkipPackedIndexCreation</a>()</pre>
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.97">isSkipPackedIndexCreation</a>()</pre>
 <div class="block">Returns true, if no packed index files should be created.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -464,7 +347,7 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 <ul class="blockList">
 <li class="blockList">
 <h4>setSkipPackedIndexCreation</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.94">setSkipPackedIndexCreation</a>(boolean&nbsp;skipPackedIndexCreation)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.106">setSkipPackedIndexCreation</a>(boolean&nbsp;skipPackedIndexCreation)</pre>
 <div class="block">Sets the flag for packed index creation.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -478,8 +361,9 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 <ul class="blockList">
 <li class="blockList">
 <h4>getIndexPath</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.102">getIndexPath</a>()</pre>
-<div class="block">Returns the path that is used to store the index.</div>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.116">getIndexPath</a>()</pre>
+<div class="block">Returns the path that is used to store the index. The path may be a absolute URI or relative to the
+ base URI of the repository.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the uri (may be relative or absolute)</dd>
@@ -492,8 +376,9 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 <ul class="blockList">
 <li class="blockList">
 <h4>setIndexPath</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.111">setIndexPath</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;indexPath)</pre>
-<div class="block">Sets the path that is used to store the index.</div>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.127">setIndexPath</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;indexPath)</pre>
+<div class="block">Sets the path that is used to store the index. The path may be either absolute or a
+ path that is relative to the repository storage path (either a local or remote path).</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>indexPath</code> - the uri to the index path (may be relative)</dd>
@@ -506,7 +391,12 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 <ul class="blockList">
 <li class="blockList">
 <h4>hasIndex</h4>
-<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.120">hasIndex</a>()</pre>
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.142">hasIndex</a>()</pre>
+<div class="block">Returns true, if this repository has a index defined.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd><code>true</code>, if a index path is set, otherwise <code>false</code></dd>
+</dl>
 </li>
 </ul>
 <a name="getLocalIndexPath--">
@@ -515,22 +405,21 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 <ul class="blockList">
 <li class="blockList">
 <h4>getLocalIndexPath</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.129">getLocalIndexPath</a>()</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.151">getLocalIndexPath</a>()</pre>
 <div class="block">Returns the path where the index is stored physically.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
 </ul>
-<a name="setLocalIndexPath-java.nio.file.Path-">
+<a name="setLocalIndexPath-org.apache.archiva.repository.storage.StorageAsset-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>setLocalIndexPath</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.139">setLocalIndexPath</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;localIndexPath)</pre>
-<div class="block">Sets the path where the index is stored physically. This method should only be used by the
- MavenIndexProvider implementations.</div>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.160">setLocalIndexPath</a>(<a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;localIndexPath)</pre>
+<div class="block">Sets the path where the index is stored locally.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>localIndexPath</code> - </dd>
@@ -543,7 +432,7 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 <ul class="blockList">
 <li class="blockList">
 <h4>getPackedIndexPath</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.148">getPackedIndexPath</a>()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.169">getPackedIndexPath</a>()</pre>
 <div class="block">Returns the path of the packed index.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -556,11 +445,13 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 <ul class="blockList">
 <li class="blockList">
 <h4>setPackedIndexPath</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.156">setPackedIndexPath</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;packedIndexPath)</pre>
-<div class="block">Sets the path (relative or absolute) of the packed index.</div>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.180">setPackedIndexPath</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;packedIndexPath)</pre>
+<div class="block">Sets the path (relative or absolute) of the packed index.
+
+ Throws a <code>RepositoryIndexEvent.Index#PACKED_INDEX_URI_CHANGE</code>, if the value changes.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>packedIndexPath</code> - </dd>
+<dd><code>packedIndexPath</code> - the new path uri for the packed index</dd>
 </dl>
 </li>
 </ul>
@@ -570,20 +461,20 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 <ul class="blockList">
 <li class="blockList">
 <h4>getLocalPackedIndexPath</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.166">getLocalPackedIndexPath</a>()</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.190">getLocalPackedIndexPath</a>()</pre>
 <div class="block">Returns the directory where the packed index is stored.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
 </ul>
-<a name="setLocalPackedIndexPath-java.nio.file.Path-">
+<a name="setLocalPackedIndexPath-org.apache.archiva.repository.storage.StorageAsset-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>setLocalPackedIndexPath</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.176">setLocalPackedIndexPath</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;localPackedIndexPath)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.200">setLocalPackedIndexPath</a>(<a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;localPackedIndexPath)</pre>
 <div class="block">Sets the path where the packed index is stored physically. This method should only be used by the
  MavenIndexProvider implementations.</div>
 <dl>
@@ -598,7 +489,7 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 <ul class="blockListLast">
 <li class="blockList">
 <h4>toString</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.181">toString</a>()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/IndexCreationFeature.html#line.205">toString</a>()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
@@ -633,7 +524,7 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../org/apache/archiva/repository/features/IndexCreationEvent.Index.html" title="enum in org.apache.archiva.repository.features"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/archiva/repository/features/ArtifactCleanupFeature.html" title="class in org.apache.archiva.repository.features"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../org/apache/archiva/repository/features/RemoteIndexFeature.html" title="class in org.apache.archiva.repository.features"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -659,13 +550,13 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -674,6 +565,6 @@ implements <a href="../../../../../org/apache/archiva/repository/features/Reposi
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

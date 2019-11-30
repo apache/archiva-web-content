@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -49,8 +49,8 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../org/apache/archiva/policies/CachedFailuresPolicy.html" title="class in org.apache.archiva.policies"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/archiva/policies/DownloadErrorPolicy.html" title="interface in org.apache.archiva.policies"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/archiva/policies/ChecksumOption.html" title="enum in org.apache.archiva.policies"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/archiva/policies/DownloadErrorOption.html" title="enum in org.apache.archiva.policies"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/archiva/policies/ChecksumPolicy.html" target="_top">Frames</a></li>
@@ -100,7 +100,12 @@ var activeTableTab = "activeTableTab";
 <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
+<li><a href="../../../../org/apache/archiva/policies/AbstractPolicy.html" title="class in org.apache.archiva.policies">org.apache.archiva.policies.AbstractPolicy</a></li>
+<li>
+<ul class="inheritance">
 <li>org.apache.archiva.policies.ChecksumPolicy</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -114,8 +119,8 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>@Service(value="postDownloadPolicy#checksum")
-public class <a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.44">ChecksumPolicy</a>
-extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+public class <a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.46">ChecksumPolicy</a>
+extends <a href="../../../../org/apache/archiva/policies/AbstractPolicy.html" title="class in org.apache.archiva.policies">AbstractPolicy</a>
 implements <a href="../../../../org/apache/archiva/policies/PostDownloadPolicy.html" title="interface in org.apache.archiva.policies">PostDownloadPolicy</a></pre>
 <div class="block">ChecksumPolicy - a policy applied after the download to see if the file has been downloaded
  successfully and completely (or not).</div>
@@ -138,42 +143,37 @@ implements <a href="../../../../org/apache/archiva/policies/PostDownloadPolicy.h
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/archiva/checksum/ChecksumAlgorithm.html" title="enum in org.apache.archiva.checksum">ChecksumAlgorithm</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/ChecksumPolicy.html#algorithms">algorithms</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>static <a href="../../../../org/apache/archiva/policies/ChecksumOption.html" title="enum in org.apache.archiva.policies">ChecksumOption</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/ChecksumPolicy.html#FAIL">FAIL</a></span></code>
 <div class="block">The FAIL policy indicates that if the checksum does not match the
  downloaded file, then remove the downloaded artifact, and checksum
  files, and fail the transfer to the client side.</div>
 </td>
 </tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../org/apache/archiva/policies/ChecksumOption.html" title="enum in org.apache.archiva.policies">ChecksumOption</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/ChecksumPolicy.html#FIX">FIX</a></span></code>
 <div class="block">The FIX policy indicates that if the checksum does not match the
  downloaded file, then fix the checksum file locally, and return
  to the client side the corrected checksum.</div>
 </td>
 </tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../org/apache/archiva/policies/ChecksumOption.html" title="enum in org.apache.archiva.policies">ChecksumOption</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/ChecksumPolicy.html#IGNORE">IGNORE</a></span></code>
 <div class="block">The IGNORE policy indicates that if the checksum policy is ignored, and
  the state of, contents of, or validity of the checksum files are not
  checked.</div>
 </td>
 </tr>
-<tr class="altColor">
-<td class="colFirst"><code>private org.slf4j.Logger</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/ChecksumPolicy.html#log">log</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/ChecksumPolicy.html#options">options</a></span></code>&nbsp;</td>
-</tr>
 </table>
+<ul class="blockList">
+<li class="blockList"><a name="fields.inherited.from.class.org.apache.archiva.policies.Policy">
+<!--   -->
+</a>
+<h3>Fields inherited from interface&nbsp;org.apache.archiva.policies.<a href="../../../../org/apache/archiva/policies/Policy.html" title="interface in org.apache.archiva.policies">Policy</a></h3>
+<code><a href="../../../../org/apache/archiva/policies/Policy.html#RESOURCE_BUNDLE">RESOURCE_BUNDLE</a></code></li>
+</ul>
 </li>
 </ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
@@ -207,14 +207,14 @@ implements <a href="../../../../org/apache/archiva/policies/PostDownloadPolicy.h
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/ChecksumPolicy.html#applyPolicy-java.lang.String-java.util.Properties-java.nio.file.Path-">applyPolicy</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;policySetting,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/ChecksumPolicy.html#applyPolicy-org.apache.archiva.policies.PolicyOption-java.util.Properties-org.apache.archiva.repository.storage.StorageAsset-">applyPolicy</a></span>(<a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a>&nbsp;policySetting,
            <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;request,
-           <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;localFile)</code>
+           <a href="../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;localFile)</code>
 <div class="block">Apply the download policy.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code><a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/ChecksumPolicy.html#getDefaultOption--">getDefaultOption</a></span>()</code>
 <div class="block">Get the default option for this policy.</div>
 </td>
@@ -226,24 +226,32 @@ implements <a href="../../../../org/apache/archiva/policies/PostDownloadPolicy.h
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/ChecksumPolicy.html#getName--">getName</a></span>()</code>
-<div class="block">Get the display name for this policy.</div>
-</td>
-</tr>
-<tr id="i4" class="altColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/ChecksumPolicy.html#getOptions--">getOptions</a></span>()</code>
 <div class="block">Get the list of options for this policy.</div>
 </td>
 </tr>
 </table>
 <ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.org.apache.archiva.policies.AbstractPolicy">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.archiva.policies.<a href="../../../../org/apache/archiva/policies/AbstractPolicy.html" title="class in org.apache.archiva.policies">AbstractPolicy</a></h3>
+<code><a href="../../../../org/apache/archiva/policies/AbstractPolicy.html#getDescription-java.util.Locale-">getDescription</a>, <a href="../../../../org/apache/archiva/policies/AbstractPolicy.html#getName--">getName</a>, <a href="../../../../org/apache/archiva/policies/AbstractPolicy.html#getName-java.util.Locale-">getName</a>, <a href="../../../../org/apache/archiva/policies/AbstractPolicy.html#getOptionDescription-java.util.Locale-org.apache.archiva.policies.PolicyOption-">getOptionDescription</a>, <a href="../../../../org/apache/archiva/policies/AbstractPolicy.html#getOptionName-java.util.Locale-org.apache.archiva.policies.PolicyOption-">getOptionName</a>, <a href="../../../../org/apache/archiva/policies/AbstractPolicy.html#getOptionPrefix--">getOptionPrefix</a>, <a href="../../../../org/apache/archiva/policies/AbstractPolicy.html#getPolicyPrefix--">getPolicyPrefix</a>, <a href="../../../../org/apache/archiva/policies/AbstractPolicy.html#setOptionPrefix-java.lang.String-">setOptionPrefix</a>, <a href="../../../../org/apache/archiva/policies/AbstractPolicy.html#setPolicyPrefix-java.lang.String-">setPolicyPrefix</a></code></li>
+</ul>
+<ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
 <code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.org.apache.archiva.policies.Policy">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;org.apache.archiva.policies.<a href="../../../../org/apache/archiva/policies/Policy.html" title="interface in org.apache.archiva.policies">Policy</a></h3>
+<code><a href="../../../../org/apache/archiva/policies/Policy.html#getDescription-java.util.Locale-">getDescription</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getName--">getName</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getName-java.util.Locale-">getName</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getOptionDescription-java.util.Locale-org.apache.archiva.policies.PolicyOption-">getOptionDescription</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getOptionName-java.util.Locale-org.apache.archiva.policies.PolicyOption-">getOptionName</a></code></li>
 </ul>
 </li>
 </ul>
@@ -259,29 +267,16 @@ implements <a href="../../../../org/apache/archiva/policies/PostDownloadPolicy.h
 <!--   -->
 </a>
 <h3>Field Detail</h3>
-<a name="log">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>log</h4>
-<pre>private&nbsp;org.slf4j.Logger <a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.47">log</a></pre>
-</li>
-</ul>
 <a name="IGNORE">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>IGNORE</h4>
-<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.54">IGNORE</a></pre>
+<pre>public static final&nbsp;<a href="../../../../org/apache/archiva/policies/ChecksumOption.html" title="enum in org.apache.archiva.policies">ChecksumOption</a> <a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.58">IGNORE</a></pre>
 <div class="block">The IGNORE policy indicates that if the checksum policy is ignored, and
  the state of, contents of, or validity of the checksum files are not
  checked.</div>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../constant-values.html#org.apache.archiva.policies.ChecksumPolicy.IGNORE">Constant Field Values</a></dd>
-</dl>
 </li>
 </ul>
 <a name="FAIL">
@@ -290,48 +285,22 @@ implements <a href="../../../../org/apache/archiva/policies/PostDownloadPolicy.h
 <ul class="blockList">
 <li class="blockList">
 <h4>FAIL</h4>
-<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.61">FAIL</a></pre>
+<pre>public static final&nbsp;<a href="../../../../org/apache/archiva/policies/ChecksumOption.html" title="enum in org.apache.archiva.policies">ChecksumOption</a> <a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.65">FAIL</a></pre>
 <div class="block">The FAIL policy indicates that if the checksum does not match the
  downloaded file, then remove the downloaded artifact, and checksum
  files, and fail the transfer to the client side.</div>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../constant-values.html#org.apache.archiva.policies.ChecksumPolicy.FAIL">Constant Field Values</a></dd>
-</dl>
 </li>
 </ul>
 <a name="FIX">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>FIX</h4>
-<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.68">FIX</a></pre>
+<pre>public static final&nbsp;<a href="../../../../org/apache/archiva/policies/ChecksumOption.html" title="enum in org.apache.archiva.policies">ChecksumOption</a> <a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.72">FIX</a></pre>
 <div class="block">The FIX policy indicates that if the checksum does not match the
  downloaded file, then fix the checksum file locally, and return
  to the client side the corrected checksum.</div>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../constant-values.html#org.apache.archiva.policies.ChecksumPolicy.FIX">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a name="algorithms">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>algorithms</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/archiva/checksum/ChecksumAlgorithm.html" title="enum in org.apache.archiva.checksum">ChecksumAlgorithm</a>&gt; <a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.70">algorithms</a></pre>
-</li>
-</ul>
-<a name="options">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>options</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt; <a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.72">options</a></pre>
 </li>
 </ul>
 </li>
@@ -348,7 +317,7 @@ implements <a href="../../../../org/apache/archiva/policies/PostDownloadPolicy.h
 <ul class="blockListLast">
 <li class="blockList">
 <h4>ChecksumPolicy</h4>
-<pre>public&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.74">ChecksumPolicy</a>()</pre>
+<pre>public&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.78">ChecksumPolicy</a>()</pre>
 </li>
 </ul>
 </li>
@@ -359,22 +328,22 @@ implements <a href="../../../../org/apache/archiva/policies/PostDownloadPolicy.h
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="applyPolicy-java.lang.String-java.util.Properties-java.nio.file.Path-">
+<a name="applyPolicy-org.apache.archiva.policies.PolicyOption-java.util.Properties-org.apache.archiva.repository.storage.StorageAsset-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>applyPolicy</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.82">applyPolicy</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;policySetting,
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.87">applyPolicy</a>(<a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a>&nbsp;policySetting,
                         <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;request,
-                        <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;localFile)
+                        <a href="../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;localFile)
                  throws <a href="../../../../org/apache/archiva/policies/PolicyViolationException.html" title="class in org.apache.archiva.policies">PolicyViolationException</a>,
                         <a href="../../../../org/apache/archiva/policies/PolicyConfigurationException.html" title="class in org.apache.archiva.policies">PolicyConfigurationException</a></pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/policies/DownloadPolicy.html#applyPolicy-java.lang.String-java.util.Properties-java.nio.file.Path-">DownloadPolicy</a></code></span></div>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/policies/DownloadPolicy.html#applyPolicy-org.apache.archiva.policies.PolicyOption-java.util.Properties-org.apache.archiva.repository.storage.StorageAsset-">DownloadPolicy</a></code></span></div>
 <div class="block">Apply the download policy.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/archiva/policies/DownloadPolicy.html#applyPolicy-java.lang.String-java.util.Properties-java.nio.file.Path-">applyPolicy</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/archiva/policies/DownloadPolicy.html" title="interface in org.apache.archiva.policies">DownloadPolicy</a></code></dd>
+<dd><code><a href="../../../../org/apache/archiva/policies/DownloadPolicy.html#applyPolicy-org.apache.archiva.policies.PolicyOption-java.util.Properties-org.apache.archiva.repository.storage.StorageAsset-">applyPolicy</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/archiva/policies/DownloadPolicy.html" title="interface in org.apache.archiva.policies">DownloadPolicy</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>policySetting</code> - the policy setting.</dd>
 <dd><code>request</code> - the list of request properties that the policy might use.</dd>
@@ -390,7 +359,7 @@ implements <a href="../../../../org/apache/archiva/policies/PostDownloadPolicy.h
 <ul class="blockList">
 <li class="blockList">
 <h4>getDefaultOption</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.167">getDefaultOption</a>()</pre>
+<pre>public&nbsp;<a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.172">getDefaultOption</a>()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/policies/Policy.html#getDefaultOption--">Policy</a></code></span></div>
 <div class="block">Get the default option for this policy.</div>
 <dl>
@@ -407,7 +376,7 @@ implements <a href="../../../../org/apache/archiva/policies/PostDownloadPolicy.h
 <ul class="blockList">
 <li class="blockList">
 <h4>getId</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.173">getId</a>()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.178">getId</a>()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/policies/Policy.html#getId--">Policy</a></code></span></div>
 <div class="block">Get the id for this policy.</div>
 <dl>
@@ -418,32 +387,13 @@ implements <a href="../../../../org/apache/archiva/policies/PostDownloadPolicy.h
 </dl>
 </li>
 </ul>
-<a name="getName--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getName</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.179">getName</a>()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/policies/Policy.html#getName--">Policy</a></code></span></div>
-<div class="block">Get the display name for this policy.
-
- TODO todo i18n</div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/archiva/policies/Policy.html#getName--">getName</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/archiva/policies/Policy.html" title="interface in org.apache.archiva.policies">Policy</a></code></dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>the name for this policy</dd>
-</dl>
-</li>
-</ul>
 <a name="getOptions--">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>getOptions</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.185">getOptions</a>()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a>&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/ChecksumPolicy.html#line.184">getOptions</a>()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/policies/Policy.html#getOptions--">Policy</a></code></span></div>
 <div class="block">Get the list of options for this policy.</div>
 <dl>
@@ -482,8 +432,8 @@ implements <a href="../../../../org/apache/archiva/policies/PostDownloadPolicy.h
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../org/apache/archiva/policies/CachedFailuresPolicy.html" title="class in org.apache.archiva.policies"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/archiva/policies/DownloadErrorPolicy.html" title="interface in org.apache.archiva.policies"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/archiva/policies/ChecksumOption.html" title="enum in org.apache.archiva.policies"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/archiva/policies/DownloadErrorOption.html" title="enum in org.apache.archiva.policies"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/archiva/policies/ChecksumPolicy.html" target="_top">Frames</a></li>
@@ -523,6 +473,6 @@ implements <a href="../../../../org/apache/archiva/policies/PostDownloadPolicy.h
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

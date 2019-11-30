@@ -17,7 +17,7 @@
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> * with the License.  You may obtain a copy of the License at</em>
 <a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> *  <a href="http://www.apache.org/licenses/LICENSE-2." target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.</a>0</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> *  <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing,</em>
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> * software distributed under the License is distributed on an</em>
@@ -40,20 +40,20 @@
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>  <em class="jxr_javadoccomment"> * This factory is used to get a index manager for a certain repository type.</em>
 <a class="jxr_linenumber" name="L33" href="#L33">33</a>  <em class="jxr_javadoccomment"> */</em>
 <a class="jxr_linenumber" name="L34" href="#L34">34</a>  @Service(<span class="jxr_string">"indexerManagerFactory"</span>)
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/apache/archiva/indexer/IndexManagerFactory.html">IndexManagerFactory</a> {
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="IndexManagerFactory" href="../../../../org/apache/archiva/indexer/IndexManagerFactory.html#IndexManagerFactory">IndexManagerFactory</a> {
 <a class="jxr_linenumber" name="L36" href="#L36">36</a>  
 <a class="jxr_linenumber" name="L37" href="#L37">37</a>      Map&lt;RepositoryType, ArchivaIndexManager&gt; managers= <strong class="jxr_keyword">new</strong> HashMap&lt;&gt;();
 <a class="jxr_linenumber" name="L38" href="#L38">38</a>  
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>      @Inject
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>      ApplicationContext applicationContext;
 <a class="jxr_linenumber" name="L41" href="#L41">41</a>  
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../org/apache/archiva/indexer/ArchivaIndexManager.html">ArchivaIndexManager</a> getIndexManager(<a href="../../../../org/apache/archiva/repository/RepositoryType.html">RepositoryType</a> type) {
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>      <strong class="jxr_keyword">public</strong> <a name="ArchivaIndexManager" href="../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#ArchivaIndexManager">ArchivaIndexManager</a> getIndexManager(<a name="RepositoryType" href="../../../../org/apache/archiva/repository/RepositoryType.html#RepositoryType">RepositoryType</a> type) {
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>          <strong class="jxr_keyword">if</strong> (managers.containsKey(type)) {
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>              <strong class="jxr_keyword">return</strong> managers.get(type);
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>          } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>              <a href="../../../../org/apache/archiva/indexer/ArchivaIndexManager.html">ArchivaIndexManager</a> manager = applicationContext.getBeansOfType(ArchivaIndexManager.<strong class="jxr_keyword">class</strong>).values().stream().
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>              <a name="ArchivaIndexManager" href="../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#ArchivaIndexManager">ArchivaIndexManager</a> manager = applicationContext.getBeansOfType(ArchivaIndexManager.<strong class="jxr_keyword">class</strong>).values().stream().
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>                      filter(m -&gt; m.supportsRepository(type)).
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>                      findFirst().orElseThrow(() -&gt; <strong class="jxr_keyword">new</strong> UnsupportedRepositoryTypeException(type));
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>                      findFirst().orElseThrow(() -&gt; <strong class="jxr_keyword">new</strong> <a name="UnsupportedRepositoryTypeException" href="../../../../org/apache/archiva/repository/UnsupportedRepositoryTypeException.html#UnsupportedRepositoryTypeException">UnsupportedRepositoryTypeException</a>(type));
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>              managers.put(type, manager);
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>              <strong class="jxr_keyword">return</strong> manager;
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>          }
@@ -61,6 +61,6 @@
 <a class="jxr_linenumber" name="L53" href="#L53">53</a>  }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
 </body>
 </html>

@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10,"i32":10,"i33":10,"i34":10,"i35":10,"i36":10,"i37":10,"i38":10,"i39":10,"i40":10,"i41":10,"i42":10,"i43":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -75,13 +75,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -109,14 +109,14 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a>, org.apache.archiva.redback.components.registry.RegistryListener</dd>
+<dd>org.apache.archiva.components.registry.RegistryListener, <a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a></dd>
 </dl>
 <hr>
 <br>
 <pre>@Service(value="archivaConfiguration#default")
-public class <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.98">DefaultArchivaConfiguration</a>
+public class <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.82">DefaultArchivaConfiguration</a>
 extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
-implements <a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a>, org.apache.archiva.redback.components.registry.RegistryListener</pre>
+implements <a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a>, org.apache.archiva.components.registry.RegistryListener</pre>
 <div class="block"><p>
  Implementation of configuration holder that retrieves it from the registry.
  </p>
@@ -153,116 +153,6 @@ implements <a href="../../../../org/apache/archiva/configuration/ArchivaConfigur
 <!--   -->
 </a>
 <h3>Field Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#altConfigFilename">altConfigFilename</a></span></code>
-<div class="block">see #initialize
- default-value="${appserver.base}/conf/archiva.xml"</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private org.apache.archiva.redback.components.springutils.ComponentContainer</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#componentContainer">componentContainer</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#configuration">configuration</a></span></code>
-<div class="block">The configuration that has been converted.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#dataDirectory">dataDirectory</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#defaultLocale">defaultLocale</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../org/apache/archiva/policies/DownloadErrorPolicy.html" title="interface in org.apache.archiva.policies">DownloadErrorPolicy</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#downloadErrorPolicies">downloadErrorPolicies</a></span></code>
-<div class="block">see #initialize</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#FILE_ENCODING">FILE_ENCODING</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#isConfigurationDefaulted">isConfigurationDefaulted</a></span></code>
-<div class="block">Boolean to help determine if the configuration exists as a result of pulling in
- the default-archiva.xml</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#KEY">KEY</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#KEY_DEFAULT_ONLY">KEY_DEFAULT_ONLY</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.LanguageRange.html?is-external=true" title="class or interface in java.util">Locale.LanguageRange</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#languagePriorities">languagePriorities</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../org/apache/archiva/configuration/ConfigurationListener.html" title="interface in org.apache.archiva.configuration">ConfigurationListener</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#listeners">listeners</a></span></code>
-<div class="block">Configuration Listeners we've registered.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private org.slf4j.Logger</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#log">log</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../org/apache/archiva/policies/PostDownloadPolicy.html" title="interface in org.apache.archiva.policies">PostDownloadPolicy</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#postPolicies">postPolicies</a></span></code>
-<div class="block">see #initialize</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.html" title="interface in org.apache.archiva.policies">PreDownloadPolicy</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#prePolicies">prePolicies</a></span></code>
-<div class="block">see #initialize</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private org.apache.archiva.redback.components.registry.Registry</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#registry">registry</a></span></code>
-<div class="block">Plexus registry to read the configuration from.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;org.apache.archiva.redback.components.registry.RegistryListener&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#registryListeners">registryListeners</a></span></code>
-<div class="block">Registry Listeners we've registered.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#remoteRepositoryBaseDirectory">remoteRepositoryBaseDirectory</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#repositoryBaseDirectory">repositoryBaseDirectory</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#userConfigFilename">userConfigFilename</a></span></code>
-<div class="block">see #initialize
- default-value="${user.home}/.m2/archiva.xml"</div>
-</td>
-</tr>
-</table>
 <ul class="blockList">
 <li class="blockList"><a name="fields.inherited.from.class.org.apache.archiva.configuration.ArchivaConfiguration">
 <!--   -->
@@ -303,7 +193,7 @@ implements <a href="../../../../org/apache/archiva/configuration/ArchivaConfigur
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#addChangeListener-org.apache.archiva.redback.components.registry.RegistryListener-">addChangeListener</a></span>(org.apache.archiva.redback.components.registry.RegistryListener&nbsp;listener)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#addChangeListener-org.apache.archiva.components.registry.RegistryListener-">addChangeListener</a></span>(org.apache.archiva.components.registry.RegistryListener&nbsp;listener)</code>
 <div class="block">Add a registry listener to notify of events in spring-registry.</div>
 </td>
 </tr>
@@ -314,200 +204,114 @@ implements <a href="../../../../org/apache/archiva/configuration/ArchivaConfigur
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#addRegistryChangeListener-org.apache.archiva.redback.components.registry.RegistryListener-">addRegistryChangeListener</a></span>(org.apache.archiva.redback.components.registry.RegistryListener&nbsp;listener)</code>&nbsp;</td>
-</tr>
-<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#afterConfigurationChange-org.apache.archiva.redback.components.registry.Registry-java.lang.String-java.lang.Object-">afterConfigurationChange</a></span>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#afterConfigurationChange-org.apache.archiva.components.registry.Registry-java.lang.String-java.lang.Object-">afterConfigurationChange</a></span>(org.apache.archiva.components.registry.Registry&nbsp;registry,
                         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;propertyName,
                         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;propertyValue)</code>&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#beforeConfigurationChange-org.apache.archiva.redback.components.registry.Registry-java.lang.String-java.lang.Object-">beforeConfigurationChange</a></span>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#beforeConfigurationChange-org.apache.archiva.components.registry.Registry-java.lang.String-java.lang.Object-">beforeConfigurationChange</a></span>(org.apache.archiva.components.registry.Registry&nbsp;registry,
                          <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;propertyName,
                          <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;propertyValue)</code>&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>private <a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#checkRepositoryLocations-org.apache.archiva.configuration.Configuration-">checkRepositoryLocations</a></span>(<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;config)</code>&nbsp;</td>
-</tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code>private org.apache.archiva.redback.components.registry.Registry</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#createDefaultConfigurationFile--">createDefaultConfigurationFile</a></span>()</code>&nbsp;</td>
-</tr>
-<tr id="i7" class="rowColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#escapeCronExpression-java.lang.String-">escapeCronExpression</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;cronExpression)</code>&nbsp;</td>
-</tr>
-<tr id="i8" class="altColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#escapeCronExpressions-org.apache.archiva.configuration.Configuration-">escapeCronExpressions</a></span>(<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;configuration)</code>&nbsp;</td>
-</tr>
-<tr id="i9" class="rowColor">
-<td class="colFirst"><code>private <a href="../../../../org/apache/archiva/policies/Policy.html" title="interface in org.apache.archiva.policies">Policy</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#findPolicy-java.lang.String-">findPolicy</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;policyId)</code>&nbsp;</td>
-</tr>
-<tr id="i10" class="altColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#getAltConfigFilename--">getAltConfigFilename</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#getAppServerBaseDir--">getAppServerBaseDir</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#getConfiguration--">getConfiguration</a></span>()</code>
 <div class="block">Get the configuration.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#getDataDirectory--">getDataDirectory</a></span>()</code>
 <div class="block">Returns the data directory where repositories and metadata reside</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#getDefaultLocale--">getDefaultLocale</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.LanguageRange.html?is-external=true" title="class or interface in java.util">Locale.LanguageRange</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#getLanguagePriorities--">getLanguagePriorities</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i16" class="altColor">
-<td class="colFirst"><code>org.apache.archiva.redback.components.registry.Registry</code></td>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>org.apache.archiva.components.registry.Registry</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#getRegistry--">getRegistry</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#getRemoteRepositoryBaseDir--">getRemoteRepositoryBaseDir</a></span>()</code>
 <div class="block">Returns the base directory for remote repositories</div>
 </td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#getRepositoryBaseDir--">getRepositoryBaseDir</a></span>()</code>
 <div class="block">Returns the base directory for repositories that have a relative location path set.</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#getRepositoryGroupBaseDir--">getRepositoryGroupBaseDir</a></span>()</code>
+<div class="block">Returns the base directory for repository group files.</div>
+</td>
+</tr>
+<tr id="i14" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#getUserConfigFilename--">getUserConfigFilename</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i20" class="altColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#handleUpgradeConfiguration--">handleUpgradeConfiguration</a></span>()</code>
-<div class="block">Handle upgrade to newer version</div>
-</td>
-</tr>
-<tr id="i21" class="rowColor">
-<td class="colFirst"><code>private boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#hasConfigVersionChanged-org.apache.archiva.configuration.Configuration-org.apache.archiva.redback.components.registry.Registry-">hasConfigVersionChanged</a></span>(<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;current,
-                       org.apache.archiva.redback.components.registry.Registry&nbsp;defaultOnlyConfiguration)</code>&nbsp;</td>
-</tr>
-<tr id="i22" class="altColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#init--">init</a></span>()</code>&nbsp;</td>
-</tr>
-<tr id="i23" class="rowColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#initialize--">initialize</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#isDefaulted--">isDefaulted</a></span>()</code>
 <div class="block">Determines if the configuration in use was as a result of a defaulted configuration.</div>
 </td>
 </tr>
-<tr id="i25" class="rowColor">
-<td class="colFirst"><code>private <a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#load--">load</a></span>()</code>&nbsp;</td>
-</tr>
-<tr id="i26" class="altColor">
-<td class="colFirst"><code>private <a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#loadConfiguration--">loadConfiguration</a></span>()</code>&nbsp;</td>
-</tr>
-<tr id="i27" class="rowColor">
-<td class="colFirst"><code>private boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#policyExists-java.lang.String-">policyExists</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;policyId)</code>&nbsp;</td>
-</tr>
-<tr id="i28" class="altColor">
-<td class="colFirst"><code>private org.apache.archiva.redback.components.registry.Registry</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#readDefaultConfiguration--">readDefaultConfiguration</a></span>()</code>&nbsp;</td>
-</tr>
-<tr id="i29" class="rowColor">
-<td class="colFirst"><code>private org.apache.archiva.redback.components.registry.Registry</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#readDefaultOnlyConfiguration--">readDefaultOnlyConfiguration</a></span>()</code>&nbsp;</td>
-</tr>
-<tr id="i30" class="altColor">
-<td class="colFirst"><code>private <a href="../../../../org/apache/archiva/configuration/RepositoryCheckPath.html" title="class in org.apache.archiva.configuration">RepositoryCheckPath</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#readRepositoryCheckPath-org.apache.archiva.redback.components.registry.Registry-">readRepositoryCheckPath</a></span>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry)</code>&nbsp;</td>
-</tr>
-<tr id="i31" class="rowColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#reload--">reload</a></span>()</code>
 <div class="block">reload configuration from file included registry</div>
 </td>
 </tr>
-<tr id="i32" class="altColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#removeChangeListener-org.apache.archiva.redback.components.registry.RegistryListener-">removeChangeListener</a></span>(org.apache.archiva.redback.components.registry.RegistryListener&nbsp;listener)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#removeChangeListener-org.apache.archiva.components.registry.RegistryListener-">removeChangeListener</a></span>(org.apache.archiva.components.registry.RegistryListener&nbsp;listener)</code>&nbsp;</td>
 </tr>
-<tr id="i33" class="rowColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#removeExpressions-java.lang.String-">removeExpressions</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;directory)</code>&nbsp;</td>
-</tr>
-<tr id="i34" class="altColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#removeListener-org.apache.archiva.configuration.ConfigurationListener-">removeListener</a></span>(<a href="../../../../org/apache/archiva/configuration/ConfigurationListener.html" title="interface in org.apache.archiva.configuration">ConfigurationListener</a>&nbsp;listener)</code>
 <div class="block">Remove a configuration listener to stop notifications of changes to the configuration.</div>
 </td>
 </tr>
-<tr id="i35" class="rowColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#save-org.apache.archiva.configuration.Configuration-">save</a></span>(<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;configuration)</code>
 <div class="block">Save any updated configuration.</div>
 </td>
 </tr>
-<tr id="i36" class="altColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#setAltConfigFilename-java.lang.String-">setAltConfigFilename</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;altConfigFilename)</code>&nbsp;</td>
 </tr>
-<tr id="i37" class="rowColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#setRegistry-org.apache.archiva.redback.components.registry.Registry-">setRegistry</a></span>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#setRegistry-org.apache.archiva.components.registry.Registry-">setRegistry</a></span>(org.apache.archiva.components.registry.Registry&nbsp;registry)</code>&nbsp;</td>
 </tr>
-<tr id="i38" class="altColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#setUserConfigFilename-java.lang.String-">setUserConfigFilename</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;userConfigFilename)</code>&nbsp;</td>
-</tr>
-<tr id="i39" class="rowColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#triggerEvent-int-">triggerEvent</a></span>(int&nbsp;type)</code>&nbsp;</td>
-</tr>
-<tr id="i40" class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#unescapeCronExpression-java.lang.String-">unescapeCronExpression</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;cronExpression)</code>&nbsp;</td>
-</tr>
-<tr id="i41" class="rowColor">
-<td class="colFirst"><code>private <a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#unescapeExpressions-org.apache.archiva.configuration.Configuration-">unescapeExpressions</a></span>(<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;config)</code>&nbsp;</td>
-</tr>
-<tr id="i42" class="altColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#updateCheckPathDefaults-org.apache.archiva.configuration.Configuration-org.apache.archiva.redback.components.registry.Registry-">updateCheckPathDefaults</a></span>(<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;config,
-                       org.apache.archiva.redback.components.registry.Registry&nbsp;defaultConfiguration)</code>&nbsp;</td>
-</tr>
-<tr id="i43" class="rowColor">
-<td class="colFirst"><code>private boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/configuration/DefaultArchivaConfiguration.html#writeFile-java.lang.String-java.lang.String-java.lang.String-">writeFile</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;filetype,
-         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
-         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;contents)</code>
-<div class="block">Attempts to write the contents to a file, if an IOException occurs, return false.</div>
-</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -525,230 +329,6 @@ implements <a href="../../../../org/apache/archiva/configuration/ArchivaConfigur
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a name="log">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>log</h4>
-<pre>private final&nbsp;org.slf4j.Logger <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.100">log</a></pre>
-</li>
-</ul>
-<a name="FILE_ENCODING">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>FILE_ENCODING</h4>
-<pre>private static&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.102">FILE_ENCODING</a></pre>
-</li>
-</ul>
-<a name="registry">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>registry</h4>
-<pre>@Inject
- @Named(value="commons-configuration")
-private&nbsp;org.apache.archiva.redback.components.registry.Registry <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.109">registry</a></pre>
-<div class="block">Plexus registry to read the configuration from.</div>
-</li>
-</ul>
-<a name="componentContainer">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>componentContainer</h4>
-<pre>@Inject
-private&nbsp;org.apache.archiva.redback.components.springutils.ComponentContainer <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.112">componentContainer</a></pre>
-</li>
-</ul>
-<a name="configuration">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>configuration</h4>
-<pre>private&nbsp;<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a> <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.117">configuration</a></pre>
-<div class="block">The configuration that has been converted.</div>
-</li>
-</ul>
-<a name="prePolicies">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>prePolicies</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../org/apache/archiva/policies/PreDownloadPolicy.html" title="interface in org.apache.archiva.policies">PreDownloadPolicy</a>&gt; <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.124">prePolicies</a></pre>
-<div class="block">see #initialize</div>
-<dl>
-<dt><span class="simpleTagLabel">To Do:</span></dt>
-<dd>these don't strictly belong in here</dd>
-</dl>
-</li>
-</ul>
-<a name="postPolicies">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>postPolicies</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../org/apache/archiva/policies/PostDownloadPolicy.html" title="interface in org.apache.archiva.policies">PostDownloadPolicy</a>&gt; <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.131">postPolicies</a></pre>
-<div class="block">see #initialize</div>
-<dl>
-<dt><span class="simpleTagLabel">To Do:</span></dt>
-<dd>these don't strictly belong in here</dd>
-</dl>
-</li>
-</ul>
-<a name="downloadErrorPolicies">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>downloadErrorPolicies</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../org/apache/archiva/policies/DownloadErrorPolicy.html" title="interface in org.apache.archiva.policies">DownloadErrorPolicy</a>&gt; <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.138">downloadErrorPolicies</a></pre>
-<div class="block">see #initialize</div>
-<dl>
-<dt><span class="simpleTagLabel">To Do:</span></dt>
-<dd>these don't strictly belong in here</dd>
-</dl>
-</li>
-</ul>
-<a name="userConfigFilename">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>userConfigFilename</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.145">userConfigFilename</a></pre>
-<div class="block">see #initialize
- default-value="${user.home}/.m2/archiva.xml"</div>
-</li>
-</ul>
-<a name="altConfigFilename">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>altConfigFilename</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.151">altConfigFilename</a></pre>
-<div class="block">see #initialize
- default-value="${appserver.base}/conf/archiva.xml"</div>
-</li>
-</ul>
-<a name="listeners">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>listeners</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../org/apache/archiva/configuration/ConfigurationListener.html" title="interface in org.apache.archiva.configuration">ConfigurationListener</a>&gt; <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.156">listeners</a></pre>
-<div class="block">Configuration Listeners we've registered.</div>
-</li>
-</ul>
-<a name="registryListeners">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>registryListeners</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;org.apache.archiva.redback.components.registry.RegistryListener&gt; <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.161">registryListeners</a></pre>
-<div class="block">Registry Listeners we've registered.</div>
-</li>
-</ul>
-<a name="isConfigurationDefaulted">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>isConfigurationDefaulted</h4>
-<pre>private&nbsp;boolean <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.167">isConfigurationDefaulted</a></pre>
-<div class="block">Boolean to help determine if the configuration exists as a result of pulling in
- the default-archiva.xml</div>
-</li>
-</ul>
-<a name="KEY">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>KEY</h4>
-<pre>private static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.169">KEY</a></pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../constant-values.html#org.apache.archiva.configuration.DefaultArchivaConfiguration.KEY">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a name="KEY_DEFAULT_ONLY">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>KEY_DEFAULT_ONLY</h4>
-<pre>private static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.172">KEY_DEFAULT_ONLY</a></pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../constant-values.html#org.apache.archiva.configuration.DefaultArchivaConfiguration.KEY_DEFAULT_ONLY">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a name="defaultLocale">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>defaultLocale</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a> <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.174">defaultLocale</a></pre>
-</li>
-</ul>
-<a name="languagePriorities">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>languagePriorities</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.LanguageRange.html?is-external=true" title="class or interface in java.util">Locale.LanguageRange</a>&gt; <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.176">languagePriorities</a></pre>
-</li>
-</ul>
-<a name="dataDirectory">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>dataDirectory</h4>
-<pre>private volatile&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a> <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.178">dataDirectory</a></pre>
-</li>
-</ul>
-<a name="repositoryBaseDirectory">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>repositoryBaseDirectory</h4>
-<pre>private volatile&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a> <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.179">repositoryBaseDirectory</a></pre>
-</li>
-</ul>
-<a name="remoteRepositoryBaseDirectory">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>remoteRepositoryBaseDirectory</h4>
-<pre>private volatile&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a> <a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.180">remoteRepositoryBaseDirectory</a></pre>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
@@ -761,7 +341,7 @@ private&nbsp;org.apache.archiva.redback.components.springutils.ComponentContaine
 <ul class="blockListLast">
 <li class="blockList">
 <h4>DefaultArchivaConfiguration</h4>
-<pre>public&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.98">DefaultArchivaConfiguration</a>()</pre>
+<pre>public&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.82">DefaultArchivaConfiguration</a>()</pre>
 </li>
 </ul>
 </li>
@@ -772,23 +352,13 @@ private&nbsp;org.apache.archiva.redback.components.springutils.ComponentContaine
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="init--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>init</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/PostConstruct.html?is-external=true" title="class or interface in javax.annotation">@PostConstruct</a>
-private&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.183">init</a>()</pre>
-</li>
-</ul>
 <a name="getConfiguration--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>getConfiguration</h4>
-<pre>public&nbsp;<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.189">getConfiguration</a>()</pre>
+<pre>public&nbsp;<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.149">getConfiguration</a>()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#getConfiguration--">ArchivaConfiguration</a></code></span></div>
 <div class="block">Get the configuration.</div>
 <dl>
@@ -799,98 +369,15 @@ private&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configur
 </dl>
 </li>
 </ul>
-<a name="loadConfiguration--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>loadConfiguration</h4>
-<pre>private&nbsp;<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.193">loadConfiguration</a>()</pre>
-</li>
-</ul>
-<a name="hasConfigVersionChanged-org.apache.archiva.configuration.Configuration-org.apache.archiva.redback.components.registry.Registry-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>hasConfigVersionChanged</h4>
-<pre>private&nbsp;boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.205">hasConfigVersionChanged</a>(<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;current,
-                                        org.apache.archiva.redback.components.registry.Registry&nbsp;defaultOnlyConfiguration)</pre>
-</li>
-</ul>
-<a name="load--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>load</h4>
-<pre>private&nbsp;<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.211">load</a>()</pre>
-</li>
-</ul>
-<a name="updateCheckPathDefaults-org.apache.archiva.configuration.Configuration-org.apache.archiva.redback.components.registry.Registry-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>updateCheckPathDefaults</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.378">updateCheckPathDefaults</a>(<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;config,
-                                     org.apache.archiva.redback.components.registry.Registry&nbsp;defaultConfiguration)</pre>
-</li>
-</ul>
-<a name="readRepositoryCheckPath-org.apache.archiva.redback.components.registry.Registry-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>readRepositoryCheckPath</h4>
-<pre>private&nbsp;<a href="../../../../org/apache/archiva/configuration/RepositoryCheckPath.html" title="class in org.apache.archiva.configuration">RepositoryCheckPath</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.407">readRepositoryCheckPath</a>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry)</pre>
-</li>
-</ul>
-<a name="findPolicy-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>findPolicy</h4>
-<pre>private&nbsp;<a href="../../../../org/apache/archiva/policies/Policy.html" title="interface in org.apache.archiva.policies">Policy</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.418">findPolicy</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;policyId)</pre>
-</li>
-</ul>
-<a name="policyExists-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>policyExists</h4>
-<pre>private&nbsp;boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.449">policyExists</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;policyId)</pre>
-</li>
-</ul>
-<a name="readDefaultConfiguration--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>readDefaultConfiguration</h4>
-<pre>private&nbsp;org.apache.archiva.redback.components.registry.Registry&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.464">readDefaultConfiguration</a>()</pre>
-</li>
-</ul>
-<a name="readDefaultOnlyConfiguration--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>readDefaultOnlyConfiguration</h4>
-<pre>private&nbsp;org.apache.archiva.redback.components.registry.Registry&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.482">readDefaultOnlyConfiguration</a>()</pre>
-</li>
-</ul>
 <a name="save-org.apache.archiva.configuration.Configuration-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>save</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.495">save</a>(<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;configuration)
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.413">save</a>(<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;configuration)
           throws <a href="../../../../org/apache/archiva/configuration/IndeterminateConfigurationException.html" title="class in org.apache.archiva.configuration">IndeterminateConfigurationException</a>,
-                 org.apache.archiva.redback.components.registry.RegistryException</pre>
+                 org.apache.archiva.components.registry.RegistryException</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#save-org.apache.archiva.configuration.Configuration-">ArchivaConfiguration</a></code></span></div>
 <div class="block">Save any updated configuration.</div>
 <dl>
@@ -900,62 +387,8 @@ private&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configur
 <dd><code>configuration</code> - the configuration to save</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../../../org/apache/archiva/configuration/IndeterminateConfigurationException.html" title="class in org.apache.archiva.configuration">IndeterminateConfigurationException</a></code> - if the configuration cannot be saved because it was read from two sources</dd>
-<dd><code>org.apache.archiva.redback.components.registry.RegistryException</code> - if there is a problem saving the registry data</dd>
+<dd><code>org.apache.archiva.components.registry.RegistryException</code> - if there is a problem saving the registry data</dd>
 </dl>
-</li>
-</ul>
-<a name="escapeCronExpressions-org.apache.archiva.configuration.Configuration-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>escapeCronExpressions</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.579">escapeCronExpressions</a>(<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;configuration)</pre>
-</li>
-</ul>
-<a name="createDefaultConfigurationFile--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>createDefaultConfigurationFile</h4>
-<pre>private&nbsp;org.apache.archiva.redback.components.registry.Registry&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.585">createDefaultConfigurationFile</a>()
-                                                                                        throws org.apache.archiva.redback.components.registry.RegistryException</pre>
-<dl>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>org.apache.archiva.redback.components.registry.RegistryException</code></dd>
-</dl>
-</li>
-</ul>
-<a name="writeFile-java.lang.String-java.lang.String-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>writeFile</h4>
-<pre>private&nbsp;boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.631">writeFile</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;filetype,
-                          <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
-                          <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;contents)</pre>
-<div class="block">Attempts to write the contents to a file, if an IOException occurs, return false.
- <p/>
- The file will be created if the directory to the file exists, otherwise this will return false.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>filetype</code> - the filetype (freeform text) to use in logging messages when failure to write.</dd>
-<dd><code>path</code> - the path to write to.</dd>
-<dd><code>contents</code> - the contents to write.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>true if write successful.</dd>
-</dl>
-</li>
-</ul>
-<a name="triggerEvent-int-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>triggerEvent</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.651">triggerEvent</a>(int&nbsp;type)</pre>
 </li>
 </ul>
 <a name="addListener-org.apache.archiva.configuration.ConfigurationListener-">
@@ -964,7 +397,7 @@ private&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configur
 <ul class="blockList">
 <li class="blockList">
 <h4>addListener</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.659">addListener</a>(<a href="../../../../org/apache/archiva/configuration/ConfigurationListener.html" title="interface in org.apache.archiva.configuration">ConfigurationListener</a>&nbsp;listener)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.585">addListener</a>(<a href="../../../../org/apache/archiva/configuration/ConfigurationListener.html" title="interface in org.apache.archiva.configuration">ConfigurationListener</a>&nbsp;listener)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#addListener-org.apache.archiva.configuration.ConfigurationListener-">ArchivaConfiguration</a></code></span></div>
 <div class="block">Add a configuration listener to notify of changes to the configuration.</div>
 <dl>
@@ -981,7 +414,7 @@ private&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configur
 <ul class="blockList">
 <li class="blockList">
 <h4>removeListener</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.668">removeListener</a>(<a href="../../../../org/apache/archiva/configuration/ConfigurationListener.html" title="interface in org.apache.archiva.configuration">ConfigurationListener</a>&nbsp;listener)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.594">removeListener</a>(<a href="../../../../org/apache/archiva/configuration/ConfigurationListener.html" title="interface in org.apache.archiva.configuration">ConfigurationListener</a>&nbsp;listener)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#removeListener-org.apache.archiva.configuration.ConfigurationListener-">ArchivaConfiguration</a></code></span></div>
 <div class="block">Remove a configuration listener to stop notifications of changes to the configuration.</div>
 <dl>
@@ -992,43 +425,34 @@ private&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configur
 </dl>
 </li>
 </ul>
-<a name="addChangeListener-org.apache.archiva.redback.components.registry.RegistryListener-">
+<a name="addChangeListener-org.apache.archiva.components.registry.RegistryListener-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>addChangeListener</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.678">addChangeListener</a>(org.apache.archiva.redback.components.registry.RegistryListener&nbsp;listener)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#addChangeListener-org.apache.archiva.redback.components.registry.RegistryListener-">ArchivaConfiguration</a></code></span></div>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.604">addChangeListener</a>(org.apache.archiva.components.registry.RegistryListener&nbsp;listener)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#addChangeListener-org.apache.archiva.components.registry.RegistryListener-">ArchivaConfiguration</a></code></span></div>
 <div class="block">Add a registry listener to notify of events in spring-registry.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#addChangeListener-org.apache.archiva.redback.components.registry.RegistryListener-">addChangeListener</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a></code></dd>
+<dd><code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#addChangeListener-org.apache.archiva.components.registry.RegistryListener-">addChangeListener</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>listener</code> - the listener
                  TODO: Remove in future.</dd>
 </dl>
 </li>
 </ul>
-<a name="addRegistryChangeListener-org.apache.archiva.redback.components.registry.RegistryListener-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>addRegistryChangeListener</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.685">addRegistryChangeListener</a>(org.apache.archiva.redback.components.registry.RegistryListener&nbsp;listener)</pre>
-</li>
-</ul>
-<a name="removeChangeListener-org.apache.archiva.redback.components.registry.RegistryListener-">
+<a name="removeChangeListener-org.apache.archiva.components.registry.RegistryListener-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>removeChangeListener</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.697">removeChangeListener</a>(org.apache.archiva.redback.components.registry.RegistryListener&nbsp;listener)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.623">removeChangeListener</a>(org.apache.archiva.components.registry.RegistryListener&nbsp;listener)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#removeChangeListener-org.apache.archiva.redback.components.registry.RegistryListener-">removeChangeListener</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a></code></dd>
+<dd><code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#removeChangeListener-org.apache.archiva.components.registry.RegistryListener-">removeChangeListener</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -1039,24 +463,7 @@ private&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configur
 <li class="blockList">
 <h4>initialize</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/PostConstruct.html?is-external=true" title="class or interface in javax.annotation">@PostConstruct</a>
-public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.713">initialize</a>()</pre>
-</li>
-</ul>
-<a name="handleUpgradeConfiguration--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>handleUpgradeConfiguration</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.748">handleUpgradeConfiguration</a>()
-                                 throws org.apache.archiva.redback.components.registry.RegistryException,
-                                        <a href="../../../../org/apache/archiva/configuration/IndeterminateConfigurationException.html" title="class in org.apache.archiva.configuration">IndeterminateConfigurationException</a></pre>
-<div class="block">Handle upgrade to newer version</div>
-<dl>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>org.apache.archiva.redback.components.registry.RegistryException</code></dd>
-<dd><code><a href="../../../../org/apache/archiva/configuration/IndeterminateConfigurationException.html" title="class in org.apache.archiva.configuration">IndeterminateConfigurationException</a></code></dd>
-</dl>
+public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.639">initialize</a>()</pre>
 </li>
 </ul>
 <a name="reload--">
@@ -1065,7 +472,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configura
 <ul class="blockList">
 <li class="blockList">
 <h4>reload</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.806">reload</a>()</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.729">reload</a>()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#reload--">ArchivaConfiguration</a></code></span></div>
 <div class="block">reload configuration from file included registry</div>
 <dl>
@@ -1080,7 +487,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configura
 <ul class="blockList">
 <li class="blockList">
 <h4>getDefaultLocale</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.817">getDefaultLocale</a>()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.740">getDefaultLocale</a>()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#getDefaultLocale--">getDefaultLocale</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a></code></dd>
@@ -1093,7 +500,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configura
 <ul class="blockList">
 <li class="blockList">
 <h4>getLanguagePriorities</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.LanguageRange.html?is-external=true" title="class or interface in java.util">Locale.LanguageRange</a>&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.822">getLanguagePriorities</a>()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.LanguageRange.html?is-external=true" title="class or interface in java.util">Locale.LanguageRange</a>&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.745">getLanguagePriorities</a>()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#getLanguagePriorities--">getLanguagePriorities</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a></code></dd>
@@ -1106,7 +513,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configura
 <ul class="blockList">
 <li class="blockList">
 <h4>getAppServerBaseDir</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.827">getAppServerBaseDir</a>()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.750">getAppServerBaseDir</a>()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#getAppServerBaseDir--">getAppServerBaseDir</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a></code></dd>
@@ -1119,7 +526,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configura
 <ul class="blockList">
 <li class="blockList">
 <h4>getRepositoryBaseDir</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.837">getRepositoryBaseDir</a>()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.760">getRepositoryBaseDir</a>()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#getRepositoryBaseDir--">ArchivaConfiguration</a></code></span></div>
 <div class="block">Returns the base directory for repositories that have a relative location path set.</div>
 <dl>
@@ -1135,12 +542,28 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configura
 <ul class="blockList">
 <li class="blockList">
 <h4>getRemoteRepositoryBaseDir</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.846">getRemoteRepositoryBaseDir</a>()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.769">getRemoteRepositoryBaseDir</a>()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#getRemoteRepositoryBaseDir--">ArchivaConfiguration</a></code></span></div>
 <div class="block">Returns the base directory for remote repositories</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#getRemoteRepositoryBaseDir--">getRemoteRepositoryBaseDir</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+</dl>
+</li>
+</ul>
+<a name="getRepositoryGroupBaseDir--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRepositoryGroupBaseDir</h4>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.777">getRepositoryGroupBaseDir</a>()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#getRepositoryGroupBaseDir--">ArchivaConfiguration</a></code></span></div>
+<div class="block">Returns the base directory for repository group files.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#getRepositoryGroupBaseDir--">getRepositoryGroupBaseDir</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
@@ -1151,7 +574,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configura
 <ul class="blockList">
 <li class="blockList">
 <h4>getDataDirectory</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.854">getDataDirectory</a>()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.785">getDataDirectory</a>()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#getDataDirectory--">ArchivaConfiguration</a></code></span></div>
 <div class="block">Returns the data directory where repositories and metadata reside</div>
 <dl>
@@ -1161,79 +584,34 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configura
 </dl>
 </li>
 </ul>
-<a name="beforeConfigurationChange-org.apache.archiva.redback.components.registry.Registry-java.lang.String-java.lang.Object-">
+<a name="beforeConfigurationChange-org.apache.archiva.components.registry.Registry-java.lang.String-java.lang.Object-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>beforeConfigurationChange</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.862">beforeConfigurationChange</a>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry,
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.793">beforeConfigurationChange</a>(org.apache.archiva.components.registry.Registry&nbsp;registry,
                                       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;propertyName,
                                       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;propertyValue)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code>beforeConfigurationChange</code>&nbsp;in interface&nbsp;<code>org.apache.archiva.redback.components.registry.RegistryListener</code></dd>
+<dd><code>beforeConfigurationChange</code>&nbsp;in interface&nbsp;<code>org.apache.archiva.components.registry.RegistryListener</code></dd>
 </dl>
 </li>
 </ul>
-<a name="afterConfigurationChange-org.apache.archiva.redback.components.registry.Registry-java.lang.String-java.lang.Object-">
+<a name="afterConfigurationChange-org.apache.archiva.components.registry.Registry-java.lang.String-java.lang.Object-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>afterConfigurationChange</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.867">afterConfigurationChange</a>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry,
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.798">afterConfigurationChange</a>(org.apache.archiva.components.registry.Registry&nbsp;registry,
                                      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;propertyName,
                                      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;propertyValue)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code>afterConfigurationChange</code>&nbsp;in interface&nbsp;<code>org.apache.archiva.redback.components.registry.RegistryListener</code></dd>
+<dd><code>afterConfigurationChange</code>&nbsp;in interface&nbsp;<code>org.apache.archiva.components.registry.RegistryListener</code></dd>
 </dl>
-</li>
-</ul>
-<a name="removeExpressions-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>removeExpressions</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.873">removeExpressions</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;directory)</pre>
-</li>
-</ul>
-<a name="unescapeCronExpression-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>unescapeCronExpression</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.881">unescapeCronExpression</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;cronExpression)</pre>
-</li>
-</ul>
-<a name="escapeCronExpression-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>escapeCronExpression</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.885">escapeCronExpression</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;cronExpression)</pre>
-</li>
-</ul>
-<a name="unescapeExpressions-org.apache.archiva.configuration.Configuration-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>unescapeExpressions</h4>
-<pre>private&nbsp;<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.889">unescapeExpressions</a>(<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;config)</pre>
-</li>
-</ul>
-<a name="checkRepositoryLocations-org.apache.archiva.configuration.Configuration-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>checkRepositoryLocations</h4>
-<pre>private&nbsp;<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.899">checkRepositoryLocations</a>(<a href="../../../../org/apache/archiva/configuration/Configuration.html" title="class in org.apache.archiva.configuration">Configuration</a>&nbsp;config)</pre>
 </li>
 </ul>
 <a name="getUserConfigFilename--">
@@ -1242,7 +620,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configura
 <ul class="blockList">
 <li class="blockList">
 <h4>getUserConfigFilename</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.915">getUserConfigFilename</a>()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.846">getUserConfigFilename</a>()</pre>
 </li>
 </ul>
 <a name="getAltConfigFilename--">
@@ -1251,7 +629,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configura
 <ul class="blockList">
 <li class="blockList">
 <h4>getAltConfigFilename</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.919">getAltConfigFilename</a>()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.850">getAltConfigFilename</a>()</pre>
 </li>
 </ul>
 <a name="isDefaulted--">
@@ -1260,7 +638,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configura
 <ul class="blockList">
 <li class="blockList">
 <h4>isDefaulted</h4>
-<pre>public&nbsp;boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.924">isDefaulted</a>()</pre>
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.855">isDefaulted</a>()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#isDefaulted--">ArchivaConfiguration</a></code></span></div>
 <div class="block">Determines if the configuration in use was as a result of a defaulted configuration.</div>
 <dl>
@@ -1279,16 +657,16 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configura
 <ul class="blockList">
 <li class="blockList">
 <h4>getRegistry</h4>
-<pre>public&nbsp;org.apache.archiva.redback.components.registry.Registry&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.928">getRegistry</a>()</pre>
+<pre>public&nbsp;org.apache.archiva.components.registry.Registry&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.859">getRegistry</a>()</pre>
 </li>
 </ul>
-<a name="setRegistry-org.apache.archiva.redback.components.registry.Registry-">
+<a name="setRegistry-org.apache.archiva.components.registry.Registry-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>setRegistry</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.932">setRegistry</a>(org.apache.archiva.redback.components.registry.Registry&nbsp;registry)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.863">setRegistry</a>(org.apache.archiva.components.registry.Registry&nbsp;registry)</pre>
 </li>
 </ul>
 <a name="setUserConfigFilename-java.lang.String-">
@@ -1297,7 +675,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configura
 <ul class="blockList">
 <li class="blockList">
 <h4>setUserConfigFilename</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.937">setUserConfigFilename</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;userConfigFilename)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.868">setUserConfigFilename</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;userConfigFilename)</pre>
 </li>
 </ul>
 <a name="setAltConfigFilename-java.lang.String-">
@@ -1306,7 +684,7 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configura
 <ul class="blockListLast">
 <li class="blockList">
 <h4>setAltConfigFilename</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.941">setAltConfigFilename</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;altConfigFilename)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configuration/DefaultArchivaConfiguration.html#line.872">setAltConfigFilename</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;altConfigFilename)</pre>
 </li>
 </ul>
 </li>
@@ -1363,13 +741,13 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configura
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -1378,6 +756,6 @@ public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/configura
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

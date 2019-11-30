@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -105,8 +105,8 @@ var activeTableTab = "activeTableTab";
 </dl>
 <hr>
 <br>
-<pre>public interface <a href="../../../../../src-html/org/apache/archiva/repository/connector/RepositoryConnector.html#line.32">RepositoryConnector</a></pre>
-<div class="block">RepositoryConnector</div>
+<pre>public interface <a href="../../../../../src-html/org/apache/archiva/repository/connector/RepositoryConnector.html#line.33">RepositoryConnector</a></pre>
+<div class="block">A RepositoryConnector maps a managed repository to a remote repository.</div>
 </li>
 </ul>
 </div>
@@ -126,28 +126,47 @@ var activeTableTab = "activeTableTab";
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/connector/RepositoryConnector.html#getBlacklist--">getBlacklist</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/connector/RepositoryConnector.html#disable--">disable</a></span>()</code>
+<div class="block">Disables this connector, if it was enabled before, otherwise does nothing.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/connector/RepositoryConnector.html#getSourceRepository--">getSourceRepository</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/connector/RepositoryConnector.html#enable--">enable</a></span>()</code>
+<div class="block">Enables this connector, if it was disabled before, otherwise does nothing.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/connector/RepositoryConnector.html#getTargetRepository--">getTargetRepository</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/connector/RepositoryConnector.html#getBlacklist--">getBlacklist</a></span>()</code>
+<div class="block">Returns a list of paths that are not fetched from the remote repository.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/connector/RepositoryConnector.html#getWhitelist--">getWhitelist</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/ManagedRepository.html" title="interface in org.apache.archiva.repository">ManagedRepository</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/connector/RepositoryConnector.html#getSourceRepository--">getSourceRepository</a></span>()</code>
+<div class="block">Returns the local repository that is connected to the remote.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/connector/RepositoryConnector.html#isDisabled--">isDisabled</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/RemoteRepository.html" title="interface in org.apache.archiva.repository">RemoteRepository</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/connector/RepositoryConnector.html#getTargetRepository--">getTargetRepository</a></span>()</code>
+<div class="block">Returns the remote repository that is connected to the local.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/connector/RepositoryConnector.html#setDisabled-boolean-">setDisabled</a></span>(boolean&nbsp;disabled)</code>&nbsp;</td>
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/connector/RepositoryConnector.html#getWhitelist--">getWhitelist</a></span>()</code>
+<div class="block">Returns a list of paths that are fetched from the remote repository, even if a
+ parent path is in the blacklist.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/connector/RepositoryConnector.html#isEnabled--">isEnabled</a></span>()</code>
+<div class="block">Returns true, if this connector is enabled, otherwise false.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -170,7 +189,12 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>getSourceRepository</h4>
-<pre><a href="../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/connector/RepositoryConnector.html#line.34">getSourceRepository</a>()</pre>
+<pre><a href="../../../../../org/apache/archiva/repository/ManagedRepository.html" title="interface in org.apache.archiva.repository">ManagedRepository</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/connector/RepositoryConnector.html#line.39">getSourceRepository</a>()</pre>
+<div class="block">Returns the local repository that is connected to the remote.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The local managed repository.</dd>
+</dl>
 </li>
 </ul>
 <a name="getTargetRepository--">
@@ -179,7 +203,12 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>getTargetRepository</h4>
-<pre><a href="../../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/connector/RepositoryConnector.html#line.36">getTargetRepository</a>()</pre>
+<pre><a href="../../../../../org/apache/archiva/repository/RemoteRepository.html" title="interface in org.apache.archiva.repository">RemoteRepository</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/connector/RepositoryConnector.html#line.45">getTargetRepository</a>()</pre>
+<div class="block">Returns the remote repository that is connected to the local.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The remote repository.</dd>
+</dl>
 </li>
 </ul>
 <a name="getBlacklist--">
@@ -188,7 +217,12 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>getBlacklist</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/connector/RepositoryConnector.html#line.38">getBlacklist</a>()</pre>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/connector/RepositoryConnector.html#line.51">getBlacklist</a>()</pre>
+<div class="block">Returns a list of paths that are not fetched from the remote repository.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>A list of paths.</dd>
+</dl>
 </li>
 </ul>
 <a name="getWhitelist--">
@@ -197,25 +231,47 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>getWhitelist</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/connector/RepositoryConnector.html#line.40">getWhitelist</a>()</pre>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/connector/RepositoryConnector.html#line.59">getWhitelist</a>()</pre>
+<div class="block">Returns a list of paths that are fetched from the remote repository, even if a
+ parent path is in the blacklist.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The list of paths.</dd>
+</dl>
 </li>
 </ul>
-<a name="isDisabled--">
+<a name="isEnabled--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>isDisabled</h4>
-<pre>boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/connector/RepositoryConnector.html#line.42">isDisabled</a>()</pre>
+<h4>isEnabled</h4>
+<pre>boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/connector/RepositoryConnector.html#line.65">isEnabled</a>()</pre>
+<div class="block">Returns true, if this connector is enabled, otherwise false.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>True, if enabled.</dd>
+</dl>
 </li>
 </ul>
-<a name="setDisabled-boolean-">
+<a name="enable--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>enable</h4>
+<pre>void&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/connector/RepositoryConnector.html#line.70">enable</a>()</pre>
+<div class="block">Enables this connector, if it was disabled before, otherwise does nothing.</div>
+</li>
+</ul>
+<a name="disable--">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>setDisabled</h4>
-<pre>void&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/connector/RepositoryConnector.html#line.44">setDisabled</a>(boolean&nbsp;disabled)</pre>
+<h4>disable</h4>
+<pre>void&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/connector/RepositoryConnector.html#line.75">disable</a>()</pre>
+<div class="block">Disables this connector, if it was enabled before, otherwise does nothing.</div>
 </li>
 </ul>
 </li>
@@ -287,6 +343,6 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

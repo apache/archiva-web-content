@@ -18,8 +18,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":18};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],16:["t5","Default Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/archiva/metadata/repository/MetadataService.html" title="class in org.apache.archiva.metadata.repository"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/archiva/metadata/repository/MetadataResolver.html" target="_top">Frames</a></li>
@@ -105,7 +105,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <hr>
 <br>
-<pre>public interface <a href="../../../../../src-html/org/apache/archiva/metadata/repository/MetadataResolver.html#line.28">MetadataResolver</a></pre>
+<pre>public interface <a href="../../../../../src-html/org/apache/archiva/metadata/repository/MetadataResolver.html#line.32">MetadataResolver</a></pre>
 </li>
 </ul>
 </div>
@@ -119,7 +119,7 @@ var activeTableTab = "activeTableTab";
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t5" class="tableTab"><span><a href="javascript:show(16);">Default Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
@@ -174,6 +174,10 @@ var activeTableTab = "activeTableTab";
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html#resolveRootNamespaces-org.apache.archiva.metadata.repository.RepositorySession-java.lang.String-">resolveRootNamespaces</a></span>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
                      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId)</code>&nbsp;</td>
 </tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>default <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/repository/RepositoryType.html" title="enum in org.apache.archiva.repository">RepositoryType</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html#supportsRepositoryTypes--">supportsRepositoryTypes</a></span>()</code>&nbsp;</td>
+</tr>
 </table>
 </li>
 </ul>
@@ -189,13 +193,22 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="supportsRepositoryTypes--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>supportsRepositoryTypes</h4>
+<pre>default&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/repository/RepositoryType.html" title="enum in org.apache.archiva.repository">RepositoryType</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/MetadataResolver.html#line.34">supportsRepositoryTypes</a>()</pre>
+</li>
+</ul>
 <a name="resolveProjectVersion-org.apache.archiva.metadata.repository.RepositorySession-java.lang.String-java.lang.String-java.lang.String-java.lang.String-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>resolveProjectVersion</h4>
-<pre><a href="../../../../../org/apache/archiva/metadata/model/ProjectVersionMetadata.html" title="class in org.apache.archiva.metadata.model">ProjectVersionMetadata</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/MetadataResolver.html#line.30">resolveProjectVersion</a>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
+<pre><a href="../../../../../org/apache/archiva/metadata/model/ProjectVersionMetadata.html" title="class in org.apache.archiva.metadata.model">ProjectVersionMetadata</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/MetadataResolver.html#line.38">resolveProjectVersion</a>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
                                              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId,
                                              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
                                              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;projectId,
@@ -213,7 +226,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>resolveProjectReferences</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/archiva/metadata/model/ProjectVersionReference.html" title="class in org.apache.archiva.metadata.model">ProjectVersionReference</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/MetadataResolver.html#line.45">resolveProjectReferences</a>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/archiva/metadata/model/ProjectVersionReference.html" title="class in org.apache.archiva.metadata.model">ProjectVersionReference</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/MetadataResolver.html#line.53">resolveProjectReferences</a>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
                                                              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId,
                                                              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
                                                              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;projectId,
@@ -241,7 +254,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>resolveRootNamespaces</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/MetadataResolver.html#line.50">resolveRootNamespaces</a>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/MetadataResolver.html#line.58">resolveRootNamespaces</a>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
                                          <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId)
                                   throws <a href="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</a></pre>
 <dl>
@@ -256,7 +269,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>resolveNamespaces</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/MetadataResolver.html#line.53">resolveNamespaces</a>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/MetadataResolver.html#line.61">resolveNamespaces</a>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
                                      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId,
                                      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace)
                               throws <a href="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</a></pre>
@@ -272,7 +285,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>resolveProjects</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/MetadataResolver.html#line.56">resolveProjects</a>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/MetadataResolver.html#line.64">resolveProjects</a>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
                                    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId,
                                    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace)
                             throws <a href="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</a></pre>
@@ -288,7 +301,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>resolveProjectVersions</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/MetadataResolver.html#line.59">resolveProjectVersions</a>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/MetadataResolver.html#line.67">resolveProjectVersions</a>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
                                           <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId,
                                           <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
                                           <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;projectId)
@@ -305,7 +318,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockListLast">
 <li class="blockList">
 <h4>resolveArtifacts</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/MetadataResolver.html#line.63">resolveArtifacts</a>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/MetadataResolver.html#line.71">resolveArtifacts</a>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
                                               <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId,
                                               <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
                                               <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;projectId,
@@ -346,7 +359,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/archiva/metadata/repository/MetadataService.html" title="class in org.apache.archiva.metadata.repository"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/archiva/metadata/repository/MetadataResolver.html" target="_top">Frames</a></li>
@@ -386,6 +399,6 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

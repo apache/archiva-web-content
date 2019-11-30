@@ -99,7 +99,15 @@
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><a href="#org.apache.archiva.repository.base">org.apache.archiva.repository.base</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><a href="#org.apache.archiva.repository.content.maven2">org.apache.archiva.repository.content.maven2</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#org.apache.archiva.repository.event">org.apache.archiva.repository.event</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
@@ -162,22 +170,17 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
-<td class="colLast"><span class="typeNameLabel">GenericIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/GenericIndexManager.html#createContext-org.apache.archiva.repository.Repository-">createContext</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository)</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
 <td class="colLast"><span class="typeNameLabel">ArchivaIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#createContext-org.apache.archiva.repository.Repository-">createContext</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository)</code>
 <div class="block">Creates the indexing context for the given repository.</div>
 </td>
 </tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
-<td class="colLast"><span class="typeNameLabel">GenericIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/GenericIndexManager.html#getIndexPath-org.apache.archiva.repository.Repository-">getIndexPath</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo)</code>&nbsp;</td>
-</tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
-<td class="colLast"><span class="typeNameLabel">GenericIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/GenericIndexManager.html#move-org.apache.archiva.indexer.ArchivaIndexingContext-org.apache.archiva.repository.Repository-">move</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
-    <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo)</code>&nbsp;</td>
+<td class="colLast"><span class="typeNameLabel">ArchivaIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#mergeContexts-org.apache.archiva.repository.Repository-java.util.List-boolean-">mergeContexts</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;destinationRepo,
+             <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&gt;&nbsp;contexts,
+             boolean&nbsp;packIndex)</code>
+<div class="block">Merges a list of contexts into a single one.</div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
@@ -188,12 +191,8 @@
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">GenericIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/GenericIndexManager.html#updateLocalIndexPath-org.apache.archiva.repository.Repository-">updateLocalIndexPath</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo)</code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">ArchivaIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#updateLocalIndexPath-org.apache.archiva.repository.Repository-">updateLocalIndexPath</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo)</code>
-<div class="block">Returns the local path where the index is stored.</div>
+<div class="block">Updates the local path where the index is stored using the repository information.</div>
 </td>
 </tr>
 </tbody>
@@ -203,19 +202,6 @@
 <!--   -->
 </a>
 <h3>Uses of <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a> in <a href="../../../../../org/apache/archiva/indexer/maven/package-summary.html">org.apache.archiva.indexer.maven</a></h3>
-<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing fields, and an explanation">
-<caption><span>Fields in <a href="../../../../../org/apache/archiva/indexer/maven/package-summary.html">org.apache.archiva.indexer.maven</a> declared as <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tbody>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></code></td>
-<td class="colLast"><span class="typeNameLabel">MavenIndexContext.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexContext.html#repository">repository</a></span></code>&nbsp;</td>
-</tr>
-</tbody>
-</table>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
 <caption><span>Methods in <a href="../../../../../org/apache/archiva/indexer/maven/package-summary.html">org.apache.archiva.indexer.maven</a> that return <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
@@ -241,20 +227,10 @@
 <td class="colLast"><span class="typeNameLabel">MavenIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexManager.html#createContext-org.apache.archiva.repository.Repository-">createContext</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>private org.apache.maven.index.context.IndexingContext</code></td>
-<td class="colLast"><span class="typeNameLabel">MavenIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexManager.html#getIndexingContext-org.apache.archiva.repository.Repository-java.lang.String-java.nio.file.Path-java.nio.file.Path-java.lang.String-">getIndexingContext</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository,
-                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;contextKey,
-                  <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;repoDir,
-                  <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;indexDirectory,
-                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;indexUrl)</code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
-<td class="colLast"><span class="typeNameLabel">MavenIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexManager.html#getIndexPath-org.apache.archiva.repository.Repository-">getIndexPath</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo)</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
-<td class="colLast"><span class="typeNameLabel">MavenIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexManager.html#getPackedIndexPath-org.apache.archiva.repository.Repository-">getPackedIndexPath</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo)</code>&nbsp;</td>
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
+<td class="colLast"><span class="typeNameLabel">MavenIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexManager.html#mergeContexts-org.apache.archiva.repository.Repository-java.util.List-boolean-">mergeContexts</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;destinationRepo,
+             <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&gt;&nbsp;contexts,
+             boolean&nbsp;packIndex)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
@@ -311,67 +287,25 @@
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>interface&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/EditableRepositoryGroup.html" title="interface in org.apache.archiva.repository">EditableRepositoryGroup</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/ManagedRepository.html" title="interface in org.apache.archiva.repository">ManagedRepository</a></span></code>
 <div class="block">Represents a managed repository, that is readable and writable.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RemoteRepository.html" title="interface in org.apache.archiva.repository">RemoteRepository</a></span></code>
 <div class="block">This represents a repository that is not fully managed by archiva.</div>
 </td>
 </tr>
-</tbody>
-</table>
-<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
-<caption><span>Classes in <a href="../../../../../org/apache/archiva/repository/package-summary.html">org.apache.archiva.repository</a> that implement <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Class and Description</th>
-</tr>
-<tbody>
 <tr class="altColor">
-<td class="colFirst"><code>class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/AbstractManagedRepository.html" title="class in org.apache.archiva.repository">AbstractManagedRepository</a></span></code>
-<div class="block">Simple implementation of a managed repository.</div>
+<td class="colFirst"><code>interface&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryGroup.html" title="interface in org.apache.archiva.repository">RepositoryGroup</a></span></code>
+<div class="block">Interface for repository groups.</div>
 </td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html" title="class in org.apache.archiva.repository">AbstractRemoteRepository</a></span></code>
-<div class="block">Abstract implementation of a remote repository.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/AbstractRepository.html" title="class in org.apache.archiva.repository">AbstractRepository</a></span></code>
-<div class="block">Implementation of a repository with the necessary fields for a bare repository.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/BasicManagedRepository.html" title="class in org.apache.archiva.repository">BasicManagedRepository</a></span></code>
-<div class="block">Just a helper class, mainly used for unit tests.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/BasicRemoteRepository.html" title="class in org.apache.archiva.repository">BasicRemoteRepository</a></span></code>
-<div class="block">Just a helper class, mainly used for unit tests.</div>
-</td>
-</tr>
-</tbody>
-</table>
-<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing fields, and an explanation">
-<caption><span>Fields in <a href="../../../../../org/apache/archiva/repository/package-summary.html">org.apache.archiva.repository</a> declared as <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tbody>
-<tr class="altColor">
-<td class="colFirst"><code>(package private) <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></code></td>
-<td class="colLast"><span class="typeNameLabel">RepositoryEvent.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryEvent.html#repo">repo</a></span></code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -410,13 +344,7 @@
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></code></td>
-<td class="colLast"><span class="typeNameLabel">RepositoryEvent.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryEvent.html#getRepository--">getRepository</a></span>()</code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></code></td>
-<td class="colLast"><span class="typeNameLabel">RepositoryRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryRegistry.html#getRepository-java.lang.String-">getRepository</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId)</code>
-<div class="block">Returns the repository with the given id.</div>
-</td>
+<td class="colLast"><span class="typeNameLabel">RepositoryRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryRegistry.html#getRepository-java.lang.String-">getRepository</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -429,9 +357,7 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">RepositoryRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryRegistry.html#getRepositories--">getRepositories</a></span>()</code>
-<div class="block">Returns all repositories that are registered.</div>
-</td>
+<td class="colLast"><span class="typeNameLabel">RepositoryRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryRegistry.html#getRepositories--">getRepositories</a></span>()</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -448,23 +374,125 @@
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">RepositoryRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryRegistry.html#resetIndexingContext-org.apache.archiva.repository.Repository-">resetIndexingContext</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo)</code>
-<div class="block">Resets the indexing context of a given repository.</div>
+<td class="colLast"><span class="typeNameLabel">RepositoryRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryRegistry.html#resetIndexingContext-org.apache.archiva.repository.Repository-">resetIndexingContext</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.archiva.repository.base">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a> in <a href="../../../../../org/apache/archiva/repository/base/package-summary.html">org.apache.archiva.repository.base</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../../org/apache/archiva/repository/base/package-summary.html">org.apache.archiva.repository.base</a> that implement <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/base/AbstractManagedRepository.html" title="class in org.apache.archiva.repository.base">AbstractManagedRepository</a></span></code>
+<div class="block">Simple implementation of a managed repository.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html" title="class in org.apache.archiva.repository.base">AbstractRemoteRepository</a></span></code>
+<div class="block">Abstract implementation of a remote repository.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html" title="class in org.apache.archiva.repository.base">AbstractRepository</a></span></code>
+<div class="block">Implementation of a repository with the necessary fields for a bare repository.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/base/AbstractRepositoryGroup.html" title="class in org.apache.archiva.repository.base">AbstractRepositoryGroup</a></span></code>
+<div class="block">Abstract repository group implementation.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/base/BasicManagedRepository.html" title="class in org.apache.archiva.repository.base">BasicManagedRepository</a></span></code>
+<div class="block">Just a helper class, mainly used for unit tests.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/base/BasicRemoteRepository.html" title="class in org.apache.archiva.repository.base">BasicRemoteRepository</a></span></code>
+<div class="block">Just a helper class, mainly used for unit tests.</div>
 </td>
 </tr>
 </tbody>
 </table>
-<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing constructors, and an explanation">
-<caption><span>Constructors in <a href="../../../../../org/apache/archiva/repository/package-summary.html">org.apache.archiva.repository</a> with parameters of type <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></span><span class="tabEnd">&nbsp;</span></caption>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/archiva/repository/base/package-summary.html">org.apache.archiva.repository.base</a> with type parameters of type <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
-<th class="colOne" scope="col">Constructor and Description</th>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryEvent.html#RepositoryEvent-org.apache.archiva.repository.RepositoryEvent.EventType-org.apache.archiva.repository.Repository-T-T-">RepositoryEvent</a></span>(<a href="../../../../../org/apache/archiva/repository/RepositoryEvent.EventType.html" title="interface in org.apache.archiva.repository">RepositoryEvent.EventType</a>&nbsp;type,
-               <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo,
-               <a href="../../../../../org/apache/archiva/repository/RepositoryEvent.html" title="type parameter in RepositoryEvent">T</a>&nbsp;oldValue,
-               <a href="../../../../../org/apache/archiva/repository/RepositoryEvent.html" title="type parameter in RepositoryEvent">T</a>&nbsp;value)</code>&nbsp;</td>
+<td class="colFirst"><code>&lt;T extends <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&gt;<br><a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ArchivaRepositoryRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/base/ArchivaRepositoryRegistry.html#clone-T-java.lang.String-">clone</a></span>(T&nbsp;repo,
+     <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;newId)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/archiva/repository/base/package-summary.html">org.apache.archiva.repository.base</a> that return <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>&lt;T extends <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&gt;<br><a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ArchivaRepositoryRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/base/ArchivaRepositoryRegistry.html#clone-T-java.lang.String-">clone</a></span>(T&nbsp;repo,
+     <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;newId)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ArchivaRepositoryRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/base/ArchivaRepositoryRegistry.html#getRepository-java.lang.String-">getRepository</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId)</code>
+<div class="block">Returns the repository with the given id.</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/archiva/repository/base/package-summary.html">org.apache.archiva.repository.base</a> that return types with arguments of type <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">ArchivaRepositoryRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/base/ArchivaRepositoryRegistry.html#getRepositories--">getRepositories</a></span>()</code>
+<div class="block">Returns all repositories that are registered.</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/archiva/repository/base/package-summary.html">org.apache.archiva.repository.base</a> with parameters of type <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">ArchivaRepositoryRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/base/ArchivaRepositoryRegistry.html#removeRepository-org.apache.archiva.repository.Repository-">removeRepository</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">ArchivaRepositoryRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/base/ArchivaRepositoryRegistry.html#resetIndexingContext-org.apache.archiva.repository.Repository-">resetIndexingContext</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository)</code>
+<div class="block">Resets the indexing context of a given repository.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -488,44 +516,77 @@
 </tbody>
 </table>
 </li>
-<li class="blockList"><a name="org.apache.archiva.repository.features">
+<li class="blockList"><a name="org.apache.archiva.repository.event">
 <!--   -->
 </a>
-<h3>Uses of <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a> in <a href="../../../../../org/apache/archiva/repository/features/package-summary.html">org.apache.archiva.repository.features</a></h3>
-<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing fields, and an explanation">
-<caption><span>Fields in <a href="../../../../../org/apache/archiva/repository/features/package-summary.html">org.apache.archiva.repository.features</a> declared as <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tbody>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></code></td>
-<td class="colLast"><span class="typeNameLabel">IndexCreationFeature.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#repo">repo</a></span></code>&nbsp;</td>
-</tr>
-</tbody>
-</table>
+<h3>Uses of <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a> in <a href="../../../../../org/apache/archiva/repository/event/package-summary.html">org.apache.archiva.repository.event</a></h3>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
-<caption><span>Methods in <a href="../../../../../org/apache/archiva/repository/features/package-summary.html">org.apache.archiva.repository.features</a> with parameters of type <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></span><span class="tabEnd">&nbsp;</span></caption>
+<caption><span>Methods in <a href="../../../../../org/apache/archiva/repository/event/package-summary.html">org.apache.archiva.repository.event</a> that return <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="../../../../../org/apache/archiva/repository/features/IndexCreationEvent.html" title="class in org.apache.archiva.repository.features">IndexCreationEvent</a></code></td>
-<td class="colLast"><span class="typeNameLabel">IndexCreationEvent.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationEvent.html#indexUriChange-org.apache.archiva.repository.Repository-java.net.URI-java.net.URI-">indexUriChange</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo,
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></code></td>
+<td class="colLast"><span class="typeNameLabel">RepositoryEvent.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/event/RepositoryEvent.html#getRepository--">getRepository</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/archiva/repository/event/package-summary.html">org.apache.archiva.repository.event</a> with parameters of type <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static &lt;O&gt;&nbsp;<a href="../../../../../org/apache/archiva/repository/event/RepositoryIndexEvent.html" title="class in org.apache.archiva.repository.event">RepositoryIndexEvent</a></code></td>
+<td class="colLast"><span class="typeNameLabel">RepositoryIndexEvent.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/event/RepositoryIndexEvent.html#indexUriChange-O-org.apache.archiva.repository.Repository-java.net.URI-java.net.URI-">indexUriChange</a></span>(O&nbsp;origin,
+              <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo,
               <a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;oldValue,
               <a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;newValue)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static <a href="../../../../../org/apache/archiva/repository/features/IndexCreationEvent.html" title="class in org.apache.archiva.repository.features">IndexCreationEvent</a></code></td>
-<td class="colLast"><span class="typeNameLabel">IndexCreationEvent.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationEvent.html#packedIndexUriChange-org.apache.archiva.repository.Repository-java.net.URI-java.net.URI-">packedIndexUriChange</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo,
+<td class="colFirst"><code>static &lt;O&gt;&nbsp;<a href="../../../../../org/apache/archiva/repository/event/RepositoryIndexEvent.html" title="class in org.apache.archiva.repository.event">RepositoryIndexEvent</a></code></td>
+<td class="colLast"><span class="typeNameLabel">RepositoryIndexEvent.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/event/RepositoryIndexEvent.html#packedIndexUriChange-O-org.apache.archiva.repository.Repository-java.net.URI-java.net.URI-">packedIndexUriChange</a></span>(O&nbsp;origin,
+                    <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo,
                     <a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;oldValue,
                     <a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;newValue)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing constructors, and an explanation">
+<caption><span>Constructors in <a href="../../../../../org/apache/archiva/repository/event/package-summary.html">org.apache.archiva.repository.event</a> with parameters of type <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/event/LifecycleEvent.html#LifecycleEvent-org.apache.archiva.event.EventType-java.lang.Object-org.apache.archiva.repository.Repository-">LifecycleEvent</a></span>(<a href="../../../../../org/apache/archiva/event/EventType.html" title="class in org.apache.archiva.event">EventType</a>&lt;? extends <a href="../../../../../org/apache/archiva/repository/event/LifecycleEvent.html" title="class in org.apache.archiva.repository.event">LifecycleEvent</a>&gt;&nbsp;type,
+              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;origin,
+              <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/event/RepositoryEvent.html#RepositoryEvent-org.apache.archiva.event.EventType-java.lang.Object-org.apache.archiva.repository.Repository-">RepositoryEvent</a></span>(<a href="../../../../../org/apache/archiva/event/EventType.html" title="class in org.apache.archiva.event">EventType</a>&lt;? extends <a href="../../../../../org/apache/archiva/repository/event/RepositoryEvent.html" title="class in org.apache.archiva.repository.event">RepositoryEvent</a>&gt;&nbsp;type,
+               <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;origin,
+               <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/event/RepositoryValueEvent.html#RepositoryValueEvent-org.apache.archiva.event.EventType-java.lang.Object-org.apache.archiva.repository.Repository-V-V-java.lang.String-">RepositoryValueEvent</a></span>(<a href="../../../../../org/apache/archiva/event/EventType.html" title="class in org.apache.archiva.event">EventType</a>&lt;? extends <a href="../../../../../org/apache/archiva/repository/event/RepositoryValueEvent.html" title="class in org.apache.archiva.repository.event">RepositoryValueEvent</a>&lt;<a href="../../../../../org/apache/archiva/repository/event/RepositoryValueEvent.html" title="type parameter in RepositoryValueEvent">V</a>&gt;&gt;&nbsp;type,
+                    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;origin,
+                    <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo,
+                    <a href="../../../../../org/apache/archiva/repository/event/RepositoryValueEvent.html" title="type parameter in RepositoryValueEvent">V</a>&nbsp;oldValue,
+                    <a href="../../../../../org/apache/archiva/repository/event/RepositoryValueEvent.html" title="type parameter in RepositoryValueEvent">V</a>&nbsp;value,
+                    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;attributeName)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.archiva.repository.features">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a> in <a href="../../../../../org/apache/archiva/repository/features/package-summary.html">org.apache.archiva.repository.features</a></h3>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing constructors, and an explanation">
 <caption><span>Constructors in <a href="../../../../../org/apache/archiva/repository/features/package-summary.html">org.apache.archiva.repository.features</a> with parameters of type <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
@@ -533,19 +594,8 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationEvent.html#IndexCreationEvent-org.apache.archiva.repository.features.IndexCreationEvent.Index-org.apache.archiva.repository.Repository-java.net.URI-java.net.URI-">IndexCreationEvent</a></span>(<a href="../../../../../org/apache/archiva/repository/features/IndexCreationEvent.Index.html" title="enum in org.apache.archiva.repository.features">IndexCreationEvent.Index</a>&nbsp;type,
-                  <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo,
-                  <a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;oldValue,
-                  <a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;value)</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationEvent.html#IndexCreationEvent-org.apache.archiva.repository.Repository-java.net.URI-java.net.URI-">IndexCreationEvent</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo,
-                  <a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;oldValue,
-                  <a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;value)</code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#IndexCreationFeature-org.apache.archiva.repository.Repository-org.apache.archiva.repository.RepositoryEventListener-">IndexCreationFeature</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repoId,
-                    <a href="../../../../../org/apache/archiva/repository/RepositoryEventListener.html" title="interface in org.apache.archiva.repository">RepositoryEventListener</a>&nbsp;listener)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html#IndexCreationFeature-org.apache.archiva.repository.Repository-org.apache.archiva.event.EventHandler-">IndexCreationFeature</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository,
+                    <a href="../../../../../org/apache/archiva/event/EventHandler.html" title="interface in org.apache.archiva.event">EventHandler</a>&nbsp;listener)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -572,6 +622,10 @@
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/maven2/MavenRemoteRepository.html" title="class in org.apache.archiva.repository.maven2">MavenRemoteRepository</a></span></code>
 <div class="block">Maven2 remote repository implementation</div>
 </td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/maven2/MavenRepositoryGroup.html" title="class in org.apache.archiva.repository.maven2">MavenRepositoryGroup</a></span></code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -627,6 +681,6 @@
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

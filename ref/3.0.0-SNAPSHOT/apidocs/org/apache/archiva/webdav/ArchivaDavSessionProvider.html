@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10};
+var methods = {"i0":10,"i1":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -75,13 +75,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -122,29 +122,6 @@ implements org.apache.jackrabbit.webdav.DavSessionProvider</pre>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- =========== FIELD SUMMARY =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private org.apache.archiva.redback.integration.filter.authentication.HttpAuthenticator</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/webdav/ArchivaDavSessionProvider.html#httpAuth">httpAuth</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="../../../../org/apache/archiva/security/ServletAuthenticator.html" title="interface in org.apache.archiva.security">ServletAuthenticator</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/webdav/ArchivaDavSessionProvider.html#servletAuth">servletAuth</a></span></code>&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -183,10 +160,6 @@ implements org.apache.jackrabbit.webdav.DavSessionProvider</pre>
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/webdav/ArchivaDavSessionProvider.html#releaseSession-org.apache.jackrabbit.webdav.WebdavRequest-">releaseSession</a></span>(org.apache.jackrabbit.webdav.WebdavRequest&nbsp;request)</code>&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/webdav/ArchivaDavSessionProvider.html#removeContextPath-org.apache.jackrabbit.webdav.DavServletRequest-">removeContextPath</a></span>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request)</code>&nbsp;</td>
-</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -203,32 +176,6 @@ implements org.apache.jackrabbit.webdav.DavSessionProvider</pre>
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a name="servletAuth">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>servletAuth</h4>
-<pre>private&nbsp;<a href="../../../../org/apache/archiva/security/ServletAuthenticator.html" title="interface in org.apache.archiva.security">ServletAuthenticator</a> <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavSessionProvider.html#line.42">servletAuth</a></pre>
-</li>
-</ul>
-<a name="httpAuth">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>httpAuth</h4>
-<pre>private&nbsp;org.apache.archiva.redback.integration.filter.authentication.HttpAuthenticator <a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavSessionProvider.html#line.44">httpAuth</a></pre>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
@@ -272,7 +219,7 @@ implements org.apache.jackrabbit.webdav.DavSessionProvider</pre>
 <a name="releaseSession-org.apache.jackrabbit.webdav.WebdavRequest-">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>releaseSession</h4>
 <pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavSessionProvider.html#line.100">releaseSession</a>(org.apache.jackrabbit.webdav.WebdavRequest&nbsp;request)</pre>
@@ -280,15 +227,6 @@ implements org.apache.jackrabbit.webdav.DavSessionProvider</pre>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>releaseSession</code>&nbsp;in interface&nbsp;<code>org.apache.jackrabbit.webdav.DavSessionProvider</code></dd>
 </dl>
-</li>
-</ul>
-<a name="removeContextPath-org.apache.jackrabbit.webdav.DavServletRequest-">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>removeContextPath</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/webdav/ArchivaDavSessionProvider.html#line.105">removeContextPath</a>(org.apache.jackrabbit.webdav.DavServletRequest&nbsp;request)</pre>
 </li>
 </ul>
 </li>
@@ -345,13 +283,13 @@ implements org.apache.jackrabbit.webdav.DavSessionProvider</pre>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -360,6 +298,6 @@ implements org.apache.jackrabbit.webdav.DavSessionProvider</pre>
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

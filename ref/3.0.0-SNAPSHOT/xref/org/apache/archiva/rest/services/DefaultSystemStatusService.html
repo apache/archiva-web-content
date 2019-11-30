@@ -16,7 +16,7 @@
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> * "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * with the License.  You may obtain a copy of the License at</em>
 <a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2." target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.</a>0</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing,</em>
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * software distributed under the License is distributed on an</em>
@@ -28,10 +28,10 @@
 <a class="jxr_linenumber" name="L20" href="#L20">20</a>  
 <a class="jxr_linenumber" name="L21" href="#L21">21</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.admin.model.RepositoryAdminException;
 <a class="jxr_linenumber" name="L22" href="#L22">22</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.admin.model.managed.ManagedRepositoryAdmin;
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.components.cache.Cache;
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.components.cache.CacheStatistics;
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.components.taskqueue.TaskQueue;
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.components.taskqueue.TaskQueueException;
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.components.cache.Cache;
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.components.cache.CacheStatistics;
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.components.taskqueue.TaskQueue;
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.components.taskqueue.TaskQueueException;
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.repository.scanner.RepositoryScanner;
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.repository.scanner.RepositoryScannerInstance;
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.<strong class="jxr_keyword">rest</strong>.api.model.CacheEntry;
@@ -62,9 +62,9 @@
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>  <em class="jxr_javadoccomment"> * @since 1.4-M3</em>
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_javadoccomment"> */</em>
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>  @Service( <span class="jxr_string">"systemStatusService#rest"</span> )
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/apache/archiva/rest/services/DefaultSystemStatusService.html">DefaultSystemStatusService</a>
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>      <strong class="jxr_keyword">extends</strong> <a href="../../../../../org/apache/archiva/rest/services/AbstractRestService.html">AbstractRestService</a>
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>      <strong class="jxr_keyword">implements</strong> <a href="../../../../../org/apache/archiva/rest/api/services/SystemStatusService.html">SystemStatusService</a>
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="DefaultSystemStatusService" href="../../../../../org/apache/archiva/rest/services/DefaultSystemStatusService.html#DefaultSystemStatusService">DefaultSystemStatusService</a>
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>      <strong class="jxr_keyword">extends</strong> <a name="AbstractRestService" href="../../../../../org/apache/archiva/rest/services/AbstractRestService.html#AbstractRestService">AbstractRestService</a>
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>      <strong class="jxr_keyword">implements</strong> <a name="SystemStatusService" href="../../../../../org/apache/archiva/rest/api/services/SystemStatusService.html#SystemStatusService">SystemStatusService</a>
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>  {
 <a class="jxr_linenumber" name="L61" href="#L61">61</a>  
 <a class="jxr_linenumber" name="L62" href="#L62">62</a>  
@@ -72,16 +72,16 @@
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>  
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>      <strong class="jxr_keyword">private</strong> Map&lt;String, Cache&gt; caches = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>  
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../org/apache/archiva/repository/scanner/RepositoryScanner.html">RepositoryScanner</a> scanner;
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>      <strong class="jxr_keyword">private</strong> <a name="RepositoryScanner" href="../../../../../org/apache/archiva/repository/scanner/RepositoryScanner.html#RepositoryScanner">RepositoryScanner</a> scanner;
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>  
-<a class="jxr_linenumber" name="L69" href="#L69">69</a>      <a href="../../../../../org/apache/archiva/admin/model/managed/ManagedRepositoryAdmin.html">ManagedRepositoryAdmin</a> managedRepositoryAdmin;
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>      <a name="ManagedRepositoryAdmin" href="../../../../../org/apache/archiva/admin/model/managed/ManagedRepositoryAdmin.html#ManagedRepositoryAdmin">ManagedRepositoryAdmin</a> managedRepositoryAdmin;
 <a class="jxr_linenumber" name="L70" href="#L70">70</a>  
 <a class="jxr_linenumber" name="L71" href="#L71">71</a>      <em class="jxr_comment">// display spring scheduled</em>
 <a class="jxr_linenumber" name="L72" href="#L72">72</a>      <em class="jxr_comment">//@Inject @Named (value="springScheduler");</em>
 <a class="jxr_linenumber" name="L73" href="#L73">73</a>  
 <a class="jxr_linenumber" name="L74" href="#L74">74</a>  
 <a class="jxr_linenumber" name="L75" href="#L75">75</a>      @Inject
-<a class="jxr_linenumber" name="L76" href="#L76">76</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../org/apache/archiva/rest/services/DefaultSystemStatusService.html">DefaultSystemStatusService</a>( ApplicationContext applicationContext, RepositoryScanner scanner )
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>      <strong class="jxr_keyword">public</strong> <a name="DefaultSystemStatusService" href="../../../../../org/apache/archiva/rest/services/DefaultSystemStatusService.html#DefaultSystemStatusService">DefaultSystemStatusService</a>( ApplicationContext applicationContext, <a name="RepositoryScanner" href="../../../../../org/apache/archiva/repository/scanner/RepositoryScanner.html#RepositoryScanner">RepositoryScanner</a> scanner )
 <a class="jxr_linenumber" name="L77" href="#L77">77</a>      {
 <a class="jxr_linenumber" name="L78" href="#L78">78</a>          <strong class="jxr_keyword">this</strong>.scanner = scanner;
 <a class="jxr_linenumber" name="L79" href="#L79">79</a>  
@@ -94,7 +94,7 @@
 <a class="jxr_linenumber" name="L86" href="#L86">86</a>  
 <a class="jxr_linenumber" name="L87" href="#L87">87</a>      @Override
 <a class="jxr_linenumber" name="L88" href="#L88">88</a>      <strong class="jxr_keyword">public</strong> String getMemoryStatus()
-<a class="jxr_linenumber" name="L89" href="#L89">89</a>          <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>          <strong class="jxr_keyword">throws</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>
 <a class="jxr_linenumber" name="L90" href="#L90">90</a>      {
 <a class="jxr_linenumber" name="L91" href="#L91">91</a>          Runtime runtime = Runtime.getRuntime();
 <a class="jxr_linenumber" name="L92" href="#L92">92</a>  
@@ -111,7 +111,7 @@
 <a class="jxr_linenumber" name="L103" href="#L103">103</a> 
 <a class="jxr_linenumber" name="L104" href="#L104">104</a>     @Override
 <a class="jxr_linenumber" name="L105" href="#L105">105</a>     <strong class="jxr_keyword">public</strong> String getCurrentServerTime( String locale )
-<a class="jxr_linenumber" name="L106" href="#L106">106</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>
+<a class="jxr_linenumber" name="L106" href="#L106">106</a>         <strong class="jxr_keyword">throws</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>
 <a class="jxr_linenumber" name="L107" href="#L107">107</a>     {
 <a class="jxr_linenumber" name="L108" href="#L108">108</a>         SimpleDateFormat sdf = <strong class="jxr_keyword">new</strong> SimpleDateFormat( <span class="jxr_string">"EEE, d MMM yyyy HH:mm:ss Z"</span>, <strong class="jxr_keyword">new</strong> Locale( locale ) );
 <a class="jxr_linenumber" name="L109" href="#L109">109</a>         <strong class="jxr_keyword">return</strong> sdf.format( <strong class="jxr_keyword">new</strong> Date() );
@@ -119,14 +119,14 @@
 <a class="jxr_linenumber" name="L111" href="#L111">111</a> 
 <a class="jxr_linenumber" name="L112" href="#L112">112</a>     @Override
 <a class="jxr_linenumber" name="L113" href="#L113">113</a>     <strong class="jxr_keyword">public</strong> List&lt;QueueEntry&gt; getQueueEntries()
-<a class="jxr_linenumber" name="L114" href="#L114">114</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>
+<a class="jxr_linenumber" name="L114" href="#L114">114</a>         <strong class="jxr_keyword">throws</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>
 <a class="jxr_linenumber" name="L115" href="#L115">115</a>     {
 <a class="jxr_linenumber" name="L116" href="#L116">116</a>         <strong class="jxr_keyword">try</strong>
 <a class="jxr_linenumber" name="L117" href="#L117">117</a>         {
 <a class="jxr_linenumber" name="L118" href="#L118">118</a>             List&lt;QueueEntry&gt; queueEntries = <strong class="jxr_keyword">new</strong> ArrayList&lt;QueueEntry&gt;( queues.size() );
 <a class="jxr_linenumber" name="L119" href="#L119">119</a>             <strong class="jxr_keyword">for</strong> ( Map.Entry&lt;String, TaskQueue&gt; entry : queues.entrySet() )
 <a class="jxr_linenumber" name="L120" href="#L120">120</a>             {
-<a class="jxr_linenumber" name="L121" href="#L121">121</a>                 queueEntries.add( <strong class="jxr_keyword">new</strong> QueueEntry( entry.getKey(), entry.getValue().getQueueSnapshot().size() ) );
+<a class="jxr_linenumber" name="L121" href="#L121">121</a>                 queueEntries.add( <strong class="jxr_keyword">new</strong> <a name="QueueEntry" href="../../../../../org/apache/archiva/rest/api/model/QueueEntry.html#QueueEntry">QueueEntry</a>( entry.getKey(), entry.getValue().getQueueSnapshot().size() ) );
 <a class="jxr_linenumber" name="L122" href="#L122">122</a>             }
 <a class="jxr_linenumber" name="L123" href="#L123">123</a> 
 <a class="jxr_linenumber" name="L124" href="#L124">124</a>             <strong class="jxr_keyword">return</strong> queueEntries;
@@ -134,17 +134,17 @@
 <a class="jxr_linenumber" name="L126" href="#L126">126</a>         <strong class="jxr_keyword">catch</strong> ( TaskQueueException e )
 <a class="jxr_linenumber" name="L127" href="#L127">127</a>         {
 <a class="jxr_linenumber" name="L128" href="#L128">128</a>             log.error( e.getMessage(), e );
-<a class="jxr_linenumber" name="L129" href="#L129">129</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>( e.getMessage(),
+<a class="jxr_linenumber" name="L129" href="#L129">129</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>( e.getMessage(),
 <a class="jxr_linenumber" name="L130" href="#L130">130</a>                                                    Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), e );
 <a class="jxr_linenumber" name="L131" href="#L131">131</a>         }
 <a class="jxr_linenumber" name="L132" href="#L132">132</a>     }
 <a class="jxr_linenumber" name="L133" href="#L133">133</a> 
 <a class="jxr_linenumber" name="L134" href="#L134">134</a>     <em class="jxr_comment">// Used for generics</em>
-<a class="jxr_linenumber" name="L135" href="#L135">135</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/apache/archiva/rest/services/DefaultSystemStatusService.html">CacheEntryComparator</a> <strong class="jxr_keyword">implements</strong> Comparator&lt;CacheEntry&gt;
+<a class="jxr_linenumber" name="L135" href="#L135">135</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">class</strong> CacheEntryComparator <strong class="jxr_keyword">implements</strong> Comparator&lt;CacheEntry&gt;
 <a class="jxr_linenumber" name="L136" href="#L136">136</a>     {
 <a class="jxr_linenumber" name="L137" href="#L137">137</a> 
 <a class="jxr_linenumber" name="L138" href="#L138">138</a>         @Override
-<a class="jxr_linenumber" name="L139" href="#L139">139</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> compare( CacheEntry o1, CacheEntry o2 )
+<a class="jxr_linenumber" name="L139" href="#L139">139</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> compare( <a name="CacheE<a name="CacheEntry" href="../../../../../org/apache/archiva/rest/api/model/CacheEntry.html#CacheEntry">CacheEntry</a>="../../../../../org/apache/archiva/rest/api/model/CacheEntry.html#CacheEntry">CacheEntry</a> o1, <a name="CacheEntry" href="../../../../../org/apache/archiva/rest/api/model/CacheEntry.html#CacheEntry">CacheEntry</a> o2 )
 <a class="jxr_linenumber" name="L140" href="#L140">140</a>         {
 <a class="jxr_linenumber" name="L141" href="#L141">141</a>             <strong class="jxr_keyword">return</strong> o1.compareTo( o2 );
 <a class="jxr_linenumber" name="L142" href="#L142">142</a>         }
@@ -152,7 +152,7 @@
 <a class="jxr_linenumber" name="L144" href="#L144">144</a> 
 <a class="jxr_linenumber" name="L145" href="#L145">145</a>     @Override
 <a class="jxr_linenumber" name="L146" href="#L146">146</a>     <strong class="jxr_keyword">public</strong> List&lt;CacheEntry&gt; getCacheEntries()
-<a class="jxr_linenumber" name="L147" href="#L147">147</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>
+<a class="jxr_linenumber" name="L147" href="#L147">147</a>         <strong class="jxr_keyword">throws</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>
 <a class="jxr_linenumber" name="L148" href="#L148">148</a>     {
 <a class="jxr_linenumber" name="L149" href="#L149">149</a>         List&lt;CacheEntry&gt; cacheEntries = <strong class="jxr_keyword">new</strong> ArrayList&lt;CacheEntry&gt;( caches.size() );
 <a class="jxr_linenumber" name="L150" href="#L150">150</a>         DecimalFormat decimalFormat = <strong class="jxr_keyword">new</strong> DecimalFormat( <span class="jxr_string">"#%"</span> );
@@ -161,7 +161,7 @@
 <a class="jxr_linenumber" name="L153" href="#L153">153</a>         {
 <a class="jxr_linenumber" name="L154" href="#L154">154</a>             CacheStatistics cacheStatistics = entry.getValue().getStatistics();
 <a class="jxr_linenumber" name="L155" href="#L155">155</a> 
-<a class="jxr_linenumber" name="L156" href="#L156">156</a>             cacheEntries.add( <strong class="jxr_keyword">new</strong> CacheEntry( entry.getKey(), cacheStatistics.getSize(), cacheStatistics.getCacheHits(),
+<a class="jxr_linenumber" name="L156" href="#L156">156</a>             cacheEntries.add( <strong class="jxr_keyword">new</strong> <a name="CacheEntry" href="../../../../../org/apache/archiva/rest/api/model/CacheEntry.html#CacheEntry">CacheEntry</a>( entry.getKey(), cacheStatistics.getSize(), cacheStatistics.getCacheHits(),
 <a class="jxr_linenumber" name="L157" href="#L157">157</a>                                               cacheStatistics.getCacheMiss(),
 <a class="jxr_linenumber" name="L158" href="#L158">158</a>                                               decimalFormat.format( cacheStatistics.getCacheHitRate() ).toString(),
 <a class="jxr_linenumber" name="L159" href="#L159">159</a>                                               cacheStatistics.getInMemorySize() ) );
@@ -174,12 +174,12 @@
 <a class="jxr_linenumber" name="L166" href="#L166">166</a> 
 <a class="jxr_linenumber" name="L167" href="#L167">167</a>     @Override
 <a class="jxr_linenumber" name="L168" href="#L168">168</a>     <strong class="jxr_keyword">public</strong> Boolean clearCache( String cacheKey )
-<a class="jxr_linenumber" name="L169" href="#L169">169</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>
+<a class="jxr_linenumber" name="L169" href="#L169">169</a>         <strong class="jxr_keyword">throws</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>
 <a class="jxr_linenumber" name="L170" href="#L170">170</a>     {
 <a class="jxr_linenumber" name="L171" href="#L171">171</a>         Cache cache = caches.get( cacheKey );
 <a class="jxr_linenumber" name="L172" href="#L172">172</a>         <strong class="jxr_keyword">if</strong> ( cache == <strong class="jxr_keyword">null</strong> )
 <a class="jxr_linenumber" name="L173" href="#L173">173</a>         {
-<a class="jxr_linenumber" name="L174" href="#L174">174</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>( <span class="jxr_string">"no cache for key: "</span> + cacheKey,
+<a class="jxr_linenumber" name="L174" href="#L174">174</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>( <span class="jxr_string">"no cache for key: "</span> + cacheKey,
 <a class="jxr_linenumber" name="L175" href="#L175">175</a>                                                    Response.Status.BAD_REQUEST.getStatusCode(), <strong class="jxr_keyword">null</strong> );
 <a class="jxr_linenumber" name="L176" href="#L176">176</a>         }
 <a class="jxr_linenumber" name="L177" href="#L177">177</a> 
@@ -189,7 +189,7 @@
 <a class="jxr_linenumber" name="L181" href="#L181">181</a> 
 <a class="jxr_linenumber" name="L182" href="#L182">182</a>     @Override
 <a class="jxr_linenumber" name="L183" href="#L183">183</a>     <strong class="jxr_keyword">public</strong> Boolean clearAllCaches()
-<a class="jxr_linenumber" name="L184" href="#L184">184</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>
+<a class="jxr_linenumber" name="L184" href="#L184">184</a>         <strong class="jxr_keyword">throws</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>
 <a class="jxr_linenumber" name="L185" href="#L185">185</a>     {
 <a class="jxr_linenumber" name="L186" href="#L186">186</a>         <strong class="jxr_keyword">for</strong> ( Cache cache : caches.values() )
 <a class="jxr_linenumber" name="L187" href="#L187">187</a>         {
@@ -200,7 +200,7 @@
 <a class="jxr_linenumber" name="L192" href="#L192">192</a> 
 <a class="jxr_linenumber" name="L193" href="#L193">193</a>     @Override
 <a class="jxr_linenumber" name="L194" href="#L194">194</a>     <strong class="jxr_keyword">public</strong> List&lt;RepositoryScannerStatistics&gt; getRepositoryScannerStatistics()
-<a class="jxr_linenumber" name="L195" href="#L195">195</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>
+<a class="jxr_linenumber" name="L195" href="#L195">195</a>         <strong class="jxr_keyword">throws</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>
 <a class="jxr_linenumber" name="L196" href="#L196">196</a>     {
 <a class="jxr_linenumber" name="L197" href="#L197">197</a>         Set&lt;RepositoryScannerInstance&gt; repositoryScannerInstances = scanner.getInProgressScans();
 <a class="jxr_linenumber" name="L198" href="#L198">198</a>         <strong class="jxr_keyword">if</strong> ( repositoryScannerInstances.isEmpty() )
@@ -211,15 +211,15 @@
 <a class="jxr_linenumber" name="L203" href="#L203">203</a>             <strong class="jxr_keyword">new</strong> ArrayList&lt;RepositoryScannerStatistics&gt;( repositoryScannerInstances.size() );
 <a class="jxr_linenumber" name="L204" href="#L204">204</a> 
 <a class="jxr_linenumber" name="L205" href="#L205">205</a> 
-<a class="jxr_linenumber" name="L206" href="#L206">206</a>         <strong class="jxr_keyword">for</strong> ( RepositoryScannerInstance instance : repositoryScannerInstances )
+<a class="jxr_linenumber" name="L206" href="#L206">206</a>         <strong class="jxr_keyword">for</strong> ( <a name="RepositoryScannerInstance" href="../../../../../org/apache/archiva/repository/scanner/RepositoryScannerInstance.html#RepositoryScannerInstance">RepositoryScannerInstance</a> instance : repositoryScannerInstances )
 <a class="jxr_linenumber" name="L207" href="#L207">207</a>         {
-<a class="jxr_linenumber" name="L208" href="#L208">208</a>             <a href="../../../../../org/apache/archiva/rest/api/model/RepositoryScannerStatistics.html">RepositoryScannerStatistics</a> repositoryScannerStatistics = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/model/RepositoryScannerStatistics.html">RepositoryScannerStatistics</a>();
+<a class="jxr_linenumber" name="L208" href="#L208">208</a>             <a name="RepositoryScannerStatistics" href="../../../../../org/apache/archiva/rest/api/model/Reposi<a name="RepositoryScannerStatistics" href="../../../../../org/apache/archiva/rest/api/model/RepositoryScannerStatistics.html#RepositoryScannerStatistics">RepositoryScannerStatistics</a>RepositoryScannerStatistics">RepositoryScannerStatistics</a> repositoryScannerStatistics = <strong class="jxr_keyword">new</strong> <a name="RepositoryScannerStatistics" href="../../../../../org/apache/archiva/rest/api/model/RepositoryScannerStatistics.html#RepositoryScannerStatistics">RepositoryScannerStatistics</a>();
 <a class="jxr_linenumber" name="L209" href="#L209">209</a>             repositoryScannerStatisticsList.add( repositoryScannerStatistics );
 <a class="jxr_linenumber" name="L210" href="#L210">210</a>             <strong class="jxr_keyword">try</strong>
 <a class="jxr_linenumber" name="L211" href="#L211">211</a>             {
 <a class="jxr_linenumber" name="L212" href="#L212">212</a>                 repositoryScannerStatistics.setManagedRepository( managedRepositoryAdmin.getManagedRepository( instance.getRepository().getId())  );
 <a class="jxr_linenumber" name="L213" href="#L213">213</a>             }
-<a class="jxr_linenumber" name="L214" href="#L214">214</a>             <strong class="jxr_keyword">catch</strong> ( RepositoryAdminException e )
+<a class="jxr_linenumber" name="L214" href="#L214">214</a>             <strong class="jxr_keyword">catch</strong> ( <a name="RepositoryAdminException" href="../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html#RepositoryAdminException">RepositoryAdminException</a> e )
 <a class="jxr_linenumber" name="L215" href="#L215">215</a>             {
 <a class="jxr_linenumber" name="L216" href="#L216">216</a>                 log.error(<span class="jxr_string">"Could not retrieve repository '{}'"</span>, instance.getRepository().getId());
 <a class="jxr_linenumber" name="L217" href="#L217">217</a>             }
@@ -231,7 +231,7 @@
 <a class="jxr_linenumber" name="L223" href="#L223">223</a>         <strong class="jxr_keyword">return</strong> repositoryScannerStatisticsList;
 <a class="jxr_linenumber" name="L224" href="#L224">224</a>     }
 <a class="jxr_linenumber" name="L225" href="#L225">225</a> 
-<a class="jxr_linenumber" name="L226" href="#L226">226</a>     <strong class="jxr_keyword">private</strong> List&lt;ConsumerScanningStatistics&gt; mapConsumerScanningStatistics( RepositoryScannerInstance instance )
+<a class="jxr_linenumber" name="L226" href="#L226">226</a>     <strong class="jxr_keyword">private</strong> List&lt;ConsumerScanningStatistics&gt; mapConsumerScanningStatistics( <a name="RepositoryScannerInstance" href="../../../../../org/apache/archiva/repository/scanner/RepositoryScannerInstance.html#RepositoryScannerInstance">RepositoryScannerInstance</a> instance )
 <a class="jxr_linenumber" name="L227" href="#L227">227</a>     {
 <a class="jxr_linenumber" name="L228" href="#L228">228</a>         DecimalFormat decimalFormat = <strong class="jxr_keyword">new</strong> DecimalFormat( <span class="jxr_string">"###.##"</span> );
 <a class="jxr_linenumber" name="L229" href="#L229">229</a>         <strong class="jxr_keyword">if</strong> ( instance.getConsumerCounts() == <strong class="jxr_keyword">null</strong> )
@@ -242,7 +242,7 @@
 <a class="jxr_linenumber" name="L234" href="#L234">234</a>             <strong class="jxr_keyword">new</strong> ArrayList&lt;ConsumerScanningStatistics&gt;( instance.getConsumerCounts().size() );
 <a class="jxr_linenumber" name="L235" href="#L235">235</a>         <strong class="jxr_keyword">for</strong> ( Map.Entry&lt;String, Long&gt; entry : instance.getConsumerCounts().entrySet() )
 <a class="jxr_linenumber" name="L236" href="#L236">236</a>         {
-<a class="jxr_linenumber" name="L237" href="#L237">237</a>             <a href="../../../../../org/apache/archiva/rest/api/model/ConsumerScanningStatistics.html">ConsumerScanningStatistics</a> consumerScanningStatistics = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/model/ConsumerScanningStatistics.html">ConsumerScanningStatistics</a>();
+<a class="jxr_linenumber" name="L237" href="#L237">237</a>             <a name="ConsumerScanningStatistics" href="../../../../../org/apache/archiva/rest/api/model/Consu<a name="ConsumerScanningStatistics" href="../../../../../org/apache/archiva/rest/api/model/ConsumerScanningStatistics.html#ConsumerScanningStatistics">ConsumerScanningStatistics</a>#ConsumerScanningStatistics">ConsumerScanningStatistics</a> consumerScanningStatistics = <strong class="jxr_keyword">new</strong> <a name="ConsumerScanningStatistics" href="../../../../../org/apache/archiva/rest/api/model/ConsumerScanningStatistics.html#ConsumerScanningStatistics">ConsumerScanningStatistics</a>();
 <a class="jxr_linenumber" name="L238" href="#L238">238</a>             consumerScanningStatistics.setConsumerKey( entry.getKey() );
 <a class="jxr_linenumber" name="L239" href="#L239">239</a>             consumerScanningStatistics.setCount( entry.getValue() );
 <a class="jxr_linenumber" name="L240" href="#L240">240</a>             consumerScanningStatistics.setTime( instance.getConsumerTimings().get( entry.getKey() ) );
@@ -259,6 +259,6 @@
 <a class="jxr_linenumber" name="L251" href="#L251">251</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
 </body>
 </html>

@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10};
+var methods = {"i0":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -74,14 +74,14 @@ var activeTableTab = "activeTableTab";
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li><a href="#nested.classes.inherited.from.class.org.apache.archiva.consumers.core.repository.AbstractRepositoryPurge">Nested</a>&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#fields.inherited.from.class.org.apache.archiva.consumers.core.repository.AbstractRepositoryPurge">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -118,7 +118,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <hr>
 <br>
-<pre>public class <a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/DaysOldRepositoryPurge.html#line.51">DaysOldRepositoryPurge</a>
+<pre>public class <a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/DaysOldRepositoryPurge.html#line.44">DaysOldRepositoryPurge</a>
 extends <a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html" title="class in org.apache.archiva.consumers.core.repository">AbstractRepositoryPurge</a></pre>
 <div class="block">Purge from repository all snapshots older than the specified days in the repository configuration.</div>
 </li>
@@ -127,46 +127,12 @@ extends <a href="../../../../../../org/apache/archiva/consumers/core/repository/
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- ======== NESTED CLASS SUMMARY ======== -->
-<ul class="blockList">
-<li class="blockList"><a name="nested.class.summary">
-<!--   -->
-</a>
-<h3>Nested Class Summary</h3>
-<ul class="blockList">
-<li class="blockList"><a name="nested.classes.inherited.from.class.org.apache.archiva.consumers.core.repository.AbstractRepositoryPurge">
-<!--   -->
-</a>
-<h3>Nested classes/interfaces inherited from class&nbsp;org.apache.archiva.consumers.core.repository.<a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.html" title="class in org.apache.archiva.consumers.core.repository">AbstractRepositoryPurge</a></h3>
-<code><a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurge.ArtifactInfo.html" title="class in org.apache.archiva.consumers.core.repository">AbstractRepositoryPurge.ArtifactInfo</a></code></li>
-</ul>
-</li>
-</ul>
 <!-- =========== FIELD SUMMARY =========== -->
 <ul class="blockList">
 <li class="blockList"><a name="field.summary">
 <!--   -->
 </a>
 <h3>Field Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/consumers/core/repository/DaysOldRepositoryPurge.html#retentionCount">retentionCount</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/consumers/core/repository/DaysOldRepositoryPurge.html#retentionPeriod">retentionPeriod</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html?is-external=true" title="class or interface in java.text">SimpleDateFormat</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/consumers/core/repository/DaysOldRepositoryPurge.html#timestampParser">timestampParser</a></span></code>&nbsp;</td>
-</tr>
-</table>
 <ul class="blockList">
 <li class="blockList"><a name="fields.inherited.from.class.org.apache.archiva.consumers.core.repository.AbstractRepositoryPurge">
 <!--   -->
@@ -192,7 +158,7 @@ extends <a href="../../../../../../org/apache/archiva/consumers/core/repository/
                       int&nbsp;retentionPeriod,
                       int&nbsp;retentionCount,
                       <a href="../../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;repositorySession,
-                      <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/archiva/repository/events/RepositoryListener.html" title="interface in org.apache.archiva.repository.events">RepositoryListener</a>&gt;&nbsp;listeners)</code>&nbsp;</td>
+                      <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/archiva/metadata/audit/RepositoryListener.html" title="interface in org.apache.archiva.metadata.audit">RepositoryListener</a>&gt;&nbsp;listeners)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -214,10 +180,6 @@ extends <a href="../../../../../../org/apache/archiva/consumers/core/repository/
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/consumers/core/repository/DaysOldRepositoryPurge.html#process-java.lang.String-">process</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path)</code>
 <div class="block">Perform checking on artifact for repository purge</div>
 </td>
-</tr>
-<tr id="i1" class="rowColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Calendar.html?is-external=true" title="class or interface in java.util">Calendar</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/consumers/core/repository/DaysOldRepositoryPurge.html#uniqueSnapshotToCalendar-java.lang.String-">uniqueSnapshotToCalendar</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;version)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -242,41 +204,6 @@ extends <a href="../../../../../../org/apache/archiva/consumers/core/repository/
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a name="timestampParser">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>timestampParser</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html?is-external=true" title="class or interface in java.text">SimpleDateFormat</a> <a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/DaysOldRepositoryPurge.html#line.54">timestampParser</a></pre>
-</li>
-</ul>
-<a name="retentionPeriod">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>retentionPeriod</h4>
-<pre>private&nbsp;int <a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/DaysOldRepositoryPurge.html#line.56">retentionPeriod</a></pre>
-</li>
-</ul>
-<a name="retentionCount">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>retentionCount</h4>
-<pre>private&nbsp;int <a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/DaysOldRepositoryPurge.html#line.58">retentionCount</a></pre>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
@@ -289,11 +216,11 @@ extends <a href="../../../../../../org/apache/archiva/consumers/core/repository/
 <ul class="blockListLast">
 <li class="blockList">
 <h4>DaysOldRepositoryPurge</h4>
-<pre>public&nbsp;<a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/DaysOldRepositoryPurge.html#line.60">DaysOldRepositoryPurge</a>(<a href="../../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;repository,
+<pre>public&nbsp;<a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/DaysOldRepositoryPurge.html#line.53">DaysOldRepositoryPurge</a>(<a href="../../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;repository,
                               int&nbsp;retentionPeriod,
                               int&nbsp;retentionCount,
                               <a href="../../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;repositorySession,
-                              <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/archiva/repository/events/RepositoryListener.html" title="interface in org.apache.archiva.repository.events">RepositoryListener</a>&gt;&nbsp;listeners)</pre>
+                              <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/archiva/metadata/audit/RepositoryListener.html" title="interface in org.apache.archiva.metadata.audit">RepositoryListener</a>&gt;&nbsp;listeners)</pre>
 </li>
 </ul>
 </li>
@@ -307,10 +234,10 @@ extends <a href="../../../../../../org/apache/archiva/consumers/core/repository/
 <a name="process-java.lang.String-">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>process</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/DaysOldRepositoryPurge.html#line.71">process</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path)
+<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/DaysOldRepositoryPurge.html#line.64">process</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path)
              throws <a href="../../../../../../org/apache/archiva/consumers/core/repository/RepositoryPurgeException.html" title="class in org.apache.archiva.consumers.core.repository">RepositoryPurgeException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/archiva/consumers/core/repository/RepositoryPurge.html#process-java.lang.String-">RepositoryPurge</a></code></span></div>
 <div class="block">Perform checking on artifact for repository purge</div>
@@ -320,15 +247,6 @@ extends <a href="../../../../../../org/apache/archiva/consumers/core/repository/
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../../../../../org/apache/archiva/consumers/core/repository/RepositoryPurgeException.html" title="class in org.apache.archiva.consumers.core.repository">RepositoryPurgeException</a></code></dd>
 </dl>
-</li>
-</ul>
-<a name="uniqueSnapshotToCalendar-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>uniqueSnapshotToCalendar</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Calendar.html?is-external=true" title="class or interface in java.util">Calendar</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/consumers/core/repository/DaysOldRepositoryPurge.html#line.151">uniqueSnapshotToCalendar</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;version)</pre>
 </li>
 </ul>
 </li>
@@ -384,14 +302,14 @@ extends <a href="../../../../../../org/apache/archiva/consumers/core/repository/
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li><a href="#nested.classes.inherited.from.class.org.apache.archiva.consumers.core.repository.AbstractRepositoryPurge">Nested</a>&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#fields.inherited.from.class.org.apache.archiva.consumers.core.repository.AbstractRepositoryPurge">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -400,6 +318,6 @@ extends <a href="../../../../../../org/apache/archiva/consumers/core/repository/
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

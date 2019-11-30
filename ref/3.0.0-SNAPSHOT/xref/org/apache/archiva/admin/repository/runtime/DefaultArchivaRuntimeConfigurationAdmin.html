@@ -16,7 +16,7 @@
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> * "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * with the License.  You may obtain a copy of the License at</em>
 <a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2." target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.</a>0</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> * <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing,</em>
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * software distributed under the License is distributed on an</em>
@@ -35,8 +35,8 @@
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.configuration.ArchivaConfiguration;
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.configuration.Configuration;
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.configuration.IndeterminateConfigurationException;
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.components.cache.Cache;
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.components.registry.RegistryException;
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.components.cache.Cache;
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.components.registry.RegistryException;
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> org.springframework.stereotype.Service;
 <a class="jxr_linenumber" name="L33" href="#L33">33</a>  
 <a class="jxr_linenumber" name="L34" href="#L34">34</a>  <strong class="jxr_keyword">import</strong> javax.annotation.PostConstruct;
@@ -48,13 +48,13 @@
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment"> * @since 1.4-M4</em>
 <a class="jxr_linenumber" name="L41" href="#L41">41</a>  <em class="jxr_javadoccomment"> */</em>
 <a class="jxr_linenumber" name="L42" href="#L42">42</a>  @Service( <span class="jxr_string">"archivaRuntimeConfigurationAdmin#default"</span> )
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/apache/archiva/admin/repository/runtime/DefaultArchivaRuntimeConfigurationAdmin.html">DefaultArchivaRuntimeConfigurationAdmin</a>
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>      <strong class="jxr_keyword">extends</strong> <a href="../../../../../../org/apache/archiva/admin/repository/AbstractRepositoryAdmin.html">AbstractRepositoryAdmin</a>
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>      <strong class="jxr_keyword">implements</strong> <a href="../../../../../../org/apache/archiva/admin/model/runtime/ArchivaRuntimeConfigurationAdmin.html">ArchivaRuntimeConfigurationAdmin</a>
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="DefaultArchivaRuntimeConfigurationAdmin" href="../../../../../../org/apache/archiva/admin/repository/runtime/DefaultArchivaRuntimeConfigurationAdmin.html#DefaultArchivaRuntimeConfigurationAdmin">DefaultArchivaRuntimeConfigurationAdmin</a>
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>      <strong class="jxr_keyword">extends</strong> <a name="AbstractRepositoryAdmin" href="../../../../../../org/apache/archiva/admin/repository/AbstractRepositoryAdmin.html#AbstractRepositoryAdmin">AbstractRepositoryAdmin</a>
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>      <strong class="jxr_keyword">implements</strong> <a name="ArchivaRuntimeConfigurationAdmin" href="../../../../../../org/apache/archiva/admin/model/runtime/ArchivaRuntimeConfigurationAdmin.html#ArchivaRuntimeConfigurationAdmin">ArchivaRuntimeConfigurationAdmin</a>
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>  {
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>  
 <a class="jxr_linenumber" name="L48" href="#L48">48</a>      @Inject
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../../org/apache/archiva/configuration/ArchivaConfiguration.html">ArchivaConfiguration</a> archivaConfiguration;
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>      <strong class="jxr_keyword">private</strong> <a name="ArchivaConfiguration" href="../../../../../../org/apache/archiva/configuration/ArchivaConfiguration.html#ArchivaConfiguration">ArchivaConfiguration</a> archivaConfiguration;
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>  
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>      @Inject
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>      @Named( value = <span class="jxr_string">"cache#url-failures-cache"</span> )
@@ -62,22 +62,22 @@
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>  
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>      @PostConstruct
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> initialize()
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>          <strong class="jxr_keyword">throws</strong> <a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html">RepositoryAdminException</a>
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>          <strong class="jxr_keyword">throws</strong> <a name="RepositoryAdminException" href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html#RepositoryAdminException">RepositoryAdminException</a>
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>      {
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>          <a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html">ArchivaRuntimeConfiguration</a> archivaRuntimeConfiguration = getArchivaRuntimeConfiguration();
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>          <a name="ArchivaRuntimeConfiguration" href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#ArchivaRuntimeConfiguration">ArchivaRuntimeConfiguration</a> archivaRuntimeConfiguration = getArchivaRuntimeConfiguration();
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>  
 <a class="jxr_linenumber" name="L61" href="#L61">61</a>          <strong class="jxr_keyword">boolean</strong> save = false;
 <a class="jxr_linenumber" name="L62" href="#L62">62</a>  
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>          <em class="jxr_comment">// NPE free</em>
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>          <strong class="jxr_keyword">if</strong> ( archivaRuntimeConfiguration.getFileLockConfiguration() == <strong class="jxr_keyword">null</strong> )
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>          {
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>              archivaRuntimeConfiguration.setFileLockConfiguration( <strong class="jxr_keyword">new</strong> FileLockConfiguration() );
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>              archivaRuntimeConfiguration.setFileLockConfiguration( <strong class="jxr_keyword">new</strong> <a name="FileLockConfiguration" href="../../../../../../org/apache/archiva/admin/model/beans/FileLockConfiguration.html#FileLockConfiguration">FileLockConfiguration</a>() );
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>          }
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>  
 <a class="jxr_linenumber" name="L69" href="#L69">69</a>          <em class="jxr_comment">// NPE free</em>
 <a class="jxr_linenumber" name="L70" href="#L70">70</a>          <strong class="jxr_keyword">if</strong> ( archivaRuntimeConfiguration.getUrlFailureCacheConfiguration() == <strong class="jxr_keyword">null</strong> )
 <a class="jxr_linenumber" name="L71" href="#L71">71</a>          {
-<a class="jxr_linenumber" name="L72" href="#L72">72</a>              archivaRuntimeConfiguration.setUrlFailureCacheConfiguration( <strong class="jxr_keyword">new</strong> CacheConfiguration() );
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>              archivaRuntimeConfiguration.setUrlFailureCacheConfiguration( <strong class="jxr_keyword">new</strong> <a name="CacheConfiguration" href="../../../../../../org/apache/archiva/admin/model/beans/CacheConfiguration.html#CacheConfiguration">CacheConfiguration</a>() );
 <a class="jxr_linenumber" name="L73" href="#L73">73</a>          }
 <a class="jxr_linenumber" name="L74" href="#L74">74</a>  
 <a class="jxr_linenumber" name="L75" href="#L75">75</a>          <em class="jxr_comment">// if -1 it means non initialized to take values from the spring bean</em>
@@ -127,17 +127,17 @@
 <a class="jxr_linenumber" name="L119" href="#L119">119</a>     }
 <a class="jxr_linenumber" name="L120" href="#L120">120</a> 
 <a class="jxr_linenumber" name="L121" href="#L121">121</a>     @Override
-<a class="jxr_linenumber" name="L122" href="#L122">122</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html">ArchivaRuntimeConfiguration</a> getArchivaRuntimeConfiguration()
-<a class="jxr_linenumber" name="L123" href="#L123">123</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html">RepositoryAdminException</a>
+<a class="jxr_linenumber" name="L122" href="#L122">122</a>     <strong class="jxr_keyword">public</strong> <a name="ArchivaRuntimeConfiguration" href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#ArchivaRuntimeConfiguration">ArchivaRuntimeConfiguration</a> getArchivaRuntimeConfiguration()
+<a class="jxr_linenumber" name="L123" href="#L123">123</a>         <strong class="jxr_keyword">throws</strong> <a name="RepositoryAdminException" href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html#RepositoryAdminException">RepositoryAdminException</a>
 <a class="jxr_linenumber" name="L124" href="#L124">124</a>     {
 <a class="jxr_linenumber" name="L125" href="#L125">125</a>         <strong class="jxr_keyword">return</strong> build( archivaConfiguration.getConfiguration().getArchivaRuntimeConfiguration() );
 <a class="jxr_linenumber" name="L126" href="#L126">126</a>     }
 <a class="jxr_linenumber" name="L127" href="#L127">127</a> 
 <a class="jxr_linenumber" name="L128" href="#L128">128</a>     @Override
-<a class="jxr_linenumber" name="L129" href="#L129">129</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> updateArchivaRuntimeConfiguration( ArchivaRuntimeConfiguration archivaRuntimeConfiguration )
-<a class="jxr_linenumber" name="L130" href="#L130">130</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html">RepositoryAdminException</a>
+<a class="jxr_linenumber" name="L129" href="#L129">129</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> updateArchivaRuntimeConfiguration( <a name="ArchivaRuntimeConfiguration" href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#ArchivaRuntimeConfiguration">ArchivaRuntimeConfiguration</a> archivaRuntimeConfiguration )
+<a class="jxr_linenumber" name="L130" href="#L130">130</a>         <strong class="jxr_keyword">throws</strong> <a name="RepositoryAdminException" href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html#RepositoryAdminException">RepositoryAdminException</a>
 <a class="jxr_linenumber" name="L131" href="#L131">131</a>     {
-<a class="jxr_linenumber" name="L132" href="#L132">132</a>         <a href="../../../../../../org/apache/archiva/configuration/Configuration.html">Configuration</a> configuration = archivaConfiguration.getConfiguration();
+<a class="jxr_linenumber" name="L132" href="#L132">132</a>         <a name="Configuration" href="../../../../../../org/apache/archiva/configuration/Configuration.html#Configuration">Configuration</a> configuration = archivaConfiguration.getConfiguration();
 <a class="jxr_linenumber" name="L133" href="#L133">133</a>         configuration.setArchivaRuntimeConfiguration( build( archivaRuntimeConfiguration ) );
 <a class="jxr_linenumber" name="L134" href="#L134">134</a>         <strong class="jxr_keyword">try</strong>
 <a class="jxr_linenumber" name="L135" href="#L135">135</a>         {
@@ -145,23 +145,23 @@
 <a class="jxr_linenumber" name="L137" href="#L137">137</a>         }
 <a class="jxr_linenumber" name="L138" href="#L138">138</a>         <strong class="jxr_keyword">catch</strong> ( RegistryException e )
 <a class="jxr_linenumber" name="L139" href="#L139">139</a>         {
-<a class="jxr_linenumber" name="L140" href="#L140">140</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html">RepositoryAdminException</a>( e.getMessage(), e );
+<a class="jxr_linenumber" name="L140" href="#L140">140</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="RepositoryAdminException" href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html#RepositoryAdminException">RepositoryAdminException</a>( e.getMessage(), e );
 <a class="jxr_linenumber" name="L141" href="#L141">141</a>         }
-<a class="jxr_linenumber" name="L142" href="#L142">142</a>         <strong class="jxr_keyword">catch</strong> ( IndeterminateConfigurationException e )
+<a class="jxr_linenumber" name="L142" href="#L142">142</a>         <strong class="jxr_keyword">catch</strong> ( <a name="IndeterminateConfigurationException" href="../../../../../../org/apache/archiva/configuration/IndeterminateConfigurationException.html#IndeterminateConfigurationException">IndeterminateConfigurationException</a> e )
 <a class="jxr_linenumber" name="L143" href="#L143">143</a>         {
-<a class="jxr_linenumber" name="L144" href="#L144">144</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html">RepositoryAdminException</a>( e.getMessage(), e );
+<a class="jxr_linenumber" name="L144" href="#L144">144</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="RepositoryAdminException" href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html#RepositoryAdminException">RepositoryAdminException</a>( e.getMessage(), e );
 <a class="jxr_linenumber" name="L145" href="#L145">145</a>         }
 <a class="jxr_linenumber" name="L146" href="#L146">146</a>     }
 <a class="jxr_linenumber" name="L147" href="#L147">147</a> 
-<a class="jxr_linenumber" name="L148" href="#L148">148</a>     <strong class="jxr_keyword">protected</strong> <a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html">ArchivaRuntimeConfiguration</a> build(
+<a class="jxr_linenumber" name="L148" href="#L148">148</a>     <strong class="jxr_keyword">protected</strong> <a name="ArchivaRuntimeConfiguration" href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#ArchivaRuntimeConfiguration">ArchivaRuntimeConfiguration</a> build(
 <a class="jxr_linenumber" name="L149" href="#L149">149</a>         org.apache.archiva.configuration.ArchivaRuntimeConfiguration archivaRuntimeConfiguration )
 <a class="jxr_linenumber" name="L150" href="#L150">150</a>     {
 <a class="jxr_linenumber" name="L151" href="#L151">151</a>         <strong class="jxr_keyword">if</strong> ( archivaRuntimeConfiguration == <strong class="jxr_keyword">null</strong> )
 <a class="jxr_linenumber" name="L152" href="#L152">152</a>         {
-<a class="jxr_linenumber" name="L153" href="#L153">153</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html">ArchivaRuntimeConfiguration</a>();
+<a class="jxr_linenumber" name="L153" href="#L153">153</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a name="ArchivaRuntimeConfiguration" href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#ArchivaRuntimeConfiguration">ArchivaRuntimeConfiguration</a>();
 <a class="jxr_linenumber" name="L154" href="#L154">154</a>         }
 <a class="jxr_linenumber" name="L155" href="#L155">155</a> 
-<a class="jxr_linenumber" name="L156" href="#L156">156</a>         <a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html">ArchivaRuntimeConfiguration</a> res =
+<a class="jxr_linenumber" name="L156" href="#L156">156</a>         <a name="ArchivaRuntimeConfiguration" href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#ArchivaRuntimeConfiguration">ArchivaRuntimeConfiguration</a> res =
 <a class="jxr_linenumber" name="L157" href="#L157">157</a>             getModelMapper().map( archivaRuntimeConfiguration, ArchivaRuntimeConfiguration.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L158" href="#L158">158</a> 
 <a class="jxr_linenumber" name="L159" href="#L159">159</a>         <strong class="jxr_keyword">if</strong> ( archivaRuntimeConfiguration.getUrlFailureCacheConfiguration() != <strong class="jxr_keyword">null</strong> )
@@ -184,7 +184,7 @@
 <a class="jxr_linenumber" name="L176" href="#L176">176</a>     }
 <a class="jxr_linenumber" name="L177" href="#L177">177</a> 
 <a class="jxr_linenumber" name="L178" href="#L178">178</a>     <strong class="jxr_keyword">protected</strong> org.apache.archiva.configuration.ArchivaRuntimeConfiguration build(
-<a class="jxr_linenumber" name="L179" href="#L179">179</a>         <a href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html">ArchivaRuntimeConfiguration</a> archivaRuntimeConfiguration )
+<a class="jxr_linenumber" name="L179" href="#L179">179</a>         <a name="ArchivaRuntimeConfiguration" href="../../../../../../org/apache/archiva/admin/model/beans/ArchivaRuntimeConfiguration.html#ArchivaRuntimeConfiguration">ArchivaRuntimeConfiguration</a> archivaRuntimeConfiguration )
 <a class="jxr_linenumber" name="L180" href="#L180">180</a>     {
 <a class="jxr_linenumber" name="L181" href="#L181">181</a>         <strong class="jxr_keyword">if</strong> ( archivaRuntimeConfiguration == <strong class="jxr_keyword">null</strong> )
 <a class="jxr_linenumber" name="L182" href="#L182">182</a>         {
@@ -218,6 +218,6 @@
 <a class="jxr_linenumber" name="L210" href="#L210">210</a> 
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
 </body>
 </html>

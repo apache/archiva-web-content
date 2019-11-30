@@ -16,7 +16,7 @@
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> * "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * with the License.  You may obtain a copy of the License at</em>
 <a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2." target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.</a>0</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing,</em>
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * software distributed under the License is distributed on an</em>
@@ -36,7 +36,7 @@
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.common.ldap.connection.LdapConnectionFactory;
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.common.ldap.connection.LdapException;
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.common.ldap.user.LdapUserMapper;
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.components.cache.Cache;
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.components.cache.Cache;
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.policy.CookieSettings;
 <a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.policy.PasswordRule;
 <a class="jxr_linenumber" name="L34" href="#L34">34</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.rbac.RBACManager;
@@ -47,7 +47,7 @@
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.<strong class="jxr_keyword">rest</strong>.api.model.UserManagerImplementationInformation;
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.<strong class="jxr_keyword">rest</strong>.api.services.ArchivaRestServiceException;
 <a class="jxr_linenumber" name="L41" href="#L41">41</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.<strong class="jxr_keyword">rest</strong>.api.services.RedbackRuntimeConfigurationService;
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.lang.StringUtils;
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.lang3.StringUtils;
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>  <strong class="jxr_keyword">import</strong> org.springframework.context.ApplicationContext;
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>  <strong class="jxr_keyword">import</strong> org.springframework.stereotype.Service;
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>  
@@ -66,13 +66,13 @@
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>  <em class="jxr_javadoccomment"> * @since 1.4-M4</em>
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>  <em class="jxr_javadoccomment"> */</em>
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>  @Service(<span class="jxr_string">"redbackRuntimeConfigurationService#rest"</span>)
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html">DefaultRedbackRuntimeConfigurationService</a>
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>      <strong class="jxr_keyword">extends</strong> <a href="../../../../../org/apache/archiva/rest/services/AbstractRestService.html">AbstractRestService</a>
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>      <strong class="jxr_keyword">implements</strong> <a href="../../../../../org/apache/archiva/rest/api/services/RedbackRuntimeConfigurationService.html">RedbackRuntimeConfigurationService</a>
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="DefaultRedbackRuntimeConfigurationService" href="../../../../../org/apache/archiva/rest/services/DefaultRedbackRuntimeConfigurationService.html#DefaultRedbackRuntimeConfigurationService">DefaultRedbackRuntimeConfigurationService</a>
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>      <strong class="jxr_keyword">extends</strong> <a name="AbstractRestService" href="../../../../../org/apache/archiva/rest/services/AbstractRestService.html#AbstractRestService">AbstractRestService</a>
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>      <strong class="jxr_keyword">implements</strong> <a name="RedbackRuntimeConfigurationService" href="../../../../../org/apache/archiva/rest/api/services/RedbackRuntimeConfigurationService.html#RedbackRuntimeConfigurationService">RedbackRuntimeConfigurationService</a>
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>  {
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>  
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>      @Inject
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../org/apache/archiva/admin/model/runtime/RedbackRuntimeConfigurationAdmin.html">RedbackRuntimeConfigurationAdmin</a> redbackRuntimeConfigurationAdmin;
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>      <strong class="jxr_keyword">private</strong> <a name="RedbackRuntimeConfigurationAdmin" href="../../../../../org/apache/archiva/admin/model/runtime/RedbackRuntimeConfigurationAdmin.html#RedbackRuntimeConfigurationAdmin">RedbackRuntimeConfigurationAdmin</a> redbackRuntimeConfigurationAdmin;
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>  
 <a class="jxr_linenumber" name="L69" href="#L69">69</a>      @Inject
 <a class="jxr_linenumber" name="L70" href="#L70">70</a>      @Named(value = <span class="jxr_string">"userManager#default"</span>)
@@ -101,27 +101,27 @@
 <a class="jxr_linenumber" name="L93" href="#L93">93</a>  
 <a class="jxr_linenumber" name="L94" href="#L94">94</a>  
 <a class="jxr_linenumber" name="L95" href="#L95">95</a>      @Override
-<a class="jxr_linenumber" name="L96" href="#L96">96</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html">RedbackRuntimeConfiguration</a> getRedbackRuntimeConfiguration()
-<a class="jxr_linenumber" name="L97" href="#L97">97</a>          <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>      <strong class="jxr_keyword">public</strong> <a name="RedbackRuntimeConfiguration" href="../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration">RedbackRuntimeConfiguration</a> getRedbackRuntimeConfiguration()
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>          <strong class="jxr_keyword">throws</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>
 <a class="jxr_linenumber" name="L98" href="#L98">98</a>      {
 <a class="jxr_linenumber" name="L99" href="#L99">99</a>          <strong class="jxr_keyword">try</strong>
 <a class="jxr_linenumber" name="L100" href="#L100">100</a>         {
-<a class="jxr_linenumber" name="L101" href="#L101">101</a>             <a href="../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html">RedbackRuntimeConfiguration</a> redbackRuntimeConfiguration =
+<a class="jxr_linenumber" name="L101" href="#L101">101</a>             <a name="RedbackRuntimeConfiguration" href="../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration">RedbackRuntimeConfiguration</a> redbackRuntimeConfiguration =
 <a class="jxr_linenumber" name="L102" href="#L102">102</a>                 redbackRuntimeConfigurationAdmin.getRedbackRuntimeConfiguration();
 <a class="jxr_linenumber" name="L103" href="#L103">103</a> 
 <a class="jxr_linenumber" name="L104" href="#L104">104</a>             log.debug( <span class="jxr_string">"getRedbackRuntimeConfiguration -&gt; {}"</span>, redbackRuntimeConfiguration );
 <a class="jxr_linenumber" name="L105" href="#L105">105</a> 
 <a class="jxr_linenumber" name="L106" href="#L106">106</a>             <strong class="jxr_keyword">return</strong> redbackRuntimeConfiguration;
 <a class="jxr_linenumber" name="L107" href="#L107">107</a>         }
-<a class="jxr_linenumber" name="L108" href="#L108">108</a>         <strong class="jxr_keyword">catch</strong> ( RepositoryAdminException e )
+<a class="jxr_linenumber" name="L108" href="#L108">108</a>         <strong class="jxr_keyword">catch</strong> ( <a name="RepositoryAdminException" href="../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html#RepositoryAdminException">RepositoryAdminException</a> e )
 <a class="jxr_linenumber" name="L109" href="#L109">109</a>         {
-<a class="jxr_linenumber" name="L110" href="#L110">110</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>( e.getMessage(), e );
+<a class="jxr_linenumber" name="L110" href="#L110">110</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>( e.getMessage(), e );
 <a class="jxr_linenumber" name="L111" href="#L111">111</a>         }
 <a class="jxr_linenumber" name="L112" href="#L112">112</a>     }
 <a class="jxr_linenumber" name="L113" href="#L113">113</a> 
 <a class="jxr_linenumber" name="L114" href="#L114">114</a>     @Override
-<a class="jxr_linenumber" name="L115" href="#L115">115</a>     <strong class="jxr_keyword">public</strong> Boolean updateRedbackRuntimeConfiguration( RedbackRuntimeConfiguration redbackRuntimeConfiguration )
-<a class="jxr_linenumber" name="L116" href="#L116">116</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>
+<a class="jxr_linenumber" name="L115" href="#L115">115</a>     <strong class="jxr_keyword">public</strong> Boolean updateRedbackRuntimeConfiguration( <a name="RedbackRuntimeConfiguration" href="../../../../../org/apache/archiva/admin/model/beans/RedbackRuntimeConfiguration.html#RedbackRuntimeConfiguration">RedbackRuntimeConfiguration</a> redbackRuntimeConfiguration )
+<a class="jxr_linenumber" name="L116" href="#L116">116</a>         <strong class="jxr_keyword">throws</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>
 <a class="jxr_linenumber" name="L117" href="#L117">117</a>     {
 <a class="jxr_linenumber" name="L118" href="#L118">118</a>         <strong class="jxr_keyword">try</strong>
 <a class="jxr_linenumber" name="L119" href="#L119">119</a>         {
@@ -175,7 +175,7 @@
 <a class="jxr_linenumber" name="L167" href="#L167">167</a>                 <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L168" href="#L168">168</a>                     ldapConnectionFactory.initialize();
 <a class="jxr_linenumber" name="L169" href="#L169">169</a>                 } <strong class="jxr_keyword">catch</strong> (Exception e) {
-<a class="jxr_linenumber" name="L170" href="#L170">170</a>                     <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a> newEx = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>(e.getMessage(), e);
+<a class="jxr_linenumber" name="L170" href="#L170">170</a>                     <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva<a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>estServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a> newEx = <strong class="jxr_keyword">new</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>(e.getMessage(), e);
 <a class="jxr_linenumber" name="L171" href="#L171">171</a>                     newEx.setErrorKey(<span class="jxr_string">"error.ldap.connectionFactory.init.failed"</span>);
 <a class="jxr_linenumber" name="L172" href="#L172">172</a>                     <strong class="jxr_keyword">throw</strong> newEx;
 <a class="jxr_linenumber" name="L173" href="#L173">173</a>                 }
@@ -222,7 +222,7 @@
 <a class="jxr_linenumber" name="L214" href="#L214">214</a>                 <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L215" href="#L215">215</a>                     ldapUserMapper.initialize();
 <a class="jxr_linenumber" name="L216" href="#L216">216</a>                 } <strong class="jxr_keyword">catch</strong> (Exception e) {
-<a class="jxr_linenumber" name="L217" href="#L217">217</a>                     <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a> newEx = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>(e.getMessage(), e);
+<a class="jxr_linenumber" name="L217" href="#L217">217</a>                     <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva<a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>estServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a> newEx = <strong class="jxr_keyword">new</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>(e.getMessage(), e);
 <a class="jxr_linenumber" name="L218" href="#L218">218</a>                     newEx.setErrorKey(<span class="jxr_string">"error.ldap.userMapper.init.failed"</span>);
 <a class="jxr_linenumber" name="L219" href="#L219">219</a>                     <strong class="jxr_keyword">throw</strong> newEx;
 <a class="jxr_linenumber" name="L220" href="#L220">220</a>                 }
@@ -233,19 +233,19 @@
 <a class="jxr_linenumber" name="L225" href="#L225">225</a> 
 <a class="jxr_linenumber" name="L226" href="#L226">226</a>             <strong class="jxr_keyword">return</strong> Boolean.TRUE;
 <a class="jxr_linenumber" name="L227" href="#L227">227</a>         }
-<a class="jxr_linenumber" name="L228" href="#L228">228</a>         <strong class="jxr_keyword">catch</strong> (ArchivaRestServiceException e) {
+<a class="jxr_linenumber" name="L228" href="#L228">228</a>         <strong class="jxr_keyword">catch</strong> (<a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a> e) {
 <a class="jxr_linenumber" name="L229" href="#L229">229</a>             log.error(e.getMessage(), e);
 <a class="jxr_linenumber" name="L230" href="#L230">230</a>             <strong class="jxr_keyword">throw</strong> e;
 <a class="jxr_linenumber" name="L231" href="#L231">231</a>         } <strong class="jxr_keyword">catch</strong> ( Exception e )
 <a class="jxr_linenumber" name="L232" href="#L232">232</a>         {
 <a class="jxr_linenumber" name="L233" href="#L233">233</a>             log.error( e.getMessage(), e );
-<a class="jxr_linenumber" name="L234" href="#L234">234</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>(e.getMessage(), e);
+<a class="jxr_linenumber" name="L234" href="#L234">234</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>(e.getMessage(), e);
 <a class="jxr_linenumber" name="L235" href="#L235">235</a>         }
 <a class="jxr_linenumber" name="L236" href="#L236">236</a>     }
 <a class="jxr_linenumber" name="L237" href="#L237">237</a> 
 <a class="jxr_linenumber" name="L238" href="#L238">238</a>     @Override
 <a class="jxr_linenumber" name="L239" href="#L239">239</a>     <strong class="jxr_keyword">public</strong> List&lt;UserManagerImplementationInformation&gt; getUserManagerImplementationInformations()
-<a class="jxr_linenumber" name="L240" href="#L240">240</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>
+<a class="jxr_linenumber" name="L240" href="#L240">240</a>         <strong class="jxr_keyword">throws</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>
 <a class="jxr_linenumber" name="L241" href="#L241">241</a>     {
 <a class="jxr_linenumber" name="L242" href="#L242">242</a> 
 <a class="jxr_linenumber" name="L243" href="#L243">243</a>         Map&lt;String, UserManager&gt; beans = applicationContext.getBeansOfType( UserManager.<strong class="jxr_keyword">class</strong> );
@@ -262,7 +262,7 @@
 <a class="jxr_linenumber" name="L254" href="#L254">254</a>             UserManager userManager = applicationContext.getBean( entry.getKey(), UserManager.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L255" href="#L255">255</a>             <strong class="jxr_keyword">if</strong> ( userManager.isFinalImplementation() )
 <a class="jxr_linenumber" name="L256" href="#L256">256</a>             {
-<a class="jxr_linenumber" name="L257" href="#L257">257</a>                 <a href="../../../../../org/apache/archiva/rest/api/model/UserManagerImplementationInformation.html">UserManagerImplementationInformation</a> information = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/model/UserManagerImplementationInformation.html">UserManagerImplementationInformation</a>();
+<a class="jxr_linenumber" name="L257" href="#L257">257</a>                 <a name="UserManagerImplementationInformation" href="../../../../../org/apache/archiva/rest/<a name="UserManagerImplementationInformation" href="../../../../../org/apache/archiva/rest/api/model/UserManagerImplementationInformation.html#UserManagerImplementationInformation">UserManagerImplementationInformation</a>nformation.html#UserManagerImplementationInformation">UserManagerImplementationInformation</a> information = <strong class="jxr_keyword">new</strong> <a name="UserManagerImplementationInformation" href="../../../../../org/apache/archiva/rest/api/model/UserManagerImplementationInformation.html#UserManagerImplementationInformation">UserManagerImplementationInformation</a>();
 <a class="jxr_linenumber" name="L258" href="#L258">258</a>                 information.setBeanId( StringUtils.substringAfter( entry.getKey(), <span class="jxr_string">"#"</span> ) );
 <a class="jxr_linenumber" name="L259" href="#L259">259</a>                 information.setDescriptionKey( userManager.getDescriptionKey() );
 <a class="jxr_linenumber" name="L260" href="#L260">260</a>                 information.setReadOnly( userManager.isReadOnly() );
@@ -275,7 +275,7 @@
 <a class="jxr_linenumber" name="L267" href="#L267">267</a> 
 <a class="jxr_linenumber" name="L268" href="#L268">268</a>     @Override
 <a class="jxr_linenumber" name="L269" href="#L269">269</a>     <strong class="jxr_keyword">public</strong> List&lt;RBACManagerImplementationInformation&gt; getRbacManagerImplementationInformations()
-<a class="jxr_linenumber" name="L270" href="#L270">270</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>
+<a class="jxr_linenumber" name="L270" href="#L270">270</a>         <strong class="jxr_keyword">throws</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>
 <a class="jxr_linenumber" name="L271" href="#L271">271</a>     {
 <a class="jxr_linenumber" name="L272" href="#L272">272</a>         Map&lt;String, RBACManager&gt; beans = applicationContext.getBeansOfType( RBACManager.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L273" href="#L273">273</a> 
@@ -291,7 +291,7 @@
 <a class="jxr_linenumber" name="L283" href="#L283">283</a>             RBACManager rbacManager = applicationContext.getBean( entry.getKey(), RBACManager.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L284" href="#L284">284</a>             <strong class="jxr_keyword">if</strong> ( rbacManager.isFinalImplementation() )
 <a class="jxr_linenumber" name="L285" href="#L285">285</a>             {
-<a class="jxr_linenumber" name="L286" href="#L286">286</a>                 <a href="../../../../../org/apache/archiva/rest/api/model/RBACManagerImplementationInformation.html">RBACManagerImplementationInformation</a> information = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/model/RBACManagerImplementationInformation.html">RBACManagerImplementationInformation</a>();
+<a class="jxr_linenumber" name="L286" href="#L286">286</a>                 <a name="RBACManagerImplementationInformation" href="../../../../../org/apache/archiva/rest/<a name="RBACManagerImplementationInformation" href="../../../../../org/apache/archiva/rest/api/model/RBACManagerImplementationInformation.html#RBACManagerImplementationInformation">RBACManagerImplementationInformation</a>nformation.html#RBACManagerImplementationInformation">RBACManagerImplementationInformation</a> information = <strong class="jxr_keyword">new</strong> <a name="RBACManagerImplementationInformation" href="../../../../../org/apache/archiva/rest/api/model/RBACManagerImplementationInformation.html#RBACManagerImplementationInformation">RBACManagerImplementationInformation</a>();
 <a class="jxr_linenumber" name="L287" href="#L287">287</a>                 information.setBeanId( StringUtils.substringAfter( entry.getKey(), <span class="jxr_string">"#"</span> ) );
 <a class="jxr_linenumber" name="L288" href="#L288">288</a>                 information.setDescriptionKey( rbacManager.getDescriptionKey() );
 <a class="jxr_linenumber" name="L289" href="#L289">289</a>                 information.setReadOnly( rbacManager.isReadOnly() );
@@ -303,16 +303,16 @@
 <a class="jxr_linenumber" name="L295" href="#L295">295</a>     }
 <a class="jxr_linenumber" name="L296" href="#L296">296</a> 
 <a class="jxr_linenumber" name="L297" href="#L297">297</a>     @Override
-<a class="jxr_linenumber" name="L298" href="#L298">298</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../org/apache/archiva/rest/api/model/RedbackImplementationsInformations.html">RedbackImplementationsInformations</a> getRedbackImplementationsInformations()
-<a class="jxr_linenumber" name="L299" href="#L299">299</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>
+<a class="jxr_linenumber" name="L298" href="#L298">298</a>     <strong class="jxr_keyword">public</strong> <a name="RedbackImplementationsInformations" href="../../../../../org/apache/archiva/rest/api/model/RedbackImplementationsInformations.html#RedbackImplementationsInformations">RedbackImplementationsInformations</a> getRedbackImplementationsInformations()
+<a class="jxr_linenumber" name="L299" href="#L299">299</a>         <strong class="jxr_keyword">throws</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>
 <a class="jxr_linenumber" name="L300" href="#L300">300</a>     {
-<a class="jxr_linenumber" name="L301" href="#L301">301</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/model/RedbackImplementationsInformations.html">RedbackImplementationsInformations</a>( getUserManagerImplementationInformations(),
+<a class="jxr_linenumber" name="L301" href="#L301">301</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a name="RedbackImplementationsInformations" href="../../../../../org/apache/archiva/rest/api/model/RedbackImplementationsInformations.html#RedbackImplementationsInformations">RedbackImplementationsInformations</a>( getUserManagerImplementationInformations(),
 <a class="jxr_linenumber" name="L302" href="#L302">302</a>                                                        getRbacManagerImplementationInformations() );
 <a class="jxr_linenumber" name="L303" href="#L303">303</a>     }
 <a class="jxr_linenumber" name="L304" href="#L304">304</a> 
 <a class="jxr_linenumber" name="L305" href="#L305">305</a>     @Override
 <a class="jxr_linenumber" name="L306" href="#L306">306</a>     <strong class="jxr_keyword">public</strong> Boolean checkLdapConnection()
-<a class="jxr_linenumber" name="L307" href="#L307">307</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>
+<a class="jxr_linenumber" name="L307" href="#L307">307</a>         <strong class="jxr_keyword">throws</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>
 <a class="jxr_linenumber" name="L308" href="#L308">308</a>     {
 <a class="jxr_linenumber" name="L309" href="#L309">309</a>         LdapConnection ldapConnection = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L310" href="#L310">310</a>         <strong class="jxr_keyword">try</strong>
@@ -322,7 +322,7 @@
 <a class="jxr_linenumber" name="L314" href="#L314">314</a>         <strong class="jxr_keyword">catch</strong> ( LdapException e )
 <a class="jxr_linenumber" name="L315" href="#L315">315</a>         {
 <a class="jxr_linenumber" name="L316" href="#L316">316</a>             log.warn( <span class="jxr_string">"fail to get ldapConnection: {}"</span>, e.getMessage(), e );
-<a class="jxr_linenumber" name="L317" href="#L317">317</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>( e.getMessage(), e );
+<a class="jxr_linenumber" name="L317" href="#L317">317</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>( e.getMessage(), e );
 <a class="jxr_linenumber" name="L318" href="#L318">318</a>         }
 <a class="jxr_linenumber" name="L319" href="#L319">319</a>         <strong class="jxr_keyword">finally</strong>
 <a class="jxr_linenumber" name="L320" href="#L320">320</a>         {
@@ -337,8 +337,8 @@
 <a class="jxr_linenumber" name="L329" href="#L329">329</a>     }
 <a class="jxr_linenumber" name="L330" href="#L330">330</a> 
 <a class="jxr_linenumber" name="L331" href="#L331">331</a>     @Override
-<a class="jxr_linenumber" name="L332" href="#L332">332</a>     <strong class="jxr_keyword">public</strong> Boolean checkLdapConnection( LdapConfiguration ldapConfiguration )
-<a class="jxr_linenumber" name="L333" href="#L333">333</a>         <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>
+<a class="jxr_linenumber" name="L332" href="#L332">332</a>     <strong class="jxr_keyword">public</strong> Boolean checkLdapConnection( <a name="LdapConfiguration" href="../../../../../org/apache/archiva/admin/model/beans/LdapConfiguration.html#LdapConfiguration">LdapConfiguration</a> ldapConfiguration )
+<a class="jxr_linenumber" name="L333" href="#L333">333</a>         <strong class="jxr_keyword">throws</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>
 <a class="jxr_linenumber" name="L334" href="#L334">334</a>     {
 <a class="jxr_linenumber" name="L335" href="#L335">335</a>         LdapConnection ldapConnection = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L336" href="#L336">336</a>         <strong class="jxr_keyword">try</strong>
@@ -372,12 +372,12 @@
 <a class="jxr_linenumber" name="L364" href="#L364">364</a>         <strong class="jxr_keyword">catch</strong> ( InvalidNameException e )
 <a class="jxr_linenumber" name="L365" href="#L365">365</a>         {
 <a class="jxr_linenumber" name="L366" href="#L366">366</a>             log.warn( <span class="jxr_string">"fail to get ldapConnection: {}"</span>, e.getMessage(), e );
-<a class="jxr_linenumber" name="L367" href="#L367">367</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>( e.getMessage(), e );
+<a class="jxr_linenumber" name="L367" href="#L367">367</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>( e.getMessage(), e );
 <a class="jxr_linenumber" name="L368" href="#L368">368</a>         }
 <a class="jxr_linenumber" name="L369" href="#L369">369</a>         <strong class="jxr_keyword">catch</strong> ( LdapException e )
 <a class="jxr_linenumber" name="L370" href="#L370">370</a>         {
 <a class="jxr_linenumber" name="L371" href="#L371">371</a>             log.warn( <span class="jxr_string">"fail to get ldapConnection: {}"</span>, e.getMessage(), e );
-<a class="jxr_linenumber" name="L372" href="#L372">372</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html">ArchivaRestServiceException</a>( e.getMessage(), e );
+<a class="jxr_linenumber" name="L372" href="#L372">372</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ArchivaRestServiceException" href="../../../../../org/apache/archiva/rest/api/services/ArchivaRestServiceException.html#ArchivaRestServiceException">ArchivaRestServiceException</a>( e.getMessage(), e );
 <a class="jxr_linenumber" name="L373" href="#L373">373</a>         }
 <a class="jxr_linenumber" name="L374" href="#L374">374</a>         <strong class="jxr_keyword">finally</strong>
 <a class="jxr_linenumber" name="L375" href="#L375">375</a>         {
@@ -410,6 +410,6 @@
 <a class="jxr_linenumber" name="L402" href="#L402">402</a> 
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
 </body>
 </html>

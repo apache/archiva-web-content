@@ -41,8 +41,8 @@
 <span class="sourceLineNo">033</span>import org.apache.archiva.repository.ReleaseScheme;<a name="line.33"></a>
 <span class="sourceLineNo">034</span>import org.apache.archiva.repository.RepositoryException;<a name="line.34"></a>
 <span class="sourceLineNo">035</span>import org.apache.archiva.repository.RepositoryRegistry;<a name="line.35"></a>
-<span class="sourceLineNo">036</span>import org.apache.archiva.repository.events.RepositoryListener;<a name="line.36"></a>
-<span class="sourceLineNo">037</span>import org.apache.archiva.repository.metadata.MetadataTools;<a name="line.37"></a>
+<span class="sourceLineNo">036</span>import org.apache.archiva.metadata.audit.RepositoryListener;<a name="line.36"></a>
+<span class="sourceLineNo">037</span>import org.apache.archiva.repository.metadata.base.MetadataTools;<a name="line.37"></a>
 <span class="sourceLineNo">038</span>import org.apache.archiva.repository.metadata.RepositoryMetadataException;<a name="line.38"></a>
 <span class="sourceLineNo">039</span><a name="line.39"></a>
 <span class="sourceLineNo">040</span>import java.io.IOException;<a name="line.40"></a>
@@ -166,8 +166,8 @@
 <span class="sourceLineNo">158</span>                        artifactRef.getArtifactId( ), artifactRef.getVersion( ),<a name="line.158"></a>
 <span class="sourceLineNo">159</span>                        artifactFile.getFileName().toString() );<a name="line.159"></a>
 <span class="sourceLineNo">160</span>                }<a name="line.160"></a>
-<span class="sourceLineNo">161</span>                metadataRepository.removeProjectVersion( repository.getId( ), artifactRef.getGroupId( ),<a name="line.161"></a>
-<span class="sourceLineNo">162</span>                    artifactRef.getArtifactId( ), artifactRef.getVersion( ) );<a name="line.162"></a>
+<span class="sourceLineNo">161</span>                metadataRepository.removeProjectVersion( repositorySession, repository.getId( ),<a name="line.161"></a>
+<span class="sourceLineNo">162</span>                    artifactRef.getGroupId( ), artifactRef.getArtifactId( ), artifactRef.getVersion( ) );<a name="line.162"></a>
 <span class="sourceLineNo">163</span><a name="line.163"></a>
 <span class="sourceLineNo">164</span>                needsMetadataUpdate = true;<a name="line.164"></a>
 <span class="sourceLineNo">165</span>            }<a name="line.165"></a>

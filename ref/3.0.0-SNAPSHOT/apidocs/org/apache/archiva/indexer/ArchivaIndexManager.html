@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/archiva/indexer/GenericIndexManager.html" title="class in org.apache.archiva.indexer"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/archiva/indexer/IndexCreationFailedException.html" title="class in org.apache.archiva.indexer"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/archiva/indexer/ArchivaIndexManager.html" target="_top">Frames</a></li>
@@ -75,13 +75,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -101,17 +101,40 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../org/apache/archiva/indexer/GenericIndexManager.html" title="class in org.apache.archiva.indexer">GenericIndexManager</a>, <a href="../../../../org/apache/archiva/indexer/maven/MavenIndexManager.html" title="class in org.apache.archiva.indexer.maven">MavenIndexManager</a></dd>
+<dd><a href="../../../../org/apache/archiva/indexer/maven/MavenIndexManager.html" title="class in org.apache.archiva.indexer.maven">MavenIndexManager</a></dd>
 </dl>
 <hr>
 <br>
-<pre>public interface <a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.28">ArchivaIndexManager</a></pre>
+<pre>public interface <a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.29">ArchivaIndexManager</a></pre>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#DEFAULT_INDEX_PATH">DEFAULT_INDEX_PATH</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#DEFAULT_PACKED_INDEX_PATH">DEFAULT_PACKED_INDEX_PATH</a></span></code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
 <!-- ========== METHOD SUMMARY =========== -->
 <ul class="blockList">
 <li class="blockList"><a name="method.summary">
@@ -139,53 +162,61 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#mergeContexts-org.apache.archiva.repository.Repository-java.util.List-boolean-">mergeContexts</a></span>(<a href="../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;destinationRepo,
+             <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&gt;&nbsp;contexts,
+             boolean&nbsp;packIndex)</code>
+<div class="block">Merges a list of contexts into a single one.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#move-org.apache.archiva.indexer.ArchivaIndexingContext-org.apache.archiva.repository.Repository-">move</a></span>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
     <a href="../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo)</code>
 <div class="block">Moves the context to a new directory.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#pack-org.apache.archiva.indexer.ArchivaIndexingContext-">pack</a></span>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)</code>
 <div class="block">Compresses the index to a more dense packed format.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#removeArtifactsFromIndex-org.apache.archiva.indexer.ArchivaIndexingContext-java.util.Collection-">removeArtifactsFromIndex</a></span>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
                         <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&gt;&nbsp;artifactReference)</code>
 <div class="block">Removes a list of artifacts from the index.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#reset-org.apache.archiva.indexer.ArchivaIndexingContext-">reset</a></span>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)</code>
 <div class="block">Reinitializes the index.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#scan-org.apache.archiva.indexer.ArchivaIndexingContext-">scan</a></span>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)</code>
 <div class="block">Rescans the whole repository, this index is associated to.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#supportsRepository-org.apache.archiva.repository.RepositoryType-">supportsRepository</a></span>(<a href="../../../../org/apache/archiva/repository/RepositoryType.html" title="enum in org.apache.archiva.repository">RepositoryType</a>&nbsp;type)</code>
 <div class="block">Returns true, if this manager is able to apply the index actions for the given repository type.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#update-org.apache.archiva.indexer.ArchivaIndexingContext-boolean-">update</a></span>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
       boolean&nbsp;fullUpdate)</code>
 <div class="block">Updates the index from the remote url.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#updateLocalIndexPath-org.apache.archiva.repository.Repository-">updateLocalIndexPath</a></span>(<a href="../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo)</code>
-<div class="block">Returns the local path where the index is stored.</div>
+<div class="block">Updates the local path where the index is stored using the repository information.</div>
 </td>
 </tr>
 </table>
@@ -197,6 +228,40 @@ var activeTableTab = "activeTableTab";
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="DEFAULT_INDEX_PATH">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DEFAULT_INDEX_PATH</h4>
+<pre>static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.31">DEFAULT_INDEX_PATH</a></pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../constant-values.html#org.apache.archiva.indexer.ArchivaIndexManager.DEFAULT_INDEX_PATH">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="DEFAULT_PACKED_INDEX_PATH">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>DEFAULT_PACKED_INDEX_PATH</h4>
+<pre>static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.32">DEFAULT_PACKED_INDEX_PATH</a></pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../constant-values.html#org.apache.archiva.indexer.ArchivaIndexManager.DEFAULT_PACKED_INDEX_PATH">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
 <!-- ============ METHOD DETAIL ========== -->
 <ul class="blockList">
 <li class="blockList"><a name="method.detail">
@@ -209,7 +274,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>pack</h4>
-<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.34">pack</a>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)
+<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.38">pack</a>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)
    throws <a href="../../../../org/apache/archiva/indexer/IndexUpdateFailedException.html" title="class in org.apache.archiva.indexer">IndexUpdateFailedException</a></pre>
 <div class="block">Compresses the index to a more dense packed format.</div>
 <dl>
@@ -226,7 +291,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>scan</h4>
-<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.41">scan</a>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)
+<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.45">scan</a>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)
    throws <a href="../../../../org/apache/archiva/indexer/IndexUpdateFailedException.html" title="class in org.apache.archiva.indexer">IndexUpdateFailedException</a></pre>
 <div class="block">Rescans the whole repository, this index is associated to.</div>
 <dl>
@@ -243,7 +308,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>update</h4>
-<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.48">update</a>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
+<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.52">update</a>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
             boolean&nbsp;fullUpdate)
      throws <a href="../../../../org/apache/archiva/indexer/IndexUpdateFailedException.html" title="class in org.apache.archiva.indexer">IndexUpdateFailedException</a></pre>
 <div class="block">Updates the index from the remote url.</div>
@@ -262,7 +327,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>addArtifactsToIndex</h4>
-<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.55">addArtifactsToIndex</a>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
+<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.59">addArtifactsToIndex</a>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
                          <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&gt;&nbsp;artifactReference)
                   throws <a href="../../../../org/apache/archiva/indexer/IndexUpdateFailedException.html" title="class in org.apache.archiva.indexer">IndexUpdateFailedException</a></pre>
 <div class="block">Adds a list of artifacts to the index.</div>
@@ -281,7 +346,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>removeArtifactsFromIndex</h4>
-<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.62">removeArtifactsFromIndex</a>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
+<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.66">removeArtifactsFromIndex</a>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
                               <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&gt;&nbsp;artifactReference)
                        throws <a href="../../../../org/apache/archiva/indexer/IndexUpdateFailedException.html" title="class in org.apache.archiva.indexer">IndexUpdateFailedException</a></pre>
 <div class="block">Removes a list of artifacts from the index.</div>
@@ -300,7 +365,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>supportsRepository</h4>
-<pre>boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.70">supportsRepository</a>(<a href="../../../../org/apache/archiva/repository/RepositoryType.html" title="enum in org.apache.archiva.repository">RepositoryType</a>&nbsp;type)</pre>
+<pre>boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.74">supportsRepository</a>(<a href="../../../../org/apache/archiva/repository/RepositoryType.html" title="enum in org.apache.archiva.repository">RepositoryType</a>&nbsp;type)</pre>
 <div class="block">Returns true, if this manager is able to apply the index actions for the given repository type.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -315,7 +380,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>createContext</h4>
-<pre><a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.77">createContext</a>(<a href="../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository)
+<pre><a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.81">createContext</a>(<a href="../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository)
                               throws <a href="../../../../org/apache/archiva/indexer/IndexCreationFailedException.html" title="class in org.apache.archiva.indexer">IndexCreationFailedException</a></pre>
 <div class="block">Creates the indexing context for the given repository.</div>
 <dl>
@@ -334,7 +399,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>reset</h4>
-<pre><a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.85">reset</a>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)
+<pre><a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.89">reset</a>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)
                       throws <a href="../../../../org/apache/archiva/indexer/IndexUpdateFailedException.html" title="class in org.apache.archiva.indexer">IndexUpdateFailedException</a></pre>
 <div class="block">Reinitializes the index. E.g. remove the files and create a new empty index.</div>
 <dl>
@@ -353,7 +418,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>move</h4>
-<pre><a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.96">move</a>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
+<pre><a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.100">move</a>(<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
                             <a href="../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo)
                      throws <a href="../../../../org/apache/archiva/indexer/IndexCreationFailedException.html" title="class in org.apache.archiva.indexer">IndexCreationFailedException</a></pre>
 <div class="block">Moves the context to a new directory. It's up to the implementation, if a new context is created
@@ -372,11 +437,36 @@ var activeTableTab = "activeTableTab";
 <a name="updateLocalIndexPath-org.apache.archiva.repository.Repository-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>updateLocalIndexPath</h4>
-<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.102">updateLocalIndexPath</a>(<a href="../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo)</pre>
-<div class="block">Returns the local path where the index is stored.</div>
+<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.106">updateLocalIndexPath</a>(<a href="../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo)</pre>
+<div class="block">Updates the local path where the index is stored using the repository information.</div>
+</li>
+</ul>
+<a name="mergeContexts-org.apache.archiva.repository.Repository-java.util.List-boolean-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>mergeContexts</h4>
+<pre><a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/indexer/ArchivaIndexManager.html#line.118">mergeContexts</a>(<a href="../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;destinationRepo,
+                                     <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&gt;&nbsp;contexts,
+                                     boolean&nbsp;packIndex)
+                              throws <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true" title="class or interface in java.lang">UnsupportedOperationException</a>,
+                                     <a href="../../../../org/apache/archiva/indexer/IndexCreationFailedException.html" title="class in org.apache.archiva.indexer">IndexCreationFailedException</a></pre>
+<div class="block">Merges a list of contexts into a single one.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>destinationRepo</code> - The destination repository</dd>
+<dd><code>contexts</code> - The contexts of the indexes that should be merged.</dd>
+<dd><code>packIndex</code> - True, if the merged index should be packed, otherwise false.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The merged context</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true" title="class or interface in java.lang">UnsupportedOperationException</a></code> - if the underlying implementation does not allow to merge indexing contexts</dd>
+<dd><code><a href="../../../../org/apache/archiva/indexer/IndexCreationFailedException.html" title="class in org.apache.archiva.indexer">IndexCreationFailedException</a></code></dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -408,7 +498,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/archiva/indexer/GenericIndexManager.html" title="class in org.apache.archiva.indexer"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/archiva/indexer/IndexCreationFailedException.html" title="class in org.apache.archiva.indexer"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/archiva/indexer/ArchivaIndexManager.html" target="_top">Frames</a></li>
@@ -433,13 +523,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -448,6 +538,6 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

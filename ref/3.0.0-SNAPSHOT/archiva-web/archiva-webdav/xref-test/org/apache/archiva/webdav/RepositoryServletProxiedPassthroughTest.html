@@ -17,7 +17,7 @@
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> * with the License.  You may obtain a copy of the License at</em>
 <a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> *  <a href="http://www.apache.org/licenses/LICENSE-2." target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.</a>0</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> *  <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing,</em>
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> * software distributed under the License is distributed on an</em>
@@ -42,8 +42,8 @@
 <a class="jxr_linenumber" name="L34" href="#L34">34</a>  <em class="jxr_javadoccomment"> * RepositoryServlet Tests, Proxied, Get of resources that are not artifacts or metadata, with varying policy settings.</em>
 <a class="jxr_linenumber" name="L35" href="#L35">35</a>  <em class="jxr_javadoccomment"> * </em>
 <a class="jxr_linenumber" name="L36" href="#L36">36</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/apache/archiva/webdav/RepositoryServletProxiedPassthroughTest.html">RepositoryServletProxiedPassthroughTest</a>
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>      <strong class="jxr_keyword">extends</strong> <a href="../../../../org/apache/archiva/webdav/AbstractRepositoryServletProxiedTestCase.html">AbstractRepositoryServletProxiedTestCase</a>
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="RepositoryServletProxiedPassthroughTest" href="../../../../org/apache/archiva/webdav/RepositoryServletProxiedPassthroughTest.html#RepositoryServletProxiedPassthroughTest">RepositoryServletProxiedPassthroughTest</a>
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>      <strong class="jxr_keyword">extends</strong> <a name="AbstractRepositoryServletProxiedTestCase" href="../../../../org/apache/archiva/webdav/AbstractRepositoryServletProxiedTestCase.html#AbstractRepositoryServletProxiedTestCase">AbstractRepositoryServletProxiedTestCase</a>
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>  {
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String CONTENT_SHA1 = <span class="jxr_string">"2aab0a51c04c9023636852f3e63a68034ba10142"</span>;
 <a class="jxr_linenumber" name="L41" href="#L41">41</a>  
@@ -144,51 +144,52 @@
 <a class="jxr_linenumber" name="L136" href="#L136">136</a>         <em class="jxr_comment">// --- Setup</em>
 <a class="jxr_linenumber" name="L137" href="#L137">137</a>         setupCentralRemoteRepo();
 <a class="jxr_linenumber" name="L138" href="#L138">138</a>         setupCleanInternalRepo();
-<a class="jxr_linenumber" name="L139" href="#L139">139</a> 
-<a class="jxr_linenumber" name="L140" href="#L140">140</a>         String expectedRemoteContents = contents;
-<a class="jxr_linenumber" name="L141" href="#L141">141</a>         String expectedManagedContents = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L142" href="#L142">142</a>         Path remoteFile = populateRepo( remoteCentral, path, expectedRemoteContents );
-<a class="jxr_linenumber" name="L143" href="#L143">143</a> 
-<a class="jxr_linenumber" name="L144" href="#L144">144</a>         <strong class="jxr_keyword">if</strong> ( hasManagedCopy )
-<a class="jxr_linenumber" name="L145" href="#L145">145</a>         {
-<a class="jxr_linenumber" name="L146" href="#L146">146</a>             expectedManagedContents = contents;
-<a class="jxr_linenumber" name="L147" href="#L147">147</a>             Path managedFile = populateRepo( repoRootInternal, path, expectedManagedContents );
-<a class="jxr_linenumber" name="L148" href="#L148">148</a>             Files.setLastModifiedTime( managedFile, FileTime.fromMillis( Files.getLastModifiedTime( remoteFile ).toMillis() + deltaManagedToRemoteTimestamp ));
-<a class="jxr_linenumber" name="L149" href="#L149">149</a>         }
-<a class="jxr_linenumber" name="L150" href="#L150">150</a> 
-<a class="jxr_linenumber" name="L151" href="#L151">151</a>         setupConnector( REPOID_INTERNAL, remoteCentral );
-<a class="jxr_linenumber" name="L152" href="#L152">152</a>         saveConfiguration();
-<a class="jxr_linenumber" name="L153" href="#L153">153</a> 
-<a class="jxr_linenumber" name="L154" href="#L154">154</a>         <em class="jxr_comment">// --- Execution</em>
-<a class="jxr_linenumber" name="L155" href="#L155">155</a>         <em class="jxr_comment">// process the response code later, not via an exception.</em>
-<a class="jxr_linenumber" name="L156" href="#L156">156</a>         <em class="jxr_comment">//HttpUnitOptions.setExceptionsThrownOnErrorStatus( false );</em>
-<a class="jxr_linenumber" name="L157" href="#L157">157</a> 
-<a class="jxr_linenumber" name="L158" href="#L158">158</a>         WebRequest request = <strong class="jxr_keyword">new</strong> <a href="../../../../org/apache/archiva/webdav/AbstractRepositoryServletTestCase.html">GetMethodWebRequest</a>( <span class="jxr_string">"http://machine.com/repository/internal/"</span> + path );
-<a class="jxr_linenumber" name="L159" href="#L159">159</a>         WebResponse response = getServletUnitClient().getResponse( request );
-<a class="jxr_linenumber" name="L160" href="#L160">160</a> 
-<a class="jxr_linenumber" name="L161" href="#L161">161</a>         <em class="jxr_comment">// --- Verification</em>
-<a class="jxr_linenumber" name="L162" href="#L162">162</a> 
-<a class="jxr_linenumber" name="L163" href="#L163">163</a>         <strong class="jxr_keyword">switch</strong> ( expectation )
-<a class="jxr_linenumber" name="L164" href="#L164">164</a>         {
-<a class="jxr_linenumber" name="L165" href="#L165">165</a>             <strong class="jxr_keyword">case</strong> EXPECT_MANAGED_CONTENTS:
-<a class="jxr_linenumber" name="L166" href="#L166">166</a>                 assertResponseOK( response );
-<a class="jxr_linenumber" name="L167" href="#L167">167</a>                 assertTrue( <span class="jxr_string">"Invalid Test Case: Can't expect managed contents with "</span>
-<a class="jxr_linenumber" name="L168" href="#L168">168</a>                     + <span class="jxr_string">"test that doesn't have a managed copy in the first place."</span>, hasManagedCopy );
-<a class="jxr_linenumber" name="L169" href="#L169">169</a>                 assertEquals( <span class="jxr_string">"Expected managed file contents"</span>, expectedManagedContents, response.getContentAsString() );
-<a class="jxr_linenumber" name="L170" href="#L170">170</a>                 <strong class="jxr_keyword">break</strong>;
-<a class="jxr_linenumber" name="L171" href="#L171">171</a>             <strong class="jxr_keyword">case</strong> EXPECT_REMOTE_CONTENTS:
-<a class="jxr_linenumber" name="L172" href="#L172">172</a>                 assertResponseOK( response, path );
-<a class="jxr_linenumber" name="L173" href="#L173">173</a>                 assertEquals( <span class="jxr_string">"Expected remote file contents"</span>, expectedRemoteContents, response.getContentAsString() );
-<a class="jxr_linenumber" name="L174" href="#L174">174</a>                 <strong class="jxr_keyword">break</strong>;
-<a class="jxr_linenumber" name="L175" href="#L175">175</a>             <strong class="jxr_keyword">case</strong> EXPECT_NOT_FOUND:
-<a class="jxr_linenumber" name="L176" href="#L176">176</a>                 assertResponseNotFound( response );
-<a class="jxr_linenumber" name="L177" href="#L177">177</a>                 assertManagedFileNotExists( repoRootInternal, path );
-<a class="jxr_linenumber" name="L178" href="#L178">178</a>                 <strong class="jxr_keyword">break</strong>;
-<a class="jxr_linenumber" name="L179" href="#L179">179</a>         }
-<a class="jxr_linenumber" name="L180" href="#L180">180</a>     }
-<a class="jxr_linenumber" name="L181" href="#L181">181</a> }
+<a class="jxr_linenumber" name="L139" href="#L139">139</a>         saveConfiguration();
+<a class="jxr_linenumber" name="L140" href="#L140">140</a> 
+<a class="jxr_linenumber" name="L141" href="#L141">141</a>         String expectedRemoteContents = contents;
+<a class="jxr_linenumber" name="L142" href="#L142">142</a>         String expectedManagedContents = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L143" href="#L143">143</a>         Path remoteFile = populateRepo( remoteCentral, path, expectedRemoteContents );
+<a class="jxr_linenumber" name="L144" href="#L144">144</a> 
+<a class="jxr_linenumber" name="L145" href="#L145">145</a>         <strong class="jxr_keyword">if</strong> ( hasManagedCopy )
+<a class="jxr_linenumber" name="L146" href="#L146">146</a>         {
+<a class="jxr_linenumber" name="L147" href="#L147">147</a>             expectedManagedContents = contents;
+<a class="jxr_linenumber" name="L148" href="#L148">148</a>             Path managedFile = populateRepo( repoRootInternal, path, expectedManagedContents );
+<a class="jxr_linenumber" name="L149" href="#L149">149</a>             Files.setLastModifiedTime( managedFile, FileTime.fromMillis( Files.getLastModifiedTime( remoteFile ).toMillis() + deltaManagedToRemoteTimestamp ));
+<a class="jxr_linenumber" name="L150" href="#L150">150</a>         }
+<a class="jxr_linenumber" name="L151" href="#L151">151</a> 
+<a class="jxr_linenumber" name="L152" href="#L152">152</a>         setupConnector( REPOID_INTERNAL, remoteCentral );
+<a class="jxr_linenumber" name="L153" href="#L153">153</a>         saveConfiguration();
+<a class="jxr_linenumber" name="L154" href="#L154">154</a> 
+<a class="jxr_linenumber" name="L155" href="#L155">155</a>         <em class="jxr_comment">// --- Execution</em>
+<a class="jxr_linenumber" name="L156" href="#L156">156</a>         <em class="jxr_comment">// process the response code later, not via an exception.</em>
+<a class="jxr_linenumber" name="L157" href="#L157">157</a>         <em class="jxr_comment">//HttpUnitOptions.setExceptionsThrownOnErrorStatus( false );</em>
+<a class="jxr_linenumber" name="L158" href="#L158">158</a> 
+<a class="jxr_linenumber" name="L159" href="#L159">159</a>         WebRequest request = <strong class="jxr_keyword">new</strong> GetMethodWebRequest( <span class="jxr_string">"http://machine.com/repository/internal/"</span> + path );
+<a class="jxr_linenumber" name="L160" href="#L160">160</a>         WebResponse response = getServletUnitClient().getResponse( request );
+<a class="jxr_linenumber" name="L161" href="#L161">161</a> 
+<a class="jxr_linenumber" name="L162" href="#L162">162</a>         <em class="jxr_comment">// --- Verification</em>
+<a class="jxr_linenumber" name="L163" href="#L163">163</a> 
+<a class="jxr_linenumber" name="L164" href="#L164">164</a>         <strong class="jxr_keyword">switch</strong> ( expectation )
+<a class="jxr_linenumber" name="L165" href="#L165">165</a>         {
+<a class="jxr_linenumber" name="L166" href="#L166">166</a>             <strong class="jxr_keyword">case</strong> EXPECT_MANAGED_CONTENTS:
+<a class="jxr_linenumber" name="L167" href="#L167">167</a>                 assertResponseOK( response );
+<a class="jxr_linenumber" name="L168" href="#L168">168</a>                 assertTrue( <span class="jxr_string">"Invalid Test Case: Can't expect managed contents with "</span>
+<a class="jxr_linenumber" name="L169" href="#L169">169</a>                     + <span class="jxr_string">"test that doesn't have a managed copy in the first place."</span>, hasManagedCopy );
+<a class="jxr_linenumber" name="L170" href="#L170">170</a>                 assertEquals( <span class="jxr_string">"Expected managed file contents"</span>, expectedManagedContents, response.getContentAsString() );
+<a class="jxr_linenumber" name="L171" href="#L171">171</a>                 <strong class="jxr_keyword">break</strong>;
+<a class="jxr_linenumber" name="L172" href="#L172">172</a>             <strong class="jxr_keyword">case</strong> EXPECT_REMOTE_CONTENTS:
+<a class="jxr_linenumber" name="L173" href="#L173">173</a>                 assertResponseOK( response, path );
+<a class="jxr_linenumber" name="L174" href="#L174">174</a>                 assertEquals( <span class="jxr_string">"Expected remote file contents"</span>, expectedRemoteContents, response.getContentAsString() );
+<a class="jxr_linenumber" name="L175" href="#L175">175</a>                 <strong class="jxr_keyword">break</strong>;
+<a class="jxr_linenumber" name="L176" href="#L176">176</a>             <strong class="jxr_keyword">case</strong> EXPECT_NOT_FOUND:
+<a class="jxr_linenumber" name="L177" href="#L177">177</a>                 assertResponseNotFound( response );
+<a class="jxr_linenumber" name="L178" href="#L178">178</a>                 assertManagedFileNotExists( repoRootInternal, path );
+<a class="jxr_linenumber" name="L179" href="#L179">179</a>                 <strong class="jxr_keyword">break</strong>;
+<a class="jxr_linenumber" name="L180" href="#L180">180</a>         }
+<a class="jxr_linenumber" name="L181" href="#L181">181</a>     }
+<a class="jxr_linenumber" name="L182" href="#L182">182</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
 </body>
 </html>

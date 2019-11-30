@@ -29,23 +29,26 @@
 <span class="sourceLineNo">021</span><a name="line.21"></a>
 <span class="sourceLineNo">022</span>import org.apache.archiva.metadata.model.ArtifactMetadata;<a name="line.22"></a>
 <span class="sourceLineNo">023</span>import org.apache.archiva.metadata.repository.MetadataRepository;<a name="line.23"></a>
-<span class="sourceLineNo">024</span>import org.apache.archiva.metadata.repository.filter.Filter;<a name="line.24"></a>
-<span class="sourceLineNo">025</span><a name="line.25"></a>
-<span class="sourceLineNo">026</span>import java.util.List;<a name="line.26"></a>
-<span class="sourceLineNo">027</span><a name="line.27"></a>
-<span class="sourceLineNo">028</span>public interface RepositoryMerger<a name="line.28"></a>
-<span class="sourceLineNo">029</span>{<a name="line.29"></a>
-<span class="sourceLineNo">030</span>    void merge( MetadataRepository metadataRepository, String sourceRepoId, String targetRepoId )<a name="line.30"></a>
-<span class="sourceLineNo">031</span>        throws RepositoryMergerException;<a name="line.31"></a>
+<span class="sourceLineNo">024</span>import org.apache.archiva.filter.Filter;<a name="line.24"></a>
+<span class="sourceLineNo">025</span>import org.apache.archiva.repository.RepositoryType;<a name="line.25"></a>
+<span class="sourceLineNo">026</span><a name="line.26"></a>
+<span class="sourceLineNo">027</span>import java.util.List;<a name="line.27"></a>
+<span class="sourceLineNo">028</span><a name="line.28"></a>
+<span class="sourceLineNo">029</span>public interface RepositoryMerger<a name="line.29"></a>
+<span class="sourceLineNo">030</span>{<a name="line.30"></a>
+<span class="sourceLineNo">031</span>    boolean supportsRepository( RepositoryType type );<a name="line.31"></a>
 <span class="sourceLineNo">032</span><a name="line.32"></a>
-<span class="sourceLineNo">033</span>    void merge( MetadataRepository metadataRepository, String sourceRepoId, String targetRepoId,<a name="line.33"></a>
-<span class="sourceLineNo">034</span>                Filter&lt;ArtifactMetadata&gt; filter )<a name="line.34"></a>
-<span class="sourceLineNo">035</span>        throws RepositoryMergerException;<a name="line.35"></a>
-<span class="sourceLineNo">036</span><a name="line.36"></a>
-<span class="sourceLineNo">037</span>    List&lt;ArtifactMetadata&gt; getConflictingArtifacts( MetadataRepository metadataRepository, String sourceRepo,<a name="line.37"></a>
-<span class="sourceLineNo">038</span>                                                    String targetRepo )<a name="line.38"></a>
-<span class="sourceLineNo">039</span>        throws RepositoryMergerException;<a name="line.39"></a>
-<span class="sourceLineNo">040</span>}<a name="line.40"></a>
+<span class="sourceLineNo">033</span>    void merge( MetadataRepository metadataRepository, String sourceRepoId, String targetRepoId )<a name="line.33"></a>
+<span class="sourceLineNo">034</span>        throws RepositoryMergerException;<a name="line.34"></a>
+<span class="sourceLineNo">035</span><a name="line.35"></a>
+<span class="sourceLineNo">036</span>    void merge( MetadataRepository metadataRepository, String sourceRepoId, String targetRepoId,<a name="line.36"></a>
+<span class="sourceLineNo">037</span>                Filter&lt;ArtifactMetadata&gt; filter )<a name="line.37"></a>
+<span class="sourceLineNo">038</span>        throws RepositoryMergerException;<a name="line.38"></a>
+<span class="sourceLineNo">039</span><a name="line.39"></a>
+<span class="sourceLineNo">040</span>    List&lt;ArtifactMetadata&gt; getConflictingArtifacts( MetadataRepository metadataRepository, String sourceRepo,<a name="line.40"></a>
+<span class="sourceLineNo">041</span>                                                    String targetRepo )<a name="line.41"></a>
+<span class="sourceLineNo">042</span>        throws RepositoryMergerException;<a name="line.42"></a>
+<span class="sourceLineNo">043</span>}<a name="line.43"></a>
 
 
 

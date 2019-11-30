@@ -94,6 +94,10 @@
 <td class="colFirst"><a href="#org.apache.archiva.repository">org.apache.archiva.repository</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.archiva.repository.base">org.apache.archiva.repository.base</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
 </tbody>
 </table>
 </li>
@@ -132,21 +136,17 @@
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
-<td class="colLast"><span class="typeNameLabel">GenericIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/GenericIndexManager.html#reset-org.apache.archiva.indexer.ArchivaIndexingContext-">reset</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)</code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a></code></td>
 <td class="colLast"><span class="typeNameLabel">ArchivaIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#reset-org.apache.archiva.indexer.ArchivaIndexingContext-">reset</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)</code>
 <div class="block">Reinitializes the index.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">ArchivaIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#scan-org.apache.archiva.indexer.ArchivaIndexingContext-">scan</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context)</code>
 <div class="block">Rescans the whole repository, this index is associated to.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">ArchivaIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/ArchivaIndexManager.html#update-org.apache.archiva.indexer.ArchivaIndexingContext-boolean-">update</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
       boolean&nbsp;fullUpdate)</code>
@@ -169,17 +169,8 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">MavenIndexManager.IndexUpdateConsumer.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexManager.IndexUpdateConsumer.html#accept-org.apache.maven.index.context.IndexingContext-">accept</a></span>(org.apache.maven.index.context.IndexingContext&nbsp;indexingContext)</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MavenIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexManager.html#addArtifactsToIndex-org.apache.archiva.indexer.ArchivaIndexingContext-java.util.Collection-">addArtifactsToIndex</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
                    <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&gt;&nbsp;artifactReference)</code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><span class="typeNameLabel">MavenIndexManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexManager.html#executeUpdateFunction-org.apache.archiva.indexer.ArchivaIndexingContext-org.apache.archiva.indexer.maven.MavenIndexManager.IndexUpdateConsumer-">executeUpdateFunction</a></span>(<a href="../../../../../org/apache/archiva/indexer/ArchivaIndexingContext.html" title="interface in org.apache.archiva.indexer">ArchivaIndexingContext</a>&nbsp;context,
-                     <a href="../../../../../org/apache/archiva/indexer/maven/MavenIndexManager.IndexUpdateConsumer.html" title="interface in org.apache.archiva.indexer.maven">MavenIndexManager.IndexUpdateConsumer</a>&nbsp;function)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
@@ -219,7 +210,25 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">RepositoryRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryRegistry.html#resetIndexingContext-org.apache.archiva.repository.Repository-">resetIndexingContext</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repo)</code>
+<td class="colLast"><span class="typeNameLabel">RepositoryRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryRegistry.html#resetIndexingContext-org.apache.archiva.repository.Repository-">resetIndexingContext</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.archiva.repository.base">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/archiva/indexer/IndexUpdateFailedException.html" title="class in org.apache.archiva.indexer">IndexUpdateFailedException</a> in <a href="../../../../../org/apache/archiva/repository/base/package-summary.html">org.apache.archiva.repository.base</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/archiva/repository/base/package-summary.html">org.apache.archiva.repository.base</a> that throw <a href="../../../../../org/apache/archiva/indexer/IndexUpdateFailedException.html" title="class in org.apache.archiva.indexer">IndexUpdateFailedException</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">ArchivaRepositoryRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/base/ArchivaRepositoryRegistry.html#resetIndexingContext-org.apache.archiva.repository.Repository-">resetIndexingContext</a></span>(<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&nbsp;repository)</code>
 <div class="block">Resets the indexing context of a given repository.</div>
 </td>
 </tr>
@@ -277,6 +286,6 @@
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

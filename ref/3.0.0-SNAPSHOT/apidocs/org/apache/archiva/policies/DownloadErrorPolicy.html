@@ -49,7 +49,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../org/apache/archiva/policies/ChecksumPolicy.html" title="class in org.apache.archiva.policies"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/archiva/policies/DownloadErrorOption.html" title="enum in org.apache.archiva.policies"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../org/apache/archiva/policies/DownloadPolicy.html" title="interface in org.apache.archiva.policies"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -109,7 +109,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <hr>
 <br>
-<pre>public interface <a href="../../../../src-html/org/apache/archiva/policies/DownloadErrorPolicy.html#line.32">DownloadErrorPolicy</a>
+<pre>public interface <a href="../../../../src-html/org/apache/archiva/policies/DownloadErrorPolicy.html#line.33">DownloadErrorPolicy</a>
 extends <a href="../../../../org/apache/archiva/policies/Policy.html" title="interface in org.apache.archiva.policies">Policy</a></pre>
 <div class="block">Policy to apply after the download has completed, but before the
  resource is made available to the calling client.</div>
@@ -119,6 +119,21 @@ extends <a href="../../../../org/apache/archiva/policies/Policy.html" title="int
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<ul class="blockList">
+<li class="blockList"><a name="fields.inherited.from.class.org.apache.archiva.policies.Policy">
+<!--   -->
+</a>
+<h3>Fields inherited from interface&nbsp;org.apache.archiva.policies.<a href="../../../../org/apache/archiva/policies/Policy.html" title="interface in org.apache.archiva.policies">Policy</a></h3>
+<code><a href="../../../../org/apache/archiva/policies/Policy.html#RESOURCE_BUNDLE">RESOURCE_BUNDLE</a></code></li>
+</ul>
+</li>
+</ul>
 <!-- ========== METHOD SUMMARY =========== -->
 <ul class="blockList">
 <li class="blockList"><a name="method.summary">
@@ -133,9 +148,9 @@ extends <a href="../../../../org/apache/archiva/policies/Policy.html" title="int
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/DownloadErrorPolicy.html#applyPolicy-java.lang.String-java.util.Properties-java.nio.file.Path-java.lang.Exception-java.util.Map-">applyPolicy</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;policySetting,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/DownloadErrorPolicy.html#applyPolicy-org.apache.archiva.policies.PolicyOption-java.util.Properties-org.apache.archiva.repository.storage.StorageAsset-java.lang.Exception-java.util.Map-">applyPolicy</a></span>(<a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a>&nbsp;policySetting,
            <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;request,
-           <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;localFile,
+           <a href="../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;localFile,
            <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a>&nbsp;exception,
            <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a>&gt;&nbsp;previousExceptions)</code>
 <div class="block">Apply the download error policy.</div>
@@ -147,7 +162,7 @@ extends <a href="../../../../org/apache/archiva/policies/Policy.html" title="int
 <!--   -->
 </a>
 <h3>Methods inherited from interface&nbsp;org.apache.archiva.policies.<a href="../../../../org/apache/archiva/policies/Policy.html" title="interface in org.apache.archiva.policies">Policy</a></h3>
-<code><a href="../../../../org/apache/archiva/policies/Policy.html#getDefaultOption--">getDefaultOption</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getId--">getId</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getName--">getName</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getOptions--">getOptions</a></code></li>
+<code><a href="../../../../org/apache/archiva/policies/Policy.html#getDefaultOption--">getDefaultOption</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getDescription-java.util.Locale-">getDescription</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getId--">getId</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getName--">getName</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getName-java.util.Locale-">getName</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getOptionDescription-java.util.Locale-org.apache.archiva.policies.PolicyOption-">getOptionDescription</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getOptionName-java.util.Locale-org.apache.archiva.policies.PolicyOption-">getOptionName</a>, <a href="../../../../org/apache/archiva/policies/Policy.html#getOptions--">getOptions</a></code></li>
 </ul>
 </li>
 </ul>
@@ -163,15 +178,15 @@ extends <a href="../../../../org/apache/archiva/policies/Policy.html" title="int
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="applyPolicy-java.lang.String-java.util.Properties-java.nio.file.Path-java.lang.Exception-java.util.Map-">
+<a name="applyPolicy-org.apache.archiva.policies.PolicyOption-java.util.Properties-org.apache.archiva.repository.storage.StorageAsset-java.lang.Exception-java.util.Map-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>applyPolicy</h4>
-<pre>boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/DownloadErrorPolicy.html#line.46">applyPolicy</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;policySetting,
+<pre>boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/DownloadErrorPolicy.html#line.47">applyPolicy</a>(<a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a>&nbsp;policySetting,
                     <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;request,
-                    <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;localFile,
+                    <a href="../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;localFile,
                     <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a>&nbsp;exception,
                     <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a>&gt;&nbsp;previousExceptions)
              throws <a href="../../../../org/apache/archiva/policies/PolicyConfigurationException.html" title="class in org.apache.archiva.policies">PolicyConfigurationException</a></pre>
@@ -184,7 +199,7 @@ extends <a href="../../../../org/apache/archiva/policies/Policy.html" title="int
 <dd><code>exception</code> - the exception that triggered the error</dd>
 <dd><code>previousExceptions</code> - any previously triggered exceptions</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>whether to process the exception or not</dd>
+<dd>True, if the exception should be processed, False if the exception should be ignored.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../../../org/apache/archiva/policies/PolicyConfigurationException.html" title="class in org.apache.archiva.policies">PolicyConfigurationException</a></code> - if the policy is improperly configured</dd>
 </dl>
@@ -218,7 +233,7 @@ extends <a href="../../../../org/apache/archiva/policies/Policy.html" title="int
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../org/apache/archiva/policies/ChecksumPolicy.html" title="class in org.apache.archiva.policies"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/archiva/policies/DownloadErrorOption.html" title="enum in org.apache.archiva.policies"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../org/apache/archiva/policies/DownloadPolicy.html" title="interface in org.apache.archiva.policies"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -259,6 +274,6 @@ extends <a href="../../../../org/apache/archiva/policies/Policy.html" title="int
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

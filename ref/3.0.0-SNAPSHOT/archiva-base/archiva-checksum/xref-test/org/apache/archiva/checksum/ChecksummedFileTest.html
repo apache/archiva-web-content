@@ -17,7 +17,7 @@
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> * with the License.  You may obtain a copy of the License at</em>
 <a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2." target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.</a>0</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> *   <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing,</em>
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> * software distributed under the License is distributed on an</em>
@@ -28,7 +28,7 @@
 <a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_comment"> */</em>
 <a class="jxr_linenumber" name="L21" href="#L21">21</a>  
 <a class="jxr_linenumber" name="L22" href="#L22">22</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.common.utils.FileUtils;
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.lang.StringUtils;
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.lang3.StringUtils;
 <a class="jxr_linenumber" name="L24" href="#L24">24</a>  <strong class="jxr_keyword">import</strong> org.junit.Before;
 <a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> org.junit.Test;
 <a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> org.slf4j.LoggerFactory;
@@ -47,8 +47,8 @@
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment"> *</em>
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment"> */</em>
 <a class="jxr_linenumber" name="L41" href="#L41">41</a>  
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/apache/archiva/checksum/ChecksummedFileTest.html">ChecksummedFileTest</a>
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>      <strong class="jxr_keyword">extends</strong> <a href="../../../../org/apache/archiva/checksum/AbstractChecksumTestCase.html">AbstractChecksumTestCase</a>
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="ChecksummedFileTest" href="../../../../org/apache/archiva/checksum/ChecksummedFileTest.html#ChecksummedFileTest">ChecksummedFileTest</a>
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>      <strong class="jxr_keyword">extends</strong> <a name="AbstractChecksumTestCase" href="../../../../org/apache/archiva/checksum/AbstractChecksumTestCase.html#AbstractChecksumTestCase">AbstractChecksumTestCase</a>
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>  {
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>  <em class="jxr_javadoccomment">     * SHA1 checksum from www.ibiblio.org/maven2, incuding file path</em>
@@ -138,7 +138,7 @@
 <a class="jxr_linenumber" name="L130" href="#L130">130</a>     {
 <a class="jxr_linenumber" name="L131" href="#L131">131</a>         Path testableJar = createTestableJar( <span class="jxr_string">"examples/redback-authz-open.jar"</span> );
 <a class="jxr_linenumber" name="L132" href="#L132">132</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( testableJar );
-<a class="jxr_linenumber" name="L133" href="#L133">133</a>         checksummedFile.createChecksum( ChecksumAlgorithm.SHA1 );
+<a class="jxr_linenumber" name="L133" href="#L133">133</a>         checksummedFile.writeFile( ChecksumAlgorithm.SHA1 );
 <a class="jxr_linenumber" name="L134" href="#L134">134</a>         Path hashFile = checksummedFile.getChecksumFile( ChecksumAlgorithm.SHA1 );
 <a class="jxr_linenumber" name="L135" href="#L135">135</a>         assertTrue( <span class="jxr_string">"ChecksumAlgorithm file should exist."</span>, Files.exists(hashFile) );
 <a class="jxr_linenumber" name="L136" href="#L136">136</a>         String hashContents = org.apache.commons.io.FileUtils.readFileToString( hashFile.toFile(), <span class="jxr_string">"UTF-8"</span> );
@@ -160,166 +160,168 @@
 <a class="jxr_linenumber" name="L152" href="#L152">152</a>         assertFalse( <span class="jxr_string">"ChecksummedFile.isValid(SHA1) == false"</span>,
 <a class="jxr_linenumber" name="L153" href="#L153">153</a>                      checksummedFile.isValidChecksum( ChecksumAlgorithm.SHA1 ) );
 <a class="jxr_linenumber" name="L154" href="#L154">154</a> 
-<a class="jxr_linenumber" name="L155" href="#L155">155</a>         <strong class="jxr_keyword">boolean</strong> fixed = checksummedFile.fixChecksums( Arrays.asList( ChecksumAlgorithm.SHA1 ) );
-<a class="jxr_linenumber" name="L156" href="#L156">156</a>         assertTrue( <span class="jxr_string">"ChecksummedFile.fixChecksums() == true"</span>, fixed );
-<a class="jxr_linenumber" name="L157" href="#L157">157</a> 
-<a class="jxr_linenumber" name="L158" href="#L158">158</a>         assertTrue( <span class="jxr_string">"ChecksummedFile.isValid(SHA1) == true"</span>,
-<a class="jxr_linenumber" name="L159" href="#L159">159</a>                     checksummedFile.isValidChecksum( ChecksumAlgorithm.SHA1 ) );
-<a class="jxr_linenumber" name="L160" href="#L160">160</a>     }
-<a class="jxr_linenumber" name="L161" href="#L161">161</a> 
-<a class="jxr_linenumber" name="L162" href="#L162">162</a>     @Test
-<a class="jxr_linenumber" name="L163" href="#L163">163</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetChecksumFile()
-<a class="jxr_linenumber" name="L164" href="#L164">164</a>     {
-<a class="jxr_linenumber" name="L165" href="#L165">165</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( Paths.get( <span class="jxr_string">"test.jar"</span> ) );
-<a class="jxr_linenumber" name="L166" href="#L166">166</a>         assertEquals( <span class="jxr_string">"test.jar.sha1"</span>, checksummedFile.getChecksumFile( ChecksumAlgorithm.SHA1 ).getFileName().toString() );
-<a class="jxr_linenumber" name="L167" href="#L167">167</a>     }
-<a class="jxr_linenumber" name="L168" href="#L168">168</a> 
-<a class="jxr_linenumber" name="L169" href="#L169">169</a>     @Test
-<a class="jxr_linenumber" name="L170" href="#L170">170</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIsValidChecksum()
-<a class="jxr_linenumber" name="L171" href="#L171">171</a>         <strong class="jxr_keyword">throws</strong> IOException, ChecksumValidationException
-<a class="jxr_linenumber" name="L172" href="#L172">172</a>     {
-<a class="jxr_linenumber" name="L173" href="#L173">173</a>         Path jarFile = createTestableJar( <span class="jxr_string">"examples/redback-authz-open.jar"</span>, <strong class="jxr_keyword">true</strong>, false );
-<a class="jxr_linenumber" name="L174" href="#L174">174</a> 
-<a class="jxr_linenumber" name="L175" href="#L175">175</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( jarFile );
-<a class="jxr_linenumber" name="L176" href="#L176">176</a>         assertTrue( <span class="jxr_string">"ChecksummedFile.isValid(SHA1)"</span>, checksummedFile.isValidChecksum( ChecksumAlgorithm.SHA1 ) );
-<a class="jxr_linenumber" name="L177" href="#L177">177</a>     }
-<a class="jxr_linenumber" name="L178" href="#L178">178</a> 
-<a class="jxr_linenumber" name="L179" href="#L179">179</a>     @Test
-<a class="jxr_linenumber" name="L180" href="#L180">180</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIsValidChecksumInvalidSha1Format()
-<a class="jxr_linenumber" name="L181" href="#L181">181</a>         <strong class="jxr_keyword">throws</strong> IOException, ChecksumValidationException
-<a class="jxr_linenumber" name="L182" href="#L182">182</a>     {
-<a class="jxr_linenumber" name="L183" href="#L183">183</a>         Path jarFile = createTestableJar( <span class="jxr_string">"examples/redback-authz-open.jar"</span> );
-<a class="jxr_linenumber" name="L184" href="#L184">184</a>         Path sha1File = jarFile.resolveSibling( jarFile.getFileName() + <span class="jxr_string">".sha1"</span> );
-<a class="jxr_linenumber" name="L185" href="#L185">185</a> 
-<a class="jxr_linenumber" name="L186" href="#L186">186</a>         <em class="jxr_comment">// A typical scenario seen in the wild.</em>
-<a class="jxr_linenumber" name="L187" href="#L187">187</a>         FileUtils.writeStringToFile( sha1File, FILE_ENCODING, <span class="jxr_string">"sha1sum: redback-authz-open.jar: No such file or directory"</span> );
-<a class="jxr_linenumber" name="L188" href="#L188">188</a> 
-<a class="jxr_linenumber" name="L189" href="#L189">189</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( jarFile );
-<a class="jxr_linenumber" name="L190" href="#L190">190</a>         assertFalse( <span class="jxr_string">"ChecksummedFile.isValid(SHA1)"</span>, checksummedFile.isValidChecksum( ChecksumAlgorithm.SHA1 ) );
-<a class="jxr_linenumber" name="L191" href="#L191">191</a> 
-<a class="jxr_linenumber" name="L192" href="#L192">192</a>     }
+<a class="jxr_linenumber" name="L155" href="#L155">155</a>         UpdateStatusList fixed = checksummedFile.fixChecksums( Arrays.asList( ChecksumAlgorithm.SHA1 ) );
+<a class="jxr_linenumber" name="L156" href="#L156">156</a>         assertEquals(1, fixed.getStatusList().size());
+<a class="jxr_linenumber" name="L157" href="#L157">157</a>         assertFalse(fixed.getTotalStatus()==UpdateStatus.ERROR);
+<a class="jxr_linenumber" name="L158" href="#L158">158</a>         assertTrue( <span class="jxr_string">"ChecksummedFile.fixChecksums() == true"</span>, fixed.getStatusList().get(0).getValue()==UpdateStatus.UPDATED );
+<a class="jxr_linenumber" name="L159" href="#L159">159</a> 
+<a class="jxr_linenumber" name="L160" href="#L160">160</a>         assertTrue( <span class="jxr_string">"ChecksummedFile.isValid(SHA1) == true"</span>,
+<a class="jxr_linenumber" name="L161" href="#L161">161</a>                     checksummedFile.isValidChecksum( ChecksumAlgorithm.SHA1 ) );
+<a class="jxr_linenumber" name="L162" href="#L162">162</a>     }
+<a class="jxr_linenumber" name="L163" href="#L163">163</a> 
+<a class="jxr_linenumber" name="L164" href="#L164">164</a>     @Test
+<a class="jxr_linenumber" name="L165" href="#L165">165</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetChecksumFile()
+<a class="jxr_linenumber" name="L166" href="#L166">166</a>     {
+<a class="jxr_linenumber" name="L167" href="#L167">167</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( Paths.get( <span class="jxr_string">"test.jar"</span> ) );
+<a class="jxr_linenumber" name="L168" href="#L168">168</a>         assertEquals( <span class="jxr_string">"test.jar.sha1"</span>, checksummedFile.getChecksumFile( ChecksumAlgorithm.SHA1 ).getFileName().toString() );
+<a class="jxr_linenumber" name="L169" href="#L169">169</a>     }
+<a class="jxr_linenumber" name="L170" href="#L170">170</a> 
+<a class="jxr_linenumber" name="L171" href="#L171">171</a>     @Test
+<a class="jxr_linenumber" name="L172" href="#L172">172</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIsValidChecksum()
+<a class="jxr_linenumber" name="L173" href="#L173">173</a>         <strong class="jxr_keyword">throws</strong> IOException, ChecksumValidationException
+<a class="jxr_linenumber" name="L174" href="#L174">174</a>     {
+<a class="jxr_linenumber" name="L175" href="#L175">175</a>         Path jarFile = createTestableJar( <span class="jxr_string">"examples/redback-authz-open.jar"</span>, <strong class="jxr_keyword">true</strong>, false );
+<a class="jxr_linenumber" name="L176" href="#L176">176</a> 
+<a class="jxr_linenumber" name="L177" href="#L177">177</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( jarFile );
+<a class="jxr_linenumber" name="L178" href="#L178">178</a>         assertTrue( <span class="jxr_string">"ChecksummedFile.isValid(SHA1)"</span>, checksummedFile.isValidChecksum( ChecksumAlgorithm.SHA1 ) );
+<a class="jxr_linenumber" name="L179" href="#L179">179</a>     }
+<a class="jxr_linenumber" name="L180" href="#L180">180</a> 
+<a class="jxr_linenumber" name="L181" href="#L181">181</a>     @Test
+<a class="jxr_linenumber" name="L182" href="#L182">182</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIsValidChecksumInvalidSha1Format()
+<a class="jxr_linenumber" name="L183" href="#L183">183</a>         <strong class="jxr_keyword">throws</strong> IOException, ChecksumValidationException
+<a class="jxr_linenumber" name="L184" href="#L184">184</a>     {
+<a class="jxr_linenumber" name="L185" href="#L185">185</a>         Path jarFile = createTestableJar( <span class="jxr_string">"examples/redback-authz-open.jar"</span> );
+<a class="jxr_linenumber" name="L186" href="#L186">186</a>         Path sha1File = jarFile.resolveSibling( jarFile.getFileName() + <span class="jxr_string">".sha1"</span> );
+<a class="jxr_linenumber" name="L187" href="#L187">187</a> 
+<a class="jxr_linenumber" name="L188" href="#L188">188</a>         <em class="jxr_comment">// A typical scenario seen in the wild.</em>
+<a class="jxr_linenumber" name="L189" href="#L189">189</a>         FileUtils.writeStringToFile( sha1File, FILE_ENCODING, <span class="jxr_string">"sha1sum: redback-authz-open.jar: No such file or directory"</span> );
+<a class="jxr_linenumber" name="L190" href="#L190">190</a> 
+<a class="jxr_linenumber" name="L191" href="#L191">191</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( jarFile );
+<a class="jxr_linenumber" name="L192" href="#L192">192</a>         assertFalse( <span class="jxr_string">"ChecksummedFile.isValid(SHA1)"</span>, checksummedFile.isValidChecksum( ChecksumAlgorithm.SHA1 ) );
 <a class="jxr_linenumber" name="L193" href="#L193">193</a> 
-<a class="jxr_linenumber" name="L194" href="#L194">194</a>     @Test
-<a class="jxr_linenumber" name="L195" href="#L195">195</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIsValidChecksumNoChecksumFiles()
-<a class="jxr_linenumber" name="L196" href="#L196">196</a>         <strong class="jxr_keyword">throws</strong> IOException, ChecksumValidationException
-<a class="jxr_linenumber" name="L197" href="#L197">197</a>     {
-<a class="jxr_linenumber" name="L198" href="#L198">198</a>         Path jarFile = createTestableJar( <span class="jxr_string">"examples/redback-authz-open.jar"</span>, false, false );
-<a class="jxr_linenumber" name="L199" href="#L199">199</a> 
-<a class="jxr_linenumber" name="L200" href="#L200">200</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( jarFile );
-<a class="jxr_linenumber" name="L201" href="#L201">201</a>         assertFalse( <span class="jxr_string">"ChecksummedFile.isValid(SHA1,MD5)"</span>, checksummedFile.isValidChecksums(
-<a class="jxr_linenumber" name="L202" href="#L202">202</a>             Arrays.asList(ChecksumAlgorithm.SHA1, ChecksumAlgorithm.MD5 ) ) );
-<a class="jxr_linenumber" name="L203" href="#L203">203</a> 
-<a class="jxr_linenumber" name="L204" href="#L204">204</a>     }
+<a class="jxr_linenumber" name="L194" href="#L194">194</a>     }
+<a class="jxr_linenumber" name="L195" href="#L195">195</a> 
+<a class="jxr_linenumber" name="L196" href="#L196">196</a>     @Test
+<a class="jxr_linenumber" name="L197" href="#L197">197</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIsValidChecksumNoChecksumFiles()
+<a class="jxr_linenumber" name="L198" href="#L198">198</a>         <strong class="jxr_keyword">throws</strong> IOException, ChecksumValidationException
+<a class="jxr_linenumber" name="L199" href="#L199">199</a>     {
+<a class="jxr_linenumber" name="L200" href="#L200">200</a>         Path jarFile = createTestableJar( <span class="jxr_string">"examples/redback-authz-open.jar"</span>, false, false );
+<a class="jxr_linenumber" name="L201" href="#L201">201</a> 
+<a class="jxr_linenumber" name="L202" href="#L202">202</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( jarFile );
+<a class="jxr_linenumber" name="L203" href="#L203">203</a>         assertFalse( <span class="jxr_string">"ChecksummedFile.isValid(SHA1,MD5)"</span>, checksummedFile.isValidChecksums(
+<a class="jxr_linenumber" name="L204" href="#L204">204</a>             Arrays.asList(ChecksumAlgorithm.SHA1, ChecksumAlgorithm.MD5 ) ) );
 <a class="jxr_linenumber" name="L205" href="#L205">205</a> 
-<a class="jxr_linenumber" name="L206" href="#L206">206</a>     @Test
-<a class="jxr_linenumber" name="L207" href="#L207">207</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIsValidChecksumSha1AndMd5()
-<a class="jxr_linenumber" name="L208" href="#L208">208</a>         <strong class="jxr_keyword">throws</strong> IOException, ChecksumValidationException
-<a class="jxr_linenumber" name="L209" href="#L209">209</a>     {
-<a class="jxr_linenumber" name="L210" href="#L210">210</a>         Path jarFile = createTestableJar( <span class="jxr_string">"examples/redback-authz-open.jar"</span>, <strong class="jxr_keyword">true</strong>, <strong class="jxr_keyword">true</strong> );
-<a class="jxr_linenumber" name="L211" href="#L211">211</a> 
-<a class="jxr_linenumber" name="L212" href="#L212">212</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( jarFile );
-<a class="jxr_linenumber" name="L213" href="#L213">213</a>         assertTrue( <span class="jxr_string">"ChecksummedFile.isValid(SHA1,MD5)"</span>, checksummedFile.isValidChecksums(
-<a class="jxr_linenumber" name="L214" href="#L214">214</a>             Arrays.asList(ChecksumAlgorithm.SHA1, ChecksumAlgorithm.MD5 ) ) );
-<a class="jxr_linenumber" name="L215" href="#L215">215</a>     }
-<a class="jxr_linenumber" name="L216" href="#L216">216</a> 
-<a class="jxr_linenumber" name="L217" href="#L217">217</a>     @Test
-<a class="jxr_linenumber" name="L218" href="#L218">218</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIsValidChecksumSha1NoMd5()
-<a class="jxr_linenumber" name="L219" href="#L219">219</a>         <strong class="jxr_keyword">throws</strong> IOException, ChecksumValidationException
-<a class="jxr_linenumber" name="L220" href="#L220">220</a>     {
-<a class="jxr_linenumber" name="L221" href="#L221">221</a>         Path jarFile = createTestableJar( <span class="jxr_string">"examples/redback-authz-open.jar"</span>, <strong class="jxr_keyword">true</strong>, false );
-<a class="jxr_linenumber" name="L222" href="#L222">222</a> 
-<a class="jxr_linenumber" name="L223" href="#L223">223</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( jarFile );
-<a class="jxr_linenumber" name="L224" href="#L224">224</a>         assertTrue( <span class="jxr_string">"ChecksummedFile.isValid(SHA1)"</span>, checksummedFile.isValidChecksums(
-<a class="jxr_linenumber" name="L225" href="#L225">225</a>             Arrays.asList(ChecksumAlgorithm.SHA1, ChecksumAlgorithm.MD5 ) ) );
-<a class="jxr_linenumber" name="L226" href="#L226">226</a> 
-<a class="jxr_linenumber" name="L227" href="#L227">227</a>     }
+<a class="jxr_linenumber" name="L206" href="#L206">206</a>     }
+<a class="jxr_linenumber" name="L207" href="#L207">207</a> 
+<a class="jxr_linenumber" name="L208" href="#L208">208</a>     @Test
+<a class="jxr_linenumber" name="L209" href="#L209">209</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIsValidChecksumSha1AndMd5()
+<a class="jxr_linenumber" name="L210" href="#L210">210</a>         <strong class="jxr_keyword">throws</strong> IOException, ChecksumValidationException
+<a class="jxr_linenumber" name="L211" href="#L211">211</a>     {
+<a class="jxr_linenumber" name="L212" href="#L212">212</a>         Path jarFile = createTestableJar( <span class="jxr_string">"examples/redback-authz-open.jar"</span>, <strong class="jxr_keyword">true</strong>, <strong class="jxr_keyword">true</strong> );
+<a class="jxr_linenumber" name="L213" href="#L213">213</a> 
+<a class="jxr_linenumber" name="L214" href="#L214">214</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( jarFile );
+<a class="jxr_linenumber" name="L215" href="#L215">215</a>         assertTrue( <span class="jxr_string">"ChecksummedFile.isValid(SHA1,MD5)"</span>, checksummedFile.isValidChecksums(
+<a class="jxr_linenumber" name="L216" href="#L216">216</a>             Arrays.asList(ChecksumAlgorithm.SHA1, ChecksumAlgorithm.MD5 ) ) );
+<a class="jxr_linenumber" name="L217" href="#L217">217</a>     }
+<a class="jxr_linenumber" name="L218" href="#L218">218</a> 
+<a class="jxr_linenumber" name="L219" href="#L219">219</a>     @Test
+<a class="jxr_linenumber" name="L220" href="#L220">220</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIsValidChecksumSha1NoMd5()
+<a class="jxr_linenumber" name="L221" href="#L221">221</a>         <strong class="jxr_keyword">throws</strong> IOException, ChecksumValidationException
+<a class="jxr_linenumber" name="L222" href="#L222">222</a>     {
+<a class="jxr_linenumber" name="L223" href="#L223">223</a>         Path jarFile = createTestableJar( <span class="jxr_string">"examples/redback-authz-open.jar"</span>, <strong class="jxr_keyword">true</strong>, false );
+<a class="jxr_linenumber" name="L224" href="#L224">224</a> 
+<a class="jxr_linenumber" name="L225" href="#L225">225</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( jarFile );
+<a class="jxr_linenumber" name="L226" href="#L226">226</a>         assertTrue( <span class="jxr_string">"ChecksummedFile.isValid(SHA1)"</span>, checksummedFile.isValidChecksums(
+<a class="jxr_linenumber" name="L227" href="#L227">227</a>             Arrays.asList(ChecksumAlgorithm.SHA1, ChecksumAlgorithm.MD5 ) ) );
 <a class="jxr_linenumber" name="L228" href="#L228">228</a> 
-<a class="jxr_linenumber" name="L229" href="#L229">229</a>     @Test
-<a class="jxr_linenumber" name="L230" href="#L230">230</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testParseChecksum()
-<a class="jxr_linenumber" name="L231" href="#L231">231</a>         <strong class="jxr_keyword">throws</strong> IOException, ChecksumValidationException
-<a class="jxr_linenumber" name="L232" href="#L232">232</a>     {
-<a class="jxr_linenumber" name="L233" href="#L233">233</a>         Path expectedFile = getTestOutputDir().resolve(<span class="jxr_string">"servletapi-2.4.pom.sha1"</span>);
-<a class="jxr_linenumber" name="L234" href="#L234">234</a>         FileUtils.writeStringToFile( expectedFile, FILE_ENCODING, SERVLETAPI_SHA1
-<a class="jxr_linenumber" name="L235" href="#L235">235</a>             + <span class="jxr_string">"  /home/projects/maven/repository-staging/to-ibiblio/maven2/servletapi/servletapi/2.4/servletapi-2.4.pom"</span>);
-<a class="jxr_linenumber" name="L236" href="#L236">236</a> 
-<a class="jxr_linenumber" name="L237" href="#L237">237</a>         Path testfile = getTestResource( <span class="jxr_string">"examples/redback-authz-open.jar"</span> );
-<a class="jxr_linenumber" name="L238" href="#L238">238</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( testfile );
-<a class="jxr_linenumber" name="L239" href="#L239">239</a>         String s = checksummedFile.parseChecksum( expectedFile, ChecksumAlgorithm.SHA1,
-<a class="jxr_linenumber" name="L240" href="#L240">240</a>                                                   <span class="jxr_string">"servletapi/servletapi/2.4/servletapi-2.4.pom"</span>, FILE_ENCODING);
-<a class="jxr_linenumber" name="L241" href="#L241">241</a>         assertEquals( <span class="jxr_string">"Checksum doesn't match"</span>, SERVLETAPI_SHA1, s );
-<a class="jxr_linenumber" name="L242" href="#L242">242</a> 
-<a class="jxr_linenumber" name="L243" href="#L243">243</a>     }
+<a class="jxr_linenumber" name="L229" href="#L229">229</a>     }
+<a class="jxr_linenumber" name="L230" href="#L230">230</a> 
+<a class="jxr_linenumber" name="L231" href="#L231">231</a>     @Test
+<a class="jxr_linenumber" name="L232" href="#L232">232</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testParseChecksum()
+<a class="jxr_linenumber" name="L233" href="#L233">233</a>         <strong class="jxr_keyword">throws</strong> IOException, ChecksumValidationException
+<a class="jxr_linenumber" name="L234" href="#L234">234</a>     {
+<a class="jxr_linenumber" name="L235" href="#L235">235</a>         Path expectedFile = getTestOutputDir().resolve(<span class="jxr_string">"servletapi-2.4.pom.sha1"</span>);
+<a class="jxr_linenumber" name="L236" href="#L236">236</a>         FileUtils.writeStringToFile( expectedFile, FILE_ENCODING, SERVLETAPI_SHA1
+<a class="jxr_linenumber" name="L237" href="#L237">237</a>             + <span class="jxr_string">"  /home/projects/maven/repository-staging/to-ibiblio/maven2/servletapi/servletapi/2.4/servletapi-2.4.pom"</span>);
+<a class="jxr_linenumber" name="L238" href="#L238">238</a> 
+<a class="jxr_linenumber" name="L239" href="#L239">239</a>         Path testfile = getTestResource( <span class="jxr_string">"examples/redback-authz-open.jar"</span> );
+<a class="jxr_linenumber" name="L240" href="#L240">240</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( testfile );
+<a class="jxr_linenumber" name="L241" href="#L241">241</a>         String s = checksummedFile.parseChecksum( expectedFile, ChecksumAlgorithm.SHA1,
+<a class="jxr_linenumber" name="L242" href="#L242">242</a>                                                   <span class="jxr_string">"servletapi/servletapi/2.4/servletapi-2.4.pom"</span>, FILE_ENCODING);
+<a class="jxr_linenumber" name="L243" href="#L243">243</a>         assertEquals( <span class="jxr_string">"Checksum doesn't match"</span>, SERVLETAPI_SHA1, s );
 <a class="jxr_linenumber" name="L244" href="#L244">244</a> 
-<a class="jxr_linenumber" name="L245" href="#L245">245</a>     @Test
-<a class="jxr_linenumber" name="L246" href="#L246">246</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testParseChecksumAltDash1()
-<a class="jxr_linenumber" name="L247" href="#L247">247</a>         <strong class="jxr_keyword">throws</strong> IOException, ChecksumValidationException
-<a class="jxr_linenumber" name="L248" href="#L248">248</a>     {
-<a class="jxr_linenumber" name="L249" href="#L249">249</a>         Path expectedFile = getTestOutputDir().resolve(<span class="jxr_string">"redback-authz-open.jar.sha1"</span>);
-<a class="jxr_linenumber" name="L250" href="#L250">250</a>         FileUtils.writeStringToFile( expectedFile, FILE_ENCODING, SERVLETAPI_SHA1 + <span class="jxr_string">"  -"</span>);
-<a class="jxr_linenumber" name="L251" href="#L251">251</a>         Path testfile = getTestResource( <span class="jxr_string">"examples/redback-authz-open.jar"</span> );
-<a class="jxr_linenumber" name="L252" href="#L252">252</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( testfile );
-<a class="jxr_linenumber" name="L253" href="#L253">253</a>         String s = checksummedFile.parseChecksum( expectedFile, ChecksumAlgorithm.SHA1,
-<a class="jxr_linenumber" name="L254" href="#L254">254</a>                                                   <span class="jxr_string">"servletapi/servletapi/2.4/servletapi-2.4.pom"</span>, FILE_ENCODING );
-<a class="jxr_linenumber" name="L255" href="#L255">255</a>         assertEquals( <span class="jxr_string">"Checksum doesn't match"</span>, SERVLETAPI_SHA1, s );
-<a class="jxr_linenumber" name="L256" href="#L256">256</a>     }
-<a class="jxr_linenumber" name="L257" href="#L257">257</a> 
-<a class="jxr_linenumber" name="L258" href="#L258">258</a>     @Test
-<a class="jxr_linenumber" name="L259" href="#L259">259</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testParseChecksumAltDash2()
-<a class="jxr_linenumber" name="L260" href="#L260">260</a>         <strong class="jxr_keyword">throws</strong> IOException, ChecksumValidationException
-<a class="jxr_linenumber" name="L261" href="#L261">261</a>     {
-<a class="jxr_linenumber" name="L262" href="#L262">262</a>         Path expectedFile = getTestOutputDir().resolve(<span class="jxr_string">"redback-authz-open.jar.sha1"</span>);
-<a class="jxr_linenumber" name="L263" href="#L263">263</a>         FileUtils.writeStringToFile( expectedFile, FILE_ENCODING, <span class="jxr_string">"SHA1(-)="</span> + SERVLETAPI_SHA1);
-<a class="jxr_linenumber" name="L264" href="#L264">264</a>         Path testfile = getTestResource( <span class="jxr_string">"examples/redback-authz-open.jar"</span> );
-<a class="jxr_linenumber" name="L265" href="#L265">265</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( testfile );
-<a class="jxr_linenumber" name="L266" href="#L266">266</a>         String s = checksummedFile.parseChecksum( expectedFile, ChecksumAlgorithm.SHA1,
-<a class="jxr_linenumber" name="L267" href="#L267">267</a>                                                   <span class="jxr_string">"servletapi/servletapi/2.4/servletapi-2.4.pom"</span> , FILE_ENCODING);
-<a class="jxr_linenumber" name="L268" href="#L268">268</a>         assertEquals( <span class="jxr_string">"Checksum doesn't match"</span>, SERVLETAPI_SHA1, s );
-<a class="jxr_linenumber" name="L269" href="#L269">269</a>     }
-<a class="jxr_linenumber" name="L270" href="#L270">270</a> 
-<a class="jxr_linenumber" name="L271" href="#L271">271</a>     @Test
-<a class="jxr_linenumber" name="L272" href="#L272">272</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testRemoteMetadataChecksumFilePathSha1()
-<a class="jxr_linenumber" name="L273" href="#L273">273</a>         <strong class="jxr_keyword">throws</strong> IOException
-<a class="jxr_linenumber" name="L274" href="#L274">274</a>     {
-<a class="jxr_linenumber" name="L275" href="#L275">275</a>         Path expectedFile = getTestOutputDir().resolve(<span class="jxr_string">"maven-metadata-remote.xml.sha1"</span>);
-<a class="jxr_linenumber" name="L276" href="#L276">276</a>         FileUtils.writeStringToFile( expectedFile, FILE_ENCODING, REMOTE_METADATA_SHA1 + <span class="jxr_string">"  /home/test/repository/examples/metadata/maven-metadata.xml"</span>);
-<a class="jxr_linenumber" name="L277" href="#L277">277</a>         Path testfile = getTestResource( <span class="jxr_string">"examples/metadata/maven-metadata-remote.xml"</span> );
-<a class="jxr_linenumber" name="L278" href="#L278">278</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( testfile );
-<a class="jxr_linenumber" name="L279" href="#L279">279</a> 
-<a class="jxr_linenumber" name="L280" href="#L280">280</a>         <strong class="jxr_keyword">try</strong>
-<a class="jxr_linenumber" name="L281" href="#L281">281</a>         {
-<a class="jxr_linenumber" name="L282" href="#L282">282</a>             String s = checksummedFile.parseChecksum( expectedFile, ChecksumAlgorithm.SHA1, <span class="jxr_string">"maven-metadata-remote.xml"</span>, FILE_ENCODING );
-<a class="jxr_linenumber" name="L283" href="#L283">283</a>             assertEquals( <span class="jxr_string">"Checksum doesn't match"</span>, REMOTE_METADATA_SHA1, s );
-<a class="jxr_linenumber" name="L284" href="#L284">284</a>         }
-<a class="jxr_linenumber" name="L285" href="#L285">285</a>         <strong class="jxr_keyword">catch</strong> ( ChecksumValidationException e )
-<a class="jxr_linenumber" name="L286" href="#L286">286</a>         {
-<a class="jxr_linenumber" name="L287" href="#L287">287</a>             e.printStackTrace();
-<a class="jxr_linenumber" name="L288" href="#L288">288</a>             fail( <span class="jxr_string">"IOException should not occur."</span> );
-<a class="jxr_linenumber" name="L289" href="#L289">289</a>         }
-<a class="jxr_linenumber" name="L290" href="#L290">290</a>     }
-<a class="jxr_linenumber" name="L291" href="#L291">291</a> 
-<a class="jxr_linenumber" name="L292" href="#L292">292</a>     @Test
-<a class="jxr_linenumber" name="L293" href="#L293">293</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testRemoteMetadataChecksumFilePathMd5()
-<a class="jxr_linenumber" name="L294" href="#L294">294</a>         <strong class="jxr_keyword">throws</strong> IOException
-<a class="jxr_linenumber" name="L295" href="#L295">295</a>     {
-<a class="jxr_linenumber" name="L296" href="#L296">296</a>         Path expectedFile = getTestOutputDir().resolve( <span class="jxr_string">"maven-metadata.xml.md5"</span> );
-<a class="jxr_linenumber" name="L297" href="#L297">297</a>         FileUtils.writeStringToFile( expectedFile, FILE_ENCODING, REMOTE_METADATA_MD5 + <span class="jxr_string">"  ./examples/metadata/maven-metadata.xml"</span>);
-<a class="jxr_linenumber" name="L298" href="#L298">298</a>         Path testfile = getTestResource( <span class="jxr_string">"examples/metadata/maven-metadata-remote.xml"</span> );
-<a class="jxr_linenumber" name="L299" href="#L299">299</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( testfile );
-<a class="jxr_linenumber" name="L300" href="#L300">300</a> 
-<a class="jxr_linenumber" name="L301" href="#L301">301</a>         <strong class="jxr_keyword">try</strong>
-<a class="jxr_linenumber" name="L302" href="#L302">302</a>         {
-<a class="jxr_linenumber" name="L303" href="#L303">303</a>             String s = checksummedFile.parseChecksum( expectedFile, ChecksumAlgorithm.MD5, <span class="jxr_string">"maven-metadata-remote.xml"</span>, FILE_ENCODING );
-<a class="jxr_linenumber" name="L304" href="#L304">304</a>             assertEquals( <span class="jxr_string">"Checksum doesn't match"</span>, REMOTE_METADATA_MD5, s );
-<a class="jxr_linenumber" name="L305" href="#L305">305</a>         }
-<a class="jxr_linenumber" name="L306" href="#L306">306</a>         <strong class="jxr_keyword">catch</strong> ( ChecksumValidationException e )
-<a class="jxr_linenumber" name="L307" href="#L307">307</a>         {
-<a class="jxr_linenumber" name="L308" href="#L308">308</a>             e.printStackTrace();
-<a class="jxr_linenumber" name="L309" href="#L309">309</a>             fail( <span class="jxr_string">"IOException should not occur."</span> );
-<a class="jxr_linenumber" name="L310" href="#L310">310</a>         }
-<a class="jxr_linenumber" name="L311" href="#L311">311</a>     }
-<a class="jxr_linenumber" name="L312" href="#L312">312</a> }
+<a class="jxr_linenumber" name="L245" href="#L245">245</a>     }
+<a class="jxr_linenumber" name="L246" href="#L246">246</a> 
+<a class="jxr_linenumber" name="L247" href="#L247">247</a>     @Test
+<a class="jxr_linenumber" name="L248" href="#L248">248</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testParseChecksumAltDash1()
+<a class="jxr_linenumber" name="L249" href="#L249">249</a>         <strong class="jxr_keyword">throws</strong> IOException, ChecksumValidationException
+<a class="jxr_linenumber" name="L250" href="#L250">250</a>     {
+<a class="jxr_linenumber" name="L251" href="#L251">251</a>         Path expectedFile = getTestOutputDir().resolve(<span class="jxr_string">"redback-authz-open.jar.sha1"</span>);
+<a class="jxr_linenumber" name="L252" href="#L252">252</a>         FileUtils.writeStringToFile( expectedFile, FILE_ENCODING, SERVLETAPI_SHA1 + <span class="jxr_string">"  -"</span>);
+<a class="jxr_linenumber" name="L253" href="#L253">253</a>         Path testfile = getTestResource( <span class="jxr_string">"examples/redback-authz-open.jar"</span> );
+<a class="jxr_linenumber" name="L254" href="#L254">254</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( testfile );
+<a class="jxr_linenumber" name="L255" href="#L255">255</a>         String s = checksummedFile.parseChecksum( expectedFile, ChecksumAlgorithm.SHA1,
+<a class="jxr_linenumber" name="L256" href="#L256">256</a>                                                   <span class="jxr_string">"servletapi/servletapi/2.4/servletapi-2.4.pom"</span>, FILE_ENCODING );
+<a class="jxr_linenumber" name="L257" href="#L257">257</a>         assertEquals( <span class="jxr_string">"Checksum doesn't match"</span>, SERVLETAPI_SHA1, s );
+<a class="jxr_linenumber" name="L258" href="#L258">258</a>     }
+<a class="jxr_linenumber" name="L259" href="#L259">259</a> 
+<a class="jxr_linenumber" name="L260" href="#L260">260</a>     @Test
+<a class="jxr_linenumber" name="L261" href="#L261">261</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testParseChecksumAltDash2()
+<a class="jxr_linenumber" name="L262" href="#L262">262</a>         <strong class="jxr_keyword">throws</strong> IOException, ChecksumValidationException
+<a class="jxr_linenumber" name="L263" href="#L263">263</a>     {
+<a class="jxr_linenumber" name="L264" href="#L264">264</a>         Path expectedFile = getTestOutputDir().resolve(<span class="jxr_string">"redback-authz-open.jar.sha1"</span>);
+<a class="jxr_linenumber" name="L265" href="#L265">265</a>         FileUtils.writeStringToFile( expectedFile, FILE_ENCODING, <span class="jxr_string">"SHA1(-)="</span> + SERVLETAPI_SHA1);
+<a class="jxr_linenumber" name="L266" href="#L266">266</a>         Path testfile = getTestResource( <span class="jxr_string">"examples/redback-authz-open.jar"</span> );
+<a class="jxr_linenumber" name="L267" href="#L267">267</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( testfile );
+<a class="jxr_linenumber" name="L268" href="#L268">268</a>         String s = checksummedFile.parseChecksum( expectedFile, ChecksumAlgorithm.SHA1,
+<a class="jxr_linenumber" name="L269" href="#L269">269</a>                                                   <span class="jxr_string">"servletapi/servletapi/2.4/servletapi-2.4.pom"</span> , FILE_ENCODING);
+<a class="jxr_linenumber" name="L270" href="#L270">270</a>         assertEquals( <span class="jxr_string">"Checksum doesn't match"</span>, SERVLETAPI_SHA1, s );
+<a class="jxr_linenumber" name="L271" href="#L271">271</a>     }
+<a class="jxr_linenumber" name="L272" href="#L272">272</a> 
+<a class="jxr_linenumber" name="L273" href="#L273">273</a>     @Test
+<a class="jxr_linenumber" name="L274" href="#L274">274</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testRemoteMetadataChecksumFilePathSha1()
+<a class="jxr_linenumber" name="L275" href="#L275">275</a>         <strong class="jxr_keyword">throws</strong> IOException
+<a class="jxr_linenumber" name="L276" href="#L276">276</a>     {
+<a class="jxr_linenumber" name="L277" href="#L277">277</a>         Path expectedFile = getTestOutputDir().resolve(<span class="jxr_string">"maven-metadata-remote.xml.sha1"</span>);
+<a class="jxr_linenumber" name="L278" href="#L278">278</a>         FileUtils.writeStringToFile( expectedFile, FILE_ENCODING, REMOTE_METADATA_SHA1 + <span class="jxr_string">"  /home/test/repository/examples/metadata/maven-metadata.xml"</span>);
+<a class="jxr_linenumber" name="L279" href="#L279">279</a>         Path testfile = getTestResource( <span class="jxr_string">"examples/metadata/maven-metadata-remote.xml"</span> );
+<a class="jxr_linenumber" name="L280" href="#L280">280</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( testfile );
+<a class="jxr_linenumber" name="L281" href="#L281">281</a> 
+<a class="jxr_linenumber" name="L282" href="#L282">282</a>         <strong class="jxr_keyword">try</strong>
+<a class="jxr_linenumber" name="L283" href="#L283">283</a>         {
+<a class="jxr_linenumber" name="L284" href="#L284">284</a>             String s = checksummedFile.parseChecksum( expectedFile, ChecksumAlgorithm.SHA1, <span class="jxr_string">"maven-metadata-remote.xml"</span>, FILE_ENCODING );
+<a class="jxr_linenumber" name="L285" href="#L285">285</a>             assertEquals( <span class="jxr_string">"Checksum doesn't match"</span>, REMOTE_METADATA_SHA1, s );
+<a class="jxr_linenumber" name="L286" href="#L286">286</a>         }
+<a class="jxr_linenumber" name="L287" href="#L287">287</a>         <strong class="jxr_keyword">catch</strong> ( ChecksumValidationException e )
+<a class="jxr_linenumber" name="L288" href="#L288">288</a>         {
+<a class="jxr_linenumber" name="L289" href="#L289">289</a>             e.printStackTrace();
+<a class="jxr_linenumber" name="L290" href="#L290">290</a>             fail( <span class="jxr_string">"IOException should not occur."</span> );
+<a class="jxr_linenumber" name="L291" href="#L291">291</a>         }
+<a class="jxr_linenumber" name="L292" href="#L292">292</a>     }
+<a class="jxr_linenumber" name="L293" href="#L293">293</a> 
+<a class="jxr_linenumber" name="L294" href="#L294">294</a>     @Test
+<a class="jxr_linenumber" name="L295" href="#L295">295</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testRemoteMetadataChecksumFilePathMd5()
+<a class="jxr_linenumber" name="L296" href="#L296">296</a>         <strong class="jxr_keyword">throws</strong> IOException
+<a class="jxr_linenumber" name="L297" href="#L297">297</a>     {
+<a class="jxr_linenumber" name="L298" href="#L298">298</a>         Path expectedFile = getTestOutputDir().resolve( <span class="jxr_string">"maven-metadata.xml.md5"</span> );
+<a class="jxr_linenumber" name="L299" href="#L299">299</a>         FileUtils.writeStringToFile( expectedFile, FILE_ENCODING, REMOTE_METADATA_MD5 + <span class="jxr_string">"  ./examples/metadata/maven-metadata.xml"</span>);
+<a class="jxr_linenumber" name="L300" href="#L300">300</a>         Path testfile = getTestResource( <span class="jxr_string">"examples/metadata/maven-metadata-remote.xml"</span> );
+<a class="jxr_linenumber" name="L301" href="#L301">301</a>         ChecksummedFile checksummedFile = <strong class="jxr_keyword">new</strong> ChecksummedFile( testfile );
+<a class="jxr_linenumber" name="L302" href="#L302">302</a> 
+<a class="jxr_linenumber" name="L303" href="#L303">303</a>         <strong class="jxr_keyword">try</strong>
+<a class="jxr_linenumber" name="L304" href="#L304">304</a>         {
+<a class="jxr_linenumber" name="L305" href="#L305">305</a>             String s = checksummedFile.parseChecksum( expectedFile, ChecksumAlgorithm.MD5, <span class="jxr_string">"maven-metadata-remote.xml"</span>, FILE_ENCODING );
+<a class="jxr_linenumber" name="L306" href="#L306">306</a>             assertEquals( <span class="jxr_string">"Checksum doesn't match"</span>, REMOTE_METADATA_MD5, s );
+<a class="jxr_linenumber" name="L307" href="#L307">307</a>         }
+<a class="jxr_linenumber" name="L308" href="#L308">308</a>         <strong class="jxr_keyword">catch</strong> ( ChecksumValidationException e )
+<a class="jxr_linenumber" name="L309" href="#L309">309</a>         {
+<a class="jxr_linenumber" name="L310" href="#L310">310</a>             e.printStackTrace();
+<a class="jxr_linenumber" name="L311" href="#L311">311</a>             fail( <span class="jxr_string">"IOException should not occur."</span> );
+<a class="jxr_linenumber" name="L312" href="#L312">312</a>         }
+<a class="jxr_linenumber" name="L313" href="#L313">313</a>     }
+<a class="jxr_linenumber" name="L314" href="#L314">314</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
 </body>
 </html>

@@ -18,8 +18,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":9,"i4":10,"i5":10};
+var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/archiva/repository/maven2/MavenManagedRepository.html" title="class in org.apache.archiva.repository.maven2"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/archiva/repository/maven2/MavenRepositoryProvider.html" title="class in org.apache.archiva.repository.maven2"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/archiva/repository/maven2/MavenRepositoryGroup.html" title="class in org.apache.archiva.repository.maven2"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/archiva/repository/maven2/MavenRemoteRepository.html" target="_top">Frames</a></li>
@@ -75,13 +75,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#fields.inherited.from.class.org.apache.archiva.repository.base.AbstractRepository">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -100,10 +100,10 @@ var activeTableTab = "activeTableTab";
 <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
-<li><a href="../../../../../org/apache/archiva/repository/AbstractRepository.html" title="class in org.apache.archiva.repository">org.apache.archiva.repository.AbstractRepository</a></li>
+<li><a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html" title="class in org.apache.archiva.repository.base">org.apache.archiva.repository.base.AbstractRepository</a></li>
 <li>
 <ul class="inheritance">
-<li><a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html" title="class in org.apache.archiva.repository">org.apache.archiva.repository.AbstractRemoteRepository</a></li>
+<li><a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html" title="class in org.apache.archiva.repository.base">org.apache.archiva.repository.base.AbstractRemoteRepository</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.archiva.repository.maven2.MavenRemoteRepository</li>
@@ -119,12 +119,12 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../../org/apache/archiva/repository/EditableRemoteRepository.html" title="interface in org.apache.archiva.repository">EditableRemoteRepository</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html" title="interface in org.apache.archiva.repository">EditableRepository</a>, <a href="../../../../../org/apache/archiva/repository/RemoteRepository.html" title="interface in org.apache.archiva.repository">RemoteRepository</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>, <a href="../../../../../org/apache/archiva/repository/RepositoryEventHandler.html" title="interface in org.apache.archiva.repository">RepositoryEventHandler</a>, <a href="../../../../../org/apache/archiva/repository/RepositoryEventListener.html" title="interface in org.apache.archiva.repository">RepositoryEventListener</a></dd>
+<dd><a href="https://docs.oracle.com/javase/8/docs/api/java/util/EventListener.html?is-external=true" title="class or interface in java.util">EventListener</a>, <a href="../../../../../org/apache/archiva/event/EventHandler.html" title="interface in org.apache.archiva.event">EventHandler</a>&lt;<a href="../../../../../org/apache/archiva/repository/event/RepositoryEvent.html" title="class in org.apache.archiva.repository.event">RepositoryEvent</a>&gt;, <a href="../../../../../org/apache/archiva/event/EventSource.html" title="interface in org.apache.archiva.event">EventSource</a>, <a href="../../../../../org/apache/archiva/repository/EditableRemoteRepository.html" title="interface in org.apache.archiva.repository">EditableRemoteRepository</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html" title="interface in org.apache.archiva.repository">EditableRepository</a>, <a href="../../../../../org/apache/archiva/repository/RemoteRepository.html" title="interface in org.apache.archiva.repository">RemoteRepository</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>, <a href="../../../../../org/apache/archiva/repository/storage/RepositoryStorage.html" title="interface in org.apache.archiva.repository.storage">RepositoryStorage</a></dd>
 </dl>
 <hr>
 <br>
-<pre>public class <a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.41">MavenRemoteRepository</a>
-extends <a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html" title="class in org.apache.archiva.repository">AbstractRemoteRepository</a>
+<pre>public class <a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.45">MavenRemoteRepository</a>
+extends <a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html" title="class in org.apache.archiva.repository.base">AbstractRemoteRepository</a>
 implements <a href="../../../../../org/apache/archiva/repository/RemoteRepository.html" title="interface in org.apache.archiva.repository">RemoteRepository</a></pre>
 <div class="block">Maven2 remote repository implementation</div>
 </li>
@@ -139,35 +139,12 @@ implements <a href="../../../../../org/apache/archiva/repository/RemoteRepositor
 <!--   -->
 </a>
 <h3>Field Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private static <a href="../../../../../org/apache/archiva/repository/RepositoryCapabilities.html" title="interface in org.apache.archiva.repository">RepositoryCapabilities</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/maven2/MavenRemoteRepository.html#CAPABILITIES">CAPABILITIES</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html" title="class in org.apache.archiva.repository.features">IndexCreationFeature</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/maven2/MavenRemoteRepository.html#indexCreationFeature">indexCreationFeature</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>(package private) org.slf4j.Logger</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/maven2/MavenRemoteRepository.html#log">log</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="../../../../../org/apache/archiva/repository/features/RemoteIndexFeature.html" title="class in org.apache.archiva.repository.features">RemoteIndexFeature</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/maven2/MavenRemoteRepository.html#remoteIndexFeature">remoteIndexFeature</a></span></code>&nbsp;</td>
-</tr>
-</table>
 <ul class="blockList">
-<li class="blockList"><a name="fields.inherited.from.class.org.apache.archiva.repository.AbstractRepository">
+<li class="blockList"><a name="fields.inherited.from.class.org.apache.archiva.repository.base.AbstractRepository">
 <!--   -->
 </a>
-<h3>Fields inherited from class&nbsp;org.apache.archiva.repository.<a href="../../../../../org/apache/archiva/repository/AbstractRepository.html" title="class in org.apache.archiva.repository">AbstractRepository</a></h3>
-<code><a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#CRON_DEFINITION">CRON_DEFINITION</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#repositoryBase">repositoryBase</a></code></li>
+<h3>Fields inherited from class&nbsp;org.apache.archiva.repository.base.<a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html" title="class in org.apache.archiva.repository.base">AbstractRepository</a></h3>
+<code><a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#CRON_DEFINITION">CRON_DEFINITION</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#location">location</a></code></li>
 </ul>
 </li>
 </ul>
@@ -183,15 +160,15 @@ implements <a href="../../../../../org/apache/archiva/repository/RemoteRepositor
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/maven2/MavenRemoteRepository.html#MavenRemoteRepository-java.util.Locale-java.lang.String-java.lang.String-java.nio.file.Path-">MavenRemoteRepository</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a>&nbsp;primaryLocale,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/maven2/MavenRemoteRepository.html#MavenRemoteRepository-java.util.Locale-java.lang.String-java.lang.String-org.apache.archiva.repository.storage.FilesystemStorage-">MavenRemoteRepository</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a>&nbsp;primaryLocale,
                      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id,
                      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
-                     <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;basePath)</code>&nbsp;</td>
+                     <a href="../../../../../org/apache/archiva/repository/storage/FilesystemStorage.html" title="class in org.apache.archiva.repository.storage">FilesystemStorage</a>&nbsp;storage)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/maven2/MavenRemoteRepository.html#MavenRemoteRepository-java.lang.String-java.lang.String-java.nio.file.Path-">MavenRemoteRepository</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/maven2/MavenRemoteRepository.html#MavenRemoteRepository-java.lang.String-java.lang.String-org.apache.archiva.repository.storage.FilesystemStorage-">MavenRemoteRepository</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id,
                      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
-                     <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;basePath)</code>&nbsp;</td>
+                     <a href="../../../../../org/apache/archiva/repository/storage/FilesystemStorage.html" title="class in org.apache.archiva.repository.storage">FilesystemStorage</a>&nbsp;storage)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -203,7 +180,7 @@ implements <a href="../../../../../org/apache/archiva/repository/RemoteRepositor
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
@@ -228,29 +205,35 @@ implements <a href="../../../../../org/apache/archiva/repository/RemoteRepositor
 </td>
 </tr>
 <tr id="i3" class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../../org/apache/archiva/repository/maven2/MavenRemoteRepository.html" title="class in org.apache.archiva.repository.maven2">MavenRemoteRepository</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/maven2/MavenRemoteRepository.html#newLocalInstance-java.lang.String-java.lang.String-java.nio.file.Path-">newLocalInstance</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id,
+                <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+                <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;basePath)</code>&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>&lt;T extends <a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html" title="interface in org.apache.archiva.repository.features">RepositoryFeature</a>&lt;T&gt;&gt;<br>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/maven2/MavenRemoteRepository.html#supportsFeature-java.lang.Class-">supportsFeature</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;T&gt;&nbsp;clazz)</code>
 <div class="block">Returns true, if the requested feature is supported by this repository.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/maven2/MavenRemoteRepository.html#toString--">toString</a></span>()</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.org.apache.archiva.repository.AbstractRemoteRepository">
+<li class="blockList"><a name="methods.inherited.from.class.org.apache.archiva.repository.base.AbstractRemoteRepository">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;org.apache.archiva.repository.<a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html" title="class in org.apache.archiva.repository">AbstractRemoteRepository</a></h3>
-<code><a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html#addExtraHeader-java.lang.String-java.lang.String-">addExtraHeader</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html#addExtraParameter-java.lang.String-java.lang.String-">addExtraParameter</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html#getCheckPath--">getCheckPath</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html#getContent--">getContent</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html#getExtraHeaders--">getExtraHeaders</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html#getExtraParameters--">getExtraParameters</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html#getLocalPath--">getLocalPath</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html#getLoginCredentials--">getLoginCredentials</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html#getTimeout--">getTimeout</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html#setCheckPath-java.lang.String-">setCheckPath</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html#setContent-org.apache.archiva.repository.RemoteRepositoryContent-">setContent</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html#setCredentials-org.apache.archiva.repository.RepositoryCredentials-">setCredentials</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html#setExtraHeaders-java.util.Map-">setExtraHeaders</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html#setExtraParameters-java.util.Map-">setExtraParameters</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html#setTimeout-java.time.Duration-">setTimeout</a></code></li>
+<h3>Methods inherited from class&nbsp;org.apache.archiva.repository.base.<a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html" title="class in org.apache.archiva.repository.base">AbstractRemoteRepository</a></h3>
+<code><a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html#addExtraHeader-java.lang.String-java.lang.String-">addExtraHeader</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html#addExtraParameter-java.lang.String-java.lang.String-">addExtraParameter</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html#getCheckPath--">getCheckPath</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html#getContent--">getContent</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html#getExtraHeaders--">getExtraHeaders</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html#getExtraParameters--">getExtraParameters</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html#getLocalPath--">getLocalPath</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html#getLoginCredentials--">getLoginCredentials</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html#getTimeout--">getTimeout</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html#setCheckPath-java.lang.String-">setCheckPath</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html#setContent-org.apache.archiva.repository.RemoteRepositoryContent-">setContent</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html#setCredentials-org.apache.archiva.repository.RepositoryCredentials-">setCredentials</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html#setExtraHeaders-java.util.Map-">setExtraHeaders</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html#setExtraParameters-java.util.Map-">setExtraParameters</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html#setLocation-java.net.URI-">setLocation</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html#setTimeout-java.time.Duration-">setTimeout</a></code></li>
 </ul>
 <ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.org.apache.archiva.repository.AbstractRepository">
+<li class="blockList"><a name="methods.inherited.from.class.org.apache.archiva.repository.base.AbstractRepository">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;org.apache.archiva.repository.<a href="../../../../../org/apache/archiva/repository/AbstractRepository.html" title="class in org.apache.archiva.repository">AbstractRepository</a></h3>
-<code><a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#addFailoverLocation-java.net.URI-">addFailoverLocation</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#addFeature-org.apache.archiva.repository.features.RepositoryFeature-">addFeature</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#addListener-org.apache.archiva.repository.RepositoryEventListener-">addListener</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#clearFailoverLocations--">clearFailoverLocations</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#clearListeners--">clearListeners</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#close--">close</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#getDescription--">getDescription</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#getDescription-java.util.Locale-">getDescription</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#getFailoverLocations--">getFailoverLocations</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#getId--">getId</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#getIndexingContext--">getIndexingContext</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#getLayout--">getLayout</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#getLocation--">getLocation</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#getName--">getName</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#getName-java.util.Locale-">getName</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#getPrimaryLocale--">getPrimaryLocale</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#getSchedulingDefinition--">getSchedulingDefinition</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#getType--">getType</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#isScanned--">isScanned</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#raise-org.apache.archiva.repository.RepositoryEvent-">raise</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#removeFailoverLocation-java.net.URI-">removeFailoverLocation</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#removeListener-org.apache.archiva.repository.RepositoryEventListener-">removeListener</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#setBaseUri-java.net.URI-">setBaseUri</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#setDescription-java.util.Locale-java.lang.String-">setDescription</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#setIndexingContext-org.apache.archiva.indexer.ArchivaIndexingContext-">setIndexingContext</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#setLayout-java.lang.String-">setLayout</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#setLocation-java.net.URI-">setLocation</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#setName-java.util.Locale-java.lang.String-">setName</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#setPrimaryLocale-java.util.Locale-">setPrimaryLocale</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#setScanned-boolean-">setScanned</a>, <a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#setSchedulingDefinition-java.lang.String-">setSchedulingDefinition</a></code></li>
+<h3>Methods inherited from class&nbsp;org.apache.archiva.repository.base.<a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html" title="class in org.apache.archiva.repository.base">AbstractRepository</a></h3>
+<code><a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#addAsset-java.lang.String-boolean-">addAsset</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#addFailoverLocation-java.net.URI-">addFailoverLocation</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#addFeature-org.apache.archiva.repository.features.RepositoryFeature-">addFeature</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#clearFailoverLocations--">clearFailoverLocations</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#close--">close</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#consumeData-org.apache.archiva.repository.storage.StorageAsset-java.util.function.Consumer-boolean-">consumeData</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#consumeDataFromChannel-org.apache.archiva.repository.storage.StorageAsset-java.util.function.Consumer-boolean-">consumeDataFromChannel</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#copyAsset-org.apache.archiva.repository.storage.StorageAsset-org.apache.archiva.repository.storage.StorageAsset-java.nio.file.CopyOption...-">copyAsset</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#copyAsset-org.apache.archiva.repository.storage.StorageAsset-java.lang.String-java.nio.file.CopyOption...-">copyAsset</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#getAsset-java.lang.String-">getAsset</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#getDescription--">getDescription</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#getDescription-java.util.Locale-">getDescription</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#getFailoverLocations--">getFailoverLocations</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#getId--">getId</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#getIndexingContext--">getIndexingContext</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#getLayout--">getLayout</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#getLocation--">getLocation</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#getName--">getName</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#getName-java.util.Locale-">getName</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#getPrimaryLocale--">getPrimaryLocale</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#getSchedulingDefinition--">getSchedulingDefinition</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#getStorage--">getStorage</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#getType--">getType</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#handle-org.apache.archiva.repository.event.RepositoryEvent-">handle</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#isOpen--">isOpen</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#isScanned--">isScanned</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#moveAsset-org.apache.archiva.repository.storage.StorageAsset-org.apache.archiva.repository.storage.StorageAsset-java.nio.file.CopyOption...-">moveAsset</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#moveAsset-org.apache.archiva.repository.storage.StorageAsset-java.lang.String-java.nio.file.CopyOption...-">moveAsset</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#registerEventHandler-org.apache.archiva.event.EventType-org.apache.archiva.event.EventHandler-">registerEventHandler</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#removeAsset-org.apache.archiva.repository.storage.StorageAsset-">removeAsset</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#removeFailoverLocation-java.net.URI-">removeFailoverLocation</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#setBaseUri-java.net.URI-">setBaseUri</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#setDescription-java.util.Locale-java.lang.String-">setDescription</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#setIndexingContext-org.apache.archiva.indexer.ArchivaIndexingContext-">setIndexingContext</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#setLayout-java.lang.String-">setLayout</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#setName-java.util.Locale-java.lang.String-">setName</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#setPrimaryLocale-java.util.Locale-">setPrimaryLocale</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#setScanned-boolean-">setScanned</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#setSchedulingDefinition-java.lang.String-">setSchedulingDefinition</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#setStorage-org.apache.archiva.repository.storage.RepositoryStorage-">setStorage</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#unregisterEventHandler-org.apache.archiva.event.EventType-org.apache.archiva.event.EventHandler-">unregisterEventHandler</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#updateLocation-java.net.URI-">updateLocation</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#writeData-org.apache.archiva.repository.storage.StorageAsset-java.util.function.Consumer-boolean-">writeData</a>, <a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#writeDataToChannel-org.apache.archiva.repository.storage.StorageAsset-java.util.function.Consumer-boolean-">writeDataToChannel</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -271,21 +254,28 @@ implements <a href="../../../../../org/apache/archiva/repository/RemoteRepositor
 <!--   -->
 </a>
 <h3>Methods inherited from interface&nbsp;org.apache.archiva.repository.<a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></h3>
-<code><a href="../../../../../org/apache/archiva/repository/Repository.html#close--">close</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getDescription--">getDescription</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getDescription-java.util.Locale-">getDescription</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getFailoverLocations--">getFailoverLocations</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getId--">getId</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getIndexingContext--">getIndexingContext</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getLayout--">getLayout</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getLocalPath--">getLocalPath</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getLocation--">getLocation</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getName--">getName</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getName-java.util.Locale-">getName</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getSchedulingDefinition--">getSchedulingDefinition</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getType--">getType</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#isScanned--">isScanned</a></code></li>
+<code><a href="../../../../../org/apache/archiva/repository/Repository.html#close--">close</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getDescription--">getDescription</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getDescription-java.util.Locale-">getDescription</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getFailoverLocations--">getFailoverLocations</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getId--">getId</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getIndexingContext--">getIndexingContext</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getLayout--">getLayout</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getLocalPath--">getLocalPath</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getLocation--">getLocation</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getName--">getName</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getName-java.util.Locale-">getName</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getSchedulingDefinition--">getSchedulingDefinition</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#getType--">getType</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#isOpen--">isOpen</a>, <a href="../../../../../org/apache/archiva/repository/Repository.html#isScanned--">isScanned</a></code></li>
 </ul>
 <ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.org.apache.archiva.repository.RepositoryEventHandler">
+<li class="blockList"><a name="methods.inherited.from.class.org.apache.archiva.event.EventSource">
 <!--   -->
 </a>
-<h3>Methods inherited from interface&nbsp;org.apache.archiva.repository.<a href="../../../../../org/apache/archiva/repository/RepositoryEventHandler.html" title="interface in org.apache.archiva.repository">RepositoryEventHandler</a></h3>
-<code><a href="../../../../../org/apache/archiva/repository/RepositoryEventHandler.html#addListener-org.apache.archiva.repository.RepositoryEventListener-">addListener</a>, <a href="../../../../../org/apache/archiva/repository/RepositoryEventHandler.html#clearListeners--">clearListeners</a>, <a href="../../../../../org/apache/archiva/repository/RepositoryEventHandler.html#removeListener-org.apache.archiva.repository.RepositoryEventListener-">removeListener</a></code></li>
+<h3>Methods inherited from interface&nbsp;org.apache.archiva.event.<a href="../../../../../org/apache/archiva/event/EventSource.html" title="interface in org.apache.archiva.event">EventSource</a></h3>
+<code><a href="../../../../../org/apache/archiva/event/EventSource.html#registerEventHandler-org.apache.archiva.event.EventType-org.apache.archiva.event.EventHandler-">registerEventHandler</a>, <a href="../../../../../org/apache/archiva/event/EventSource.html#unregisterEventHandler-org.apache.archiva.event.EventType-org.apache.archiva.event.EventHandler-">unregisterEventHandler</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.org.apache.archiva.repository.storage.RepositoryStorage">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;org.apache.archiva.repository.storage.<a href="../../../../../org/apache/archiva/repository/storage/RepositoryStorage.html" title="interface in org.apache.archiva.repository.storage">RepositoryStorage</a></h3>
+<code><a href="../../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#addAsset-java.lang.String-boolean-">addAsset</a>, <a href="../../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#consumeData-org.apache.archiva.repository.storage.StorageAsset-java.util.function.Consumer-boolean-">consumeData</a>, <a href="../../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#consumeDataFromChannel-org.apache.archiva.repository.storage.StorageAsset-java.util.function.Consumer-boolean-">consumeDataFromChannel</a>, <a href="../../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#copyAsset-org.apache.archiva.repository.storage.StorageAsset-org.apache.archiva.repository.storage.StorageAsset-java.nio.file.CopyOption...-">copyAsset</a>, <a href="../../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#copyAsset-org.apache.archiva.repository.storage.StorageAsset-java.lang.String-java.nio.file.CopyOption...-">copyAsset</a>, <a href="../../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#getAsset-java.lang.String-">getAsset</a>, <a href="../../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#moveAsset-org.apache.archiva.repository.storage.StorageAsset-org.apache.archiva.repository.storage.StorageAsset-java.nio.file.CopyOption...-">moveAsset</a>, <a href="../../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#moveAsset-org.apache.archiva.repository.storage.StorageAsset-java.lang.String-java.nio.file.CopyOption...-">moveAsset</a>, <a href="../../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#removeAsset-org.apache.archiva.repository.storage.StorageAsset-">removeAsset</a>, <a href="../../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#updateLocation-java.net.URI-">updateLocation</a>, <a href="../../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#writeData-org.apache.archiva.repository.storage.StorageAsset-java.util.function.Consumer-boolean-">writeData</a>, <a href="../../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#writeDataToChannel-org.apache.archiva.repository.storage.StorageAsset-java.util.function.Consumer-boolean-">writeDataToChannel</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.org.apache.archiva.repository.EditableRepository">
 <!--   -->
 </a>
 <h3>Methods inherited from interface&nbsp;org.apache.archiva.repository.<a href="../../../../../org/apache/archiva/repository/EditableRepository.html" title="interface in org.apache.archiva.repository">EditableRepository</a></h3>
-<code><a href="../../../../../org/apache/archiva/repository/EditableRepository.html#addFailoverLocation-java.net.URI-">addFailoverLocation</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#clearFailoverLocations--">clearFailoverLocations</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#getPrimaryLocale--">getPrimaryLocale</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#removeFailoverLocation-java.net.URI-">removeFailoverLocation</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#setBaseUri-java.net.URI-">setBaseUri</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#setDescription-java.util.Locale-java.lang.String-">setDescription</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#setIndexingContext-org.apache.archiva.indexer.ArchivaIndexingContext-">setIndexingContext</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#setLayout-java.lang.String-">setLayout</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#setLocation-java.net.URI-">setLocation</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#setName-java.util.Locale-java.lang.String-">setName</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#setScanned-boolean-">setScanned</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#setSchedulingDefinition-java.lang.String-">setSchedulingDefinition</a></code></li>
+<code><a href="../../../../../org/apache/archiva/repository/EditableRepository.html#addFailoverLocation-java.net.URI-">addFailoverLocation</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#clearFailoverLocations--">clearFailoverLocations</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#getPrimaryLocale--">getPrimaryLocale</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#removeFailoverLocation-java.net.URI-">removeFailoverLocation</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#setBaseUri-java.net.URI-">setBaseUri</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#setDescription-java.util.Locale-java.lang.String-">setDescription</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#setIndexingContext-org.apache.archiva.indexer.ArchivaIndexingContext-">setIndexingContext</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#setLayout-java.lang.String-">setLayout</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#setName-java.util.Locale-java.lang.String-">setName</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#setScanned-boolean-">setScanned</a>, <a href="../../../../../org/apache/archiva/repository/EditableRepository.html#setSchedulingDefinition-java.lang.String-">setSchedulingDefinition</a></code></li>
 </ul>
 </li>
 </ul>
@@ -295,77 +285,33 @@ implements <a href="../../../../../org/apache/archiva/repository/RemoteRepositor
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a name="log">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>log</h4>
-<pre>org.slf4j.Logger <a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.45">log</a></pre>
-</li>
-</ul>
-<a name="remoteIndexFeature">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>remoteIndexFeature</h4>
-<pre>private final&nbsp;<a href="../../../../../org/apache/archiva/repository/features/RemoteIndexFeature.html" title="class in org.apache.archiva.repository.features">RemoteIndexFeature</a> <a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.47">remoteIndexFeature</a></pre>
-</li>
-</ul>
-<a name="indexCreationFeature">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>indexCreationFeature</h4>
-<pre>private final&nbsp;<a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html" title="class in org.apache.archiva.repository.features">IndexCreationFeature</a> <a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.48">indexCreationFeature</a></pre>
-</li>
-</ul>
-<a name="CAPABILITIES">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>CAPABILITIES</h4>
-<pre>private static final&nbsp;<a href="../../../../../org/apache/archiva/repository/RepositoryCapabilities.html" title="interface in org.apache.archiva.repository">RepositoryCapabilities</a> <a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.50">CAPABILITIES</a></pre>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="MavenRemoteRepository-java.lang.String-java.lang.String-java.nio.file.Path-">
+<a name="MavenRemoteRepository-java.lang.String-java.lang.String-org.apache.archiva.repository.storage.FilesystemStorage-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>MavenRemoteRepository</h4>
-<pre>public&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.62">MavenRemoteRepository</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id,
+<pre>public&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.66">MavenRemoteRepository</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id,
                              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
-                             <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;basePath)</pre>
+                             <a href="../../../../../org/apache/archiva/repository/storage/FilesystemStorage.html" title="class in org.apache.archiva.repository.storage">FilesystemStorage</a>&nbsp;storage)</pre>
 </li>
 </ul>
-<a name="MavenRemoteRepository-java.util.Locale-java.lang.String-java.lang.String-java.nio.file.Path-">
+<a name="MavenRemoteRepository-java.util.Locale-java.lang.String-java.lang.String-org.apache.archiva.repository.storage.FilesystemStorage-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>MavenRemoteRepository</h4>
-<pre>public&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.69">MavenRemoteRepository</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a>&nbsp;primaryLocale,
+<pre>public&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.73">MavenRemoteRepository</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a>&nbsp;primaryLocale,
                              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id,
                              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
-                             <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;basePath)</pre>
+                             <a href="../../../../../org/apache/archiva/repository/storage/FilesystemStorage.html" title="class in org.apache.archiva.repository.storage">FilesystemStorage</a>&nbsp;storage)</pre>
 </li>
 </ul>
 </li>
@@ -382,14 +328,14 @@ implements <a href="../../../../../org/apache/archiva/repository/RemoteRepositor
 <ul class="blockList">
 <li class="blockList">
 <h4>hasIndex</h4>
-<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.76">hasIndex</a>()</pre>
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.80">hasIndex</a>()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/repository/Repository.html#hasIndex--">Repository</a></code></span></div>
 <div class="block">Returns true, if this repository has a index available</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/archiva/repository/Repository.html#hasIndex--">hasIndex</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></code></dd>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#hasIndex--">hasIndex</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/archiva/repository/AbstractRepository.html" title="class in org.apache.archiva.repository">AbstractRepository</a></code></dd>
+<dd><code><a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#hasIndex--">hasIndex</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html" title="class in org.apache.archiva.repository.base">AbstractRepository</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
@@ -400,14 +346,14 @@ implements <a href="../../../../../org/apache/archiva/repository/RemoteRepositor
 <ul class="blockList">
 <li class="blockList">
 <h4>getCapabilities</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/archiva/repository/RepositoryCapabilities.html" title="interface in org.apache.archiva.repository">RepositoryCapabilities</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.82">getCapabilities</a>()</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/archiva/repository/RepositoryCapabilities.html" title="interface in org.apache.archiva.repository">RepositoryCapabilities</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.86">getCapabilities</a>()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/repository/Repository.html#getCapabilities--">Repository</a></code></span></div>
 <div class="block">Returns the capabilities of the repository implementation.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/archiva/repository/Repository.html#getCapabilities--">getCapabilities</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></code></dd>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#getCapabilities--">getCapabilities</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/archiva/repository/AbstractRepository.html" title="class in org.apache.archiva.repository">AbstractRepository</a></code></dd>
+<dd><code><a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#getCapabilities--">getCapabilities</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html" title="class in org.apache.archiva.repository.base">AbstractRepository</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
 </li>
@@ -418,7 +364,7 @@ implements <a href="../../../../../org/apache/archiva/repository/RemoteRepositor
 <ul class="blockList">
 <li class="blockList">
 <h4>getFeature</h4>
-<pre>public&nbsp;&lt;T extends <a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html" title="interface in org.apache.archiva.repository.features">RepositoryFeature</a>&lt;T&gt;&gt;&nbsp;<a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html" title="interface in org.apache.archiva.repository.features">RepositoryFeature</a>&lt;T&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.89">getFeature</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;T&gt;&nbsp;clazz)
+<pre>public&nbsp;&lt;T extends <a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html" title="interface in org.apache.archiva.repository.features">RepositoryFeature</a>&lt;T&gt;&gt;&nbsp;<a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html" title="interface in org.apache.archiva.repository.features">RepositoryFeature</a>&lt;T&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.93">getFeature</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;T&gt;&nbsp;clazz)
                                                                  throws <a href="../../../../../org/apache/archiva/repository/UnsupportedFeatureException.html" title="class in org.apache.archiva.repository">UnsupportedFeatureException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/repository/Repository.html#getFeature-java.lang.Class-">Repository</a></code></span></div>
 <div class="block">Extension method that allows to provide different features that are not supported by all
@@ -427,7 +373,7 @@ implements <a href="../../../../../org/apache/archiva/repository/RemoteRepositor
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/archiva/repository/Repository.html#getFeature-java.lang.Class-">getFeature</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></code></dd>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#getFeature-java.lang.Class-">getFeature</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/archiva/repository/AbstractRepository.html" title="class in org.apache.archiva.repository">AbstractRepository</a></code></dd>
+<dd><code><a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#getFeature-java.lang.Class-">getFeature</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html" title="class in org.apache.archiva.repository.base">AbstractRepository</a></code></dd>
 <dt><span class="paramLabel">Type Parameters:</span></dt>
 <dd><code>T</code> - This is the class of the feature</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -445,14 +391,14 @@ implements <a href="../../../../../org/apache/archiva/repository/RemoteRepositor
 <ul class="blockList">
 <li class="blockList">
 <h4>supportsFeature</h4>
-<pre>public&nbsp;&lt;T extends <a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html" title="interface in org.apache.archiva.repository.features">RepositoryFeature</a>&lt;T&gt;&gt;&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.101">supportsFeature</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;T&gt;&nbsp;clazz)</pre>
+<pre>public&nbsp;&lt;T extends <a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html" title="interface in org.apache.archiva.repository.features">RepositoryFeature</a>&lt;T&gt;&gt;&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.105">supportsFeature</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;T&gt;&nbsp;clazz)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/archiva/repository/Repository.html#supportsFeature-java.lang.Class-">Repository</a></code></span></div>
 <div class="block">Returns true, if the requested feature is supported by this repository.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/archiva/repository/Repository.html#supportsFeature-java.lang.Class-">supportsFeature</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></code></dd>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="../../../../../org/apache/archiva/repository/AbstractRepository.html#supportsFeature-java.lang.Class-">supportsFeature</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/archiva/repository/AbstractRepository.html" title="class in org.apache.archiva.repository">AbstractRepository</a></code></dd>
+<dd><code><a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html#supportsFeature-java.lang.Class-">supportsFeature</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/archiva/repository/base/AbstractRepository.html" title="class in org.apache.archiva.repository.base">AbstractRepository</a></code></dd>
 <dt><span class="paramLabel">Type Parameters:</span></dt>
 <dd><code>T</code> - The requested feature class</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -465,13 +411,29 @@ implements <a href="../../../../../org/apache/archiva/repository/RemoteRepositor
 <a name="toString--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>toString</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.111">toString</a>()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.115">toString</a>()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html#toString--">toString</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/archiva/repository/AbstractRemoteRepository.html" title="class in org.apache.archiva.repository">AbstractRemoteRepository</a></code></dd>
+<dd><code><a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html#toString--">toString</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/archiva/repository/base/AbstractRemoteRepository.html" title="class in org.apache.archiva.repository.base">AbstractRemoteRepository</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="newLocalInstance-java.lang.String-java.lang.String-java.nio.file.Path-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>newLocalInstance</h4>
+<pre>public static&nbsp;<a href="../../../../../org/apache/archiva/repository/maven2/MavenRemoteRepository.html" title="class in org.apache.archiva.repository.maven2">MavenRemoteRepository</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/maven2/MavenRemoteRepository.html#line.119">newLocalInstance</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id,
+                                                     <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+                                                     <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;basePath)
+                                              throws <a href="https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -504,7 +466,7 @@ implements <a href="../../../../../org/apache/archiva/repository/RemoteRepositor
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/archiva/repository/maven2/MavenManagedRepository.html" title="class in org.apache.archiva.repository.maven2"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/archiva/repository/maven2/MavenRepositoryProvider.html" title="class in org.apache.archiva.repository.maven2"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/archiva/repository/maven2/MavenRepositoryGroup.html" title="class in org.apache.archiva.repository.maven2"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/archiva/repository/maven2/MavenRemoteRepository.html" target="_top">Frames</a></li>
@@ -529,13 +491,13 @@ implements <a href="../../../../../org/apache/archiva/repository/RemoteRepositor
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#fields.inherited.from.class.org.apache.archiva.repository.base.AbstractRepository">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -544,6 +506,6 @@ implements <a href="../../../../../org/apache/archiva/repository/RemoteRepositor
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

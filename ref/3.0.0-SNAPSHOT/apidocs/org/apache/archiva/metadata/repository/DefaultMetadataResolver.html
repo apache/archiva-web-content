@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -75,13 +75,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -141,42 +141,6 @@ implements <a href="../../../../../org/apache/archiva/metadata/repository/Metada
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- =========== FIELD SUMMARY =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/repository/events/RepositoryListener.html" title="interface in org.apache.archiva.repository.events">RepositoryListener</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#listeners">listeners</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private org.slf4j.Logger</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#log">log</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private org.apache.archiva.redback.components.cache.Cache&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#namespacesCache">namespacesCache</a></span></code>
-<div class="block">Cache used for namespaces</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="../../../../../org/apache/archiva/metadata/repository/storage/RepositoryStorage.html" title="interface in org.apache.archiva.metadata.repository.storage">RepositoryStorage</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#repositoryStorage">repositoryStorage</a></span></code>
-<div class="block">
- FIXME: this needs to be configurable based on storage type - and could also be instantiated per repo.</div>
-</td>
-</tr>
-</table>
-</li>
-</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -207,10 +171,6 @@ implements <a href="../../../../../org/apache/archiva/metadata/repository/Metada
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#createArtifactIdList-java.util.Collection-">createArtifactIdList</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</a>&gt;&nbsp;artifacts)</code>&nbsp;</td>
-</tr>
-<tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#resolveArtifacts-org.apache.archiva.metadata.repository.RepositorySession-java.lang.String-java.lang.String-java.lang.String-java.lang.String-">resolveArtifacts</a></span>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId,
@@ -218,13 +178,13 @@ implements <a href="../../../../../org/apache/archiva/metadata/repository/Metada
                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;projectId,
                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;projectVersion)</code>&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#resolveNamespaces-org.apache.archiva.metadata.repository.RepositorySession-java.lang.String-java.lang.String-">resolveNamespaces</a></span>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId,
                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace)</code>&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/archiva/metadata/model/ProjectVersionReference.html" title="class in org.apache.archiva.metadata.model">ProjectVersionReference</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#resolveProjectReferences-org.apache.archiva.metadata.repository.RepositorySession-java.lang.String-java.lang.String-java.lang.String-java.lang.String-">resolveProjectReferences</a></span>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
                         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId,
@@ -234,13 +194,13 @@ implements <a href="../../../../../org/apache/archiva/metadata/repository/Metada
 <div class="block">Retrieve project references from the metadata repository.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#resolveProjects-org.apache.archiva.metadata.repository.RepositorySession-java.lang.String-java.lang.String-">resolveProjects</a></span>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
                <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId,
                <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace)</code>&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/metadata/model/ProjectVersionMetadata.html" title="class in org.apache.archiva.metadata.model">ProjectVersionMetadata</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#resolveProjectVersion-org.apache.archiva.metadata.repository.RepositorySession-java.lang.String-java.lang.String-java.lang.String-java.lang.String-">resolveProjectVersion</a></span>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
                      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId,
@@ -248,14 +208,14 @@ implements <a href="../../../../../org/apache/archiva/metadata/repository/Metada
                      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;projectId,
                      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;projectVersion)</code>&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#resolveProjectVersions-org.apache.archiva.metadata.repository.RepositorySession-java.lang.String-java.lang.String-java.lang.String-">resolveProjectVersions</a></span>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
                       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId,
                       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
                       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;projectId)</code>&nbsp;</td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#resolveRootNamespaces-org.apache.archiva.metadata.repository.RepositorySession-java.lang.String-">resolveRootNamespaces</a></span>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
                      <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repoId)</code>&nbsp;</td>
@@ -268,6 +228,13 @@ implements <a href="../../../../../org/apache/archiva/metadata/repository/Metada
 <h3>Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
 <code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.org.apache.archiva.metadata.repository.MetadataResolver">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;org.apache.archiva.metadata.repository.<a href="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html" title="interface in org.apache.archiva.metadata.repository">MetadataResolver</a></h3>
+<code><a href="../../../../../org/apache/archiva/metadata/repository/MetadataResolver.html#supportsRepositoryTypes--">supportsRepositoryTypes</a></code></li>
+</ul>
 </li>
 </ul>
 </li>
@@ -276,66 +243,6 @@ implements <a href="../../../../../org/apache/archiva/metadata/repository/Metada
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a name="log">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>log</h4>
-<pre>private&nbsp;org.slf4j.Logger <a href="../../../../../src-html/org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#line.70">log</a></pre>
-</li>
-</ul>
-<a name="repositoryStorage">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>repositoryStorage</h4>
-<pre>@Inject
- @Named(value="repositoryStorage#maven2")
-private&nbsp;<a href="../../../../../org/apache/archiva/metadata/repository/storage/RepositoryStorage.html" title="interface in org.apache.archiva.metadata.repository.storage">RepositoryStorage</a> <a href="../../../../../src-html/org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#line.85">repositoryStorage</a></pre>
-<div class="block"><p>
- FIXME: this needs to be configurable based on storage type - and could also be instantiated per repo. Change to a
- factory, and perhaps retrieve from the session. We should avoid creating one per request, however.
- </p>
- <p>
- TODO: Also need to accommodate availability of proxy module
- ... could be a different type since we need methods to modify the storage metadata, which would also allow more
- appropriate methods to pass in the already determined repository configuration, for example, instead of the ID
- </p></div>
-</li>
-</ul>
-<a name="listeners">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>listeners</h4>
-<pre>@Inject
- @Autowired(required=false)
-private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/repository/events/RepositoryListener.html" title="interface in org.apache.archiva.repository.events">RepositoryListener</a>&gt; <a href="../../../../../src-html/org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#line.89">listeners</a></pre>
-</li>
-</ul>
-<a name="namespacesCache">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>namespacesCache</h4>
-<pre>@Inject
- @Named(value="cache#namespaces")
-private&nbsp;org.apache.archiva.redback.components.cache.Cache&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&gt; <a href="../../../../../src-html/org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#line.96">namespacesCache</a></pre>
-<div class="block">Cache used for namespaces</div>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
@@ -484,7 +391,7 @@ private&nbsp;org.apache.archiva.redback.components.cache.Cache&lt;<a href="https
 <a name="resolveArtifacts-org.apache.archiva.metadata.repository.RepositorySession-java.lang.String-java.lang.String-java.lang.String-java.lang.String-">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>resolveArtifacts</h4>
 <pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#line.416">resolveArtifacts</a>(<a href="../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;session,
@@ -499,15 +406,6 @@ private&nbsp;org.apache.archiva.redback.components.cache.Cache&lt;<a href="https
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../../../../org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">MetadataResolutionException</a></code></dd>
 </dl>
-</li>
-</ul>
-<a name="createArtifactIdList-java.util.Collection-">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>createArtifactIdList</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../../src-html/org/apache/archiva/metadata/repository/DefaultMetadataResolver.html#line.466">createArtifactIdList</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/archiva/metadata/model/ArtifactMetadata.html" title="class in org.apache.archiva.metadata.model">ArtifactMetadata</a>&gt;&nbsp;artifacts)</pre>
 </li>
 </ul>
 </li>
@@ -564,13 +462,13 @@ private&nbsp;org.apache.archiva.redback.components.cache.Cache&lt;<a href="https
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -579,6 +477,6 @@ private&nbsp;org.apache.archiva.redback.components.cache.Cache&lt;<a href="https
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

@@ -49,8 +49,8 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../org/apache/archiva/indexer/merger/MergedRemoteIndexesTaskResult.html" title="class in org.apache.archiva.indexer.merger"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndexCleaner.html" title="class in org.apache.archiva.indexer.merger"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/archiva/indexer/merger/MergedRemoteIndexesScheduler.html" title="interface in org.apache.archiva.indexer.merger"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li>Next&nbsp;Class</li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/archiva/indexer/merger/TemporaryGroupIndex.html" target="_top">Frames</a></li>
@@ -75,13 +75,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -113,7 +113,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <hr>
 <br>
-<pre>public class <a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.28">TemporaryGroupIndex</a>
+<pre>public class <a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.30">TemporaryGroupIndex</a>
 extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></pre>
 <dl>
@@ -128,41 +128,6 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- =========== FIELD SUMMARY =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private long</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#creationTime">creationTime</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#directory">directory</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#groupId">groupId</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#indexId">indexId</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#mergedIndexTtl">mergedIndexTtl</a></span></code>&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -175,7 +140,7 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#TemporaryGroupIndex-java.nio.file.Path-java.lang.String-java.lang.String-int-">TemporaryGroupIndex</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;directory,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#TemporaryGroupIndex-org.apache.archiva.repository.storage.StorageAsset-java.lang.String-java.lang.String-int-">TemporaryGroupIndex</a></span>(<a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;directory,
                    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;indexId,
                    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;groupId,
                    int&nbsp;mergedIndexTtl)</code>&nbsp;</td>
@@ -204,7 +169,7 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#getCreationTime--">getCreationTime</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#getDirectory--">getDirectory</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
@@ -229,7 +194,7 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndex.html" title="class in org.apache.archiva.indexer.merger">TemporaryGroupIndex</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#setDirectory-java.nio.file.Path-">setDirectory</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;directory)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#setDirectory-org.apache.archiva.repository.storage.StorageAsset-">setDirectory</a></span>(<a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;directory)</code>&nbsp;</td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
@@ -259,72 +224,19 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a name="creationTime">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>creationTime</h4>
-<pre>private&nbsp;long <a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.31">creationTime</a></pre>
-</li>
-</ul>
-<a name="directory">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>directory</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a> <a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.33">directory</a></pre>
-</li>
-</ul>
-<a name="indexId">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>indexId</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.35">indexId</a></pre>
-</li>
-</ul>
-<a name="groupId">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>groupId</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.37">groupId</a></pre>
-</li>
-</ul>
-<a name="mergedIndexTtl">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>mergedIndexTtl</h4>
-<pre>private&nbsp;int <a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.39">mergedIndexTtl</a></pre>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="TemporaryGroupIndex-java.nio.file.Path-java.lang.String-java.lang.String-int-">
+<a name="TemporaryGroupIndex-org.apache.archiva.repository.storage.StorageAsset-java.lang.String-java.lang.String-int-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>TemporaryGroupIndex</h4>
-<pre>public&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.41">TemporaryGroupIndex</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;directory,
+<pre>public&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.43">TemporaryGroupIndex</a>(<a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;directory,
                            <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;indexId,
                            <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;groupId,
                            int&nbsp;mergedIndexTtl)</pre>
@@ -344,7 +256,7 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <ul class="blockList">
 <li class="blockList">
 <h4>getCreationTime</h4>
-<pre>public&nbsp;long&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.49">getCreationTime</a>()</pre>
+<pre>public&nbsp;long&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.51">getCreationTime</a>()</pre>
 </li>
 </ul>
 <a name="setCreationTime-long-">
@@ -353,7 +265,7 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <ul class="blockList">
 <li class="blockList">
 <h4>setCreationTime</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndex.html" title="class in org.apache.archiva.indexer.merger">TemporaryGroupIndex</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.54">setCreationTime</a>(long&nbsp;creationTime)</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndex.html" title="class in org.apache.archiva.indexer.merger">TemporaryGroupIndex</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.56">setCreationTime</a>(long&nbsp;creationTime)</pre>
 </li>
 </ul>
 <a name="getDirectory--">
@@ -362,16 +274,16 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <ul class="blockList">
 <li class="blockList">
 <h4>getDirectory</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.60">getDirectory</a>()</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.62">getDirectory</a>()</pre>
 </li>
 </ul>
-<a name="setDirectory-java.nio.file.Path-">
+<a name="setDirectory-org.apache.archiva.repository.storage.StorageAsset-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>setDirectory</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndex.html" title="class in org.apache.archiva.indexer.merger">TemporaryGroupIndex</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.65">setDirectory</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;directory)</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndex.html" title="class in org.apache.archiva.indexer.merger">TemporaryGroupIndex</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.67">setDirectory</a>(<a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;directory)</pre>
 </li>
 </ul>
 <a name="getIndexId--">
@@ -380,7 +292,7 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <ul class="blockList">
 <li class="blockList">
 <h4>getIndexId</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.71">getIndexId</a>()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.73">getIndexId</a>()</pre>
 </li>
 </ul>
 <a name="setIndexId-java.lang.String-">
@@ -389,7 +301,7 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <ul class="blockList">
 <li class="blockList">
 <h4>setIndexId</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndex.html" title="class in org.apache.archiva.indexer.merger">TemporaryGroupIndex</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.76">setIndexId</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;indexId)</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndex.html" title="class in org.apache.archiva.indexer.merger">TemporaryGroupIndex</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.78">setIndexId</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;indexId)</pre>
 </li>
 </ul>
 <a name="getGroupId--">
@@ -398,7 +310,7 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <ul class="blockList">
 <li class="blockList">
 <h4>getGroupId</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.82">getGroupId</a>()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.84">getGroupId</a>()</pre>
 </li>
 </ul>
 <a name="setGroupId-java.lang.String-">
@@ -407,7 +319,7 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <ul class="blockList">
 <li class="blockList">
 <h4>setGroupId</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.87">setGroupId</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;groupId)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.89">setGroupId</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;groupId)</pre>
 </li>
 </ul>
 <a name="getMergedIndexTtl--">
@@ -416,7 +328,7 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <ul class="blockList">
 <li class="blockList">
 <h4>getMergedIndexTtl</h4>
-<pre>public&nbsp;int&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.92">getMergedIndexTtl</a>()</pre>
+<pre>public&nbsp;int&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.94">getMergedIndexTtl</a>()</pre>
 </li>
 </ul>
 <a name="setMergedIndexTtl-int-">
@@ -425,7 +337,7 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <ul class="blockList">
 <li class="blockList">
 <h4>setMergedIndexTtl</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.96">setMergedIndexTtl</a>(int&nbsp;mergedIndexTtl)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.98">setMergedIndexTtl</a>(int&nbsp;mergedIndexTtl)</pre>
 </li>
 </ul>
 <a name="hashCode--">
@@ -434,7 +346,7 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <ul class="blockList">
 <li class="blockList">
 <h4>hashCode</h4>
-<pre>public&nbsp;int&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.101">hashCode</a>()</pre>
+<pre>public&nbsp;int&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.103">hashCode</a>()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
@@ -447,7 +359,7 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <ul class="blockListLast">
 <li class="blockList">
 <h4>equals</h4>
-<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.107">equals</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;o)</pre>
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/indexer/merger/TemporaryGroupIndex.html#line.109">equals</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;o)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
@@ -482,8 +394,8 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../org/apache/archiva/indexer/merger/MergedRemoteIndexesTaskResult.html" title="class in org.apache.archiva.indexer.merger"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/archiva/indexer/merger/TemporaryGroupIndexCleaner.html" title="class in org.apache.archiva.indexer.merger"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/archiva/indexer/merger/MergedRemoteIndexesScheduler.html" title="interface in org.apache.archiva.indexer.merger"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li>Next&nbsp;Class</li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/archiva/indexer/merger/TemporaryGroupIndex.html" target="_top">Frames</a></li>
@@ -508,13 +420,13 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -523,6 +435,6 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

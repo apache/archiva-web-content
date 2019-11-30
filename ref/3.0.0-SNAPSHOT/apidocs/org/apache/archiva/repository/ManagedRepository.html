@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -101,7 +101,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Superinterfaces:</dt>
-<dd><a href="../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>, <a href="../../../../org/apache/archiva/repository/RepositoryEventHandler.html" title="interface in org.apache.archiva.repository">RepositoryEventHandler</a></dd>
+<dd><a href="../../../../org/apache/archiva/event/EventSource.html" title="interface in org.apache.archiva.event">EventSource</a>, <a href="../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>, <a href="../../../../org/apache/archiva/repository/storage/RepositoryStorage.html" title="interface in org.apache.archiva.repository.storage">RepositoryStorage</a></dd>
 </dl>
 <dl>
 <dt>All Known Subinterfaces:</dt>
@@ -109,7 +109,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../org/apache/archiva/repository/AbstractManagedRepository.html" title="class in org.apache.archiva.repository">AbstractManagedRepository</a>, <a href="../../../../org/apache/archiva/repository/BasicManagedRepository.html" title="class in org.apache.archiva.repository">BasicManagedRepository</a>, <a href="../../../../org/apache/archiva/repository/maven2/MavenManagedRepository.html" title="class in org.apache.archiva.repository.maven2">MavenManagedRepository</a></dd>
+<dd><a href="../../../../org/apache/archiva/repository/base/AbstractManagedRepository.html" title="class in org.apache.archiva.repository.base">AbstractManagedRepository</a>, <a href="../../../../org/apache/archiva/repository/base/BasicManagedRepository.html" title="class in org.apache.archiva.repository.base">BasicManagedRepository</a>, <a href="../../../../org/apache/archiva/repository/maven2/MavenManagedRepository.html" title="class in org.apache.archiva.repository.maven2">MavenManagedRepository</a></dd>
 </dl>
 <hr>
 <br>
@@ -152,20 +152,33 @@ extends <a href="../../../../org/apache/archiva/repository/Repository.html" titl
 <div class="block">Returns the interface to access the contents of this repository.</div>
 </td>
 </tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/archiva/repository/RepositoryRequestInfo.html" title="interface in org.apache.archiva.repository">RepositoryRequestInfo</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/repository/ManagedRepository.html#getRequestInfo--">getRequestInfo</a></span>()</code>
+<div class="block">Returns the request info object, which you can use for gathering information from the web request path.</div>
+</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.org.apache.archiva.repository.Repository">
 <!--   -->
 </a>
 <h3>Methods inherited from interface&nbsp;org.apache.archiva.repository.<a href="../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a></h3>
-<code><a href="../../../../org/apache/archiva/repository/Repository.html#close--">close</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getCapabilities--">getCapabilities</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getDescription--">getDescription</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getDescription-java.util.Locale-">getDescription</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getFailoverLocations--">getFailoverLocations</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getFeature-java.lang.Class-">getFeature</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getId--">getId</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getIndexingContext--">getIndexingContext</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getLayout--">getLayout</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getLocalPath--">getLocalPath</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getLocation--">getLocation</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getName--">getName</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getName-java.util.Locale-">getName</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getSchedulingDefinition--">getSchedulingDefinition</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getType--">getType</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#hasIndex--">hasIndex</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#isScanned--">isScanned</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#supportsFeature-java.lang.Class-">supportsFeature</a></code></li>
+<code><a href="../../../../org/apache/archiva/repository/Repository.html#close--">close</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getCapabilities--">getCapabilities</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getDescription--">getDescription</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getDescription-java.util.Locale-">getDescription</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getFailoverLocations--">getFailoverLocations</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getFeature-java.lang.Class-">getFeature</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getId--">getId</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getIndexingContext--">getIndexingContext</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getLayout--">getLayout</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getLocalPath--">getLocalPath</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getLocation--">getLocation</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getName--">getName</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getName-java.util.Locale-">getName</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getSchedulingDefinition--">getSchedulingDefinition</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#getType--">getType</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#hasIndex--">hasIndex</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#isOpen--">isOpen</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#isScanned--">isScanned</a>, <a href="../../../../org/apache/archiva/repository/Repository.html#supportsFeature-java.lang.Class-">supportsFeature</a></code></li>
 </ul>
 <ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.org.apache.archiva.repository.RepositoryEventHandler">
+<li class="blockList"><a name="methods.inherited.from.class.org.apache.archiva.event.EventSource">
 <!--   -->
 </a>
-<h3>Methods inherited from interface&nbsp;org.apache.archiva.repository.<a href="../../../../org/apache/archiva/repository/RepositoryEventHandler.html" title="interface in org.apache.archiva.repository">RepositoryEventHandler</a></h3>
-<code><a href="../../../../org/apache/archiva/repository/RepositoryEventHandler.html#addListener-org.apache.archiva.repository.RepositoryEventListener-">addListener</a>, <a href="../../../../org/apache/archiva/repository/RepositoryEventHandler.html#clearListeners--">clearListeners</a>, <a href="../../../../org/apache/archiva/repository/RepositoryEventHandler.html#removeListener-org.apache.archiva.repository.RepositoryEventListener-">removeListener</a></code></li>
+<h3>Methods inherited from interface&nbsp;org.apache.archiva.event.<a href="../../../../org/apache/archiva/event/EventSource.html" title="interface in org.apache.archiva.event">EventSource</a></h3>
+<code><a href="../../../../org/apache/archiva/event/EventSource.html#registerEventHandler-org.apache.archiva.event.EventType-org.apache.archiva.event.EventHandler-">registerEventHandler</a>, <a href="../../../../org/apache/archiva/event/EventSource.html#unregisterEventHandler-org.apache.archiva.event.EventType-org.apache.archiva.event.EventHandler-">unregisterEventHandler</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.org.apache.archiva.repository.storage.RepositoryStorage">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;org.apache.archiva.repository.storage.<a href="../../../../org/apache/archiva/repository/storage/RepositoryStorage.html" title="interface in org.apache.archiva.repository.storage">RepositoryStorage</a></h3>
+<code><a href="../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#addAsset-java.lang.String-boolean-">addAsset</a>, <a href="../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#consumeData-org.apache.archiva.repository.storage.StorageAsset-java.util.function.Consumer-boolean-">consumeData</a>, <a href="../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#consumeDataFromChannel-org.apache.archiva.repository.storage.StorageAsset-java.util.function.Consumer-boolean-">consumeDataFromChannel</a>, <a href="../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#copyAsset-org.apache.archiva.repository.storage.StorageAsset-org.apache.archiva.repository.storage.StorageAsset-java.nio.file.CopyOption...-">copyAsset</a>, <a href="../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#copyAsset-org.apache.archiva.repository.storage.StorageAsset-java.lang.String-java.nio.file.CopyOption...-">copyAsset</a>, <a href="../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#getAsset-java.lang.String-">getAsset</a>, <a href="../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#moveAsset-org.apache.archiva.repository.storage.StorageAsset-org.apache.archiva.repository.storage.StorageAsset-java.nio.file.CopyOption...-">moveAsset</a>, <a href="../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#moveAsset-org.apache.archiva.repository.storage.StorageAsset-java.lang.String-java.nio.file.CopyOption...-">moveAsset</a>, <a href="../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#removeAsset-org.apache.archiva.repository.storage.StorageAsset-">removeAsset</a>, <a href="../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#updateLocation-java.net.URI-">updateLocation</a>, <a href="../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#writeData-org.apache.archiva.repository.storage.StorageAsset-java.util.function.Consumer-boolean-">writeData</a>, <a href="../../../../org/apache/archiva/repository/storage/RepositoryStorage.html#writeDataToChannel-org.apache.archiva.repository.storage.StorageAsset-java.util.function.Consumer-boolean-">writeDataToChannel</a></code></li>
 </ul>
 </li>
 </ul>
@@ -211,7 +224,7 @@ extends <a href="../../../../org/apache/archiva/repository/Repository.html" titl
 <a name="getActiveReleaseSchemes--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getActiveReleaseSchemes</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../org/apache/archiva/repository/ReleaseScheme.html" title="enum in org.apache.archiva.repository">ReleaseScheme</a>&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepository.html#line.48">getActiveReleaseSchemes</a>()</pre>
@@ -219,6 +232,20 @@ extends <a href="../../../../org/apache/archiva/repository/Repository.html" titl
  this may either be a release repository, a snapshot repository or a combined repository.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
+</dl>
+</li>
+</ul>
+<a name="getRequestInfo--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getRequestInfo</h4>
+<pre><a href="../../../../org/apache/archiva/repository/RepositoryRequestInfo.html" title="interface in org.apache.archiva.repository">RepositoryRequestInfo</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepository.html#line.55">getRequestInfo</a>()</pre>
+<div class="block">Returns the request info object, which you can use for gathering information from the web request path.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Instance of a request info object that corresponds to this repository</dd>
 </dl>
 </li>
 </ul>
@@ -291,6 +318,6 @@ extends <a href="../../../../org/apache/archiva/repository/Repository.html" titl
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

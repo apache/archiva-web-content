@@ -27,321 +27,727 @@
 <span class="sourceLineNo">019</span> * under the License.<a name="line.19"></a>
 <span class="sourceLineNo">020</span> */<a name="line.20"></a>
 <span class="sourceLineNo">021</span><a name="line.21"></a>
-<span class="sourceLineNo">022</span>import org.apache.archiva.metadata.model.ArtifactMetadata;<a name="line.22"></a>
-<span class="sourceLineNo">023</span>import org.apache.archiva.metadata.model.MetadataFacet;<a name="line.23"></a>
-<span class="sourceLineNo">024</span>import org.apache.archiva.metadata.model.ProjectMetadata;<a name="line.24"></a>
-<span class="sourceLineNo">025</span>import org.apache.archiva.metadata.model.ProjectVersionMetadata;<a name="line.25"></a>
-<span class="sourceLineNo">026</span>import org.apache.archiva.metadata.model.ProjectVersionReference;<a name="line.26"></a>
-<span class="sourceLineNo">027</span><a name="line.27"></a>
-<span class="sourceLineNo">028</span>import java.util.Collection;<a name="line.28"></a>
-<span class="sourceLineNo">029</span>import java.util.Date;<a name="line.29"></a>
-<span class="sourceLineNo">030</span>import java.util.List;<a name="line.30"></a>
-<span class="sourceLineNo">031</span><a name="line.31"></a>
-<span class="sourceLineNo">032</span>public interface MetadataRepository<a name="line.32"></a>
-<span class="sourceLineNo">033</span>{<a name="line.33"></a>
-<span class="sourceLineNo">034</span>    /**<a name="line.34"></a>
-<span class="sourceLineNo">035</span>     * Update metadata for a particular project in the metadata repository, or create it if it does not already exist.<a name="line.35"></a>
-<span class="sourceLineNo">036</span>     *<a name="line.36"></a>
-<span class="sourceLineNo">037</span>     * @param repositoryId the repository the project is in<a name="line.37"></a>
-<span class="sourceLineNo">038</span>     * @param project      the project metadata to create or update<a name="line.38"></a>
-<span class="sourceLineNo">039</span>     */<a name="line.39"></a>
-<span class="sourceLineNo">040</span>    void updateProject( String repositoryId, ProjectMetadata project )<a name="line.40"></a>
-<span class="sourceLineNo">041</span>        throws MetadataRepositoryException;<a name="line.41"></a>
-<span class="sourceLineNo">042</span><a name="line.42"></a>
-<span class="sourceLineNo">043</span>    void updateArtifact( String repositoryId, String namespace, String projectId, String projectVersion,<a name="line.43"></a>
-<span class="sourceLineNo">044</span>                         ArtifactMetadata artifactMeta )<a name="line.44"></a>
-<span class="sourceLineNo">045</span>        throws MetadataRepositoryException;<a name="line.45"></a>
-<span class="sourceLineNo">046</span><a name="line.46"></a>
-<span class="sourceLineNo">047</span>    void updateProjectVersion( String repositoryId, String namespace, String projectId,<a name="line.47"></a>
-<span class="sourceLineNo">048</span>                               ProjectVersionMetadata versionMetadata )<a name="line.48"></a>
-<span class="sourceLineNo">049</span>        throws MetadataRepositoryException;<a name="line.49"></a>
-<span class="sourceLineNo">050</span><a name="line.50"></a>
-<span class="sourceLineNo">051</span>    /**<a name="line.51"></a>
-<span class="sourceLineNo">052</span>     * create the namespace in the repository. (if not exist)<a name="line.52"></a>
-<span class="sourceLineNo">053</span>     *<a name="line.53"></a>
-<span class="sourceLineNo">054</span>     * @param repositoryId<a name="line.54"></a>
-<span class="sourceLineNo">055</span>     * @param namespace<a name="line.55"></a>
-<span class="sourceLineNo">056</span>     * @throws MetadataRepositoryException<a name="line.56"></a>
-<span class="sourceLineNo">057</span>     */<a name="line.57"></a>
-<span class="sourceLineNo">058</span>    void updateNamespace( String repositoryId, String namespace )<a name="line.58"></a>
-<span class="sourceLineNo">059</span>        throws MetadataRepositoryException;<a name="line.59"></a>
-<span class="sourceLineNo">060</span><a name="line.60"></a>
-<span class="sourceLineNo">061</span>    List&lt;String&gt; getMetadataFacets( String repositoryId, String facetId )<a name="line.61"></a>
-<span class="sourceLineNo">062</span>        throws MetadataRepositoryException;<a name="line.62"></a>
-<span class="sourceLineNo">063</span><a name="line.63"></a>
-<span class="sourceLineNo">064</span>    /**<a name="line.64"></a>
-<span class="sourceLineNo">065</span>     * @param repositoryId<a name="line.65"></a>
-<span class="sourceLineNo">066</span>     * @param facetId<a name="line.66"></a>
-<span class="sourceLineNo">067</span>     * @return true if the repository datas for this facetId<a name="line.67"></a>
-<span class="sourceLineNo">068</span>     * @throws MetadataRepositoryException<a name="line.68"></a>
-<span class="sourceLineNo">069</span>     * @since 1.4-M4<a name="line.69"></a>
-<span class="sourceLineNo">070</span>     */<a name="line.70"></a>
-<span class="sourceLineNo">071</span>    boolean hasMetadataFacet( String repositoryId, String facetId )<a name="line.71"></a>
-<span class="sourceLineNo">072</span>        throws MetadataRepositoryException;<a name="line.72"></a>
-<span class="sourceLineNo">073</span><a name="line.73"></a>
-<span class="sourceLineNo">074</span>    MetadataFacet getMetadataFacet( String repositoryId, String facetId, String name )<a name="line.74"></a>
-<span class="sourceLineNo">075</span>        throws MetadataRepositoryException;<a name="line.75"></a>
-<span class="sourceLineNo">076</span><a name="line.76"></a>
-<span class="sourceLineNo">077</span>    void addMetadataFacet( String repositoryId, MetadataFacet metadataFacet )<a name="line.77"></a>
-<span class="sourceLineNo">078</span>        throws MetadataRepositoryException;<a name="line.78"></a>
-<span class="sourceLineNo">079</span><a name="line.79"></a>
-<span class="sourceLineNo">080</span>    void removeMetadataFacets( String repositoryId, String facetId )<a name="line.80"></a>
-<span class="sourceLineNo">081</span>        throws MetadataRepositoryException;<a name="line.81"></a>
-<span class="sourceLineNo">082</span><a name="line.82"></a>
-<span class="sourceLineNo">083</span>    void removeMetadataFacet( String repositoryId, String facetId, String name )<a name="line.83"></a>
-<span class="sourceLineNo">084</span>        throws MetadataRepositoryException;<a name="line.84"></a>
-<span class="sourceLineNo">085</span><a name="line.85"></a>
-<span class="sourceLineNo">086</span>    /**<a name="line.86"></a>
-<span class="sourceLineNo">087</span>     * if startTime or endTime are &lt;code&gt;null&lt;/code&gt; they are not used for search<a name="line.87"></a>
-<span class="sourceLineNo">088</span>     *<a name="line.88"></a>
-<span class="sourceLineNo">089</span>     * @param repositoryId<a name="line.89"></a>
-<span class="sourceLineNo">090</span>     * @param startTime    can be &lt;code&gt;null&lt;/code&gt;<a name="line.90"></a>
-<span class="sourceLineNo">091</span>     * @param endTime      can be &lt;code&gt;null&lt;/code&gt;<a name="line.91"></a>
-<span class="sourceLineNo">092</span>     * @return<a name="line.92"></a>
-<span class="sourceLineNo">093</span>     * @throws MetadataRepositoryException<a name="line.93"></a>
-<span class="sourceLineNo">094</span>     */<a name="line.94"></a>
-<span class="sourceLineNo">095</span>    List&lt;ArtifactMetadata&gt; getArtifactsByDateRange( String repositoryId, Date startTime, Date endTime )<a name="line.95"></a>
-<span class="sourceLineNo">096</span>        throws MetadataRepositoryException;<a name="line.96"></a>
-<span class="sourceLineNo">097</span><a name="line.97"></a>
-<span class="sourceLineNo">098</span>    // TODO: remove from API, just use configuration<a name="line.98"></a>
-<span class="sourceLineNo">099</span>    Collection&lt;String&gt; getRepositories()<a name="line.99"></a>
-<span class="sourceLineNo">100</span>        throws MetadataRepositoryException;<a name="line.100"></a>
-<span class="sourceLineNo">101</span><a name="line.101"></a>
-<span class="sourceLineNo">102</span>    Collection&lt;ArtifactMetadata&gt; getArtifactsByChecksum( String repositoryId, String checksum )<a name="line.102"></a>
-<span class="sourceLineNo">103</span>        throws MetadataRepositoryException;<a name="line.103"></a>
-<span class="sourceLineNo">104</span><a name="line.104"></a>
-<span class="sourceLineNo">105</span>    /**<a name="line.105"></a>
-<span class="sourceLineNo">106</span>     * Get artifacts with a project version metadata key that matches the passed value.<a name="line.106"></a>
-<span class="sourceLineNo">107</span>     *  <a name="line.107"></a>
-<span class="sourceLineNo">108</span>     * @param key<a name="line.108"></a>
-<span class="sourceLineNo">109</span>     * @param value<a name="line.109"></a>
-<span class="sourceLineNo">110</span>     * @param repositoryId can be null, meaning search in all repositories<a name="line.110"></a>
-<span class="sourceLineNo">111</span>     * @return a list of artifacts<a name="line.111"></a>
-<span class="sourceLineNo">112</span>     * @throws MetadataRepositoryException<a name="line.112"></a>
-<span class="sourceLineNo">113</span>     */<a name="line.113"></a>
-<span class="sourceLineNo">114</span>    List&lt;ArtifactMetadata&gt; getArtifactsByProjectVersionMetadata( String key, String value, String repositoryId )<a name="line.114"></a>
-<span class="sourceLineNo">115</span>        throws MetadataRepositoryException;<a name="line.115"></a>
-<span class="sourceLineNo">116</span><a name="line.116"></a>
-<span class="sourceLineNo">117</span>    /**<a name="line.117"></a>
-<span class="sourceLineNo">118</span>     * Get artifacts with an artifact metadata key that matches the passed value.<a name="line.118"></a>
-<span class="sourceLineNo">119</span>     *  <a name="line.119"></a>
-<span class="sourceLineNo">120</span>     * @param key<a name="line.120"></a>
-<span class="sourceLineNo">121</span>     * @param value<a name="line.121"></a>
-<span class="sourceLineNo">122</span>     * @param repositoryId can be null, meaning search in all repositories<a name="line.122"></a>
-<span class="sourceLineNo">123</span>     * @return a list of artifacts<a name="line.123"></a>
-<span class="sourceLineNo">124</span>     * @throws MetadataRepositoryException<a name="line.124"></a>
-<span class="sourceLineNo">125</span>     */<a name="line.125"></a>
-<span class="sourceLineNo">126</span>    List&lt;ArtifactMetadata&gt; getArtifactsByMetadata( String key, String value, String repositoryId )<a name="line.126"></a>
-<span class="sourceLineNo">127</span>        throws MetadataRepositoryException;<a name="line.127"></a>
-<span class="sourceLineNo">128</span><a name="line.128"></a>
-<span class="sourceLineNo">129</span>    /**<a name="line.129"></a>
-<span class="sourceLineNo">130</span>     * Get artifacts with a property key that matches the passed value.<a name="line.130"></a>
-<span class="sourceLineNo">131</span>     * Possible keys are 'scm.url', 'org.name', 'url', 'mailingList.0.name', 'license.0.name',...<a name="line.131"></a>
-<span class="sourceLineNo">132</span>     *  <a name="line.132"></a>
-<span class="sourceLineNo">133</span>     * @param key<a name="line.133"></a>
-<span class="sourceLineNo">134</span>     * @param value<a name="line.134"></a>
-<span class="sourceLineNo">135</span>     * @param repositoryId can be null, meaning search in all repositories<a name="line.135"></a>
-<span class="sourceLineNo">136</span>     * @return a list of artifacts<a name="line.136"></a>
-<span class="sourceLineNo">137</span>     * @throws MetadataRepositoryException<a name="line.137"></a>
+<span class="sourceLineNo">022</span>import org.apache.archiva.metadata.QueryParameter;<a name="line.22"></a>
+<span class="sourceLineNo">023</span>import org.apache.archiva.metadata.model.ArtifactMetadata;<a name="line.23"></a>
+<span class="sourceLineNo">024</span>import org.apache.archiva.metadata.model.MetadataFacet;<a name="line.24"></a>
+<span class="sourceLineNo">025</span>import org.apache.archiva.metadata.model.ProjectMetadata;<a name="line.25"></a>
+<span class="sourceLineNo">026</span>import org.apache.archiva.metadata.model.ProjectVersionMetadata;<a name="line.26"></a>
+<span class="sourceLineNo">027</span>import org.apache.archiva.metadata.model.ProjectVersionReference;<a name="line.27"></a>
+<span class="sourceLineNo">028</span><a name="line.28"></a>
+<span class="sourceLineNo">029</span>import javax.annotation.Nullable;<a name="line.29"></a>
+<span class="sourceLineNo">030</span>import javax.annotation.ParametersAreNonnullByDefault;<a name="line.30"></a>
+<span class="sourceLineNo">031</span>import java.time.ZonedDateTime;<a name="line.31"></a>
+<span class="sourceLineNo">032</span>import java.util.List;<a name="line.32"></a>
+<span class="sourceLineNo">033</span>import java.util.stream.Stream;<a name="line.33"></a>
+<span class="sourceLineNo">034</span><a name="line.34"></a>
+<span class="sourceLineNo">035</span>/**<a name="line.35"></a>
+<span class="sourceLineNo">036</span> * A Metadata repository provides information about artifact metadata. It does not provide the artifact data itself.<a name="line.36"></a>
+<span class="sourceLineNo">037</span> * It may be possible to use the same backend for metadata and storage, but this depends on the backends and they are<a name="line.37"></a>
+<span class="sourceLineNo">038</span> * provided by different APIs.<a name="line.38"></a>
+<span class="sourceLineNo">039</span> * &lt;p&gt;<a name="line.39"></a>
+<span class="sourceLineNo">040</span> * The motivation for this API is to provide fast access to the repository metadata and fulltext search. Also dependencies<a name="line.40"></a>
+<span class="sourceLineNo">041</span> * are stored in this repository.<a name="line.41"></a>
+<span class="sourceLineNo">042</span> * &lt;p&gt;<a name="line.42"></a>
+<span class="sourceLineNo">043</span> * The methods here do not update the artifacts itself. They are only updating the data in the metadata repository.<a name="line.43"></a>
+<span class="sourceLineNo">044</span> * That means, if you want to update some artifact, you should make sure to update the artifact itself and the metadata<a name="line.44"></a>
+<span class="sourceLineNo">045</span> * repository (either directly or by repository scanning).<a name="line.45"></a>
+<span class="sourceLineNo">046</span> * &lt;p&gt;<a name="line.46"></a>
+<span class="sourceLineNo">047</span> * Currently we are providing JCR, File based and Cassandra as backend for the metadata.<a name="line.47"></a>
+<span class="sourceLineNo">048</span> * &lt;p&gt;<a name="line.48"></a>
+<span class="sourceLineNo">049</span> * The metadata repository uses sessions for accessing the data. Please make sure to always close the sessions after using it.<a name="line.49"></a>
+<span class="sourceLineNo">050</span> * Best idiom for using the sessions:<a name="line.50"></a>
+<span class="sourceLineNo">051</span> * &lt;code&gt;<a name="line.51"></a>
+<span class="sourceLineNo">052</span> * try(RepositorySession session = sessionFactory.createSession() {<a name="line.52"></a>
+<span class="sourceLineNo">053</span> * // do your stuff<a name="line.53"></a>
+<span class="sourceLineNo">054</span> * }<a name="line.54"></a>
+<span class="sourceLineNo">055</span> * &lt;/code&gt;<a name="line.55"></a>
+<span class="sourceLineNo">056</span> * &lt;p&gt;<a name="line.56"></a>
+<span class="sourceLineNo">057</span> * It is implementation dependent, if the sessions are really used by the backend. E.g. the file based implementation ignores<a name="line.57"></a>
+<span class="sourceLineNo">058</span> * the sessions completely.<a name="line.58"></a>
+<span class="sourceLineNo">059</span> * &lt;p&gt;<a name="line.59"></a>
+<span class="sourceLineNo">060</span> * Sessions should be closed immediately after usage. If it is expensive to open a session for a given backend. The backend<a name="line.60"></a>
+<span class="sourceLineNo">061</span> * should provide a session pool if possible. There are methods for refreshing a session if needed.<a name="line.61"></a>
+<span class="sourceLineNo">062</span> * &lt;p&gt;<a name="line.62"></a>
+<span class="sourceLineNo">063</span> * You should avoid stacking sessions, which means, you should not create a new session in the same thread, when a session is opened already.<a name="line.63"></a>
+<span class="sourceLineNo">064</span> * &lt;p&gt;<a name="line.64"></a>
+<span class="sourceLineNo">065</span> * Some backend implementations (JCR) update the metadata in the background, that means update of the metadata is not reflected<a name="line.65"></a>
+<span class="sourceLineNo">066</span> * immediately.<a name="line.66"></a>
+<span class="sourceLineNo">067</span> * &lt;p&gt;<a name="line.67"></a>
+<span class="sourceLineNo">068</span> * The base metadata coordinates are:<a name="line.68"></a>
+<span class="sourceLineNo">069</span> * &lt;ul&gt;<a name="line.69"></a>
+<span class="sourceLineNo">070</span> *     &lt;li&gt;Repository ID: The identifier of the repository, where the artifact resides&lt;/li&gt;<a name="line.70"></a>
+<span class="sourceLineNo">071</span> *     &lt;li&gt;Namespace: This is a hierarchical coordinate for locating the projects. E.g. this corresponds to the groupId in maven. &lt;/li&gt;<a name="line.71"></a>
+<span class="sourceLineNo">072</span> *     &lt;li&gt;Project ID: The project itself&lt;/li&gt;<a name="line.72"></a>
+<span class="sourceLineNo">073</span> *     &lt;li&gt;Version: Each project may have different versions.&lt;/li&gt;<a name="line.73"></a>
+<span class="sourceLineNo">074</span> *     &lt;li&gt;Artifact: Artifacts correspond to files / blob data. Each artifact has additional metadata, like name, version, modification time, ...&lt;/li&gt;<a name="line.74"></a>
+<span class="sourceLineNo">075</span> * &lt;/ul&gt;<a name="line.75"></a>
+<span class="sourceLineNo">076</span> * &lt;p&gt;<a name="line.76"></a>
+<span class="sourceLineNo">077</span> * As the repository connects to some backend either locally or remote, the access to the repository may fail. The methods capsule the<a name="line.77"></a>
+<span class="sourceLineNo">078</span> * backend errors into &lt;code&gt;{@link MetadataRepositoryException}&lt;/code&gt;.<a name="line.78"></a>
+<span class="sourceLineNo">079</span> * &lt;p&gt;<a name="line.79"></a>
+<span class="sourceLineNo">080</span> * Facets are the way to provide additional metadata that is not part of the base API. It depends on the repository type (e.g. Maven, NPM,<a name="line.80"></a>
+<span class="sourceLineNo">081</span> * not the metadata backend) what facets are stored in addition to the standard metadata.<a name="line.81"></a>
+<span class="sourceLineNo">082</span> * Facets have a specific facet ID that represents the schema for the data stored. For creating specific objects for a given<a name="line.82"></a>
+<span class="sourceLineNo">083</span> * facet id the &lt;code&gt;{@link org.apache.archiva.metadata.model.MetadataFacetFactory}&lt;/code&gt; is used.<a name="line.83"></a>
+<span class="sourceLineNo">084</span> * For each facet id there may exist multiple facet instances on each level. Facet instances are identified by their name, which may be<a name="line.84"></a>
+<span class="sourceLineNo">085</span> * a hierarchical path.<a name="line.85"></a>
+<span class="sourceLineNo">086</span> * The data in each facet instance is stored in properties (key-value pairs). The properties are converted into / from the specific<a name="line.86"></a>
+<span class="sourceLineNo">087</span> * facet object.<a name="line.87"></a>
+<span class="sourceLineNo">088</span> * &lt;p&gt;<a name="line.88"></a>
+<span class="sourceLineNo">089</span> * Facets can be stored on repository, project, version and artifact level.<a name="line.89"></a>
+<span class="sourceLineNo">090</span> * &lt;p&gt;<a name="line.90"></a>
+<span class="sourceLineNo">091</span> * For retrieving artifacts there are methods that return lists and streaming based methods. Some implementations (e.g. JCR) use<a name="line.91"></a>
+<span class="sourceLineNo">092</span> * lazy loading for the retrieved objects. So the streaming methods may be faster and use less memory than the list based methods.<a name="line.92"></a>
+<span class="sourceLineNo">093</span> * But for some backends there is no difference.<a name="line.93"></a>
+<span class="sourceLineNo">094</span> */<a name="line.94"></a>
+<span class="sourceLineNo">095</span>@SuppressWarnings( "NullableProblems" )<a name="line.95"></a>
+<span class="sourceLineNo">096</span>@ParametersAreNonnullByDefault<a name="line.96"></a>
+<span class="sourceLineNo">097</span>public interface MetadataRepository<a name="line.97"></a>
+<span class="sourceLineNo">098</span>{<a name="line.98"></a>
+<span class="sourceLineNo">099</span><a name="line.99"></a>
+<span class="sourceLineNo">100</span><a name="line.100"></a>
+<span class="sourceLineNo">101</span>    /**<a name="line.101"></a>
+<span class="sourceLineNo">102</span>     * Update metadata for a particular project in the metadata repository, or create it, if it does not already exist.<a name="line.102"></a>
+<span class="sourceLineNo">103</span>     *<a name="line.103"></a>
+<span class="sourceLineNo">104</span>     * @param session      The session used for updating.<a name="line.104"></a>
+<span class="sourceLineNo">105</span>     * @param repositoryId the repository the project is in<a name="line.105"></a>
+<span class="sourceLineNo">106</span>     * @param project      the project metadata to create or update<a name="line.106"></a>
+<span class="sourceLineNo">107</span>     * @throws MetadataRepositoryException if the update fails<a name="line.107"></a>
+<span class="sourceLineNo">108</span>     */<a name="line.108"></a>
+<span class="sourceLineNo">109</span>    void updateProject( RepositorySession session, String repositoryId, ProjectMetadata project )<a name="line.109"></a>
+<span class="sourceLineNo">110</span>        throws MetadataRepositoryException;<a name="line.110"></a>
+<span class="sourceLineNo">111</span><a name="line.111"></a>
+<span class="sourceLineNo">112</span>    /**<a name="line.112"></a>
+<span class="sourceLineNo">113</span>     * Update the metadata of a given artifact. If the artifact, namespace, version, project does not exist in the repository it will be created.<a name="line.113"></a>
+<span class="sourceLineNo">114</span>     *<a name="line.114"></a>
+<span class="sourceLineNo">115</span>     * @param session        The repository session<a name="line.115"></a>
+<span class="sourceLineNo">116</span>     * @param repositoryId   The repository id<a name="line.116"></a>
+<span class="sourceLineNo">117</span>     * @param namespace      The namespace ('.' separated)<a name="line.117"></a>
+<span class="sourceLineNo">118</span>     * @param projectId      The project id<a name="line.118"></a>
+<span class="sourceLineNo">119</span>     * @param projectVersion The project version<a name="line.119"></a>
+<span class="sourceLineNo">120</span>     * @param artifactMeta   Information about the artifact itself.<a name="line.120"></a>
+<span class="sourceLineNo">121</span>     * @throws MetadataRepositoryException if something goes wrong during update.<a name="line.121"></a>
+<span class="sourceLineNo">122</span>     */<a name="line.122"></a>
+<span class="sourceLineNo">123</span>    void updateArtifact( RepositorySession session, String repositoryId,<a name="line.123"></a>
+<span class="sourceLineNo">124</span>                         String namespace, String projectId, String projectVersion,<a name="line.124"></a>
+<span class="sourceLineNo">125</span>                         ArtifactMetadata artifactMeta )<a name="line.125"></a>
+<span class="sourceLineNo">126</span>        throws MetadataRepositoryException;<a name="line.126"></a>
+<span class="sourceLineNo">127</span><a name="line.127"></a>
+<span class="sourceLineNo">128</span>    /**<a name="line.128"></a>
+<span class="sourceLineNo">129</span>     * Updates the metadata for a specific version of a given project. If the namespace, project, version does not exist,<a name="line.129"></a>
+<span class="sourceLineNo">130</span>     * it will be created.<a name="line.130"></a>
+<span class="sourceLineNo">131</span>     *<a name="line.131"></a>
+<span class="sourceLineNo">132</span>     * @param session         The repository session<a name="line.132"></a>
+<span class="sourceLineNo">133</span>     * @param repositoryId    The repository id<a name="line.133"></a>
+<span class="sourceLineNo">134</span>     * @param namespace       The namespace ('.' separated)<a name="line.134"></a>
+<span class="sourceLineNo">135</span>     * @param projectId       The project id<a name="line.135"></a>
+<span class="sourceLineNo">136</span>     * @param versionMetadata The metadata for the version<a name="line.136"></a>
+<span class="sourceLineNo">137</span>     * @throws MetadataRepositoryException if something goes wrong during update<a name="line.137"></a>
 <span class="sourceLineNo">138</span>     */<a name="line.138"></a>
-<span class="sourceLineNo">139</span>    List&lt;ArtifactMetadata&gt; getArtifactsByProperty( String key, String value, String repositoryId )<a name="line.139"></a>
-<span class="sourceLineNo">140</span>        throws MetadataRepositoryException;<a name="line.140"></a>
-<span class="sourceLineNo">141</span><a name="line.141"></a>
-<span class="sourceLineNo">142</span>    void removeArtifact( String repositoryId, String namespace, String project, String version, String id )<a name="line.142"></a>
-<span class="sourceLineNo">143</span>        throws MetadataRepositoryException;<a name="line.143"></a>
-<span class="sourceLineNo">144</span><a name="line.144"></a>
-<span class="sourceLineNo">145</span>    /**<a name="line.145"></a>
-<span class="sourceLineNo">146</span>     * used for deleting timestamped version of SNAPSHOT artifacts<a name="line.146"></a>
+<span class="sourceLineNo">139</span>    void updateProjectVersion( RepositorySession session, String repositoryId,<a name="line.139"></a>
+<span class="sourceLineNo">140</span>                               String namespace, String projectId,<a name="line.140"></a>
+<span class="sourceLineNo">141</span>                               ProjectVersionMetadata versionMetadata )<a name="line.141"></a>
+<span class="sourceLineNo">142</span>        throws MetadataRepositoryException;<a name="line.142"></a>
+<span class="sourceLineNo">143</span><a name="line.143"></a>
+<span class="sourceLineNo">144</span>    /**<a name="line.144"></a>
+<span class="sourceLineNo">145</span>     * Create the namespace in the repository, if it does not exist.<a name="line.145"></a>
+<span class="sourceLineNo">146</span>     * Namespaces do not have specific metadata attached.<a name="line.146"></a>
 <span class="sourceLineNo">147</span>     *<a name="line.147"></a>
-<span class="sourceLineNo">148</span>     * @param artifactMetadata the artifactMetadata with the timestamped version (2.0-20120618.214135-2)<a name="line.148"></a>
-<span class="sourceLineNo">149</span>     * @param baseVersion      the base version of the snapshot (2.0-SNAPSHOT)<a name="line.149"></a>
-<span class="sourceLineNo">150</span>     * @throws MetadataRepositoryException<a name="line.150"></a>
-<span class="sourceLineNo">151</span>     * @since 1.4-M3<a name="line.151"></a>
+<span class="sourceLineNo">148</span>     * @param session      The repository session<a name="line.148"></a>
+<span class="sourceLineNo">149</span>     * @param repositoryId The repository id<a name="line.149"></a>
+<span class="sourceLineNo">150</span>     * @param namespace    The namespace ('.' separated)<a name="line.150"></a>
+<span class="sourceLineNo">151</span>     * @throws MetadataRepositoryException if something goes wrong during update<a name="line.151"></a>
 <span class="sourceLineNo">152</span>     */<a name="line.152"></a>
-<span class="sourceLineNo">153</span>    void removeArtifact( ArtifactMetadata artifactMetadata, String baseVersion )<a name="line.153"></a>
+<span class="sourceLineNo">153</span>    void updateNamespace( RepositorySession session, String repositoryId, String namespace )<a name="line.153"></a>
 <span class="sourceLineNo">154</span>        throws MetadataRepositoryException;<a name="line.154"></a>
 <span class="sourceLineNo">155</span><a name="line.155"></a>
 <span class="sourceLineNo">156</span>    /**<a name="line.156"></a>
-<span class="sourceLineNo">157</span>     * FIXME need a unit test!!!<a name="line.157"></a>
-<span class="sourceLineNo">158</span>     * Only remove {@link MetadataFacet} for the artifact<a name="line.158"></a>
-<span class="sourceLineNo">159</span>     *<a name="line.159"></a>
-<span class="sourceLineNo">160</span>     * @param repositoryId<a name="line.160"></a>
-<span class="sourceLineNo">161</span>     * @param namespace<a name="line.161"></a>
-<span class="sourceLineNo">162</span>     * @param project<a name="line.162"></a>
-<span class="sourceLineNo">163</span>     * @param version<a name="line.163"></a>
-<span class="sourceLineNo">164</span>     * @param metadataFacet<a name="line.164"></a>
-<span class="sourceLineNo">165</span>     * @throws MetadataRepositoryException<a name="line.165"></a>
-<span class="sourceLineNo">166</span>     * @since 1.4-M3<a name="line.166"></a>
-<span class="sourceLineNo">167</span>     */<a name="line.167"></a>
-<span class="sourceLineNo">168</span>    void removeArtifact( String repositoryId, String namespace, String project, String version,<a name="line.168"></a>
-<span class="sourceLineNo">169</span>                         MetadataFacet metadataFacet )<a name="line.169"></a>
-<span class="sourceLineNo">170</span>        throws MetadataRepositoryException;<a name="line.170"></a>
-<span class="sourceLineNo">171</span><a name="line.171"></a>
-<span class="sourceLineNo">172</span>    /**<a name="line.172"></a>
-<span class="sourceLineNo">173</span>     * Delete a repository's metadata. This includes all associated metadata facets.<a name="line.173"></a>
-<span class="sourceLineNo">174</span>     *<a name="line.174"></a>
-<span class="sourceLineNo">175</span>     * @param repositoryId the repository to delete<a name="line.175"></a>
-<span class="sourceLineNo">176</span>     */<a name="line.176"></a>
-<span class="sourceLineNo">177</span>    void removeRepository( String repositoryId )<a name="line.177"></a>
-<span class="sourceLineNo">178</span>        throws MetadataRepositoryException;<a name="line.178"></a>
-<span class="sourceLineNo">179</span><a name="line.179"></a>
-<span class="sourceLineNo">180</span>    /**<a name="line.180"></a>
-<span class="sourceLineNo">181</span>     * @param repositoryId<a name="line.181"></a>
-<span class="sourceLineNo">182</span>     * @param namespace    (groupId for maven )<a name="line.182"></a>
-<span class="sourceLineNo">183</span>     * @throws MetadataRepositoryException<a name="line.183"></a>
-<span class="sourceLineNo">184</span>     * @since 1.4-M3<a name="line.184"></a>
-<span class="sourceLineNo">185</span>     */<a name="line.185"></a>
-<span class="sourceLineNo">186</span>    void removeNamespace( String repositoryId, String namespace )<a name="line.186"></a>
-<span class="sourceLineNo">187</span>        throws MetadataRepositoryException;<a name="line.187"></a>
-<span class="sourceLineNo">188</span><a name="line.188"></a>
-<span class="sourceLineNo">189</span>    List&lt;ArtifactMetadata&gt; getArtifacts( String repositoryId )<a name="line.189"></a>
-<span class="sourceLineNo">190</span>        throws MetadataRepositoryException;<a name="line.190"></a>
-<span class="sourceLineNo">191</span><a name="line.191"></a>
-<span class="sourceLineNo">192</span>    /**<a name="line.192"></a>
-<span class="sourceLineNo">193</span>     * basically just checking it exists not complete data returned<a name="line.193"></a>
-<span class="sourceLineNo">194</span>     *<a name="line.194"></a>
-<span class="sourceLineNo">195</span>     * @param repoId<a name="line.195"></a>
-<span class="sourceLineNo">196</span>     * @param namespace<a name="line.196"></a>
-<span class="sourceLineNo">197</span>     * @param projectId<a name="line.197"></a>
-<span class="sourceLineNo">198</span>     * @return<a name="line.198"></a>
-<span class="sourceLineNo">199</span>     * @throws MetadataResolutionException<a name="line.199"></a>
-<span class="sourceLineNo">200</span>     */<a name="line.200"></a>
-<span class="sourceLineNo">201</span>    ProjectMetadata getProject( String repoId, String namespace, String projectId )<a name="line.201"></a>
-<span class="sourceLineNo">202</span>        throws MetadataResolutionException;<a name="line.202"></a>
-<span class="sourceLineNo">203</span><a name="line.203"></a>
-<span class="sourceLineNo">204</span>    ProjectVersionMetadata getProjectVersion( String repoId, String namespace, String projectId, String projectVersion )<a name="line.204"></a>
-<span class="sourceLineNo">205</span>        throws MetadataResolutionException;<a name="line.205"></a>
-<span class="sourceLineNo">206</span><a name="line.206"></a>
-<span class="sourceLineNo">207</span>    Collection&lt;String&gt; getArtifactVersions( String repoId, String namespace, String projectId, String projectVersion )<a name="line.207"></a>
-<span class="sourceLineNo">208</span>        throws MetadataResolutionException;<a name="line.208"></a>
-<span class="sourceLineNo">209</span><a name="line.209"></a>
-<span class="sourceLineNo">210</span>    /**<a name="line.210"></a>
-<span class="sourceLineNo">211</span>     * Retrieve project references from the metadata repository. Note that this is not built into the content model for<a name="line.211"></a>
-<span class="sourceLineNo">212</span>     * a project version as a reference may be present (due to reverse-lookup of dependencies) before the actual<a name="line.212"></a>
-<span class="sourceLineNo">213</span>     * project is, and we want to avoid adding a stub model to the content repository.<a name="line.213"></a>
-<span class="sourceLineNo">214</span>     *<a name="line.214"></a>
-<span class="sourceLineNo">215</span>     * @param repoId         the repository ID to look within<a name="line.215"></a>
-<span class="sourceLineNo">216</span>     * @param namespace      the namespace of the project to get references to<a name="line.216"></a>
-<span class="sourceLineNo">217</span>     * @param projectId      the identifier of the project to get references to<a name="line.217"></a>
-<span class="sourceLineNo">218</span>     * @param projectVersion the version of the project to get references to<a name="line.218"></a>
-<span class="sourceLineNo">219</span>     * @return a list of project references<a name="line.219"></a>
-<span class="sourceLineNo">220</span>     */<a name="line.220"></a>
-<span class="sourceLineNo">221</span>    Collection&lt;ProjectVersionReference&gt; getProjectReferences( String repoId, String namespace, String projectId,<a name="line.221"></a>
-<span class="sourceLineNo">222</span>                                                              String projectVersion )<a name="line.222"></a>
-<span class="sourceLineNo">223</span>        throws MetadataResolutionException;<a name="line.223"></a>
-<span class="sourceLineNo">224</span><a name="line.224"></a>
-<span class="sourceLineNo">225</span>    Collection&lt;String&gt; getRootNamespaces( String repoId )<a name="line.225"></a>
-<span class="sourceLineNo">226</span>        throws MetadataResolutionException;<a name="line.226"></a>
-<span class="sourceLineNo">227</span><a name="line.227"></a>
-<span class="sourceLineNo">228</span>    /**<a name="line.228"></a>
-<span class="sourceLineNo">229</span>     * @param repoId<a name="line.229"></a>
-<span class="sourceLineNo">230</span>     * @param namespace<a name="line.230"></a>
-<span class="sourceLineNo">231</span>     * @return {@link Collection} of child namespaces of the namespace argument<a name="line.231"></a>
-<span class="sourceLineNo">232</span>     * @throws MetadataResolutionException<a name="line.232"></a>
-<span class="sourceLineNo">233</span>     */<a name="line.233"></a>
-<span class="sourceLineNo">234</span>    Collection&lt;String&gt; getNamespaces( String repoId, String namespace )<a name="line.234"></a>
-<span class="sourceLineNo">235</span>        throws MetadataResolutionException;<a name="line.235"></a>
-<span class="sourceLineNo">236</span><a name="line.236"></a>
-<span class="sourceLineNo">237</span>    /**<a name="line.237"></a>
-<span class="sourceLineNo">238</span>     * @param repoId<a name="line.238"></a>
-<span class="sourceLineNo">239</span>     * @param namespace<a name="line.239"></a>
-<span class="sourceLineNo">240</span>     * @return<a name="line.240"></a>
-<span class="sourceLineNo">241</span>     * @throws MetadataResolutionException<a name="line.241"></a>
-<span class="sourceLineNo">242</span>     */<a name="line.242"></a>
-<span class="sourceLineNo">243</span>    Collection&lt;String&gt; getProjects( String repoId, String namespace )<a name="line.243"></a>
-<span class="sourceLineNo">244</span>        throws MetadataResolutionException;<a name="line.244"></a>
-<span class="sourceLineNo">245</span><a name="line.245"></a>
-<span class="sourceLineNo">246</span>    /**<a name="line.246"></a>
-<span class="sourceLineNo">247</span>     * @param repoId<a name="line.247"></a>
-<span class="sourceLineNo">248</span>     * @param namespace<a name="line.248"></a>
-<span class="sourceLineNo">249</span>     * @param projectId<a name="line.249"></a>
-<span class="sourceLineNo">250</span>     * @return<a name="line.250"></a>
-<span class="sourceLineNo">251</span>     * @throws MetadataResolutionException<a name="line.251"></a>
-<span class="sourceLineNo">252</span>     */<a name="line.252"></a>
-<span class="sourceLineNo">253</span>    Collection&lt;String&gt; getProjectVersions( String repoId, String namespace, String projectId )<a name="line.253"></a>
-<span class="sourceLineNo">254</span>        throws MetadataResolutionException;<a name="line.254"></a>
-<span class="sourceLineNo">255</span><a name="line.255"></a>
-<span class="sourceLineNo">256</span>    /**<a name="line.256"></a>
-<span class="sourceLineNo">257</span>     * @param repoId<a name="line.257"></a>
-<span class="sourceLineNo">258</span>     * @param namespace<a name="line.258"></a>
-<span class="sourceLineNo">259</span>     * @param projectId<a name="line.259"></a>
-<span class="sourceLineNo">260</span>     * @param projectVersion<a name="line.260"></a>
-<span class="sourceLineNo">261</span>     * @throws MetadataRepositoryException<a name="line.261"></a>
-<span class="sourceLineNo">262</span>     * @since 1.4-M4<a name="line.262"></a>
-<span class="sourceLineNo">263</span>     */<a name="line.263"></a>
-<span class="sourceLineNo">264</span>    void removeProjectVersion( String repoId, String namespace, String projectId, String projectVersion )<a name="line.264"></a>
-<span class="sourceLineNo">265</span>        throws MetadataRepositoryException;<a name="line.265"></a>
-<span class="sourceLineNo">266</span><a name="line.266"></a>
-<span class="sourceLineNo">267</span>    /**<a name="line.267"></a>
-<span class="sourceLineNo">268</span>     * @param repoId<a name="line.268"></a>
-<span class="sourceLineNo">269</span>     * @param namespace<a name="line.269"></a>
-<span class="sourceLineNo">270</span>     * @param projectId<a name="line.270"></a>
-<span class="sourceLineNo">271</span>     * @param projectVersion<a name="line.271"></a>
-<span class="sourceLineNo">272</span>     * @return<a name="line.272"></a>
-<span class="sourceLineNo">273</span>     * @throws MetadataResolutionException<a name="line.273"></a>
-<span class="sourceLineNo">274</span>     */<a name="line.274"></a>
-<span class="sourceLineNo">275</span>    Collection&lt;ArtifactMetadata&gt; getArtifacts( String repoId, String namespace, String projectId,<a name="line.275"></a>
-<span class="sourceLineNo">276</span>                                               String projectVersion )<a name="line.276"></a>
-<span class="sourceLineNo">277</span>        throws MetadataResolutionException;<a name="line.277"></a>
-<span class="sourceLineNo">278</span><a name="line.278"></a>
-<span class="sourceLineNo">279</span>    /**<a name="line.279"></a>
-<span class="sourceLineNo">280</span>     * remove a project<a name="line.280"></a>
-<span class="sourceLineNo">281</span>     *<a name="line.281"></a>
-<span class="sourceLineNo">282</span>     * @param repositoryId<a name="line.282"></a>
-<span class="sourceLineNo">283</span>     * @param namespace<a name="line.283"></a>
-<span class="sourceLineNo">284</span>     * @param projectId<a name="line.284"></a>
-<span class="sourceLineNo">285</span>     * @throws MetadataRepositoryException<a name="line.285"></a>
-<span class="sourceLineNo">286</span>     * @since 1.4-M4<a name="line.286"></a>
-<span class="sourceLineNo">287</span>     */<a name="line.287"></a>
-<span class="sourceLineNo">288</span>    void removeProject( String repositoryId, String namespace, String projectId )<a name="line.288"></a>
-<span class="sourceLineNo">289</span>        throws MetadataRepositoryException;<a name="line.289"></a>
-<span class="sourceLineNo">290</span><a name="line.290"></a>
-<span class="sourceLineNo">291</span><a name="line.291"></a>
-<span class="sourceLineNo">292</span>    /**<a name="line.292"></a>
-<span class="sourceLineNo">293</span>     * &lt;b&gt;implementations can throw RuntimeException&lt;/b&gt;<a name="line.293"></a>
-<span class="sourceLineNo">294</span>     */<a name="line.294"></a>
-<span class="sourceLineNo">295</span>    void save();<a name="line.295"></a>
-<span class="sourceLineNo">296</span><a name="line.296"></a>
-<span class="sourceLineNo">297</span><a name="line.297"></a>
-<span class="sourceLineNo">298</span>    void close()<a name="line.298"></a>
-<span class="sourceLineNo">299</span>        throws MetadataRepositoryException;<a name="line.299"></a>
-<span class="sourceLineNo">300</span><a name="line.300"></a>
-<span class="sourceLineNo">301</span>    /**<a name="line.301"></a>
-<span class="sourceLineNo">302</span>     * &lt;b&gt;implementations can throw RuntimeException&lt;/b&gt;<a name="line.302"></a>
-<span class="sourceLineNo">303</span>     */<a name="line.303"></a>
-<span class="sourceLineNo">304</span>    void revert();<a name="line.304"></a>
-<span class="sourceLineNo">305</span><a name="line.305"></a>
-<span class="sourceLineNo">306</span>    boolean canObtainAccess( Class&lt;?&gt; aClass );<a name="line.306"></a>
-<span class="sourceLineNo">307</span><a name="line.307"></a>
-<span class="sourceLineNo">308</span>    &lt;T&gt; T obtainAccess( Class&lt;T&gt; aClass )<a name="line.308"></a>
-<span class="sourceLineNo">309</span>        throws MetadataRepositoryException;<a name="line.309"></a>
-<span class="sourceLineNo">310</span><a name="line.310"></a>
-<span class="sourceLineNo">311</span>    /**<a name="line.311"></a>
-<span class="sourceLineNo">312</span>     * Full text artifacts search.<a name="line.312"></a>
-<span class="sourceLineNo">313</span>     *  <a name="line.313"></a>
-<span class="sourceLineNo">314</span>     * @param text<a name="line.314"></a>
-<span class="sourceLineNo">315</span>     * @param repositoryId can be null to search in all repositories<a name="line.315"></a>
-<span class="sourceLineNo">316</span>     * @param exact running an exact search, the value must exactly match the text.  <a name="line.316"></a>
-<span class="sourceLineNo">317</span>     * @return a list of artifacts<a name="line.317"></a>
-<span class="sourceLineNo">318</span>     * @throws MetadataRepositoryException<a name="line.318"></a>
-<span class="sourceLineNo">319</span>     */<a name="line.319"></a>
-<span class="sourceLineNo">320</span>    List&lt;ArtifactMetadata&gt; searchArtifacts( String text, String repositoryId, boolean exact )<a name="line.320"></a>
-<span class="sourceLineNo">321</span>        throws MetadataRepositoryException;<a name="line.321"></a>
-<span class="sourceLineNo">322</span><a name="line.322"></a>
-<span class="sourceLineNo">323</span>    /**<a name="line.323"></a>
-<span class="sourceLineNo">324</span>     * Full text artifacts search inside the specified key.<a name="line.324"></a>
-<span class="sourceLineNo">325</span>     *  <a name="line.325"></a>
-<span class="sourceLineNo">326</span>     * @param key search only inside this key<a name="line.326"></a>
-<span class="sourceLineNo">327</span>     * @param text<a name="line.327"></a>
-<span class="sourceLineNo">328</span>     * @param repositoryId can be null to search in all repositories<a name="line.328"></a>
-<span class="sourceLineNo">329</span>     * @param exact running an exact search, the value must exactly match the text.  <a name="line.329"></a>
-<span class="sourceLineNo">330</span>     * @return a list of artifacts<a name="line.330"></a>
-<span class="sourceLineNo">331</span>     * @throws MetadataRepositoryException<a name="line.331"></a>
-<span class="sourceLineNo">332</span>     */<a name="line.332"></a>
-<span class="sourceLineNo">333</span>    List&lt;ArtifactMetadata&gt; searchArtifacts( String key, String text, String repositoryId, boolean exact )<a name="line.333"></a>
-<span class="sourceLineNo">334</span>        throws MetadataRepositoryException;<a name="line.334"></a>
-<span class="sourceLineNo">335</span><a name="line.335"></a>
-<span class="sourceLineNo">336</span>}<a name="line.336"></a>
+<span class="sourceLineNo">157</span>     * Return the facet names stored for the given facet id on the repository level.<a name="line.157"></a>
+<span class="sourceLineNo">158</span>     *<a name="line.158"></a>
+<span class="sourceLineNo">159</span>     * @param session      The repository session<a name="line.159"></a>
+<span class="sourceLineNo">160</span>     * @param repositoryId The repository id<a name="line.160"></a>
+<span class="sourceLineNo">161</span>     * @param facetId      The facet id<a name="line.161"></a>
+<span class="sourceLineNo">162</span>     * @return The list of facet names, or an empty list, if there are no facets stored on this repository for the given facet id.<a name="line.162"></a>
+<span class="sourceLineNo">163</span>     * @throws MetadataRepositoryException if something goes wrong<a name="line.163"></a>
+<span class="sourceLineNo">164</span>     */<a name="line.164"></a>
+<span class="sourceLineNo">165</span>    List&lt;String&gt; getMetadataFacets( RepositorySession session, String repositoryId, String facetId )<a name="line.165"></a>
+<span class="sourceLineNo">166</span>        throws MetadataRepositoryException;<a name="line.166"></a>
+<span class="sourceLineNo">167</span><a name="line.167"></a>
+<span class="sourceLineNo">168</span><a name="line.168"></a>
+<span class="sourceLineNo">169</span>    /**<a name="line.169"></a>
+<span class="sourceLineNo">170</span>     * The same as {@link #getMetadataFacetStream(RepositorySession, String, Class, QueryParameter)}<a name="line.170"></a>
+<span class="sourceLineNo">171</span>     * but uses default query parameters.<a name="line.171"></a>
+<span class="sourceLineNo">172</span>     * &lt;p&gt;<a name="line.172"></a>
+<span class="sourceLineNo">173</span>     * There is no limitation of the number of result objects returned, but implementations may have a hard upper bound for<a name="line.173"></a>
+<span class="sourceLineNo">174</span>     * the number of results.<a name="line.174"></a>
+<span class="sourceLineNo">175</span>     *<a name="line.175"></a>
+<span class="sourceLineNo">176</span>     * @param session      The repository session.<a name="line.176"></a>
+<span class="sourceLineNo">177</span>     * @param repositoryId The repository id.<a name="line.177"></a>
+<span class="sourceLineNo">178</span>     * @param facetClazz   The facet class<a name="line.178"></a>
+<span class="sourceLineNo">179</span>     * @param &lt;T&gt;          The facet type<a name="line.179"></a>
+<span class="sourceLineNo">180</span>     * @return A stream of facet objects, or a empty stream if no facet was found.<a name="line.180"></a>
+<span class="sourceLineNo">181</span>     * @throws MetadataRepositoryException if the facet retrieval fails.<a name="line.181"></a>
+<span class="sourceLineNo">182</span>     * @since 3.0<a name="line.182"></a>
+<span class="sourceLineNo">183</span>     */<a name="line.183"></a>
+<span class="sourceLineNo">184</span>    &lt;T extends MetadataFacet&gt; Stream&lt;T&gt; getMetadataFacetStream( RepositorySession session,<a name="line.184"></a>
+<span class="sourceLineNo">185</span>                                                                String repositoryId, Class&lt;T&gt; facetClazz )<a name="line.185"></a>
+<span class="sourceLineNo">186</span>        throws MetadataRepositoryException;<a name="line.186"></a>
+<span class="sourceLineNo">187</span><a name="line.187"></a>
+<span class="sourceLineNo">188</span>    /**<a name="line.188"></a>
+<span class="sourceLineNo">189</span>     * Returns a stream of MetadataFacet elements that match the given facet class.<a name="line.189"></a>
+<span class="sourceLineNo">190</span>     * Implementations should order the resulting stream by facet name.<a name="line.190"></a>
+<span class="sourceLineNo">191</span>     *<a name="line.191"></a>
+<span class="sourceLineNo">192</span>     * @param session      The repository session<a name="line.192"></a>
+<span class="sourceLineNo">193</span>     * @param repositoryId The repository id<a name="line.193"></a>
+<span class="sourceLineNo">194</span>     * @param facetClazz   The class of the facet<a name="line.194"></a>
+<span class="sourceLineNo">195</span>     * @param &lt;T&gt;          The facet type<a name="line.195"></a>
+<span class="sourceLineNo">196</span>     * @return A stream of facet objects, or a empty stream if no facet was found.<a name="line.196"></a>
+<span class="sourceLineNo">197</span>     * @throws MetadataRepositoryException if the facet retrieval fails<a name="line.197"></a>
+<span class="sourceLineNo">198</span>     * @since 3.0<a name="line.198"></a>
+<span class="sourceLineNo">199</span>     */<a name="line.199"></a>
+<span class="sourceLineNo">200</span>    &lt;T extends MetadataFacet&gt; Stream&lt;T&gt; getMetadataFacetStream( RepositorySession session,<a name="line.200"></a>
+<span class="sourceLineNo">201</span>                                                                String repositoryId, Class&lt;T&gt; facetClazz,<a name="line.201"></a>
+<span class="sourceLineNo">202</span>                                                                QueryParameter queryParameter )<a name="line.202"></a>
+<span class="sourceLineNo">203</span>        throws MetadataRepositoryException;<a name="line.203"></a>
+<span class="sourceLineNo">204</span><a name="line.204"></a>
+<span class="sourceLineNo">205</span>    /**<a name="line.205"></a>
+<span class="sourceLineNo">206</span>     * Returns true, if there is facet data stored for the given facet id on the repository on repository level. The facet data itself<a name="line.206"></a>
+<span class="sourceLineNo">207</span>     * may be empty. It's just checking if there is an object stored for the given facet id.<a name="line.207"></a>
+<span class="sourceLineNo">208</span>     *<a name="line.208"></a>
+<span class="sourceLineNo">209</span>     * @param session      The repository session<a name="line.209"></a>
+<span class="sourceLineNo">210</span>     * @param repositoryId The repository id<a name="line.210"></a>
+<span class="sourceLineNo">211</span>     * @param facetId      The facet id<a name="line.211"></a>
+<span class="sourceLineNo">212</span>     * @return true if there is data stored this facetId on repository level.<a name="line.212"></a>
+<span class="sourceLineNo">213</span>     * @throws MetadataRepositoryException if something goes wrong<a name="line.213"></a>
+<span class="sourceLineNo">214</span>     * @since 1.4-M4<a name="line.214"></a>
+<span class="sourceLineNo">215</span>     */<a name="line.215"></a>
+<span class="sourceLineNo">216</span>    boolean hasMetadataFacet( RepositorySession session, String repositoryId, String facetId )<a name="line.216"></a>
+<span class="sourceLineNo">217</span>        throws MetadataRepositoryException;<a name="line.217"></a>
+<span class="sourceLineNo">218</span><a name="line.218"></a>
+<span class="sourceLineNo">219</span>    /**<a name="line.219"></a>
+<span class="sourceLineNo">220</span>     * Returns the facet data stored on the repository level. The facet instance is identified by the facet id and the<a name="line.220"></a>
+<span class="sourceLineNo">221</span>     * facet name. The returned object is a instance created by using &lt;code&gt;{@link org.apache.archiva.metadata.model.MetadataFacetFactory}&lt;/code&gt;.<a name="line.221"></a>
+<span class="sourceLineNo">222</span>     *<a name="line.222"></a>
+<span class="sourceLineNo">223</span>     * @param session      The repository session<a name="line.223"></a>
+<span class="sourceLineNo">224</span>     * @param repositoryId The repository id<a name="line.224"></a>
+<span class="sourceLineNo">225</span>     * @param facetId      The facet id<a name="line.225"></a>
+<span class="sourceLineNo">226</span>     * @param name         The attribute name<a name="line.226"></a>
+<span class="sourceLineNo">227</span>     * @return The facet values<a name="line.227"></a>
+<span class="sourceLineNo">228</span>     * @throws MetadataRepositoryException if something goes wrong.<a name="line.228"></a>
+<span class="sourceLineNo">229</span>     */<a name="line.229"></a>
+<span class="sourceLineNo">230</span>    MetadataFacet getMetadataFacet( RepositorySession session, String repositoryId, String facetId,<a name="line.230"></a>
+<span class="sourceLineNo">231</span>                                    String name )<a name="line.231"></a>
+<span class="sourceLineNo">232</span>        throws MetadataRepositoryException;<a name="line.232"></a>
+<span class="sourceLineNo">233</span><a name="line.233"></a>
+<span class="sourceLineNo">234</span>    /**<a name="line.234"></a>
+<span class="sourceLineNo">235</span>     * Returns the facet instance for the given class, which is stored on repository level for the given name.<a name="line.235"></a>
+<span class="sourceLineNo">236</span>     * If the given name does not point to a instance that can be represented by this class, &lt;code&gt;null&lt;/code&gt; will be returned.<a name="line.236"></a>
+<span class="sourceLineNo">237</span>     * If the facet is not found the method returns &lt;code&gt;null&lt;/code&gt;.<a name="line.237"></a>
+<span class="sourceLineNo">238</span>     *<a name="line.238"></a>
+<span class="sourceLineNo">239</span>     * @param session      The repository session<a name="line.239"></a>
+<span class="sourceLineNo">240</span>     * @param repositoryId The id of the repository<a name="line.240"></a>
+<span class="sourceLineNo">241</span>     * @param clazz        The facet object class<a name="line.241"></a>
+<span class="sourceLineNo">242</span>     * @param name         The name of the facet (name or path)<a name="line.242"></a>
+<span class="sourceLineNo">243</span>     * @param &lt;T&gt;          The type of the facet object<a name="line.243"></a>
+<span class="sourceLineNo">244</span>     * @return The facet instance, if it exists.<a name="line.244"></a>
+<span class="sourceLineNo">245</span>     * @throws MetadataRepositoryException if the data cannot be retrieved from the backend<a name="line.245"></a>
+<span class="sourceLineNo">246</span>     * @since 3.0<a name="line.246"></a>
+<span class="sourceLineNo">247</span>     */<a name="line.247"></a>
+<span class="sourceLineNo">248</span>    &lt;T extends MetadataFacet&gt; T getMetadataFacet( RepositorySession session, String repositoryId,<a name="line.248"></a>
+<span class="sourceLineNo">249</span>                                                  Class&lt;T&gt; clazz, String name )<a name="line.249"></a>
+<span class="sourceLineNo">250</span>        throws MetadataRepositoryException;<a name="line.250"></a>
+<span class="sourceLineNo">251</span><a name="line.251"></a>
+<span class="sourceLineNo">252</span>    /**<a name="line.252"></a>
+<span class="sourceLineNo">253</span>     * Adds a facet to the repository level.<a name="line.253"></a>
+<span class="sourceLineNo">254</span>     *<a name="line.254"></a>
+<span class="sourceLineNo">255</span>     * @param session       The repository session<a name="line.255"></a>
+<span class="sourceLineNo">256</span>     * @param repositoryId  The id of the repository<a name="line.256"></a>
+<span class="sourceLineNo">257</span>     * @param metadataFacet The facet to add<a name="line.257"></a>
+<span class="sourceLineNo">258</span>     * @throws MetadataRepositoryException if the facet cannot be stored.<a name="line.258"></a>
+<span class="sourceLineNo">259</span>     */<a name="line.259"></a>
+<span class="sourceLineNo">260</span>    void addMetadataFacet( RepositorySession session, String repositoryId,<a name="line.260"></a>
+<span class="sourceLineNo">261</span>                           MetadataFacet metadataFacet )<a name="line.261"></a>
+<span class="sourceLineNo">262</span>        throws MetadataRepositoryException;<a name="line.262"></a>
+<span class="sourceLineNo">263</span><a name="line.263"></a>
+<span class="sourceLineNo">264</span>    /**<a name="line.264"></a>
+<span class="sourceLineNo">265</span>     * Removes all facets with the given facetId from the repository level.<a name="line.265"></a>
+<span class="sourceLineNo">266</span>     *<a name="line.266"></a>
+<span class="sourceLineNo">267</span>     * @param session      The repository session<a name="line.267"></a>
+<span class="sourceLineNo">268</span>     * @param repositoryId The id of the repository<a name="line.268"></a>
+<span class="sourceLineNo">269</span>     * @param facetId      The facet id<a name="line.269"></a>
+<span class="sourceLineNo">270</span>     * @throws MetadataRepositoryException if the removal fails<a name="line.270"></a>
+<span class="sourceLineNo">271</span>     */<a name="line.271"></a>
+<span class="sourceLineNo">272</span>    void removeMetadataFacets( RepositorySession session, String repositoryId, String facetId )<a name="line.272"></a>
+<span class="sourceLineNo">273</span>        throws MetadataRepositoryException;<a name="line.273"></a>
+<span class="sourceLineNo">274</span><a name="line.274"></a>
+<span class="sourceLineNo">275</span>    /**<a name="line.275"></a>
+<span class="sourceLineNo">276</span>     * Removes the given facet from the repository level, if it exists.<a name="line.276"></a>
+<span class="sourceLineNo">277</span>     *<a name="line.277"></a>
+<span class="sourceLineNo">278</span>     * @param session      The repository session<a name="line.278"></a>
+<span class="sourceLineNo">279</span>     * @param repositoryId The id of the repository<a name="line.279"></a>
+<span class="sourceLineNo">280</span>     * @param facetId      The facet id<a name="line.280"></a>
+<span class="sourceLineNo">281</span>     * @param name         The facet name or path<a name="line.281"></a>
+<span class="sourceLineNo">282</span>     */<a name="line.282"></a>
+<span class="sourceLineNo">283</span>    void removeMetadataFacet( RepositorySession session, String repositoryId, String facetId, String name )<a name="line.283"></a>
+<span class="sourceLineNo">284</span>        throws MetadataRepositoryException;<a name="line.284"></a>
+<span class="sourceLineNo">285</span><a name="line.285"></a>
+<span class="sourceLineNo">286</span><a name="line.286"></a>
+<span class="sourceLineNo">287</span>    /**<a name="line.287"></a>
+<span class="sourceLineNo">288</span>     * Is the same as {@link #getArtifactsByDateRange(RepositorySession, String, ZonedDateTime, ZonedDateTime, QueryParameter)}, but<a name="line.288"></a>
+<span class="sourceLineNo">289</span>     * uses default query parameters.<a name="line.289"></a>
+<span class="sourceLineNo">290</span>     */<a name="line.290"></a>
+<span class="sourceLineNo">291</span>    List&lt;ArtifactMetadata&gt; getArtifactsByDateRange( RepositorySession session, String repositoryId,<a name="line.291"></a>
+<span class="sourceLineNo">292</span>                                                    @Nullable ZonedDateTime startTime, @Nullable ZonedDateTime endTime )<a name="line.292"></a>
+<span class="sourceLineNo">293</span>        throws MetadataRepositoryException;<a name="line.293"></a>
+<span class="sourceLineNo">294</span><a name="line.294"></a>
+<span class="sourceLineNo">295</span>    /**<a name="line.295"></a>
+<span class="sourceLineNo">296</span>     * Searches for artifacts where the 'whenGathered' attribute value is between the given start and end time.<a name="line.296"></a>
+<span class="sourceLineNo">297</span>     * If start or end time or both are &lt;code&gt;null&lt;/code&gt;, the time range for the search is unbounded for this parameter.<a name="line.297"></a>
+<span class="sourceLineNo">298</span>     *<a name="line.298"></a>
+<span class="sourceLineNo">299</span>     * @param session        The repository session<a name="line.299"></a>
+<span class="sourceLineNo">300</span>     * @param repositoryId   The repository id<a name="line.300"></a>
+<span class="sourceLineNo">301</span>     * @param startTime      The start time/date as zoned date, can be &lt;code&gt;null&lt;/code&gt;<a name="line.301"></a>
+<span class="sourceLineNo">302</span>     * @param endTime        The end time/date as zoned date, can be &lt;code&gt;null&lt;/code&gt;<a name="line.302"></a>
+<span class="sourceLineNo">303</span>     * @param queryParameter Additional parameters for the query that affect ordering and returned results<a name="line.303"></a>
+<span class="sourceLineNo">304</span>     * @return The list of metadata objects for the found instances.<a name="line.304"></a>
+<span class="sourceLineNo">305</span>     * @throws MetadataRepositoryException if the query fails.<a name="line.305"></a>
+<span class="sourceLineNo">306</span>     * @since 3.0<a name="line.306"></a>
+<span class="sourceLineNo">307</span>     */<a name="line.307"></a>
+<span class="sourceLineNo">308</span>    List&lt;ArtifactMetadata&gt; getArtifactsByDateRange( RepositorySession session, String repositoryId,<a name="line.308"></a>
+<span class="sourceLineNo">309</span>                                                    @Nullable ZonedDateTime startTime, @Nullable ZonedDateTime endTime,<a name="line.309"></a>
+<span class="sourceLineNo">310</span>                                                    QueryParameter queryParameter )<a name="line.310"></a>
+<span class="sourceLineNo">311</span>        throws MetadataRepositoryException;<a name="line.311"></a>
+<span class="sourceLineNo">312</span><a name="line.312"></a>
+<span class="sourceLineNo">313</span><a name="line.313"></a>
+<span class="sourceLineNo">314</span>    /**<a name="line.314"></a>
+<span class="sourceLineNo">315</span>     * Returns all the artifacts who's 'whenGathered' attribute value is inside the given time range (inclusive) as stream of objects.<a name="line.315"></a>
+<span class="sourceLineNo">316</span>     * &lt;p&gt;<a name="line.316"></a>
+<span class="sourceLineNo">317</span>     * Implementations should return a stream of sorted objects. The objects should be sorted by the 'whenGathered' date in ascending order.<a name="line.317"></a>
+<span class="sourceLineNo">318</span>     *<a name="line.318"></a>
+<span class="sourceLineNo">319</span>     * @param session      The repository session<a name="line.319"></a>
+<span class="sourceLineNo">320</span>     * @param repositoryId The repository id<a name="line.320"></a>
+<span class="sourceLineNo">321</span>     * @param startTime    The start time, can be &lt;code&gt;null&lt;/code&gt;<a name="line.321"></a>
+<span class="sourceLineNo">322</span>     * @param endTime      The end time, can be &lt;code&gt;null&lt;/code&gt;<a name="line.322"></a>
+<span class="sourceLineNo">323</span>     * @return A stream of artifact metadata objects, or a empty stream if no artifact was found.<a name="line.323"></a>
+<span class="sourceLineNo">324</span>     * @throws MetadataRepositoryException if the artifact retrieval fails.<a name="line.324"></a>
+<span class="sourceLineNo">325</span>     * @since 3.0<a name="line.325"></a>
+<span class="sourceLineNo">326</span>     */<a name="line.326"></a>
+<span class="sourceLineNo">327</span>    Stream&lt;ArtifactMetadata&gt; getArtifactByDateRangeStream( RepositorySession session, String repositoryId,<a name="line.327"></a>
+<span class="sourceLineNo">328</span>                                                           @Nullable ZonedDateTime startTime, @Nullable ZonedDateTime endTime )<a name="line.328"></a>
+<span class="sourceLineNo">329</span>        throws MetadataRepositoryException;<a name="line.329"></a>
+<span class="sourceLineNo">330</span><a name="line.330"></a>
+<span class="sourceLineNo">331</span>    /**<a name="line.331"></a>
+<span class="sourceLineNo">332</span>     * Returns all the artifacts who's 'whenGathered' attribute value is inside the given time range (inclusive) as stream of objects.<a name="line.332"></a>
+<span class="sourceLineNo">333</span>     * &lt;p&gt;<a name="line.333"></a>
+<span class="sourceLineNo">334</span>     * If no sort attributes are given by the queryParameter, the result is sorted by the 'whenGathered' date.<a name="line.334"></a>
+<span class="sourceLineNo">335</span>     *<a name="line.335"></a>
+<span class="sourceLineNo">336</span>     * @param session        The repository session<a name="line.336"></a>
+<span class="sourceLineNo">337</span>     * @param repositoryId   The repository id<a name="line.337"></a>
+<span class="sourceLineNo">338</span>     * @param startTime      The start time, can be &lt;code&gt;null&lt;/code&gt;<a name="line.338"></a>
+<span class="sourceLineNo">339</span>     * @param endTime        The end time, can be &lt;code&gt;null&lt;/code&gt;<a name="line.339"></a>
+<span class="sourceLineNo">340</span>     * @param queryParameter Additional parameters for the query that affect ordering and number of returned results.<a name="line.340"></a>
+<span class="sourceLineNo">341</span>     * @return A stream of artifact metadata objects.<a name="line.341"></a>
+<span class="sourceLineNo">342</span>     * @throws MetadataRepositoryException if the artifact retrieval fails.<a name="line.342"></a>
+<span class="sourceLineNo">343</span>     * @since 3.0<a name="line.343"></a>
+<span class="sourceLineNo">344</span>     */<a name="line.344"></a>
+<span class="sourceLineNo">345</span>    Stream&lt;ArtifactMetadata&gt; getArtifactByDateRangeStream( RepositorySession session, String repositoryId,<a name="line.345"></a>
+<span class="sourceLineNo">346</span>                                                           @Nullable ZonedDateTime startTime, @Nullable ZonedDateTime endTime,<a name="line.346"></a>
+<span class="sourceLineNo">347</span>                                                           QueryParameter queryParameter )<a name="line.347"></a>
+<span class="sourceLineNo">348</span>        throws MetadataRepositoryException;<a name="line.348"></a>
+<span class="sourceLineNo">349</span><a name="line.349"></a>
+<span class="sourceLineNo">350</span><a name="line.350"></a>
+<span class="sourceLineNo">351</span>    /**<a name="line.351"></a>
+<span class="sourceLineNo">352</span>     * Returns the artifacts that match the given checksum. All checksum types are searched.<a name="line.352"></a>
+<span class="sourceLineNo">353</span>     *<a name="line.353"></a>
+<span class="sourceLineNo">354</span>     * @param session      The repository session<a name="line.354"></a>
+<span class="sourceLineNo">355</span>     * @param repositoryId The repository id<a name="line.355"></a>
+<span class="sourceLineNo">356</span>     * @param checksum     The checksum as string of numbers<a name="line.356"></a>
+<span class="sourceLineNo">357</span>     * @return The list of artifacts that match the given checksum.<a name="line.357"></a>
+<span class="sourceLineNo">358</span>     * @throws MetadataRepositoryException if the artifact retrieval fails<a name="line.358"></a>
+<span class="sourceLineNo">359</span>     */<a name="line.359"></a>
+<span class="sourceLineNo">360</span>    List&lt;ArtifactMetadata&gt; getArtifactsByChecksum( RepositorySession session, String repositoryId, String checksum )<a name="line.360"></a>
+<span class="sourceLineNo">361</span>        throws MetadataRepositoryException;<a name="line.361"></a>
+<span class="sourceLineNo">362</span><a name="line.362"></a>
+<span class="sourceLineNo">363</span>    /**<a name="line.363"></a>
+<span class="sourceLineNo">364</span>     * Get artifacts with a project version metadata key that matches the passed value.<a name="line.364"></a>
+<span class="sourceLineNo">365</span>     *<a name="line.365"></a>
+<span class="sourceLineNo">366</span>     * @param session      The repository session<a name="line.366"></a>
+<span class="sourceLineNo">367</span>     * @param key          The attribute key to search<a name="line.367"></a>
+<span class="sourceLineNo">368</span>     * @param value        The attribute value used for search<a name="line.368"></a>
+<span class="sourceLineNo">369</span>     * @param repositoryId can be &lt;code&gt;null&lt;/code&gt;, meaning search in all repositories<a name="line.369"></a>
+<span class="sourceLineNo">370</span>     * @return a list of artifacts. A empty list, if no artifact was found.<a name="line.370"></a>
+<span class="sourceLineNo">371</span>     * @throws MetadataRepositoryException if the artifact retrieval fails.<a name="line.371"></a>
+<span class="sourceLineNo">372</span>     */<a name="line.372"></a>
+<span class="sourceLineNo">373</span>    List&lt;ArtifactMetadata&gt; getArtifactsByProjectVersionFacet( RepositorySession session, String key, String value,<a name="line.373"></a>
+<span class="sourceLineNo">374</span>                                                              @Nullable String repositoryId )<a name="line.374"></a>
+<span class="sourceLineNo">375</span>        throws MetadataRepositoryException;<a name="line.375"></a>
+<span class="sourceLineNo">376</span><a name="line.376"></a>
+<span class="sourceLineNo">377</span>    /**<a name="line.377"></a>
+<span class="sourceLineNo">378</span>     * Get artifacts with an artifact metadata key that matches the passed value.<a name="line.378"></a>
+<span class="sourceLineNo">379</span>     * &lt;code&gt;key&lt;/code&gt; ist the string representation of one of the metadata attributes. Only artifacts are returned where<a name="line.379"></a>
+<span class="sourceLineNo">380</span>     * the attribute value matches exactly the given search value.<a name="line.380"></a>
+<span class="sourceLineNo">381</span>     *<a name="line.381"></a>
+<span class="sourceLineNo">382</span>     * @param session      The repository session.<a name="line.382"></a>
+<span class="sourceLineNo">383</span>     * @param key          The string representation of the artifact metadata attribute.<a name="line.383"></a>
+<span class="sourceLineNo">384</span>     * @param value        The search value.<a name="line.384"></a>
+<span class="sourceLineNo">385</span>     * @param repositoryId can be &lt;code&gt;null&lt;/code&gt;, meaning search in all repositories<a name="line.385"></a>
+<span class="sourceLineNo">386</span>     * @return a list of artifact objects for each artifact that matches the search string<a name="line.386"></a>
+<span class="sourceLineNo">387</span>     * @throws MetadataRepositoryException if the artifact retrieval fails.<a name="line.387"></a>
+<span class="sourceLineNo">388</span>     */<a name="line.388"></a>
+<span class="sourceLineNo">389</span>    List&lt;ArtifactMetadata&gt; getArtifactsByAttribute( RepositorySession session, String key, String value, @Nullable String repositoryId )<a name="line.389"></a>
+<span class="sourceLineNo">390</span>        throws MetadataRepositoryException;<a name="line.390"></a>
+<span class="sourceLineNo">391</span><a name="line.391"></a>
+<span class="sourceLineNo">392</span>    /**<a name="line.392"></a>
+<span class="sourceLineNo">393</span>     * Get artifacts with a attribute on project version level that matches the passed value.<a name="line.393"></a>
+<span class="sourceLineNo">394</span>     * Possible keys are 'scm.url', 'org.name', 'url', 'mailingList.0.name', 'license.0.name',...<a name="line.394"></a>
+<span class="sourceLineNo">395</span>     *<a name="line.395"></a>
+<span class="sourceLineNo">396</span>     * @param session      the repository session.<a name="line.396"></a>
+<span class="sourceLineNo">397</span>     * @param key          The name of the attribute (may be nested like scm.url, mailinglist.0.name)<a name="line.397"></a>
+<span class="sourceLineNo">398</span>     * @param value        The value to search for<a name="line.398"></a>
+<span class="sourceLineNo">399</span>     * @param repositoryId can be &lt;code&gt;null&lt;/code&gt;, which means to search in all repositories<a name="line.399"></a>
+<span class="sourceLineNo">400</span>     * @return a list of artifacts or a empty list, if no artifact was found<a name="line.400"></a>
+<span class="sourceLineNo">401</span>     * @throws MetadataRepositoryException if the artifact retrieval fails<a name="line.401"></a>
+<span class="sourceLineNo">402</span>     */<a name="line.402"></a>
+<span class="sourceLineNo">403</span>    List&lt;ArtifactMetadata&gt; getArtifactsByProjectVersionAttribute( RepositorySession session, String key, String value, @Nullable String repositoryId )<a name="line.403"></a>
+<span class="sourceLineNo">404</span>        throws MetadataRepositoryException;<a name="line.404"></a>
+<span class="sourceLineNo">405</span><a name="line.405"></a>
+<span class="sourceLineNo">406</span>    /**<a name="line.406"></a>
+<span class="sourceLineNo">407</span>     * Removes the data for the artifact with the given coordinates from the metadata repository. This will not remove the artifact itself<a name="line.407"></a>
+<span class="sourceLineNo">408</span>     * from the storage. It will only remove the metadata.<a name="line.408"></a>
+<span class="sourceLineNo">409</span>     *<a name="line.409"></a>
+<span class="sourceLineNo">410</span>     * @param session      The repository session<a name="line.410"></a>
+<span class="sourceLineNo">411</span>     * @param repositoryId The repository id<a name="line.411"></a>
+<span class="sourceLineNo">412</span>     * @param namespace    The namespace of the project<a name="line.412"></a>
+<span class="sourceLineNo">413</span>     * @param project      The project name<a name="line.413"></a>
+<span class="sourceLineNo">414</span>     * @param version      The project version<a name="line.414"></a>
+<span class="sourceLineNo">415</span>     * @param id           The artifact id<a name="line.415"></a>
+<span class="sourceLineNo">416</span>     * @throws MetadataRepositoryException if the artifact retrieval fails, or if the artifact cannot be found.<a name="line.416"></a>
+<span class="sourceLineNo">417</span>     */<a name="line.417"></a>
+<span class="sourceLineNo">418</span>    void removeArtifact( RepositorySession session, String repositoryId, String namespace, String project, String version, String id )<a name="line.418"></a>
+<span class="sourceLineNo">419</span>        throws MetadataRepositoryException;<a name="line.419"></a>
+<span class="sourceLineNo">420</span><a name="line.420"></a>
+<span class="sourceLineNo">421</span>    /**<a name="line.421"></a>
+<span class="sourceLineNo">422</span>     * Remove timestamped version of artifact. This removes a snapshot artifact by giving the artifact metadata<a name="line.422"></a>
+<span class="sourceLineNo">423</span>     * and the base version of the project.<a name="line.423"></a>
+<span class="sourceLineNo">424</span>     *<a name="line.424"></a>
+<span class="sourceLineNo">425</span>     * @param session          The repository session<a name="line.425"></a>
+<span class="sourceLineNo">426</span>     * @param artifactMetadata the artifactMetadata with the timestamped version (2.0-20120618.214135-2)<a name="line.426"></a>
+<span class="sourceLineNo">427</span>     * @param baseVersion      the base version of the snapshot (2.0-SNAPSHOT)<a name="line.427"></a>
+<span class="sourceLineNo">428</span>     * @throws MetadataRepositoryException if the removal fails.<a name="line.428"></a>
+<span class="sourceLineNo">429</span>     * @since 1.4-M3<a name="line.429"></a>
+<span class="sourceLineNo">430</span>     */<a name="line.430"></a>
+<span class="sourceLineNo">431</span>    void removeTimestampedArtifact( RepositorySession session, ArtifactMetadata artifactMetadata, String baseVersion )<a name="line.431"></a>
+<span class="sourceLineNo">432</span>        throws MetadataRepositoryException;<a name="line.432"></a>
+<span class="sourceLineNo">433</span><a name="line.433"></a>
+<span class="sourceLineNo">434</span>    /**<a name="line.434"></a>
+<span class="sourceLineNo">435</span>     * FIXME need a unit test!!!<a name="line.435"></a>
+<span class="sourceLineNo">436</span>     * Removes the {@link MetadataFacet} of the given artifact.<a name="line.436"></a>
+<span class="sourceLineNo">437</span>     *<a name="line.437"></a>
+<span class="sourceLineNo">438</span>     * @param session       The repository session<a name="line.438"></a>
+<span class="sourceLineNo">439</span>     * @param repositoryId  The repository id.<a name="line.439"></a>
+<span class="sourceLineNo">440</span>     * @param namespace     The namespace<a name="line.440"></a>
+<span class="sourceLineNo">441</span>     * @param project       The project name<a name="line.441"></a>
+<span class="sourceLineNo">442</span>     * @param version       The project version<a name="line.442"></a>
+<span class="sourceLineNo">443</span>     * @param metadataFacet The facet data<a name="line.443"></a>
+<span class="sourceLineNo">444</span>     * @throws MetadataRepositoryException if the removal failed<a name="line.444"></a>
+<span class="sourceLineNo">445</span>     * @since 1.4-M3<a name="line.445"></a>
+<span class="sourceLineNo">446</span>     */<a name="line.446"></a>
+<span class="sourceLineNo">447</span>    void removeFacetFromArtifact( RepositorySession session, String repositoryId, String namespace, String project, String version,<a name="line.447"></a>
+<span class="sourceLineNo">448</span>                                  MetadataFacet metadataFacet )<a name="line.448"></a>
+<span class="sourceLineNo">449</span>        throws MetadataRepositoryException;<a name="line.449"></a>
+<span class="sourceLineNo">450</span><a name="line.450"></a>
+<span class="sourceLineNo">451</span>    /**<a name="line.451"></a>
+<span class="sourceLineNo">452</span>     * Deletes all metadata of the given repository. This includes artifact metadata and all associated metadata facets.<a name="line.452"></a>
+<span class="sourceLineNo">453</span>     *<a name="line.453"></a>
+<span class="sourceLineNo">454</span>     * @param session      The repository session<a name="line.454"></a>
+<span class="sourceLineNo">455</span>     * @param repositoryId the repository to delete<a name="line.455"></a>
+<span class="sourceLineNo">456</span>     * @throws MetadataRepositoryException if the removal failed<a name="line.456"></a>
+<span class="sourceLineNo">457</span>     */<a name="line.457"></a>
+<span class="sourceLineNo">458</span>    void removeRepository( RepositorySession session, String repositoryId )<a name="line.458"></a>
+<span class="sourceLineNo">459</span>        throws MetadataRepositoryException;<a name="line.459"></a>
+<span class="sourceLineNo">460</span><a name="line.460"></a>
+<span class="sourceLineNo">461</span>    /**<a name="line.461"></a>
+<span class="sourceLineNo">462</span>     * Removes the given namespace and its contents from the metadata repository.<a name="line.462"></a>
+<span class="sourceLineNo">463</span>     *<a name="line.463"></a>
+<span class="sourceLineNo">464</span>     * @param session      The repository session<a name="line.464"></a>
+<span class="sourceLineNo">465</span>     * @param repositoryId The repository id<a name="line.465"></a>
+<span class="sourceLineNo">466</span>     * @param namespace    The namespace '.' separated  ( it's the groupId for maven )<a name="line.466"></a>
+<span class="sourceLineNo">467</span>     * @throws MetadataRepositoryException if the removal failed<a name="line.467"></a>
+<span class="sourceLineNo">468</span>     * @since 1.4-M3<a name="line.468"></a>
+<span class="sourceLineNo">469</span>     */<a name="line.469"></a>
+<span class="sourceLineNo">470</span>    void removeNamespace( RepositorySession session, String repositoryId, String namespace )<a name="line.470"></a>
+<span class="sourceLineNo">471</span>        throws MetadataRepositoryException;<a name="line.471"></a>
+<span class="sourceLineNo">472</span><a name="line.472"></a>
+<span class="sourceLineNo">473</span>    /**<a name="line.473"></a>
+<span class="sourceLineNo">474</span>     * Returns the metadata for all artifacts of the given repository.<a name="line.474"></a>
+<span class="sourceLineNo">475</span>     *<a name="line.475"></a>
+<span class="sourceLineNo">476</span>     * @param session      The repository session<a name="line.476"></a>
+<span class="sourceLineNo">477</span>     * @param repositoryId The repository id<a name="line.477"></a>
+<span class="sourceLineNo">478</span>     * @return a list of artifact metadata objects. A empty list if no artifacts where found.<a name="line.478"></a>
+<span class="sourceLineNo">479</span>     * @throws MetadataRepositoryException if the retrieval failed.<a name="line.479"></a>
+<span class="sourceLineNo">480</span>     */<a name="line.480"></a>
+<span class="sourceLineNo">481</span>    List&lt;ArtifactMetadata&gt; getArtifacts( RepositorySession session, String repositoryId )<a name="line.481"></a>
+<span class="sourceLineNo">482</span>        throws MetadataRepositoryException;<a name="line.482"></a>
+<span class="sourceLineNo">483</span><a name="line.483"></a>
+<span class="sourceLineNo">484</span>    /**<a name="line.484"></a>
+<span class="sourceLineNo">485</span>     * Returns a stream of artifacts that are stored in the given repository. The number and order of elements in the stream<a name="line.485"></a>
+<span class="sourceLineNo">486</span>     * is defined by the &lt;code&gt;queryParameter&lt;/code&gt;.<a name="line.486"></a>
+<span class="sourceLineNo">487</span>     * The efficiency of ordering of elements is dependent on the implementation.<a name="line.487"></a>
+<span class="sourceLineNo">488</span>     * There may be some implementations that have to put a hard limit on the elements returned.<a name="line.488"></a>
+<span class="sourceLineNo">489</span>     * If there are no &lt;code&gt;sortFields&lt;/code&gt; defined in the query parameter, the order of elements in the stream is undefined and depends<a name="line.489"></a>
+<span class="sourceLineNo">490</span>     * on the implementation.<a name="line.490"></a>
+<span class="sourceLineNo">491</span>     *<a name="line.491"></a>
+<span class="sourceLineNo">492</span>     * @param session      The repository session.<a name="line.492"></a>
+<span class="sourceLineNo">493</span>     * @param repositoryId The repository id.<a name="line.493"></a>
+<span class="sourceLineNo">494</span>     * @return A stream of artifact metadata objects for each artifact found in the repository.<a name="line.494"></a>
+<span class="sourceLineNo">495</span>     * @since 3.0<a name="line.495"></a>
+<span class="sourceLineNo">496</span>     */<a name="line.496"></a>
+<span class="sourceLineNo">497</span>    Stream&lt;ArtifactMetadata&gt; getArtifactStream( RepositorySession session, String repositoryId, QueryParameter queryParameter )<a name="line.497"></a>
+<span class="sourceLineNo">498</span>        throws MetadataResolutionException;<a name="line.498"></a>
+<span class="sourceLineNo">499</span><a name="line.499"></a>
+<span class="sourceLineNo">500</span>    /**<a name="line.500"></a>
+<span class="sourceLineNo">501</span>     * Returns a stream of all the artifacts in the given repository using default query parameter.<a name="line.501"></a>
+<span class="sourceLineNo">502</span>     * The order of the artifacts returned in the stream depends on the implementation.<a name="line.502"></a>
+<span class="sourceLineNo">503</span>     * The number of elements in the stream is unlimited, but there may be some implementations that have to put a hard<a name="line.503"></a>
+<span class="sourceLineNo">504</span>     * limit on the elements returned.<a name="line.504"></a>
+<span class="sourceLineNo">505</span>     * For further information see {@link #getArtifactStream(RepositorySession, String, QueryParameter)}<a name="line.505"></a>
+<span class="sourceLineNo">506</span>     *<a name="line.506"></a>
+<span class="sourceLineNo">507</span>     * @param session      The repository session<a name="line.507"></a>
+<span class="sourceLineNo">508</span>     * @param repositoryId The repository id<a name="line.508"></a>
+<span class="sourceLineNo">509</span>     * @return A (unlimited) stream of artifact metadata elements that are found in this repository<a name="line.509"></a>
+<span class="sourceLineNo">510</span>     * @see #getArtifactStream(RepositorySession, String, QueryParameter)<a name="line.510"></a>
+<span class="sourceLineNo">511</span>     * @since 3.0<a name="line.511"></a>
+<span class="sourceLineNo">512</span>     */<a name="line.512"></a>
+<span class="sourceLineNo">513</span>    Stream&lt;ArtifactMetadata&gt; getArtifactStream( RepositorySession session, String repositoryId )<a name="line.513"></a>
+<span class="sourceLineNo">514</span>        throws MetadataResolutionException;<a name="line.514"></a>
+<span class="sourceLineNo">515</span><a name="line.515"></a>
+<span class="sourceLineNo">516</span>    /**<a name="line.516"></a>
+<span class="sourceLineNo">517</span>     * Returns a stream of artifacts found for the given artifact coordinates and using the &lt;code&gt;queryParameter&lt;/code&gt;<a name="line.517"></a>
+<span class="sourceLineNo">518</span>     *<a name="line.518"></a>
+<span class="sourceLineNo">519</span>     * @param session        The repository session. May not be &lt;code&gt;null&lt;/code&gt;.<a name="line.519"></a>
+<span class="sourceLineNo">520</span>     * @param repoId         The repository id. May not be &lt;code&gt;null&lt;/code&gt;.<a name="line.520"></a>
+<span class="sourceLineNo">521</span>     * @param namespace      The namespace. May not be &lt;code&gt;null&lt;/code&gt;.<a name="line.521"></a>
+<span class="sourceLineNo">522</span>     * @param projectId      The project id. May not be &lt;code&gt;null&lt;/code&gt;.<a name="line.522"></a>
+<span class="sourceLineNo">523</span>     * @param projectVersion The project version. May not be &lt;code&gt;null&lt;/code&gt;.<a name="line.523"></a>
+<span class="sourceLineNo">524</span>     * @return A stream of artifact metadata object. Order and number of elements returned, depends on the &lt;code&gt;queryParameter&lt;/code&gt;.<a name="line.524"></a>
+<span class="sourceLineNo">525</span>     * @throws MetadataResolutionException if there are no elements for the given artifact coordinates.<a name="line.525"></a>
+<span class="sourceLineNo">526</span>     * @since 3.0<a name="line.526"></a>
+<span class="sourceLineNo">527</span>     */<a name="line.527"></a>
+<span class="sourceLineNo">528</span>    Stream&lt;ArtifactMetadata&gt; getArtifactStream( RepositorySession session, String repoId,<a name="line.528"></a>
+<span class="sourceLineNo">529</span>                                                String namespace, String projectId,<a name="line.529"></a>
+<span class="sourceLineNo">530</span>                                                String projectVersion, QueryParameter queryParameter )<a name="line.530"></a>
+<span class="sourceLineNo">531</span>        throws MetadataResolutionException;<a name="line.531"></a>
+<span class="sourceLineNo">532</span><a name="line.532"></a>
+<span class="sourceLineNo">533</span>    /**<a name="line.533"></a>
+<span class="sourceLineNo">534</span>     * Returns a stream of artifacts found for the given artifact coordinates. The order of elements returned, depends on the<a name="line.534"></a>
+<span class="sourceLineNo">535</span>     * implementation.<a name="line.535"></a>
+<span class="sourceLineNo">536</span>     *<a name="line.536"></a>
+<span class="sourceLineNo">537</span>     * @param session        The repository session. May not be &lt;code&gt;null&lt;/code&gt;.<a name="line.537"></a>
+<span class="sourceLineNo">538</span>     * @param repoId         The repository id. May not be &lt;code&gt;null&lt;/code&gt;.<a name="line.538"></a>
+<span class="sourceLineNo">539</span>     * @param namespace      The namespace. May not be &lt;code&gt;null&lt;/code&gt;.<a name="line.539"></a>
+<span class="sourceLineNo">540</span>     * @param projectId      The project id. May not be &lt;code&gt;null&lt;/code&gt;.<a name="line.540"></a>
+<span class="sourceLineNo">541</span>     * @param projectVersion The project version. May not be &lt;code&gt;null&lt;/code&gt;.<a name="line.541"></a>
+<span class="sourceLineNo">542</span>     * @return A stream of artifact metadata object. Order and number of elements returned, depends on the &lt;code&gt;queryParameter&lt;/code&gt;.<a name="line.542"></a>
+<span class="sourceLineNo">543</span>     * @throws MetadataResolutionException if there are no elements for the given artifact coordinates.<a name="line.543"></a>
+<span class="sourceLineNo">544</span>     * @since 3.0<a name="line.544"></a>
+<span class="sourceLineNo">545</span>     */<a name="line.545"></a>
+<span class="sourceLineNo">546</span>    Stream&lt;ArtifactMetadata&gt; getArtifactStream( RepositorySession session, String repoId,<a name="line.546"></a>
+<span class="sourceLineNo">547</span>                                                String namespace, String projectId,<a name="line.547"></a>
+<span class="sourceLineNo">548</span>                                                String projectVersion )<a name="line.548"></a>
+<span class="sourceLineNo">549</span>        throws MetadataResolutionException;<a name="line.549"></a>
+<span class="sourceLineNo">550</span><a name="line.550"></a>
+<span class="sourceLineNo">551</span>    /**<a name="line.551"></a>
+<span class="sourceLineNo">552</span>     * Returns the metadata for the given project. If there are no custom properties stored on the project, it will<a name="line.552"></a>
+<span class="sourceLineNo">553</span>     * just return a &lt;code&gt;ProjectMetadata&lt;/code&gt; object with the data provided by parameters.<a name="line.553"></a>
+<span class="sourceLineNo">554</span>     *<a name="line.554"></a>
+<span class="sourceLineNo">555</span>     * @param session   The session id<a name="line.555"></a>
+<span class="sourceLineNo">556</span>     * @param repoId    The repository id<a name="line.556"></a>
+<span class="sourceLineNo">557</span>     * @param namespace The namespace '.'-separated.<a name="line.557"></a>
+<span class="sourceLineNo">558</span>     * @param projectId The project name<a name="line.558"></a>
+<span class="sourceLineNo">559</span>     * @return The project metadata or &lt;code&gt;null&lt;/code&gt; if not found.<a name="line.559"></a>
+<span class="sourceLineNo">560</span>     * @throws MetadataResolutionException if the metadata retrieval failed<a name="line.560"></a>
+<span class="sourceLineNo">561</span>     */<a name="line.561"></a>
+<span class="sourceLineNo">562</span>    ProjectMetadata getProject( RepositorySession session, String repoId, String namespace, String projectId )<a name="line.562"></a>
+<span class="sourceLineNo">563</span>        throws MetadataResolutionException;<a name="line.563"></a>
+<span class="sourceLineNo">564</span><a name="line.564"></a>
+<span class="sourceLineNo">565</span>    /**<a name="line.565"></a>
+<span class="sourceLineNo">566</span>     * Returns the metadata for the project version.<a name="line.566"></a>
+<span class="sourceLineNo">567</span>     *<a name="line.567"></a>
+<span class="sourceLineNo">568</span>     * @param session        The repository session.<a name="line.568"></a>
+<span class="sourceLineNo">569</span>     * @param repoId         The repository id.<a name="line.569"></a>
+<span class="sourceLineNo">570</span>     * @param namespace      The namespace '.'-separated<a name="line.570"></a>
+<span class="sourceLineNo">571</span>     * @param projectId      The project name<a name="line.571"></a>
+<span class="sourceLineNo">572</span>     * @param projectVersion The project version<a name="line.572"></a>
+<span class="sourceLineNo">573</span>     * @return The version metadata object, or &lt;code&gt;null&lt;/code&gt;, if not found.<a name="line.573"></a>
+<span class="sourceLineNo">574</span>     * @throws MetadataResolutionException if the retrieval of the metadata failed.<a name="line.574"></a>
+<span class="sourceLineNo">575</span>     */<a name="line.575"></a>
+<span class="sourceLineNo">576</span>    ProjectVersionMetadata getProjectVersion( RepositorySession session, String repoId, String namespace, String projectId, String projectVersion )<a name="line.576"></a>
+<span class="sourceLineNo">577</span>        throws MetadataResolutionException;<a name="line.577"></a>
+<span class="sourceLineNo">578</span><a name="line.578"></a>
+<span class="sourceLineNo">579</span>    /**<a name="line.579"></a>
+<span class="sourceLineNo">580</span>     * Returns all artifact version strings for a given project version. This is for snapshot versions and returns the timestamped<a name="line.580"></a>
+<span class="sourceLineNo">581</span>     * versions, if available.<a name="line.581"></a>
+<span class="sourceLineNo">582</span>     *<a name="line.582"></a>
+<span class="sourceLineNo">583</span>     * @param session        The repository session.<a name="line.583"></a>
+<span class="sourceLineNo">584</span>     * @param repoId         The repository id.<a name="line.584"></a>
+<span class="sourceLineNo">585</span>     * @param namespace      The namespace '.'-separated<a name="line.585"></a>
+<span class="sourceLineNo">586</span>     * @param projectId      The project name.<a name="line.586"></a>
+<span class="sourceLineNo">587</span>     * @param projectVersion The project version.<a name="line.587"></a>
+<span class="sourceLineNo">588</span>     * @return A list of version strings, or a empty list if no versions are found, or this is not a snapshot version.<a name="line.588"></a>
+<span class="sourceLineNo">589</span>     * @throws MetadataResolutionException if the retrieval of the metadata failed.<a name="line.589"></a>
+<span class="sourceLineNo">590</span>     */<a name="line.590"></a>
+<span class="sourceLineNo">591</span>    List&lt;String&gt; getArtifactVersions( RepositorySession session, String repoId, String namespace, String projectId, String projectVersion )<a name="line.591"></a>
+<span class="sourceLineNo">592</span>        throws MetadataResolutionException;<a name="line.592"></a>
+<span class="sourceLineNo">593</span><a name="line.593"></a>
+<span class="sourceLineNo">594</span>    /**<a name="line.594"></a>
+<span class="sourceLineNo">595</span>     * Retrieve project references from the metadata repository. Note that this is not built into the content model for<a name="line.595"></a>
+<span class="sourceLineNo">596</span>     * a project version as a reference may be present (due to reverse-lookup of dependencies) before the actual<a name="line.596"></a>
+<span class="sourceLineNo">597</span>     * project is, and we want to avoid adding a stub model to the content repository.<a name="line.597"></a>
+<span class="sourceLineNo">598</span>     *<a name="line.598"></a>
+<span class="sourceLineNo">599</span>     * @param session        The repository session.<a name="line.599"></a>
+<span class="sourceLineNo">600</span>     * @param repoId         The repository ID to look within<a name="line.600"></a>
+<span class="sourceLineNo">601</span>     * @param namespace      The namespace of the project to get references to<a name="line.601"></a>
+<span class="sourceLineNo">602</span>     * @param projectId      The identifier of the project to get references to<a name="line.602"></a>
+<span class="sourceLineNo">603</span>     * @param projectVersion The version of the project to get references to<a name="line.603"></a>
+<span class="sourceLineNo">604</span>     * @return a list of project references<a name="line.604"></a>
+<span class="sourceLineNo">605</span>     * @throws MetadataResolutionException if the version could not be found.<a name="line.605"></a>
+<span class="sourceLineNo">606</span>     */<a name="line.606"></a>
+<span class="sourceLineNo">607</span>    List&lt;ProjectVersionReference&gt; getProjectReferences( RepositorySession session, String repoId, String namespace, String projectId,<a name="line.607"></a>
+<span class="sourceLineNo">608</span>                                                        String projectVersion )<a name="line.608"></a>
+<span class="sourceLineNo">609</span>        throws MetadataResolutionException;<a name="line.609"></a>
+<span class="sourceLineNo">610</span><a name="line.610"></a>
+<span class="sourceLineNo">611</span>    /**<a name="line.611"></a>
+<span class="sourceLineNo">612</span>     * Returns the names of the root namespaces stored for this repository.<a name="line.612"></a>
+<span class="sourceLineNo">613</span>     *<a name="line.613"></a>
+<span class="sourceLineNo">614</span>     * @param session The repository session.<a name="line.614"></a>
+<span class="sourceLineNo">615</span>     * @param repoId  The repository id.<a name="line.615"></a>
+<span class="sourceLineNo">616</span>     * @return A list of namespace names, or empty list, if no namespace is stored for this repository.<a name="line.616"></a>
+<span class="sourceLineNo">617</span>     * @throws MetadataResolutionException If the retrieval failed.<a name="line.617"></a>
+<span class="sourceLineNo">618</span>     */<a name="line.618"></a>
+<span class="sourceLineNo">619</span>    List&lt;String&gt; getRootNamespaces( RepositorySession session, String repoId )<a name="line.619"></a>
+<span class="sourceLineNo">620</span>        throws MetadataResolutionException;<a name="line.620"></a>
+<span class="sourceLineNo">621</span><a name="line.621"></a>
+<span class="sourceLineNo">622</span>    /**<a name="line.622"></a>
+<span class="sourceLineNo">623</span>     * Returns the list of namespace names that are children of the given namespace. It does not descend recursively.<a name="line.623"></a>
+<span class="sourceLineNo">624</span>     *<a name="line.624"></a>
+<span class="sourceLineNo">625</span>     * @param session   The repository session.<a name="line.625"></a>
+<span class="sourceLineNo">626</span>     * @param repoId    The repository id.<a name="line.626"></a>
+<span class="sourceLineNo">627</span>     * @param namespace The parent namespace '.'-separated.<a name="line.627"></a>
+<span class="sourceLineNo">628</span>     * @return {@link List} of child namespace names, or a empty list, if there are no children for the given parent namespace.<a name="line.628"></a>
+<span class="sourceLineNo">629</span>     * @throws MetadataResolutionException if the retrieval failed.<a name="line.629"></a>
+<span class="sourceLineNo">630</span>     */<a name="line.630"></a>
+<span class="sourceLineNo">631</span>    List&lt;String&gt; getChildNamespaces( RepositorySession session, String repoId, String namespace )<a name="line.631"></a>
+<span class="sourceLineNo">632</span>        throws MetadataResolutionException;<a name="line.632"></a>
+<span class="sourceLineNo">633</span><a name="line.633"></a>
+<span class="sourceLineNo">634</span>    /**<a name="line.634"></a>
+<span class="sourceLineNo">635</span>     * Return the project names that of all projects stored under the given namespace.<a name="line.635"></a>
+<span class="sourceLineNo">636</span>     *<a name="line.636"></a>
+<span class="sourceLineNo">637</span>     * @param session   The repository session.<a name="line.637"></a>
+<span class="sourceLineNo">638</span>     * @param repoId    The repository id.<a name="line.638"></a>
+<span class="sourceLineNo">639</span>     * @param namespace The namespace '.'-separated.<a name="line.639"></a>
+<span class="sourceLineNo">640</span>     * @return The list of project names or empty list if no project exists at the given namespace.<a name="line.640"></a>
+<span class="sourceLineNo">641</span>     * @throws MetadataResolutionException if the retrieval failed.<a name="line.641"></a>
+<span class="sourceLineNo">642</span>     */<a name="line.642"></a>
+<span class="sourceLineNo">643</span>    List&lt;String&gt; getProjects( RepositorySession session, String repoId, String namespace )<a name="line.643"></a>
+<span class="sourceLineNo">644</span>        throws MetadataResolutionException;<a name="line.644"></a>
+<span class="sourceLineNo">645</span><a name="line.645"></a>
+<span class="sourceLineNo">646</span>    /**<a name="line.646"></a>
+<span class="sourceLineNo">647</span>     * Returns the names of all versions stored under the given project.<a name="line.647"></a>
+<span class="sourceLineNo">648</span>     *<a name="line.648"></a>
+<span class="sourceLineNo">649</span>     * @param session   The repository session.<a name="line.649"></a>
+<span class="sourceLineNo">650</span>     * @param repoId    The repository id.<a name="line.650"></a>
+<span class="sourceLineNo">651</span>     * @param namespace The namespace '.'-separated.<a name="line.651"></a>
+<span class="sourceLineNo">652</span>     * @param projectId The project name.<a name="line.652"></a>
+<span class="sourceLineNo">653</span>     * @return The list of versions or a empty list, if not version was found.<a name="line.653"></a>
+<span class="sourceLineNo">654</span>     * @throws MetadataResolutionException if the retrieval failed.<a name="line.654"></a>
+<span class="sourceLineNo">655</span>     */<a name="line.655"></a>
+<span class="sourceLineNo">656</span>    List&lt;String&gt; getProjectVersions( RepositorySession session, String repoId, String namespace, String projectId )<a name="line.656"></a>
+<span class="sourceLineNo">657</span>        throws MetadataResolutionException;<a name="line.657"></a>
+<span class="sourceLineNo">658</span><a name="line.658"></a>
+<span class="sourceLineNo">659</span>    /**<a name="line.659"></a>
+<span class="sourceLineNo">660</span>     * Removes a project version and all its artifact and facet metadata under it.<a name="line.660"></a>
+<span class="sourceLineNo">661</span>     *<a name="line.661"></a>
+<span class="sourceLineNo">662</span>     * @param session        The repository session.<a name="line.662"></a>
+<span class="sourceLineNo">663</span>     * @param repoId         The repository id.<a name="line.663"></a>
+<span class="sourceLineNo">664</span>     * @param namespace      The namespace '.'-separated.<a name="line.664"></a>
+<span class="sourceLineNo">665</span>     * @param projectId      The project name<a name="line.665"></a>
+<span class="sourceLineNo">666</span>     * @param projectVersion The project version.<a name="line.666"></a>
+<span class="sourceLineNo">667</span>     * @throws MetadataRepositoryException if the removal failed.<a name="line.667"></a>
+<span class="sourceLineNo">668</span>     * @since 1.4-M4<a name="line.668"></a>
+<span class="sourceLineNo">669</span>     */<a name="line.669"></a>
+<span class="sourceLineNo">670</span>    void removeProjectVersion( RepositorySession session, String repoId, String namespace, String projectId, String projectVersion )<a name="line.670"></a>
+<span class="sourceLineNo">671</span>        throws MetadataRepositoryException;<a name="line.671"></a>
+<span class="sourceLineNo">672</span><a name="line.672"></a>
+<span class="sourceLineNo">673</span>    /**<a name="line.673"></a>
+<span class="sourceLineNo">674</span>     * Returns the metadata of all artifacts stored for the given project version.<a name="line.674"></a>
+<span class="sourceLineNo">675</span>     *<a name="line.675"></a>
+<span class="sourceLineNo">676</span>     * @param session        The repository session.<a name="line.676"></a>
+<span class="sourceLineNo">677</span>     * @param repoId         The repository id.<a name="line.677"></a>
+<span class="sourceLineNo">678</span>     * @param namespace      The namespace '.'-separated.<a name="line.678"></a>
+<span class="sourceLineNo">679</span>     * @param projectId      The project name.<a name="line.679"></a>
+<span class="sourceLineNo">680</span>     * @param projectVersion The project version.<a name="line.680"></a>
+<span class="sourceLineNo">681</span>     * @return The list of artifact metadata objects, or a empty list, if no artifact exists for this version.<a name="line.681"></a>
+<span class="sourceLineNo">682</span>     * @throws MetadataResolutionException if the retrieval failed.<a name="line.682"></a>
+<span class="sourceLineNo">683</span>     */<a name="line.683"></a>
+<span class="sourceLineNo">684</span>    List&lt;ArtifactMetadata&gt; getArtifacts( RepositorySession session, String repoId, String namespace, String projectId,<a name="line.684"></a>
+<span class="sourceLineNo">685</span>                                         String projectVersion )<a name="line.685"></a>
+<span class="sourceLineNo">686</span>        throws MetadataResolutionException;<a name="line.686"></a>
+<span class="sourceLineNo">687</span><a name="line.687"></a>
+<span class="sourceLineNo">688</span>    /**<a name="line.688"></a>
+<span class="sourceLineNo">689</span>     * Removes the project metadata and metadata for all stored versions, artifacts and facets of this project.<a name="line.689"></a>
+<span class="sourceLineNo">690</span>     *<a name="line.690"></a>
+<span class="sourceLineNo">691</span>     * @param session      The repository session.<a name="line.691"></a>
+<span class="sourceLineNo">692</span>     * @param repositoryId The repository id.<a name="line.692"></a>
+<span class="sourceLineNo">693</span>     * @param namespace    The namespace '.'-separated.<a name="line.693"></a>
+<span class="sourceLineNo">694</span>     * @param projectId    The project name.<a name="line.694"></a>
+<span class="sourceLineNo">695</span>     * @throws MetadataRepositoryException if the removal failed.<a name="line.695"></a>
+<span class="sourceLineNo">696</span>     * @since 1.4-M4<a name="line.696"></a>
+<span class="sourceLineNo">697</span>     */<a name="line.697"></a>
+<span class="sourceLineNo">698</span>    void removeProject( RepositorySession session, String repositoryId, String namespace, String projectId )<a name="line.698"></a>
+<span class="sourceLineNo">699</span>        throws MetadataRepositoryException;<a name="line.699"></a>
+<span class="sourceLineNo">700</span><a name="line.700"></a>
+<span class="sourceLineNo">701</span>    /**<a name="line.701"></a>
+<span class="sourceLineNo">702</span>     * Closes the repository.<a name="line.702"></a>
+<span class="sourceLineNo">703</span>     * Repositories are normally opened during startup and closed on shutdown. The closing of a repository stops all<a name="line.703"></a>
+<span class="sourceLineNo">704</span>     * invalidates all connections to it.<a name="line.704"></a>
+<span class="sourceLineNo">705</span>     * Sessions that are open are invalidated too. The repository will throw exceptions if it is used after closing.<a name="line.705"></a>
+<span class="sourceLineNo">706</span>     *<a name="line.706"></a>
+<span class="sourceLineNo">707</span>     * @throws MetadataRepositoryException if the something went wrong or if the repository was closed already.<a name="line.707"></a>
+<span class="sourceLineNo">708</span>     */<a name="line.708"></a>
+<span class="sourceLineNo">709</span>    void close( )<a name="line.709"></a>
+<span class="sourceLineNo">710</span>        throws MetadataRepositoryException;<a name="line.710"></a>
+<span class="sourceLineNo">711</span><a name="line.711"></a>
+<span class="sourceLineNo">712</span><a name="line.712"></a>
+<span class="sourceLineNo">713</span>    /**<a name="line.713"></a>
+<span class="sourceLineNo">714</span>     * Full text artifacts search. Searches for the given string in all metadata and returns artifacts where the<a name="line.714"></a>
+<span class="sourceLineNo">715</span>     * text was found.<a name="line.715"></a>
+<span class="sourceLineNo">716</span>     *<a name="line.716"></a>
+<span class="sourceLineNo">717</span>     * @param session      The repository session.<a name="line.717"></a>
+<span class="sourceLineNo">718</span>     * @param repositoryId can be &lt;code&gt;null&lt;/code&gt; to search in all repositories<a name="line.718"></a>
+<span class="sourceLineNo">719</span>     * @param text         The search text<a name="line.719"></a>
+<span class="sourceLineNo">720</span>     * @param exact        if true, the value must exactly match the text.<a name="line.720"></a>
+<span class="sourceLineNo">721</span>     * @return a list of artifacts or empty list if no results where found.<a name="line.721"></a>
+<span class="sourceLineNo">722</span>     * @throws MetadataRepositoryException if the retrieval failed.<a name="line.722"></a>
+<span class="sourceLineNo">723</span>     */<a name="line.723"></a>
+<span class="sourceLineNo">724</span>    List&lt;ArtifactMetadata&gt; searchArtifacts( RepositorySession session, String repositoryId, String text, boolean exact )<a name="line.724"></a>
+<span class="sourceLineNo">725</span>        throws MetadataRepositoryException;<a name="line.725"></a>
+<span class="sourceLineNo">726</span><a name="line.726"></a>
+<span class="sourceLineNo">727</span>    /**<a name="line.727"></a>
+<span class="sourceLineNo">728</span>     * Full text artifacts search inside the specified key. Searches for the given text in all attributes with the given<a name="line.728"></a>
+<span class="sourceLineNo">729</span>     * name.<a name="line.729"></a>
+<span class="sourceLineNo">730</span>     *<a name="line.730"></a>
+<span class="sourceLineNo">731</span>     * @param session      The repository session.<a name="line.731"></a>
+<span class="sourceLineNo">732</span>     * @param repositoryId can be &lt;code&gt;null&lt;/code&gt; to search in all repositories<a name="line.732"></a>
+<span class="sourceLineNo">733</span>     * @param key          search only inside this attribute.<a name="line.733"></a>
+<span class="sourceLineNo">734</span>     * @param text         The search string.<a name="line.734"></a>
+<span class="sourceLineNo">735</span>     * @param exact        if true, the value must exactly match the text.<a name="line.735"></a>
+<span class="sourceLineNo">736</span>     * @return a list of artifacts or empty list if no results were found.<a name="line.736"></a>
+<span class="sourceLineNo">737</span>     * @throws MetadataRepositoryException if the retrieval failed.<a name="line.737"></a>
+<span class="sourceLineNo">738</span>     */<a name="line.738"></a>
+<span class="sourceLineNo">739</span>    List&lt;ArtifactMetadata&gt; searchArtifacts( RepositorySession session, String repositoryId, String key, String text, boolean exact )<a name="line.739"></a>
+<span class="sourceLineNo">740</span>        throws MetadataRepositoryException;<a name="line.740"></a>
+<span class="sourceLineNo">741</span><a name="line.741"></a>
+<span class="sourceLineNo">742</span>}<a name="line.742"></a>
 
 
 

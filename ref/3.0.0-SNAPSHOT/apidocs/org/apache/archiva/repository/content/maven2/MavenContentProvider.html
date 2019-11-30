@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../../org/apache/archiva/repository/content/maven2/ManagedDefaultRepositoryContent.html" title="class in org.apache.archiva.repository.content.maven2"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../../org/apache/archiva/repository/content/maven2/RemoteDefaultRepositoryContent.html" title="class in org.apache.archiva.repository.content.maven2"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../org/apache/archiva/repository/content/maven2/MavenRepositoryRequestInfo.html" title="class in org.apache.archiva.repository.content.maven2"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../index.html?org/apache/archiva/repository/content/maven2/MavenContentProvider.html" target="_top">Frames</a></li>
@@ -114,7 +114,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>@Service(value="repositoryContentProvider#maven")
-public class <a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.46">MavenContentProvider</a>
+public class <a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.47">MavenContentProvider</a>
 extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements <a href="../../../../../../org/apache/archiva/repository/RepositoryContentProvider.html" title="interface in org.apache.archiva.repository">RepositoryContentProvider</a></pre>
 <div class="block">Maven implementation of the repository content provider. Only default layout and
@@ -140,14 +140,6 @@ implements <a href="../../../../../../org/apache/archiva/repository/RepositoryCo
 <tr class="altColor">
 <td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends <a href="../../../../../../org/apache/archiva/metadata/repository/storage/maven2/ArtifactMappingProvider.html" title="interface in org.apache.archiva.metadata.repository.storage.maven2">ArtifactMappingProvider</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/repository/content/maven2/MavenContentProvider.html#artifactMappingProviders">artifactMappingProviders</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="../../../../../../org/apache/archiva/configuration/FileTypes.html" title="class in org.apache.archiva.configuration">FileTypes</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/repository/content/maven2/MavenContentProvider.html#filetypes">filetypes</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private static <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../../../org/apache/archiva/repository/RepositoryType.html" title="enum in org.apache.archiva.repository">RepositoryType</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/repository/content/maven2/MavenContentProvider.html#REPOSITORY_TYPES">REPOSITORY_TYPES</a></span></code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -240,34 +232,14 @@ implements <a href="../../../../../../org/apache/archiva/repository/RepositoryCo
 <!--   -->
 </a>
 <h3>Field Detail</h3>
-<a name="filetypes">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>filetypes</h4>
-<pre>@Inject
- @Named(value="fileTypes")
-private&nbsp;<a href="../../../../../../org/apache/archiva/configuration/FileTypes.html" title="class in org.apache.archiva.configuration">FileTypes</a> <a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.51">filetypes</a></pre>
-</li>
-</ul>
 <a name="artifactMappingProviders">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>artifactMappingProviders</h4>
-<pre>@Inject
-protected&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends <a href="../../../../../../org/apache/archiva/metadata/repository/storage/maven2/ArtifactMappingProvider.html" title="interface in org.apache.archiva.metadata.repository.storage.maven2">ArtifactMappingProvider</a>&gt; <a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.54">artifactMappingProviders</a></pre>
-</li>
-</ul>
-<a name="REPOSITORY_TYPES">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>REPOSITORY_TYPES</h4>
-<pre>private static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../../../org/apache/archiva/repository/RepositoryType.html" title="enum in org.apache.archiva.repository">RepositoryType</a>&gt; <a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.57">REPOSITORY_TYPES</a></pre>
+<h4>artifactMappingProviders</h4>
+<pre>@Inject
+protected&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends <a href="../../../../../../org/apache/archiva/metadata/repository/storage/maven2/ArtifactMappingProvider.html" title="interface in org.apache.archiva.metadata.repository.storage.maven2">ArtifactMappingProvider</a>&gt; <a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.58">artifactMappingProviders</a></pre>
 </li>
 </ul>
 </li>
@@ -284,7 +256,7 @@ protected&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List
 <ul class="blockListLast">
 <li class="blockList">
 <h4>MavenContentProvider</h4>
-<pre>public&nbsp;<a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.46">MavenContentProvider</a>()</pre>
+<pre>public&nbsp;<a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.47">MavenContentProvider</a>()</pre>
 </li>
 </ul>
 </li>
@@ -301,7 +273,7 @@ protected&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List
 <ul class="blockList">
 <li class="blockList">
 <h4>supportsLayout</h4>
-<pre>public&nbsp;boolean&nbsp;<a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.63">supportsLayout</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;layout)</pre>
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.67">supportsLayout</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;layout)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/archiva/repository/RepositoryContentProvider.html#supportsLayout-java.lang.String-">RepositoryContentProvider</a></code></span></div>
 <div class="block">Returns true, if this content object supports the given layout otherwise, false.</div>
 <dl>
@@ -320,7 +292,7 @@ protected&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List
 <ul class="blockList">
 <li class="blockList">
 <h4>getSupportedRepositoryTypes</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../../../org/apache/archiva/repository/RepositoryType.html" title="enum in org.apache.archiva.repository">RepositoryType</a>&gt;&nbsp;<a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.69">getSupportedRepositoryTypes</a>()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../../../org/apache/archiva/repository/RepositoryType.html" title="enum in org.apache.archiva.repository">RepositoryType</a>&gt;&nbsp;<a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.73">getSupportedRepositoryTypes</a>()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/archiva/repository/RepositoryContentProvider.html#getSupportedRepositoryTypes--">RepositoryContentProvider</a></code></span></div>
 <div class="block">Returns the repository types, this content object can be used for.</div>
 <dl>
@@ -337,7 +309,7 @@ protected&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List
 <ul class="blockList">
 <li class="blockList">
 <h4>supports</h4>
-<pre>public&nbsp;boolean&nbsp;<a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.75">supports</a>(<a href="../../../../../../org/apache/archiva/repository/RepositoryType.html" title="enum in org.apache.archiva.repository">RepositoryType</a>&nbsp;type)</pre>
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.79">supports</a>(<a href="../../../../../../org/apache/archiva/repository/RepositoryType.html" title="enum in org.apache.archiva.repository">RepositoryType</a>&nbsp;type)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/archiva/repository/RepositoryContentProvider.html#supports-org.apache.archiva.repository.RepositoryType-">RepositoryContentProvider</a></code></span></div>
 <div class="block">Returns true, if this content object supports the given repository type.</div>
 <dl>
@@ -356,7 +328,7 @@ protected&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List
 <ul class="blockList">
 <li class="blockList">
 <h4>createRemoteContent</h4>
-<pre>public&nbsp;<a href="../../../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.81">createRemoteContent</a>(<a href="../../../../../../org/apache/archiva/repository/RemoteRepository.html" title="interface in org.apache.archiva.repository">RemoteRepository</a>&nbsp;repository)
+<pre>public&nbsp;<a href="../../../../../../org/apache/archiva/repository/RemoteRepositoryContent.html" title="interface in org.apache.archiva.repository">RemoteRepositoryContent</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.85">createRemoteContent</a>(<a href="../../../../../../org/apache/archiva/repository/RemoteRepository.html" title="interface in org.apache.archiva.repository">RemoteRepository</a>&nbsp;repository)
                                             throws <a href="../../../../../../org/apache/archiva/repository/RepositoryException.html" title="class in org.apache.archiva.repository">RepositoryException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/archiva/repository/RepositoryContentProvider.html#createRemoteContent-org.apache.archiva.repository.RemoteRepository-">RepositoryContentProvider</a></code></span></div>
 <div class="block">Creates a new instance of RemoteRepositoryContent. The returned instance should be initialized
@@ -379,7 +351,7 @@ protected&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List
 <ul class="blockList">
 <li class="blockList">
 <h4>createManagedContent</h4>
-<pre>public&nbsp;<a href="../../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.95">createManagedContent</a>(<a href="../../../../../../org/apache/archiva/repository/ManagedRepository.html" title="interface in org.apache.archiva.repository">ManagedRepository</a>&nbsp;repository)
+<pre>public&nbsp;<a href="../../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.99">createManagedContent</a>(<a href="../../../../../../org/apache/archiva/repository/ManagedRepository.html" title="interface in org.apache.archiva.repository">ManagedRepository</a>&nbsp;repository)
                                               throws <a href="../../../../../../org/apache/archiva/repository/RepositoryException.html" title="class in org.apache.archiva.repository">RepositoryException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/archiva/repository/RepositoryContentProvider.html#createManagedContent-org.apache.archiva.repository.ManagedRepository-">RepositoryContentProvider</a></code></span></div>
 <div class="block">Creates a new instance of ManagedRepositoryContent.</div>
@@ -403,7 +375,7 @@ protected&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List
 <ul class="blockListLast">
 <li class="blockList">
 <h4>createContent</h4>
-<pre>public&nbsp;&lt;T extends <a href="../../../../../../org/apache/archiva/repository/RepositoryContent.html" title="interface in org.apache.archiva.repository">RepositoryContent</a>,V extends <a href="../../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&gt;&nbsp;T&nbsp;<a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.110">createContent</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;T&gt;&nbsp;clazz,
+<pre>public&nbsp;&lt;T extends <a href="../../../../../../org/apache/archiva/repository/RepositoryContent.html" title="interface in org.apache.archiva.repository">RepositoryContent</a>,V extends <a href="../../../../../../org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a>&gt;&nbsp;T&nbsp;<a href="../../../../../../src-html/org/apache/archiva/repository/content/maven2/MavenContentProvider.html#line.113">createContent</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;T&gt;&nbsp;clazz,
                                                                           V&nbsp;repository)
                                                                    throws <a href="../../../../../../org/apache/archiva/repository/RepositoryException.html" title="class in org.apache.archiva.repository">RepositoryException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/archiva/repository/RepositoryContentProvider.html#createContent-java.lang.Class-V-">RepositoryContentProvider</a></code></span></div>
@@ -453,7 +425,7 @@ protected&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../../org/apache/archiva/repository/content/maven2/ManagedDefaultRepositoryContent.html" title="class in org.apache.archiva.repository.content.maven2"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../../org/apache/archiva/repository/content/maven2/RemoteDefaultRepositoryContent.html" title="class in org.apache.archiva.repository.content.maven2"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../org/apache/archiva/repository/content/maven2/MavenRepositoryRequestInfo.html" title="class in org.apache.archiva.repository.content.maven2"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../index.html?org/apache/archiva/repository/content/maven2/MavenContentProvider.html" target="_top">Frames</a></li>
@@ -493,6 +465,6 @@ protected&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

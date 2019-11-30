@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../org/apache/archiva/repository/ManagedRepository.html" title="interface in org.apache.archiva.repository"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/archiva/repository/PasswordCredentials.html" title="class in org.apache.archiva.repository"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/archiva/repository/ReleaseScheme.html" title="enum in org.apache.archiva.repository"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/archiva/repository/ManagedRepositoryContent.html" target="_top">Frames</a></li>
@@ -109,10 +109,12 @@ var activeTableTab = "activeTableTab";
 </dl>
 <hr>
 <br>
-<pre>public interface <a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.34">ManagedRepositoryContent</a>
+<pre>public interface <a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.36">ManagedRepositoryContent</a>
 extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.html" title="interface in org.apache.archiva.repository">RepositoryContent</a></pre>
 <div class="block">ManagedRepositoryContent interface for interacting with a managed repository in an abstract way,
- without the need for processing based on filesystem paths, or working with the database.</div>
+ without the need for processing based on filesystem paths, or working with the database.
+
+ This interface</div>
 </li>
 </ul>
 </div>
@@ -222,13 +224,13 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 </td>
 </tr>
 <tr id="i14" class="altColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
+<td class="colFirst"><code><a href="../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#toFile-org.apache.archiva.model.ArchivaArtifact-">toFile</a></span>(<a href="../../../../org/apache/archiva/model/ArchivaArtifact.html" title="class in org.apache.archiva.model">ArchivaArtifact</a>&nbsp;reference)</code>
 <div class="block">Given an <a href="../../../../org/apache/archiva/model/ArchivaArtifact.html" title="class in org.apache.archiva.model"><code>ArchivaArtifact</code></a>, return the file reference to the artifact.</div>
 </td>
 </tr>
 <tr id="i15" class="rowColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
+<td class="colFirst"><code><a href="../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/repository/ManagedRepositoryContent.html#toFile-org.apache.archiva.model.ArtifactReference-">toFile</a></span>(<a href="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&nbsp;reference)</code>
 <div class="block">Given an <a href="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model"><code>ArtifactReference</code></a>, return the file reference to the artifact.</div>
 </td>
@@ -281,7 +283,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>deleteVersion</h4>
-<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.46">deleteVersion</a>(<a href="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</a>&nbsp;reference)
+<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.48">deleteVersion</a>(<a href="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</a>&nbsp;reference)
             throws <a href="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository">ContentNotFoundException</a></pre>
 <div class="block">Delete from the managed repository all files / directories associated with the
  provided version reference.</div>
@@ -299,7 +301,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>deleteArtifact</h4>
-<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.55">deleteArtifact</a>(<a href="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&nbsp;artifactReference)
+<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.57">deleteArtifact</a>(<a href="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&nbsp;artifactReference)
              throws <a href="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository">ContentNotFoundException</a></pre>
 <div class="block">delete a specified artifact from the repository</div>
 <dl>
@@ -316,7 +318,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>deleteGroupId</h4>
-<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.63">deleteGroupId</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;groupId)
+<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.65">deleteGroupId</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;groupId)
             throws <a href="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository">ContentNotFoundException</a></pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -334,7 +336,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>deleteProject</h4>
-<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.72">deleteProject</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
+<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.74">deleteProject</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
                    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;projectId)
             throws <a href="../../../../org/apache/archiva/repository/RepositoryException.html" title="class in org.apache.archiva.repository">RepositoryException</a></pre>
 <dl>
@@ -353,7 +355,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>getId</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.85">getId</a>()</pre>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.87">getId</a>()</pre>
 <div class="block"><p>
  Convenience method to get the repository id.
  </p>
@@ -372,7 +374,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>getRelatedArtifacts</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.101">getRelatedArtifacts</a>(<a href="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&nbsp;reference)
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.103">getRelatedArtifacts</a>(<a href="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&nbsp;reference)
                                     throws <a href="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository">ContentNotFoundException</a></pre>
 <div class="block"><p>
  Gather up the list of related artifacts to the ArtifactReference provided.
@@ -398,7 +400,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>getRepoRoot</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.114">getRepoRoot</a>()</pre>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.116">getRepoRoot</a>()</pre>
 <div class="block"><p>
  Convenience method to get the repository (on disk) root directory.
  </p>
@@ -417,7 +419,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>getRepository</h4>
-<pre><a href="../../../../org/apache/archiva/repository/ManagedRepository.html" title="interface in org.apache.archiva.repository">ManagedRepository</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.122">getRepository</a>()</pre>
+<pre><a href="../../../../org/apache/archiva/repository/ManagedRepository.html" title="interface in org.apache.archiva.repository">ManagedRepository</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.124">getRepository</a>()</pre>
 <div class="block">Get the repository configuration associated with this
  repository content.</div>
 <dl>
@@ -432,7 +434,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>getVersions</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.133">getVersions</a>(<a href="../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model">ProjectReference</a>&nbsp;reference)
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.135">getVersions</a>(<a href="../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model">ProjectReference</a>&nbsp;reference)
                  throws <a href="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository">ContentNotFoundException</a>,
                         <a href="../../../../org/apache/archiva/repository/LayoutException.html" title="class in org.apache.archiva.repository">LayoutException</a></pre>
 <div class="block">Given a specific <a href="../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model"><code>ProjectReference</code></a>, return the list of available versions for
@@ -454,7 +456,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>getVersions</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.149">getVersions</a>(<a href="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</a>&nbsp;reference)
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.151">getVersions</a>(<a href="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</a>&nbsp;reference)
                  throws <a href="../../../../org/apache/archiva/repository/ContentNotFoundException.html" title="class in org.apache.archiva.repository">ContentNotFoundException</a></pre>
 <div class="block"><p>
  Given a specific <a href="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model"><code>VersionedReference</code></a>, return the list of available versions for that
@@ -479,7 +481,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>hasContent</h4>
-<pre>boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.158">hasContent</a>(<a href="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&nbsp;reference)</pre>
+<pre>boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.160">hasContent</a>(<a href="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&nbsp;reference)</pre>
 <div class="block">Determines if the artifact referenced exists in the repository.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -495,7 +497,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>hasContent</h4>
-<pre>boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.166">hasContent</a>(<a href="../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model">ProjectReference</a>&nbsp;reference)</pre>
+<pre>boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.168">hasContent</a>(<a href="../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model">ProjectReference</a>&nbsp;reference)</pre>
 <div class="block">Determines if the project referenced exists in the repository.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -511,7 +513,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>hasContent</h4>
-<pre>boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.174">hasContent</a>(<a href="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</a>&nbsp;reference)</pre>
+<pre>boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.176">hasContent</a>(<a href="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</a>&nbsp;reference)</pre>
 <div class="block">Determines if the version reference exists in the repository.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -527,7 +529,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>setRepository</h4>
-<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.182">setRepository</a>(<a href="../../../../org/apache/archiva/repository/ManagedRepository.html" title="interface in org.apache.archiva.repository">ManagedRepository</a>&nbsp;repo)</pre>
+<pre>void&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.184">setRepository</a>(<a href="../../../../org/apache/archiva/repository/ManagedRepository.html" title="interface in org.apache.archiva.repository">ManagedRepository</a>&nbsp;repo)</pre>
 <div class="block">Set the repository configuration to associate with this
  repository content.</div>
 <dl>
@@ -542,7 +544,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>toFile</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.190">toFile</a>(<a href="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&nbsp;reference)</pre>
+<pre><a href="../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.192">toFile</a>(<a href="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&nbsp;reference)</pre>
 <div class="block">Given an <a href="../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model"><code>ArtifactReference</code></a>, return the file reference to the artifact.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -558,7 +560,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>toFile</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.198">toFile</a>(<a href="../../../../org/apache/archiva/model/ArchivaArtifact.html" title="class in org.apache.archiva.model">ArchivaArtifact</a>&nbsp;reference)</pre>
+<pre><a href="../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.200">toFile</a>(<a href="../../../../org/apache/archiva/model/ArchivaArtifact.html" title="class in org.apache.archiva.model">ArchivaArtifact</a>&nbsp;reference)</pre>
 <div class="block">Given an <a href="../../../../org/apache/archiva/model/ArchivaArtifact.html" title="class in org.apache.archiva.model"><code>ArchivaArtifact</code></a>, return the file reference to the artifact.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -574,7 +576,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>toMetadataPath</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.207">toMetadataPath</a>(<a href="../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model">ProjectReference</a>&nbsp;reference)</pre>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.209">toMetadataPath</a>(<a href="../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model">ProjectReference</a>&nbsp;reference)</pre>
 <div class="block">Given a <a href="../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model"><code>ProjectReference</code></a>, return the path to the metadata for
  the project.</div>
 <dl>
@@ -591,7 +593,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>toMetadataPath</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.216">toMetadataPath</a>(<a href="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</a>&nbsp;reference)</pre>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.218">toMetadataPath</a>(<a href="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</a>&nbsp;reference)</pre>
 <div class="block">Given a <a href="../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model"><code>VersionedReference</code></a>, return the path to the metadata for
  the specific version of the project.</div>
 <dl>
@@ -608,7 +610,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <ul class="blockListLast">
 <li class="blockList">
 <h4>toPath</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.224">toPath</a>(<a href="../../../../org/apache/archiva/model/ArchivaArtifact.html" title="class in org.apache.archiva.model">ArchivaArtifact</a>&nbsp;reference)</pre>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/repository/ManagedRepositoryContent.html#line.226">toPath</a>(<a href="../../../../org/apache/archiva/model/ArchivaArtifact.html" title="class in org.apache.archiva.model">ArchivaArtifact</a>&nbsp;reference)</pre>
 <div class="block">Given an <a href="../../../../org/apache/archiva/model/ArchivaArtifact.html" title="class in org.apache.archiva.model"><code>ArchivaArtifact</code></a>, return the relative path to the artifact.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -647,7 +649,7 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../org/apache/archiva/repository/ManagedRepository.html" title="interface in org.apache.archiva.repository"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/archiva/repository/PasswordCredentials.html" title="class in org.apache.archiva.repository"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/archiva/repository/ReleaseScheme.html" title="enum in org.apache.archiva.repository"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/archiva/repository/ManagedRepositoryContent.html" target="_top">Frames</a></li>
@@ -687,6 +689,6 @@ extends <a href="../../../../org/apache/archiva/repository/RepositoryContent.htm
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

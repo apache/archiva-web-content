@@ -120,7 +120,8 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">JcrMetadataRepository.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/metadata/repository/jcr/JcrMetadataRepository.html#populateStatistics-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-org.apache.archiva.metadata.repository.stats.model.RepositoryStatistics-">populateStatistics</a></span>(<a href="../../../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;repository,
+<td class="colLast"><span class="typeNameLabel">JcrMetadataRepository.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/metadata/repository/jcr/JcrMetadataRepository.html#populateStatistics-org.apache.archiva.metadata.repository.RepositorySession-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-org.apache.archiva.metadata.repository.stats.model.RepositoryStatistics-">populateStatistics</a></span>(<a href="../../../../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;repositorySession,
+                  <a href="../../../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;repository,
                   <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
                   <a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatistics.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatistics</a>&nbsp;repositoryStatistics)</code>&nbsp;</td>
 </tr>
@@ -140,8 +141,16 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatistics.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatistics</a></code></td>
-<td class="colLast"><span class="typeNameLabel">DefaultRepositoryStatisticsManager.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/DefaultRepositoryStatisticsManager.html#getLastStatistics-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-">getLastStatistics</a></span>(<a href="../../../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
-                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId)</code>&nbsp;</td>
+<td class="colLast"><span class="typeNameLabel">RepositoryStatisticsFactory.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/RepositoryStatisticsFactory.html#createMetadataFacet--">createMetadataFacet</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatistics.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatistics</a></code></td>
+<td class="colLast"><span class="typeNameLabel">RepositoryStatisticsFactory.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/RepositoryStatisticsFactory.html#createMetadataFacet-java.lang.String-java.lang.String-">createMetadataFacet</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
+                   <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatistics.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatistics</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DefaultRepositoryStatisticsManager.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/DefaultRepositoryStatisticsManager.html#getLastStatistics-java.lang.String-">getLastStatistics</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -154,8 +163,7 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatistics.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatistics</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">DefaultRepositoryStatisticsManager.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/DefaultRepositoryStatisticsManager.html#getStatisticsInRange-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-java.util.Date-java.util.Date-">getStatisticsInRange</a></span>(<a href="../../../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
-                    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
+<td class="colLast"><span class="typeNameLabel">DefaultRepositoryStatisticsManager.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/DefaultRepositoryStatisticsManager.html#getStatisticsInRange-java.lang.String-java.util.Date-java.util.Date-">getStatisticsInRange</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
                     <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Date.html?is-external=true" title="class or interface in java.util">Date</a>&nbsp;startTime,
                     <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Date.html?is-external=true" title="class or interface in java.util">Date</a>&nbsp;endTime)</code>&nbsp;</td>
 </tr>
@@ -190,8 +198,7 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatistics.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatistics</a></code></td>
-<td class="colLast"><span class="typeNameLabel">RepositoryStatisticsManager.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatisticsManager.html#getLastStatistics-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-">getLastStatistics</a></span>(<a href="../../../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
-                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId)</code>&nbsp;</td>
+<td class="colLast"><span class="typeNameLabel">RepositoryStatisticsManager.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatisticsManager.html#getLastStatistics-java.lang.String-">getLastStatistics</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -204,8 +211,7 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatistics.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatistics</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">RepositoryStatisticsManager.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatisticsManager.html#getStatisticsInRange-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-java.util.Date-java.util.Date-">getStatisticsInRange</a></span>(<a href="../../../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
-                    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
+<td class="colLast"><span class="typeNameLabel">RepositoryStatisticsManager.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatisticsManager.html#getStatisticsInRange-java.lang.String-java.util.Date-java.util.Date-">getStatisticsInRange</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
                     <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Date.html?is-external=true" title="class or interface in java.util">Date</a>&nbsp;startTime,
                     <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Date.html?is-external=true" title="class or interface in java.util">Date</a>&nbsp;endTime)</code>&nbsp;</td>
 </tr>
@@ -220,7 +226,8 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">RepositoryWalkingStatisticsProvider.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryWalkingStatisticsProvider.html#populateStatistics-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-org.apache.archiva.metadata.repository.stats.model.RepositoryStatistics-">populateStatistics</a></span>(<a href="../../../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
+<td class="colLast"><span class="typeNameLabel">RepositoryWalkingStatisticsProvider.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryWalkingStatisticsProvider.html#populateStatistics-org.apache.archiva.metadata.repository.RepositorySession-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-org.apache.archiva.metadata.repository.stats.model.RepositoryStatistics-">populateStatistics</a></span>(<a href="../../../../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;repositorySession,
+                  <a href="../../../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
                   <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
                   <a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatistics.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatistics</a>&nbsp;repositoryStatistics)</code>
 <div class="block">Walks each namespace of the given repository id and counts the artifacts.</div>
@@ -228,18 +235,12 @@
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">RepositoryStatisticsProvider.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatisticsProvider.html#populateStatistics-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-org.apache.archiva.metadata.repository.stats.model.RepositoryStatistics-">populateStatistics</a></span>(<a href="../../../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;repository,
+<td class="colLast"><span class="typeNameLabel">RepositoryStatisticsProvider.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatisticsProvider.html#populateStatistics-org.apache.archiva.metadata.repository.RepositorySession-org.apache.archiva.metadata.repository.MetadataRepository-java.lang.String-org.apache.archiva.metadata.repository.stats.model.RepositoryStatistics-">populateStatistics</a></span>(<a href="../../../../../../../../org/apache/archiva/metadata/repository/RepositorySession.html" title="class in org.apache.archiva.metadata.repository">RepositorySession</a>&nbsp;repositorySession,
+                  <a href="../../../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;repository,
                   <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
                   <a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatistics.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatistics</a>&nbsp;statistics)</code>
 <div class="block">Populate the statistics object with the statistics data of this repository.</div>
 </td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><span class="typeNameLabel">RepositoryWalkingStatisticsProvider.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryWalkingStatisticsProvider.html#walkRepository-org.apache.archiva.metadata.repository.MetadataRepository-org.apache.archiva.metadata.repository.stats.model.RepositoryStatistics-java.lang.String-java.lang.String-">walkRepository</a></span>(<a href="../../../../../../../../org/apache/archiva/metadata/repository/MetadataRepository.html" title="interface in org.apache.archiva.metadata.repository">MetadataRepository</a>&nbsp;metadataRepository,
-              <a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatistics.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatistics</a>&nbsp;stats,
-              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
-              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;ns)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -277,23 +278,11 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatistics.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatistics</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">DefaultReportRepositoriesService.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/rest/services/DefaultReportRepositoriesService.html#getMultipleRepositoriesReport-java.util.List-int-">getMultipleRepositoriesReport</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositoriesId,
-                             int&nbsp;rowCount)</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatistics.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatistics</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">DefaultReportRepositoriesService.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/rest/services/DefaultReportRepositoriesService.html#getStatisticsReport-java.util.List-int-java.util.Date-java.util.Date-">getStatisticsReport</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositoriesId,
                    int&nbsp;rowCount,
                    <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Date.html?is-external=true" title="class or interface in java.util">Date</a>&nbsp;startDate,
                    <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Date.html?is-external=true" title="class or interface in java.util">Date</a>&nbsp;endDate)</code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../../../org/apache/archiva/metadata/repository/stats/model/RepositoryStatistics.html" title="interface in org.apache.archiva.metadata.repository.stats.model">RepositoryStatistics</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">DefaultReportRepositoriesService.</span><code><span class="memberNameLink"><a href="../../../../../../../../org/apache/archiva/rest/services/DefaultReportRepositoriesService.html#getUniqueRepositoryReport-java.lang.String-int-java.util.Date-java.util.Date-">getUniqueRepositoryReport</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryId,
-                         int&nbsp;rowCount,
-                         <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Date.html?is-external=true" title="class or interface in java.util">Date</a>&nbsp;startDate,
-                         <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Date.html?is-external=true" title="class or interface in java.util">Date</a>&nbsp;endDate)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -349,6 +338,6 @@
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

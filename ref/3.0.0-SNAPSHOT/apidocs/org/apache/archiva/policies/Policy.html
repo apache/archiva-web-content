@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -75,13 +75,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -105,17 +105,38 @@ var activeTableTab = "activeTableTab";
 </dl>
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../org/apache/archiva/policies/AbstractUpdatePolicy.html" title="class in org.apache.archiva.policies">AbstractUpdatePolicy</a>, <a href="../../../../org/apache/archiva/policies/CachedFailuresPolicy.html" title="class in org.apache.archiva.policies">CachedFailuresPolicy</a>, <a href="../../../../org/apache/archiva/policies/ChecksumPolicy.html" title="class in org.apache.archiva.policies">ChecksumPolicy</a>, <a href="../../../../org/apache/archiva/policies/PropagateErrorsDownloadPolicy.html" title="class in org.apache.archiva.policies">PropagateErrorsDownloadPolicy</a>, <a href="../../../../org/apache/archiva/policies/PropagateErrorsOnUpdateDownloadPolicy.html" title="class in org.apache.archiva.policies">PropagateErrorsOnUpdateDownloadPolicy</a>, <a href="../../../../org/apache/archiva/policies/ReleasesPolicy.html" title="class in org.apache.archiva.policies">ReleasesPolicy</a>, <a href="../../../../org/apache/archiva/policies/SnapshotsPolicy.html" title="class in org.apache.archiva.policies">SnapshotsPolicy</a></dd>
+<dd><a href="../../../../org/apache/archiva/policies/AbstractPolicy.html" title="class in org.apache.archiva.policies">AbstractPolicy</a>, <a href="../../../../org/apache/archiva/policies/AbstractUpdatePolicy.html" title="class in org.apache.archiva.policies">AbstractUpdatePolicy</a>, <a href="../../../../org/apache/archiva/policies/CachedFailuresPolicy.html" title="class in org.apache.archiva.policies">CachedFailuresPolicy</a>, <a href="../../../../org/apache/archiva/policies/ChecksumPolicy.html" title="class in org.apache.archiva.policies">ChecksumPolicy</a>, <a href="../../../../org/apache/archiva/policies/PropagateErrorsDownloadPolicy.html" title="class in org.apache.archiva.policies">PropagateErrorsDownloadPolicy</a>, <a href="../../../../org/apache/archiva/policies/PropagateErrorsOnUpdateDownloadPolicy.html" title="class in org.apache.archiva.policies">PropagateErrorsOnUpdateDownloadPolicy</a>, <a href="../../../../org/apache/archiva/policies/ReleasesPolicy.html" title="class in org.apache.archiva.policies">ReleasesPolicy</a>, <a href="../../../../org/apache/archiva/policies/SnapshotsPolicy.html" title="class in org.apache.archiva.policies">SnapshotsPolicy</a></dd>
 </dl>
 <hr>
 <br>
-<pre>public interface <a href="../../../../src-html/org/apache/archiva/policies/Policy.html#line.24">Policy</a></pre>
+<pre>public interface <a href="../../../../src-html/org/apache/archiva/policies/Policy.html#line.31">Policy</a></pre>
+<div class="block">This is a generic interface for policies. Policies define different actions to apply to artifacts during the
+ repository lifecycle, e.g. download, upload, errors.</div>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/Policy.html#RESOURCE_BUNDLE">RESOURCE_BUNDLE</a></span></code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
 <!-- ========== METHOD SUMMARY =========== -->
 <ul class="blockList">
 <li class="blockList"><a name="method.summary">
@@ -129,25 +150,51 @@ var activeTableTab = "activeTableTab";
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code><a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/Policy.html#getDefaultOption--">getDefaultOption</a></span>()</code>
 <div class="block">Get the default option for this policy.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/Policy.html#getDescription-java.util.Locale-">getDescription</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a>&nbsp;locale)</code>
+<div class="block">Return a description of the policy.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/Policy.html#getId--">getId</a></span>()</code>
 <div class="block">Get the id for this policy.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/Policy.html#getName--">getName</a></span>()</code>
 <div class="block">Get the display name for this policy.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/Policy.html#getName-java.util.Locale-">getName</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a>&nbsp;locale)</code>
+<div class="block">Get the policy name in the language of the given locale.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/Policy.html#getOptionDescription-java.util.Locale-org.apache.archiva.policies.PolicyOption-">getOptionDescription</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a>&nbsp;locale,
+                    <a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a>&nbsp;option)</code>
+<div class="block">Returns a description for the given option.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/Policy.html#getOptionName-java.util.Locale-org.apache.archiva.policies.PolicyOption-">getOptionName</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a>&nbsp;locale,
+             <a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a>&nbsp;option)</code>
+<div class="block">Returns a name for the given option.</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/policies/Policy.html#getOptions--">getOptions</a></span>()</code>
 <div class="block">Get the list of options for this policy.</div>
 </td>
@@ -161,6 +208,27 @@ var activeTableTab = "activeTableTab";
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="RESOURCE_BUNDLE">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>RESOURCE_BUNDLE</h4>
+<pre>static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/policies/Policy.html#line.34">RESOURCE_BUNDLE</a></pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../constant-values.html#org.apache.archiva.policies.Policy.RESOURCE_BUNDLE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
 <!-- ============ METHOD DETAIL ========== -->
 <ul class="blockList">
 <li class="blockList"><a name="method.detail">
@@ -173,7 +241,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>getOptions</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/Policy.html#line.31">getOptions</a>()</pre>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a>&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/Policy.html#line.41">getOptions</a>()</pre>
 <div class="block">Get the list of options for this policy.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -187,7 +255,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>getDefaultOption</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/Policy.html#line.38">getDefaultOption</a>()</pre>
+<pre><a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/Policy.html#line.48">getDefaultOption</a>()</pre>
 <div class="block">Get the default option for this policy.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -201,7 +269,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>getId</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/Policy.html#line.45">getId</a>()</pre>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/Policy.html#line.55">getId</a>()</pre>
 <div class="block">Get the id for this policy.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -212,16 +280,88 @@ var activeTableTab = "activeTableTab";
 <a name="getName--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getName</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/Policy.html#line.54">getName</a>()</pre>
-<div class="block">Get the display name for this policy.
-
- TODO todo i18n</div>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/Policy.html#line.62">getName</a>()</pre>
+<div class="block">Get the display name for this policy.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the name for this policy</dd>
+</dl>
+</li>
+</ul>
+<a name="getName-java.util.Locale-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getName</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/Policy.html#line.69">getName</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a>&nbsp;locale)</pre>
+<div class="block">Get the policy name in the language of the given locale.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>locale</code> - The locale</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The policy name</dd>
+</dl>
+</li>
+</ul>
+<a name="getDescription-java.util.Locale-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDescription</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/Policy.html#line.76">getDescription</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a>&nbsp;locale)</pre>
+<div class="block">Return a description of the policy.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>locale</code> - The language</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The description</dd>
+</dl>
+</li>
+</ul>
+<a name="getOptionDescription-java.util.Locale-org.apache.archiva.policies.PolicyOption-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getOptionDescription</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/Policy.html#line.85">getOptionDescription</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a>&nbsp;locale,
+                            <a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a>&nbsp;option)
+                     throws <a href="https://docs.oracle.com/javase/8/docs/api/java/util/MissingResourceException.html?is-external=true" title="class or interface in java.util">MissingResourceException</a></pre>
+<div class="block">Returns a description for the given option.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>locale</code> - The locale for the description.</dd>
+<dd><code>option</code> - The option to ask the description for.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>A description of the option in the requested language.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/MissingResourceException.html?is-external=true" title="class or interface in java.util">MissingResourceException</a></code> - if the option is not known by this policy.</dd>
+</dl>
+</li>
+</ul>
+<a name="getOptionName-java.util.Locale-org.apache.archiva.policies.PolicyOption-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getOptionName</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/policies/Policy.html#line.94">getOptionName</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html?is-external=true" title="class or interface in java.util">Locale</a>&nbsp;locale,
+                     <a href="../../../../org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a>&nbsp;option)
+              throws <a href="https://docs.oracle.com/javase/8/docs/api/java/util/MissingResourceException.html?is-external=true" title="class or interface in java.util">MissingResourceException</a></pre>
+<div class="block">Returns a name for the given option.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>locale</code> - The locale for the name</dd>
+<dd><code>option</code> - The option identifier</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>A name in the requested language.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/MissingResourceException.html?is-external=true" title="class or interface in java.util">MissingResourceException</a></code> - if the option is not known by this policy.</dd>
 </dl>
 </li>
 </ul>
@@ -279,13 +419,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -294,6 +434,6 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

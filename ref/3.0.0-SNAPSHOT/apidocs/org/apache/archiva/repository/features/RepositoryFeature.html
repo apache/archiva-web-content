@@ -100,13 +100,31 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - the concrete feature implementation.</dd>
+</dl>
+<dl>
 <dt>All Known Implementing Classes:</dt>
 <dd><a href="../../../../../org/apache/archiva/repository/features/ArtifactCleanupFeature.html" title="class in org.apache.archiva.repository.features">ArtifactCleanupFeature</a>, <a href="../../../../../org/apache/archiva/repository/features/IndexCreationFeature.html" title="class in org.apache.archiva.repository.features">IndexCreationFeature</a>, <a href="../../../../../org/apache/archiva/repository/features/RemoteIndexFeature.html" title="class in org.apache.archiva.repository.features">RemoteIndexFeature</a>, <a href="../../../../../org/apache/archiva/repository/features/StagingRepositoryFeature.html" title="class in org.apache.archiva.repository.features">StagingRepositoryFeature</a></dd>
 </dl>
 <hr>
 <br>
-<pre>public interface <a href="../../../../../src-html/org/apache/archiva/repository/features/RepositoryFeature.html#line.26">RepositoryFeature</a>&lt;T extends RepositoryFeature&lt;T&gt;&gt;</pre>
-<div class="block">Created by martin on 30.09.17.</div>
+<pre>public interface <a href="../../../../../src-html/org/apache/archiva/repository/features/RepositoryFeature.html#line.40">RepositoryFeature</a>&lt;T extends RepositoryFeature&lt;T&gt;&gt;</pre>
+<div class="block">The repository feature holds information about specific features. The may not be available by all repository implementations.
+ Features should be simple objects for storing additional data, the should not implement too much functionality.
+ Additional functionality the uses the information in the feature objects should be implemented in the specific repository
+ provider and repository implementations, or in the repository registry if it is generic.
+
+ But features may throw events, if it's data is changed.
+
+
+ This interface is to get access to a concrete feature by accessing the generic interface.</div>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>3.0</dd>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>Martin Stockhammer <martin_s@apache.org></dd>
+</dl>
 </li>
 </ul>
 </div>
@@ -127,19 +145,27 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html" title="type parameter in RepositoryFeature">T</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html#get--">get</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html#get--">get</a></span>()</code>
+<div class="block">Returns the concrete feature instance.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>default <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html#getId--">getId</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html#getId--">getId</a></span>()</code>
+<div class="block">Unique Identifier of this feature.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>default &lt;K extends <a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html" title="interface in org.apache.archiva.repository.features">RepositoryFeature</a>&lt;K&gt;&gt;<br>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html#isFeature-java.lang.Class-">isFeature</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;K&gt;&nbsp;clazz)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html#isFeature-java.lang.Class-">isFeature</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;K&gt;&nbsp;clazz)</code>
+<div class="block">Tells, if the this instance is a feature of the given feature class.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>default boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html#isFeature-java.lang.String-">isFeature</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;featureId)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html#isFeature-java.lang.String-">isFeature</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;featureId)</code>
+<div class="block">Tells, if this instance is a feature of the given identifier.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -162,7 +188,12 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>getId</h4>
-<pre>default&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/RepositoryFeature.html#line.28">getId</a>()</pre>
+<pre>default&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/RepositoryFeature.html#line.47">getId</a>()</pre>
+<div class="block">Unique Identifier of this feature. Each feature implementation has its own unique identifier.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the identifier string which should be unique for the implementation class.</dd>
+</dl>
 </li>
 </ul>
 <a name="isFeature-java.lang.String-">
@@ -171,7 +202,14 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>isFeature</h4>
-<pre>default&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/RepositoryFeature.html#line.32">isFeature</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;featureId)</pre>
+<pre>default&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/RepositoryFeature.html#line.57">isFeature</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;featureId)</pre>
+<div class="block">Tells, if this instance is a feature of the given identifier.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>featureId</code> - the feature identifier string to check</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true, if this instance is a instance with the feature id, otherwise <code>false</code></dd>
+</dl>
 </li>
 </ul>
 <a name="isFeature-java.lang.Class-">
@@ -180,7 +218,15 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>isFeature</h4>
-<pre>default&nbsp;&lt;K extends <a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html" title="interface in org.apache.archiva.repository.features">RepositoryFeature</a>&lt;K&gt;&gt;&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/RepositoryFeature.html#line.36">isFeature</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;K&gt;&nbsp;clazz)</pre>
+<pre>default&nbsp;&lt;K extends <a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html" title="interface in org.apache.archiva.repository.features">RepositoryFeature</a>&lt;K&gt;&gt;&nbsp;boolean&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/RepositoryFeature.html#line.68">isFeature</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;K&gt;&nbsp;clazz)</pre>
+<div class="block">Tells, if the this instance is a feature of the given feature class.</div>
+<dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>K</code> - the concrete feature implementation.</dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>clazz</code> - The class to check against.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+</dl>
 </li>
 </ul>
 <a name="get--">
@@ -189,7 +235,12 @@ var activeTableTab = "activeTableTab";
 <ul class="blockListLast">
 <li class="blockList">
 <h4>get</h4>
-<pre><a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html" title="type parameter in RepositoryFeature">T</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/RepositoryFeature.html#line.40">get</a>()</pre>
+<pre><a href="../../../../../org/apache/archiva/repository/features/RepositoryFeature.html" title="type parameter in RepositoryFeature">T</a>&nbsp;<a href="../../../../../src-html/org/apache/archiva/repository/features/RepositoryFeature.html#line.76">get</a>()</pre>
+<div class="block">Returns the concrete feature instance.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the feature instance.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -261,6 +312,6 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

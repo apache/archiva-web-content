@@ -624,7 +624,7 @@
 </li>
 <li class="blockList">
 <h4>proxyConnectorRuleType</h4>
-<pre><a href="org/apache/archiva/admin/model/beans/ProxyConnectorRuleType.html" title="enum in org.apache.archiva.admin.model.beans">ProxyConnectorRuleType</a> proxyConnectorRuleType</pre>
+<pre><a href="org/apache/archiva/proxy/model/ProxyConnectorRuleType.html" title="enum in org.apache.archiva.proxy.model">ProxyConnectorRuleType</a> proxyConnectorRuleType</pre>
 </li>
 <li class="blockListLast">
 <h4>proxyConnectors</h4>
@@ -1075,17 +1075,28 @@
  data. If not set, it's ${dataDirectory}/remotes.</div>
 </li>
 <li class="blockList">
+<h4>repositoryGroupBaseDirectory</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> repositoryGroupBaseDirectory</pre>
+<div class="block">The base directory for local storage of repository group files.
+ If not set, it's ${dataDirectory}/groups</div>
+</li>
+<li class="blockList">
 <h4>defaultLanguage</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> defaultLanguage</pre>
 <div class="block">The default language used for setting internationalized
  strings.</div>
 </li>
-<li class="blockListLast">
+<li class="blockList">
 <h4>languageRange</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> languageRange</pre>
 <div class="block">Comma separated list of language patterns. Sorted by
  priority descending. Used for display of internationalized
  strings.</div>
+</li>
+<li class="blockListLast">
+<h4>checksumTypes</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">E</a>&gt; checksumTypes</pre>
+<div class="block">List of checksum types (algorithms) that should be applied to repository artifacts.</div>
 </li>
 </ul>
 </li>
@@ -1827,6 +1838,17 @@
 <div class="block">The id of the repository group.</div>
 </li>
 <li class="blockList">
+<h4>name</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> name</pre>
+<div class="block">The name of the repository group</div>
+</li>
+<li class="blockList">
+<h4>type</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> type</pre>
+<div class="block">The repository type. Currently only MAVEN type
+ is known.</div>
+</li>
+<li class="blockList">
 <h4>mergedIndexPath</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> mergedIndexPath</pre>
 <div class="block">The path of the merged index.</div>
@@ -1839,8 +1861,7 @@
 <li class="blockList">
 <h4>cronExpression</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> cronExpression</pre>
-<div class="block">When to run the index merging for this group.
-           No default value.</div>
+<div class="block">When to run the index merging for this group.</div>
 </li>
 <li class="blockListLast">
 <h4>repositories</h4>
@@ -2008,6 +2029,77 @@
 </ul>
 </li>
 <li class="blockList">
+<h2 title="Package">Package&nbsp;org.apache.archiva.event</h2>
+<ul class="blockList">
+<li class="blockList"><a name="org.apache.archiva.event.Event">
+<!--   -->
+</a>
+<h3>Class <a href="org/apache/archiva/event/Event.html" title="class in org.apache.archiva.event">org.apache.archiva.event.Event</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/util/EventObject.html?is-external=true" title="class or interface in java.util">EventObject</a> implements Serializable</h3>
+<dl class="nameValue">
+<dt>serialVersionUID:</dt>
+<dd>-7171846575892044990L</dd>
+</dl>
+<ul class="blockList">
+<li class="blockList">
+<h3>Serialized Fields</h3>
+<ul class="blockList">
+<li class="blockList">
+<h4>previous</h4>
+<pre><a href="org/apache/archiva/event/Event.html" title="class in org.apache.archiva.event">Event</a> previous</pre>
+</li>
+<li class="blockList">
+<h4>type</h4>
+<pre><a href="org/apache/archiva/event/EventType.html" title="class in org.apache.archiva.event">EventType</a>&lt;<a href="org/apache/archiva/event/EventType.html" title="type parameter in EventType">T</a> extends <a href="org/apache/archiva/event/Event.html" title="class in org.apache.archiva.event">Event</a>&gt; type</pre>
+</li>
+<li class="blockListLast">
+<h4>createTime</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html?is-external=true" title="class or interface in java.time">LocalDateTime</a> createTime</pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="blockList"><a name="org.apache.archiva.event.EventType">
+<!--   -->
+</a>
+<h3>Class <a href="org/apache/archiva/event/EventType.html" title="class in org.apache.archiva.event">org.apache.archiva.event.EventType</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a> implements Serializable</h3>
+<ul class="blockList">
+<li class="blockList">
+<h3>Serialization Methods</h3>
+<ul class="blockList">
+<li class="blockListLast">
+<h4>writeReplace</h4>
+<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;<a href="src-html/org/apache/archiva/event/EventType.html#line.121">writeReplace</a>()
+                     throws <a href="https://docs.oracle.com/javase/8/docs/api/java/io/ObjectStreamException.html?is-external=true" title="class or interface in java.io">ObjectStreamException</a></pre>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/io/ObjectStreamException.html?is-external=true" title="class or interface in java.io">ObjectStreamException</a></code></dd>
+</dl>
+</li>
+</ul>
+</li>
+<li class="blockList">
+<h3>Serialized Fields</h3>
+<ul class="blockList">
+<li class="blockList">
+<h4>name</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> name</pre>
+</li>
+<li class="blockList">
+<h4>superType</h4>
+<pre><a href="org/apache/archiva/event/EventType.html" title="class in org.apache.archiva.event">EventType</a>&lt;<a href="org/apache/archiva/event/EventType.html" title="type parameter in EventType">T</a> extends <a href="org/apache/archiva/event/Event.html" title="class in org.apache.archiva.event">Event</a>&gt; superType</pre>
+</li>
+<li class="blockListLast">
+<h4>subTypes</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/WeakHashMap.html?is-external=true" title="class or interface in java.util">WeakHashMap</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/WeakHashMap.html?is-external=true" title="class or interface in java.util">K</a>,<a href="https://docs.oracle.com/javase/8/docs/api/java/util/WeakHashMap.html?is-external=true" title="class or interface in java.util">V</a>&gt; subTypes</pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="blockList">
 <h2 title="Package">Package&nbsp;org.apache.archiva.indexer</h2>
 <ul class="blockList">
 <li class="blockList"><a name="org.apache.archiva.indexer.IndexCreationFailedException">
@@ -2049,7 +2141,7 @@
 </li>
 <li class="blockList">
 <h4>directory</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a> directory</pre>
+<pre><a href="org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a> directory</pre>
 </li>
 <li class="blockList">
 <h4>indexId</h4>
@@ -2367,9 +2459,14 @@
 <div class="block">The Maven artifact ID of the dependency.</div>
 </li>
 <li class="blockList">
-<h4>groupId</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> groupId</pre>
+<h4>namespace</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> namespace</pre>
 <div class="block">The Maven group ID of the dependency.</div>
+</li>
+<li class="blockList">
+<h4>projectId</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> projectId</pre>
+<div class="block">The project id</div>
 </li>
 <li class="blockListLast">
 <h4>version</h4>
@@ -2416,10 +2513,14 @@
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> name</pre>
 <div class="block">The name of the license.</div>
 </li>
-<li class="blockListLast">
+<li class="blockList">
 <h4>url</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> url</pre>
 <div class="block">The URL of the license text.</div>
+</li>
+<li class="blockListLast">
+<h4>index</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a> index</pre>
 </li>
 </ul>
 </li>
@@ -2433,6 +2534,10 @@
 <li class="blockList">
 <h3>Serialized Fields</h3>
 <ul class="blockList">
+<li class="blockList">
+<h4>index</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a> index</pre>
+</li>
 <li class="blockList">
 <h4>mainArchiveUrl</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> mainArchiveUrl</pre>
@@ -2526,6 +2631,11 @@
 </a>
 <h3>Class <a href="org/apache/archiva/metadata/repository/MetadataResolutionException.html" title="class in org.apache.archiva.metadata.repository">org.apache.archiva.metadata.repository.MetadataResolutionException</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a> implements Serializable</h3>
 </li>
+<li class="blockList"><a name="org.apache.archiva.metadata.repository.MetadataSessionException">
+<!--   -->
+</a>
+<h3>Class <a href="org/apache/archiva/metadata/repository/MetadataSessionException.html" title="class in org.apache.archiva.metadata.repository">org.apache.archiva.metadata.repository.MetadataSessionException</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a> implements Serializable</h3>
+</li>
 </ul>
 </li>
 <li class="blockList">
@@ -2579,9 +2689,13 @@
 <h4>sha1</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> sha1</pre>
 </li>
-<li class="blockListLast">
+<li class="blockList">
 <h4>whenGathered</h4>
 <pre>long whenGathered</pre>
+</li>
+<li class="blockListLast">
+<h4>checksums</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">K</a>,<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">V</a>&gt; checksums</pre>
 </li>
 </ul>
 </li>
@@ -3077,12 +3191,69 @@
 </ul>
 </li>
 <li class="blockList">
-<h2 title="Package">Package&nbsp;org.apache.archiva.proxy.common</h2>
+<h2 title="Package">Package&nbsp;org.apache.archiva.proxy.maven</h2>
 <ul class="blockList">
-<li class="blockList"><a name="org.apache.archiva.proxy.common.WagonFactoryException">
+<li class="blockList"><a name="org.apache.archiva.proxy.maven.WagonFactoryException">
 <!--   -->
 </a>
-<h3>Class <a href="org/apache/archiva/proxy/common/WagonFactoryException.html" title="class in org.apache.archiva.proxy.common">org.apache.archiva.proxy.common.WagonFactoryException</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a> implements Serializable</h3>
+<h3>Class <a href="org/apache/archiva/proxy/maven/WagonFactoryException.html" title="class in org.apache.archiva.proxy.maven">org.apache.archiva.proxy.maven.WagonFactoryException</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a> implements Serializable</h3>
+</li>
+</ul>
+</li>
+<li class="blockList">
+<h2 title="Package">Package&nbsp;org.apache.archiva.proxy.model</h2>
+<ul class="blockList">
+<li class="blockList"><a name="org.apache.archiva.proxy.model.NetworkProxy">
+<!--   -->
+</a>
+<h3>Class <a href="org/apache/archiva/proxy/model/NetworkProxy.html" title="class in org.apache.archiva.proxy.model">org.apache.archiva.proxy.model.NetworkProxy</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a> implements Serializable</h3>
+<ul class="blockList">
+<li class="blockList">
+<h3>Serialized Fields</h3>
+<ul class="blockList">
+<li class="blockList">
+<h4>id</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> id</pre>
+</li>
+<li class="blockList">
+<h4>protocol</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> protocol</pre>
+<div class="block">The network protocol to use with this proxy: "http", "socks-4"
+ .</div>
+</li>
+<li class="blockList">
+<h4>host</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> host</pre>
+<div class="block">The proxy host.</div>
+</li>
+<li class="blockList">
+<h4>port</h4>
+<pre>int port</pre>
+<div class="block">The proxy port.</div>
+</li>
+<li class="blockList">
+<h4>username</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> username</pre>
+<div class="block">The proxy user.</div>
+</li>
+<li class="blockList">
+<h4>password</h4>
+<pre>char[] password</pre>
+<div class="block">The proxy password.</div>
+</li>
+<li class="blockListLast">
+<h4>useNtlm</h4>
+<pre>boolean useNtlm</pre>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.4-M3
+
+ use NTLM proxy</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -3123,6 +3294,86 @@
 <!--   -->
 </a>
 <h3>Class <a href="org/apache/archiva/repository/UnsupportedURIException.html" title="class in org.apache.archiva.repository">org.apache.archiva.repository.UnsupportedURIException</a> extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a> implements Serializable</h3>
+</li>
+</ul>
+</li>
+<li class="blockList">
+<h2 title="Package">Package&nbsp;org.apache.archiva.repository.event</h2>
+<ul class="blockList">
+<li class="blockList"><a name="org.apache.archiva.repository.event.LifecycleEvent">
+<!--   -->
+</a>
+<h3>Class <a href="org/apache/archiva/repository/event/LifecycleEvent.html" title="class in org.apache.archiva.repository.event">org.apache.archiva.repository.event.LifecycleEvent</a> extends <a href="org/apache/archiva/repository/event/RepositoryEvent.html" title="class in org.apache.archiva.repository.event">RepositoryEvent</a> implements Serializable</h3>
+<dl class="nameValue">
+<dt>serialVersionUID:</dt>
+<dd>-2520982087439428714L</dd>
+</dl>
+</li>
+<li class="blockList"><a name="org.apache.archiva.repository.event.RepositoryEvent">
+<!--   -->
+</a>
+<h3>Class <a href="org/apache/archiva/repository/event/RepositoryEvent.html" title="class in org.apache.archiva.repository.event">org.apache.archiva.repository.event.RepositoryEvent</a> extends <a href="org/apache/archiva/event/Event.html" title="class in org.apache.archiva.event">Event</a> implements Serializable</h3>
+<dl class="nameValue">
+<dt>serialVersionUID:</dt>
+<dd>4676673476606414834L</dd>
+</dl>
+<ul class="blockList">
+<li class="blockList">
+<h3>Serialized Fields</h3>
+<ul class="blockList">
+<li class="blockListLast">
+<h4>repository</h4>
+<pre><a href="org/apache/archiva/repository/Repository.html" title="interface in org.apache.archiva.repository">Repository</a> repository</pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="blockList"><a name="org.apache.archiva.repository.event.RepositoryIndexEvent">
+<!--   -->
+</a>
+<h3>Class <a href="org/apache/archiva/repository/event/RepositoryIndexEvent.html" title="class in org.apache.archiva.repository.event">org.apache.archiva.repository.event.RepositoryIndexEvent</a> extends <a href="org/apache/archiva/repository/event/RepositoryValueEvent.html" title="class in org.apache.archiva.repository.event">RepositoryValueEvent</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&gt; implements Serializable</h3>
+<dl class="nameValue">
+<dt>serialVersionUID:</dt>
+<dd>-7801989699524776524L</dd>
+</dl>
+</li>
+<li class="blockList"><a name="org.apache.archiva.repository.event.RepositoryRegistryEvent">
+<!--   -->
+</a>
+<h3>Class <a href="org/apache/archiva/repository/event/RepositoryRegistryEvent.html" title="class in org.apache.archiva.repository.event">org.apache.archiva.repository.event.RepositoryRegistryEvent</a> extends <a href="org/apache/archiva/event/Event.html" title="class in org.apache.archiva.event">Event</a> implements Serializable</h3>
+<dl class="nameValue">
+<dt>serialVersionUID:</dt>
+<dd>-4740127827269612094L</dd>
+</dl>
+</li>
+<li class="blockList"><a name="org.apache.archiva.repository.event.RepositoryValueEvent">
+<!--   -->
+</a>
+<h3>Class <a href="org/apache/archiva/repository/event/RepositoryValueEvent.html" title="class in org.apache.archiva.repository.event">org.apache.archiva.repository.event.RepositoryValueEvent</a> extends <a href="org/apache/archiva/repository/event/RepositoryEvent.html" title="class in org.apache.archiva.repository.event">RepositoryEvent</a> implements Serializable</h3>
+<dl class="nameValue">
+<dt>serialVersionUID:</dt>
+<dd>4176597620699304794L</dd>
+</dl>
+<ul class="blockList">
+<li class="blockList">
+<h3>Serialized Fields</h3>
+<ul class="blockList">
+<li class="blockList">
+<h4>value</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a> value</pre>
+</li>
+<li class="blockList">
+<h4>oldValue</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a> oldValue</pre>
+</li>
+<li class="blockListLast">
+<h4>attributeName</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> attributeName</pre>
+</li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -3531,7 +3782,7 @@
 </li>
 <li class="blockList">
 <h4>defaultOption</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> defaultOption</pre>
+<pre><a href="org/apache/archiva/policies/PolicyOption.html" title="interface in org.apache.archiva.policies">PolicyOption</a> defaultOption</pre>
 </li>
 <li class="blockList">
 <h4>id</h4>
@@ -4119,12 +4370,8 @@
 <pre><a href="org/apache/archiva/configuration/ArchivaConfiguration.html" title="interface in org.apache.archiva.configuration">ArchivaConfiguration</a> configuration</pre>
 </li>
 <li class="blockList">
-<h4>managedRepositoryAdmin</h4>
-<pre><a href="org/apache/archiva/admin/model/managed/ManagedRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.managed">ManagedRepositoryAdmin</a> managedRepositoryAdmin</pre>
-</li>
-<li class="blockList">
-<h4>repositoryMap</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">K</a>,<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">V</a>&gt; repositoryMap</pre>
+<h4>repositoryRegistry</h4>
+<pre><a href="org/apache/archiva/repository/RepositoryRegistry.html" title="interface in org.apache.archiva.repository">RepositoryRegistry</a> repositoryRegistry</pre>
 </li>
 <li class="blockList">
 <h4>locatorFactory</h4>
@@ -4139,8 +4386,8 @@
 <pre>org.apache.jackrabbit.webdav.DavSessionProvider sessionProvider</pre>
 </li>
 <li class="blockListLast">
-<h4>reloadLock</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a> reloadLock</pre>
+<h4>rwLock</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/locks/ReentrantReadWriteLock.html?is-external=true" title="class or interface in java.util.concurrent.locks">ReentrantReadWriteLock</a> rwLock</pre>
 </li>
 </ul>
 </li>
@@ -4223,6 +4470,6 @@
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

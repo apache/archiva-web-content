@@ -17,7 +17,7 @@
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * "License"); you may not use this file except in compliance</em>
 <a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> * with the License.  You may obtain a copy of the License at</em>
 <a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> *  <a href="http://www.apache.org/licenses/LICENSE-2." target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.</a>0</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> *  <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing,</em>
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> * software distributed under the License is distributed on an</em>
@@ -36,7 +36,7 @@
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.consumers.KnownRepositoryContentConsumer;
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.consumers.RepositoryContentConsumer;
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.consumers.functors.ConsumerWantsFilePredicate;
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.redback.components.registry.RegistryListener;
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.components.registry.RegistryListener;
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.repository.ManagedRepository;
 <a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.repository.scanner.functors.ConsumerProcessFileClosure;
 <a class="jxr_linenumber" name="L34" href="#L34">34</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.repository.scanner.functors.TriggerBeginScanClosure;
@@ -62,7 +62,7 @@
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>  <em class="jxr_javadoccomment"> * RepositoryContentConsumerUtil</em>
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_javadoccomment"> */</em>
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>  @Service(<span class="jxr_string">"repositoryContentConsumers"</span>)
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/apache/archiva/repository/scanner/RepositoryContentConsumers.html">RepositoryContentConsumers</a>
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="RepositoryContentConsumers" href="../../../../../org/apache/archiva/repository/scanner/RepositoryContentConsumers.html#RepositoryContentConsumers">RepositoryContentConsumers</a>
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>      <strong class="jxr_keyword">implements</strong> ApplicationContextAware
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>  {
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>  
@@ -79,7 +79,7 @@
 <a class="jxr_linenumber" name="L71" href="#L71">71</a>      <strong class="jxr_keyword">private</strong> ArchivaConfiguration archivaConfiguration;
 <a class="jxr_linenumber" name="L72" href="#L72">72</a>  
 <a class="jxr_linenumber" name="L73" href="#L73">73</a>      @Inject
-<a class="jxr_linenumber" name="L74" href="#L74">74</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../org/apache/archiva/repository/scanner/RepositoryContentConsumers.html">RepositoryContentConsumers</a>( ArchivaAdministration archivaAdministration )
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>      <strong class="jxr_keyword">public</strong> <a name="RepositoryContentConsumers" href="../../../../../org/apache/archiva/repository/scanner/RepositoryContentConsumers.html#RepositoryContentConsumers">RepositoryContentConsumers</a>( ArchivaAdministration archivaAdministration )
 <a class="jxr_linenumber" name="L75" href="#L75">75</a>      {
 <a class="jxr_linenumber" name="L76" href="#L76">76</a>          <strong class="jxr_keyword">this</strong>.archivaAdministration = archivaAdministration;
 <a class="jxr_linenumber" name="L77" href="#L77">77</a>      }
@@ -284,7 +284,7 @@
 <a class="jxr_linenumber" name="L276" href="#L276">276</a>         <em class="jxr_comment">// Run the repository consumers</em>
 <a class="jxr_linenumber" name="L277" href="#L277">277</a>         <strong class="jxr_keyword">try</strong>
 <a class="jxr_linenumber" name="L278" href="#L278">278</a>         {
-<a class="jxr_linenumber" name="L279" href="#L279">279</a>             Closure&lt;RepositoryContentConsumer&gt; triggerBeginScan = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/repository/scanner/functors/TriggerBeginScanClosure.html">TriggerBeginScanClosure</a>( repository, getStartTime(), false );
+<a class="jxr_linenumber" name="L279" href="#L279">279</a>             Closure&lt;RepositoryContentConsumer&gt; triggerBeginScan = <strong class="jxr_keyword">new</strong> <a name="TriggerBeginScanClosure" href="../../../../../org/apache/archiva/repository/scanner/functors/TriggerBeginScanClosure.html#TriggerBeginScanClosure">TriggerBeginScanClosure</a>( repository, getStartTime(), false );
 <a class="jxr_linenumber" name="L280" href="#L280">280</a> 
 <a class="jxr_linenumber" name="L281" href="#L281">281</a>             selectedKnownConsumers = getSelectedKnownConsumers();
 <a class="jxr_linenumber" name="L282" href="#L282">282</a> 
@@ -317,7 +317,7 @@
 <a class="jxr_linenumber" name="L309" href="#L309">309</a>             predicate.setBasefile( baseFile );
 <a class="jxr_linenumber" name="L310" href="#L310">310</a>             predicate.setCaseSensitive( false );
 <a class="jxr_linenumber" name="L311" href="#L311">311</a> 
-<a class="jxr_linenumber" name="L312" href="#L312">312</a>             <a href="../../../../../org/apache/archiva/repository/scanner/functors/ConsumerProcessFileClosure.html">ConsumerProcessFileClosure</a> closure = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/repository/scanner/functors/ConsumerProcessFileClosure.html">ConsumerProcessFileClosure</a>();
+<a class="jxr_linenumber" name="L312" href="#L312">312</a>             <a name="ConsumerProcessFileClosure" href="../../../../../org/apache/archiva/r<a name="ConsumerProcessFileClosure" href="../../../../../org/apache/archiva/repository/scanner/functors/ConsumerProcessFileClosure.html#ConsumerProcessFileClosure">ConsumerProcessFileClosure</a>/ConsumerProcessFileClosure.html#ConsumerProcessFileClosure">ConsumerProcessFileClosure</a> closure = <strong class="jxr_keyword">new</strong> <a name="ConsumerProcessFileClosure" href="../../../../../org/apache/archiva/repository/scanner/functors/ConsumerProcessFileClosure.html#ConsumerProcessFileClosure">ConsumerProcessFileClosure</a>();
 <a class="jxr_linenumber" name="L313" href="#L313">313</a>             closure.setBasefile( baseFile );
 <a class="jxr_linenumber" name="L314" href="#L314">314</a>             closure.setExecuteOnEntireRepo( false );
 <a class="jxr_linenumber" name="L315" href="#L315">315</a> 
@@ -331,7 +331,7 @@
 <a class="jxr_linenumber" name="L323" href="#L323">323</a>                 IterableUtils.forEach( selectedInvalidConsumers, closure );
 <a class="jxr_linenumber" name="L324" href="#L324">324</a>             }
 <a class="jxr_linenumber" name="L325" href="#L325">325</a> 
-<a class="jxr_linenumber" name="L326" href="#L326">326</a>             <a href="../../../../../org/apache/archiva/repository/scanner/functors/TriggerScanCompletedClosure.html">TriggerScanCompletedClosure</a> scanCompletedClosure = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/apache/archiva/repository/scanner/functors/TriggerScanCompletedClosure.html">TriggerScanCompletedClosure</a>( repository, false );
+<a class="jxr_linenumber" name="L326" href="#L326">326</a>             <a name="TriggerScanCompletedClosure" href="../../../../../org/apache/archiva/repository/sca<a name="TriggerScanCompletedClosure" href="../../../../../org/apache/archiva/repository/scanner/functors/TriggerScanCompletedClosure.html#TriggerScanCompletedClosure">TriggerScanCompletedClosure</a>mpletedClosure.html#TriggerScanCompletedClosure">TriggerScanCompletedClosure</a> scanCompletedClosure = <strong class="jxr_keyword">new</strong> <a name="TriggerScanCompletedClosure" href="../../../../../org/apache/archiva/repository/scanner/functors/TriggerScanCompletedClosure.html#TriggerScanCompletedClosure">TriggerScanCompletedClosure</a>( repository, false );
 <a class="jxr_linenumber" name="L327" href="#L327">327</a> 
 <a class="jxr_linenumber" name="L328" href="#L328">328</a>             IterableUtils.forEach( selectedKnownConsumers, scanCompletedClosure );
 <a class="jxr_linenumber" name="L329" href="#L329">329</a>         }
@@ -367,6 +367,6 @@
 <a class="jxr_linenumber" name="L359" href="#L359">359</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
 </body>
 </html>

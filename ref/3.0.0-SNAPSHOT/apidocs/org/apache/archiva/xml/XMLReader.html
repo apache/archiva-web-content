@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../org/apache/archiva/xml/XMLException.html" title="class in org.apache.archiva.xml"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/archiva/xml/XMLWriter.html" title="class in org.apache.archiva.xml"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/archiva/xml/XmlUtil.html" title="class in org.apache.archiva.xml"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/archiva/xml/XMLReader.html" target="_top">Frames</a></li>
@@ -75,13 +75,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -109,7 +109,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <hr>
 <br>
-<pre>public class <a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.50">XMLReader</a>
+<pre>public class <a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.49">XMLReader</a>
 extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
 <div class="block">XMLReader - a set of common xml utility methods for reading content out of an xml file.</div>
 </li>
@@ -118,37 +118,6 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- =========== FIELD SUMMARY =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private org.dom4j.Document</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/xml/XMLReader.html#document">document</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/xml/XMLReader.html#documentType">documentType</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/xml/XMLReader.html#namespaceMap">namespaceMap</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/xml/XMLReader.html#xmlUrl">xmlUrl</a></span></code>&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -189,52 +158,43 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
                    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;uri)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>private org.dom4j.XPath</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/xml/XMLReader.html#createXPath-java.lang.String-">createXPath</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;xpathExpr)</code>&nbsp;</td>
-</tr>
-<tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/xml/XMLReader.html#getDefaultNamespaceURI--">getDefaultNamespaceURI</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code>org.dom4j.Element</code></td>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/org/w3c/dom/Element.html?is-external=true" title="class or interface in org.w3c.dom">Element</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/xml/XMLReader.html#getElement-java.lang.String-">getElement</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;xpathExpr)</code>&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.dom4j.Element&gt;</code></td>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/org/w3c/dom/Node.html?is-external=true" title="class or interface in org.w3c.dom">Node</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/xml/XMLReader.html#getElementList-java.lang.String-">getElementList</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;xpathExpr)</code>&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/xml/XMLReader.html#getElementListText-java.lang.String-">getElementListText</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;xpathExpr)</code>&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/xml/XMLReader.html#getElementText-org.dom4j.Node-java.lang.String-">getElementText</a></span>(org.dom4j.Node&nbsp;context,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/xml/XMLReader.html#getElementText-org.w3c.dom.Node-java.lang.String-">getElementText</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/org/w3c/dom/Node.html?is-external=true" title="class or interface in org.w3c.dom">Node</a>&nbsp;context,
               <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;xpathExpr)</code>&nbsp;</td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/xml/XMLReader.html#getElementText-java.lang.String-">getElementText</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;xpathExpr)</code>&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/xml/XMLReader.html#hasElement-java.lang.String-">hasElement</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;xpathExpr)</code>&nbsp;</td>
 </tr>
-<tr id="i9" class="rowColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/xml/XMLReader.html#init-java.lang.String-java.net.URL-">init</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type,
-    <a href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;url)</code>&nbsp;</td>
-</tr>
-<tr id="i10" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/xml/XMLReader.html#removeNamespaces--">removeNamespaces</a></span>()</code>
 <div class="block">Remove namespaces from entire document.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/xml/XMLReader.html#removeNamespaces-org.dom4j.Element-">removeNamespaces</a></span>(org.dom4j.Element&nbsp;elem)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/archiva/xml/XMLReader.html#removeNamespaces-org.w3c.dom.Node-">removeNamespaces</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/org/w3c/dom/Node.html?is-external=true" title="class or interface in org.w3c.dom">Node</a>&nbsp;elem)</code>
 <div class="block">Remove namespaces from element recursively.</div>
 </td>
 </tr>
@@ -254,50 +214,6 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a name="xmlUrl">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>xmlUrl</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a> <a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.52">xmlUrl</a></pre>
-</li>
-</ul>
-<a name="documentType">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>documentType</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> <a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.54">documentType</a></pre>
-</li>
-</ul>
-<a name="document">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>document</h4>
-<pre>private&nbsp;org.dom4j.Document <a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.56">document</a></pre>
-</li>
-</ul>
-<a name="namespaceMap">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>namespaceMap</h4>
-<pre>private&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt; <a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.58">namespaceMap</a></pre>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
@@ -310,7 +226,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>XMLReader</h4>
-<pre>public&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.60">XMLReader</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type,
+<pre>public&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.78">XMLReader</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type,
                  <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;file)
           throws <a href="../../../../org/apache/archiva/xml/XMLException.html" title="class in org.apache.archiva.xml">XMLException</a></pre>
 <dl>
@@ -325,7 +241,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockListLast">
 <li class="blockList">
 <h4>XMLReader</h4>
-<pre>public&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.88">XMLReader</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type,
+<pre>public&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.106">XMLReader</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type,
                  <a href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;url)
           throws <a href="../../../../org/apache/archiva/xml/XMLException.html" title="class in org.apache.archiva.xml">XMLException</a></pre>
 <dl>
@@ -342,28 +258,13 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="init-java.lang.String-java.net.URL-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>init</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.94">init</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type,
-                  <a href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;url)
-           throws <a href="../../../../org/apache/archiva/xml/XMLException.html" title="class in org.apache.archiva.xml">XMLException</a></pre>
-<dl>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="../../../../org/apache/archiva/xml/XMLException.html" title="class in org.apache.archiva.xml">XMLException</a></code></dd>
-</dl>
-</li>
-</ul>
 <a name="getDefaultNamespaceURI--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>getDefaultNamespaceURI</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.131">getDefaultNamespaceURI</a>()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.177">getDefaultNamespaceURI</a>()</pre>
 </li>
 </ul>
 <a name="addNamespaceMapping-java.lang.String-java.lang.String-">
@@ -372,7 +273,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>addNamespaceMapping</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.137">addNamespaceMapping</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;elementName,
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.183">addNamespaceMapping</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;elementName,
                                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;uri)</pre>
 </li>
 </ul>
@@ -382,21 +283,12 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>getElement</h4>
-<pre>public&nbsp;org.dom4j.Element&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.142">getElement</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;xpathExpr)
-                             throws <a href="../../../../org/apache/archiva/xml/XMLException.html" title="class in org.apache.archiva.xml">XMLException</a></pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/org/w3c/dom/Element.html?is-external=true" title="class or interface in org.w3c.dom">Element</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.188">getElement</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;xpathExpr)
+                   throws <a href="../../../../org/apache/archiva/xml/XMLException.html" title="class in org.apache.archiva.xml">XMLException</a></pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../../../org/apache/archiva/xml/XMLException.html" title="class in org.apache.archiva.xml">XMLException</a></code></dd>
 </dl>
-</li>
-</ul>
-<a name="createXPath-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>createXPath</h4>
-<pre>private&nbsp;org.dom4j.XPath&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.165">createXPath</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;xpathExpr)</pre>
 </li>
 </ul>
 <a name="hasElement-java.lang.String-">
@@ -405,7 +297,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>hasElement</h4>
-<pre>public&nbsp;boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.175">hasElement</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;xpathExpr)
+<pre>public&nbsp;boolean&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.225">hasElement</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;xpathExpr)
                    throws <a href="../../../../org/apache/archiva/xml/XMLException.html" title="class in org.apache.archiva.xml">XMLException</a></pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
@@ -419,27 +311,27 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>removeNamespaces</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.192">removeNamespaces</a>()</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.245">removeNamespaces</a>()</pre>
 <div class="block">Remove namespaces from entire document.</div>
 </li>
 </ul>
-<a name="removeNamespaces-org.dom4j.Element-">
+<a name="removeNamespaces-org.w3c.dom.Node-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>removeNamespaces</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.201">removeNamespaces</a>(org.dom4j.Element&nbsp;elem)</pre>
+<pre>public&nbsp;void&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.254">removeNamespaces</a>(<a href="https://docs.oracle.com/javase/8/docs/api/org/w3c/dom/Node.html?is-external=true" title="class or interface in org.w3c.dom">Node</a>&nbsp;elem)</pre>
 <div class="block">Remove namespaces from element recursively.</div>
 </li>
 </ul>
-<a name="getElementText-org.dom4j.Node-java.lang.String-">
+<a name="getElementText-org.w3c.dom.Node-java.lang.String-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>getElementText</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.224">getElementText</a>(org.dom4j.Node&nbsp;context,
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.271">getElementText</a>(<a href="https://docs.oracle.com/javase/8/docs/api/org/w3c/dom/Node.html?is-external=true" title="class or interface in org.w3c.dom">Node</a>&nbsp;context,
                              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;xpathExpr)
                       throws <a href="../../../../org/apache/archiva/xml/XMLException.html" title="class in org.apache.archiva.xml">XMLException</a></pre>
 <dl>
@@ -454,7 +346,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>getElementText</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.248">getElementText</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;xpathExpr)
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.300">getElementText</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;xpathExpr)
                       throws <a href="../../../../org/apache/archiva/xml/XMLException.html" title="class in org.apache.archiva.xml">XMLException</a></pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
@@ -468,8 +360,8 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>getElementList</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.dom4j.Element&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.273">getElementList</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;xpathExpr)
-                                       throws <a href="../../../../org/apache/archiva/xml/XMLException.html" title="class in org.apache.archiva.xml">XMLException</a></pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/org/w3c/dom/Node.html?is-external=true" title="class or interface in org.w3c.dom">Node</a>&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.307">getElementList</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;xpathExpr)
+                          throws <a href="../../../../org/apache/archiva/xml/XMLException.html" title="class in org.apache.archiva.xml">XMLException</a></pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../../../org/apache/archiva/xml/XMLException.html" title="class in org.apache.archiva.xml">XMLException</a></code></dd>
@@ -482,7 +374,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockListLast">
 <li class="blockList">
 <h4>getElementListText</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.307">getElementListText</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;xpathExpr)
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;<a href="../../../../src-html/org/apache/archiva/xml/XMLReader.html#line.332">getElementListText</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;xpathExpr)
                                 throws <a href="../../../../org/apache/archiva/xml/XMLException.html" title="class in org.apache.archiva.xml">XMLException</a></pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
@@ -519,7 +411,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../org/apache/archiva/xml/XMLException.html" title="class in org.apache.archiva.xml"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/archiva/xml/XMLWriter.html" title="class in org.apache.archiva.xml"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/archiva/xml/XmlUtil.html" title="class in org.apache.archiva.xml"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/archiva/xml/XMLReader.html" target="_top">Frames</a></li>
@@ -544,13 +436,13 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -559,6 +451,6 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

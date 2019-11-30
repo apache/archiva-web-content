@@ -26,15 +26,15 @@
 <span class="sourceLineNo">018</span> * under the License.<a name="line.18"></a>
 <span class="sourceLineNo">019</span> */<a name="line.19"></a>
 <span class="sourceLineNo">020</span><a name="line.20"></a>
-<span class="sourceLineNo">021</span>import org.apache.archiva.admin.model.beans.NetworkProxy;<a name="line.21"></a>
-<span class="sourceLineNo">022</span>import org.apache.archiva.proxy.common.WagonFactory;<a name="line.22"></a>
-<span class="sourceLineNo">023</span>import org.apache.archiva.proxy.common.WagonFactoryRequest;<a name="line.23"></a>
-<span class="sourceLineNo">024</span>import org.apache.archiva.repository.PasswordCredentials;<a name="line.24"></a>
+<span class="sourceLineNo">021</span>import org.apache.archiva.proxy.maven.WagonFactory;<a name="line.21"></a>
+<span class="sourceLineNo">022</span>import org.apache.archiva.proxy.maven.WagonFactoryRequest;<a name="line.22"></a>
+<span class="sourceLineNo">023</span>import org.apache.archiva.proxy.model.NetworkProxy;<a name="line.23"></a>
+<span class="sourceLineNo">024</span>import org.apache.archiva.repository.base.PasswordCredentials;<a name="line.24"></a>
 <span class="sourceLineNo">025</span>import org.apache.archiva.repository.RemoteRepository;<a name="line.25"></a>
 <span class="sourceLineNo">026</span>import org.apache.archiva.repository.RepositoryException;<a name="line.26"></a>
 <span class="sourceLineNo">027</span>import org.apache.archiva.repository.RepositoryType;<a name="line.27"></a>
 <span class="sourceLineNo">028</span>import org.apache.archiva.repository.features.RemoteIndexFeature;<a name="line.28"></a>
-<span class="sourceLineNo">029</span>import org.apache.commons.lang.time.StopWatch;<a name="line.29"></a>
+<span class="sourceLineNo">029</span>import org.apache.commons.lang3.time.StopWatch;<a name="line.29"></a>
 <span class="sourceLineNo">030</span>import org.apache.maven.index.context.IndexingContext;<a name="line.30"></a>
 <span class="sourceLineNo">031</span>import org.apache.maven.index.updater.IndexUpdateRequest;<a name="line.31"></a>
 <span class="sourceLineNo">032</span>import org.apache.maven.index.updater.IndexUpdateResult;<a name="line.32"></a>
@@ -173,7 +173,7 @@
 <span class="sourceLineNo">165</span>                proxyInfo.setHost( this.networkProxy.getHost() );<a name="line.165"></a>
 <span class="sourceLineNo">166</span>                proxyInfo.setPort( this.networkProxy.getPort() );<a name="line.166"></a>
 <span class="sourceLineNo">167</span>                proxyInfo.setUserName( this.networkProxy.getUsername() );<a name="line.167"></a>
-<span class="sourceLineNo">168</span>                proxyInfo.setPassword( this.networkProxy.getPassword() );<a name="line.168"></a>
+<span class="sourceLineNo">168</span>                proxyInfo.setPassword( new String(this.networkProxy.getPassword()) );<a name="line.168"></a>
 <span class="sourceLineNo">169</span>            }<a name="line.169"></a>
 <span class="sourceLineNo">170</span>            AuthenticationInfo authenticationInfo = null;<a name="line.170"></a>
 <span class="sourceLineNo">171</span>            if ( this.remoteRepository.getLoginCredentials()!=null &amp;&amp; this.remoteRepository.getLoginCredentials() instanceof PasswordCredentials )<a name="line.171"></a>

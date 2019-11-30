@@ -83,23 +83,23 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><a href="#org.apache.archiva.consumers.core.repository">org.apache.archiva.consumers.core.repository</a></td>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
 <td class="colFirst"><a href="#org.apache.archiva.repository">org.apache.archiva.repository</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><a href="#org.apache.archiva.repository.content">org.apache.archiva.repository.content</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><a href="#org.apache.archiva.repository.content.maven2">org.apache.archiva.repository.content.maven2</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.archiva.repository.metadata.base">org.apache.archiva.repository.metadata.base</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
 <tr class="altColor">
-<td class="colFirst"><a href="#org.apache.archiva.repository.metadata">org.apache.archiva.repository.metadata</a></td>
+<td class="colFirst"><a href="#org.apache.archiva.webdav">org.apache.archiva.webdav</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 </tbody>
@@ -107,25 +107,6 @@
 </li>
 <li class="blockList">
 <ul class="blockList">
-<li class="blockList"><a name="org.apache.archiva.consumers.core.repository">
-<!--   -->
-</a>
-<h3>Uses of <a href="../../../../../org/apache/archiva/repository/LayoutException.html" title="class in org.apache.archiva.repository">LayoutException</a> in <a href="../../../../../org/apache/archiva/consumers/core/repository/package-summary.html">org.apache.archiva.consumers.core.repository</a></h3>
-<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
-<caption><span>Methods in <a href="../../../../../org/apache/archiva/consumers/core/repository/package-summary.html">org.apache.archiva.consumers.core.repository</a> that throw <a href="../../../../../org/apache/archiva/repository/LayoutException.html" title="class in org.apache.archiva.repository">LayoutException</a></span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Method and Description</th>
-</tr>
-<tbody>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="../../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a></code></td>
-<td class="colLast"><span class="typeNameLabel">RetentionCountRepositoryPurge.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/consumers/core/repository/RetentionCountRepositoryPurge.html#getNewArtifactReference-org.apache.archiva.model.ArtifactReference-java.lang.String-">getNewArtifactReference</a></span>(<a href="../../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a>&nbsp;reference,
-                       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;version)</code>&nbsp;</td>
-</tr>
-</tbody>
-</table>
-</li>
 <li class="blockList"><a name="org.apache.archiva.repository">
 <!--   -->
 </a>
@@ -148,6 +129,18 @@
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a></code></td>
 <td class="colLast"><span class="typeNameLabel">RepositoryContent.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryContent.html#toArtifactReference-java.lang.String-">toArtifactReference</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path)</code>
 <div class="block">Given a repository relative path to a filename, return the <a href="../../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model"><code>VersionedReference</code></a> object suitable for the path.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a></code></td>
+<td class="colLast"><span class="typeNameLabel">RepositoryRequestInfo.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryRequestInfo.html#toArtifactReference-java.lang.String-">toArtifactReference</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;requestPath)</code>
+<div class="block">Returns the artifact reference for a given path.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">RepositoryRequestInfo.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/RepositoryRequestInfo.html#toNativePath-java.lang.String-">toNativePath</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;requestPath)</code>
+<div class="block">Adjust the requestedPath to conform to the native layout of the provided <a href="../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository"><code>ManagedRepositoryContent</code></a>.</div>
 </td>
 </tr>
 </tbody>
@@ -185,29 +178,16 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code>private <a href="../../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a></code></td>
-<td class="colLast"><span class="typeNameLabel">ManagedDefaultRepositoryContent.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/content/maven2/ManagedDefaultRepositoryContent.html#getFirstArtifact-org.apache.archiva.model.VersionedReference-">getFirstArtifact</a></span>(<a href="../../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</a>&nbsp;reference)</code>
-<div class="block">Get the first Artifact found in the provided VersionedReference location.</div>
-</td>
-</tr>
-<tr class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">ManagedDefaultRepositoryContent.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/content/maven2/ManagedDefaultRepositoryContent.html#getVersions-org.apache.archiva.model.ProjectReference-">getVersions</a></span>(<a href="../../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model">ProjectReference</a>&nbsp;reference)</code>
 <div class="block">Gather the Available Versions (on disk) for a specific Project Reference, based on filesystem
  information.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a></code></td>
 <td class="colLast"><span class="typeNameLabel">RemoteDefaultRepositoryContent.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/content/maven2/RemoteDefaultRepositoryContent.html#toArtifactReference-java.lang.String-">toArtifactReference</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path)</code>
 <div class="block">Convert a path to an artifact reference.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a></code></td>
-<td class="colLast"><span class="typeNameLabel">RepositoryRequest.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/content/maven2/RepositoryRequest.html#toArtifactReference-java.lang.String-">toArtifactReference</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;requestedPath)</code>
-<div class="block">Takes an incoming requested path (in "/" format) and gleans the layout
- and ArtifactReference appropriate for that content.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -224,24 +204,30 @@
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a></code></td>
-<td class="colLast"><span class="typeNameLabel">AbstractDefaultRepositoryContent.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/content/maven2/AbstractDefaultRepositoryContent.html#toArtifactReference-java.lang.String-">toArtifactReference</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path)</code>&nbsp;</td>
+<td class="colLast"><span class="typeNameLabel">MavenRepositoryRequestInfo.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/content/maven2/MavenRepositoryRequestInfo.html#toArtifactReference-java.lang.String-">toArtifactReference</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;requestedPath)</code>
+<div class="block">Takes an incoming requested path (in "/" format) and gleans the layout
+ and ArtifactReference appropriate for that content.</div>
+</td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a></code></td>
+<td class="colLast"><span class="typeNameLabel">AbstractDefaultRepositoryContent.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/content/maven2/AbstractDefaultRepositoryContent.html#toArtifactReference-java.lang.String-">toArtifactReference</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">RepositoryRequest.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/content/maven2/RepositoryRequest.html#toNativePath-java.lang.String-org.apache.archiva.repository.ManagedRepositoryContent-">toNativePath</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;requestedPath,
-            <a href="../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;repository)</code>
+<td class="colLast"><span class="typeNameLabel">MavenRepositoryRequestInfo.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/content/maven2/MavenRepositoryRequestInfo.html#toNativePath-java.lang.String-">toNativePath</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;requestedPath)</code>
 <div class="block">Adjust the requestedPath to conform to the native layout of the provided <a href="../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository"><code>ManagedRepositoryContent</code></a>.</div>
 </td>
 </tr>
 </tbody>
 </table>
 </li>
-<li class="blockList"><a name="org.apache.archiva.repository.metadata">
+<li class="blockList"><a name="org.apache.archiva.repository.metadata.base">
 <!--   -->
 </a>
-<h3>Uses of <a href="../../../../../org/apache/archiva/repository/LayoutException.html" title="class in org.apache.archiva.repository">LayoutException</a> in <a href="../../../../../org/apache/archiva/repository/metadata/package-summary.html">org.apache.archiva.repository.metadata</a></h3>
+<h3>Uses of <a href="../../../../../org/apache/archiva/repository/LayoutException.html" title="class in org.apache.archiva.repository">LayoutException</a> in <a href="../../../../../org/apache/archiva/repository/metadata/base/package-summary.html">org.apache.archiva.repository.metadata.base</a></h3>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
-<caption><span>Methods in <a href="../../../../../org/apache/archiva/repository/metadata/package-summary.html">org.apache.archiva.repository.metadata</a> that throw <a href="../../../../../org/apache/archiva/repository/LayoutException.html" title="class in org.apache.archiva.repository">LayoutException</a></span><span class="tabEnd">&nbsp;</span></caption>
+<caption><span>Methods in <a href="../../../../../org/apache/archiva/repository/metadata/base/package-summary.html">org.apache.archiva.repository.metadata.base</a> that throw <a href="../../../../../org/apache/archiva/repository/LayoutException.html" title="class in org.apache.archiva.repository">LayoutException</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
@@ -249,31 +235,68 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">MetadataTools.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/metadata/MetadataTools.html#gatherSnapshotVersions-org.apache.archiva.repository.ManagedRepositoryContent-org.apache.archiva.model.VersionedReference-">gatherSnapshotVersions</a></span>(<a href="../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;managedRepository,
+<td class="colLast"><span class="typeNameLabel">MetadataTools.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/metadata/base/MetadataTools.html#gatherSnapshotVersions-org.apache.archiva.repository.ManagedRepositoryContent-org.apache.archiva.model.VersionedReference-">gatherSnapshotVersions</a></span>(<a href="../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;managedRepository,
                       <a href="../../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</a>&nbsp;reference)</code>
 <div class="block">Gather the set of snapshot versions found in a particular versioned reference.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/archiva/model/ArtifactReference.html" title="class in org.apache.archiva.model">ArtifactReference</a></code></td>
-<td class="colLast"><span class="typeNameLabel">MetadataTools.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/metadata/MetadataTools.html#getFirstArtifact-org.apache.archiva.repository.ManagedRepositoryContent-org.apache.archiva.model.VersionedReference-">getFirstArtifact</a></span>(<a href="../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;managedRepository,
+<td class="colLast"><span class="typeNameLabel">MetadataTools.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/metadata/base/MetadataTools.html#getFirstArtifact-org.apache.archiva.repository.ManagedRepositoryContent-org.apache.archiva.model.VersionedReference-">getFirstArtifact</a></span>(<a href="../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;managedRepository,
                 <a href="../../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</a>&nbsp;reference)</code>
 <div class="block">Get the first Artifact found in the provided VersionedReference location.</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">MetadataTools.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/metadata/MetadataTools.html#updateMetadata-org.apache.archiva.repository.ManagedRepositoryContent-org.apache.archiva.model.ProjectReference-">updateMetadata</a></span>(<a href="../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;managedRepository,
+<td class="colLast"><span class="typeNameLabel">MetadataTools.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/metadata/base/MetadataTools.html#updateMetadata-org.apache.archiva.repository.ManagedRepositoryContent-org.apache.archiva.model.ProjectReference-">updateMetadata</a></span>(<a href="../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;managedRepository,
               <a href="../../../../../org/apache/archiva/model/ProjectReference.html" title="class in org.apache.archiva.model">ProjectReference</a>&nbsp;reference)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;&nbsp;</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">MetadataTools.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/metadata/MetadataTools.html#updateMetadata-org.apache.archiva.repository.ManagedRepositoryContent-org.apache.archiva.model.VersionedReference-">updateMetadata</a></span>(<a href="../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;managedRepository,
+<td class="colLast"><span class="typeNameLabel">MetadataTools.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/repository/metadata/base/MetadataTools.html#updateMetadata-org.apache.archiva.repository.ManagedRepositoryContent-org.apache.archiva.model.VersionedReference-">updateMetadata</a></span>(<a href="../../../../../org/apache/archiva/repository/ManagedRepositoryContent.html" title="interface in org.apache.archiva.repository">ManagedRepositoryContent</a>&nbsp;managedRepository,
               <a href="../../../../../org/apache/archiva/model/VersionedReference.html" title="class in org.apache.archiva.model">VersionedReference</a>&nbsp;reference)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;&nbsp;</div>
 </td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.archiva.webdav">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/archiva/repository/LayoutException.html" title="class in org.apache.archiva.repository">LayoutException</a> in <a href="../../../../../org/apache/archiva/webdav/package-summary.html">org.apache.archiva.webdav</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing constructors, and an explanation">
+<caption><span>Constructors in <a href="../../../../../org/apache/archiva/webdav/package-summary.html">org.apache.archiva.webdav</a> that throw <a href="../../../../../org/apache/archiva/repository/LayoutException.html" title="class in org.apache.archiva.repository">LayoutException</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/webdav/ArchivaDavResource.html#ArchivaDavResource-org.apache.archiva.repository.storage.StorageAsset-java.lang.String-org.apache.archiva.repository.storage.RepositoryStorage-org.apache.jackrabbit.webdav.DavSession-org.apache.archiva.webdav.ArchivaDavResourceLocator-org.apache.jackrabbit.webdav.DavResourceFactory-org.apache.archiva.webdav.util.MimeTypes-java.util.List-org.apache.archiva.scheduler.repository.model.RepositoryArchivaTaskScheduler-">ArchivaDavResource</a></span>(<a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;localResource,
+                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;logicalResource,
+                  <a href="../../../../../org/apache/archiva/repository/storage/RepositoryStorage.html" title="interface in org.apache.archiva.repository.storage">RepositoryStorage</a>&nbsp;repositoryStorage,
+                  org.apache.jackrabbit.webdav.DavSession&nbsp;session,
+                  <a href="../../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</a>&nbsp;locator,
+                  org.apache.jackrabbit.webdav.DavResourceFactory&nbsp;factory,
+                  <a href="../../../../../org/apache/archiva/webdav/util/MimeTypes.html" title="class in org.apache.archiva.webdav.util">MimeTypes</a>&nbsp;mimeTypes,
+                  <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/metadata/audit/AuditListener.html" title="interface in org.apache.archiva.metadata.audit">AuditListener</a>&gt;&nbsp;auditListeners,
+                  <a href="../../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler.repository.model">RepositoryArchivaTaskScheduler</a>&nbsp;scheduler)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/archiva/webdav/ArchivaDavResource.html#ArchivaDavResource-org.apache.archiva.repository.storage.StorageAsset-java.lang.String-org.apache.archiva.repository.storage.RepositoryStorage-java.lang.String-java.lang.String-org.apache.jackrabbit.webdav.DavSession-org.apache.archiva.webdav.ArchivaDavResourceLocator-org.apache.jackrabbit.webdav.DavResourceFactory-org.apache.archiva.webdav.util.MimeTypes-java.util.List-org.apache.archiva.scheduler.repository.model.RepositoryArchivaTaskScheduler-">ArchivaDavResource</a></span>(<a href="../../../../../org/apache/archiva/repository/storage/StorageAsset.html" title="interface in org.apache.archiva.repository.storage">StorageAsset</a>&nbsp;localResource,
+                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;logicalResource,
+                  <a href="../../../../../org/apache/archiva/repository/storage/RepositoryStorage.html" title="interface in org.apache.archiva.repository.storage">RepositoryStorage</a>&nbsp;repositoryStorage,
+                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;remoteAddr,
+                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;principal,
+                  org.apache.jackrabbit.webdav.DavSession&nbsp;session,
+                  <a href="../../../../../org/apache/archiva/webdav/ArchivaDavResourceLocator.html" title="class in org.apache.archiva.webdav">ArchivaDavResourceLocator</a>&nbsp;locator,
+                  org.apache.jackrabbit.webdav.DavResourceFactory&nbsp;factory,
+                  <a href="../../../../../org/apache/archiva/webdav/util/MimeTypes.html" title="class in org.apache.archiva.webdav.util">MimeTypes</a>&nbsp;mimeTypes,
+                  <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/archiva/metadata/audit/AuditListener.html" title="interface in org.apache.archiva.metadata.audit">AuditListener</a>&gt;&nbsp;auditListeners,
+                  <a href="../../../../../org/apache/archiva/scheduler/repository/model/RepositoryArchivaTaskScheduler.html" title="interface in org.apache.archiva.scheduler.repository.model">RepositoryArchivaTaskScheduler</a>&nbsp;scheduler)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -329,6 +352,6 @@
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

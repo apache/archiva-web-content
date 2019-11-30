@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
+var methods = {"i0":10,"i1":10,"i2":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/DependencyTreeBuilderException.html" title="class in org.apache.archiva.dependency.tree.maven2"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.ResolveRequest.html" title="class in org.apache.archiva.dependency.tree.maven2"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/TreeDependencyNodeVisitor.html" title="class in org.apache.archiva.dependency.tree.maven2"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../index.html?org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html" target="_top">Frames</a></li>
@@ -74,14 +74,14 @@ var activeTableTab = "activeTableTab";
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -114,7 +114,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>@Service(value="dependencyTreeBuilder#maven3")
-public class <a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.89">Maven3DependencyTreeBuilder</a>
+public class <a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.70">Maven3DependencyTreeBuilder</a>
 extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements <a href="../../../../../../org/apache/archiva/dependency/tree/maven2/DependencyTreeBuilder.html" title="interface in org.apache.archiva.dependency.tree.maven2">DependencyTreeBuilder</a></pre>
 <dl>
@@ -129,72 +129,6 @@ implements <a href="../../../../../../org/apache/archiva/dependency/tree/maven2/
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- ======== NESTED CLASS SUMMARY ======== -->
-<ul class="blockList">
-<li class="blockList"><a name="nested.class.summary">
-<!--   -->
-</a>
-<h3>Nested Class Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Nested Class Summary table, listing nested classes, and an explanation">
-<caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Class and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private static class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.ResolveRequest.html" title="class in org.apache.archiva.dependency.tree.maven2">Maven3DependencyTreeBuilder.ResolveRequest</a></span></code>&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
-<!-- =========== FIELD SUMMARY =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private org.apache.maven.artifact.factory.ArtifactFactory</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#factory">factory</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private org.slf4j.Logger</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#log">log</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="../../../../../../org/apache/archiva/admin/model/managed/ManagedRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.managed">ManagedRepositoryAdmin</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#managedRepositoryAdmin">managedRepositoryAdmin</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="../../../../../../org/apache/archiva/admin/model/networkproxy/NetworkProxyAdmin.html" title="interface in org.apache.archiva.admin.model.networkproxy">NetworkProxyAdmin</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#networkProxyAdmin">networkProxyAdmin</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="../../../../../../org/apache/archiva/metadata/repository/storage/RepositoryPathTranslator.html" title="interface in org.apache.archiva.metadata.repository.storage">RepositoryPathTranslator</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#pathTranslator">pathTranslator</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="../../../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridge.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridge</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#plexusSisuBridge">plexusSisuBridge</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>private <a href="../../../../../../org/apache/archiva/admin/model/proxyconnector/ProxyConnectorAdmin.html" title="interface in org.apache.archiva.admin.model.proxyconnector">ProxyConnectorAdmin</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#proxyConnectorAdmin">proxyConnectorAdmin</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>private <a href="../../../../../../org/apache/archiva/admin/model/remote/RemoteRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.remote">RemoteRepositoryAdmin</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#remoteRepositoryAdmin">remoteRepositoryAdmin</a></span></code>&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -240,26 +174,8 @@ implements <a href="../../../../../../org/apache/archiva/dependency/tree/maven2/
                    org.eclipse.aether.graph.DependencyVisitor&nbsp;dependencyVisitor)</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>private <a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#findArtifactInRepositories-java.util.List-org.apache.maven.artifact.Artifact-">findArtifactInRepositories</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositoryIds,
-                          org.apache.maven.artifact.Artifact&nbsp;projectArtifact)</code>&nbsp;</td>
-</tr>
-<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#initialize--">initialize</a></span>()</code>&nbsp;</td>
-</tr>
-<tr id="i4" class="altColor">
-<td class="colFirst"><code>private org.eclipse.aether.RepositorySystem</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#newRepositorySystem--">newRepositorySystem</a></span>()</code>&nbsp;</td>
-</tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>private org.eclipse.aether.RepositorySystemSession</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#newRepositorySystemSession-org.eclipse.aether.RepositorySystem-java.lang.String-">newRepositorySystemSession</a></span>(org.eclipse.aether.RepositorySystem&nbsp;system,
-                          <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;localRepoDir)</code>&nbsp;</td>
-</tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#resolve-org.apache.archiva.dependency.tree.maven2.Maven3DependencyTreeBuilder.ResolveRequest-">resolve</a></span>(<a href="../../../../../../org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.ResolveRequest.html" title="class in org.apache.archiva.dependency.tree.maven2">Maven3DependencyTreeBuilder.ResolveRequest</a>&nbsp;resolveRequest)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -277,93 +193,6 @@ implements <a href="../../../../../../org/apache/archiva/dependency/tree/maven2/
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a name="log">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>log</h4>
-<pre>private&nbsp;org.slf4j.Logger <a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.92">log</a></pre>
-</li>
-</ul>
-<a name="plexusSisuBridge">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>plexusSisuBridge</h4>
-<pre>@Inject
-private&nbsp;<a href="../../../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridge.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridge</a> <a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.95">plexusSisuBridge</a></pre>
-</li>
-</ul>
-<a name="pathTranslator">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>pathTranslator</h4>
-<pre>@Inject
- @Named(value="repositoryPathTranslator#maven2")
-private&nbsp;<a href="../../../../../../org/apache/archiva/metadata/repository/storage/RepositoryPathTranslator.html" title="interface in org.apache.archiva.metadata.repository.storage">RepositoryPathTranslator</a> <a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.99">pathTranslator</a></pre>
-</li>
-</ul>
-<a name="managedRepositoryAdmin">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>managedRepositoryAdmin</h4>
-<pre>@Inject
-private&nbsp;<a href="../../../../../../org/apache/archiva/admin/model/managed/ManagedRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.managed">ManagedRepositoryAdmin</a> <a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.102">managedRepositoryAdmin</a></pre>
-</li>
-</ul>
-<a name="proxyConnectorAdmin">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>proxyConnectorAdmin</h4>
-<pre>@Inject
-private&nbsp;<a href="../../../../../../org/apache/archiva/admin/model/proxyconnector/ProxyConnectorAdmin.html" title="interface in org.apache.archiva.admin.model.proxyconnector">ProxyConnectorAdmin</a> <a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.105">proxyConnectorAdmin</a></pre>
-</li>
-</ul>
-<a name="networkProxyAdmin">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>networkProxyAdmin</h4>
-<pre>@Inject
-private&nbsp;<a href="../../../../../../org/apache/archiva/admin/model/networkproxy/NetworkProxyAdmin.html" title="interface in org.apache.archiva.admin.model.networkproxy">NetworkProxyAdmin</a> <a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.108">networkProxyAdmin</a></pre>
-</li>
-</ul>
-<a name="remoteRepositoryAdmin">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>remoteRepositoryAdmin</h4>
-<pre>@Inject
-private&nbsp;<a href="../../../../../../org/apache/archiva/admin/model/remote/RemoteRepositoryAdmin.html" title="interface in org.apache.archiva.admin.model.remote">RemoteRepositoryAdmin</a> <a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.111">remoteRepositoryAdmin</a></pre>
-</li>
-</ul>
-<a name="factory">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>factory</h4>
-<pre>private&nbsp;org.apache.maven.artifact.factory.ArtifactFactory <a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.113">factory</a></pre>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
@@ -376,7 +205,7 @@ private&nbsp;<a href="../../../../../../org/apache/archiva/admin/model/remote/Re
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Maven3DependencyTreeBuilder</h4>
-<pre>public&nbsp;<a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.89">Maven3DependencyTreeBuilder</a>()</pre>
+<pre>public&nbsp;<a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.70">Maven3DependencyTreeBuilder</a>()</pre>
 </li>
 </ul>
 </li>
@@ -394,7 +223,7 @@ private&nbsp;<a href="../../../../../../org/apache/archiva/admin/model/remote/Re
 <li class="blockList">
 <h4>initialize</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/PostConstruct.html?is-external=true" title="class or interface in javax.annotation">@PostConstruct</a>
-public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.117">initialize</a>()
+public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.98">initialize</a>()
                                throws <a href="../../../../../../org/apache/archiva/common/plexusbridge/PlexusSisuBridgeException.html" title="class in org.apache.archiva.common.plexusbridge">PlexusSisuBridgeException</a></pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
@@ -408,7 +237,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/dep
 <ul class="blockList">
 <li class="blockList">
 <h4>buildDependencyTree</h4>
-<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.128">buildDependencyTree</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositoryIds,
+<pre>public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.106">buildDependencyTree</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositoryIds,
                                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;groupId,
                                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;artifactId,
                                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;version,
@@ -425,10 +254,10 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/dep
 <a name="buildDependencyTree-java.util.List-java.lang.String-java.lang.String-java.lang.String-">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>buildDependencyTree</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/archiva/maven2/model/TreeEntry.html" title="class in org.apache.archiva.maven2.model">TreeEntry</a>&gt;&nbsp;<a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.197">buildDependencyTree</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositoryIds,
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/archiva/maven2/model/TreeEntry.html" title="class in org.apache.archiva.maven2.model">TreeEntry</a>&gt;&nbsp;<a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.168">buildDependencyTree</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositoryIds,
                                            <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;groupId,
                                            <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;artifactId,
                                            <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;version)
@@ -438,49 +267,6 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/dep
 <dd><code><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/DependencyTreeBuilder.html#buildDependencyTree-java.util.List-java.lang.String-java.lang.String-java.lang.String-">buildDependencyTree</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/DependencyTreeBuilder.html" title="interface in org.apache.archiva.dependency.tree.maven2">DependencyTreeBuilder</a></code></dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/DependencyTreeBuilderException.html" title="class in org.apache.archiva.dependency.tree.maven2">DependencyTreeBuilderException</a></code></dd>
-</dl>
-</li>
-</ul>
-<a name="resolve-org.apache.archiva.dependency.tree.maven2.Maven3DependencyTreeBuilder.ResolveRequest-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>resolve</h4>
-<pre>private&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.224">resolve</a>(<a href="../../../../../../org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.ResolveRequest.html" title="class in org.apache.archiva.dependency.tree.maven2">Maven3DependencyTreeBuilder.ResolveRequest</a>&nbsp;resolveRequest)</pre>
-</li>
-</ul>
-<a name="newRepositorySystem--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>newRepositorySystem</h4>
-<pre>private&nbsp;org.eclipse.aether.RepositorySystem&nbsp;<a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.262">newRepositorySystem</a>()</pre>
-</li>
-</ul>
-<a name="newRepositorySystemSession-org.eclipse.aether.RepositorySystem-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>newRepositorySystemSession</h4>
-<pre>private&nbsp;org.eclipse.aether.RepositorySystemSession&nbsp;<a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.276">newRepositorySystemSession</a>(org.eclipse.aether.RepositorySystem&nbsp;system,
-                                                                              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;localRepoDir)</pre>
-</li>
-</ul>
-<a name="findArtifactInRepositories-java.util.List-org.apache.maven.artifact.Artifact-">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>findArtifactInRepositories</h4>
-<pre>private&nbsp;<a href="../../../../../../org/apache/archiva/admin/model/beans/ManagedRepository.html" title="class in org.apache.archiva.admin.model.beans">ManagedRepository</a>&nbsp;<a href="../../../../../../src-html/org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html#line.299">findArtifactInRepositories</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;repositoryIds,
-                                                     org.apache.maven.artifact.Artifact&nbsp;projectArtifact)
-                                              throws <a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</a></pre>
-<dl>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="../../../../../../org/apache/archiva/admin/model/RepositoryAdminException.html" title="class in org.apache.archiva.admin.model">RepositoryAdminException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -513,7 +299,7 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/dep
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/DependencyTreeBuilderException.html" title="class in org.apache.archiva.dependency.tree.maven2"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.ResolveRequest.html" title="class in org.apache.archiva.dependency.tree.maven2"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../org/apache/archiva/dependency/tree/maven2/TreeDependencyNodeVisitor.html" title="class in org.apache.archiva.dependency.tree.maven2"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../index.html?org/apache/archiva/dependency/tree/maven2/Maven3DependencyTreeBuilder.html" target="_top">Frames</a></li>
@@ -537,14 +323,14 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/dep
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -553,6 +339,6 @@ public&nbsp;void&nbsp;<a href="../../../../../../src-html/org/apache/archiva/dep
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2018 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2006&#x2013;2019 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>
