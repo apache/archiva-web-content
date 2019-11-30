@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-  <title>Redback :: Integration :: REST :: Api: LoginService</title>
+  <title>Apache Archiva Redback REST API: LoginService</title>
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +31,7 @@
   <header>
  
    <div id="header" class="column first last span-20">
-        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">Redback :: Integration :: REST :: Api: LoginService</a></div>
+        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">Apache Archiva Redback REST API: LoginService</a></div>
         <div id="primary" class="column span-18 append-1 prepend-1 first last">
           <ul class="navigation">
             <li id="nav-rest"><a href="resources.html">REST</a></li>
@@ -64,7 +64,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Redback :: Integration :: REST :: Api: LoginService</a>
+        <a class="navbar-brand" href="index.html">Apache Archiva Redback REST API: LoginService</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
@@ -82,16 +82,16 @@
 
       <p></p>
       <ul>
-<li><a href="#resource_LoginService_addAuthenticationKey_GET">.//loginService/addAuthenticationKey</a></li>
-<li><a href="#resource_LoginService_isLogged_GET">.//loginService/isLogged</a></li>
-<li><a href="#resource_LoginService_logIn_POST">.//loginService/logIn</a></li>
-<li><a href="#resource_LoginService_logout_GET">.//loginService/logout</a></li>
-<li><a href="#resource_LoginService_ping_GET">.//loginService/ping</a></li>
-<li><a href="#resource_LoginService_pingWithAutz_GET">.//loginService/pingWithAutz</a></li>
+<li><a href="#resource_LoginService_addAuthenticationKey_GET">./redbackServices/loginService/addAuthenticationKey</a></li>
+<li><a href="#resource_LoginService_isLogged_GET">./redbackServices/loginService/isLogged</a></li>
+<li><a href="#resource_LoginService_logIn_POST">./redbackServices/loginService/logIn</a></li>
+<li><a href="#resource_LoginService_logout_GET">./redbackServices/loginService/logout</a></li>
+<li><a href="#resource_LoginService_ping_GET">./redbackServices/loginService/ping</a></li>
+<li><a href="#resource_LoginService_pingWithAutz_GET">./redbackServices/loginService/pingWithAutz</a></li>
       </ul>
 
       <div id="resource_LoginService_addAuthenticationKey_GET">
-        <h2>GET <small>/loginService/addAuthenticationKey <a href=".//loginService/addAuthenticationKey" class="glyphicon glyphicon-new-window" target="_blank"></a></small></h2>
+        <h2>GET <small>/loginService/addAuthenticationKey <a href="./redbackServices/loginService/addAuthenticationKey" class="glyphicon glyphicon-new-window" target="_blank"></a></small></h2>
 
         <p></p>
 
@@ -145,8 +145,8 @@
           <tbody>
           <tr>
             <td><abbr data-toggle="tooltip" data-placement="top" title="Use the &quot;Accept: application/json&quot; HTTP header to request that this media type be provided by the server.">application/json</abbr></td>
-            <td>(custom)
-</td>
+            <td>string
+ (JSON)</td>
             <td rowspan="3"></td>
           </tr>
           <tr>
@@ -156,7 +156,7 @@
           </tr>
           <tr>
             <td><abbr data-toggle="tooltip" data-placement="top" title="Use the &quot;Accept: text/plain&quot; HTTP header to request that this media type be provided by the server.">text/plain</abbr></td>
-            <td>(custom)
+            <td>string
 </td>
           </tr>
           </tbody>
@@ -169,7 +169,7 @@
       </dl>
 
       <div id="resource_LoginService_isLogged_GET">
-        <h2>GET <small>/loginService/isLogged <a href=".//loginService/isLogged" class="glyphicon glyphicon-new-window" target="_blank"></a></small></h2>
+        <h2>GET <small>/loginService/isLogged <a href="./redbackServices/loginService/isLogged" class="glyphicon glyphicon-new-window" target="_blank"></a></small></h2>
 
         <p>simply check if current user has an <a target="_blank" href="http session">http session</a> opened with authz passed and return user data</p>
 
@@ -190,8 +190,8 @@
           <tbody>
           <tr>
             <td><abbr data-toggle="tooltip" data-placement="top" title="Use the &quot;Accept: application/json&quot; HTTP header to request that this media type be provided by the server.">application/json</abbr></td>
-            <td>(custom)
-</td>
+            <td><a href="json_User.html">User</a>
+ (JSON)</td>
             <td rowspan="2"></td>
           </tr>
           <tr>
@@ -204,7 +204,7 @@
       </div>
 
       <div id="resource_LoginService_logIn_POST">
-        <h2>POST <small>/loginService/logIn <a href=".//loginService/logIn" class="glyphicon glyphicon-new-window" target="_blank"></a></small></h2>
+        <h2>POST <small>/loginService/logIn <a href="./redbackServices/loginService/logIn" class="glyphicon glyphicon-new-window" target="_blank"></a></small></h2>
 
         <p>check username/password and create a <a target="_blank" href="http session.">http session.</a>
 So no more need of reuse username/password for all ajaxRequest</p>
@@ -218,6 +218,11 @@ So no more need of reuse username/password for all ajaxRequest</p>
           </tr>
           </thead>
           <tbody>
+          <tr>
+            <td><abbr data-toggle="tooltip" data-placement="top" title="Use the &quot;Content-Type: application/json&quot; HTTP header to specify this media type to the server.">application/json</abbr></td>
+            <td><a href="json_LoginRequest.html">LoginRequest</a>
+ (JSON)</td>
+          </tr>
           <tr>
             <td><abbr data-toggle="tooltip" data-placement="top" title="Use the &quot;Content-Type: application/xml&quot; HTTP header to specify this media type to the server.">application/xml</abbr></td>
             <td><a href="xml_ns0_loginRequest.html">loginRequest</a>
@@ -238,8 +243,8 @@ So no more need of reuse username/password for all ajaxRequest</p>
           <tbody>
           <tr>
             <td><abbr data-toggle="tooltip" data-placement="top" title="Use the &quot;Accept: application/json&quot; HTTP header to request that this media type be provided by the server.">application/json</abbr></td>
-            <td>(custom)
-</td>
+            <td><a href="json_User.html">User</a>
+ (JSON)</td>
             <td rowspan="3"></td>
           </tr>
           <tr>
@@ -249,7 +254,7 @@ So no more need of reuse username/password for all ajaxRequest</p>
           </tr>
           <tr>
             <td><abbr data-toggle="tooltip" data-placement="top" title="Use the &quot;Accept: text/plain&quot; HTTP header to request that this media type be provided by the server.">text/plain</abbr></td>
-            <td>(custom)
+            <td>object
 </td>
           </tr>
           </tbody>
@@ -262,7 +267,7 @@ So no more need of reuse username/password for all ajaxRequest</p>
       </dl>
 
       <div id="resource_LoginService_logout_GET">
-        <h2>GET <small>/loginService/logout <a href=".//loginService/logout" class="glyphicon glyphicon-new-window" target="_blank"></a></small></h2>
+        <h2>GET <small>/loginService/logout <a href="./redbackServices/loginService/logout" class="glyphicon glyphicon-new-window" target="_blank"></a></small></h2>
 
         <p>clear user <a target="_blank" href="http session">http session</a></p>
 
@@ -283,8 +288,8 @@ So no more need of reuse username/password for all ajaxRequest</p>
           <tbody>
           <tr>
             <td><abbr data-toggle="tooltip" data-placement="top" title="Use the &quot;Accept: application/json&quot; HTTP header to request that this media type be provided by the server.">application/json</abbr></td>
-            <td>(custom)
-</td>
+            <td>boolean
+ (JSON)</td>
             <td rowspan="3"></td>
           </tr>
           <tr>
@@ -294,7 +299,7 @@ So no more need of reuse username/password for all ajaxRequest</p>
           </tr>
           <tr>
             <td><abbr data-toggle="tooltip" data-placement="top" title="Use the &quot;Accept: text/plain&quot; HTTP header to request that this media type be provided by the server.">text/plain</abbr></td>
-            <td>(custom)
+            <td>object
 </td>
           </tr>
           </tbody>
@@ -302,7 +307,7 @@ So no more need of reuse username/password for all ajaxRequest</p>
       </div>
 
       <div id="resource_LoginService_ping_GET">
-        <h2>GET <small>/loginService/ping <a href=".//loginService/ping" class="glyphicon glyphicon-new-window" target="_blank"></a></small></h2>
+        <h2>GET <small>/loginService/ping <a href="./redbackServices/loginService/ping" class="glyphicon glyphicon-new-window" target="_blank"></a></small></h2>
 
         <p></p>
 
@@ -318,8 +323,8 @@ So no more need of reuse username/password for all ajaxRequest</p>
           <tbody>
           <tr>
             <td><abbr data-toggle="tooltip" data-placement="top" title="Use the &quot;Accept: application/json&quot; HTTP header to request that this media type be provided by the server.">application/json</abbr></td>
-            <td>(custom)
-</td>
+            <td>boolean
+ (JSON)</td>
             <td rowspan="3"></td>
           </tr>
           <tr>
@@ -329,7 +334,7 @@ So no more need of reuse username/password for all ajaxRequest</p>
           </tr>
           <tr>
             <td><abbr data-toggle="tooltip" data-placement="top" title="Use the &quot;Accept: text/plain&quot; HTTP header to request that this media type be provided by the server.">text/plain</abbr></td>
-            <td>(custom)
+            <td>object
 </td>
           </tr>
           </tbody>
@@ -337,7 +342,7 @@ So no more need of reuse username/password for all ajaxRequest</p>
       </div>
 
       <div id="resource_LoginService_pingWithAutz_GET">
-        <h2>GET <small>/loginService/pingWithAutz <a href=".//loginService/pingWithAutz" class="glyphicon glyphicon-new-window" target="_blank"></a></small></h2>
+        <h2>GET <small>/loginService/pingWithAutz <a href="./redbackServices/loginService/pingWithAutz" class="glyphicon glyphicon-new-window" target="_blank"></a></small></h2>
 
         <p></p>
 
@@ -353,8 +358,8 @@ So no more need of reuse username/password for all ajaxRequest</p>
           <tbody>
           <tr>
             <td><abbr data-toggle="tooltip" data-placement="top" title="Use the &quot;Accept: application/json&quot; HTTP header to request that this media type be provided by the server.">application/json</abbr></td>
-            <td>(custom)
-</td>
+            <td>boolean
+ (JSON)</td>
             <td rowspan="3"></td>
           </tr>
           <tr>
@@ -364,7 +369,7 @@ So no more need of reuse username/password for all ajaxRequest</p>
           </tr>
           <tr>
             <td><abbr data-toggle="tooltip" data-placement="top" title="Use the &quot;Accept: text/plain&quot; HTTP header to request that this media type be provided by the server.">text/plain</abbr></td>
-            <td>(custom)
+            <td>object
 </td>
           </tr>
           </tbody>

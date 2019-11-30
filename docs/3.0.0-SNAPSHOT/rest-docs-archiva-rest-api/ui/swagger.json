@@ -10,7 +10,7 @@
       "name" : "The Apache Software License, Version 2.0"
     },
     "version" : "3.0.0-SNAPSHOT",
-    "title" : "Archiva Web :: REST support :: Api"
+    "title" : "Apache Archiva REST API"
   },
   "schemes" : [],
   "tags" : [
@@ -102,6 +102,7 @@
     "xml_ns0_abstractRepositoryConnector" : {
       "type" : "object",
       "title" : "abstractRepositoryConnector",
+      "required" : ["disabled"],
       "allOf" : [
         {
           "properties" : {
@@ -286,14 +287,16 @@
                 "namespace" : ""
               },
             "readOnly" : false,
-"$ref" : "#/definitions/xml_ns0_fileLockConfiguration"
+"$ref" : "#/definitions/xml_ns0_fileLockConfiguration",
+"description" : ""
             },
             "urlFailureCacheConfiguration" : {
               "xml" : {
                 "namespace" : ""
               },
             "readOnly" : false,
-"$ref" : "#/definitions/xml_ns0_cacheConfiguration"
+"$ref" : "#/definitions/xml_ns0_cacheConfiguration",
+"description" : ""
             }
           }
         }
@@ -308,6 +311,7 @@
         "namespace" : ""
       },
       "title" : "cacheConfiguration",
+      "required" : ["maxElementsInMemory", "maxElementsOnDisk", "timeToIdleSeconds", "timeToLiveSeconds"],
       "allOf" : [
         {
           "properties" : {
@@ -360,6 +364,7 @@
         "namespace" : ""
       },
       "title" : "fileLockConfiguration",
+      "required" : ["lockingTimeout", "skipLocking"],
       "allOf" : [
         {
           "properties" : {
@@ -428,6 +433,7 @@
         "namespace" : ""
       },
       "title" : "ldapConfiguration",
+      "required" : ["bindAuthenticatorEnabled", "port", "ssl", "useRoleNameAsGroup", "writable"],
       "allOf" : [
         {
           "properties" : {
@@ -639,6 +645,7 @@
         "namespace" : ""
       },
       "title" : "managedRepository",
+      "required" : ["blockRedeployments", "deleteReleasedSnapshots", "releases", "resetStats", "retentionCount", "retentionPeriod", "scanned", "skipPackedIndexCreation", "snapshots", "stageRepoNeeded"],
       "allOf" : [
         {
           "$ref" : "#/definitions/xml_ns0_abstractRepository"
@@ -748,7 +755,8 @@
                 "namespace" : ""
               },
             "readOnly" : false,
-"$ref" : "#/definitions/xml_ns0_managedRepository"
+"$ref" : "#/definitions/xml_ns0_managedRepository",
+"description" : ""
             }
           }
         }
@@ -763,6 +771,7 @@
         "namespace" : ""
       },
       "title" : "networkConfiguration",
+      "required" : ["maxTotal", "maxTotalPerHost", "usePooling"],
       "allOf" : [
         {
           "properties" : {
@@ -805,6 +814,7 @@
         "namespace" : ""
       },
       "title" : "networkProxy",
+      "required" : ["port", "useNtlm"],
       "allOf" : [
         {
           "properties" : {
@@ -950,6 +960,7 @@
         "namespace" : ""
       },
       "title" : "proxyConnector",
+      "required" : ["order"],
       "allOf" : [
         {
           "$ref" : "#/definitions/xml_ns0_abstractRepositoryConnector"
@@ -994,7 +1005,8 @@
                 "namespace" : ""
               },
             "readOnly" : false,
-"$ref" : "#/definitions/xml_ns0_proxyConnectorRuleType"
+"$ref" : "#/definitions/xml_ns0_proxyConnectorRuleType",
+"description" : ""
             },
             "proxyConnectors" : {
               "xml" : {
@@ -1013,16 +1025,6 @@
       "description" : ""
     }
     ,
-    "xml_ns0_proxyConnectorRuleType" : {
-      "type" : "string",
-      "title" : "proxyConnectorRuleType",
-          "enum" : [
-            "WHITE_LIST",
-            "BLACK_LIST"
-          ],
-      "description" : ""
-    }
-    ,
     "xml_ns0_redbackRuntimeConfiguration" : {
       "type" : "object",
       "xml" : {
@@ -1030,6 +1032,7 @@
         "namespace" : ""
       },
       "title" : "redbackRuntimeConfiguration",
+      "required" : ["migratedFromRedbackConfiguration", "useUsersCache"],
       "allOf" : [
         {
           "properties" : {
@@ -1057,7 +1060,8 @@
                 "namespace" : ""
               },
             "readOnly" : false,
-"$ref" : "#/definitions/xml_ns0_ldapConfiguration"
+"$ref" : "#/definitions/xml_ns0_ldapConfiguration",
+"description" : ""
             },
             "ldapGroupMappings" : {
               "xml" : {
@@ -1113,7 +1117,8 @@
                 "namespace" : ""
               },
             "readOnly" : false,
-"$ref" : "#/definitions/xml_ns0_cacheConfiguration"
+"$ref" : "#/definitions/xml_ns0_cacheConfiguration",
+"description" : ""
             }
           }
         }
@@ -1128,6 +1133,7 @@
         "namespace" : ""
       },
       "title" : "remoteRepository",
+      "required" : ["downloadRemoteIndex", "downloadRemoteIndexOnStartup", "remoteDownloadTimeout", "timeout"],
       "allOf" : [
         {
           "$ref" : "#/definitions/xml_ns0_abstractRepository"
@@ -1275,6 +1281,7 @@
         "namespace" : ""
       },
       "title" : "repositoryGroup",
+      "required" : ["mergedIndexTtl"],
       "allOf" : [
         {
           "properties" : {
@@ -1335,6 +1342,7 @@
         "namespace" : ""
       },
       "title" : "uiConfiguration",
+      "required" : ["appletFindEnabled", "disableEasterEggs", "disableRegistration", "showFindArtifacts"],
       "allOf" : [
         {
           "properties" : {
@@ -1381,6 +1389,20 @@
           }
         }
       ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_checksumAlgorithm" : {
+      "type" : "string",
+      "title" : "checksumAlgorithm",
+          "enum" : [
+            "MD5",
+            "SHA1",
+            "SHA256",
+            "SHA384",
+            "SHA512",
+            "ASC"
+          ],
       "description" : ""
     }
     ,
@@ -1626,7 +1648,8 @@
                 "namespace" : ""
               },
             "readOnly" : false,
-"$ref" : "#/definitions/xml_ns0_artifact"
+"$ref" : "#/definitions/xml_ns0_artifact",
+"description" : ""
             },
             "childs" : {
               "xml" : {
@@ -1644,7 +1667,8 @@
                 "namespace" : ""
               },
             "readOnly" : false,
-"$ref" : "#/definitions/xml_ns0_treeEntry"
+"$ref" : "#/definitions/xml_ns0_treeEntry",
+"description" : ""
             }
           }
         }
@@ -1659,12 +1683,21 @@
         "namespace" : ""
       },
       "title" : "artifactMetadata",
+      "required" : ["size"],
       "allOf" : [
         {
           "$ref" : "#/definitions/xml_ns0_facetedMetadata"
         },
         {
           "properties" : {
+            "checksums" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "object"
+            },
             "id" : {
               "xml" : {
                 "namespace" : ""
@@ -1791,6 +1824,7 @@
         "namespace" : ""
       },
       "title" : "dependency",
+      "required" : ["optional"],
       "allOf" : [
         {
           "properties" : {
@@ -1810,7 +1844,7 @@
 "description" : "",
 "type" : "string"
             },
-            "groupId" : {
+            "namespace" : {
               "xml" : {
                 "namespace" : ""
               },
@@ -1825,6 +1859,14 @@
             "readOnly" : false,
 "description" : "",
 "type" : "boolean"
+            },
+            "projectId" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
             },
             "scope" : {
               "xml" : {
@@ -1948,6 +1990,15 @@
       "allOf" : [
         {
           "properties" : {
+            "index" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "integer",
+"format" : "int32"
+            },
             "mainArchiveUrl" : {
               "xml" : {
                 "namespace" : ""
@@ -2044,6 +2095,7 @@
         "namespace" : ""
       },
       "title" : "projectVersionMetadata",
+      "required" : ["incomplete"],
       "allOf" : [
         {
           "$ref" : "#/definitions/xml_ns0_facetedMetadata"
@@ -2055,7 +2107,8 @@
                 "namespace" : ""
               },
             "readOnly" : false,
-"$ref" : "#/definitions/xml_ns0_ciManagement"
+"$ref" : "#/definitions/xml_ns0_ciManagement",
+"description" : ""
             },
             "dependencies" : {
               "xml" : {
@@ -2097,7 +2150,8 @@
                 "namespace" : ""
               },
             "readOnly" : false,
-"$ref" : "#/definitions/xml_ns0_issueManagement"
+"$ref" : "#/definitions/xml_ns0_issueManagement",
+"description" : ""
             },
             "licenses" : {
               "xml" : {
@@ -2134,14 +2188,16 @@
                 "namespace" : ""
               },
             "readOnly" : false,
-"$ref" : "#/definitions/xml_ns0_organization"
+"$ref" : "#/definitions/xml_ns0_organization",
+"description" : ""
             },
             "scm" : {
               "xml" : {
                 "namespace" : ""
               },
             "readOnly" : false,
-"$ref" : "#/definitions/xml_ns0_scm"
+"$ref" : "#/definitions/xml_ns0_scm",
+"description" : ""
             },
             "url" : {
               "xml" : {
@@ -2268,6 +2324,7 @@
     "xml_ns0_repositoryStatistics" : {
       "type" : "object",
       "title" : "repositoryStatistics",
+      "required" : ["newFileCount", "totalArtifactCount", "totalArtifactFileSize", "totalFileCount", "totalGroupCount", "totalProjectCount"],
       "allOf" : [
         {
           "properties" : {
@@ -2331,6 +2388,26 @@
       "description" : ""
     }
     ,
+    "xml_ns0_policyOption" : {
+      "type" : "object",
+      "title" : "policyOption",
+      "allOf" : [
+        {
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_proxyConnectorRuleType" : {
+      "type" : "string",
+      "title" : "proxyConnectorRuleType",
+          "enum" : [
+            "WHITE_LIST",
+            "BLACK_LIST"
+          ],
+      "description" : ""
+    }
+    ,
     "xml_ns0_repositoryScanStatistics" : {
       "type" : "object",
       "xml" : {
@@ -2358,6 +2435,7 @@
     "xml_ns0_abstractImplementationInformation" : {
       "type" : "object",
       "title" : "abstractImplementationInformation",
+      "required" : ["readOnly"],
       "allOf" : [
         {
           "properties" : {
@@ -2398,6 +2476,7 @@
         "namespace" : ""
       },
       "title" : "adminRepositoryConsumer",
+      "required" : ["enabled"],
       "allOf" : [
         {
           "properties" : {
@@ -2438,6 +2517,7 @@
         "namespace" : ""
       },
       "title" : "archivaRepositoryStatistics",
+      "required" : ["duration", "newFileCount", "totalArtifactCount", "totalArtifactFileSize", "totalFileCount", "totalGroupCount", "totalProjectCount"],
       "allOf" : [
         {
           "properties" : {
@@ -2589,6 +2669,7 @@
         "namespace" : ""
       },
       "title" : "artifactContentEntry",
+      "required" : ["depth", "file"],
       "allOf" : [
         {
           "properties" : {
@@ -2692,6 +2773,7 @@
         "namespace" : ""
       },
       "title" : "browseResultEntry",
+      "required" : ["project"],
       "allOf" : [
         {
           "properties" : {
@@ -2740,6 +2822,7 @@
         "namespace" : ""
       },
       "title" : "cacheEntry",
+      "required" : ["cacheHits", "cacheMiss", "inMemorySize", "size"],
       "allOf" : [
         {
           "properties" : {
@@ -2839,6 +2922,7 @@
         "namespace" : ""
       },
       "title" : "consumerScanningStatistics",
+      "required" : ["count", "time"],
       "allOf" : [
         {
           "properties" : {
@@ -3001,7 +3085,7 @@
               },
             "readOnly" : false,
 "description" : "",
-"type" : "string"
+"type" : "object"
             },
             "id" : {
               "xml" : {
@@ -3027,7 +3111,7 @@
 "description" : "",
 "type" : "array",
 "items" : {
-  "type" : "string"
+  "type" : "object"
 }
             }
           }
@@ -3043,6 +3127,7 @@
         "namespace" : ""
       },
       "title" : "queueEntry",
+      "required" : ["entriesNumber"],
       "allOf" : [
         {
           "properties" : {
@@ -3131,6 +3216,7 @@
         "namespace" : ""
       },
       "title" : "repositoryScannerStatistics",
+      "required" : ["newFileCount", "totalFileCount"],
       "allOf" : [
         {
           "properties" : {
@@ -3150,7 +3236,8 @@
                 "namespace" : ""
               },
             "readOnly" : false,
-"$ref" : "#/definitions/xml_ns0_managedRepository"
+"$ref" : "#/definitions/xml_ns0_managedRepository",
+"description" : ""
             },
             "newFileCount" : {
               "xml" : {
@@ -3183,6 +3270,7 @@
         "namespace" : ""
       },
       "title" : "searchRequest",
+      "required" : ["includePomArtifacts", "pageSize", "selectedPage"],
       "allOf" : [
         {
           "properties" : {
@@ -3408,12 +3496,12 @@
     "\/archivaAdministrationService/addFileType" : {
       "post" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "addFileType",
         "consumes" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -3433,21 +3521,18 @@
     "\/archivaAdministrationService/addFileTypePattern" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "addFileTypePattern",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "fileTypeId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "pattern",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -3467,7 +3552,6 @@
     "\/archivaAdministrationService/applicationUrl" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "getApplicationUrl",
         "produces" : [ "text/plain" ],
         "parameters" : [
@@ -3487,14 +3571,12 @@
     "\/archivaAdministrationService/deleteLegacyArtifactPath" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "deleteLegacyArtifactPath",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "path",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -3514,14 +3596,12 @@
     "\/archivaAdministrationService/disabledInvalidContentConsumer/{invalidContentConsumer}" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "disabledInvalidContentConsumer",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "invalidContentConsumer",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -3541,14 +3621,12 @@
     "\/archivaAdministrationService/disabledKnownContentConsumer/{knownContentConsumer}" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "disabledKnownContentConsumer",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "knownContentConsumer",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -3568,14 +3646,12 @@
     "\/archivaAdministrationService/enabledInvalidContentConsumer/{invalidContentConsumer}" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "enabledInvalidContentConsumer",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "invalidContentConsumer",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -3595,12 +3671,12 @@
     "\/archivaAdministrationService/enabledInvalidContentConsumers" : {
       "post" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "enabledInvalidContentConsumers",
         "consumes" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -3620,14 +3696,12 @@
     "\/archivaAdministrationService/enabledKnownContentConsumer/{knownContentConsumer}" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "enabledKnownContentConsumer",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "knownContentConsumer",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -3647,12 +3721,12 @@
     "\/archivaAdministrationService/enabledKnownContentConsumers" : {
       "post" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "enabledKnownContentConsumers",
         "consumes" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -3672,14 +3746,12 @@
     "\/archivaAdministrationService/getFileType" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "getFileType",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "fileTypeId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -3699,7 +3771,6 @@
     "\/archivaAdministrationService/getFileTypes" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "getFileTypes",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -3719,7 +3790,6 @@
     "\/archivaAdministrationService/getInvalidContentAdminRepositoryConsumers" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "getInvalidContentAdminRepositoryConsumers",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -3739,7 +3809,6 @@
     "\/archivaAdministrationService/getInvalidContentConsumers" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "getInvalidContentConsumers",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -3759,7 +3828,6 @@
     "\/archivaAdministrationService/getKnownContentAdminRepositoryConsumers" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "getKnownContentAdminRepositoryConsumers",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -3779,7 +3847,6 @@
     "\/archivaAdministrationService/getKnownContentConsumers" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "getKnownContentConsumers",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -3799,7 +3866,6 @@
     "\/archivaAdministrationService/getLegacyArtifactPaths" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "getLegacyArtifactPaths",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -3819,7 +3885,6 @@
     "\/archivaAdministrationService/getNetworkConfiguration" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "getNetworkConfiguration",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -3839,7 +3904,6 @@
     "\/archivaAdministrationService/getOrganisationInformation" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "getOrganisationInformation",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
@@ -3859,7 +3923,6 @@
     "\/archivaAdministrationService/getUiConfiguration" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "getUiConfiguration",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -3879,7 +3942,6 @@
     "\/archivaAdministrationService/registrationDisabled" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "registrationDisabled",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -3899,14 +3961,12 @@
     "\/archivaAdministrationService/removeFileType" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "removeFileType",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "fileTypeId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -3926,21 +3986,18 @@
     "\/archivaAdministrationService/removeFileTypePattern" : {
       "get" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "removeFileTypePattern",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "fileTypeId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "pattern",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -3960,12 +4017,12 @@
     "\/archivaAdministrationService/setNetworkConfiguration" : {
       "post" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "setNetworkConfiguration",
         "consumes" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -3985,12 +4042,12 @@
     "\/archivaAdministrationService/setOrganisationInformation" : {
       "post" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "setOrganisationInformation",
         "consumes" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -4010,12 +4067,12 @@
     "\/archivaAdministrationService/setUiConfiguration" : {
       "post" : {
         "tags" : [ "ArchivaAdministrationService" ],
-        "description" : "",
         "operationId" : "setUiConfiguration",
         "consumes" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -4035,7 +4092,6 @@
     "\/archivaRuntimeConfigurationService/archivaRuntimeConfiguration" : {
       "get" : {
         "tags" : [ "ArchivaRuntimeConfigurationService" ],
-        "description" : "",
         "operationId" : "getArchivaRuntimeConfiguration",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -4053,13 +4109,13 @@
       ,
       "put" : {
         "tags" : [ "ArchivaRuntimeConfigurationService" ],
-        "description" : "",
         "operationId" : "updateArchivaRuntimeConfiguration",
         "consumes" : [ "application/json", "application/xml" ],
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -4083,7 +4139,6 @@
     "\/browseService/artifactAvailable/{g}/{a}/{v}" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "summary" : "verify if an artifact is available locally if not download from proxies will be try.",
         "description" : "verify if an artifact is available locally if not download from proxies will be try",
         "operationId" : "artifactAvailable",
         "produces" : [ "application/json", "application/xml" ],
@@ -4091,28 +4146,24 @@
           {
             "name" : "a",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "g",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "v",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -4132,7 +4183,6 @@
     "\/browseService/artifactAvailable/{g}/{a}/{v}/{c}" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "summary" : "verify if an artifact is available locally if not download from proxies will be try.",
         "description" : "verify if an artifact is available locally if not download from proxies will be try",
         "operationId" : "artifactAvailable",
         "produces" : [ "application/json", "application/xml" ],
@@ -4140,35 +4190,30 @@
           {
             "name" : "a",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "c",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "g",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "v",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -4188,56 +4233,48 @@
     "\/browseService/artifactContentEntries/{g}/{a}/{v}" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "description" : "",
         "operationId" : "getArtifactContentEntries",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "a",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "g",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "v",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "c",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "p",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "t",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -4257,7 +4294,6 @@
     "\/browseService/artifactContentText/{g}/{a}/{v}" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "summary" : "if path is empty content of the file is returned (for pom view).",
         "description" : "if path is empty content of the file is returned (for pom view)",
         "operationId" : "getArtifactContentText",
         "produces" : [ "application/json", "application/xml" ],
@@ -4265,49 +4301,42 @@
           {
             "name" : "a",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "g",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "v",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "c",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "p",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "t",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -4327,35 +4356,30 @@
     "\/browseService/artifactDownloadInfos/{g}/{a}/{v}" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "description" : "",
         "operationId" : "getArtifactDownloadInfos",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "a",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "g",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "v",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -4375,7 +4399,6 @@
     "\/browseService/artifacts/{r}" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "summary" : "return List of all artifacts from this repository.",
         "description" : "return List of all artifacts from this repository",
         "operationId" : "getArtifacts",
         "produces" : [ "application/json", "application/xml" ],
@@ -4383,7 +4406,6 @@
           {
             "name" : "r",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -4403,7 +4425,6 @@
     "\/browseService/artifactsByMetadata/{key}/{value}" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "summary" : "Return List of artifacts from this repository with artifact metadata key matching value.",
         "description" : "Return List of artifacts from this repository with artifact metadata key matching value.\nIf repository is not provided the search runs in all repositories.",
         "operationId" : "getArtifactsByMetadata",
         "produces" : [ "application/json", "application/xml" ],
@@ -4411,21 +4432,18 @@
           {
             "name" : "key",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "value",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -4445,7 +4463,6 @@
     "\/browseService/artifactsByProjectVersionMetadata/{key}/{value}" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "summary" : "Return List of artifacts from this repository with project version level metadata key matching value.",
         "description" : "Return List of artifacts from this repository with project version level metadata key matching value. If\nrepository is not provided the search runs in all repositories.",
         "operationId" : "getArtifactsByProjectVersionMetadata",
         "produces" : [ "application/json", "application/xml" ],
@@ -4453,21 +4470,18 @@
           {
             "name" : "key",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "value",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -4487,7 +4501,6 @@
     "\/browseService/artifactsByProperty/{key}/{value}" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "summary" : "Return List of artifacts from this repository with property key matching value.",
         "description" : "Return List of artifacts from this repository with property key matching value.\nIf repository is not provided the search runs in all repositories.",
         "operationId" : "getArtifactsByProperty",
         "produces" : [ "application/json", "application/xml" ],
@@ -4495,21 +4508,18 @@
           {
             "name" : "key",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "value",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -4529,21 +4539,18 @@
     "\/browseService/browseGroupId/{groupId}" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "description" : "",
         "operationId" : "browseGroupId",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "groupId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : "groupId to browse"
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : "optionnal (repository to browse if <code>null<\/code> all available user repositories are used)"
           }
@@ -4563,7 +4570,6 @@
     "\/browseService/dependees/{g}/{a}/{v}" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "summary" : "List of artifacts using the artifact passed in parameter.",
         "description" : "List of artifacts using the artifact passed in parameter.",
         "operationId" : "getDependees",
         "produces" : [ "application/json", "application/xml" ],
@@ -4571,28 +4577,24 @@
           {
             "name" : "a",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "g",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "v",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -4612,7 +4614,6 @@
     "\/browseService/importMetadata" : {
       "post" : {
         "tags" : [ "BrowseService" ],
-        "description" : "",
         "operationId" : "importMetadata",
         "consumes" : [ "application/xml" ],
         "produces" : [ "application/xml" ],
@@ -4620,15 +4621,16 @@
           {
             "name" : "repository",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
-"$ref" : "#/definitions/xml_ns0_metadataAddRequest"
+"$ref" : "#/definitions/xml_ns0_metadataAddRequest",
+"description" : ""
             },
             "description" : ""
           }
@@ -4648,42 +4650,36 @@
     "\/browseService/metadata/{g}/{a}/{v}/{key}" : {
       "delete" : {
         "tags" : [ "BrowseService" ],
-        "description" : "",
         "operationId" : "deleteMetadata",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "a",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "g",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "key",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "v",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -4703,49 +4699,42 @@
     "\/browseService/metadata/{g}/{a}/{v}/{key}/{value}" : {
       "put" : {
         "tags" : [ "BrowseService" ],
-        "description" : "",
         "operationId" : "addMetadata",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "a",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "g",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "key",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "v",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "value",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -4765,35 +4754,30 @@
     "\/browseService/metadatas/{g}/{a}/{v}" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "description" : "",
         "operationId" : "getMetadatas",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "a",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "g",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "v",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -4813,28 +4797,24 @@
     "\/browseService/projectVersionMetadata/{g}/{a}" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "description" : "",
         "operationId" : "getProjectVersionMetadata",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "a",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "g",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -4854,35 +4834,30 @@
     "\/browseService/projectVersionMetadata/{g}/{a}/{v}" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "description" : "",
         "operationId" : "getProjectMetadata",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "a",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "g",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "v",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -4902,14 +4877,12 @@
     "\/browseService/rootGroups" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "description" : "",
         "operationId" : "getRootGroups",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -4929,7 +4902,6 @@
     "\/browseService/searchArtifacts/{key}/{text}" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "summary" : "Search artifacts with the property specified by key matching text.",
         "description" : "Search artifacts with the property specified by key matching text. If repository is not provided the search runs\nin all repositories. If exact is true only the artifacts whose property match exactly are returned.",
         "operationId" : "searchArtifacts",
         "produces" : [ "application/json", "application/xml" ],
@@ -4937,28 +4909,24 @@
           {
             "name" : "key",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "text",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "exact",
             "in" : "query",
-            "required" : false,
             "type" : "boolean",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -4978,7 +4946,6 @@
     "\/browseService/searchArtifacts/{text}" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "summary" : "Search artifacts with any property matching text.",
         "description" : "Search artifacts with any property matching text. If repository is not provided the search runs in all\nrepositories. If exact is true only the artifacts whose property match exactly are returned.",
         "operationId" : "searchArtifacts",
         "produces" : [ "application/json", "application/xml" ],
@@ -4986,21 +4953,18 @@
           {
             "name" : "text",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "exact",
             "in" : "query",
-            "required" : false,
             "type" : "boolean",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -5020,7 +4984,6 @@
     "\/browseService/treeEntries/{g}/{a}/{v}" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "summary" : "return the dependency Tree for an artifacts.",
         "description" : "return the dependency Tree for an artifacts\n<b>the List result has only one entry<\/b>",
         "operationId" : "getTreeEntries",
         "produces" : [ "application/json", "application/xml" ],
@@ -5028,28 +4991,24 @@
           {
             "name" : "a",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "g",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "v",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -5069,7 +5028,6 @@
     "\/browseService/userManagableRepositories" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "description" : "",
         "operationId" : "getUserManagableRepositories",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -5089,7 +5047,6 @@
     "\/browseService/userRepositories" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "description" : "",
         "operationId" : "getUserRepositories",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -5109,28 +5066,24 @@
     "\/browseService/versionsList/{g}/{a}" : {
       "get" : {
         "tags" : [ "BrowseService" ],
-        "description" : "",
         "operationId" : "getVersionsList",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "a",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "g",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -5150,7 +5103,6 @@
     "\/commonServices/getAllI18nResources" : {
       "get" : {
         "tags" : [ "CommonServices" ],
-        "summary" : "will return properties available in org/apache/archiva/i18n/default.",
         "description" : "will return properties available in org/apache/archiva/i18n/default.properties\nload default (en) then override with locale used so at least en are returned if no\ntranslation in the locale asked.\nThis method will add redback resources too. note Archva wins",
         "operationId" : "getAllI18nResources",
         "produces" : [ "text/plain" ],
@@ -5158,7 +5110,6 @@
           {
             "name" : "locale",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -5178,7 +5129,6 @@
     "\/commonServices/getI18nResources" : {
       "get" : {
         "tags" : [ "CommonServices" ],
-        "summary" : "will return properties available in org/apache/archiva/i18n/default.",
         "description" : "will return properties available in org/apache/archiva/i18n/default.properties\nload default (en) then override with locale used so at least en are returned if no\ntranslation in the locale asked.",
         "operationId" : "getI18nResources",
         "produces" : [ "text/plain" ],
@@ -5186,7 +5136,6 @@
           {
             "name" : "locale",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -5206,14 +5155,12 @@
     "\/commonServices/validateCronExpression" : {
       "get" : {
         "tags" : [ "CommonServices" ],
-        "description" : "",
         "operationId" : "validateCronExpression",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "cronExpression",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -5233,13 +5180,13 @@
     "\/managedRepositoriesService/addManagedRepository" : {
       "post" : {
         "tags" : [ "ManagedRepositoriesService" ],
-        "description" : "",
         "operationId" : "addManagedRepository",
         "consumes" : [ "application/json", "application/xml" ],
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -5263,21 +5210,19 @@
     "\/managedRepositoriesService/deleteManagedRepository" : {
       "get" : {
         "tags" : [ "ManagedRepositoriesService" ],
-        "description" : "",
         "operationId" : "deleteManagedRepository",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "deleteContent",
             "in" : "query",
-            "required" : false,
+            "required" : true,
             "type" : "boolean",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -5297,14 +5242,12 @@
     "\/managedRepositoriesService/fileLocationExists" : {
       "get" : {
         "tags" : [ "ManagedRepositoriesService" ],
-        "description" : "",
         "operationId" : "fileLocationExists",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "fileLocation",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -5324,7 +5267,6 @@
     "\/managedRepositoriesService/getManagedRepositories" : {
       "get" : {
         "tags" : [ "ManagedRepositoriesService" ],
-        "description" : "",
         "operationId" : "getManagedRepositories",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -5344,14 +5286,12 @@
     "\/managedRepositoriesService/getManagedRepository/{repositoryId}" : {
       "get" : {
         "tags" : [ "ManagedRepositoriesService" ],
-        "description" : "",
         "operationId" : "getManagedRepository",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "repositoryId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -5371,21 +5311,18 @@
     "\/managedRepositoriesService/getManagedRepositoryStatistics/{repositoryId}/{lang}" : {
       "get" : {
         "tags" : [ "ManagedRepositoriesService" ],
-        "description" : "",
         "operationId" : "getManagedRepositoryStatistics",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "lang",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -5405,7 +5342,6 @@
     "\/managedRepositoriesService/getPomSnippet/{repositoryId}" : {
       "get" : {
         "tags" : [ "ManagedRepositoriesService" ],
-        "summary" : "return a pom snippet to use this repository with entities escaped (&lt; &gt;).",
         "description" : "return a pom snippet to use this repository with entities escaped (&lt; &gt;)",
         "operationId" : "getPomSnippet",
         "produces" : [ "text/plain" ],
@@ -5413,7 +5349,6 @@
           {
             "name" : "repositoryId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -5433,13 +5368,13 @@
     "\/managedRepositoriesService/updateManagedRepository" : {
       "post" : {
         "tags" : [ "ManagedRepositoriesService" ],
-        "description" : "",
         "operationId" : "updateManagedRepository",
         "consumes" : [ "application/json", "application/xml" ],
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -5463,7 +5398,6 @@
     "\/mergeRepositoriesService/mergeConflictedArtifacts/{sourceRepositoryId}/{targetRepositoryId}" : {
       "get" : {
         "tags" : [ "MergeRepositoriesService" ],
-        "summary" : ".",
         "description" : "<b>permissions are checked in impl<\/b>",
         "operationId" : "getMergeConflictedArtifacts",
         "produces" : [ "application/json", "application/xml" ],
@@ -5471,14 +5405,12 @@
           {
             "name" : "sourceRepositoryId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "targetRepositoryId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -5498,28 +5430,25 @@
     "\/mergeRepositoriesService/mergeRepositories/{sourceRepositoryId}/{targetRepositoryId}/{skipConflicts}" : {
       "get" : {
         "tags" : [ "MergeRepositoriesService" ],
-        "summary" : ".",
         "description" : "<b>permissions are checked in impl<\/b>",
         "operationId" : "mergeRepositories",
         "parameters" : [
           {
             "name" : "skipConflicts",
             "in" : "path",
-            "required" : false,
+            "required" : true,
             "type" : "boolean",
             "description" : ""
           },
           {
             "name" : "sourceRepositoryId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "targetRepositoryId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -5535,12 +5464,12 @@
     "\/networkProxyService/addNetworkProxy" : {
       "post" : {
         "tags" : [ "NetworkProxyService" ],
-        "description" : "",
         "operationId" : "addNetworkProxy",
         "consumes" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -5560,14 +5489,12 @@
     "\/networkProxyService/deleteNetworkProxy/{networkProxyId}" : {
       "get" : {
         "tags" : [ "NetworkProxyService" ],
-        "description" : "",
         "operationId" : "deleteNetworkProxy",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "networkProxyId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -5587,7 +5514,6 @@
     "\/networkProxyService/getNetworkProxies" : {
       "get" : {
         "tags" : [ "NetworkProxyService" ],
-        "description" : "",
         "operationId" : "getNetworkProxies",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -5607,14 +5533,12 @@
     "\/networkProxyService/getNetworkProxy/{networkProxyId}" : {
       "get" : {
         "tags" : [ "NetworkProxyService" ],
-        "description" : "",
         "operationId" : "getNetworkProxy",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "networkProxyId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -5634,12 +5558,12 @@
     "\/networkProxyService/updateNetworkProxy" : {
       "post" : {
         "tags" : [ "NetworkProxyService" ],
-        "description" : "",
         "operationId" : "updateNetworkProxy",
         "consumes" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -5659,7 +5583,6 @@
     "\/pingService/ping" : {
       "get" : {
         "tags" : [ "PingService" ],
-        "summary" : "ping service to monitor Archiva with a nice returned message :-).",
         "description" : "ping service to monitor Archiva with a nice returned message :-)",
         "operationId" : "ping",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
@@ -5680,7 +5603,6 @@
     "\/pingService/pingWithAuthz" : {
       "get" : {
         "tags" : [ "PingService" ],
-        "summary" : "same as #ping but check authz.",
         "description" : "same as #ping but check authz",
         "operationId" : "pingWithAuthz",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
@@ -5701,7 +5623,6 @@
     "\/pluginsService/getAdminPlugins" : {
       "get" : {
         "tags" : [ "PluginsService" ],
-        "description" : "",
         "operationId" : "getAdminPlugins",
         "produces" : [ "text/plain" ],
         "parameters" : [
@@ -5721,13 +5642,13 @@
     "\/proxyConnectorRuleService/deleteProxyConnectorRule" : {
       "post" : {
         "tags" : [ "ProxyConnectorRuleService" ],
-        "description" : "",
         "operationId" : "deleteProxyConnectorRule",
         "consumes" : [ "application/json", "application/xml" ],
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -5751,13 +5672,13 @@
     "\/proxyConnectorRuleService/proxyConnectorRule" : {
       "post" : {
         "tags" : [ "ProxyConnectorRuleService" ],
-        "description" : "",
         "operationId" : "addProxyConnectorRule",
         "consumes" : [ "application/json", "application/xml" ],
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -5781,7 +5702,6 @@
     "\/proxyConnectorRuleService/proxyConnectorRules" : {
       "get" : {
         "tags" : [ "ProxyConnectorRuleService" ],
-        "description" : "",
         "operationId" : "getProxyConnectorRules",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -5801,7 +5721,6 @@
     "\/proxyConnectorRuleService/updateProxyConnectorRule" : {
       "post" : {
         "tags" : [ "ProxyConnectorRuleService" ],
-        "summary" : ".",
         "description" : "<b>only to update attached proxy connectors to update pattern use delete then add<\/b>",
         "operationId" : "updateProxyConnectorRule",
         "consumes" : [ "application/json", "application/xml" ],
@@ -5809,6 +5728,7 @@
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -5832,13 +5752,13 @@
     "\/proxyConnectorService/addProxyConnector" : {
       "post" : {
         "tags" : [ "ProxyConnectorService" ],
-        "description" : "",
         "operationId" : "addProxyConnector",
         "consumes" : [ "application/json", "application/xml" ],
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -5862,7 +5782,6 @@
     "\/proxyConnectorService/allPolicies" : {
       "get" : {
         "tags" : [ "ProxyConnectorService" ],
-        "description" : "",
         "operationId" : "getAllPolicyInformations",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -5882,13 +5801,13 @@
     "\/proxyConnectorService/deleteProxyConnector" : {
       "post" : {
         "tags" : [ "ProxyConnectorService" ],
-        "description" : "",
         "operationId" : "deleteProxyConnector",
         "consumes" : [ "application/json", "application/xml" ],
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -5912,21 +5831,18 @@
     "\/proxyConnectorService/getProxyConnector" : {
       "get" : {
         "tags" : [ "ProxyConnectorService" ],
-        "description" : "",
         "operationId" : "getProxyConnector",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "sourceRepoId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "targetRepoId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -5946,7 +5862,6 @@
     "\/proxyConnectorService/getProxyConnectors" : {
       "get" : {
         "tags" : [ "ProxyConnectorService" ],
-        "description" : "",
         "operationId" : "getProxyConnectors",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -5966,21 +5881,18 @@
     "\/proxyConnectorService/removeProxyConnector" : {
       "get" : {
         "tags" : [ "ProxyConnectorService" ],
-        "description" : "",
         "operationId" : "removeProxyConnector",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "sourceRepoId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "targetRepoId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -6000,7 +5912,6 @@
     "\/proxyConnectorService/updateProxyConnector" : {
       "post" : {
         "tags" : [ "ProxyConnectorService" ],
-        "summary" : ".",
         "description" : "<b>only for enabled/disable or changing bean values except target/source<\/b>",
         "operationId" : "updateProxyConnector",
         "consumes" : [ "application/json", "application/xml" ],
@@ -6008,6 +5919,7 @@
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -6031,7 +5943,6 @@
     "\/redbackRuntimeConfigurationService/checkLdapConnection" : {
       "get" : {
         "tags" : [ "RedbackRuntimeConfigurationService" ],
-        "description" : "",
         "operationId" : "checkLdapConnection",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -6049,13 +5960,13 @@
       ,
       "post" : {
         "tags" : [ "RedbackRuntimeConfigurationService" ],
-        "description" : "",
         "operationId" : "checkLdapConnection2",
         "consumes" : [ "application/json", "application/xml" ],
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -6079,7 +5990,6 @@
     "\/redbackRuntimeConfigurationService/rbacManagerImplementationInformations" : {
       "get" : {
         "tags" : [ "RedbackRuntimeConfigurationService" ],
-        "description" : "",
         "operationId" : "getRbacManagerImplementationInformations",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -6099,7 +6009,6 @@
     "\/redbackRuntimeConfigurationService/redbackImplementationsInformations" : {
       "get" : {
         "tags" : [ "RedbackRuntimeConfigurationService" ],
-        "description" : "",
         "operationId" : "getRedbackImplementationsInformations",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -6119,7 +6028,6 @@
     "\/redbackRuntimeConfigurationService/redbackRuntimeConfiguration" : {
       "get" : {
         "tags" : [ "RedbackRuntimeConfigurationService" ],
-        "description" : "",
         "operationId" : "getRedbackRuntimeConfiguration",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -6137,13 +6045,13 @@
       ,
       "put" : {
         "tags" : [ "RedbackRuntimeConfigurationService" ],
-        "description" : "",
         "operationId" : "updateRedbackRuntimeConfiguration",
         "consumes" : [ "application/json", "application/xml" ],
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -6167,7 +6075,6 @@
     "\/redbackRuntimeConfigurationService/userManagerImplementationInformations" : {
       "get" : {
         "tags" : [ "RedbackRuntimeConfigurationService" ],
-        "description" : "",
         "operationId" : "getUserManagerImplementationInformations",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -6187,13 +6094,13 @@
     "\/remoteRepositoriesService/addRemoteRepository" : {
       "post" : {
         "tags" : [ "RemoteRepositoriesService" ],
-        "description" : "",
         "operationId" : "addRemoteRepository",
         "consumes" : [ "application/json", "application/xml" ],
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -6217,14 +6124,12 @@
     "\/remoteRepositoriesService/checkRemoteConnectivity/{repositoryId}" : {
       "get" : {
         "tags" : [ "RemoteRepositoriesService" ],
-        "description" : "",
         "operationId" : "checkRemoteConnectivity",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "repositoryId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -6244,14 +6149,12 @@
     "\/remoteRepositoriesService/deleteRemoteRepository/{repositoryId}" : {
       "get" : {
         "tags" : [ "RemoteRepositoriesService" ],
-        "description" : "",
         "operationId" : "deleteRemoteRepository",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "repositoryId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -6271,7 +6174,6 @@
     "\/remoteRepositoriesService/getRemoteRepositories" : {
       "get" : {
         "tags" : [ "RemoteRepositoriesService" ],
-        "description" : "",
         "operationId" : "getRemoteRepositories",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -6291,14 +6193,12 @@
     "\/remoteRepositoriesService/getRemoteRepository/{repositoryId}" : {
       "get" : {
         "tags" : [ "RemoteRepositoriesService" ],
-        "description" : "",
         "operationId" : "getRemoteRepository",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "repositoryId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -6318,13 +6218,13 @@
     "\/remoteRepositoriesService/updateRemoteRepository" : {
       "post" : {
         "tags" : [ "RemoteRepositoriesService" ],
-        "description" : "",
         "operationId" : "updateRemoteRepository",
         "consumes" : [ "application/json", "application/xml" ],
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -6348,21 +6248,19 @@
     "\/reportServices/getHealthReports/{repository}/{rowCount}" : {
       "get" : {
         "tags" : [ "ReportRepositoriesService" ],
-        "description" : "",
         "operationId" : "getHealthReport",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "repository",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "rowCount",
             "in" : "path",
-            "required" : false,
+            "required" : true,
             "type" : "integer",
             "format" : "int32",
             "description" : ""
@@ -6370,7 +6268,6 @@
           {
             "name" : "groupId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -6390,21 +6287,18 @@
     "\/reportServices/getStatisticsReport" : {
       "get" : {
         "tags" : [ "ReportRepositoriesService" ],
-        "description" : "",
         "operationId" : "getStatisticsReport",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "endDate",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repository",
             "in" : "query",
-            "required" : false,
             "type" : "array",
             "items" : {
             "type" : "string"
@@ -6415,7 +6309,7 @@
           {
             "name" : "rowCount",
             "in" : "query",
-            "required" : false,
+            "required" : true,
             "type" : "integer",
             "format" : "int32",
             "description" : ""
@@ -6423,7 +6317,6 @@
           {
             "name" : "startDate",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -6443,14 +6336,12 @@
     "\/repositoriesService/alreadyScanning/{repositoryId}" : {
       "get" : {
         "tags" : [ "RepositoriesService" ],
-        "description" : "",
         "operationId" : "alreadyScanning",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "repositoryId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -6470,7 +6361,6 @@
     "\/repositoriesService/copyArtifact" : {
       "post" : {
         "tags" : [ "RepositoriesService" ],
-        "summary" : "permissions are checked in impl\nwill copy an artifact from the source repository to the target repository.",
         "description" : "permissions are checked in impl\nwill copy an artifact from the source repository to the target repository",
         "operationId" : "copyArtifact",
         "consumes" : [ "application/json", "application/xml" ],
@@ -6478,6 +6368,7 @@
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -6501,7 +6392,6 @@
     "\/repositoriesService/deleteArtifact" : {
       "post" : {
         "tags" : [ "RepositoriesService" ],
-        "summary" : ".",
         "description" : "<b>permissions are checked in impl<\/b>",
         "operationId" : "deleteArtifact",
         "consumes" : [ "application/json", "application/xml" ],
@@ -6509,6 +6399,7 @@
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -6532,7 +6423,6 @@
     "\/repositoriesService/deleteGroupId" : {
       "get" : {
         "tags" : [ "RepositoriesService" ],
-        "summary" : ".",
         "description" : "<b>permissions are checked in impl<\/b>",
         "operationId" : "deleteGroupId",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
@@ -6540,14 +6430,12 @@
           {
             "name" : "groupId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -6567,14 +6455,12 @@
     "\/repositoriesService/isAuthorizedToDeleteArtifacts/{repositoryId}" : {
       "get" : {
         "tags" : [ "RepositoriesService" ],
-        "description" : "",
         "operationId" : "isAuthorizedToDeleteArtifacts",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "repositoryId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -6594,7 +6480,6 @@
     "\/repositoriesService/project/{repositoryId}/{groupId}/{projectId}" : {
       "delete" : {
         "tags" : [ "RepositoriesService" ],
-        "summary" : ".",
         "description" : "<b>permissions are checked in impl<\/b>",
         "operationId" : "deleteProject",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
@@ -6602,21 +6487,18 @@
           {
             "name" : "groupId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "projectId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -6636,7 +6518,6 @@
     "\/repositoriesService/projectVersion/{repositoryId}/{namespace}/{projectId}/{version}" : {
       "delete" : {
         "tags" : [ "RepositoriesService" ],
-        "summary" : ".",
         "description" : "<b>permissions are checked in impl<\/b>",
         "operationId" : "removeProjectVersion",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
@@ -6644,28 +6525,24 @@
           {
             "name" : "namespace",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "projectId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "version",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -6685,14 +6562,12 @@
     "\/repositoriesService/removeScanningTaskFromQueue/{repositoryId}" : {
       "get" : {
         "tags" : [ "RepositoriesService" ],
-        "description" : "",
         "operationId" : "removeScanningTaskFromQueue",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "repositoryId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -6712,7 +6587,6 @@
     "\/repositoriesService/runningRemoteDownloadIds" : {
       "get" : {
         "tags" : [ "RepositoriesService" ],
-        "description" : "",
         "operationId" : "getRunningRemoteDownloadIds",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
@@ -6732,7 +6606,6 @@
     "\/repositoriesService/scanRepository" : {
       "get" : {
         "tags" : [ "RepositoriesService" ],
-        "summary" : "index repository.",
         "description" : "index repository",
         "operationId" : "scanRepository",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
@@ -6740,14 +6613,13 @@
           {
             "name" : "fullScan",
             "in" : "query",
-            "required" : false,
+            "required" : true,
             "type" : "boolean",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -6767,7 +6639,6 @@
     "\/repositoriesService/scanRepositoryDirectoriesNow/{repositoryId}" : {
       "get" : {
         "tags" : [ "RepositoriesService" ],
-        "summary" : "scan directories.",
         "description" : "scan directories",
         "operationId" : "scanRepositoryDirectoriesNow",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
@@ -6775,7 +6646,6 @@
           {
             "name" : "repositoryId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -6795,21 +6665,19 @@
     "\/repositoriesService/scanRepositoryNow" : {
       "get" : {
         "tags" : [ "RepositoriesService" ],
-        "description" : "",
         "operationId" : "scanRepositoryNow",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "fullScan",
             "in" : "query",
-            "required" : false,
+            "required" : true,
             "type" : "boolean",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -6829,28 +6697,26 @@
     "\/repositoriesService/scheduleDownloadRemoteIndex" : {
       "get" : {
         "tags" : [ "RepositoriesService" ],
-        "description" : "",
         "operationId" : "scheduleDownloadRemoteIndex",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "fullDownload",
             "in" : "query",
-            "required" : false,
+            "required" : true,
             "type" : "boolean",
             "description" : ""
           },
           {
             "name" : "now",
             "in" : "query",
-            "required" : false,
+            "required" : true,
             "type" : "boolean",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -6870,13 +6736,13 @@
     "\/repositoryGroupService/addRepositoryGroup" : {
       "post" : {
         "tags" : [ "RepositoryGroupService" ],
-        "description" : "",
         "operationId" : "addRepositoryGroup",
         "consumes" : [ "application/json", "application/xml" ],
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -6900,53 +6766,18 @@
     "\/repositoryGroupService/addRepositoryToGroup" : {
       "get" : {
         "tags" : [ "RepositoryGroupService" ],
-        "description" : "",
         "operationId" : "addRepositoryToGroup",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "repositoryGroupId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "repositoryId",
             "in" : "query",
-            "required" : false,
-            "type" : "string",
-            "description" : ""
-          }
-        ],
-        "responses" : {
-          "200" : {
-            "schema" : {
-"description" : "",
-"type" : "string"
-            },
-            "description" : ""
-          }
-        }
-      }
-      ,
-      "get" : {
-        "tags" : [ "RepositoryGroupService" ],
-        "description" : "",
-        "operationId" : "deleteRepositoryFromGroup",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
-        "parameters" : [
-          {
-            "name" : "repositoryGroupId",
-            "in" : "query",
-            "required" : false,
-            "type" : "string",
-            "description" : ""
-          },
-          {
-            "name" : "repositoryId",
-            "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -6966,14 +6797,12 @@
     "\/repositoryGroupService/deleteRepositoryGroup/{repositoryGroupId}" : {
       "get" : {
         "tags" : [ "RepositoryGroupService" ],
-        "description" : "",
         "operationId" : "deleteRepositoryGroup",
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "repositoryGroupId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -6993,7 +6822,6 @@
     "\/repositoryGroupService/getRepositoriesGroups" : {
       "get" : {
         "tags" : [ "RepositoryGroupService" ],
-        "description" : "",
         "operationId" : "getRepositoriesGroups",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -7013,14 +6841,12 @@
     "\/repositoryGroupService/getRepositoryGroup/{repositoryGroupId}" : {
       "get" : {
         "tags" : [ "RepositoryGroupService" ],
-        "description" : "",
         "operationId" : "getRepositoryGroup",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "repositoryGroupId",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -7040,13 +6866,13 @@
     "\/repositoryGroupService/updateRepositoryGroup" : {
       "post" : {
         "tags" : [ "RepositoryGroupService" ],
-        "description" : "",
         "operationId" : "updateRepositoryGroup",
         "consumes" : [ "application/json", "application/xml" ],
         "produces" : [ "application/json", "text/plain", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
 "description" : "",
@@ -7070,49 +6896,42 @@
     "\/searchService/artifact" : {
       "get" : {
         "tags" : [ "SearchService" ],
-        "description" : "",
         "operationId" : "redirectToArtifactFile",
         "produces" : [ "text/html" ],
         "parameters" : [
           {
             "name" : "a",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "c",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "g",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "p",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "r",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "v",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -7132,7 +6951,6 @@
     "\/searchService/artifactsByChecksum" : {
       "post" : {
         "tags" : [ "SearchService" ],
-        "summary" : "If searchRequest contains repositories, the search will be done only on those repositories.",
         "description" : "If searchRequest contains repositories, the search will be done only on those repositories.\n<b>if no repositories, the search will be apply on all repositories the current user has karma<\/b>",
         "operationId" : "getArtifactByChecksum",
         "consumes" : [ "application/xml" ],
@@ -7140,9 +6958,11 @@
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
-"$ref" : "#/definitions/xml_ns0_checksumSearch"
+"$ref" : "#/definitions/xml_ns0_checksumSearch",
+"description" : ""
             },
             "description" : ""
           }
@@ -7162,7 +6982,6 @@
     "\/searchService/getAllGroupIds" : {
       "get" : {
         "tags" : [ "SearchService" ],
-        "summary" : ".",
         "description" : "<b>this method applies on Maven Indexer lucene index, so datas not yet indexed won't be available<\/b>",
         "operationId" : "getAllGroupIds",
         "produces" : [ "application/json", "application/xml" ],
@@ -7170,7 +6989,6 @@
           {
             "name" : "selectedRepos",
             "in" : "query",
-            "required" : false,
             "type" : "array",
             "items" : {
             "type" : "string"
@@ -7194,7 +7012,6 @@
     "\/searchService/getArtifactVersions" : {
       "get" : {
         "tags" : [ "SearchService" ],
-        "summary" : ".",
         "description" : "<b>search will be apply on all repositories the current user has karma<\/b>",
         "operationId" : "getArtifactVersions",
         "produces" : [ "application/json", "application/xml" ],
@@ -7202,21 +7019,18 @@
           {
             "name" : "artifactId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "groupId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "packaging",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -7236,7 +7050,6 @@
     "\/searchService/observableRepoIds" : {
       "get" : {
         "tags" : [ "SearchService" ],
-        "description" : "",
         "operationId" : "getObservablesRepoIds",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -7256,14 +7069,12 @@
     "\/searchService/quickSearch" : {
       "get" : {
         "tags" : [ "SearchService" ],
-        "description" : "",
         "operationId" : "quickSearch",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "queryString",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -7283,7 +7094,6 @@
     "\/searchService/quickSearchWithRepositories" : {
       "post" : {
         "tags" : [ "SearchService" ],
-        "summary" : ".",
         "description" : "<b>if not repositories in SearchRequest: search will be apply on all repositories the current user has karma<\/b>",
         "operationId" : "quickSearchWithRepositories",
         "consumes" : [ "application/xml" ],
@@ -7291,9 +7101,11 @@
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
-"$ref" : "#/definitions/xml_ns0_searchRequest"
+"$ref" : "#/definitions/xml_ns0_searchRequest",
+"description" : ""
             },
             "description" : ""
           }
@@ -7313,7 +7125,6 @@
     "\/searchService/searchArtifacts" : {
       "post" : {
         "tags" : [ "SearchService" ],
-        "summary" : "If searchRequest contains repositories, the search will be done only on those repositories.",
         "description" : "If searchRequest contains repositories, the search will be done only on those repositories.\n<b>if no repositories, the search will be apply on all repositories the current user has karma<\/b>",
         "operationId" : "searchArtifacts2",
         "consumes" : [ "application/xml" ],
@@ -7321,9 +7132,11 @@
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
-"$ref" : "#/definitions/xml_ns0_searchRequest"
+"$ref" : "#/definitions/xml_ns0_searchRequest",
+"description" : ""
             },
             "description" : ""
           }
@@ -7343,7 +7156,6 @@
     "\/systemStatusService/cacheEntries" : {
       "get" : {
         "tags" : [ "SystemStatusService" ],
-        "description" : "",
         "operationId" : "getCacheEntries",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -7363,7 +7175,6 @@
     "\/systemStatusService/clearAllCaches" : {
       "get" : {
         "tags" : [ "SystemStatusService" ],
-        "description" : "",
         "operationId" : "clearAllCaches",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -7383,14 +7194,12 @@
     "\/systemStatusService/clearCache/{key}" : {
       "get" : {
         "tags" : [ "SystemStatusService" ],
-        "description" : "",
         "operationId" : "clearCache",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "key",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -7410,14 +7219,12 @@
     "\/systemStatusService/currentServerTime/{locale}" : {
       "get" : {
         "tags" : [ "SystemStatusService" ],
-        "description" : "",
         "operationId" : "getCurrentServerTime",
         "produces" : [ "text/plain" ],
         "parameters" : [
           {
             "name" : "locale",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -7437,7 +7244,6 @@
     "\/systemStatusService/memoryStatus" : {
       "get" : {
         "tags" : [ "SystemStatusService" ],
-        "description" : "",
         "operationId" : "getMemoryStatus",
         "produces" : [ "text/plain" ],
         "parameters" : [
@@ -7457,7 +7263,6 @@
     "\/systemStatusService/queueEntries" : {
       "get" : {
         "tags" : [ "SystemStatusService" ],
-        "description" : "",
         "operationId" : "getQueueEntries",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -7477,7 +7282,6 @@
     "\/systemStatusService/repositoryScannerStatistics" : {
       "get" : {
         "tags" : [ "SystemStatusService" ],
-        "description" : "",
         "operationId" : "getRepositoryScannerStatistics",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [

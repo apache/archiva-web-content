@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-  <title>Archiva Web :: Web Common: ArtifactMetadata</title>
+  <title>Archiva UI Rest API: ArtifactMetadata</title>
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +31,7 @@
   <header>
  
    <div id="header" class="column first last span-20">
-        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">Archiva Web :: Web Common: ArtifactMetadata</a></div>
+        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">Archiva UI Rest API: ArtifactMetadata</a></div>
         <div id="primary" class="column span-18 append-1 prepend-1 first last">
           <ul class="navigation">
             <li id="nav-rest"><a href="resources.html">REST</a></li>
@@ -64,7 +64,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Archiva Web :: Web Common: ArtifactMetadata</a>
+        <a class="navbar-brand" href="index.html">Archiva UI Rest API: ArtifactMetadata</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
@@ -91,59 +91,18 @@
         <tr>
           <th>name</th>
           <th>data type</th>
+          <th>constraints</th>
           <th>description</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-          <td>  repositoryId
+          <td>  namespace
 </td>
           <td>  string
 
 </td>
-          <td>  
-</td>
-        </tr>
-        <tr>
-          <td>  size
-</td>
-          <td>  number
-
-</td>
-          <td>  
-</td>
-        </tr>
-        <tr>
-          <td>  sha1
-</td>
-          <td>  string
-
-</td>
-          <td>  
-</td>
-        </tr>
-        <tr>
-          <td>  fileLastModified
-</td>
-          <td>  number
-
-</td>
-          <td>  
-</td>
-        </tr>
-        <tr>
-          <td>  id
-</td>
-          <td>  string
-
-</td>
-          <td>  
-</td>
-        </tr>
-        <tr>
-          <td>  md5
-</td>
-          <td>  string
+          <td>  &nbsp;
 
 </td>
           <td>  
@@ -155,13 +114,19 @@
           <td>  number
 
 </td>
+          <td>  &nbsp;
+
+</td>
           <td>  
 </td>
         </tr>
         <tr>
-          <td>  projectVersion
+          <td>  md5
 </td>
           <td>  string
+
+</td>
+          <td>  &nbsp;
 
 </td>
           <td>  
@@ -173,6 +138,45 @@
           <td>  string
 
 </td>
+          <td>  &nbsp;
+
+</td>
+          <td>  
+</td>
+        </tr>
+        <tr>
+          <td>  checksumTypes
+</td>
+          <td>  array of <a href="json_ChecksumAlgorithm.html">ChecksumAlgorithm</a>
+
+</td>
+          <td>  &nbsp;
+
+</td>
+          <td>  
+</td>
+        </tr>
+        <tr>
+          <td>  fileLastModified
+</td>
+          <td>  number
+
+</td>
+          <td>  &nbsp;
+
+</td>
+          <td>  
+</td>
+        </tr>
+        <tr>
+          <td>  size
+</td>
+          <td>  number
+
+</td>
+          <td>  required
+
+</td>
           <td>  
 </td>
         </tr>
@@ -182,13 +186,67 @@
           <td>  string
 
 </td>
+          <td>  &nbsp;
+
+</td>
           <td>  
 </td>
         </tr>
         <tr>
-          <td>  namespace
+          <td>  projectVersion
 </td>
           <td>  string
+
+</td>
+          <td>  &nbsp;
+
+</td>
+          <td>  
+</td>
+        </tr>
+        <tr>
+          <td>  sha1
+</td>
+          <td>  string
+
+</td>
+          <td>  &nbsp;
+
+</td>
+          <td>  
+</td>
+        </tr>
+        <tr>
+          <td>  repositoryId
+</td>
+          <td>  string
+
+</td>
+          <td>  &nbsp;
+
+</td>
+          <td>  
+</td>
+        </tr>
+        <tr>
+          <td>  id
+</td>
+          <td>  string
+
+</td>
+          <td>  &nbsp;
+
+</td>
+          <td>  
+</td>
+        </tr>
+        <tr>
+          <td>  checksums
+</td>
+          <td>  map of string
+
+</td>
+          <td>  &nbsp;
 
 </td>
           <td>  
@@ -196,24 +254,30 @@
         </tr>
         </tbody>
         <tr>
-          <td colspan="3"><h5 class="text-muted">Properties inherited from <a href="json_FacetedMetadata.html">FacetedMetadata</a></h5></td>
+          <td colspan="4"><h5 class="text-muted">Properties inherited from <a href="json_FacetedMetadata.html">FacetedMetadata</a></h5></td>
         </tr>
         <tbody>
         <tr>
-          <td>facets</td>
-          <td>map of object
-</td>
-          <td></td>
-        </tr>
-        <tr>
           <td>facetIds</td>
           <td>array of string
+</td>
+          <td>&nbsp;
 </td>
           <td></td>
         </tr>
         <tr>
           <td>facetList</td>
           <td>array of <a href="json_MetadataFacet.html">MetadataFacet</a>
+</td>
+          <td>&nbsp;
+</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>facets</td>
+          <td>map of object
+</td>
+          <td>&nbsp;
 </td>
           <td></td>
         </tr>
@@ -223,20 +287,21 @@
       <h2>Example</h2>
 
       <pre class="prettyprint lang-js">{
-  &quot;repositoryId&quot; : &quot;...&quot;,
-  &quot;size&quot; : 12345,
-  &quot;sha1&quot; : &quot;...&quot;,
-  &quot;fileLastModified&quot; : 12345,
-  &quot;id&quot; : &quot;...&quot;,
-  &quot;md5&quot; : &quot;...&quot;,
-  &quot;whenGathered&quot; : 12345,
-  &quot;projectVersion&quot; : &quot;...&quot;,
-  &quot;version&quot; : &quot;...&quot;,
-  &quot;project&quot; : &quot;...&quot;,
   &quot;namespace&quot; : &quot;...&quot;,
-  &quot;facets&quot; : {
-    &quot;property1&quot; : { },
-    &quot;property2&quot; : { }
+  &quot;whenGathered&quot; : 12345,
+  &quot;md5&quot; : &quot;...&quot;,
+  &quot;version&quot; : &quot;...&quot;,
+  &quot;checksumTypes&quot; : [ &quot;SHA256&quot;, &quot;SHA384&quot; ],
+  &quot;fileLastModified&quot; : 12345,
+  &quot;size&quot; : 12345,
+  &quot;project&quot; : &quot;...&quot;,
+  &quot;projectVersion&quot; : &quot;...&quot;,
+  &quot;sha1&quot; : &quot;...&quot;,
+  &quot;repositoryId&quot; : &quot;...&quot;,
+  &quot;id&quot; : &quot;...&quot;,
+  &quot;checksums&quot; : {
+    &quot;property1&quot; : &quot;...&quot;,
+    &quot;property2&quot; : &quot;...&quot;
   },
   &quot;facetIds&quot; : [ &quot;...&quot;, &quot;...&quot; ],
   &quot;facetList&quot; : [ {
@@ -245,7 +310,11 @@
   }, {
     &quot;name&quot; : &quot;...&quot;,
     &quot;facetId&quot; : &quot;...&quot;
-  } ]
+  } ],
+  &quot;facets&quot; : {
+    &quot;property1&quot; : { },
+    &quot;property2&quot; : { }
+  }
 }</pre>
         
         <footer>

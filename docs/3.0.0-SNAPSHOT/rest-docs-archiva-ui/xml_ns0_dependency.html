@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-  <title>Archiva Web :: Web Common: dependency</title>
+  <title>Archiva UI Rest API: dependency</title>
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +31,7 @@
   <header>
  
    <div id="header" class="column first last span-20">
-        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">Archiva Web :: Web Common: dependency</a></div>
+        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">Archiva UI Rest API: dependency</a></div>
         <div id="primary" class="column span-18 append-1 prepend-1 first last">
           <ul class="navigation">
             <li id="nav-rest"><a href="resources.html">REST</a></li>
@@ -64,7 +64,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Archiva Web :: Web Common: dependency</a>
+        <a class="navbar-brand" href="index.html">Archiva UI Rest API: dependency</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
@@ -98,6 +98,7 @@
           <th>type</th>
           <th>namespace</th>
           <th>min/max occurs</th>
+          <th>constraints</th>
           <th>description</th>
         </tr>
         </thead>
@@ -115,6 +116,9 @@
 
 </td>
           <td>  0/1
+
+</td>
+          <td>  &nbsp;
 
 </td>
           <td>  &nbsp;
@@ -136,10 +140,13 @@
 
 </td>
           <td>  &nbsp;
+
+</td>
+          <td>  &nbsp;
 </td>
         </tr>
         <tr>
-          <td>  groupId
+          <td>  namespace
 </td>
           <td>  string
 
@@ -151,6 +158,9 @@
 
 </td>
           <td>  0/1
+
+</td>
+          <td>  &nbsp;
 
 </td>
           <td>  &nbsp;
@@ -169,6 +179,30 @@
 
 </td>
           <td>  1/1
+
+</td>
+          <td>  required
+
+</td>
+          <td>  &nbsp;
+</td>
+        </tr>
+        <tr>
+          <td>  projectId
+</td>
+          <td>  string
+
+</td>
+          <td>  element
+
+</td>
+          <td>  
+
+</td>
+          <td>  0/1
+
+</td>
+          <td>  &nbsp;
 
 </td>
           <td>  &nbsp;
@@ -190,6 +224,9 @@
 
 </td>
           <td>  &nbsp;
+
+</td>
+          <td>  &nbsp;
 </td>
         </tr>
         <tr>
@@ -205,6 +242,9 @@
 
 </td>
           <td>  0/1
+
+</td>
+          <td>  &nbsp;
 
 </td>
           <td>  &nbsp;
@@ -226,6 +266,9 @@
 
 </td>
           <td>  &nbsp;
+
+</td>
+          <td>  &nbsp;
 </td>
         </tr>
         <tr>
@@ -244,6 +287,9 @@
 
 </td>
           <td>  &nbsp;
+
+</td>
+          <td>  &nbsp;
 </td>
         </tr>
         </tbody>
@@ -252,14 +298,15 @@
       <h2>Example</h2>
 
       <pre class="prettyprint lang-xml">&lt;dependency&gt;
-  &lt;scope&gt;...&lt;/scope&gt;
-  &lt;systemPath&gt;...&lt;/systemPath&gt;
   &lt;artifactId&gt;...&lt;/artifactId&gt;
   &lt;version&gt;...&lt;/version&gt;
+  &lt;scope&gt;...&lt;/scope&gt;
+  &lt;systemPath&gt;...&lt;/systemPath&gt;
+  &lt;projectId&gt;...&lt;/projectId&gt;
   &lt;type&gt;...&lt;/type&gt;
-  &lt;classifier&gt;...&lt;/classifier&gt;
+  &lt;namespace&gt;...&lt;/namespace&gt;
   &lt;optional&gt;...&lt;/optional&gt;
-  &lt;groupId&gt;...&lt;/groupId&gt;
+  &lt;classifier&gt;...&lt;/classifier&gt;
 &lt;/dependency&gt;
 </pre>
         

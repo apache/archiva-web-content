@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-  <title>Archiva Web :: Web Common: proxyConnector</title>
+  <title>Archiva UI Rest API: proxyConnector</title>
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +31,7 @@
   <header>
  
    <div id="header" class="column first last span-20">
-        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">Archiva Web :: Web Common: proxyConnector</a></div>
+        <div id="site-name" class="column span-18 append-1 prepend-1 first last"><a href="index.html">Archiva UI Rest API: proxyConnector</a></div>
         <div id="primary" class="column span-18 append-1 prepend-1 first last">
           <ul class="navigation">
             <li id="nav-rest"><a href="resources.html">REST</a></li>
@@ -64,7 +64,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Archiva Web :: Web Common: proxyConnector</a>
+        <a class="navbar-brand" href="index.html">Archiva UI Rest API: proxyConnector</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
@@ -100,6 +100,7 @@
           <th>type</th>
           <th>namespace</th>
           <th>min/max occurs</th>
+          <th>constraints</th>
           <th>description</th>
         </tr>
         </thead>
@@ -119,12 +120,15 @@
           <td>  1/1
 
 </td>
+          <td>  required
+
+</td>
           <td>  Get the order of the proxy connectors. (0 means no order specified)
 </td>
         </tr>
         </tbody>
         <tr>
-          <td colspan="6"><h5 class="text-muted">Properties inherited from <a href="xml_ns0_abstractRepositoryConnector.html">abstractRepositoryConnector</a></h5></td>
+          <td colspan="7"><h5 class="text-muted">Properties inherited from <a href="xml_ns0_abstractRepositoryConnector.html">abstractRepositoryConnector</a></h5></td>
         </tr>
         <tbody>
         <tr>
@@ -136,6 +140,8 @@
           <td>
 </td>
           <td>0/unbounded
+</td>
+          <td>&nbsp;
 </td>
           <td>&nbsp;</td>
         </tr>
@@ -149,6 +155,8 @@
 </td>
           <td>1/1
 </td>
+          <td>required
+</td>
           <td>&nbsp;</td>
         </tr>
         <tr>
@@ -160,6 +168,8 @@
           <td>
 </td>
           <td>0/1
+</td>
+          <td>&nbsp;
 </td>
           <td>&nbsp;</td>
         </tr>
@@ -173,6 +183,8 @@
 </td>
           <td>0/unbounded
 </td>
+          <td>&nbsp;
+</td>
           <td>&nbsp;</td>
         </tr>
         <tr>
@@ -184,6 +196,8 @@
           <td>
 </td>
           <td>0/1
+</td>
+          <td>&nbsp;
 </td>
           <td>&nbsp;</td>
         </tr>
@@ -197,6 +211,8 @@
 </td>
           <td>0/unbounded
 </td>
+          <td>&nbsp;
+</td>
           <td>&nbsp;</td>
         </tr>
         <tr>
@@ -208,6 +224,8 @@
           <td>
 </td>
           <td>0/1
+</td>
+          <td>&nbsp;
 </td>
           <td>&nbsp;</td>
         </tr>
@@ -221,6 +239,8 @@
 </td>
           <td>0/1
 </td>
+          <td>&nbsp;
+</td>
           <td>&nbsp;</td>
         </tr>
         <tr>
@@ -232,6 +252,8 @@
           <td>
 </td>
           <td>0/1
+</td>
+          <td>&nbsp;
 </td>
           <td>&nbsp;</td>
         </tr>
@@ -245,6 +267,8 @@
 </td>
           <td>0/unbounded
 </td>
+          <td>&nbsp;
+</td>
           <td>&nbsp;</td>
         </tr>
         </tbody>
@@ -255,21 +279,21 @@
       <pre class="prettyprint lang-xml">&lt;proxyConnector&gt;
   &lt;order&gt;...&lt;/order&gt;
   &lt;whiteListPatterns&gt;...&lt;/whiteListPatterns&gt;
-  &lt;disabled&gt;...&lt;/disabled&gt;
+  &lt;sourceRepoId&gt;...&lt;/sourceRepoId&gt;
+  &lt;policies&gt;...&lt;/policies&gt;
+  &lt;policiesEntries&gt;
+    &lt;key&gt;...&lt;/key&gt;
+    &lt;value&gt;...&lt;/value&gt;
+  &lt;/policiesEntries&gt;
+  &lt;properties&gt;...&lt;/properties&gt;
   &lt;targetRepoId&gt;...&lt;/targetRepoId&gt;
+  &lt;proxyId&gt;...&lt;/proxyId&gt;
   &lt;blackListPatterns&gt;...&lt;/blackListPatterns&gt;
   &lt;propertiesEntries&gt;
     &lt;key&gt;...&lt;/key&gt;
     &lt;value&gt;...&lt;/value&gt;
   &lt;/propertiesEntries&gt;
-  &lt;proxyId&gt;...&lt;/proxyId&gt;
-  &lt;policiesEntries&gt;
-    &lt;key&gt;...&lt;/key&gt;
-    &lt;value&gt;...&lt;/value&gt;
-  &lt;/policiesEntries&gt;
-  &lt;sourceRepoId&gt;...&lt;/sourceRepoId&gt;
-  &lt;properties&gt;...&lt;/properties&gt;
-  &lt;policies&gt;...&lt;/policies&gt;
+  &lt;disabled&gt;...&lt;/disabled&gt;
 &lt;/proxyConnector&gt;
 </pre>
         

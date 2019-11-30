@@ -59,33 +59,7 @@
        <xs:sequence>
               <xs:element name="whiteListPatterns" type="xs:string" minOccurs="0" maxOccurs="unbounded">
               </xs:element>
-              <xs:element name="disabled" type="xs:boolean" minOccurs="1">
-              </xs:element>
-              <xs:element name="targetRepoId" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="blackListPatterns" type="xs:string" minOccurs="0" maxOccurs="unbounded">
-              </xs:element>
-              <xs:element name="propertiesEntries" type="propertyEntry" minOccurs="0" maxOccurs="unbounded">
-              </xs:element>
-              <xs:element name="proxyId" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="policiesEntries" type="propertyEntry" minOccurs="0" maxOccurs="unbounded">
-              </xs:element>
               <xs:element name="sourceRepoId" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="properties" minOccurs="0">
-  <xs:complexType>
-    <xs:sequence>
-      <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="key" minOccurs="1" type="xs:string"/>
-            <xs:element name="value" minOccurs="1" type="xs:string"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
               </xs:element>
               <xs:element name="policies" minOccurs="0">
   <xs:complexType>
@@ -101,24 +75,50 @@
     </xs:sequence>
   </xs:complexType>
               </xs:element>
+              <xs:element name="policiesEntries" type="propertyEntry" minOccurs="0" maxOccurs="unbounded">
+              </xs:element>
+              <xs:element name="properties" minOccurs="0">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="key" minOccurs="1" type="xs:string"/>
+            <xs:element name="value" minOccurs="1" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+              </xs:element>
+              <xs:element name="targetRepoId" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="proxyId" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="blackListPatterns" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+              </xs:element>
+              <xs:element name="propertiesEntries" type="propertyEntry" minOccurs="0" maxOccurs="unbounded">
+              </xs:element>
+              <xs:element name="disabled" type="xs:boolean" minOccurs="1">
+              </xs:element>
       </xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="abstractRepository">
        <xs:sequence>
-              <xs:element name="description" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="layout" type="xs:string" minOccurs="0">
-              </xs:element>
               <xs:element name="packedIndexDirectory" type="xs:string" minOccurs="0">
               </xs:element>
               <xs:element name="indexDirectory" type="xs:string" minOccurs="0">
               </xs:element>
-              <xs:element name="name" type="xs:string" minOccurs="0">
-              </xs:element>
               <xs:element name="id" type="xs:string" minOccurs="0">
               </xs:element>
               <xs:element name="type" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="layout" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="name" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="description" type="xs:string" minOccurs="0">
               </xs:element>
       </xs:sequence>
 </xs:complexType>
@@ -367,15 +367,6 @@
       </xs:sequence>
 </xs:complexType>
 
-<xs:simpleType name="proxyConnectorRuleType">
-  <xs:restriction base="xs:string">
-     
-    <xs:enumeration value="WHITE_LIST"/>
- 
-    <xs:enumeration value="BLACK_LIST"/>
-  </xs:restriction>
-</xs:simpleType>
-
 <xs:complexType name="redbackRuntimeConfiguration">
        <xs:sequence>
               <xs:element name="userManagerImpls" type="xs:string" minOccurs="0" maxOccurs="unbounded">
@@ -514,70 +505,87 @@
       </xs:sequence>
 </xs:complexType>
 
+<xs:simpleType name="checksumAlgorithm">
+  <xs:restriction base="xs:string">
+     
+    <xs:enumeration value="MD5"/>
+ 
+    <xs:enumeration value="SHA1"/>
+ 
+    <xs:enumeration value="SHA256"/>
+ 
+    <xs:enumeration value="SHA384"/>
+ 
+    <xs:enumeration value="SHA512"/>
+ 
+    <xs:enumeration value="ASC"/>
+  </xs:restriction>
+</xs:simpleType>
+
 <xs:complexType name="artifact">
        <xs:sequence>
-              <xs:element name="classifier" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="type" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="bundleImportPackage" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="bundleExportPackage" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="path" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="id" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="artifactId" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="prefix" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="bundleLicense" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="version" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="bundleSymbolicName" type="xs:string" minOccurs="0">
+              <xs:element name="bundleExportService" type="xs:string" minOccurs="0">
               </xs:element>
               <xs:element name="packaging" type="xs:string" minOccurs="0">
               </xs:element>
-              <xs:element name="repositoryId" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="bundleExportService" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="url" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="goals" type="xs:string" minOccurs="0" maxOccurs="unbounded">
-              </xs:element>
-              <xs:element name="scope" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="bundleDescription" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="size" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="bundleDocUrl" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="bundleRequireBundle" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="context" type="xs:string" minOccurs="0">
-              </xs:element>
               <xs:element name="bundleName" type="xs:string" minOccurs="0">
               </xs:element>
-              <xs:element name="groupId" type="xs:string" minOccurs="0">
+              <xs:element name="bundleImportPackage" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="repositoryId" type="xs:string" minOccurs="0">
               </xs:element>
               <xs:element name="fileExtension" type="xs:string" minOccurs="0">
               </xs:element>
+              <xs:element name="bundleRequireBundle" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="bundleLicense" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="type" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="artifactId" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="size" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="bundleExportPackage" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="url" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="id" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="classifier" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="bundleDescription" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="bundleSymbolicName" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="prefix" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="scope" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="context" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="groupId" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="goals" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+              </xs:element>
+              <xs:element name="path" type="xs:string" minOccurs="0">
+              </xs:element>
               <xs:element name="bundleVersion" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="version" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="bundleDocUrl" type="xs:string" minOccurs="0">
               </xs:element>
       </xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="treeEntry">
        <xs:sequence>
-              <xs:element name="artifact" type="artifact" minOccurs="0">
-              </xs:element>
               <xs:element name="parent" type="treeEntry" minOccurs="0">
               </xs:element>
               <xs:element name="childs" type="treeEntry" minOccurs="0" maxOccurs="unbounded">
+              </xs:element>
+              <xs:element name="artifact" type="artifact" minOccurs="0">
               </xs:element>
       </xs:sequence>
 </xs:complexType>
@@ -586,25 +594,39 @@
    <xs:complexContent>
     <xs:extension base="facetedMetadata">
       <xs:sequence>
-              <xs:element name="namespace" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="size" type="xs:long" minOccurs="1">
-              </xs:element>
-              <xs:element name="projectVersion" type="xs:string" minOccurs="0">
-              </xs:element>
               <xs:element name="version" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="md5" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="whenGathered" type="xs:dateTime" minOccurs="0">
-              </xs:element>
-              <xs:element name="repositoryId" type="xs:string" minOccurs="0">
               </xs:element>
               <xs:element name="id" type="xs:string" minOccurs="0">
               </xs:element>
-              <xs:element name="sha1" type="xs:string" minOccurs="0">
+              <xs:element name="repositoryId" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="namespace" type="xs:string" minOccurs="0">
               </xs:element>
               <xs:element name="project" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="projectVersion" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="checksums" minOccurs="0">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="key" minOccurs="1" type="checksumAlgorithm"/>
+            <xs:element name="value" minOccurs="1" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+              </xs:element>
+              <xs:element name="whenGathered" type="xs:dateTime" minOccurs="0">
+              </xs:element>
+              <xs:element name="size" type="xs:long" minOccurs="1">
+              </xs:element>
+              <xs:element name="md5" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="sha1" type="xs:string" minOccurs="0">
               </xs:element>
       </xs:sequence>
     </xs:extension>
@@ -622,21 +644,23 @@
 
 <xs:complexType name="dependency">
        <xs:sequence>
-              <xs:element name="scope" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="systemPath" type="xs:string" minOccurs="0">
-              </xs:element>
               <xs:element name="artifactId" type="xs:string" minOccurs="0">
               </xs:element>
               <xs:element name="version" type="xs:string" minOccurs="0">
               </xs:element>
+              <xs:element name="scope" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="systemPath" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="projectId" type="xs:string" minOccurs="0">
+              </xs:element>
               <xs:element name="type" type="xs:string" minOccurs="0">
               </xs:element>
-              <xs:element name="classifier" type="xs:string" minOccurs="0">
+              <xs:element name="namespace" type="xs:string" minOccurs="0">
               </xs:element>
               <xs:element name="optional" type="xs:boolean" minOccurs="1">
               </xs:element>
-              <xs:element name="groupId" type="xs:string" minOccurs="0">
+              <xs:element name="classifier" type="xs:string" minOccurs="0">
               </xs:element>
       </xs:sequence>
 </xs:complexType>
@@ -655,35 +679,37 @@
 
 <xs:complexType name="license">
        <xs:sequence>
-              <xs:element name="name" type="xs:string" minOccurs="0">
-              </xs:element>
               <xs:element name="url" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="name" type="xs:string" minOccurs="0">
               </xs:element>
       </xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="mailingList">
        <xs:sequence>
-              <xs:element name="name" type="xs:string" minOccurs="0">
+              <xs:element name="mainArchiveUrl" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="index" type="xs:int" minOccurs="0">
               </xs:element>
               <xs:element name="otherArchives" type="xs:string" minOccurs="0" maxOccurs="unbounded">
               </xs:element>
-              <xs:element name="mainArchiveUrl" type="xs:string" minOccurs="0">
-              </xs:element>
               <xs:element name="unsubscribeAddress" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="postAddress" type="xs:string" minOccurs="0">
               </xs:element>
               <xs:element name="subscribeAddress" type="xs:string" minOccurs="0">
               </xs:element>
-              <xs:element name="postAddress" type="xs:string" minOccurs="0">
+              <xs:element name="name" type="xs:string" minOccurs="0">
               </xs:element>
       </xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="organization">
        <xs:sequence>
-              <xs:element name="name" type="xs:string" minOccurs="0">
-              </xs:element>
               <xs:element name="url" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="name" type="xs:string" minOccurs="0">
               </xs:element>
       </xs:sequence>
 </xs:complexType>
@@ -692,27 +718,27 @@
    <xs:complexContent>
     <xs:extension base="facetedMetadata">
       <xs:sequence>
-              <xs:element name="url" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="mailingLists" type="mailingList" minOccurs="0" maxOccurs="unbounded">
-              </xs:element>
-              <xs:element name="description" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="id" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="name" type="xs:string" minOccurs="0">
-              </xs:element>
-              <xs:element name="issueManagement" type="issueManagement" minOccurs="0">
-              </xs:element>
-              <xs:element name="dependencies" type="dependency" minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="scm" type="scm" minOccurs="0">
               </xs:element>
               <xs:element name="licenses" type="license" minOccurs="0" maxOccurs="unbounded">
               </xs:element>
-              <xs:element name="ciManagement" type="ciManagement" minOccurs="0">
+              <xs:element name="issueManagement" type="issueManagement" minOccurs="0">
               </xs:element>
-              <xs:element name="scm" type="scm" minOccurs="0">
+              <xs:element name="mailingLists" type="mailingList" minOccurs="0" maxOccurs="unbounded">
+              </xs:element>
+              <xs:element name="url" type="xs:string" minOccurs="0">
               </xs:element>
               <xs:element name="organization" type="organization" minOccurs="0">
+              </xs:element>
+              <xs:element name="id" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="ciManagement" type="ciManagement" minOccurs="0">
+              </xs:element>
+              <xs:element name="name" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="dependencies" type="dependency" minOccurs="0" maxOccurs="unbounded">
+              </xs:element>
+              <xs:element name="description" type="xs:string" minOccurs="0">
               </xs:element>
               <xs:element name="incomplete" type="xs:boolean" minOccurs="1">
               </xs:element>
@@ -723,11 +749,11 @@
 
 <xs:complexType name="scm">
        <xs:sequence>
-              <xs:element name="connection" type="xs:string" minOccurs="0">
-              </xs:element>
               <xs:element name="url" type="xs:string" minOccurs="0">
               </xs:element>
               <xs:element name="developerConnection" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="connection" type="xs:string" minOccurs="0">
               </xs:element>
       </xs:sequence>
 </xs:complexType>
@@ -736,37 +762,49 @@
        <xs:sequence>
               <xs:element name="version" type="xs:string" minOccurs="0">
               </xs:element>
-              <xs:element name="repositoryId" type="xs:string" minOccurs="0">
+              <xs:element name="project" type="xs:string" minOccurs="0">
               </xs:element>
               <xs:element name="id" type="xs:string" minOccurs="0">
               </xs:element>
-              <xs:element name="namespace" type="xs:string" minOccurs="0">
-              </xs:element>
               <xs:element name="message" type="xs:string" minOccurs="0">
               </xs:element>
-              <xs:element name="project" type="xs:string" minOccurs="0">
+              <xs:element name="namespace" type="xs:string" minOccurs="0">
               </xs:element>
               <xs:element name="problem" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="repositoryId" type="xs:string" minOccurs="0">
               </xs:element>
       </xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="repositoryStatistics" abstract="true">
        <xs:sequence>
-              <xs:element name="newFileCount" type="xs:long" minOccurs="1">
-              </xs:element>
-              <xs:element name="totalProjectCount" type="xs:long" minOccurs="1">
-              </xs:element>
-              <xs:element name="totalArtifactFileSize" type="xs:long" minOccurs="1">
-              </xs:element>
-              <xs:element name="totalArtifactCount" type="xs:long" minOccurs="1">
+              <xs:element name="totalGroupCount" type="xs:long" minOccurs="1">
               </xs:element>
               <xs:element name="totalFileCount" type="xs:long" minOccurs="1">
               </xs:element>
-              <xs:element name="totalGroupCount" type="xs:long" minOccurs="1">
+              <xs:element name="totalArtifactCount" type="xs:long" minOccurs="1">
+              </xs:element>
+              <xs:element name="newFileCount" type="xs:long" minOccurs="1">
+              </xs:element>
+              <xs:element name="totalArtifactFileSize" type="xs:long" minOccurs="1">
+              </xs:element>
+              <xs:element name="totalProjectCount" type="xs:long" minOccurs="1">
               </xs:element>
       </xs:sequence>
 </xs:complexType>
+
+<xs:complexType name="policyOption" abstract="true">
+ </xs:complexType>
+
+<xs:simpleType name="proxyConnectorRuleType">
+  <xs:restriction base="xs:string">
+     
+    <xs:enumeration value="WHITE_LIST"/>
+ 
+    <xs:enumeration value="BLACK_LIST"/>
+  </xs:restriction>
+</xs:simpleType>
 
 <xs:complexType name="repositoryScanStatistics">
        <xs:sequence>
@@ -779,9 +817,9 @@
        <xs:sequence>
               <xs:element name="beanId" type="xs:string" minOccurs="0">
               </xs:element>
-              <xs:element name="descriptionKey" type="xs:string" minOccurs="0">
-              </xs:element>
               <xs:element name="readOnly" type="xs:boolean" minOccurs="1">
+              </xs:element>
+              <xs:element name="descriptionKey" type="xs:string" minOccurs="0">
               </xs:element>
       </xs:sequence>
 </xs:complexType>
@@ -927,9 +965,9 @@
 
 <xs:complexType name="checksumSearch">
        <xs:sequence>
-              <xs:element name="repositories" type="xs:string" minOccurs="0" maxOccurs="unbounded">
-              </xs:element>
               <xs:element name="checksum" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="repositories" type="xs:string" minOccurs="0" maxOccurs="unbounded">
               </xs:element>
       </xs:sequence>
 </xs:complexType>
@@ -949,9 +987,9 @@
 
 <xs:complexType name="entry">
        <xs:sequence>
-              <xs:element name="key" type="xs:string" minOccurs="0">
-              </xs:element>
               <xs:element name="value" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="key" type="xs:string" minOccurs="0">
               </xs:element>
       </xs:sequence>
 </xs:complexType>
@@ -990,9 +1028,9 @@
 
 <xs:complexType name="policyInformation">
        <xs:sequence>
-              <xs:element name="options" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="options" type="xs:anyType" minOccurs="0" maxOccurs="unbounded">
               </xs:element>
-              <xs:element name="defaultOption" type="xs:string" minOccurs="0">
+              <xs:element name="defaultOption" type="xs:anyType" minOccurs="0">
               </xs:element>
               <xs:element name="id" type="xs:string" minOccurs="0">
               </xs:element>

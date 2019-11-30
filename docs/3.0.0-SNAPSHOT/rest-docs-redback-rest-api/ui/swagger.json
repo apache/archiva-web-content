@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info" : {
-    "description" : "<h1>Redback :: Integration :: REST :: Api<\/h1><p>Archiva is an application for managing one or more remote\n      repositories, including administration, artifact handling,\n      browsing and searching.<\/p>",
+    "description" : "<h1>Redback :: Integration :: REST :: Api<\/h1><p>Redback integration modules for security and REST<\/p>",
     "contact" : {
       "name" : "Steffen Grunwald"
     },
@@ -10,7 +10,7 @@
       "name" : "The Apache Software License, Version 2.0"
     },
     "version" : "3.0.0-SNAPSHOT",
-    "title" : "Redback :: Integration :: REST :: Api"
+    "title" : "Apache Archiva Redback REST API"
   },
   "schemes" : [],
   "tags" : [
@@ -39,6 +39,797 @@
     }
   ],
   "definitions" : {
+    "json_Application" : {
+      "type" : "object",
+      "title" : "Application",
+          "properties" : {
+            "version" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "id" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "description" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "longDescription" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          },
+      "example" : {
+  "version" : "...",
+  "id" : "...",
+  "description" : "...",
+  "longDescription" : "..."
+},
+      "description" : ""
+    }
+    ,
+    "json_ApplicationRoles" : {
+      "type" : "object",
+      "title" : "ApplicationRoles",
+          "properties" : {
+            "name" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "description" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "globalRoles" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "type" : "string"
+}
+            },
+            "roleTemplates" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_RoleTemplate"
+}
+            },
+            "resources" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "type" : "string"
+}
+            }
+          },
+      "example" : {
+  "name" : "...",
+  "description" : "...",
+  "globalRoles" : [ "...", "..." ],
+  "roleTemplates" : [ {
+    "id" : "...",
+    "namePrefix" : "...",
+    "delimiter" : "...",
+    "description" : "...",
+    "resource" : "...",
+    "roles" : [ "...", "..." ]
+  }, {
+    "id" : "...",
+    "namePrefix" : "...",
+    "delimiter" : "...",
+    "description" : "...",
+    "resource" : "...",
+    "roles" : [ "...", "..." ]
+  } ],
+  "resources" : [ "...", "..." ]
+},
+      "description" : ""
+    }
+    ,
+    "json_LdapGroupMapping" : {
+      "type" : "object",
+      "title" : "LdapGroupMapping",
+          "properties" : {
+            "group" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "roleNames" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "type" : "string"
+}
+            }
+          },
+      "example" : {
+  "group" : "...",
+  "roleNames" : [ "...", "..." ]
+},
+      "description" : ""
+    }
+    ,
+    "json_LdapGroupMappingUpdateRequest" : {
+      "type" : "object",
+      "title" : "LdapGroupMappingUpdateRequest",
+          "properties" : {
+            "ldapGroupMapping" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_LdapGroupMapping"
+}
+            }
+          },
+      "example" : {
+  "ldapGroupMapping" : [ {
+    "group" : "...",
+    "roleNames" : [ "...", "..." ]
+  }, {
+    "group" : "...",
+    "roleNames" : [ "...", "..." ]
+  } ]
+},
+      "description" : ""
+    }
+    ,
+    "json_LoginRequest" : {
+      "type" : "object",
+      "title" : "LoginRequest",
+          "properties" : {
+            "username" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "password" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          },
+      "example" : {
+  "username" : "...",
+  "password" : "..."
+},
+      "description" : ""
+    }
+    ,
+    "json_Operation" : {
+      "type" : "object",
+      "title" : "Operation",
+      "required" : ["permanent"],
+          "properties" : {
+            "name" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "description" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "permanent" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            }
+          },
+      "example" : {
+  "name" : "...",
+  "description" : "...",
+  "permanent" : true
+},
+      "description" : ""
+    }
+    ,
+    "json_Permission" : {
+      "type" : "object",
+      "title" : "Permission",
+          "properties" : {
+            "name" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "operation" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_Operation",
+"description" : ""
+            },
+            "resource" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_Resource",
+"description" : ""
+            }
+          },
+      "example" : {
+  "name" : "...",
+  "operation" : {
+    "name" : "...",
+    "description" : "...",
+    "permanent" : true
+  },
+  "resource" : {
+    "identifier" : "...",
+    "pattern" : true,
+    "permanent" : true
+  }
+},
+      "description" : ""
+    }
+    ,
+    "json_RegistrationKey" : {
+      "type" : "object",
+      "title" : "RegistrationKey",
+          "properties" : {
+            "key" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          },
+      "example" : {
+  "key" : "..."
+},
+      "description" : ""
+    }
+    ,
+    "json_ResetPasswordRequest" : {
+      "type" : "object",
+      "title" : "ResetPasswordRequest",
+          "properties" : {
+            "username" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "applicationUrl" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          },
+      "example" : {
+  "username" : "...",
+  "applicationUrl" : "..."
+},
+      "description" : ""
+    }
+    ,
+    "json_Resource" : {
+      "type" : "object",
+      "title" : "Resource",
+      "required" : ["pattern", "permanent"],
+          "properties" : {
+            "identifier" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "pattern" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            },
+            "permanent" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            }
+          },
+      "example" : {
+  "identifier" : "...",
+  "pattern" : true,
+  "permanent" : true
+},
+      "description" : ""
+    }
+    ,
+    "json_Role" : {
+      "type" : "object",
+      "title" : "Role",
+      "required" : ["assignable", "permanent"],
+          "properties" : {
+            "name" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "description" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "assignable" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            },
+            "childRoleNames" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "type" : "string"
+}
+            },
+            "permissions" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_Permission"
+}
+            },
+            "permanent" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            },
+            "parentRoleNames" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "type" : "string"
+}
+            },
+            "parentsRolesUsers" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_User"
+}
+            },
+            "users" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_User"
+}
+            },
+            "otherUsers" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_User"
+}
+            },
+            "removedUsers" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_User"
+}
+            }
+          },
+      "example" : {
+  "name" : "...",
+  "description" : "...",
+  "assignable" : true,
+  "childRoleNames" : [ "...", "..." ],
+  "permissions" : [ {
+    "name" : "...",
+    "operation" : {
+      "name" : "...",
+      "description" : "...",
+      "permanent" : true
+    },
+    "resource" : {
+      "identifier" : "...",
+      "pattern" : true,
+      "permanent" : true
+    }
+  }, {
+    "name" : "...",
+    "operation" : {
+      "name" : "...",
+      "description" : "...",
+      "permanent" : true
+    },
+    "resource" : {
+      "identifier" : "...",
+      "pattern" : true,
+      "permanent" : true
+    }
+  } ],
+  "permanent" : true,
+  "parentRoleNames" : [ "...", "..." ],
+  "parentsRolesUsers" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ],
+  "users" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ],
+  "otherUsers" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ],
+  "removedUsers" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ]
+},
+      "description" : ""
+    }
+    ,
+    "json_RoleTemplate" : {
+      "type" : "object",
+      "title" : "RoleTemplate",
+          "properties" : {
+            "id" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "namePrefix" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "delimiter" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "description" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "resource" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "roles" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "type" : "string"
+}
+            }
+          },
+      "example" : {
+  "id" : "...",
+  "namePrefix" : "...",
+  "delimiter" : "...",
+  "description" : "...",
+  "resource" : "...",
+  "roles" : [ "...", "..." ]
+},
+      "description" : ""
+    }
+    ,
+    "json_StringList" : {
+      "type" : "object",
+      "title" : "StringList",
+          "properties" : {
+            "strings" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "type" : "string"
+}
+            }
+          },
+      "example" : {
+  "strings" : [ "...", "..." ]
+},
+      "description" : "jaxrs fail to return List String so use this contains for rest services returning that"
+    }
+    ,
+    "json_User" : {
+      "type" : "object",
+      "title" : "User",
+      "required" : ["validated", "locked", "passwordChangeRequired", "permanent", "readOnly"],
+          "properties" : {
+            "username" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "fullName" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "email" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "validated" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            },
+            "locked" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            },
+            "password" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "passwordChangeRequired" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            },
+            "permanent" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            },
+            "confirmPassword" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "timestampAccountCreation" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "timestampLastLogin" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "timestampLastPasswordChange" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "previousPassword" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "assignedRoles" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "type" : "string"
+}
+            },
+            "readOnly" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "boolean"
+            },
+            "userManagerId" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "validationToken" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          },
+      "example" : {
+  "username" : "...",
+  "fullName" : "...",
+  "email" : "...",
+  "validated" : true,
+  "locked" : true,
+  "password" : "...",
+  "passwordChangeRequired" : true,
+  "permanent" : true,
+  "confirmPassword" : "...",
+  "timestampAccountCreation" : "...",
+  "timestampLastLogin" : "...",
+  "timestampLastPasswordChange" : "...",
+  "previousPassword" : "...",
+  "assignedRoles" : [ "...", "..." ],
+  "readOnly" : true,
+  "userManagerId" : "...",
+  "validationToken" : "..."
+},
+      "description" : ""
+    }
+    ,
+    "json_UserRegistrationRequest" : {
+      "type" : "object",
+      "title" : "UserRegistrationRequest",
+          "properties" : {
+            "user" : {
+            "readOnly" : false,
+"$ref" : "#/definitions/json_User",
+"description" : ""
+            },
+            "applicationUrl" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          },
+      "example" : {
+  "user" : {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  },
+  "applicationUrl" : "..."
+},
+      "description" : ""
+    }
+    ,
     "xml_ns0_application" : {
       "type" : "object",
       "xml" : {
@@ -253,6 +1044,7 @@
         "namespace" : ""
       },
       "title" : "operation",
+      "required" : ["permanent"],
       "allOf" : [
         {
           "properties" : {
@@ -309,14 +1101,16 @@
                 "namespace" : ""
               },
             "readOnly" : false,
-"$ref" : "#/definitions/xml_ns0_operation"
+"$ref" : "#/definitions/xml_ns0_operation",
+"description" : ""
             },
             "resource" : {
               "xml" : {
                 "namespace" : ""
               },
             "readOnly" : false,
-"$ref" : "#/definitions/xml_ns0_resource"
+"$ref" : "#/definitions/xml_ns0_resource",
+"description" : ""
             }
           }
         }
@@ -383,6 +1177,7 @@
         "namespace" : ""
       },
       "title" : "resource",
+      "required" : ["pattern", "permanent"],
       "allOf" : [
         {
           "properties" : {
@@ -423,6 +1218,7 @@
         "namespace" : ""
       },
       "title" : "role",
+      "required" : ["assignable", "permanent"],
       "allOf" : [
         {
           "properties" : {
@@ -642,6 +1438,7 @@
         "namespace" : ""
       },
       "title" : "user",
+      "required" : ["locked", "passwordChangeRequired", "permanent", "readOnly", "validated"],
       "allOf" : [
         {
           "properties" : {
@@ -813,7 +1610,8 @@
                 "namespace" : ""
               },
             "readOnly" : false,
-"$ref" : "#/definitions/xml_ns0_user"
+"$ref" : "#/definitions/xml_ns0_user",
+"description" : ""
             }
           }
         }
@@ -825,7 +1623,6 @@
     "\/ldapGroupMappingService" : {
       "get" : {
         "tags" : [ "LdapGroupMappingService" ],
-        "description" : "",
         "operationId" : "getLdapGroupMappings",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -834,8 +1631,15 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_LdapGroupMapping"
+}
             },
+            "examples" : [ {
+  "group" : "...",
+  "roleNames" : [ "...", "..." ]
+} ],
             "description" : ""
           }
         }
@@ -843,17 +1647,17 @@
       ,
       "post" : {
         "tags" : [ "LdapGroupMappingService" ],
-        "description" : "",
         "operationId" : "updateLdapGroupMapping",
         "consumes" : [ "application/json", "application/xml" ],
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
-"description" : "",
-"type" : "string"
+"$ref" : "#/definitions/json_LdapGroupMappingUpdateRequest",
+"description" : ""
             },
             "description" : ""
           }
@@ -862,7 +1666,7 @@
           "201" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -871,17 +1675,17 @@
       ,
       "put" : {
         "tags" : [ "LdapGroupMappingService" ],
-        "description" : "",
         "operationId" : "addLdapGroupMapping",
         "consumes" : [ "application/json", "application/xml" ],
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
-"description" : "",
-"type" : "string"
+"$ref" : "#/definitions/json_LdapGroupMapping",
+"description" : ""
             },
             "description" : ""
           }
@@ -890,7 +1694,7 @@
           "204" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -901,7 +1705,6 @@
     "\/ldapGroupMappingService/ldapGroups" : {
       "get" : {
         "tags" : [ "LdapGroupMappingService" ],
-        "description" : "",
         "operationId" : "getLdapGroups",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -909,9 +1712,12 @@
         "responses" : {
           "200" : {
             "schema" : {
-"description" : "",
-"type" : "string"
+"$ref" : "#/definitions/json_StringList",
+"description" : ""
             },
+            "examples" : {
+  "strings" : [ "...", "..." ]
+},
             "description" : ""
           }
         }
@@ -921,14 +1727,12 @@
     "\/ldapGroupMappingService/{group}" : {
       "delete" : {
         "tags" : [ "LdapGroupMappingService" ],
-        "description" : "",
         "operationId" : "removeLdapGroupMapping",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "group",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -937,7 +1741,7 @@
           "204" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -948,14 +1752,13 @@
     "\/loginService/addAuthenticationKey" : {
       "get" : {
         "tags" : [ "LoginService" ],
-        "description" : "",
         "operationId" : "addAuthenticationKey",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "expirationMinutes",
             "in" : "query",
-            "required" : false,
+            "required" : true,
             "type" : "integer",
             "format" : "int32",
             "description" : ""
@@ -963,21 +1766,18 @@
           {
             "name" : "principal",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "providerKey",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "purpose",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -997,7 +1797,6 @@
     "\/loginService/isLogged" : {
       "get" : {
         "tags" : [ "LoginService" ],
-        "summary" : "simply check if current user has an http session opened with authz passed and return user data.",
         "description" : "simply check if current user has an http session opened with authz passed and return user data",
         "operationId" : "isLogged",
         "produces" : [ "application/json", "application/xml" ],
@@ -1006,9 +1805,28 @@
         "responses" : {
           "200" : {
             "schema" : {
-"description" : "",
-"type" : "string"
+"$ref" : "#/definitions/json_User",
+"description" : ""
             },
+            "examples" : {
+  "username" : "...",
+  "fullName" : "...",
+  "email" : "...",
+  "validated" : true,
+  "locked" : true,
+  "password" : "...",
+  "passwordChangeRequired" : true,
+  "permanent" : true,
+  "confirmPassword" : "...",
+  "timestampAccountCreation" : "...",
+  "timestampLastLogin" : "...",
+  "timestampLastPasswordChange" : "...",
+  "previousPassword" : "...",
+  "assignedRoles" : [ "...", "..." ],
+  "readOnly" : true,
+  "userManagerId" : "...",
+  "validationToken" : "..."
+},
             "description" : ""
           }
         }
@@ -1018,17 +1836,18 @@
     "\/loginService/logIn" : {
       "post" : {
         "tags" : [ "LoginService" ],
-        "summary" : "check username/password and create a http session.",
         "description" : "check username/password and create a http session.\nSo no more need of reuse username/password for all ajaxRequest",
         "operationId" : "logIn",
-        "consumes" : [ "application/xml" ],
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
-"$ref" : "#/definitions/xml_ns0_loginRequest"
+"$ref" : "#/definitions/json_LoginRequest",
+"description" : ""
             },
             "description" : ""
           }
@@ -1036,9 +1855,28 @@
         "responses" : {
           "201" : {
             "schema" : {
-"description" : "",
-"type" : "string"
+"$ref" : "#/definitions/json_User",
+"description" : ""
             },
+            "examples" : {
+  "username" : "...",
+  "fullName" : "...",
+  "email" : "...",
+  "validated" : true,
+  "locked" : true,
+  "password" : "...",
+  "passwordChangeRequired" : true,
+  "permanent" : true,
+  "confirmPassword" : "...",
+  "timestampAccountCreation" : "...",
+  "timestampLastLogin" : "...",
+  "timestampLastPasswordChange" : "...",
+  "previousPassword" : "...",
+  "assignedRoles" : [ "...", "..." ],
+  "readOnly" : true,
+  "userManagerId" : "...",
+  "validationToken" : "..."
+},
             "description" : ""
           }
         }
@@ -1048,17 +1886,16 @@
     "\/loginService/logout" : {
       "get" : {
         "tags" : [ "LoginService" ],
-        "summary" : "clear user http session.",
         "description" : "clear user http session",
         "operationId" : "logout",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
         ],
         "responses" : {
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1069,16 +1906,15 @@
     "\/loginService/ping" : {
       "get" : {
         "tags" : [ "LoginService" ],
-        "description" : "",
         "operationId" : "ping",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
         ],
         "responses" : {
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1089,16 +1925,15 @@
     "\/loginService/pingWithAutz" : {
       "get" : {
         "tags" : [ "LoginService" ],
-        "description" : "",
         "operationId" : "pingWithAutz",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
         ],
         "responses" : {
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1109,36 +1944,31 @@
     "\/passwordService/changePassword" : {
       "get" : {
         "tags" : [ "PasswordService" ],
-        "summary" : "used to change the password on passwordChangeRequired state.",
         "description" : "used to change the password on passwordChangeRequired state.",
         "operationId" : "changePassword",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "password",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "passwordConfirmation",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "previousPassword",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "userName",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -1146,9 +1976,28 @@
         "responses" : {
           "200" : {
             "schema" : {
-"description" : "",
-"type" : "string"
+"$ref" : "#/definitions/json_User",
+"description" : ""
             },
+            "examples" : {
+  "username" : "...",
+  "fullName" : "...",
+  "email" : "...",
+  "validated" : true,
+  "locked" : true,
+  "password" : "...",
+  "passwordChangeRequired" : true,
+  "permanent" : true,
+  "confirmPassword" : "...",
+  "timestampAccountCreation" : "...",
+  "timestampLastLogin" : "...",
+  "timestampLastPasswordChange" : "...",
+  "previousPassword" : "...",
+  "assignedRoles" : [ "...", "..." ],
+  "readOnly" : true,
+  "userManagerId" : "...",
+  "validationToken" : "..."
+},
             "description" : ""
           }
         }
@@ -1158,29 +2007,25 @@
     "\/passwordService/changePasswordWithKey" : {
       "get" : {
         "tags" : [ "PasswordService" ],
-        "summary" : "used to change the password on first user connection after registration use.",
         "description" : "used to change the password on first user connection after registration use.\nthe key is mandatory and a control will be done on the username provided.\n<b>need to be logged by UserService#validateUserFromKey(String)<\/b>",
         "operationId" : "changePasswordWithKey",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "key",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "password",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "passwordConfirmation",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -1188,9 +2033,28 @@
         "responses" : {
           "200" : {
             "schema" : {
-"description" : "username",
-"type" : "string"
+"$ref" : "#/definitions/json_User",
+"description" : "username"
             },
+            "examples" : {
+  "username" : "...",
+  "fullName" : "...",
+  "email" : "...",
+  "validated" : true,
+  "locked" : true,
+  "password" : "...",
+  "passwordChangeRequired" : true,
+  "permanent" : true,
+  "confirmPassword" : "...",
+  "timestampAccountCreation" : "...",
+  "timestampLastLogin" : "...",
+  "timestampLastPasswordChange" : "...",
+  "previousPassword" : "...",
+  "assignedRoles" : [ "...", "..." ],
+  "readOnly" : true,
+  "userManagerId" : "...",
+  "validationToken" : "..."
+},
             "description" : "username"
           }
         }
@@ -1200,17 +2064,200 @@
     "\/roleManagementService/allRoles" : {
       "get" : {
         "tags" : [ "RoleManagementService" ],
-        "description" : "",
         "operationId" : "getAllRoles",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
         ],
         "responses" : {
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_Role"
+}
             },
+            "examples" : [ {
+  "name" : "...",
+  "description" : "...",
+  "assignable" : true,
+  "childRoleNames" : [ "...", "..." ],
+  "permissions" : [ {
+    "name" : "...",
+    "operation" : {
+      "name" : "...",
+      "description" : "...",
+      "permanent" : true
+    },
+    "resource" : {
+      "identifier" : "...",
+      "pattern" : true,
+      "permanent" : true
+    }
+  }, {
+    "name" : "...",
+    "operation" : {
+      "name" : "...",
+      "description" : "...",
+      "permanent" : true
+    },
+    "resource" : {
+      "identifier" : "...",
+      "pattern" : true,
+      "permanent" : true
+    }
+  } ],
+  "permanent" : true,
+  "parentRoleNames" : [ "...", "..." ],
+  "parentsRolesUsers" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ],
+  "users" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ],
+  "otherUsers" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ],
+  "removedUsers" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ]
+} ],
             "description" : ""
           }
         }
@@ -1220,22 +2267,19 @@
     "\/roleManagementService/assignRole" : {
       "get" : {
         "tags" : [ "RoleManagementService" ],
-        "summary" : "Assigns the role indicated by the roleId to the given principal.",
         "description" : "Assigns the role indicated by the roleId to the given principal",
         "operationId" : "assignRole",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "principal",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "roleId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -1244,7 +2288,7 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1255,22 +2299,19 @@
     "\/roleManagementService/assignRoleByName" : {
       "get" : {
         "tags" : [ "RoleManagementService" ],
-        "summary" : "Assigns the role indicated by the roleName to the given principal.",
         "description" : "Assigns the role indicated by the roleName to the given principal",
         "operationId" : "assignRoleByName",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "principal",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "roleName",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -1279,7 +2320,7 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1290,29 +2331,25 @@
     "\/roleManagementService/assignTemplatedRole" : {
       "get" : {
         "tags" : [ "RoleManagementService" ],
-        "summary" : "Assigns the templated role indicated by the templateId\n\nfails if the templated role has not been created.",
         "description" : "Assigns the templated role indicated by the templateId\n\nfails if the templated role has not been created",
         "operationId" : "assignTemplatedRole",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "principal",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "resource",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "templateId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -1321,7 +2358,7 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1332,21 +2369,18 @@
     "\/roleManagementService/createTemplatedRole" : {
       "get" : {
         "tags" : [ "RoleManagementService" ],
-        "description" : "",
         "operationId" : "createTemplatedRole",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "resource",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "templateId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -1355,7 +2389,7 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1366,17 +2400,200 @@
     "\/roleManagementService/detailledAllRoles" : {
       "get" : {
         "tags" : [ "RoleManagementService" ],
-        "description" : "",
         "operationId" : "getDetailedAllRoles",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
         ],
         "responses" : {
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_Role"
+}
             },
+            "examples" : [ {
+  "name" : "...",
+  "description" : "...",
+  "assignable" : true,
+  "childRoleNames" : [ "...", "..." ],
+  "permissions" : [ {
+    "name" : "...",
+    "operation" : {
+      "name" : "...",
+      "description" : "...",
+      "permanent" : true
+    },
+    "resource" : {
+      "identifier" : "...",
+      "pattern" : true,
+      "permanent" : true
+    }
+  }, {
+    "name" : "...",
+    "operation" : {
+      "name" : "...",
+      "description" : "...",
+      "permanent" : true
+    },
+    "resource" : {
+      "identifier" : "...",
+      "pattern" : true,
+      "permanent" : true
+    }
+  } ],
+  "permanent" : true,
+  "parentRoleNames" : [ "...", "..." ],
+  "parentsRolesUsers" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ],
+  "users" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ],
+  "otherUsers" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ],
+  "removedUsers" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ]
+} ],
             "description" : ""
           }
         }
@@ -1386,14 +2603,12 @@
     "\/roleManagementService/getApplicationRoles/{username}" : {
       "get" : {
         "tags" : [ "RoleManagementService" ],
-        "description" : "",
         "operationId" : "getApplicationRoles",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "username",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -1402,8 +2617,32 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_ApplicationRoles"
+}
             },
+            "examples" : [ {
+  "name" : "...",
+  "description" : "...",
+  "globalRoles" : [ "...", "..." ],
+  "roleTemplates" : [ {
+    "id" : "...",
+    "namePrefix" : "...",
+    "delimiter" : "...",
+    "description" : "...",
+    "resource" : "...",
+    "roles" : [ "...", "..." ]
+  }, {
+    "id" : "...",
+    "namePrefix" : "...",
+    "delimiter" : "...",
+    "description" : "...",
+    "resource" : "...",
+    "roles" : [ "...", "..." ]
+  } ],
+  "resources" : [ "...", "..." ]
+} ],
             "description" : ""
           }
         }
@@ -1413,14 +2652,12 @@
     "\/roleManagementService/getApplications/{username}" : {
       "get" : {
         "tags" : [ "RoleManagementService" ],
-        "description" : "",
         "operationId" : "getApplications",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "username",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -1429,8 +2666,17 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_Application"
+}
             },
+            "examples" : [ {
+  "version" : "...",
+  "id" : "...",
+  "description" : "...",
+  "longDescription" : "..."
+} ],
             "description" : ""
           }
         }
@@ -1440,14 +2686,12 @@
     "\/roleManagementService/getEffectivelyAssignedRoles/{username}" : {
       "get" : {
         "tags" : [ "RoleManagementService" ],
-        "description" : "",
         "operationId" : "getEffectivelyAssignedRoles",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "username",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -1456,8 +2700,192 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_Role"
+}
             },
+            "examples" : [ {
+  "name" : "...",
+  "description" : "...",
+  "assignable" : true,
+  "childRoleNames" : [ "...", "..." ],
+  "permissions" : [ {
+    "name" : "...",
+    "operation" : {
+      "name" : "...",
+      "description" : "...",
+      "permanent" : true
+    },
+    "resource" : {
+      "identifier" : "...",
+      "pattern" : true,
+      "permanent" : true
+    }
+  }, {
+    "name" : "...",
+    "operation" : {
+      "name" : "...",
+      "description" : "...",
+      "permanent" : true
+    },
+    "resource" : {
+      "identifier" : "...",
+      "pattern" : true,
+      "permanent" : true
+    }
+  } ],
+  "permanent" : true,
+  "parentRoleNames" : [ "...", "..." ],
+  "parentsRolesUsers" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ],
+  "users" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ],
+  "otherUsers" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ],
+  "removedUsers" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ]
+} ],
             "description" : ""
           }
         }
@@ -1467,14 +2895,12 @@
     "\/roleManagementService/getRole/{roleName}" : {
       "get" : {
         "tags" : [ "RoleManagementService" ],
-        "description" : "",
         "operationId" : "getRole",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "roleName",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -1482,9 +2908,190 @@
         "responses" : {
           "200" : {
             "schema" : {
-"description" : "",
-"type" : "string"
+"$ref" : "#/definitions/json_Role",
+"description" : ""
             },
+            "examples" : {
+  "name" : "...",
+  "description" : "...",
+  "assignable" : true,
+  "childRoleNames" : [ "...", "..." ],
+  "permissions" : [ {
+    "name" : "...",
+    "operation" : {
+      "name" : "...",
+      "description" : "...",
+      "permanent" : true
+    },
+    "resource" : {
+      "identifier" : "...",
+      "pattern" : true,
+      "permanent" : true
+    }
+  }, {
+    "name" : "...",
+    "operation" : {
+      "name" : "...",
+      "description" : "...",
+      "permanent" : true
+    },
+    "resource" : {
+      "identifier" : "...",
+      "pattern" : true,
+      "permanent" : true
+    }
+  } ],
+  "permanent" : true,
+  "parentRoleNames" : [ "...", "..." ],
+  "parentsRolesUsers" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ],
+  "users" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ],
+  "otherUsers" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ],
+  "removedUsers" : [ {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  }, {
+    "username" : "...",
+    "fullName" : "...",
+    "email" : "...",
+    "validated" : true,
+    "locked" : true,
+    "password" : "...",
+    "passwordChangeRequired" : true,
+    "permanent" : true,
+    "confirmPassword" : "...",
+    "timestampAccountCreation" : "...",
+    "timestampLastLogin" : "...",
+    "timestampLastPasswordChange" : "...",
+    "previousPassword" : "...",
+    "assignedRoles" : [ "...", "..." ],
+    "readOnly" : true,
+    "userManagerId" : "...",
+    "validationToken" : "..."
+  } ]
+},
             "description" : ""
           }
         }
@@ -1494,22 +3101,19 @@
     "\/roleManagementService/removeTemplatedRole" : {
       "get" : {
         "tags" : [ "RoleManagementService" ],
-        "summary" : "removes a role corresponding to the role Id that was manufactured with the given resource\n\nit also removes any user assignments for that role.",
         "description" : "removes a role corresponding to the role Id that was manufactured with the given resource\n\nit also removes any user assignments for that role",
         "operationId" : "removeTemplatedRole",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "resource",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "templateId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -1518,7 +3122,7 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1529,15 +3133,13 @@
     "\/roleManagementService/roleExists" : {
       "get" : {
         "tags" : [ "RoleManagementService" ],
-        "summary" : "true of a role exists with the given roleId.",
         "description" : "true of a role exists with the given roleId",
         "operationId" : "roleExists",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "roleId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -1546,7 +3148,7 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1557,22 +3159,19 @@
     "\/roleManagementService/templatedRoleExists" : {
       "get" : {
         "tags" : [ "RoleManagementService" ],
-        "summary" : "true of a role exists with the given roleId.",
         "description" : "true of a role exists with the given roleId",
         "operationId" : "templatedRoleExists",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "resource",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "templateId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -1581,7 +3180,7 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1592,22 +3191,19 @@
     "\/roleManagementService/unassignRole" : {
       "get" : {
         "tags" : [ "RoleManagementService" ],
-        "summary" : "Unassigns the role indicated by the role id from the given principal.",
         "description" : "Unassigns the role indicated by the role id from the given principal",
         "operationId" : "unassignRole",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "principal",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "roleId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -1616,7 +3212,7 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1627,22 +3223,19 @@
     "\/roleManagementService/unassignRoleByName" : {
       "get" : {
         "tags" : [ "RoleManagementService" ],
-        "summary" : "Unassigns the role indicated by the role name from the given principal.",
         "description" : "Unassigns the role indicated by the role name from the given principal",
         "operationId" : "unassignRoleByName",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "principal",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "roleName",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -1651,7 +3244,7 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1662,29 +3255,25 @@
     "\/roleManagementService/updateRole" : {
       "get" : {
         "tags" : [ "RoleManagementService" ],
-        "summary" : "allows for a role coming from a template to be renamed effectively swapping out the bits of it that\nwere labeled with the oldResource with the newResource\n\nit also manages any user assignments for that role.",
         "description" : "allows for a role coming from a template to be renamed effectively swapping out the bits of it that\nwere labeled with the oldResource with the newResource\n\nit also manages any user assignments for that role",
         "operationId" : "updateRole",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "newResource",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "oldResource",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "templateId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -1693,7 +3282,7 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1704,21 +3293,18 @@
     "\/roleManagementService/updateRoleDescription" : {
       "get" : {
         "tags" : [ "RoleManagementService" ],
-        "description" : "",
         "operationId" : "updateRoleDescription",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "roleDescription",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           },
           {
             "name" : "roleName",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -1727,7 +3313,7 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1738,7 +3324,6 @@
     "\/roleManagementService/updateRoleUsers" : {
       "post" : {
         "tags" : [ "RoleManagementService" ],
-        "summary" : "update users assigned to a role.",
         "description" : "update users assigned to a role",
         "operationId" : "updateRoleUsers",
         "consumes" : [ "application/json", "application/xml" ],
@@ -1746,10 +3331,11 @@
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
-"description" : "",
-"type" : "string"
+"$ref" : "#/definitions/json_Role",
+"description" : ""
             },
             "description" : ""
           }
@@ -1758,7 +3344,7 @@
           "201" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1769,7 +3355,6 @@
     "\/roleManagementService/updateUserRoles" : {
       "post" : {
         "tags" : [ "RoleManagementService" ],
-        "summary" : "update roles assigned to a user.",
         "description" : "update roles assigned to a user",
         "operationId" : "updateUserRoles",
         "consumes" : [ "application/json", "application/xml" ],
@@ -1777,10 +3362,11 @@
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
-"description" : "",
-"type" : "string"
+"$ref" : "#/definitions/json_User",
+"description" : ""
             },
             "description" : ""
           }
@@ -1789,7 +3375,7 @@
           "201" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1800,22 +3386,19 @@
     "\/roleManagementService/verifyTemplatedRole" : {
       "get" : {
         "tags" : [ "RoleManagementService" ],
-        "summary" : "Check a role template is complete in the RBAC store.",
         "description" : "Check a role template is complete in the RBAC store.",
         "operationId" : "verifyTemplatedRole",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "resource",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : "the resource to verify"
           },
           {
             "name" : "templateId",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : "the templated role"
           }
@@ -1824,7 +3407,7 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1835,18 +3418,18 @@
     "\/userService/createAdminUser" : {
       "post" : {
         "tags" : [ "UserService" ],
-        "summary" : "will create admin user only if not exists !! if exists will return false.",
         "description" : "will create admin user only if not exists !! if exists will return false",
         "operationId" : "createAdminUser",
         "consumes" : [ "application/json", "application/xml" ],
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
-"description" : "",
-"type" : "string"
+"$ref" : "#/definitions/json_User",
+"description" : ""
             },
             "description" : ""
           }
@@ -1855,7 +3438,7 @@
           "201" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1866,17 +3449,35 @@
     "\/userService/createGuestUser" : {
       "get" : {
         "tags" : [ "UserService" ],
-        "description" : "",
         "operationId" : "createGuestUser",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
         ],
         "responses" : {
           "200" : {
             "schema" : {
-"description" : "",
-"type" : "string"
+"$ref" : "#/definitions/json_User",
+"description" : ""
             },
+            "examples" : {
+  "username" : "...",
+  "fullName" : "...",
+  "email" : "...",
+  "validated" : true,
+  "locked" : true,
+  "password" : "...",
+  "passwordChangeRequired" : true,
+  "permanent" : true,
+  "confirmPassword" : "...",
+  "timestampAccountCreation" : "...",
+  "timestampLastLogin" : "...",
+  "timestampLastPasswordChange" : "...",
+  "previousPassword" : "...",
+  "assignedRoles" : [ "...", "..." ],
+  "readOnly" : true,
+  "userManagerId" : "...",
+  "validationToken" : "..."
+},
             "description" : ""
           }
         }
@@ -1886,17 +3487,17 @@
     "\/userService/createUser" : {
       "post" : {
         "tags" : [ "UserService" ],
-        "description" : "",
         "operationId" : "createUser",
         "consumes" : [ "application/json", "application/xml" ],
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
-"description" : "",
-"type" : "string"
+"$ref" : "#/definitions/json_User",
+"description" : ""
             },
             "description" : ""
           }
@@ -1905,7 +3506,7 @@
           "201" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1916,14 +3517,12 @@
     "\/userService/deleteUser/{userName}" : {
       "get" : {
         "tags" : [ "UserService" ],
-        "description" : "",
         "operationId" : "deleteUser",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "userName",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -1932,7 +3531,7 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -1943,17 +3542,24 @@
     "\/userService/getCurrentUserOperations" : {
       "get" : {
         "tags" : [ "UserService" ],
-        "description" : "",
         "operationId" : "getCurrentUserOperations",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
         ],
         "responses" : {
           "200" : {
             "schema" : {
 "description" : "the current logged user operations, if no logged user guest operations are returned",
-"type" : "string"
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_Operation"
+}
             },
+            "examples" : [ {
+  "name" : "...",
+  "description" : "...",
+  "permanent" : true
+} ],
             "description" : "the current logged user operations, if no logged user guest operations are returned"
           }
         }
@@ -1963,17 +3569,32 @@
     "\/userService/getCurrentUserPermissions" : {
       "get" : {
         "tags" : [ "UserService" ],
-        "description" : "",
         "operationId" : "getCurrentUserPermissions",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
         ],
         "responses" : {
           "200" : {
             "schema" : {
 "description" : "the current logged user permissions, if no logged user guest permissions are returned",
-"type" : "string"
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_Permission"
+}
             },
+            "examples" : [ {
+  "name" : "...",
+  "operation" : {
+    "name" : "...",
+    "description" : "...",
+    "permanent" : true
+  },
+  "resource" : {
+    "identifier" : "...",
+    "pattern" : true,
+    "permanent" : true
+  }
+} ],
             "description" : "the current logged user permissions, if no logged user guest permissions are returned"
           }
         }
@@ -1983,17 +3604,35 @@
     "\/userService/getGuestUser" : {
       "get" : {
         "tags" : [ "UserService" ],
-        "description" : "",
         "operationId" : "getGuestUser",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
         ],
         "responses" : {
           "200" : {
             "schema" : {
-"description" : "",
-"type" : "string"
+"$ref" : "#/definitions/json_User",
+"description" : ""
             },
+            "examples" : {
+  "username" : "...",
+  "fullName" : "...",
+  "email" : "...",
+  "validated" : true,
+  "locked" : true,
+  "password" : "...",
+  "passwordChangeRequired" : true,
+  "permanent" : true,
+  "confirmPassword" : "...",
+  "timestampAccountCreation" : "...",
+  "timestampLastLogin" : "...",
+  "timestampLastPasswordChange" : "...",
+  "previousPassword" : "...",
+  "assignedRoles" : [ "...", "..." ],
+  "readOnly" : true,
+  "userManagerId" : "...",
+  "validationToken" : "..."
+},
             "description" : ""
           }
         }
@@ -2003,14 +3642,12 @@
     "\/userService/getUser/{userName}" : {
       "get" : {
         "tags" : [ "UserService" ],
-        "description" : "",
         "operationId" : "getUser",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "userName",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -2018,9 +3655,28 @@
         "responses" : {
           "200" : {
             "schema" : {
-"description" : "",
-"type" : "string"
+"$ref" : "#/definitions/json_User",
+"description" : ""
             },
+            "examples" : {
+  "username" : "...",
+  "fullName" : "...",
+  "email" : "...",
+  "validated" : true,
+  "locked" : true,
+  "password" : "...",
+  "passwordChangeRequired" : true,
+  "permanent" : true,
+  "confirmPassword" : "...",
+  "timestampAccountCreation" : "...",
+  "timestampLastLogin" : "...",
+  "timestampLastPasswordChange" : "...",
+  "previousPassword" : "...",
+  "assignedRoles" : [ "...", "..." ],
+  "readOnly" : true,
+  "userManagerId" : "...",
+  "validationToken" : "..."
+},
             "description" : ""
           }
         }
@@ -2030,14 +3686,12 @@
     "\/userService/getUserOperations/{userName}" : {
       "get" : {
         "tags" : [ "UserService" ],
-        "description" : "",
         "operationId" : "getUserOperations",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "userName",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -2046,8 +3700,16 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_Operation"
+}
             },
+            "examples" : [ {
+  "name" : "...",
+  "description" : "...",
+  "permanent" : true
+} ],
             "description" : ""
           }
         }
@@ -2057,14 +3719,12 @@
     "\/userService/getUserPermissions/{userName}" : {
       "get" : {
         "tags" : [ "UserService" ],
-        "description" : "",
         "operationId" : "getUserPermissions",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "userName",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -2073,8 +3733,24 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_Permission"
+}
             },
+            "examples" : [ {
+  "name" : "...",
+  "operation" : {
+    "name" : "...",
+    "description" : "...",
+    "permanent" : true
+  },
+  "resource" : {
+    "identifier" : "...",
+    "pattern" : true,
+    "permanent" : true
+  }
+} ],
             "description" : ""
           }
         }
@@ -2084,7 +3760,6 @@
     "\/userService/getUsers" : {
       "get" : {
         "tags" : [ "UserService" ],
-        "description" : "",
         "operationId" : "getUsers",
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
@@ -2093,8 +3768,30 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_User"
+}
             },
+            "examples" : [ {
+  "username" : "...",
+  "fullName" : "...",
+  "email" : "...",
+  "validated" : true,
+  "locked" : true,
+  "password" : "...",
+  "passwordChangeRequired" : true,
+  "permanent" : true,
+  "confirmPassword" : "...",
+  "timestampAccountCreation" : "...",
+  "timestampLastLogin" : "...",
+  "timestampLastPasswordChange" : "...",
+  "previousPassword" : "...",
+  "assignedRoles" : [ "...", "..." ],
+  "readOnly" : true,
+  "userManagerId" : "...",
+  "validationToken" : "..."
+} ],
             "description" : ""
           }
         }
@@ -2104,16 +3801,15 @@
     "\/userService/isAdminUserExists" : {
       "get" : {
         "tags" : [ "UserService" ],
-        "description" : "",
         "operationId" : "isAdminUserExists",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
         ],
         "responses" : {
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -2124,14 +3820,12 @@
     "\/userService/lockUser/{username}" : {
       "get" : {
         "tags" : [ "UserService" ],
-        "description" : "",
         "operationId" : "lockUser",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "username",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -2140,7 +3834,7 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -2151,14 +3845,12 @@
     "\/userService/passwordChangeNotRequired/{username}" : {
       "get" : {
         "tags" : [ "UserService" ],
-        "description" : "",
         "operationId" : "passwordChangeNotRequired",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "username",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -2167,7 +3859,7 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -2178,14 +3870,12 @@
     "\/userService/passwordChangeRequired/{username}" : {
       "get" : {
         "tags" : [ "UserService" ],
-        "description" : "",
         "operationId" : "passwordChangeRequired",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "username",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -2194,7 +3884,7 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -2205,16 +3895,15 @@
     "\/userService/ping" : {
       "get" : {
         "tags" : [ "UserService" ],
-        "description" : "",
         "operationId" : "ping2",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
         ],
         "responses" : {
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -2225,17 +3914,18 @@
     "\/userService/registerUser" : {
       "post" : {
         "tags" : [ "UserService" ],
-        "summary" : "if redback is not configured for email validation is required, -1 is returned as key.",
         "description" : "if redback is not configured for email validation is required, -1 is returned as key",
         "operationId" : "registerUser",
-        "consumes" : [ "application/xml" ],
+        "consumes" : [ "application/json", "application/xml" ],
         "produces" : [ "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
-"$ref" : "#/definitions/xml_ns0_userRegistrationRequest"
+"$ref" : "#/definitions/json_UserRegistrationRequest",
+"description" : ""
             },
             "description" : ""
           }
@@ -2243,9 +3933,12 @@
         "responses" : {
           "201" : {
             "schema" : {
-"description" : "",
-"type" : "string"
+"$ref" : "#/definitions/json_RegistrationKey",
+"description" : ""
             },
+            "examples" : {
+  "key" : "..."
+},
             "description" : ""
           }
         }
@@ -2255,14 +3948,12 @@
     "\/userService/removeFromCache/{userName}" : {
       "get" : {
         "tags" : [ "UserService" ],
-        "description" : "",
         "operationId" : "removeFromCache",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "userName",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -2271,7 +3962,8 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "integer",
+"format" : "int32"
             },
             "description" : ""
           }
@@ -2282,17 +3974,17 @@
     "\/userService/resetPassword" : {
       "post" : {
         "tags" : [ "UserService" ],
-        "description" : "",
         "operationId" : "resetPassword",
         "consumes" : [ "application/json", "application/xml" ],
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
-"description" : "contains username for send a password reset email",
-"type" : "string"
+"$ref" : "#/definitions/json_ResetPasswordRequest",
+"description" : "contains username for send a password reset email"
             },
             "description" : "contains username for send a password reset email"
           }
@@ -2301,7 +3993,7 @@
           "201" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -2312,14 +4004,12 @@
     "\/userService/unlockUser/{username}" : {
       "get" : {
         "tags" : [ "UserService" ],
-        "description" : "",
         "operationId" : "unlockUser",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "username",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
@@ -2328,7 +4018,7 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -2339,17 +4029,18 @@
     "\/userService/updateMe" : {
       "post" : {
         "tags" : [ "UserService" ],
-        "summary" : "update only the current user and this fields: fullname, email, password.",
         "description" : "update only the current user and this fields: fullname, email, password.\nthe service verify the curent logged user with the one passed in the method",
         "operationId" : "updateMe",
-        "consumes" : [ "application/xml" ],
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
-"$ref" : "#/definitions/xml_ns0_user"
+"$ref" : "#/definitions/json_User",
+"description" : ""
             },
             "description" : ""
           }
@@ -2358,7 +4049,7 @@
           "201" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -2369,16 +4060,17 @@
     "\/userService/updateUser" : {
       "post" : {
         "tags" : [ "UserService" ],
-        "description" : "",
         "operationId" : "updateUser",
-        "consumes" : [ "application/xml" ],
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "body",
+            "required" : false,
             "in" : "body",
             "schema" : {
-"$ref" : "#/definitions/xml_ns0_user"
+"$ref" : "#/definitions/json_User",
+"description" : ""
             },
             "description" : ""
           }
@@ -2387,7 +4079,7 @@
           "201" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -2398,15 +4090,13 @@
     "\/userService/validateKey/{key}" : {
       "get" : {
         "tags" : [ "UserService" ],
-        "summary" : "validate the key and the user with forcing a password change for next login.",
         "description" : "validate the key and the user with forcing a password change for next login.\nhttp session is created.",
         "operationId" : "validateUserFromKey",
-        "produces" : [ "application/json", "text/plain", "application/xml" ],
+        "produces" : [ "text/plain", "application/json", "application/xml" ],
         "parameters" : [
           {
             "name" : "key",
             "in" : "path",
-            "required" : false,
             "type" : "string",
             "description" : "authentication key"
           }
@@ -2415,7 +4105,7 @@
           "200" : {
             "schema" : {
 "description" : "",
-"type" : "string"
+"type" : "boolean"
             },
             "description" : ""
           }
@@ -2426,14 +4116,12 @@
     "\/utilServices/getBundleResources" : {
       "get" : {
         "tags" : [ "UtilServices" ],
-        "description" : "",
         "operationId" : "getI18nResources",
         "produces" : [ "text/plain" ],
         "parameters" : [
           {
             "name" : "locale",
             "in" : "query",
-            "required" : false,
             "type" : "string",
             "description" : ""
           }
