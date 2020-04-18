@@ -131,7 +131,7 @@
         <li class=""><a href="https://www.apache.org" class="externalLink" title="Apache">Apache</a><span class="divider">/</span></li>
       <li class=""><a href="../" title="Archiva">Archiva</a><span class="divider">/</span></li>
     <li class="active ">Building Archiva</li>
-        <li id="publishDate" class="pull-right">Last Published: 25 Mar 2020</li>
+        <li id="publishDate" class="pull-right">Last Published: 18 Apr 2020</li>
         </ul>
       </div>
         <div id="bodyColumn" >
@@ -140,6 +140,7 @@
 <p>To build the very latest code available... </p>
 <ol style="list-style-type: decimal">
 <li>Check out the source code as described on the <a href="../source-repository.html">Source Repository</a> page.</li>
+<li>You may setup a suitable ~/.m2/settings.xml to add the needed repositories.</li>
 <li>In the 'parent' directory, execute <tt>mvn clean install</tt> to build the parent pom. (only needed if we depend on a new parent)</li>
 <li>In the 'archiva' directory, execute <tt>mvn clean install</tt> to build the Archiva modules and distribution.</li></ol>
 <p>After the build completes, you can find the Archiva distribution in <tt>archiva-jetty/target</tt> and the Archiva webapp in <tt>archiva-modules/archiva-web/archiva-webapp/target</tt></p>
@@ -171,6 +172,51 @@ sh ./jetty.sh # use sh ./jetty-debug.sh if you want to attach a debugger</pre></
 <div class="source"><pre class="prettyprint">  ./src/ci/scripts/container_webtest.sh start</pre></div>
 <p>The UI tests can be run with:</p>
 <div class="source"><pre class="prettyprint">mvn clean install -DmaxWaitTimeInMs=2000 -DseleniumRemote=true -Pci-server -Pit-js -Pchrome -pl :archiva-webapp-test</pre></div></div>
+<div class="section">
+<h2><a name="Maven_settings.xml"></a>Maven settings.xml</h2>
+<p>You should setup the following repositories in your settings.xml to be able to resolve the dependencies. Sometimes we need to have certain snapshot versions for plugins, so the apache snapshot repository is added.</p>
+<div class="source"><pre class="prettyprint">  &lt;profiles&gt;
+      &lt;profile&gt;
+          &lt;activation&gt;
+              &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;
+          &lt;/activation&gt;
+          &lt;repositories&gt;
+              &lt;repository&gt;
+                  &lt;id&gt;central&lt;/id&gt;
+                  &lt;releases&gt;
+                      &lt;enabled&gt;true&lt;/enabled&gt;
+                  &lt;/releases&gt;
+                  &lt;snapshots&gt;
+                      &lt;enabled&gt;false&lt;/enabled&gt;
+                  &lt;/snapshots&gt;
+                  &lt;url&gt;https://repo1.maven.org/maven2&lt;/url&gt;
+              &lt;/repository&gt;
+          &lt;/repositories&gt;
+          &lt;pluginRepositories&gt;
+              &lt;pluginRepository&gt;
+                  &lt;id&gt;central&lt;/id&gt;
+                  &lt;releases&gt;
+                      &lt;enabled&gt;true&lt;/enabled&gt;
+                  &lt;/releases&gt;
+                  &lt;snapshots&gt;
+                      &lt;enabled&gt;true&lt;/enabled&gt;
+                  &lt;/snapshots&gt;
+                  &lt;url&gt;https://repo1.maven.org/maven2&lt;/url&gt;
+              &lt;/pluginRepository&gt;
+              &lt;pluginRepository&gt;
+                  &lt;id&gt;apache-snapshot&lt;/id&gt;
+                  &lt;releases&gt;
+                      &lt;enabled&gt;false&lt;/enabled&gt;
+                  &lt;/releases&gt;
+                  &lt;snapshots&gt;
+                      &lt;enabled&gt;true&lt;/enabled&gt;
+                  &lt;/snapshots&gt;
+                  &lt;url&gt;https://repository.apache.org/content/groups/snapshots&lt;/url&gt;
+              &lt;/pluginRepository&gt;
+
+          &lt;/pluginRepositories&gt;
+       &lt;/profile&gt;
+  &lt;/profiles&gt;</pre></div></div>
         </div>
     </div>
     <hr/>
