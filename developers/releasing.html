@@ -48,7 +48,7 @@
             <li class="dropdown-submenu">
 <a href="../" title="Documentation">Documentation</a>
               <ul class="dropdown-menu">
-                  <li><a href="../docs/2.2.4/" title="Release 2.2.4">Release 2.2.4</a></li>
+                  <li><a href="../docs/2.2.5/" title="Release 2.2.5">Release 2.2.5</a></li>
                   <li><a href="../docs/3.0.0-SNAPSHOT/" title="Dev 3.0.0-SNAPSHOT">Dev 3.0.0-SNAPSHOT</a></li>
               </ul>
             </li>
@@ -63,7 +63,7 @@
             <li class="dropdown-submenu">
 <a href="../" title="Developer Reference">Developer Reference</a>
               <ul class="dropdown-menu">
-                  <li><a href="../ref/2.2.4/index.html" title="Archiva 2.2.4">Archiva 2.2.4</a></li>
+                  <li><a href="../ref/2.2.5/index.html" title="Archiva 2.2.5">Archiva 2.2.5</a></li>
                   <li><a href="../ref/3.0.0-SNAPSHOT/index.html" title="Archiva 3.0.0-SNAPSHOT">Archiva 3.0.0-SNAPSHOT</a></li>
                   <li><a href="../redback/core/3.0.0-SNAPSHOT/index.html" title="Redback 3.0.0-SNAPSHOT">Redback 3.0.0-SNAPSHOT</a></li>
               </ul>
@@ -131,7 +131,7 @@
         <li class=""><a href="https://www.apache.org" class="externalLink" title="Apache">Apache</a><span class="divider">/</span></li>
       <li class=""><a href="../" title="Archiva">Archiva</a><span class="divider">/</span></li>
     <li class="active ">Archiva release process</li>
-        <li id="publishDate" class="pull-right">Last Published: 18 Apr 2020</li>
+        <li id="publishDate" class="pull-right">Last Published: 15 Jun 2020</li>
         </ul>
       </div>
         <div id="bodyColumn" >
@@ -163,7 +163,7 @@
   &lt;/properties&gt;
 &lt;/profile&gt;</pre></div>
 <p>Set your user credentials for the stage repo in the <i>servers</i> section of your settings.xml for <a href="#archiva-repository.releases">archiva-repository.releases</a>.</p>
-<p>Prepare your environment: For Archiva 2.x you have to use JDK 7 and set memory settings.</p>
+<p>Prepare your environment: For Archiva 2.x you have to use two different JDKs for the process. JDK 7 is used for the prepare release (compile) and JDK 8 for uploading (supported SSL versions)</p>
 <div class="source"><pre class="prettyprint">export JAVA_HOME=&lt;PATH_TO_JDK7&gt;
 export PATH=$JAVA_HOME/bin:$PATH
 export MAVEN_OPTS=&quot;-Xmx6144m -XX:MaxPermSize=512m&quot; # It may work with less heap, but this is a safe value
@@ -171,15 +171,22 @@ export JAVA_OPT=&quot;-Xmx6144m -XX:MaxPermSize=512m&quot; </pre></div>
 <p>Execute </p>
 <div class="source"><pre class="prettyprint">mvn release:prepare</pre></div>
 <p>Check that it has been properly tagged. The tag name must be.. archiva-[VERSION].</p>
-<p>If all works fine, execute </p>
+<p>You can rollback with `mvn release:rollback`.</p>
+<p>If all works fine, set JDK 8 and execute the release:perform task</p>
+<div class="source"><pre class="prettyprint">export JAVA_HOME=&lt;PATH_TO_JDK8&gt;
+export PATH=$JAVA_HOME/bin:$PATH</pre></div>
 <div class="source"><pre class="prettyprint">mvn release:perform</pre></div>
 <p>The perform task will push to the repository, if it was successful. After successfully running this task, it's not possible to roll back.</p>
 <p>Download the uploaded files via wget:</p>
 <div class="source"><pre class="prettyprint">ARCHV=&quot;2.2.4&quot; # Enter the new archiva version
 RELEASE_URL=&quot;http://archiva-repository.apache.org/archiva/repository/archiva-releases-stage&quot;
 wget ${RELEASE_URL}/org/apache/archiva/archiva-jetty/${ARCHV}/archiva-jetty-${ARCHV}-bin.tar.gz
+wget ${RELEASE_URL}/org/apache/archiva/archiva-jetty/${ARCHV}/archiva-jetty-${ARCHV}-bin.tar.gz.asc
+wget ${RELEASE_URL}/org/apache/archiva/archiva-jetty/${ARCHV}/archiva-jetty-${ARCHV}-bin.zip
+wget ${RELEASE_URL}/org/apache/archiva/archiva-jetty/${ARCHV}/archiva-jetty-${ARCHV}-bin.zip.asc
 # Verify the signatures:
-gpg -v archiva-jetty-${ARCHV}-bin.zip.asc</pre></div>
+gpg -v archiva-jetty-${ARCHV}-bin.zip.asc
+gpg -v archiva-jetty-${ARCHV}-bin.tar.gz.asc</pre></div>
 <p>The documentation is deployed as part of the process to the final location for review in the vote:</p>
 <div class="source"><pre class="prettyprint">git checkout archiva-${ARCHV} # Checkout the release version of archiva
 cd archiva-doc
@@ -202,6 +209,7 @@ sh ./release-script-redback-svn.sh $REDBV ${RELEASE_URL}/</pre></div>
 <div class="source"><pre class="prettyprint">svn mv https://dist.apache.org/repos/dist/dev/archiva/${ARCHV} https://dist.apache.org/repos/dist/release/archiva/
 
 # Move also the POM and Redback and Redback Component releases, if there are new ones.</pre></div>
+<p>Merge the archiva-releases-stage to archiva-releases on archiva-repository.apache.org</p>
 <p>To sync the jars to Maven Central, you need to merge the repository archiva-releases-stage to &quot;Central Rsync Repository&quot;</p>
 <p>Mark the appropriate release version in JIRA as complete.</p>
 <p>Update the archiva site (<a class="externalLink" href="https://gitbox.apache.org/repos/asf/archiva-site.git">https://gitbox.apache.org/repos/asf/archiva-site.git</a>) for the versions and release notes URL:</p>
