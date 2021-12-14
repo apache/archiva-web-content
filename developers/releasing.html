@@ -7,7 +7,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="Date-Creation-yyyymmdd" content="20120119" />
+    <meta name="Date-Creation-yyyymmdd" content="20211214" />
     <meta http-equiv="Content-Language" content="en" />
     <title>Archiva &#x2013; Archiva release process</title>
     <link rel="stylesheet" href="../css/apache-maven-fluido-1.6.min.css" />
@@ -48,7 +48,7 @@
             <li class="dropdown-submenu">
 <a href="../" title="Documentation">Documentation</a>
               <ul class="dropdown-menu">
-                  <li><a href="../docs/2.2.5/" title="Release 2.2.5">Release 2.2.5</a></li>
+                  <li><a href="../docs/2.2.6/" title="Release 2.2.6">Release 2.2.6</a></li>
                   <li><a href="../docs/3.0.0-SNAPSHOT/" title="Dev 3.0.0-SNAPSHOT">Dev 3.0.0-SNAPSHOT</a></li>
               </ul>
             </li>
@@ -63,7 +63,7 @@
             <li class="dropdown-submenu">
 <a href="../" title="Developer Reference">Developer Reference</a>
               <ul class="dropdown-menu">
-                  <li><a href="../ref/2.2.5/index.html" title="Archiva 2.2.5">Archiva 2.2.5</a></li>
+                  <li><a href="../ref/2.2.6/index.html" title="Archiva 2.2.6">Archiva 2.2.6</a></li>
                   <li><a href="../ref/3.0.0-SNAPSHOT/index.html" title="Archiva 3.0.0-SNAPSHOT">Archiva 3.0.0-SNAPSHOT</a></li>
                   <li><a href="../redback/core/3.0.0-SNAPSHOT/index.html" title="Redback 3.0.0-SNAPSHOT">Redback 3.0.0-SNAPSHOT</a></li>
               </ul>
@@ -131,7 +131,7 @@
         <li class=""><a href="https://www.apache.org" class="externalLink" title="Apache">Apache</a><span class="divider">/</span></li>
       <li class=""><a href="../" title="Archiva">Archiva</a><span class="divider">/</span></li>
     <li class="active ">Archiva release process</li>
-        <li id="publishDate" class="pull-right">Last Published: 19 Jun 2020</li>
+        <li id="publishDate" class="pull-right">Last Published: 14 Dec 2021</li>
         </ul>
       </div>
         <div id="bodyColumn" >
@@ -139,7 +139,7 @@
 <h2><a name="Archiva_release_process"></a>Archiva release process</h2>
 <ol style="list-style-type: decimal">
 <li>Post to the dev list a few days before you plan to do an Archiva release</li>
-<li>Recreate the staging repository on archiva-repository.apache.org - make sure that it is not scanned (so that .index* is not created). Your maven setting must contains the entry to be able to deploy.
+<li>Recreate the staging repository on archiva-repository.apache.org - make sure that it is not scanned (so that .index* is not created). You should delete the repository and create a new one. Your maven setting must contains the entry to be able to deploy.
 <div class="source"><pre class="prettyprint">   &lt;server&gt;
      &lt;id&gt;archiva-repository.releases&lt;/id&gt;
      &lt;username&gt;&lt;/username&gt;
@@ -154,8 +154,9 @@
 <li>change the parent pom version to the archiva-parent version that has just been released</li>
 <li>commit the changes made</li></ul></li>
 <li>Update the release notes and the site.xml for version changes in archiva-docs</li>
-<li>Verify that the webapp-tests are building successfully. <br />Since it is in a separate profile but inside the Archiva source tree, it will not be released but will still be included in the release tag. If some tests are failing, comment it out first so that only the passing tests are executed when the webapp-tests module are built from the tag.</li>
-<li>Release archiva.<br />You should have a GPG agent running (preferred), and confirm it works by running &quot;gpg -ab&quot; (type some text and press Ctrl-D). If you do not have a GPG agent running, make sure that you have the &quot;apache-release&quot; profile set in your settings.xml as shown below.
+<li>Verify that the webapp-tests are building successfully. <br />Since it is in a separate profile but inside the Archiva source tree, it will not be released but will still be included in the release tag. If some tests are failing, comment it out first so that only the passing tests are executed when the webapp-tests module are built from the tag.
+<p>Currently, we do not use these tests anymore.</p></li>
+<li>Release archiva.<br />You should have a GPG agent running (preferred), and confirm it works by running &quot;gpg -ab&quot; (type some text and press Ctrl-D). You my check, if the key is in your keyring: `gpg --list-secret-keys` If you do not have a GPG agent running, make sure that you have the &quot;apache-release&quot; profile set in your settings.xml as shown below.
 <div class="source"><pre class="prettyprint">&lt;profile&gt;
   &lt;id&gt;apache-release&lt;/id&gt;
   &lt;properties&gt;
@@ -163,16 +164,16 @@
   &lt;/properties&gt;
 &lt;/profile&gt;</pre></div>
 <p>Set your user credentials for the stage repo in the <i>servers</i> section of your settings.xml for <a href="#archiva-repository.releases">archiva-repository.releases</a>.</p>
-<p>Prepare your environment: For Archiva 2.x you have to use two different JDKs for the process. JDK 7 is used for the prepare release (compile) and JDK 8 for uploading (supported SSL versions)</p>
-<div class="source"><pre class="prettyprint">export JAVA_HOME=&lt;PATH_TO_JDK7&gt;
+<p>Prepare your environment: We use JDK 8 for compile and publish, as JDK 7 is not supported anymore. </p>
+<div class="source"><pre class="prettyprint">export JAVA_HOME=&lt;PATH_TO_JDK8&gt;
 export PATH=$JAVA_HOME/bin:$PATH
 export MAVEN_OPTS=&quot;-Xmx6144m -XX:MaxPermSize=512m&quot; # It may work with less heap, but this is a safe value
 export JAVA_OPT=&quot;-Xmx6144m -XX:MaxPermSize=512m&quot; </pre></div>
 <p>Execute </p>
 <div class="source"><pre class="prettyprint">mvn release:prepare</pre></div>
 <p>Check that it has been properly tagged. The tag name must be.. archiva-[VERSION].</p>
-<p>You can rollback with `mvn release:rollback`.</p>
-<p>If all works fine, set JDK 8 and execute the release:perform task</p>
+<p>You can rollback with `mvn release:rollback`. If there are errors and you have to change files, you should run `mvn release:rollback` before changing any file.</p>
+<p>If all works fine, set execute the `release:perform` task</p>
 <div class="source"><pre class="prettyprint">export JAVA_HOME=&lt;PATH_TO_JDK8&gt;
 export PATH=$JAVA_HOME/bin:$PATH</pre></div>
 <div class="source"><pre class="prettyprint">mvn release:perform</pre></div>
@@ -192,12 +193,23 @@ gpg -v archiva-jetty-${ARCHV}-bin.tar.gz.asc</pre></div>
 cd archiva-doc
 mvn site:site
 mvn site:stage  # Check the content in target/staging
+mkdir &lt;web-content-git&gt;/docs/${ARCHV}
 cp -r target/staging/* &lt;web-content-git&gt;/docs/${ARCHV}/ # Copy to the git web content repository</pre></div>
+<p>Reference documentation</p>
+<div class="source"><pre class="prettyprint">git checkout archiva-${ARCHV} # Checkout the release version of archiva
+cd archiva-modules
+mvn site:site
+mvn site:stage  # Check the content in target/staging
+mkdir &lt;web-content-git&gt;/ref/${ARCHV}
+cp -r target/staging/* &lt;web-content-git&gt;/ref/${ARCHV}/ # Copy to the git web content repository</pre></div>
 <p>If the vote doesn't pass, the documentation will need to be removed from the server for redeployment.</p>
 <p>Commit the sources and binaries from <tt>org/apache/archiva/archiva-jetty</tt> and <tt>org/apache/archiva/archiva</tt> to the svn distribution tree. First in dev tree: <tt>https://dist.apache.org/repos/dist/dev/archiva/</tt></p>
 <div class="source"><pre class="prettyprint">svn co https://dist.apache.org/repos/dist/dev/archiva/ archiva-dev-release
 cd archiva-dev-release
 sh ./release-script-svn.sh $ARCHV ${RELEASE_URL}/
+cd $ARCHV
+../../verify.sh
+# Check the output
 
 # For parent pom or redback:
 POMV=18  # New Parent POM version

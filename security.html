@@ -47,7 +47,7 @@
             <li class="dropdown-submenu">
 <a href="" title="Documentation">Documentation</a>
               <ul class="dropdown-menu">
-                  <li><a href="docs/2.2.5/" title="Release 2.2.5">Release 2.2.5</a></li>
+                  <li><a href="docs/2.2.6/" title="Release 2.2.6">Release 2.2.6</a></li>
                   <li><a href="docs/3.0.0-SNAPSHOT/" title="Dev 3.0.0-SNAPSHOT">Dev 3.0.0-SNAPSHOT</a></li>
               </ul>
             </li>
@@ -62,7 +62,7 @@
             <li class="dropdown-submenu">
 <a href="" title="Developer Reference">Developer Reference</a>
               <ul class="dropdown-menu">
-                  <li><a href="ref/2.2.5/index.html" title="Archiva 2.2.5">Archiva 2.2.5</a></li>
+                  <li><a href="ref/2.2.6/index.html" title="Archiva 2.2.6">Archiva 2.2.6</a></li>
                   <li><a href="ref/3.0.0-SNAPSHOT/index.html" title="Archiva 3.0.0-SNAPSHOT">Archiva 3.0.0-SNAPSHOT</a></li>
                   <li><a href="redback/core/3.0.0-SNAPSHOT/index.html" title="Redback 3.0.0-SNAPSHOT">Redback 3.0.0-SNAPSHOT</a></li>
               </ul>
@@ -130,7 +130,7 @@
         <li class=""><a href="https://www.apache.org" class="externalLink" title="Apache">Apache</a><span class="divider">/</span></li>
       <li class=""><a href="./" title="Archiva">Archiva</a><span class="divider">/</span></li>
     <li class="active ">Security Vulnerabilities</li>
-        <li id="publishDate" class="pull-right">Last Published: 19 Jun 2020</li>
+        <li id="publishDate" class="pull-right">Last Published: 14 Dec 2021</li>
         </ul>
       </div>
         <div id="bodyColumn" >
@@ -140,6 +140,7 @@
 <p>For more information about reporting vulnerabilities, see the <a class="externalLink" href="http://www.apache.org/security/"> Apache Security Team</a> page.</p>
 <p>This is a list of known issues</p>
 <ul>
+<li><a href="#CVE-2021-44228:_Apache_log4j2_is_vulnerable_to_remote_code_execution">CVE-2021-44228: Apache log4j2 is vulnerable to remote code execution</a></li>
 <li><a href="#CVE-2020-9495:_Apache_Archiva_login_service_is_vulnerable_to_LDAP_injection">CVE-2020-9495: Apache Archiva login service is vulnerable to LDAP injection</a></li>
 <li><a href="#CVE-2019-0213:_Apache_Archiva_XSS_may_be_stored_in_central_UI_configuration">CVE-2019-0213: Apache Archiva XSS may be stored in central UI configuration</a></li>
 <li><a href="#CVE-2019-0214:_Apache_Archiva_arbitrary_file_write_and_delete_on_the_server">CVE-2019-0214: Apache Archiva arbitrary file write and delete on the server</a></li>
@@ -151,6 +152,9 @@
 <li><a href="#CVE-2011-1026:_Multiple_CSRF_issues">CVE-2011-1026: Multiple CSRF issues</a></li>
 <li><a href="#CVE-2011-0533:_Apache_Archiva_cross-site_scripting_vulnerability">CVE-2011-0533: Apache Archiva cross-site scripting vulnerability</a></li>
 <li><a href="#CVE-2010-3449:_Apache_Archiva_CSRF_Vulnerability">CVE-2010-3449: Apache Archiva CSRF Vulnerability</a></li></ul>
+<div class="section">
+<h3><a name="CVE-2021-44228:_Apache_log4j2_is_vulnerable_to_remote_code_execution"></a><a name="CVE-2021-44228">CVE-2021-44228</a>: Apache log4j2 is vulnerable to remote code execution</h3>
+<p>As mentioned in this CVE Apache log4j2 libraries are vulnerable to remote code execution. Archiva is using log4j2 libraries and is therefore vulnerable to the same scenarios mentioned in this CVE. Attackers may be able to inject statements into the HTTP requests which may be interpreted by the logging library and lead to the download of arbitrary code from remote servers.</p></div>
 <div class="section">
 <h3><a name="CVE-2020-9495:_Apache_Archiva_login_service_is_vulnerable_to_LDAP_injection"></a><a name="CVE-2020-9495">CVE-2020-9495</a>: Apache Archiva login service is vulnerable to LDAP injection</h3>
 <p>By providing special values to the archiva login form a attacker is able to retrieve user attribute data from the connected LDAP server. With certain characters it is possible to modify the LDAP filter used to query the users on the connected LDAP server. By measuring the response time, arbitrary attribute data can be retrieved from LDAP user objects.</p>
