@@ -218,7 +218,9 @@ cp -r target/staging/* &lt;web-content-git&gt;/ref/${ARCHV}/ # Copy to the git w
 <div class="source"><pre class="prettyprint">svn co https://dist.apache.org/repos/dist/dev/archiva/ archiva-dev-release
 cd archiva-dev-release
 sh ./release-script-svn.sh $ARCHV ${RELEASE_URL}/
-cd $ARCHV
+cd $ARCHV/bin
+../../verify.sh
+cd ../src/
 ../../verify.sh
 # Check the output
 
