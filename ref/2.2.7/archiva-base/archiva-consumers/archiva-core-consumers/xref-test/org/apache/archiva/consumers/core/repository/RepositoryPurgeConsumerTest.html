@@ -1,0 +1,489 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>RepositoryPurgeConsumerTest xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../../testapidocs/org/apache/archiva/consumers/core/repository/RepositoryPurgeConsumerTest.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> org.apache.archiva.consumers.core.repository;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_comment"> * Licensed to the Apache Software Foundation (ASF) under one</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> * or more contributor license agreements.  See the NOTICE file</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_comment"> * distributed with this work for additional information</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> * regarding copyright ownership.  The ASF licenses this file</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> * to you under the Apache License, Version 2.0 (the</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * "License"); you may not use this file except in compliance</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> * with the License.  You may obtain a copy of the License at</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> *  <a href="http://www.apache.org/licenses/LICENSE-2." target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.</a>0</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing,</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> * software distributed under the License is distributed on an</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_comment"> * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_comment"> * KIND, either express or implied.  See the License for the</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_comment"> * specific language governing permissions and limitations</em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <em class="jxr_comment"> * under the License.</em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_comment"> */</em>
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.admin.model.RepositoryCommonValidator;
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.admin.model.beans.ManagedRepository;
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.admin.model.managed.ManagedRepositoryAdmin;
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.admin.repository.DefaultRepositoryCommonValidator;
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.admin.repository.managed.DefaultManagedRepositoryAdmin;
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.common.utils.BaseFile;
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.configuration.ArchivaConfiguration;
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.configuration.FileType;
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.configuration.FileTypes;
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.consumers.KnownRepositoryContentConsumer;
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.consumers.functors.ConsumerWantsFilePredicate;
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.metadata.model.ArtifactMetadata;
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.metadata.model.MetadataFacet;
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <strong class="jxr_keyword">import</strong> org.apache.archiva.mock.MockRepositorySessionFactory;
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.io.FileUtils;
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  <strong class="jxr_keyword">import</strong> org.custommonkey.xmlunit.XMLAssert;
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <strong class="jxr_keyword">import</strong> org.junit.After;
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  <strong class="jxr_keyword">import</strong> org.junit.Before;
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <strong class="jxr_keyword">import</strong> org.junit.Test;
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>  <strong class="jxr_keyword">import</strong> org.mockito.ArgumentCaptor;
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <strong class="jxr_keyword">import</strong> org.springframework.test.context.ContextConfiguration;
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>  
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>  <strong class="jxr_keyword">import</strong> java.io.File;
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>  <strong class="jxr_keyword">import</strong> java.nio.charset.Charset;
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>  <strong class="jxr_keyword">import</strong> java.nio.file.Path;
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  <strong class="jxr_keyword">import</strong> java.util.HashSet;
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>  <strong class="jxr_keyword">import</strong> java.util.List;
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>  <strong class="jxr_keyword">import</strong> java.util.Set;
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>  
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>  <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> org.junit.Assert.*;
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>  <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> org.mockito.Matchers.any;
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>  <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> org.mockito.Matchers.eq;
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>  <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> org.mockito.Mockito.*;
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>  
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>  @ContextConfiguration (
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>      locations = { <span class="jxr_string">"classpath*:/META-INF/spring-context.xml"</span>, <span class="jxr_string">"classpath:/spring-context-purge-consumer-test.xml"</span> } )
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/apache/archiva/consumers/core/repository/RepositoryPurgeConsumerTest.html">RepositoryPurgeConsumerTest</a>
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>      <strong class="jxr_keyword">extends</strong> <a href="../../../../../../org/apache/archiva/consumers/core/repository/AbstractRepositoryPurgeTest.html">AbstractRepositoryPurgeTest</a>
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>  {
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>      @Before
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>      @Override
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setUp()
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>          <strong class="jxr_keyword">throws</strong> Exception
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>      {
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>          <strong class="jxr_keyword">super</strong>.setUp();
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>  
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>          MockRepositorySessionFactory factory = applicationContext.getBean( MockRepositorySessionFactory.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>          factory.setRepository( metadataRepository );
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>      }
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>  
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>      @After
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>      @Override
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> tearDown()
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>          <strong class="jxr_keyword">throws</strong> Exception
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>      {
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>          <strong class="jxr_keyword">super</strong>.tearDown();
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>      }
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>  
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>      @Test
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testConsumption()
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>          <strong class="jxr_keyword">throws</strong> Exception
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>      {
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>          assertNotConsumed( <span class="jxr_string">"org/apache/maven/plugins/maven-plugin-plugin/2.4.1/maven-metadata.xml"</span> );
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>          cleanupFileTypes();
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>      }
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>  
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>      @Test
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testConsumptionOfOtherMetadata()
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>          <strong class="jxr_keyword">throws</strong> Exception
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>      {
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>          assertNotConsumed( <span class="jxr_string">"org/apache/maven/plugins/maven-plugin-plugin/2.4.1/maven-metadata-central.xml"</span> );
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>          cleanupFileTypes();
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>      }
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>  
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> cleanupFileTypes()
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>      {
+<a class="jxr_linenumber" name="L100" href="#L100">100</a>         ArchivaConfiguration archivaConfiguration =
+<a class="jxr_linenumber" name="L101" href="#L101">101</a>             applicationContext.getBean( <span class="jxr_string">"archivaConfiguration#default"</span>, ArchivaConfiguration.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L102" href="#L102">102</a> 
+<a class="jxr_linenumber" name="L103" href="#L103">103</a>         FileType fileType = archivaConfiguration.getConfiguration().getRepositoryScanning().getFileTypes().get( 0 );
+<a class="jxr_linenumber" name="L104" href="#L104">104</a>         fileType.removePattern( <span class="jxr_string">"**/*.xml"</span> );
+<a class="jxr_linenumber" name="L105" href="#L105">105</a>     }
+<a class="jxr_linenumber" name="L106" href="#L106">106</a> 
+<a class="jxr_linenumber" name="L107" href="#L107">107</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> assertNotConsumed( String path )
+<a class="jxr_linenumber" name="L108" href="#L108">108</a>         <strong class="jxr_keyword">throws</strong> Exception
+<a class="jxr_linenumber" name="L109" href="#L109">109</a>     {
+<a class="jxr_linenumber" name="L110" href="#L110">110</a>         ArchivaConfiguration archivaConfiguration =
+<a class="jxr_linenumber" name="L111" href="#L111">111</a>             applicationContext.getBean( <span class="jxr_string">"archivaConfiguration#default"</span>, ArchivaConfiguration.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L112" href="#L112">112</a> 
+<a class="jxr_linenumber" name="L113" href="#L113">113</a>         FileType fileType = archivaConfiguration.getConfiguration().getRepositoryScanning().getFileTypes().get( 0 );
+<a class="jxr_linenumber" name="L114" href="#L114">114</a>         assertEquals( FileTypes.ARTIFACTS, fileType.getId() );
+<a class="jxr_linenumber" name="L115" href="#L115">115</a>         fileType.addPattern( <span class="jxr_string">"**/*.xml"</span> );
+<a class="jxr_linenumber" name="L116" href="#L116">116</a> 
+<a class="jxr_linenumber" name="L117" href="#L117">117</a>         <em class="jxr_comment">// trigger reload</em>
+<a class="jxr_linenumber" name="L118" href="#L118">118</a>         <em class="jxr_comment">//FileTypes fileTypes = applicationContext.getBean( FileTypes.class );</em>
+<a class="jxr_linenumber" name="L119" href="#L119">119</a>         <strong class="jxr_keyword">for</strong> ( FileTypes fileTypes : applicationContext.getBeansOfType( FileTypes.<strong class="jxr_keyword">class</strong> ).values() )
+<a class="jxr_linenumber" name="L120" href="#L120">120</a>         {
+<a class="jxr_linenumber" name="L121" href="#L121">121</a>             fileTypes.afterConfigurationChange( <strong class="jxr_keyword">null</strong>, <span class="jxr_string">"repositoryScanning.fileTypes"</span>, <strong class="jxr_keyword">null</strong> );
+<a class="jxr_linenumber" name="L122" href="#L122">122</a>         }
+<a class="jxr_linenumber" name="L123" href="#L123">123</a>         KnownRepositoryContentConsumer repoPurgeConsumer =
+<a class="jxr_linenumber" name="L124" href="#L124">124</a>             applicationContext.getBean( <span class="jxr_string">"knownRepositoryContentConsumer#repository-purge"</span>,
+<a class="jxr_linenumber" name="L125" href="#L125">125</a>                                         KnownRepositoryContentConsumer.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L126" href="#L126">126</a> 
+<a class="jxr_linenumber" name="L127" href="#L127">127</a>         File repoLocation = <strong class="jxr_keyword">new</strong> File( <span class="jxr_string">"target/test-"</span> + getName() + <span class="jxr_string">"/test-repo"</span> );
+<a class="jxr_linenumber" name="L128" href="#L128">128</a> 
+<a class="jxr_linenumber" name="L129" href="#L129">129</a>         File localFile = <strong class="jxr_keyword">new</strong> File( repoLocation, path );
+<a class="jxr_linenumber" name="L130" href="#L130">130</a> 
+<a class="jxr_linenumber" name="L131" href="#L131">131</a>         ConsumerWantsFilePredicate predicate = <strong class="jxr_keyword">new</strong> ConsumerWantsFilePredicate();
+<a class="jxr_linenumber" name="L132" href="#L132">132</a>         BaseFile baseFile = <strong class="jxr_keyword">new</strong> BaseFile( repoLocation, localFile );
+<a class="jxr_linenumber" name="L133" href="#L133">133</a>         predicate.setBasefile( baseFile );
+<a class="jxr_linenumber" name="L134" href="#L134">134</a> 
+<a class="jxr_linenumber" name="L135" href="#L135">135</a>         assertFalse( predicate.evaluate( repoPurgeConsumer ) );
+<a class="jxr_linenumber" name="L136" href="#L136">136</a>     }
+<a class="jxr_linenumber" name="L137" href="#L137">137</a> 
+<a class="jxr_linenumber" name="L138" href="#L138">138</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> setLastModified( String path )
+<a class="jxr_linenumber" name="L139" href="#L139">139</a>     {
+<a class="jxr_linenumber" name="L140" href="#L140">140</a>         File dir = <strong class="jxr_keyword">new</strong> File( path );
+<a class="jxr_linenumber" name="L141" href="#L141">141</a>         File[] contents = dir.listFiles();
+<a class="jxr_linenumber" name="L142" href="#L142">142</a>         <strong class="jxr_keyword">for</strong> ( <strong class="jxr_keyword">int</strong> i = 0; i &lt; contents.length; i++ )
+<a class="jxr_linenumber" name="L143" href="#L143">143</a>         {
+<a class="jxr_linenumber" name="L144" href="#L144">144</a>             contents[i].setLastModified( 1179382029 );
+<a class="jxr_linenumber" name="L145" href="#L145">145</a>         }
+<a class="jxr_linenumber" name="L146" href="#L146">146</a>     }
+<a class="jxr_linenumber" name="L147" href="#L147">147</a> 
+<a class="jxr_linenumber" name="L148" href="#L148">148</a>     @Test
+<a class="jxr_linenumber" name="L149" href="#L149">149</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testConsumerByRetentionCount()
+<a class="jxr_linenumber" name="L150" href="#L150">150</a>         <strong class="jxr_keyword">throws</strong> Exception
+<a class="jxr_linenumber" name="L151" href="#L151">151</a>     {
+<a class="jxr_linenumber" name="L152" href="#L152">152</a>         KnownRepositoryContentConsumer repoPurgeConsumer =
+<a class="jxr_linenumber" name="L153" href="#L153">153</a>             applicationContext.getBean( <span class="jxr_string">"knownRepositoryContentConsumer#repo-purge-consumer-by-retention-count"</span>,
+<a class="jxr_linenumber" name="L154" href="#L154">154</a>                                         KnownRepositoryContentConsumer.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L155" href="#L155">155</a> 
+<a class="jxr_linenumber" name="L156" href="#L156">156</a>         ManagedRepository repoConfiguration = getRepoConfiguration( TEST_REPO_ID, TEST_REPO_NAME );
+<a class="jxr_linenumber" name="L157" href="#L157">157</a>         repoConfiguration.setDaysOlder( 0 ); <em class="jxr_comment">// force days older off to allow retention count purge to execute.</em>
+<a class="jxr_linenumber" name="L158" href="#L158">158</a>         repoConfiguration.setRetentionCount( TEST_RETENTION_COUNT );
+<a class="jxr_linenumber" name="L159" href="#L159">159</a>         addRepoToConfiguration( <span class="jxr_string">"retention-count"</span>, repoConfiguration );
+<a class="jxr_linenumber" name="L160" href="#L160">160</a> 
+<a class="jxr_linenumber" name="L161" href="#L161">161</a>         repoPurgeConsumer.beginScan( repoConfiguration, <strong class="jxr_keyword">null</strong> );
+<a class="jxr_linenumber" name="L162" href="#L162">162</a> 
+<a class="jxr_linenumber" name="L163" href="#L163">163</a>         String repoRoot = prepareTestRepos();
+<a class="jxr_linenumber" name="L164" href="#L164">164</a>         String projectNs = <span class="jxr_string">"org.jruby.plugins"</span>;
+<a class="jxr_linenumber" name="L165" href="#L165">165</a>         String projectPath = projectNs.replaceAll(<span class="jxr_string">"&#92;&#92;."</span>,<span class="jxr_string">"/"</span>);
+<a class="jxr_linenumber" name="L166" href="#L166">166</a>         String projectName = <span class="jxr_string">"jruby-rake-plugin"</span>;
+<a class="jxr_linenumber" name="L167" href="#L167">167</a>         String projectVersion = <span class="jxr_string">"1.0RC1-SNAPSHOT"</span>;
+<a class="jxr_linenumber" name="L168" href="#L168">168</a>         String projectRoot = repoRoot + <span class="jxr_string">"/"</span> + projectPath+<span class="jxr_string">"/"</span>+projectName;
+<a class="jxr_linenumber" name="L169" href="#L169">169</a>         String versionRoot = projectRoot + <span class="jxr_string">"/"</span> + projectVersion;
+<a class="jxr_linenumber" name="L170" href="#L170">170</a> 
+<a class="jxr_linenumber" name="L171" href="#L171">171</a>         Path repo = getTestRepoRootPath();
+<a class="jxr_linenumber" name="L172" href="#L172">172</a>         Path vDir = repo.resolve(projectPath).resolve(projectName).resolve(projectVersion);
+<a class="jxr_linenumber" name="L173" href="#L173">173</a> 
+<a class="jxr_linenumber" name="L174" href="#L174">174</a>         <em class="jxr_comment">// Provide the metadata list</em>
+<a class="jxr_linenumber" name="L175" href="#L175">175</a>         List&lt;ArtifactMetadata&gt; ml = getArtifactMetadataFromDir( TEST_REPO_ID, projectName, repo, vDir );
+<a class="jxr_linenumber" name="L176" href="#L176">176</a>         when(metadataRepository.getArtifacts(TEST_REPO_ID, projectNs,
+<a class="jxr_linenumber" name="L177" href="#L177">177</a>             projectName, projectVersion)).thenReturn(ml);
+<a class="jxr_linenumber" name="L178" href="#L178">178</a>         Set&lt;String&gt; deletedVersions = <strong class="jxr_keyword">new</strong> HashSet&lt;&gt;();
+<a class="jxr_linenumber" name="L179" href="#L179">179</a>         deletedVersions.add(<span class="jxr_string">"1.0RC1-20070504.153317-1"</span>);
+<a class="jxr_linenumber" name="L180" href="#L180">180</a>         deletedVersions.add(<span class="jxr_string">"1.0RC1-20070504.160758-2"</span>);
+<a class="jxr_linenumber" name="L181" href="#L181">181</a> 
+<a class="jxr_linenumber" name="L182" href="#L182">182</a>         repoPurgeConsumer.processFile( PATH_TO_BY_RETENTION_COUNT_ARTIFACT );
+<a class="jxr_linenumber" name="L183" href="#L183">183</a> 
+<a class="jxr_linenumber" name="L184" href="#L184">184</a>         <em class="jxr_comment">// Verify the metadataRepository invocations</em>
+<a class="jxr_linenumber" name="L185" href="#L185">185</a>         verify(metadataRepository, never()).removeProjectVersion(eq(TEST_REPO_ID), eq(projectNs), eq(projectName), eq(projectVersion));
+<a class="jxr_linenumber" name="L186" href="#L186">186</a>         ArgumentCaptor&lt;ArtifactMetadata&gt; metadataArg = ArgumentCaptor.forClass(ArtifactMetadata.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="L187" href="#L187">187</a>         verify(metadataRepository, times(2)).removeArtifact(metadataArg.capture(), eq(projectVersion));
+<a class="jxr_linenumber" name="L188" href="#L188">188</a>         List&lt;ArtifactMetadata&gt; metaL = metadataArg.getAllValues();
+<a class="jxr_linenumber" name="L189" href="#L189">189</a>         <strong class="jxr_keyword">for</strong> (ArtifactMetadata meta : metaL) {
+<a class="jxr_linenumber" name="L190" href="#L190">190</a>             assertTrue(meta.getId().startsWith(projectName));
+<a class="jxr_linenumber" name="L191" href="#L191">191</a>             assertTrue(deletedVersions.contains(meta.getVersion()));
+<a class="jxr_linenumber" name="L192" href="#L192">192</a>         }
+<a class="jxr_linenumber" name="L193" href="#L193">193</a> 
+<a class="jxr_linenumber" name="L194" href="#L194">194</a> 
+<a class="jxr_linenumber" name="L195" href="#L195">195</a> 
+<a class="jxr_linenumber" name="L196" href="#L196">196</a>         <em class="jxr_comment">// assert if removed from repo</em>
+<a class="jxr_linenumber" name="L197" href="#L197">197</a>         assertDeleted( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070504.153317-1.jar"</span> );
+<a class="jxr_linenumber" name="L198" href="#L198">198</a>         assertDeleted( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070504.153317-1-javadoc.jar"</span> );
+<a class="jxr_linenumber" name="L199" href="#L199">199</a>         assertDeleted( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070504.153317-1-javadoc.zip"</span> );
+<a class="jxr_linenumber" name="L200" href="#L200">200</a>         assertDeleted( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070504.153317-1.jar.md5"</span> );
+<a class="jxr_linenumber" name="L201" href="#L201">201</a>         assertDeleted( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070504.153317-1.jar.sha1"</span> );
+<a class="jxr_linenumber" name="L202" href="#L202">202</a>         assertDeleted( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070504.153317-1.pom"</span> );
+<a class="jxr_linenumber" name="L203" href="#L203">203</a>         assertDeleted( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070504.153317-1.pom.md5"</span> );
+<a class="jxr_linenumber" name="L204" href="#L204">204</a>         assertDeleted( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070504.153317-1.pom.sha1"</span> );
+<a class="jxr_linenumber" name="L205" href="#L205">205</a> 
+<a class="jxr_linenumber" name="L206" href="#L206">206</a>         assertDeleted( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070504.160758-2.jar"</span> );
+<a class="jxr_linenumber" name="L207" href="#L207">207</a>         assertDeleted( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070504.160758-2-javadoc.jar"</span> );
+<a class="jxr_linenumber" name="L208" href="#L208">208</a>         assertDeleted( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070504.160758-2-javadoc.zip"</span> );
+<a class="jxr_linenumber" name="L209" href="#L209">209</a>         assertDeleted( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070504.160758-2.jar.md5"</span> );
+<a class="jxr_linenumber" name="L210" href="#L210">210</a>         assertDeleted( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070504.160758-2.jar.sha1"</span> );
+<a class="jxr_linenumber" name="L211" href="#L211">211</a>         assertDeleted( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070504.160758-2.pom"</span> );
+<a class="jxr_linenumber" name="L212" href="#L212">212</a>         assertDeleted( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070504.160758-2.pom.md5"</span> );
+<a class="jxr_linenumber" name="L213" href="#L213">213</a>         assertDeleted( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070504.160758-2.pom.sha1"</span> );
+<a class="jxr_linenumber" name="L214" href="#L214">214</a> 
+<a class="jxr_linenumber" name="L215" href="#L215">215</a>         <em class="jxr_comment">// assert if not removed from repo</em>
+<a class="jxr_linenumber" name="L216" href="#L216">216</a>         assertExists( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070505.090015-3.jar"</span> );
+<a class="jxr_linenumber" name="L217" href="#L217">217</a>         assertExists( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070505.090015-3-javadoc.jar"</span> );
+<a class="jxr_linenumber" name="L218" href="#L218">218</a>         assertExists( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070505.090015-3-javadoc.zip"</span> );
+<a class="jxr_linenumber" name="L219" href="#L219">219</a>         assertExists( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070505.090015-3.jar.md5"</span> );
+<a class="jxr_linenumber" name="L220" href="#L220">220</a>         assertExists( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070505.090015-3.jar.sha1"</span> );
+<a class="jxr_linenumber" name="L221" href="#L221">221</a>         assertExists( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070505.090015-3.pom"</span> );
+<a class="jxr_linenumber" name="L222" href="#L222">222</a>         assertExists( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070505.090015-3.pom.md5"</span> );
+<a class="jxr_linenumber" name="L223" href="#L223">223</a>         assertExists( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070505.090015-3.pom.sha1"</span> );
+<a class="jxr_linenumber" name="L224" href="#L224">224</a> 
+<a class="jxr_linenumber" name="L225" href="#L225">225</a>         assertExists( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070506.090132-4.jar"</span> );
+<a class="jxr_linenumber" name="L226" href="#L226">226</a>         assertExists( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070506.090132-4.jar.md5"</span> );
+<a class="jxr_linenumber" name="L227" href="#L227">227</a>         assertExists( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070506.090132-4.jar.sha1"</span> );
+<a class="jxr_linenumber" name="L228" href="#L228">228</a>         assertExists( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070506.090132-4.pom"</span> );
+<a class="jxr_linenumber" name="L229" href="#L229">229</a>         assertExists( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070506.090132-4.pom.md5"</span> );
+<a class="jxr_linenumber" name="L230" href="#L230">230</a>         assertExists( versionRoot + <span class="jxr_string">"/jruby-rake-plugin-1.0RC1-20070506.090132-4.pom.sha1"</span> );
+<a class="jxr_linenumber" name="L231" href="#L231">231</a> 
+<a class="jxr_linenumber" name="L232" href="#L232">232</a>         removeRepoFromConfiguration( <span class="jxr_string">"retention-count"</span>, repoConfiguration );
+<a class="jxr_linenumber" name="L233" href="#L233">233</a>     }
+<a class="jxr_linenumber" name="L234" href="#L234">234</a> 
+<a class="jxr_linenumber" name="L235" href="#L235">235</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> addRepoToConfiguration( String configHint, ManagedRepository repoConfiguration )
+<a class="jxr_linenumber" name="L236" href="#L236">236</a>         <strong class="jxr_keyword">throws</strong> Exception
+<a class="jxr_linenumber" name="L237" href="#L237">237</a>     {
+<a class="jxr_linenumber" name="L238" href="#L238">238</a>         ArchivaConfiguration archivaConfiguration =
+<a class="jxr_linenumber" name="L239" href="#L239">239</a>             applicationContext.getBean( <span class="jxr_string">"archivaConfiguration#"</span> + configHint, ArchivaConfiguration.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L240" href="#L240">240</a>         ( (DefaultManagedRepositoryAdmin) applicationContext.getBean(
+<a class="jxr_linenumber" name="L241" href="#L241">241</a>             ManagedRepositoryAdmin.<strong class="jxr_keyword">class</strong> ) ).setArchivaConfiguration( archivaConfiguration );
+<a class="jxr_linenumber" name="L242" href="#L242">242</a>         <em class="jxr_comment">// skygo: Default Validator was not looking at same config</em>
+<a class="jxr_linenumber" name="L243" href="#L243">243</a>         ( (DefaultRepositoryCommonValidator) applicationContext.getBean(
+<a class="jxr_linenumber" name="L244" href="#L244">244</a>             RepositoryCommonValidator.<strong class="jxr_keyword">class</strong> ) ).setArchivaConfiguration( archivaConfiguration );
+<a class="jxr_linenumber" name="L245" href="#L245">245</a>         ManagedRepositoryAdmin managedRepositoryAdmin = applicationContext.getBean( ManagedRepositoryAdmin.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L246" href="#L246">246</a>         <strong class="jxr_keyword">if</strong> ( managedRepositoryAdmin.getManagedRepository( repoConfiguration.getId() ) != <strong class="jxr_keyword">null</strong> )
+<a class="jxr_linenumber" name="L247" href="#L247">247</a>         {
+<a class="jxr_linenumber" name="L248" href="#L248">248</a>             managedRepositoryAdmin.deleteManagedRepository( repoConfiguration.getId(), <strong class="jxr_keyword">null</strong>, false );
+<a class="jxr_linenumber" name="L249" href="#L249">249</a>         }
+<a class="jxr_linenumber" name="L250" href="#L250">250</a>         managedRepositoryAdmin.addManagedRepository( repoConfiguration, false, <strong class="jxr_keyword">null</strong> );
+<a class="jxr_linenumber" name="L251" href="#L251">251</a>     }
+<a class="jxr_linenumber" name="L252" href="#L252">252</a> 
+<a class="jxr_linenumber" name="L253" href="#L253">253</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> removeRepoFromConfiguration( String configHint, ManagedRepository repoConfiguration )
+<a class="jxr_linenumber" name="L254" href="#L254">254</a>         <strong class="jxr_keyword">throws</strong> Exception
+<a class="jxr_linenumber" name="L255" href="#L255">255</a>     {
+<a class="jxr_linenumber" name="L256" href="#L256">256</a>         ArchivaConfiguration archivaConfiguration =
+<a class="jxr_linenumber" name="L257" href="#L257">257</a>             applicationContext.getBean( <span class="jxr_string">"archivaConfiguration#"</span> + configHint, ArchivaConfiguration.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L258" href="#L258">258</a> 
+<a class="jxr_linenumber" name="L259" href="#L259">259</a>         ( (DefaultManagedRepositoryAdmin) applicationContext.getBean(
+<a class="jxr_linenumber" name="L260" href="#L260">260</a>             ManagedRepositoryAdmin.<strong class="jxr_keyword">class</strong> ) ).setArchivaConfiguration( archivaConfiguration );
+<a class="jxr_linenumber" name="L261" href="#L261">261</a>         <em class="jxr_comment">// skygo: Default Validator was not looking at same config</em>
+<a class="jxr_linenumber" name="L262" href="#L262">262</a>         ( (DefaultRepositoryCommonValidator) applicationContext.getBean(
+<a class="jxr_linenumber" name="L263" href="#L263">263</a>             RepositoryCommonValidator.<strong class="jxr_keyword">class</strong> ) ).setArchivaConfiguration( archivaConfiguration );
+<a class="jxr_linenumber" name="L264" href="#L264">264</a>         ManagedRepositoryAdmin managedRepositoryAdmin = applicationContext.getBean( ManagedRepositoryAdmin.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L265" href="#L265">265</a>         <strong class="jxr_keyword">if</strong> ( managedRepositoryAdmin.getManagedRepository( repoConfiguration.getId() ) != <strong class="jxr_keyword">null</strong> )
+<a class="jxr_linenumber" name="L266" href="#L266">266</a>         {
+<a class="jxr_linenumber" name="L267" href="#L267">267</a>             managedRepositoryAdmin.deleteManagedRepository( repoConfiguration.getId(), <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">true</strong> );
+<a class="jxr_linenumber" name="L268" href="#L268">268</a>         }
+<a class="jxr_linenumber" name="L269" href="#L269">269</a>     }
+<a class="jxr_linenumber" name="L270" href="#L270">270</a> 
+<a class="jxr_linenumber" name="L271" href="#L271">271</a>     @Test
+<a class="jxr_linenumber" name="L272" href="#L272">272</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testConsumerByDaysOld()
+<a class="jxr_linenumber" name="L273" href="#L273">273</a>         <strong class="jxr_keyword">throws</strong> Exception
+<a class="jxr_linenumber" name="L274" href="#L274">274</a>     {
+<a class="jxr_linenumber" name="L275" href="#L275">275</a>         KnownRepositoryContentConsumer repoPurgeConsumer =
+<a class="jxr_linenumber" name="L276" href="#L276">276</a>             applicationContext.getBean( <span class="jxr_string">"knownRepositoryContentConsumer#repo-purge-consumer-by-days-old"</span>,
+<a class="jxr_linenumber" name="L277" href="#L277">277</a>                                         KnownRepositoryContentConsumer.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L278" href="#L278">278</a> 
+<a class="jxr_linenumber" name="L279" href="#L279">279</a>         ManagedRepository repoConfiguration = getRepoConfiguration( TEST_REPO_ID, TEST_REPO_NAME );
+<a class="jxr_linenumber" name="L280" href="#L280">280</a>         repoConfiguration.setDaysOlder( TEST_DAYS_OLDER );
+<a class="jxr_linenumber" name="L281" href="#L281">281</a>         addRepoToConfiguration( <span class="jxr_string">"days-old"</span>, repoConfiguration );
+<a class="jxr_linenumber" name="L282" href="#L282">282</a> 
+<a class="jxr_linenumber" name="L283" href="#L283">283</a>         repoPurgeConsumer.beginScan( repoConfiguration, <strong class="jxr_keyword">null</strong> );
+<a class="jxr_linenumber" name="L284" href="#L284">284</a> 
+<a class="jxr_linenumber" name="L285" href="#L285">285</a>         String repoRoot = prepareTestRepos();
+<a class="jxr_linenumber" name="L286" href="#L286">286</a>         String projectNs = <span class="jxr_string">"org.apache.maven.plugins"</span>;
+<a class="jxr_linenumber" name="L287" href="#L287">287</a>         String projectPath = projectNs.replaceAll(<span class="jxr_string">"&#92;&#92;."</span>,<span class="jxr_string">"/"</span>);
+<a class="jxr_linenumber" name="L288" href="#L288">288</a>         String projectName = <span class="jxr_string">"maven-install-plugin"</span>;
+<a class="jxr_linenumber" name="L289" href="#L289">289</a>         String projectVersion = <span class="jxr_string">"2.2-SNAPSHOT"</span>;
+<a class="jxr_linenumber" name="L290" href="#L290">290</a>         String projectRoot = repoRoot + <span class="jxr_string">"/"</span> + projectPath+<span class="jxr_string">"/"</span>+projectName;
+<a class="jxr_linenumber" name="L291" href="#L291">291</a> 
+<a class="jxr_linenumber" name="L292" href="#L292">292</a>         setLastModified( projectRoot + <span class="jxr_string">"/"</span>+projectVersion);
+<a class="jxr_linenumber" name="L293" href="#L293">293</a> 
+<a class="jxr_linenumber" name="L294" href="#L294">294</a> 
+<a class="jxr_linenumber" name="L295" href="#L295">295</a>         Path repo = getTestRepoRootPath();
+<a class="jxr_linenumber" name="L296" href="#L296">296</a>         Path vDir = repo.resolve(projectPath).resolve(projectName).resolve(projectVersion);
+<a class="jxr_linenumber" name="L297" href="#L297">297</a> 
+<a class="jxr_linenumber" name="L298" href="#L298">298</a>         <em class="jxr_comment">// Provide the metadata list</em>
+<a class="jxr_linenumber" name="L299" href="#L299">299</a>         List&lt;ArtifactMetadata&gt; ml = getArtifactMetadataFromDir( TEST_REPO_ID, projectName, repo, vDir );
+<a class="jxr_linenumber" name="L300" href="#L300">300</a>         when(metadataRepository.getArtifacts(TEST_REPO_ID, projectNs,
+<a class="jxr_linenumber" name="L301" href="#L301">301</a>                 projectName, projectVersion)).thenReturn(ml);
+<a class="jxr_linenumber" name="L302" href="#L302">302</a>         Set&lt;String&gt; deletedVersions = <strong class="jxr_keyword">new</strong> HashSet&lt;&gt;();
+<a class="jxr_linenumber" name="L303" href="#L303">303</a>         deletedVersions.add(<span class="jxr_string">"2.2-SNAPSHOT"</span>);
+<a class="jxr_linenumber" name="L304" href="#L304">304</a>         deletedVersions.add(<span class="jxr_string">"2.2-20061118.060401-2"</span>);
+<a class="jxr_linenumber" name="L305" href="#L305">305</a> 
+<a class="jxr_linenumber" name="L306" href="#L306">306</a>         repoPurgeConsumer.processFile( PATH_TO_BY_DAYS_OLD_ARTIFACT );
+<a class="jxr_linenumber" name="L307" href="#L307">307</a> 
+<a class="jxr_linenumber" name="L308" href="#L308">308</a>         <em class="jxr_comment">// Verify the metadataRepository invocations</em>
+<a class="jxr_linenumber" name="L309" href="#L309">309</a>         verify(metadataRepository, never()).removeProjectVersion(eq(TEST_REPO_ID), eq(projectNs), eq(projectName), eq(projectVersion));
+<a class="jxr_linenumber" name="L310" href="#L310">310</a>         ArgumentCaptor&lt;ArtifactMetadata&gt; metadataArg = ArgumentCaptor.forClass(ArtifactMetadata.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="L311" href="#L311">311</a>         verify(metadataRepository, times(2)).removeArtifact(metadataArg.capture(), eq(projectVersion));
+<a class="jxr_linenumber" name="L312" href="#L312">312</a>         List&lt;ArtifactMetadata&gt; metaL = metadataArg.getAllValues();
+<a class="jxr_linenumber" name="L313" href="#L313">313</a>         <strong class="jxr_keyword">for</strong> (ArtifactMetadata meta : metaL) {
+<a class="jxr_linenumber" name="L314" href="#L314">314</a>             assertTrue(meta.getId().startsWith(projectName));
+<a class="jxr_linenumber" name="L315" href="#L315">315</a>             assertTrue(deletedVersions.contains(meta.getVersion()));
+<a class="jxr_linenumber" name="L316" href="#L316">316</a>         }
+<a class="jxr_linenumber" name="L317" href="#L317">317</a> 
+<a class="jxr_linenumber" name="L318" href="#L318">318</a>         assertDeleted( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-SNAPSHOT.jar"</span> );
+<a class="jxr_linenumber" name="L319" href="#L319">319</a>         assertDeleted( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-SNAPSHOT.jar.md5"</span> );
+<a class="jxr_linenumber" name="L320" href="#L320">320</a>         assertDeleted( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-SNAPSHOT.jar.sha1"</span> );
+<a class="jxr_linenumber" name="L321" href="#L321">321</a>         assertDeleted( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-SNAPSHOT.pom"</span> );
+<a class="jxr_linenumber" name="L322" href="#L322">322</a>         assertDeleted( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-SNAPSHOT.pom.md5"</span> );
+<a class="jxr_linenumber" name="L323" href="#L323">323</a>         assertDeleted( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-SNAPSHOT.pom.sha1"</span> );
+<a class="jxr_linenumber" name="L324" href="#L324">324</a> 
+<a class="jxr_linenumber" name="L325" href="#L325">325</a>         <em class="jxr_comment">// shouldn't be deleted because even if older than 30 days (because retention count = 2)</em>
+<a class="jxr_linenumber" name="L326" href="#L326">326</a>         assertExists( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-20070513.034619-5.jar"</span> );
+<a class="jxr_linenumber" name="L327" href="#L327">327</a>         assertExists( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-20070513.034619-5.jar.md5"</span> );
+<a class="jxr_linenumber" name="L328" href="#L328">328</a>         assertExists( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-20070513.034619-5.jar.sha1"</span> );
+<a class="jxr_linenumber" name="L329" href="#L329">329</a>         assertExists( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-20070513.034619-5.pom"</span> );
+<a class="jxr_linenumber" name="L330" href="#L330">330</a>         assertExists( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-20070513.034619-5.pom.md5"</span> );
+<a class="jxr_linenumber" name="L331" href="#L331">331</a>         assertExists( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-20070513.034619-5.pom.sha1"</span> );
+<a class="jxr_linenumber" name="L332" href="#L332">332</a> 
+<a class="jxr_linenumber" name="L333" href="#L333">333</a>         assertExists( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-20070510.010101-4.jar"</span> );
+<a class="jxr_linenumber" name="L334" href="#L334">334</a>         assertExists( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-20070510.010101-4.jar.md5"</span> );
+<a class="jxr_linenumber" name="L335" href="#L335">335</a>         assertExists( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-20070510.010101-4.jar.sha1"</span> );
+<a class="jxr_linenumber" name="L336" href="#L336">336</a>         assertExists( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-20070510.010101-4.pom"</span> );
+<a class="jxr_linenumber" name="L337" href="#L337">337</a>         assertExists( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-20070510.010101-4.pom.md5"</span> );
+<a class="jxr_linenumber" name="L338" href="#L338">338</a>         assertExists( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-20070510.010101-4.pom.sha1"</span> );
+<a class="jxr_linenumber" name="L339" href="#L339">339</a> 
+<a class="jxr_linenumber" name="L340" href="#L340">340</a>         assertDeleted( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-20061118.060401-2.jar"</span> );
+<a class="jxr_linenumber" name="L341" href="#L341">341</a>         assertDeleted( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-20061118.060401-2.jar.md5"</span> );
+<a class="jxr_linenumber" name="L342" href="#L342">342</a>         assertDeleted( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-20061118.060401-2.jar.sha1"</span> );
+<a class="jxr_linenumber" name="L343" href="#L343">343</a>         assertDeleted( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-20061118.060401-2.pom"</span> );
+<a class="jxr_linenumber" name="L344" href="#L344">344</a>         assertDeleted( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-20061118.060401-2.pom.md5"</span> );
+<a class="jxr_linenumber" name="L345" href="#L345">345</a>         assertDeleted( projectRoot + <span class="jxr_string">"/2.2-SNAPSHOT/maven-install-plugin-2.2-20061118.060401-2.pom.sha1"</span> );
+<a class="jxr_linenumber" name="L346" href="#L346">346</a> 
+<a class="jxr_linenumber" name="L347" href="#L347">347</a>         removeRepoFromConfiguration( <span class="jxr_string">"days-old"</span>, repoConfiguration );
+<a class="jxr_linenumber" name="L348" href="#L348">348</a>     }
+<a class="jxr_linenumber" name="L349" href="#L349">349</a> 
+<a class="jxr_linenumber" name="L350" href="#L350">350</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L351" href="#L351">351</a> <em class="jxr_javadoccomment">     * Test the snapshot clean consumer on a repository set to NOT clean/delete snapshots based on released versions.</em>
+<a class="jxr_linenumber" name="L352" href="#L352">352</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L353" href="#L353">353</a> <em class="jxr_javadoccomment">     * @throws Exception</em>
+<a class="jxr_linenumber" name="L354" href="#L354">354</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L355" href="#L355">355</a>     @Test
+<a class="jxr_linenumber" name="L356" href="#L356">356</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testReleasedSnapshotsWereNotCleaned()
+<a class="jxr_linenumber" name="L357" href="#L357">357</a>         <strong class="jxr_keyword">throws</strong> Exception
+<a class="jxr_linenumber" name="L358" href="#L358">358</a>     {
+<a class="jxr_linenumber" name="L359" href="#L359">359</a>         KnownRepositoryContentConsumer repoPurgeConsumer =
+<a class="jxr_linenumber" name="L360" href="#L360">360</a>             applicationContext.getBean( <span class="jxr_string">"knownRepositoryContentConsumer#repo-purge-consumer-by-retention-count"</span>,
+<a class="jxr_linenumber" name="L361" href="#L361">361</a>                                         KnownRepositoryContentConsumer.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L362" href="#L362">362</a> 
+<a class="jxr_linenumber" name="L363" href="#L363">363</a>         ManagedRepository repoConfiguration = getRepoConfiguration( TEST_REPO_ID, TEST_REPO_NAME );
+<a class="jxr_linenumber" name="L364" href="#L364">364</a>         repoConfiguration.setDeleteReleasedSnapshots( false ); <em class="jxr_comment">// Set to NOT delete released snapshots.</em>
+<a class="jxr_linenumber" name="L365" href="#L365">365</a>         addRepoToConfiguration( <span class="jxr_string">"retention-count"</span>, repoConfiguration );
+<a class="jxr_linenumber" name="L366" href="#L366">366</a> 
+<a class="jxr_linenumber" name="L367" href="#L367">367</a>         repoPurgeConsumer.beginScan( repoConfiguration, <strong class="jxr_keyword">null</strong> );
+<a class="jxr_linenumber" name="L368" href="#L368">368</a> 
+<a class="jxr_linenumber" name="L369" href="#L369">369</a>         String repoRoot = prepareTestRepos();
+<a class="jxr_linenumber" name="L370" href="#L370">370</a>         String projectNs = <span class="jxr_string">"org.apache.maven.plugins"</span>;
+<a class="jxr_linenumber" name="L371" href="#L371">371</a>         String projectPath = projectNs.replaceAll(<span class="jxr_string">"&#92;&#92;."</span>,<span class="jxr_string">"/"</span>);
+<a class="jxr_linenumber" name="L372" href="#L372">372</a>         String projectName = <span class="jxr_string">"maven-plugin-plugin"</span>;
+<a class="jxr_linenumber" name="L373" href="#L373">373</a>         String projectVersion = <span class="jxr_string">"2.3-SNAPSHOT"</span>;
+<a class="jxr_linenumber" name="L374" href="#L374">374</a>         String projectRoot = repoRoot + <span class="jxr_string">"/"</span> + projectPath+<span class="jxr_string">"/"</span>+projectName;
+<a class="jxr_linenumber" name="L375" href="#L375">375</a> 
+<a class="jxr_linenumber" name="L376" href="#L376">376</a>         Path repo = getTestRepoRootPath();
+<a class="jxr_linenumber" name="L377" href="#L377">377</a>         Path vDir = repo.resolve(projectPath).resolve(projectName).resolve(projectVersion);
+<a class="jxr_linenumber" name="L378" href="#L378">378</a> 
+<a class="jxr_linenumber" name="L379" href="#L379">379</a>         <em class="jxr_comment">// Provide the metadata list</em>
+<a class="jxr_linenumber" name="L380" href="#L380">380</a>         List&lt;ArtifactMetadata&gt; ml = getArtifactMetadataFromDir( TEST_REPO_ID, projectName, repo, vDir );
+<a class="jxr_linenumber" name="L381" href="#L381">381</a>         when(metadataRepository.getArtifacts(TEST_REPO_ID, projectNs,
+<a class="jxr_linenumber" name="L382" href="#L382">382</a>             projectName, projectVersion)).thenReturn(ml);
+<a class="jxr_linenumber" name="L383" href="#L383">383</a> 
+<a class="jxr_linenumber" name="L384" href="#L384">384</a>         repoPurgeConsumer.processFile(
+<a class="jxr_linenumber" name="L385" href="#L385">385</a>             CleanupReleasedSnapshotsRepositoryPurgeTest.PATH_TO_RELEASED_SNAPSHOT_IN_SAME_REPO );
+<a class="jxr_linenumber" name="L386" href="#L386">386</a> 
+<a class="jxr_linenumber" name="L387" href="#L387">387</a>         verify(metadataRepository, never()).removeProjectVersion(eq(TEST_REPO_ID), eq(projectNs), eq(projectName), eq(projectVersion));
+<a class="jxr_linenumber" name="L388" href="#L388">388</a>         ArgumentCaptor&lt;ArtifactMetadata&gt; metadataArg = ArgumentCaptor.forClass(ArtifactMetadata.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="L389" href="#L389">389</a>         verify(metadataRepository, never()).removeArtifact(any(ArtifactMetadata.<strong class="jxr_keyword">class</strong>), any(String.<strong class="jxr_keyword">class</strong>));
+<a class="jxr_linenumber" name="L390" href="#L390">390</a>         verify(metadataRepository, never()).removeArtifact( any(String.<strong class="jxr_keyword">class</strong>), any(String.<strong class="jxr_keyword">class</strong>), any(String.<strong class="jxr_keyword">class</strong>), any(String.<strong class="jxr_keyword">class</strong>), any(MetadataFacet.<strong class="jxr_keyword">class</strong>) );
+<a class="jxr_linenumber" name="L391" href="#L391">391</a> 
+<a class="jxr_linenumber" name="L392" href="#L392">392</a>         <em class="jxr_comment">// check if the snapshot wasn't removed</em>
+<a class="jxr_linenumber" name="L393" href="#L393">393</a> 
+<a class="jxr_linenumber" name="L394" href="#L394">394</a>         assertExists( projectRoot + <span class="jxr_string">"/2.3-SNAPSHOT"</span> );
+<a class="jxr_linenumber" name="L395" href="#L395">395</a>         assertExists( projectRoot + <span class="jxr_string">"/2.3-SNAPSHOT/maven-plugin-plugin-2.3-SNAPSHOT.jar"</span> );
+<a class="jxr_linenumber" name="L396" href="#L396">396</a>         assertExists( projectRoot + <span class="jxr_string">"/2.3-SNAPSHOT/maven-plugin-plugin-2.3-SNAPSHOT.jar.md5"</span> );
+<a class="jxr_linenumber" name="L397" href="#L397">397</a>         assertExists( projectRoot + <span class="jxr_string">"/2.3-SNAPSHOT/maven-plugin-plugin-2.3-SNAPSHOT.jar.sha1"</span> );
+<a class="jxr_linenumber" name="L398" href="#L398">398</a>         assertExists( projectRoot + <span class="jxr_string">"/2.3-SNAPSHOT/maven-plugin-plugin-2.3-SNAPSHOT.pom"</span> );
+<a class="jxr_linenumber" name="L399" href="#L399">399</a>         assertExists( projectRoot + <span class="jxr_string">"/2.3-SNAPSHOT/maven-plugin-plugin-2.3-SNAPSHOT.pom.md5"</span> );
+<a class="jxr_linenumber" name="L400" href="#L400">400</a>         assertExists( projectRoot + <span class="jxr_string">"/2.3-SNAPSHOT/maven-plugin-plugin-2.3-SNAPSHOT.pom.sha1"</span> );
+<a class="jxr_linenumber" name="L401" href="#L401">401</a> 
+<a class="jxr_linenumber" name="L402" href="#L402">402</a>         <em class="jxr_comment">// check if metadata file wasn't updated</em>
+<a class="jxr_linenumber" name="L403" href="#L403">403</a>         File artifactMetadataFile = <strong class="jxr_keyword">new</strong> File( projectRoot + <span class="jxr_string">"/maven-metadata.xml"</span> );
+<a class="jxr_linenumber" name="L404" href="#L404">404</a> 
+<a class="jxr_linenumber" name="L405" href="#L405">405</a>         String metadataXml = FileUtils.readFileToString( artifactMetadataFile, Charset.defaultCharset() );
+<a class="jxr_linenumber" name="L406" href="#L406">406</a> 
+<a class="jxr_linenumber" name="L407" href="#L407">407</a>         String expectedVersions = <span class="jxr_string">"&lt;expected&gt;&lt;versions&gt;&lt;version&gt;2.3-SNAPSHOT&lt;/version&gt;&lt;/versions&gt;&lt;/expected&gt;"</span>;
+<a class="jxr_linenumber" name="L408" href="#L408">408</a> 
+<a class="jxr_linenumber" name="L409" href="#L409">409</a>         XMLAssert.assertXpathEvaluatesTo( <span class="jxr_string">"2.3-SNAPSHOT"</span>, <span class="jxr_string">"//metadata/versioning/latest"</span>, metadataXml );
+<a class="jxr_linenumber" name="L410" href="#L410">410</a>         XMLAssert.assertXpathsEqual( <span class="jxr_string">"//expected/versions/version"</span>, expectedVersions,
+<a class="jxr_linenumber" name="L411" href="#L411">411</a>                                      <span class="jxr_string">"//metadata/versioning/versions/version"</span>, metadataXml );
+<a class="jxr_linenumber" name="L412" href="#L412">412</a>         XMLAssert.assertXpathEvaluatesTo( <span class="jxr_string">"20070315032817"</span>, <span class="jxr_string">"//metadata/versioning/lastUpdated"</span>, metadataXml );
+<a class="jxr_linenumber" name="L413" href="#L413">413</a> 
+<a class="jxr_linenumber" name="L414" href="#L414">414</a>         removeRepoFromConfiguration( <span class="jxr_string">"retention-count"</span>, repoConfiguration );
+<a class="jxr_linenumber" name="L415" href="#L415">415</a>     }
+<a class="jxr_linenumber" name="L416" href="#L416">416</a> 
+<a class="jxr_linenumber" name="L417" href="#L417">417</a>     @Test
+<a class="jxr_linenumber" name="L418" href="#L418">418</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testReleasedSnapshotsWereCleaned()
+<a class="jxr_linenumber" name="L419" href="#L419">419</a>         <strong class="jxr_keyword">throws</strong> Exception
+<a class="jxr_linenumber" name="L420" href="#L420">420</a>     {
+<a class="jxr_linenumber" name="L421" href="#L421">421</a>         KnownRepositoryContentConsumer repoPurgeConsumer =
+<a class="jxr_linenumber" name="L422" href="#L422">422</a>             applicationContext.getBean( <span class="jxr_string">"knownRepositoryContentConsumer#repo-purge-consumer-by-days-old"</span>,
+<a class="jxr_linenumber" name="L423" href="#L423">423</a>                                         KnownRepositoryContentConsumer.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L424" href="#L424">424</a> 
+<a class="jxr_linenumber" name="L425" href="#L425">425</a>         ManagedRepository repoConfiguration = getRepoConfiguration( TEST_REPO_ID, TEST_REPO_NAME );
+<a class="jxr_linenumber" name="L426" href="#L426">426</a>         repoConfiguration.setDeleteReleasedSnapshots( <strong class="jxr_keyword">true</strong> );
+<a class="jxr_linenumber" name="L427" href="#L427">427</a>         addRepoToConfiguration( <span class="jxr_string">"days-old"</span>, repoConfiguration );
+<a class="jxr_linenumber" name="L428" href="#L428">428</a> 
+<a class="jxr_linenumber" name="L429" href="#L429">429</a>         repoPurgeConsumer.beginScan( repoConfiguration, <strong class="jxr_keyword">null</strong> );
+<a class="jxr_linenumber" name="L430" href="#L430">430</a> 
+<a class="jxr_linenumber" name="L431" href="#L431">431</a>         String repoRoot = prepareTestRepos();
+<a class="jxr_linenumber" name="L432" href="#L432">432</a>         String projectNs = <span class="jxr_string">"org.apache.maven.plugins"</span>;
+<a class="jxr_linenumber" name="L433" href="#L433">433</a>         String projectPath = projectNs.replaceAll(<span class="jxr_string">"&#92;&#92;."</span>,<span class="jxr_string">"/"</span>);
+<a class="jxr_linenumber" name="L434" href="#L434">434</a>         String projectName = <span class="jxr_string">"maven-plugin-plugin"</span>;
+<a class="jxr_linenumber" name="L435" href="#L435">435</a>         String projectVersion = <span class="jxr_string">"2.3-SNAPSHOT"</span>;
+<a class="jxr_linenumber" name="L436" href="#L436">436</a>         String projectRoot = repoRoot + <span class="jxr_string">"/"</span> + projectPath+<span class="jxr_string">"/"</span>+projectName;
+<a class="jxr_linenumber" name="L437" href="#L437">437</a>         Path repo = getTestRepoRootPath();
+<a class="jxr_linenumber" name="L438" href="#L438">438</a>         Path vDir = repo.resolve(projectPath).resolve(projectName).resolve(projectVersion);
+<a class="jxr_linenumber" name="L439" href="#L439">439</a> 
+<a class="jxr_linenumber" name="L440" href="#L440">440</a>         <em class="jxr_comment">// Provide the metadata list</em>
+<a class="jxr_linenumber" name="L441" href="#L441">441</a>         List&lt;ArtifactMetadata&gt; ml = getArtifactMetadataFromDir(TEST_REPO_ID , projectName, repo.getParent(), vDir );
+<a class="jxr_linenumber" name="L442" href="#L442">442</a>         when(metadataRepository.getArtifacts(TEST_REPO_ID, projectNs,
+<a class="jxr_linenumber" name="L443" href="#L443">443</a>             projectName, projectVersion)).thenReturn(ml);
+<a class="jxr_linenumber" name="L444" href="#L444">444</a> 
+<a class="jxr_linenumber" name="L445" href="#L445">445</a>         repoPurgeConsumer.processFile(
+<a class="jxr_linenumber" name="L446" href="#L446">446</a>             CleanupReleasedSnapshotsRepositoryPurgeTest.PATH_TO_RELEASED_SNAPSHOT_IN_SAME_REPO );
+<a class="jxr_linenumber" name="L447" href="#L447">447</a> 
+<a class="jxr_linenumber" name="L448" href="#L448">448</a>         verify(metadataRepository, times(1)).removeProjectVersion(eq(TEST_REPO_ID), eq(projectNs), eq(projectName), eq(projectVersion));
+<a class="jxr_linenumber" name="L449" href="#L449">449</a>         ArgumentCaptor&lt;ArtifactMetadata&gt; metadataArg = ArgumentCaptor.forClass(ArtifactMetadata.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="L450" href="#L450">450</a>         verify(metadataRepository, never()).removeArtifact(any(ArtifactMetadata.<strong class="jxr_keyword">class</strong>), any(String.<strong class="jxr_keyword">class</strong>));
+<a class="jxr_linenumber" name="L451" href="#L451">451</a> 
+<a class="jxr_linenumber" name="L452" href="#L452">452</a>         <em class="jxr_comment">// check if the snapshot was removed</em>
+<a class="jxr_linenumber" name="L453" href="#L453">453</a>         assertDeleted( projectRoot + <span class="jxr_string">"/2.3-SNAPSHOT"</span> );
+<a class="jxr_linenumber" name="L454" href="#L454">454</a>         assertDeleted( projectRoot + <span class="jxr_string">"/2.3-SNAPSHOT/maven-plugin-plugin-2.3-SNAPSHOT.jar"</span> );
+<a class="jxr_linenumber" name="L455" href="#L455">455</a>         assertDeleted( projectRoot + <span class="jxr_string">"/2.3-SNAPSHOT/maven-plugin-plugin-2.3-SNAPSHOT.jar.md5"</span> );
+<a class="jxr_linenumber" name="L456" href="#L456">456</a>         assertDeleted( projectRoot + <span class="jxr_string">"/2.3-SNAPSHOT/maven-plugin-plugin-2.3-SNAPSHOT.jar.sha1"</span> );
+<a class="jxr_linenumber" name="L457" href="#L457">457</a>         assertDeleted( projectRoot + <span class="jxr_string">"/2.3-SNAPSHOT/maven-plugin-plugin-2.3-SNAPSHOT.pom"</span> );
+<a class="jxr_linenumber" name="L458" href="#L458">458</a>         assertDeleted( projectRoot + <span class="jxr_string">"/2.3-SNAPSHOT/maven-plugin-plugin-2.3-SNAPSHOT.pom.md5"</span> );
+<a class="jxr_linenumber" name="L459" href="#L459">459</a>         assertDeleted( projectRoot + <span class="jxr_string">"/2.3-SNAPSHOT/maven-plugin-plugin-2.3-SNAPSHOT.pom.sha1"</span> );
+<a class="jxr_linenumber" name="L460" href="#L460">460</a> 
+<a class="jxr_linenumber" name="L461" href="#L461">461</a>         <em class="jxr_comment">// check if metadata file was updated</em>
+<a class="jxr_linenumber" name="L462" href="#L462">462</a>         File artifactMetadataFile = <strong class="jxr_keyword">new</strong> File( projectRoot + <span class="jxr_string">"/maven-metadata.xml"</span> );
+<a class="jxr_linenumber" name="L463" href="#L463">463</a> 
+<a class="jxr_linenumber" name="L464" href="#L464">464</a>         String metadataXml = FileUtils.readFileToString( artifactMetadataFile, Charset.defaultCharset() );
+<a class="jxr_linenumber" name="L465" href="#L465">465</a> 
+<a class="jxr_linenumber" name="L466" href="#L466">466</a>         String expectedVersions =
+<a class="jxr_linenumber" name="L467" href="#L467">467</a>             <span class="jxr_string">"&lt;expected&gt;&lt;versions&gt;&lt;version&gt;2.2&lt;/version&gt;"</span> + <span class="jxr_string">"&lt;version&gt;2.3&lt;/version&gt;&lt;/versions&gt;&lt;/expected&gt;"</span>;
+<a class="jxr_linenumber" name="L468" href="#L468">468</a> 
+<a class="jxr_linenumber" name="L469" href="#L469">469</a>         XMLAssert.assertXpathEvaluatesTo( <span class="jxr_string">"2.3"</span>, <span class="jxr_string">"//metadata/versioning/latest"</span>, metadataXml );
+<a class="jxr_linenumber" name="L470" href="#L470">470</a>         XMLAssert.assertXpathsEqual( <span class="jxr_string">"//expected/versions/version"</span>, expectedVersions,
+<a class="jxr_linenumber" name="L471" href="#L471">471</a>                                      <span class="jxr_string">"//metadata/versioning/versions/version"</span>, metadataXml );
+<a class="jxr_linenumber" name="L472" href="#L472">472</a>         XMLAssert.assertXpathEvaluatesTo( <span class="jxr_string">"20070315032817"</span>, <span class="jxr_string">"//metadata/versioning/lastUpdated"</span>, metadataXml );
+<a class="jxr_linenumber" name="L473" href="#L473">473</a> 
+<a class="jxr_linenumber" name="L474" href="#L474">474</a>         removeRepoFromConfiguration( <span class="jxr_string">"days-old"</span>, repoConfiguration );
+<a class="jxr_linenumber" name="L475" href="#L475">475</a>     }
+<a class="jxr_linenumber" name="L476" href="#L476">476</a> }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2006&#x2013;2021 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</div>
+</body>
+</html>
