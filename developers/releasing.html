@@ -131,7 +131,7 @@
         <li class=""><a href="https://www.apache.org" class="externalLink" title="Apache">Apache</a><span class="divider">/</span></li>
       <li class=""><a href="../" title="Archiva">Archiva</a><span class="divider">/</span></li>
     <li class="active ">Archiva release process</li>
-        <li id="publishDate" class="pull-right">Last Published: 15 Dec 2021</li>
+        <li id="publishDate" class="pull-right">Last Published: 19 Dec 2021</li>
         </ul>
       </div>
         <div id="bodyColumn" >
@@ -202,7 +202,18 @@ mvn site:site
 mvn site:stage  # Check the content in target/staging
 mkdir &lt;web-content-git&gt;/ref/${ARCHV}
 cp -r target/staging/* &lt;web-content-git&gt;/ref/${ARCHV}/ # Copy to the git web content repository</pre></div>
-<p>If the vote doesn't pass, the documentation will need to be removed from the server for redeployment.</p>
+<p>Archiva site information</p>
+<p>Update the archiva site (<a class="externalLink" href="https://gitbox.apache.org/repos/asf/archiva-site.git">https://gitbox.apache.org/repos/asf/archiva-site.git</a>) for the versions and release notes URL:</p>
+<p>Mostly these properties of the pom.xml should be edited:</p>
+<div class="source"><pre class="prettyprint">  &lt;archivaReleaseVersion&gt;2.2.6&lt;/archivaReleaseVersion&gt;
+  &lt;archivaReleaseDate&gt;16th May 2019&lt;/archivaReleaseDate&gt;
+  &lt;archivaCurrentDevVersion&gt;3.0.0-SNAPSHOT&lt;/archivaCurrentDevVersion&gt;</pre></div>
+<p>Release information may be updated. Update Security information.</p>
+<p>Run <b>deploySite.sh</b>. The script will prepare the site locally and provide information how to check the content before pushing to the remote repository.</p>
+<div class="source"><pre class="prettyprint">cd archiva-site
+./deploySite.sh
+# You can check the files locally, if you press y after the message is presented, it will be pushed to the asf-staging branch</pre></div>
+<p>The site can be checked at: https://archiva.staged.apache.org/ The downloads do not work on the staged site.</p>
 <p>Commit the sources and binaries from <tt>org/apache/archiva/archiva-jetty</tt> and <tt>org/apache/archiva/archiva</tt> to the svn distribution tree. First in dev tree: <tt>https://dist.apache.org/repos/dist/dev/archiva/</tt></p>
 <div class="source"><pre class="prettyprint">svn co https://dist.apache.org/repos/dist/dev/archiva/ archiva-dev-release
 cd archiva-dev-release
@@ -216,23 +227,23 @@ POMV=18  # New Parent POM version
 sh ./release-script-parent-pom.sh $POMV ${RELEASE_URL}/
 REDBV=2.6 # New redback version
 sh ./release-script-redback-svn.sh $REDBV ${RELEASE_URL}/</pre></div>
-<p>If the vote pass they will be copied to release tree: <tt>https://dist.apache.org/repos/dist/release/archiva</tt></p>
+<p>If the vote passes the binaries must be copied to release tree: <tt>https://dist.apache.org/repos/dist/release/archiva</tt></p>
 <p>Call for a vote in the dev list and wait for 72 hrs. for the vote results. 3 binding votes are necessary for the release to be finalized. If the vote fails or needs to be canceled, the version number should not be re-used if the version was made available for public download. After the vote has passed, move the files from dist dev to dist release:</p>
 <div class="source"><pre class="prettyprint">svn mv https://dist.apache.org/repos/dist/dev/archiva/${ARCHV} https://dist.apache.org/repos/dist/release/archiva/
 
 # Move also the POM and Redback and Redback Component releases, if there are new ones.</pre></div>
-<p>Merge the archiva-releases-stage to archiva-releases on archiva-repository.apache.org</p>
+<p>It needs some time until the download packages are available on the CDN.</p>
+<p>Merge the archiva-releases-stage to archiva-releases on archiva-repository.apache.org (Action -&gt; Merge on the stage repository)</p>
 <p>To sync the jars to Maven Central, you need to merge the repository archiva-releases-stage to &quot;Central Rsync Repository&quot;</p>
 <p>Mark the appropriate release version in JIRA as complete.</p>
-<p>Update the archiva site (<a class="externalLink" href="https://gitbox.apache.org/repos/asf/archiva-site.git">https://gitbox.apache.org/repos/asf/archiva-site.git</a>) for the versions and release notes URL:</p>
-<p>Mostly these properties of the pom.xml should be edited:</p>
-<div class="source"><pre class="prettyprint">  &lt;archivaReleaseVersion&gt;2.2.4&lt;/archivaReleaseVersion&gt;
-  &lt;archivaReleaseDate&gt;16th May 2019&lt;/archivaReleaseDate&gt;
-  &lt;archivaCurrentDevVersion&gt;3.0.0-SNAPSHOT&lt;/archivaCurrentDevVersion&gt;</pre></div>
-<p>Run <b>deploySite.sh</b>. The script will prepare the site locally and provide information how to check the content before pushing to the remote repository.</p>
-<p>Once mirroring done (can be 24H): remove previous versions from <a class="externalLink" href="https://dist.apache.org/repos/dist/release/archiva/">https://dist.apache.org/repos/dist/release/archiva/</a></p>
-<p>Publish the reference docs (sh ./deploySite.sh in the archiva-modules directory) from the release tag. You may have to exclude the archiva-webapp module to do this.</p>
-<p>Send out an announcement of the release to:</p>
+<p>When the new download packages are available over the download page you can remove previous versions from <a href="#https:ddist.apache.orgreposdistreleasearchiva">https:d//dist.apache.org/repos/dist/release/archiva/</a></p>
+<p>Publish the docs:</p>
+<div class="source"><pre class="prettyprint">cd archiva-web-content
+git checkout master
+git pull
+git merge asf-staging
+git push</pre></div>
+<p>Send out an announcement (Simple Text Email, no Rich-Text) of the release to:</p>
 <ul>
 <li>users@archiva.apache.org</li>
 <li>users@maven.apache.org</li>
