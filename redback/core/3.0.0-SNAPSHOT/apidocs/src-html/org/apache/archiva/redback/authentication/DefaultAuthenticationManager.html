@@ -1,168 +1,287 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
 <title>Source code</title>
 <link rel="stylesheet" type="text/css" href="../../../../../../stylesheet.css" title="Style">
 </head>
 <body>
+<main role="main">
 <div class="sourceContainer">
-<pre><span class="sourceLineNo">001</span>package org.apache.archiva.redback.authentication;<a name="line.1"></a>
-<span class="sourceLineNo">002</span><a name="line.2"></a>
-<span class="sourceLineNo">003</span>/*<a name="line.3"></a>
-<span class="sourceLineNo">004</span> * Licensed to the Apache Software Foundation (ASF) under one<a name="line.4"></a>
-<span class="sourceLineNo">005</span> * or more contributor license agreements.  See the NOTICE file<a name="line.5"></a>
-<span class="sourceLineNo">006</span> * distributed with this work for additional information<a name="line.6"></a>
-<span class="sourceLineNo">007</span> * regarding copyright ownership.  The ASF licenses this file<a name="line.7"></a>
-<span class="sourceLineNo">008</span> * to you under the Apache License, Version 2.0 (the<a name="line.8"></a>
-<span class="sourceLineNo">009</span> * "License"); you may not use this file except in compliance<a name="line.9"></a>
-<span class="sourceLineNo">010</span> * with the License.  You may obtain a copy of the License at<a name="line.10"></a>
-<span class="sourceLineNo">011</span> *<a name="line.11"></a>
-<span class="sourceLineNo">012</span> * http://www.apache.org/licenses/LICENSE-2.0<a name="line.12"></a>
-<span class="sourceLineNo">013</span> *<a name="line.13"></a>
-<span class="sourceLineNo">014</span> * Unless required by applicable law or agreed to in writing,<a name="line.14"></a>
-<span class="sourceLineNo">015</span> * software distributed under the License is distributed on an<a name="line.15"></a>
-<span class="sourceLineNo">016</span> * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY<a name="line.16"></a>
-<span class="sourceLineNo">017</span> * KIND, either express or implied.  See the License for the<a name="line.17"></a>
-<span class="sourceLineNo">018</span> * specific language governing permissions and limitations<a name="line.18"></a>
-<span class="sourceLineNo">019</span> * under the License.<a name="line.19"></a>
-<span class="sourceLineNo">020</span> */<a name="line.20"></a>
-<span class="sourceLineNo">021</span><a name="line.21"></a>
-<span class="sourceLineNo">022</span>import org.apache.archiva.redback.policy.AccountLockedException;<a name="line.22"></a>
-<span class="sourceLineNo">023</span>import org.apache.archiva.redback.policy.MustChangePasswordException;<a name="line.23"></a>
-<span class="sourceLineNo">024</span>import org.apache.archiva.redback.users.User;<a name="line.24"></a>
-<span class="sourceLineNo">025</span>import org.apache.archiva.redback.users.UserManager;<a name="line.25"></a>
-<span class="sourceLineNo">026</span>import org.apache.archiva.redback.users.UserManagerException;<a name="line.26"></a>
-<span class="sourceLineNo">027</span>import org.slf4j.Logger;<a name="line.27"></a>
-<span class="sourceLineNo">028</span>import org.slf4j.LoggerFactory;<a name="line.28"></a>
-<span class="sourceLineNo">029</span>import org.springframework.context.ApplicationContext;<a name="line.29"></a>
-<span class="sourceLineNo">030</span>import org.springframework.stereotype.Service;<a name="line.30"></a>
-<span class="sourceLineNo">031</span><a name="line.31"></a>
-<span class="sourceLineNo">032</span>import javax.annotation.PostConstruct;<a name="line.32"></a>
-<span class="sourceLineNo">033</span>import javax.inject.Inject;<a name="line.33"></a>
-<span class="sourceLineNo">034</span>import javax.inject.Named;<a name="line.34"></a>
-<span class="sourceLineNo">035</span>import java.util.ArrayList;<a name="line.35"></a>
-<span class="sourceLineNo">036</span>import java.util.HashMap;<a name="line.36"></a>
-<span class="sourceLineNo">037</span>import java.util.List;<a name="line.37"></a>
-<span class="sourceLineNo">038</span>import java.util.Map;<a name="line.38"></a>
-<span class="sourceLineNo">039</span><a name="line.39"></a>
-<span class="sourceLineNo">040</span><a name="line.40"></a>
-<span class="sourceLineNo">041</span>/**<a name="line.41"></a>
-<span class="sourceLineNo">042</span> * DefaultAuthenticationManager: the goal of the authentication manager is to act as a conduit for<a name="line.42"></a>
-<span class="sourceLineNo">043</span> * authentication requests into different authentication schemes<a name="line.43"></a>
-<span class="sourceLineNo">044</span> * &lt;p&gt;<a name="line.44"></a>
-<span class="sourceLineNo">045</span> * For example, the default implementation can be configured with any number of authenticators and will<a name="line.45"></a>
-<span class="sourceLineNo">046</span> * sequentially try them for an authenticated result.  This allows you to have the standard user/pass<a name="line.46"></a>
-<span class="sourceLineNo">047</span> * auth procedure followed by authentication based on a known key for 'remember me' type functionality.<a name="line.47"></a>
-<span class="sourceLineNo">048</span> *<a name="line.48"></a>
-<span class="sourceLineNo">049</span> * @author: Jesse McConnell<a name="line.49"></a>
-<span class="sourceLineNo">050</span> */<a name="line.50"></a>
-<span class="sourceLineNo">051</span>@Service("authenticationManager")<a name="line.51"></a>
-<span class="sourceLineNo">052</span>public class DefaultAuthenticationManager<a name="line.52"></a>
-<span class="sourceLineNo">053</span>        implements AuthenticationManager {<a name="line.53"></a>
-<span class="sourceLineNo">054</span><a name="line.54"></a>
-<span class="sourceLineNo">055</span>    private Logger log = LoggerFactory.getLogger(getClass());<a name="line.55"></a>
-<span class="sourceLineNo">056</span><a name="line.56"></a>
-<span class="sourceLineNo">057</span>    private List&lt;Authenticator&gt; authenticators;<a name="line.57"></a>
-<span class="sourceLineNo">058</span><a name="line.58"></a>
-<span class="sourceLineNo">059</span>    @Inject<a name="line.59"></a>
-<span class="sourceLineNo">060</span>    private ApplicationContext applicationContext;<a name="line.60"></a>
-<span class="sourceLineNo">061</span><a name="line.61"></a>
-<span class="sourceLineNo">062</span>    @Inject<a name="line.62"></a>
-<span class="sourceLineNo">063</span>    @Named(value = "userManager#default")<a name="line.63"></a>
-<span class="sourceLineNo">064</span>    private UserManager userManager;<a name="line.64"></a>
-<span class="sourceLineNo">065</span><a name="line.65"></a>
-<span class="sourceLineNo">066</span>    @SuppressWarnings("unchecked")<a name="line.66"></a>
-<span class="sourceLineNo">067</span>    @PostConstruct<a name="line.67"></a>
-<span class="sourceLineNo">068</span>    public void initialize() {<a name="line.68"></a>
-<span class="sourceLineNo">069</span>        this.authenticators =<a name="line.69"></a>
-<span class="sourceLineNo">070</span>                new ArrayList&lt;Authenticator&gt;(applicationContext.getBeansOfType(Authenticator.class).values());<a name="line.70"></a>
-<span class="sourceLineNo">071</span>    }<a name="line.71"></a>
-<span class="sourceLineNo">072</span><a name="line.72"></a>
-<span class="sourceLineNo">073</span><a name="line.73"></a>
-<span class="sourceLineNo">074</span>    public String getId() {<a name="line.74"></a>
-<span class="sourceLineNo">075</span>        return "Default Authentication Manager - " + this.getClass().getName() + " : managed authenticators - " +<a name="line.75"></a>
-<span class="sourceLineNo">076</span>                knownAuthenticators();<a name="line.76"></a>
-<span class="sourceLineNo">077</span>    }<a name="line.77"></a>
-<span class="sourceLineNo">078</span><a name="line.78"></a>
-<span class="sourceLineNo">079</span>    public AuthenticationResult authenticate(AuthenticationDataSource source)<a name="line.79"></a>
-<span class="sourceLineNo">080</span>            throws AccountLockedException, AuthenticationException, MustChangePasswordException {<a name="line.80"></a>
-<span class="sourceLineNo">081</span>        if (authenticators == null || authenticators.size() == 0) {<a name="line.81"></a>
-<span class="sourceLineNo">082</span>            return (new AuthenticationResult(false, null, new AuthenticationException(<a name="line.82"></a>
-<span class="sourceLineNo">083</span>                    "no valid authenticators, can't authenticate")));<a name="line.83"></a>
-<span class="sourceLineNo">084</span>        }<a name="line.84"></a>
-<span class="sourceLineNo">085</span><a name="line.85"></a>
-<span class="sourceLineNo">086</span>        // put AuthenticationResult exceptions in a map<a name="line.86"></a>
-<span class="sourceLineNo">087</span>        List&lt;AuthenticationFailureCause&gt; authnResultErrors = new ArrayList&lt;AuthenticationFailureCause&gt;();<a name="line.87"></a>
-<span class="sourceLineNo">088</span>        for (Authenticator authenticator : authenticators) {<a name="line.88"></a>
-<span class="sourceLineNo">089</span>            if (authenticator.isValid()) {<a name="line.89"></a>
-<span class="sourceLineNo">090</span>                if (authenticator.supportsDataSource(source)) {<a name="line.90"></a>
-<span class="sourceLineNo">091</span>                    AuthenticationResult authResult = authenticator.authenticate(source);<a name="line.91"></a>
-<span class="sourceLineNo">092</span>                    List&lt;AuthenticationFailureCause&gt; authenticationFailureCauses =<a name="line.92"></a>
-<span class="sourceLineNo">093</span>                            authResult.getAuthenticationFailureCauses();<a name="line.93"></a>
-<span class="sourceLineNo">094</span><a name="line.94"></a>
-<span class="sourceLineNo">095</span>                    if (authResult.isAuthenticated()) {<a name="line.95"></a>
-<span class="sourceLineNo">096</span>                        //olamy: as we can chain various user managers with Archiva<a name="line.96"></a>
-<span class="sourceLineNo">097</span>                        // user manager authenticator can lock accounts in the following case :<a name="line.97"></a>
-<span class="sourceLineNo">098</span>                        // 2 user managers: ldap and jdo.<a name="line.98"></a>
-<span class="sourceLineNo">099</span>                        // ldap correctly find the user but cannot compare hashed password<a name="line.99"></a>
-<span class="sourceLineNo">100</span>                        // jdo reject password so increase loginAttemptCount<a name="line.100"></a>
-<span class="sourceLineNo">101</span>                        // now ldap bind authenticator work but loginAttemptCount has been increased.<a name="line.101"></a>
-<span class="sourceLineNo">102</span>                        // so we restore here loginAttemptCount to 0 if in authenticationFailureCauses<a name="line.102"></a>
-<span class="sourceLineNo">103</span><a name="line.103"></a>
-<span class="sourceLineNo">104</span>                        for (AuthenticationFailureCause authenticationFailureCause : authenticationFailureCauses) {<a name="line.104"></a>
-<span class="sourceLineNo">105</span>                            User user = authenticationFailureCause.getUser();<a name="line.105"></a>
-<span class="sourceLineNo">106</span>                            if (user != null) {<a name="line.106"></a>
-<span class="sourceLineNo">107</span>                                if (user.getCountFailedLoginAttempts() &gt; 0) {<a name="line.107"></a>
-<span class="sourceLineNo">108</span>                                    user.setCountFailedLoginAttempts(0);<a name="line.108"></a>
-<span class="sourceLineNo">109</span>                                    if (!userManager.isReadOnly()) {<a name="line.109"></a>
-<span class="sourceLineNo">110</span>                                        try {<a name="line.110"></a>
-<span class="sourceLineNo">111</span>                                            userManager.updateUser(user);<a name="line.111"></a>
-<span class="sourceLineNo">112</span>                                        } catch (UserManagerException e) {<a name="line.112"></a>
-<span class="sourceLineNo">113</span>                                            log.debug(e.getMessage(), e);<a name="line.113"></a>
-<span class="sourceLineNo">114</span>                                            log.warn("skip error updating user: {}", e.getMessage());<a name="line.114"></a>
-<span class="sourceLineNo">115</span>                                        }<a name="line.115"></a>
-<span class="sourceLineNo">116</span>                                    }<a name="line.116"></a>
-<span class="sourceLineNo">117</span>                                }<a name="line.117"></a>
-<span class="sourceLineNo">118</span>                            }<a name="line.118"></a>
-<span class="sourceLineNo">119</span>                        }<a name="line.119"></a>
-<span class="sourceLineNo">120</span>                        return authResult;<a name="line.120"></a>
-<span class="sourceLineNo">121</span>                    }<a name="line.121"></a>
-<span class="sourceLineNo">122</span><a name="line.122"></a>
-<span class="sourceLineNo">123</span>                    if (authenticationFailureCauses != null) {<a name="line.123"></a>
-<span class="sourceLineNo">124</span>                        authnResultErrors.addAll(authenticationFailureCauses);<a name="line.124"></a>
-<span class="sourceLineNo">125</span>                    } else {<a name="line.125"></a>
-<span class="sourceLineNo">126</span>                        if (authResult.getException() != null) {<a name="line.126"></a>
-<span class="sourceLineNo">127</span>                            authnResultErrors.add(<a name="line.127"></a>
-<span class="sourceLineNo">128</span>                                    new AuthenticationFailureCause(AuthenticationConstants.AUTHN_RUNTIME_EXCEPTION,<a name="line.128"></a>
-<span class="sourceLineNo">129</span>                                            authResult.getException().getMessage()));<a name="line.129"></a>
-<span class="sourceLineNo">130</span>                        }<a name="line.130"></a>
-<span class="sourceLineNo">131</span>                    }<a name="line.131"></a>
-<span class="sourceLineNo">132</span><a name="line.132"></a>
-<span class="sourceLineNo">133</span><a name="line.133"></a>
-<span class="sourceLineNo">134</span>                }<a name="line.134"></a>
-<span class="sourceLineNo">135</span>            } else {<a name="line.135"></a>
-<span class="sourceLineNo">136</span>                log.warn("Invalid authenticator found: " + authenticator.getId());<a name="line.136"></a>
-<span class="sourceLineNo">137</span>            }<a name="line.137"></a>
-<span class="sourceLineNo">138</span>        }<a name="line.138"></a>
-<span class="sourceLineNo">139</span><a name="line.139"></a>
-<span class="sourceLineNo">140</span>        return (new AuthenticationResult(false, null, new AuthenticationException(<a name="line.140"></a>
-<span class="sourceLineNo">141</span>                "authentication failed on authenticators: " + knownAuthenticators()), authnResultErrors));<a name="line.141"></a>
-<span class="sourceLineNo">142</span>    }<a name="line.142"></a>
-<span class="sourceLineNo">143</span><a name="line.143"></a>
-<span class="sourceLineNo">144</span>    public List&lt;Authenticator&gt; getAuthenticators() {<a name="line.144"></a>
-<span class="sourceLineNo">145</span>        return authenticators;<a name="line.145"></a>
-<span class="sourceLineNo">146</span>    }<a name="line.146"></a>
-<span class="sourceLineNo">147</span><a name="line.147"></a>
-<span class="sourceLineNo">148</span>    private String knownAuthenticators() {<a name="line.148"></a>
-<span class="sourceLineNo">149</span>        StringBuilder strbuf = new StringBuilder();<a name="line.149"></a>
-<span class="sourceLineNo">150</span><a name="line.150"></a>
-<span class="sourceLineNo">151</span>        for (Authenticator authenticator : authenticators) {<a name="line.151"></a>
-<span class="sourceLineNo">152</span>            strbuf.append('(').append(authenticator.getId()).append(") ");<a name="line.152"></a>
-<span class="sourceLineNo">153</span>        }<a name="line.153"></a>
-<span class="sourceLineNo">154</span><a name="line.154"></a>
-<span class="sourceLineNo">155</span>        return strbuf.toString();<a name="line.155"></a>
-<span class="sourceLineNo">156</span>    }<a name="line.156"></a>
-<span class="sourceLineNo">157</span>}<a name="line.157"></a>
+<pre><span class="sourceLineNo">001</span><a id="line.1">package org.apache.archiva.redback.authentication;</a>
+<span class="sourceLineNo">002</span><a id="line.2"></a>
+<span class="sourceLineNo">003</span><a id="line.3">/*</a>
+<span class="sourceLineNo">004</span><a id="line.4"> * Licensed to the Apache Software Foundation (ASF) under one</a>
+<span class="sourceLineNo">005</span><a id="line.5"> * or more contributor license agreements.  See the NOTICE file</a>
+<span class="sourceLineNo">006</span><a id="line.6"> * distributed with this work for additional information</a>
+<span class="sourceLineNo">007</span><a id="line.7"> * regarding copyright ownership.  The ASF licenses this file</a>
+<span class="sourceLineNo">008</span><a id="line.8"> * to you under the Apache License, Version 2.0 (the</a>
+<span class="sourceLineNo">009</span><a id="line.9"> * "License"); you may not use this file except in compliance</a>
+<span class="sourceLineNo">010</span><a id="line.10"> * with the License.  You may obtain a copy of the License at</a>
+<span class="sourceLineNo">011</span><a id="line.11"> *</a>
+<span class="sourceLineNo">012</span><a id="line.12"> * http://www.apache.org/licenses/LICENSE-2.0</a>
+<span class="sourceLineNo">013</span><a id="line.13"> *</a>
+<span class="sourceLineNo">014</span><a id="line.14"> * Unless required by applicable law or agreed to in writing,</a>
+<span class="sourceLineNo">015</span><a id="line.15"> * software distributed under the License is distributed on an</a>
+<span class="sourceLineNo">016</span><a id="line.16"> * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</a>
+<span class="sourceLineNo">017</span><a id="line.17"> * KIND, either express or implied.  See the License for the</a>
+<span class="sourceLineNo">018</span><a id="line.18"> * specific language governing permissions and limitations</a>
+<span class="sourceLineNo">019</span><a id="line.19"> * under the License.</a>
+<span class="sourceLineNo">020</span><a id="line.20"> */</a>
+<span class="sourceLineNo">021</span><a id="line.21"></a>
+<span class="sourceLineNo">022</span><a id="line.22">import org.apache.archiva.redback.configuration.UserConfiguration;</a>
+<span class="sourceLineNo">023</span><a id="line.23">import org.apache.archiva.redback.policy.AccountLockedException;</a>
+<span class="sourceLineNo">024</span><a id="line.24">import org.apache.archiva.redback.policy.MustChangePasswordException;</a>
+<span class="sourceLineNo">025</span><a id="line.25">import org.apache.archiva.redback.users.User;</a>
+<span class="sourceLineNo">026</span><a id="line.26">import org.apache.archiva.redback.users.UserManager;</a>
+<span class="sourceLineNo">027</span><a id="line.27">import org.apache.archiva.redback.users.UserManagerException;</a>
+<span class="sourceLineNo">028</span><a id="line.28">import org.slf4j.Logger;</a>
+<span class="sourceLineNo">029</span><a id="line.29">import org.slf4j.LoggerFactory;</a>
+<span class="sourceLineNo">030</span><a id="line.30">import org.springframework.context.ApplicationContext;</a>
+<span class="sourceLineNo">031</span><a id="line.31">import org.springframework.stereotype.Service;</a>
+<span class="sourceLineNo">032</span><a id="line.32"></a>
+<span class="sourceLineNo">033</span><a id="line.33">import javax.annotation.PostConstruct;</a>
+<span class="sourceLineNo">034</span><a id="line.34">import javax.inject.Inject;</a>
+<span class="sourceLineNo">035</span><a id="line.35">import javax.inject.Named;</a>
+<span class="sourceLineNo">036</span><a id="line.36">import java.util.ArrayList;</a>
+<span class="sourceLineNo">037</span><a id="line.37">import java.util.Collection;</a>
+<span class="sourceLineNo">038</span><a id="line.38">import java.util.Collections;</a>
+<span class="sourceLineNo">039</span><a id="line.39">import java.util.HashMap;</a>
+<span class="sourceLineNo">040</span><a id="line.40">import java.util.LinkedHashMap;</a>
+<span class="sourceLineNo">041</span><a id="line.41">import java.util.List;</a>
+<span class="sourceLineNo">042</span><a id="line.42">import java.util.Map;</a>
+<span class="sourceLineNo">043</span><a id="line.43">import java.util.Spliterator;</a>
+<span class="sourceLineNo">044</span><a id="line.44">import java.util.Spliterators;</a>
+<span class="sourceLineNo">045</span><a id="line.45">import java.util.concurrent.atomic.AtomicReference;</a>
+<span class="sourceLineNo">046</span><a id="line.46">import java.util.stream.Collectors;</a>
+<span class="sourceLineNo">047</span><a id="line.47">import java.util.stream.Stream;</a>
+<span class="sourceLineNo">048</span><a id="line.48">import java.util.stream.StreamSupport;</a>
+<span class="sourceLineNo">049</span><a id="line.49"></a>
+<span class="sourceLineNo">050</span><a id="line.50"></a>
+<span class="sourceLineNo">051</span><a id="line.51">/**</a>
+<span class="sourceLineNo">052</span><a id="line.52"> * DefaultAuthenticationManager: the goal of the authentication manager is to act as a conduit for</a>
+<span class="sourceLineNo">053</span><a id="line.53"> * authentication requests into different authentication schemes</a>
+<span class="sourceLineNo">054</span><a id="line.54"> * &lt;p&gt;</a>
+<span class="sourceLineNo">055</span><a id="line.55"> * For example, the default implementation can be configured with any number of authenticators and will</a>
+<span class="sourceLineNo">056</span><a id="line.56"> * sequentially try them for an authenticated result.  This allows you to have the standard user/pass</a>
+<span class="sourceLineNo">057</span><a id="line.57"> * auth procedure followed by authentication based on a known key for 'remember me' type functionality.</a>
+<span class="sourceLineNo">058</span><a id="line.58"> *</a>
+<span class="sourceLineNo">059</span><a id="line.59"> * @author: Jesse McConnell</a>
+<span class="sourceLineNo">060</span><a id="line.60"> */</a>
+<span class="sourceLineNo">061</span><a id="line.61">@Service( "authenticationManager" )</a>
+<span class="sourceLineNo">062</span><a id="line.62">public class DefaultAuthenticationManager</a>
+<span class="sourceLineNo">063</span><a id="line.63">    implements AuthenticationManager</a>
+<span class="sourceLineNo">064</span><a id="line.64">{</a>
+<span class="sourceLineNo">065</span><a id="line.65"></a>
+<span class="sourceLineNo">066</span><a id="line.66">    private static final Logger log = LoggerFactory.getLogger( DefaultAuthenticationManager.class );</a>
+<span class="sourceLineNo">067</span><a id="line.67"></a>
+<span class="sourceLineNo">068</span><a id="line.68">    final private AtomicReference&lt;List&lt;Authenticator&gt;&gt; authenticators = new AtomicReference&lt;&gt;( );</a>
+<span class="sourceLineNo">069</span><a id="line.69">    final private AtomicReference&lt;Map&lt;String, AuthenticatorControl&gt;&gt; controls = new AtomicReference&lt;&gt;( );</a>
+<span class="sourceLineNo">070</span><a id="line.70">    final private AtomicReference&lt;Map&lt;String, AuthenticatorControl&gt;&gt; modfiedControls = new AtomicReference&lt;&gt;( );</a>
+<span class="sourceLineNo">071</span><a id="line.71">    private Map&lt;String, Authenticator&gt; availableAuthenticators;</a>
+<span class="sourceLineNo">072</span><a id="line.72"></a>
+<span class="sourceLineNo">073</span><a id="line.73">    @Inject</a>
+<span class="sourceLineNo">074</span><a id="line.74">    private ApplicationContext applicationContext;</a>
+<span class="sourceLineNo">075</span><a id="line.75"></a>
+<span class="sourceLineNo">076</span><a id="line.76">    @Inject</a>
+<span class="sourceLineNo">077</span><a id="line.77">    @Named("userConfiguration#default")</a>
+<span class="sourceLineNo">078</span><a id="line.78">    private UserConfiguration userConfiguration;</a>
+<span class="sourceLineNo">079</span><a id="line.79"></a>
+<span class="sourceLineNo">080</span><a id="line.80">    @Inject</a>
+<span class="sourceLineNo">081</span><a id="line.81">    @Named( "userManager#default" )</a>
+<span class="sourceLineNo">082</span><a id="line.82">    private UserManager userManager;</a>
+<span class="sourceLineNo">083</span><a id="line.83"></a>
+<span class="sourceLineNo">084</span><a id="line.84">    @SuppressWarnings( "unchecked" )</a>
+<span class="sourceLineNo">085</span><a id="line.85">    @PostConstruct</a>
+<span class="sourceLineNo">086</span><a id="line.86">    public void initialize( )</a>
+<span class="sourceLineNo">087</span><a id="line.87">    {</a>
+<span class="sourceLineNo">088</span><a id="line.88">        this.availableAuthenticators =</a>
+<span class="sourceLineNo">089</span><a id="line.89">            applicationContext.getBeansOfType( Authenticator.class ).values( ).stream( ).collect( Collectors.toMap( a -&gt; a.getId( ), authenticator -&gt; authenticator ) );</a>
+<span class="sourceLineNo">090</span><a id="line.90">        this.modfiedControls.set( new HashMap&lt;&gt;( ) );</a>
+<span class="sourceLineNo">091</span><a id="line.91">        initializeOrder(  );</a>
+<span class="sourceLineNo">092</span><a id="line.92">    }</a>
+<span class="sourceLineNo">093</span><a id="line.93"></a>
+<span class="sourceLineNo">094</span><a id="line.94">    private void initializeOrder() {</a>
+<span class="sourceLineNo">095</span><a id="line.95">        Stream&lt;AuthenticatorControl&gt; controlStream = initControls( );</a>
+<span class="sourceLineNo">096</span><a id="line.96">        final List&lt;Authenticator&gt; authenticators = new ArrayList&lt;&gt;( );</a>
+<span class="sourceLineNo">097</span><a id="line.97">        final Map&lt;String, AuthenticatorControl&gt; controls = new LinkedHashMap&lt;&gt;( );</a>
+<span class="sourceLineNo">098</span><a id="line.98">        controlStream.forEachOrdered( control -&gt; {</a>
+<span class="sourceLineNo">099</span><a id="line.99">            authenticators.add( this.availableAuthenticators.get( control.getName( ) ) );</a>
+<span class="sourceLineNo">100</span><a id="line.100">            controls.put( control.getName( ), control );</a>
+<span class="sourceLineNo">101</span><a id="line.101">        } );</a>
+<span class="sourceLineNo">102</span><a id="line.102">        this.authenticators.set( authenticators );</a>
+<span class="sourceLineNo">103</span><a id="line.103">        this.controls.set( controls );</a>
+<span class="sourceLineNo">104</span><a id="line.104">    }</a>
+<span class="sourceLineNo">105</span><a id="line.105"></a>
+<span class="sourceLineNo">106</span><a id="line.106">    Map&lt;String, AuthenticatorControl&gt; getConfigControls( )</a>
+<span class="sourceLineNo">107</span><a id="line.107">    {</a>
+<span class="sourceLineNo">108</span><a id="line.108">        return new HashMap&lt;&gt;( );</a>
+<span class="sourceLineNo">109</span><a id="line.109">    }</a>
+<span class="sourceLineNo">110</span><a id="line.110"></a>
+<span class="sourceLineNo">111</span><a id="line.111">    Map&lt;String, Authenticator&gt; getAvailableAuthenticators() {</a>
+<span class="sourceLineNo">112</span><a id="line.112">        return this.availableAuthenticators;</a>
+<span class="sourceLineNo">113</span><a id="line.113">    }</a>
+<span class="sourceLineNo">114</span><a id="line.114"></a>
+<span class="sourceLineNo">115</span><a id="line.115">    Map&lt;String, AuthenticatorControl&gt; getModifiedControls() {</a>
+<span class="sourceLineNo">116</span><a id="line.116">        return this.modfiedControls.get();</a>
+<span class="sourceLineNo">117</span><a id="line.117">    }</a>
+<span class="sourceLineNo">118</span><a id="line.118"></a>
+<span class="sourceLineNo">119</span><a id="line.119">    void setModfiedControls(Map&lt;String, AuthenticatorControl&gt; newControls) {</a>
+<span class="sourceLineNo">120</span><a id="line.120">        this.modfiedControls.set( newControls );</a>
+<span class="sourceLineNo">121</span><a id="line.121">    }</a>
+<span class="sourceLineNo">122</span><a id="line.122"></a>
+<span class="sourceLineNo">123</span><a id="line.123">    Map&lt;String, AuthenticatorControl&gt; getControlMap() {</a>
+<span class="sourceLineNo">124</span><a id="line.124">        return controls.get();</a>
+<span class="sourceLineNo">125</span><a id="line.125">    }</a>
+<span class="sourceLineNo">126</span><a id="line.126"></a>
+<span class="sourceLineNo">127</span><a id="line.127"></a>
+<span class="sourceLineNo">128</span><a id="line.128">    private Stream&lt;AuthenticatorControl&gt; initControls( )</a>
+<span class="sourceLineNo">129</span><a id="line.129">    {</a>
+<span class="sourceLineNo">130</span><a id="line.130">        Collection&lt;Authenticator&gt; authenticators = getAvailableAuthenticators().values();</a>
+<span class="sourceLineNo">131</span><a id="line.131">        Map&lt;String, AuthenticatorControl&gt; nondefault = getModifiedControls( );</a>
+<span class="sourceLineNo">132</span><a id="line.132">        Map&lt;String, AuthenticatorControl&gt; configControlMap = getConfigControls( );</a>
+<span class="sourceLineNo">133</span><a id="line.133">        Spliterator&lt;Authenticator&gt; spliterator = Spliterators.spliterator( authenticators, Spliterator.NONNULL );</a>
+<span class="sourceLineNo">134</span><a id="line.134">        return StreamSupport.stream( spliterator, false ).map( authenticator -&gt; {</a>
+<span class="sourceLineNo">135</span><a id="line.135">            final String id = authenticator.getId( );</a>
+<span class="sourceLineNo">136</span><a id="line.136">            return nondefault.containsKey( id ) ? nondefault.get(id) : (configControlMap.containsKey( id ) ? configControlMap.get( id ) : new AuthenticatorControl( id, 100, AuthenticationControl.SUFFICIENT, true ));</a>
+<span class="sourceLineNo">137</span><a id="line.137">        } ).sorted( Collections.reverseOrder( ) );</a>
+<span class="sourceLineNo">138</span><a id="line.138">    }</a>
+<span class="sourceLineNo">139</span><a id="line.139"></a>
+<span class="sourceLineNo">140</span><a id="line.140"></a>
+<span class="sourceLineNo">141</span><a id="line.141">    public String getId( )</a>
+<span class="sourceLineNo">142</span><a id="line.142">    {</a>
+<span class="sourceLineNo">143</span><a id="line.143">        return "Default Authentication Manager - " + this.getClass( ).getName( ) + " : managed authenticators - " +</a>
+<span class="sourceLineNo">144</span><a id="line.144">            knownAuthenticators( );</a>
+<span class="sourceLineNo">145</span><a id="line.145">    }</a>
+<span class="sourceLineNo">146</span><a id="line.146"></a>
+<span class="sourceLineNo">147</span><a id="line.147">    public AuthenticationResult authenticate( AuthenticationDataSource source )</a>
+<span class="sourceLineNo">148</span><a id="line.148">        throws AccountLockedException, AuthenticationException, MustChangePasswordException</a>
+<span class="sourceLineNo">149</span><a id="line.149">    {</a>
+<span class="sourceLineNo">150</span><a id="line.150">        List&lt;Authenticator&gt; authenticators = this.authenticators.get( );</a>
+<span class="sourceLineNo">151</span><a id="line.151">        if ( authenticators == null || authenticators.size( ) == 0 )</a>
+<span class="sourceLineNo">152</span><a id="line.152">        {</a>
+<span class="sourceLineNo">153</span><a id="line.153">            return ( new AuthenticationResult( false, null, new AuthenticationException(</a>
+<span class="sourceLineNo">154</span><a id="line.154">                "no valid authenticators, can't authenticate" ) ) );</a>
+<span class="sourceLineNo">155</span><a id="line.155">        }</a>
+<span class="sourceLineNo">156</span><a id="line.156"></a>
+<span class="sourceLineNo">157</span><a id="line.157">        // put AuthenticationResult exceptions in a map</a>
+<span class="sourceLineNo">158</span><a id="line.158">        List&lt;AuthenticationFailureCause&gt; authnResultErrors = new ArrayList&lt;AuthenticationFailureCause&gt;( );</a>
+<span class="sourceLineNo">159</span><a id="line.159">        for ( Authenticator authenticator : authenticators )</a>
+<span class="sourceLineNo">160</span><a id="line.160">        {</a>
+<span class="sourceLineNo">161</span><a id="line.161">            final AuthenticatorControl control = getControlMap( ).get( authenticator.getId( ) );</a>
+<span class="sourceLineNo">162</span><a id="line.162">            assert control != null;</a>
+<span class="sourceLineNo">163</span><a id="line.163">            if ( authenticator.isValid( ) &amp;&amp; control.isActive())</a>
+<span class="sourceLineNo">164</span><a id="line.164">            {</a>
+<span class="sourceLineNo">165</span><a id="line.165">                if ( authenticator.supportsDataSource( source ) )</a>
+<span class="sourceLineNo">166</span><a id="line.166">                {</a>
+<span class="sourceLineNo">167</span><a id="line.167">                    AuthenticationResult authResult = authenticator.authenticate( source );</a>
+<span class="sourceLineNo">168</span><a id="line.168">                    List&lt;AuthenticationFailureCause&gt; authenticationFailureCauses =</a>
+<span class="sourceLineNo">169</span><a id="line.169">                        authResult.getAuthenticationFailureCauses( );</a>
+<span class="sourceLineNo">170</span><a id="line.170"></a>
+<span class="sourceLineNo">171</span><a id="line.171">                    if ( authResult.isAuthenticated( ) )</a>
+<span class="sourceLineNo">172</span><a id="line.172">                    {</a>
+<span class="sourceLineNo">173</span><a id="line.173">                        //olamy: as we can chain various user managers with Archiva</a>
+<span class="sourceLineNo">174</span><a id="line.174">                        // user manager authenticator can lock accounts in the following case :</a>
+<span class="sourceLineNo">175</span><a id="line.175">                        // 2 user managers: ldap and jdo.</a>
+<span class="sourceLineNo">176</span><a id="line.176">                        // ldap correctly find the user but cannot compare hashed password</a>
+<span class="sourceLineNo">177</span><a id="line.177">                        // jdo reject password so increase loginAttemptCount</a>
+<span class="sourceLineNo">178</span><a id="line.178">                        // now ldap bind authenticator work but loginAttemptCount has been increased.</a>
+<span class="sourceLineNo">179</span><a id="line.179">                        // so we restore here loginAttemptCount to 0 if in authenticationFailureCauses</a>
+<span class="sourceLineNo">180</span><a id="line.180"></a>
+<span class="sourceLineNo">181</span><a id="line.181">                        for ( AuthenticationFailureCause authenticationFailureCause : authenticationFailureCauses )</a>
+<span class="sourceLineNo">182</span><a id="line.182">                        {</a>
+<span class="sourceLineNo">183</span><a id="line.183">                            User user = authenticationFailureCause.getUser( );</a>
+<span class="sourceLineNo">184</span><a id="line.184">                            if ( user != null )</a>
+<span class="sourceLineNo">185</span><a id="line.185">                            {</a>
+<span class="sourceLineNo">186</span><a id="line.186">                                if ( user.getCountFailedLoginAttempts( ) &gt; 0 )</a>
+<span class="sourceLineNo">187</span><a id="line.187">                                {</a>
+<span class="sourceLineNo">188</span><a id="line.188">                                    user.setCountFailedLoginAttempts( 0 );</a>
+<span class="sourceLineNo">189</span><a id="line.189">                                    if ( !userManager.isReadOnly( ) )</a>
+<span class="sourceLineNo">190</span><a id="line.190">                                    {</a>
+<span class="sourceLineNo">191</span><a id="line.191">                                        try</a>
+<span class="sourceLineNo">192</span><a id="line.192">                                        {</a>
+<span class="sourceLineNo">193</span><a id="line.193">                                            userManager.updateUser( user );</a>
+<span class="sourceLineNo">194</span><a id="line.194">                                        }</a>
+<span class="sourceLineNo">195</span><a id="line.195">                                        catch ( UserManagerException e )</a>
+<span class="sourceLineNo">196</span><a id="line.196">                                        {</a>
+<span class="sourceLineNo">197</span><a id="line.197">                                            log.debug( e.getMessage( ), e );</a>
+<span class="sourceLineNo">198</span><a id="line.198">                                            log.warn( "skip error updating user: {}", e.getMessage( ) );</a>
+<span class="sourceLineNo">199</span><a id="line.199">                                        }</a>
+<span class="sourceLineNo">200</span><a id="line.200">                                    }</a>
+<span class="sourceLineNo">201</span><a id="line.201">                                }</a>
+<span class="sourceLineNo">202</span><a id="line.202">                            }</a>
+<span class="sourceLineNo">203</span><a id="line.203">                        }</a>
+<span class="sourceLineNo">204</span><a id="line.204">                        return authResult;</a>
+<span class="sourceLineNo">205</span><a id="line.205">                    }</a>
+<span class="sourceLineNo">206</span><a id="line.206"></a>
+<span class="sourceLineNo">207</span><a id="line.207">                    if ( authenticationFailureCauses != null )</a>
+<span class="sourceLineNo">208</span><a id="line.208">                    {</a>
+<span class="sourceLineNo">209</span><a id="line.209">                        authnResultErrors.addAll( authenticationFailureCauses );</a>
+<span class="sourceLineNo">210</span><a id="line.210">                    }</a>
+<span class="sourceLineNo">211</span><a id="line.211">                    else</a>
+<span class="sourceLineNo">212</span><a id="line.212">                    {</a>
+<span class="sourceLineNo">213</span><a id="line.213">                        if ( authResult.getException( ) != null )</a>
+<span class="sourceLineNo">214</span><a id="line.214">                        {</a>
+<span class="sourceLineNo">215</span><a id="line.215">                            authnResultErrors.add(</a>
+<span class="sourceLineNo">216</span><a id="line.216">                                new AuthenticationFailureCause( AuthenticationConstants.AUTHN_RUNTIME_EXCEPTION,</a>
+<span class="sourceLineNo">217</span><a id="line.217">                                    authResult.getException( ).getMessage( ) ) );</a>
+<span class="sourceLineNo">218</span><a id="line.218">                        }</a>
+<span class="sourceLineNo">219</span><a id="line.219">                    }</a>
+<span class="sourceLineNo">220</span><a id="line.220"></a>
+<span class="sourceLineNo">221</span><a id="line.221"></a>
+<span class="sourceLineNo">222</span><a id="line.222">                }</a>
+<span class="sourceLineNo">223</span><a id="line.223">            }</a>
+<span class="sourceLineNo">224</span><a id="line.224">            else</a>
+<span class="sourceLineNo">225</span><a id="line.225">            {</a>
+<span class="sourceLineNo">226</span><a id="line.226">                log.warn( "Invalid authenticator found: " + authenticator.getId( ) );</a>
+<span class="sourceLineNo">227</span><a id="line.227">            }</a>
+<span class="sourceLineNo">228</span><a id="line.228">        }</a>
+<span class="sourceLineNo">229</span><a id="line.229"></a>
+<span class="sourceLineNo">230</span><a id="line.230">        return ( new AuthenticationResult( false, null, new AuthenticationException(</a>
+<span class="sourceLineNo">231</span><a id="line.231">            "authentication failed on authenticators: " + knownAuthenticators( ) ), authnResultErrors ) );</a>
+<span class="sourceLineNo">232</span><a id="line.232">    }</a>
+<span class="sourceLineNo">233</span><a id="line.233"></a>
+<span class="sourceLineNo">234</span><a id="line.234">    @Override</a>
+<span class="sourceLineNo">235</span><a id="line.235">    public List&lt;AuthenticatorControl&gt; getControls( )</a>
+<span class="sourceLineNo">236</span><a id="line.236">    {</a>
+<span class="sourceLineNo">237</span><a id="line.237">        return getControlMap().values().stream().collect( Collectors.toList());</a>
+<span class="sourceLineNo">238</span><a id="line.238">    }</a>
+<span class="sourceLineNo">239</span><a id="line.239"></a>
+<span class="sourceLineNo">240</span><a id="line.240">    @Override</a>
+<span class="sourceLineNo">241</span><a id="line.241">    public void setControls( List&lt;AuthenticatorControl&gt; controlList )</a>
+<span class="sourceLineNo">242</span><a id="line.242">    {</a>
+<span class="sourceLineNo">243</span><a id="line.243">        setModfiedControls( controlList.stream( ).collect( Collectors.toMap( c -&gt; c.getName( ), c -&gt; c ) ) );</a>
+<span class="sourceLineNo">244</span><a id="line.244">        initializeOrder(  );</a>
+<span class="sourceLineNo">245</span><a id="line.245">    }</a>
+<span class="sourceLineNo">246</span><a id="line.246"></a>
+<span class="sourceLineNo">247</span><a id="line.247">    @Override</a>
+<span class="sourceLineNo">248</span><a id="line.248">    public void modifyControl( AuthenticatorControl control )</a>
+<span class="sourceLineNo">249</span><a id="line.249">    {</a>
+<span class="sourceLineNo">250</span><a id="line.250">        Map&lt;String, AuthenticatorControl&gt; myControls = getModifiedControls( );</a>
+<span class="sourceLineNo">251</span><a id="line.251">        if (availableAuthenticators.containsKey( control.getName() )) {</a>
+<span class="sourceLineNo">252</span><a id="line.252">            myControls.put( control.getName( ), control );</a>
+<span class="sourceLineNo">253</span><a id="line.253">        } else {</a>
+<span class="sourceLineNo">254</span><a id="line.254">            log.warn( "Cannot modify control for authenticator {}. It does not exist.", control.getName( ) );</a>
+<span class="sourceLineNo">255</span><a id="line.255">        }</a>
+<span class="sourceLineNo">256</span><a id="line.256">        initializeOrder();</a>
+<span class="sourceLineNo">257</span><a id="line.257">    }</a>
+<span class="sourceLineNo">258</span><a id="line.258"></a>
+<span class="sourceLineNo">259</span><a id="line.259">    public List&lt;Authenticator&gt; getAuthenticators( )</a>
+<span class="sourceLineNo">260</span><a id="line.260">    {</a>
+<span class="sourceLineNo">261</span><a id="line.261">        return authenticators.get();</a>
+<span class="sourceLineNo">262</span><a id="line.262">    }</a>
+<span class="sourceLineNo">263</span><a id="line.263"></a>
+<span class="sourceLineNo">264</span><a id="line.264">    private String knownAuthenticators( )</a>
+<span class="sourceLineNo">265</span><a id="line.265">    {</a>
+<span class="sourceLineNo">266</span><a id="line.266">        StringBuilder strbuf = new StringBuilder( );</a>
+<span class="sourceLineNo">267</span><a id="line.267"></a>
+<span class="sourceLineNo">268</span><a id="line.268">        for ( Authenticator authenticator : getAuthenticators() )</a>
+<span class="sourceLineNo">269</span><a id="line.269">        {</a>
+<span class="sourceLineNo">270</span><a id="line.270">            strbuf.append( '(' ).append( authenticator.getId( ) ).append( ") " );</a>
+<span class="sourceLineNo">271</span><a id="line.271">        }</a>
+<span class="sourceLineNo">272</span><a id="line.272"></a>
+<span class="sourceLineNo">273</span><a id="line.273">        return strbuf.toString( );</a>
+<span class="sourceLineNo">274</span><a id="line.274">    }</a>
+<span class="sourceLineNo">275</span><a id="line.275">}</a>
 
 
 
@@ -225,5 +344,6 @@
 
 </pre>
 </div>
+</main>
 </body>
 </html>

@@ -1,386 +1,391 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
 <title>Source code</title>
 <link rel="stylesheet" type="text/css" href="../../../../../../../stylesheet.css" title="Style">
 </head>
 <body>
+<main role="main">
 <div class="sourceContainer">
-<pre><span class="sourceLineNo">001</span>package org.apache.archiva.redback.role.util;<a name="line.1"></a>
-<span class="sourceLineNo">002</span><a name="line.2"></a>
-<span class="sourceLineNo">003</span>/*<a name="line.3"></a>
-<span class="sourceLineNo">004</span> * Licensed to the Apache Software Foundation (ASF) under one<a name="line.4"></a>
-<span class="sourceLineNo">005</span> * or more contributor license agreements.  See the NOTICE file<a name="line.5"></a>
-<span class="sourceLineNo">006</span> * distributed with this work for additional information<a name="line.6"></a>
-<span class="sourceLineNo">007</span> * regarding copyright ownership.  The ASF licenses this file<a name="line.7"></a>
-<span class="sourceLineNo">008</span> * to you under the Apache License, Version 2.0 (the<a name="line.8"></a>
-<span class="sourceLineNo">009</span> * "License"); you may not use this file except in compliance<a name="line.9"></a>
-<span class="sourceLineNo">010</span> * with the License.  You may obtain a copy of the License at<a name="line.10"></a>
-<span class="sourceLineNo">011</span> *<a name="line.11"></a>
-<span class="sourceLineNo">012</span> * http://www.apache.org/licenses/LICENSE-2.0<a name="line.12"></a>
-<span class="sourceLineNo">013</span> *<a name="line.13"></a>
-<span class="sourceLineNo">014</span> * Unless required by applicable law or agreed to in writing,<a name="line.14"></a>
-<span class="sourceLineNo">015</span> * software distributed under the License is distributed on an<a name="line.15"></a>
-<span class="sourceLineNo">016</span> * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY<a name="line.16"></a>
-<span class="sourceLineNo">017</span> * KIND, either express or implied.  See the License for the<a name="line.17"></a>
-<span class="sourceLineNo">018</span> * specific language governing permissions and limitations<a name="line.18"></a>
-<span class="sourceLineNo">019</span> * under the License.<a name="line.19"></a>
-<span class="sourceLineNo">020</span> */<a name="line.20"></a>
-<span class="sourceLineNo">021</span><a name="line.21"></a>
-<span class="sourceLineNo">022</span>import org.apache.archiva.components.graph.api.Category;<a name="line.22"></a>
-<span class="sourceLineNo">023</span>import org.apache.archiva.components.graph.api.RelationType;<a name="line.23"></a>
-<span class="sourceLineNo">024</span>import org.apache.archiva.components.graph.base.SimpleGraph;<a name="line.24"></a>
-<span class="sourceLineNo">025</span>import org.apache.archiva.components.graph.base.SimpleNode;<a name="line.25"></a>
-<span class="sourceLineNo">026</span>import org.apache.archiva.components.graph.util.Traversal;<a name="line.26"></a>
-<span class="sourceLineNo">027</span>import org.apache.archiva.redback.role.model.ModelApplication;<a name="line.27"></a>
-<span class="sourceLineNo">028</span>import org.apache.archiva.redback.role.model.ModelOperation;<a name="line.28"></a>
-<span class="sourceLineNo">029</span>import org.apache.archiva.redback.role.model.ModelResource;<a name="line.29"></a>
-<span class="sourceLineNo">030</span>import org.apache.archiva.redback.role.model.ModelRole;<a name="line.30"></a>
-<span class="sourceLineNo">031</span>import org.apache.archiva.redback.role.model.ModelTemplate;<a name="line.31"></a>
-<span class="sourceLineNo">032</span>import org.apache.archiva.redback.role.model.RedbackRoleModel;<a name="line.32"></a>
-<span class="sourceLineNo">033</span>import org.slf4j.Logger;<a name="line.33"></a>
-<span class="sourceLineNo">034</span>import org.slf4j.LoggerFactory;<a name="line.34"></a>
-<span class="sourceLineNo">035</span><a name="line.35"></a>
-<span class="sourceLineNo">036</span>import java.util.ArrayList;<a name="line.36"></a>
-<span class="sourceLineNo">037</span>import java.util.Collections;<a name="line.37"></a>
-<span class="sourceLineNo">038</span>import java.util.LinkedList;<a name="line.38"></a>
-<span class="sourceLineNo">039</span>import java.util.List;<a name="line.39"></a>
-<span class="sourceLineNo">040</span>import java.util.stream.Collectors;<a name="line.40"></a>
-<span class="sourceLineNo">041</span><a name="line.41"></a>
-<span class="sourceLineNo">042</span>/**<a name="line.42"></a>
-<span class="sourceLineNo">043</span> * RoleModelUtils:<a name="line.43"></a>
-<span class="sourceLineNo">044</span> *<a name="line.44"></a>
-<span class="sourceLineNo">045</span> * @author: Jesse McConnell<a name="line.45"></a>
-<span class="sourceLineNo">046</span> *<a name="line.46"></a>
-<span class="sourceLineNo">047</span> */<a name="line.47"></a>
-<span class="sourceLineNo">048</span>public class RoleModelUtils<a name="line.48"></a>
-<span class="sourceLineNo">049</span>{<a name="line.49"></a>
-<span class="sourceLineNo">050</span>    public enum RoleType implements Category {<a name="line.50"></a>
-<span class="sourceLineNo">051</span>        ROLE,TEMPLATE<a name="line.51"></a>
-<span class="sourceLineNo">052</span>    }<a name="line.52"></a>
-<span class="sourceLineNo">053</span><a name="line.53"></a>
-<span class="sourceLineNo">054</span>    public enum RoleRelation implements RelationType {<a name="line.54"></a>
-<span class="sourceLineNo">055</span>        ROLE_TO_ROLE,ROLE_TO_TEMPLATE,TEMPLATE_TO_ROLE,TEMPLATE_TO_TEMPLATE;<a name="line.55"></a>
-<span class="sourceLineNo">056</span>    }<a name="line.56"></a>
-<span class="sourceLineNo">057</span><a name="line.57"></a>
-<span class="sourceLineNo">058</span>    public static final String ROOT = ":archiva:node:root";<a name="line.58"></a>
-<span class="sourceLineNo">059</span><a name="line.59"></a>
-<span class="sourceLineNo">060</span>    private static final Logger log = LoggerFactory.getLogger(RoleModelUtils.class);<a name="line.60"></a>
-<span class="sourceLineNo">061</span><a name="line.61"></a>
-<span class="sourceLineNo">062</span>    public static List&lt;ModelRole&gt; getRoles( RedbackRoleModel model )<a name="line.62"></a>
-<span class="sourceLineNo">063</span>    {<a name="line.63"></a>
-<span class="sourceLineNo">064</span>        List&lt;ModelRole&gt; roleList = new ArrayList&lt;ModelRole&gt;( );<a name="line.64"></a>
-<span class="sourceLineNo">065</span><a name="line.65"></a>
-<span class="sourceLineNo">066</span>        for ( ModelApplication application : model.getApplications() )<a name="line.66"></a>
-<span class="sourceLineNo">067</span>        {<a name="line.67"></a>
-<span class="sourceLineNo">068</span>            roleList.addAll( application.getRoles() );<a name="line.68"></a>
-<span class="sourceLineNo">069</span>        }<a name="line.69"></a>
-<span class="sourceLineNo">070</span><a name="line.70"></a>
-<span class="sourceLineNo">071</span>        return roleList;<a name="line.71"></a>
-<span class="sourceLineNo">072</span>    }<a name="line.72"></a>
-<span class="sourceLineNo">073</span><a name="line.73"></a>
-<span class="sourceLineNo">074</span>    public static List&lt;ModelTemplate&gt; getTemplates( RedbackRoleModel model )<a name="line.74"></a>
-<span class="sourceLineNo">075</span>    {<a name="line.75"></a>
-<span class="sourceLineNo">076</span>        List&lt;ModelTemplate&gt; templateList = new ArrayList&lt;ModelTemplate&gt;();<a name="line.76"></a>
-<span class="sourceLineNo">077</span><a name="line.77"></a>
-<span class="sourceLineNo">078</span>        for ( ModelApplication application : model.getApplications() )<a name="line.78"></a>
-<span class="sourceLineNo">079</span>        {<a name="line.79"></a>
-<span class="sourceLineNo">080</span>            templateList.addAll( application.getTemplates() );<a name="line.80"></a>
-<span class="sourceLineNo">081</span>        }<a name="line.81"></a>
-<span class="sourceLineNo">082</span><a name="line.82"></a>
-<span class="sourceLineNo">083</span>        return templateList;<a name="line.83"></a>
-<span class="sourceLineNo">084</span>    }<a name="line.84"></a>
-<span class="sourceLineNo">085</span><a name="line.85"></a>
-<span class="sourceLineNo">086</span>    @SuppressWarnings( "unchecked" )<a name="line.86"></a>
-<span class="sourceLineNo">087</span>    public static List&lt;String&gt; getOperationIdList( RedbackRoleModel model )<a name="line.87"></a>
-<span class="sourceLineNo">088</span>    {<a name="line.88"></a>
-<span class="sourceLineNo">089</span>        List&lt;String&gt; operationsIdList = new ArrayList&lt;String&gt;();<a name="line.89"></a>
-<span class="sourceLineNo">090</span><a name="line.90"></a>
-<span class="sourceLineNo">091</span>        for ( ModelApplication application : model.getApplications() )<a name="line.91"></a>
-<span class="sourceLineNo">092</span>        {<a name="line.92"></a>
-<span class="sourceLineNo">093</span>            for ( ModelOperation operation : application.getOperations() )<a name="line.93"></a>
-<span class="sourceLineNo">094</span>            {<a name="line.94"></a>
-<span class="sourceLineNo">095</span>                operationsIdList.add( operation.getId() );<a name="line.95"></a>
-<span class="sourceLineNo">096</span>            }<a name="line.96"></a>
-<span class="sourceLineNo">097</span>        }<a name="line.97"></a>
-<span class="sourceLineNo">098</span><a name="line.98"></a>
-<span class="sourceLineNo">099</span>        return operationsIdList;<a name="line.99"></a>
-<span class="sourceLineNo">100</span>    }<a name="line.100"></a>
-<span class="sourceLineNo">101</span><a name="line.101"></a>
-<span class="sourceLineNo">102</span>    @SuppressWarnings( "unchecked" )<a name="line.102"></a>
-<span class="sourceLineNo">103</span>    public static List&lt;String&gt; getResourceIdList( RedbackRoleModel model )<a name="line.103"></a>
-<span class="sourceLineNo">104</span>    {<a name="line.104"></a>
-<span class="sourceLineNo">105</span>        List&lt;String&gt; resourceIdList = new ArrayList&lt;String&gt;();<a name="line.105"></a>
-<span class="sourceLineNo">106</span><a name="line.106"></a>
-<span class="sourceLineNo">107</span>        for ( ModelApplication application : model.getApplications() )<a name="line.107"></a>
-<span class="sourceLineNo">108</span>        {<a name="line.108"></a>
-<span class="sourceLineNo">109</span>            for ( ModelResource resource : application.getResources() )<a name="line.109"></a>
-<span class="sourceLineNo">110</span>            {<a name="line.110"></a>
-<span class="sourceLineNo">111</span>                resourceIdList.add( resource.getId() );<a name="line.111"></a>
-<span class="sourceLineNo">112</span>            }<a name="line.112"></a>
-<span class="sourceLineNo">113</span>        }<a name="line.113"></a>
-<span class="sourceLineNo">114</span><a name="line.114"></a>
-<span class="sourceLineNo">115</span>        return resourceIdList;<a name="line.115"></a>
-<span class="sourceLineNo">116</span>    }<a name="line.116"></a>
-<span class="sourceLineNo">117</span><a name="line.117"></a>
-<span class="sourceLineNo">118</span>    public static List&lt;String&gt; getRoleIdList( RedbackRoleModel model )<a name="line.118"></a>
-<span class="sourceLineNo">119</span>    {<a name="line.119"></a>
-<span class="sourceLineNo">120</span>        List&lt;String&gt; roleIdList = new ArrayList&lt;String&gt;();<a name="line.120"></a>
-<span class="sourceLineNo">121</span><a name="line.121"></a>
-<span class="sourceLineNo">122</span>        for ( ModelApplication application : model.getApplications() )<a name="line.122"></a>
-<span class="sourceLineNo">123</span>        {<a name="line.123"></a>
-<span class="sourceLineNo">124</span>            for ( ModelRole role : application.getRoles() )<a name="line.124"></a>
-<span class="sourceLineNo">125</span>            {<a name="line.125"></a>
-<span class="sourceLineNo">126</span>                roleIdList.add( role.getId() );<a name="line.126"></a>
-<span class="sourceLineNo">127</span>            }<a name="line.127"></a>
-<span class="sourceLineNo">128</span>        }<a name="line.128"></a>
-<span class="sourceLineNo">129</span><a name="line.129"></a>
-<span class="sourceLineNo">130</span>        return roleIdList;<a name="line.130"></a>
-<span class="sourceLineNo">131</span>    }<a name="line.131"></a>
-<span class="sourceLineNo">132</span><a name="line.132"></a>
-<span class="sourceLineNo">133</span><a name="line.133"></a>
-<span class="sourceLineNo">134</span>    public static List&lt;String&gt; getTemplateIdList( RedbackRoleModel model )<a name="line.134"></a>
-<span class="sourceLineNo">135</span>    {<a name="line.135"></a>
-<span class="sourceLineNo">136</span>        List&lt;String&gt; templateIdList = new ArrayList&lt;String&gt;();<a name="line.136"></a>
-<span class="sourceLineNo">137</span><a name="line.137"></a>
-<span class="sourceLineNo">138</span>        for ( ModelApplication application : model.getApplications() )<a name="line.138"></a>
-<span class="sourceLineNo">139</span>        {<a name="line.139"></a>
-<span class="sourceLineNo">140</span>            for ( ModelTemplate template : application.getTemplates() )<a name="line.140"></a>
-<span class="sourceLineNo">141</span>            {<a name="line.141"></a>
-<span class="sourceLineNo">142</span>                templateIdList.add( template.getId() );<a name="line.142"></a>
-<span class="sourceLineNo">143</span>            }<a name="line.143"></a>
-<span class="sourceLineNo">144</span>        }<a name="line.144"></a>
-<span class="sourceLineNo">145</span><a name="line.145"></a>
-<span class="sourceLineNo">146</span>        return templateIdList;<a name="line.146"></a>
-<span class="sourceLineNo">147</span><a name="line.147"></a>
-<span class="sourceLineNo">148</span>    }<a name="line.148"></a>
-<span class="sourceLineNo">149</span><a name="line.149"></a>
-<span class="sourceLineNo">150</span>    /**<a name="line.150"></a>
-<span class="sourceLineNo">151</span>     * WARNING: can return null<a name="line.151"></a>
-<span class="sourceLineNo">152</span>     *<a name="line.152"></a>
-<span class="sourceLineNo">153</span>     * @param model<a name="line.153"></a>
-<span class="sourceLineNo">154</span>     * @param roleId<a name="line.154"></a>
-<span class="sourceLineNo">155</span>     * @return<a name="line.155"></a>
-<span class="sourceLineNo">156</span>     */<a name="line.156"></a>
-<span class="sourceLineNo">157</span>    @SuppressWarnings( "unchecked" )<a name="line.157"></a>
-<span class="sourceLineNo">158</span>    public static ModelRole getModelRole( RedbackRoleModel model, String roleId )<a name="line.158"></a>
-<span class="sourceLineNo">159</span>    {<a name="line.159"></a>
-<span class="sourceLineNo">160</span>        ModelRole mrole = null;<a name="line.160"></a>
-<span class="sourceLineNo">161</span><a name="line.161"></a>
-<span class="sourceLineNo">162</span>        for ( ModelApplication application : model.getApplications() )<a name="line.162"></a>
-<span class="sourceLineNo">163</span>        {<a name="line.163"></a>
-<span class="sourceLineNo">164</span>            for ( ModelRole role : application.getRoles() )<a name="line.164"></a>
-<span class="sourceLineNo">165</span>            {<a name="line.165"></a>
-<span class="sourceLineNo">166</span>                if ( roleId.equals( role.getId() ) )<a name="line.166"></a>
-<span class="sourceLineNo">167</span>                {<a name="line.167"></a>
-<span class="sourceLineNo">168</span>                    mrole = role;<a name="line.168"></a>
-<span class="sourceLineNo">169</span>                }<a name="line.169"></a>
-<span class="sourceLineNo">170</span>            }<a name="line.170"></a>
-<span class="sourceLineNo">171</span>        }<a name="line.171"></a>
-<span class="sourceLineNo">172</span><a name="line.172"></a>
-<span class="sourceLineNo">173</span>        return mrole;<a name="line.173"></a>
-<span class="sourceLineNo">174</span>    }<a name="line.174"></a>
-<span class="sourceLineNo">175</span><a name="line.175"></a>
-<span class="sourceLineNo">176</span>    /**<a name="line.176"></a>
-<span class="sourceLineNo">177</span>     * WARNING: can return null<a name="line.177"></a>
-<span class="sourceLineNo">178</span>     *<a name="line.178"></a>
-<span class="sourceLineNo">179</span>     * @param model<a name="line.179"></a>
-<span class="sourceLineNo">180</span>     * @param templateId<a name="line.180"></a>
-<span class="sourceLineNo">181</span>     * @return<a name="line.181"></a>
-<span class="sourceLineNo">182</span>     */<a name="line.182"></a>
-<span class="sourceLineNo">183</span>    @SuppressWarnings( "unchecked" )<a name="line.183"></a>
-<span class="sourceLineNo">184</span>    public static ModelTemplate getModelTemplate( RedbackRoleModel model, String templateId )<a name="line.184"></a>
-<span class="sourceLineNo">185</span>    {<a name="line.185"></a>
-<span class="sourceLineNo">186</span>        ModelTemplate mtemplate = null;<a name="line.186"></a>
-<span class="sourceLineNo">187</span><a name="line.187"></a>
-<span class="sourceLineNo">188</span>        for ( ModelApplication application : model.getApplications() )<a name="line.188"></a>
-<span class="sourceLineNo">189</span>        {<a name="line.189"></a>
-<span class="sourceLineNo">190</span>            for ( ModelTemplate template : application.getTemplates() )<a name="line.190"></a>
-<span class="sourceLineNo">191</span>            {<a name="line.191"></a>
-<span class="sourceLineNo">192</span>                if ( templateId.equals( template.getId() ) )<a name="line.192"></a>
-<span class="sourceLineNo">193</span>                {<a name="line.193"></a>
-<span class="sourceLineNo">194</span>                    mtemplate = template;<a name="line.194"></a>
-<span class="sourceLineNo">195</span>                }<a name="line.195"></a>
-<span class="sourceLineNo">196</span>            }<a name="line.196"></a>
-<span class="sourceLineNo">197</span>        }<a name="line.197"></a>
-<span class="sourceLineNo">198</span><a name="line.198"></a>
-<span class="sourceLineNo">199</span>        return mtemplate;<a name="line.199"></a>
-<span class="sourceLineNo">200</span>    }<a name="line.200"></a>
-<span class="sourceLineNo">201</span><a name="line.201"></a>
-<span class="sourceLineNo">202</span>    /**<a name="line.202"></a>
-<span class="sourceLineNo">203</span>     * WARNING: can return null<a name="line.203"></a>
-<span class="sourceLineNo">204</span>     *<a name="line.204"></a>
-<span class="sourceLineNo">205</span>     * @param model<a name="line.205"></a>
-<span class="sourceLineNo">206</span>     * @param operationId<a name="line.206"></a>
-<span class="sourceLineNo">207</span>     * @return<a name="line.207"></a>
-<span class="sourceLineNo">208</span>     */<a name="line.208"></a>
-<span class="sourceLineNo">209</span>    @SuppressWarnings( "unchecked" )<a name="line.209"></a>
-<span class="sourceLineNo">210</span>    public static ModelOperation getModelOperation( RedbackRoleModel model, String operationId )<a name="line.210"></a>
-<span class="sourceLineNo">211</span>    {<a name="line.211"></a>
-<span class="sourceLineNo">212</span>        ModelOperation moperation = null;<a name="line.212"></a>
-<span class="sourceLineNo">213</span><a name="line.213"></a>
-<span class="sourceLineNo">214</span>        for ( ModelApplication application : model.getApplications() )<a name="line.214"></a>
-<span class="sourceLineNo">215</span>        {<a name="line.215"></a>
-<span class="sourceLineNo">216</span>            for ( ModelOperation operation : application.getOperations() )<a name="line.216"></a>
-<span class="sourceLineNo">217</span>            {<a name="line.217"></a>
-<span class="sourceLineNo">218</span>                if ( operationId.equals( operation.getId() ) )<a name="line.218"></a>
-<span class="sourceLineNo">219</span>                {<a name="line.219"></a>
-<span class="sourceLineNo">220</span>                    moperation = operation;<a name="line.220"></a>
-<span class="sourceLineNo">221</span>                }<a name="line.221"></a>
-<span class="sourceLineNo">222</span>            }<a name="line.222"></a>
-<span class="sourceLineNo">223</span>        }<a name="line.223"></a>
-<span class="sourceLineNo">224</span><a name="line.224"></a>
-<span class="sourceLineNo">225</span>        return moperation;<a name="line.225"></a>
-<span class="sourceLineNo">226</span>    }<a name="line.226"></a>
-<span class="sourceLineNo">227</span><a name="line.227"></a>
-<span class="sourceLineNo">228</span>    @SuppressWarnings( "unchecked" )<a name="line.228"></a>
-<span class="sourceLineNo">229</span>    public static ModelResource getModelResource( RedbackRoleModel model, String resourceId )<a name="line.229"></a>
-<span class="sourceLineNo">230</span>    {<a name="line.230"></a>
-<span class="sourceLineNo">231</span>        ModelResource mresource = null;<a name="line.231"></a>
-<span class="sourceLineNo">232</span><a name="line.232"></a>
-<span class="sourceLineNo">233</span>        for ( ModelApplication application : model.getApplications() )<a name="line.233"></a>
-<span class="sourceLineNo">234</span>        {<a name="line.234"></a>
-<span class="sourceLineNo">235</span>            for ( ModelResource resource : application.getResources() )<a name="line.235"></a>
-<span class="sourceLineNo">236</span>            {<a name="line.236"></a>
-<span class="sourceLineNo">237</span>                if ( resourceId.equals( resource.getId() ) )<a name="line.237"></a>
-<span class="sourceLineNo">238</span>                {<a name="line.238"></a>
-<span class="sourceLineNo">239</span>                    mresource = resource;<a name="line.239"></a>
-<span class="sourceLineNo">240</span>                }<a name="line.240"></a>
-<span class="sourceLineNo">241</span>            }<a name="line.241"></a>
-<span class="sourceLineNo">242</span>        }<a name="line.242"></a>
-<span class="sourceLineNo">243</span><a name="line.243"></a>
-<span class="sourceLineNo">244</span>        return mresource;<a name="line.244"></a>
-<span class="sourceLineNo">245</span>    }<a name="line.245"></a>
-<span class="sourceLineNo">246</span><a name="line.246"></a>
-<span class="sourceLineNo">247</span>    @SuppressWarnings( "unchecked" )<a name="line.247"></a>
-<span class="sourceLineNo">248</span>    public static SimpleGraph generateRoleGraph(RedbackRoleModel model )<a name="line.248"></a>
-<span class="sourceLineNo">249</span><a name="line.249"></a>
-<span class="sourceLineNo">250</span>    {<a name="line.250"></a>
-<span class="sourceLineNo">251</span>        SimpleGraph roleGraph = new SimpleGraph();<a name="line.251"></a>
-<span class="sourceLineNo">252</span>        SimpleNode rootNode = roleGraph.addNode(ROOT, ROOT);<a name="line.252"></a>
-<span class="sourceLineNo">253</span><a name="line.253"></a>
-<span class="sourceLineNo">254</span>        log.debug("Created graph with root {}", rootNode);<a name="line.254"></a>
-<span class="sourceLineNo">255</span><a name="line.255"></a>
-<span class="sourceLineNo">256</span>        for ( ModelApplication application : model.getApplications() )<a name="line.256"></a>
-<span class="sourceLineNo">257</span>        {<a name="line.257"></a>
-<span class="sourceLineNo">258</span>            log.debug("Application {}", application.getId());<a name="line.258"></a>
-<span class="sourceLineNo">259</span>            for ( ModelRole role : application.getRoles() )<a name="line.259"></a>
-<span class="sourceLineNo">260</span>            {<a name="line.260"></a>
-<span class="sourceLineNo">261</span>                final String roleId = role.getId();<a name="line.261"></a>
-<span class="sourceLineNo">262</span>                SimpleNode roleNode = roleGraph.addNode(roleId, roleId);<a name="line.262"></a>
-<span class="sourceLineNo">263</span>                roleNode.addCategory(RoleType.ROLE);<a name="line.263"></a>
-<span class="sourceLineNo">264</span>                if (role.getParentRoles()==null || role.getParentRoles().size()==0) {<a name="line.264"></a>
-<span class="sourceLineNo">265</span>                    // We add it to the root node only, if it has no parent roles<a name="line.265"></a>
-<span class="sourceLineNo">266</span>                    roleGraph.addEdge("root:" + roleId, "root -&gt; " + roleId, rootNode, roleNode);<a name="line.266"></a>
-<span class="sourceLineNo">267</span>                }<a name="line.267"></a>
-<span class="sourceLineNo">268</span><a name="line.268"></a>
-<span class="sourceLineNo">269</span>                if ( role.getChildRoles() != null )<a name="line.269"></a>
-<span class="sourceLineNo">270</span>                {<a name="line.270"></a>
-<span class="sourceLineNo">271</span>                    for ( String childRole : role.getChildRoles() )<a name="line.271"></a>
-<span class="sourceLineNo">272</span>                    {<a name="line.272"></a>
-<span class="sourceLineNo">273</span>                        SimpleNode childNode = roleGraph.addNode(childRole, childRole);<a name="line.273"></a>
-<span class="sourceLineNo">274</span>                        childNode.addCategory(RoleType.ROLE);<a name="line.274"></a>
-<span class="sourceLineNo">275</span>                        roleGraph.addEdge( RoleRelation.ROLE_TO_ROLE, roleId+":"+childRole,<a name="line.275"></a>
-<span class="sourceLineNo">276</span>                                roleId+" -&gt; "+childRole, roleNode, childNode );<a name="line.276"></a>
-<span class="sourceLineNo">277</span><a name="line.277"></a>
-<span class="sourceLineNo">278</span>                    }<a name="line.278"></a>
-<span class="sourceLineNo">279</span>                }<a name="line.279"></a>
-<span class="sourceLineNo">280</span><a name="line.280"></a>
-<span class="sourceLineNo">281</span>                if ( role.getParentRoles() != null )<a name="line.281"></a>
-<span class="sourceLineNo">282</span>                {<a name="line.282"></a>
-<span class="sourceLineNo">283</span>                    for ( String parentRole : role.getParentRoles() )<a name="line.283"></a>
-<span class="sourceLineNo">284</span>                    {<a name="line.284"></a>
-<span class="sourceLineNo">285</span>                        SimpleNode parentNode = roleGraph.addNode( parentRole, parentRole );<a name="line.285"></a>
-<span class="sourceLineNo">286</span>                        parentNode.addCategory(RoleType.ROLE);<a name="line.286"></a>
-<span class="sourceLineNo">287</span>                        roleGraph.addEdge( RoleRelation.ROLE_TO_ROLE, parentRole+":"+roleId,<a name="line.287"></a>
-<span class="sourceLineNo">288</span>                                parentRole + " -&gt; "+ roleId, parentNode, roleNode);<a name="line.288"></a>
-<span class="sourceLineNo">289</span>                    }<a name="line.289"></a>
-<span class="sourceLineNo">290</span>                }<a name="line.290"></a>
-<span class="sourceLineNo">291</span>            }<a name="line.291"></a>
-<span class="sourceLineNo">292</span>        }<a name="line.292"></a>
-<span class="sourceLineNo">293</span><a name="line.293"></a>
-<span class="sourceLineNo">294</span>        return roleGraph;<a name="line.294"></a>
-<span class="sourceLineNo">295</span>    }<a name="line.295"></a>
-<span class="sourceLineNo">296</span><a name="line.296"></a>
-<span class="sourceLineNo">297</span>    @SuppressWarnings( "unchecked" )<a name="line.297"></a>
-<span class="sourceLineNo">298</span>    public static SimpleGraph generateTemplateGraph( RedbackRoleModel model )<a name="line.298"></a>
-<span class="sourceLineNo">299</span><a name="line.299"></a>
-<span class="sourceLineNo">300</span>    {<a name="line.300"></a>
-<span class="sourceLineNo">301</span>        SimpleGraph templateGraph = generateRoleGraph( model );<a name="line.301"></a>
-<span class="sourceLineNo">302</span>        SimpleNode rootNode = templateGraph.getNode(ROOT);<a name="line.302"></a>
-<span class="sourceLineNo">303</span><a name="line.303"></a>
-<span class="sourceLineNo">304</span>        for ( ModelApplication application : model.getApplications() )<a name="line.304"></a>
-<span class="sourceLineNo">305</span>        {<a name="line.305"></a>
-<span class="sourceLineNo">306</span>            for ( ModelTemplate template : application.getTemplates() )<a name="line.306"></a>
-<span class="sourceLineNo">307</span>            {<a name="line.307"></a>
-<span class="sourceLineNo">308</span>                final String templId = template.getId();<a name="line.308"></a>
-<span class="sourceLineNo">309</span>                SimpleNode templateNode = templateGraph.addNode(templId, templId);<a name="line.309"></a>
-<span class="sourceLineNo">310</span>                templateNode.addCategory(RoleType.TEMPLATE);<a name="line.310"></a>
-<span class="sourceLineNo">311</span>                if ((template.getParentRoles() == null || template.getParentRoles().size()==0)<a name="line.311"></a>
-<span class="sourceLineNo">312</span>                &amp;&amp; ( template.getParentTemplates() == null || template.getParentTemplates().size()==0) ) {<a name="line.312"></a>
-<span class="sourceLineNo">313</span>                    templateGraph.addEdge("root:" + templId, "root -&gt; " + templId, rootNode, templateNode);<a name="line.313"></a>
-<span class="sourceLineNo">314</span>                }<a name="line.314"></a>
-<span class="sourceLineNo">315</span><a name="line.315"></a>
-<span class="sourceLineNo">316</span>                if ( template.getChildRoles() != null )<a name="line.316"></a>
-<span class="sourceLineNo">317</span>                {<a name="line.317"></a>
-<span class="sourceLineNo">318</span>                    for ( String childRole : template.getChildRoles() )<a name="line.318"></a>
-<span class="sourceLineNo">319</span>                    {<a name="line.319"></a>
-<span class="sourceLineNo">320</span>                        SimpleNode childNode = templateGraph.addNode(childRole, childRole);<a name="line.320"></a>
-<span class="sourceLineNo">321</span>                        childNode.addCategory(RoleType.ROLE);<a name="line.321"></a>
-<span class="sourceLineNo">322</span>                        templateGraph.addEdge( RoleRelation.TEMPLATE_TO_ROLE, templId+":"+childNode, templId+" -&gt; "+childNode, templateNode, childNode );<a name="line.322"></a>
-<span class="sourceLineNo">323</span>                    }<a name="line.323"></a>
-<span class="sourceLineNo">324</span>                }<a name="line.324"></a>
-<span class="sourceLineNo">325</span><a name="line.325"></a>
-<span class="sourceLineNo">326</span>                if ( template.getParentRoles() != null )<a name="line.326"></a>
-<span class="sourceLineNo">327</span>                {<a name="line.327"></a>
-<span class="sourceLineNo">328</span>                    for ( String parentRole : template.getParentRoles() )<a name="line.328"></a>
-<span class="sourceLineNo">329</span>                    {<a name="line.329"></a>
-<span class="sourceLineNo">330</span>                        SimpleNode parentNode = templateGraph.addNode(parentRole, parentRole);<a name="line.330"></a>
-<span class="sourceLineNo">331</span>                        parentNode.addCategory(RoleType.ROLE);<a name="line.331"></a>
-<span class="sourceLineNo">332</span>                        templateGraph.addEdge( RoleRelation.ROLE_TO_TEMPLATE, parentRole+":"+templId,<a name="line.332"></a>
-<span class="sourceLineNo">333</span>                                parentRole+" -&gt; "+templId, parentNode, templateNode);<a name="line.333"></a>
-<span class="sourceLineNo">334</span>                    }<a name="line.334"></a>
-<span class="sourceLineNo">335</span>                }<a name="line.335"></a>
-<span class="sourceLineNo">336</span><a name="line.336"></a>
-<span class="sourceLineNo">337</span>                if ( template.getChildTemplates() != null )<a name="line.337"></a>
-<span class="sourceLineNo">338</span>                {<a name="line.338"></a>
-<span class="sourceLineNo">339</span>                    for ( String childTemplate : template.getChildTemplates() )<a name="line.339"></a>
-<span class="sourceLineNo">340</span>                    {<a name="line.340"></a>
-<span class="sourceLineNo">341</span>                        SimpleNode childTemplNode = templateGraph.addNode(childTemplate, childTemplate);<a name="line.341"></a>
-<span class="sourceLineNo">342</span>                        childTemplNode.addCategory(RoleType.TEMPLATE);<a name="line.342"></a>
-<span class="sourceLineNo">343</span>                        templateGraph.addEdge( RoleRelation.TEMPLATE_TO_TEMPLATE, templId+":"+childTemplate,<a name="line.343"></a>
-<span class="sourceLineNo">344</span>                                templId+" -&gt; "+childTemplate, templateNode, childTemplNode);<a name="line.344"></a>
-<span class="sourceLineNo">345</span>                    }<a name="line.345"></a>
-<span class="sourceLineNo">346</span>                }<a name="line.346"></a>
-<span class="sourceLineNo">347</span><a name="line.347"></a>
-<span class="sourceLineNo">348</span>                if ( template.getParentTemplates() != null )<a name="line.348"></a>
-<span class="sourceLineNo">349</span>                {<a name="line.349"></a>
-<span class="sourceLineNo">350</span>                    for ( String parentTemplate : template.getParentTemplates() )<a name="line.350"></a>
-<span class="sourceLineNo">351</span>                    {<a name="line.351"></a>
-<span class="sourceLineNo">352</span>                        SimpleNode parentTemplNode = templateGraph.addNode( parentTemplate, parentTemplate );<a name="line.352"></a>
-<span class="sourceLineNo">353</span>                        parentTemplNode.addCategory(RoleType.TEMPLATE);<a name="line.353"></a>
-<span class="sourceLineNo">354</span>                        templateGraph.addEdge( RoleRelation.TEMPLATE_TO_TEMPLATE,<a name="line.354"></a>
-<span class="sourceLineNo">355</span>                                parentTemplate+":"+templId, parentTemplate+" -&gt; "+templId,<a name="line.355"></a>
-<span class="sourceLineNo">356</span>                                parentTemplNode, templateNode);<a name="line.356"></a>
-<span class="sourceLineNo">357</span>                    }<a name="line.357"></a>
-<span class="sourceLineNo">358</span>                }<a name="line.358"></a>
-<span class="sourceLineNo">359</span>            }<a name="line.359"></a>
-<span class="sourceLineNo">360</span>        }<a name="line.360"></a>
-<span class="sourceLineNo">361</span><a name="line.361"></a>
-<span class="sourceLineNo">362</span>        return templateGraph;<a name="line.362"></a>
-<span class="sourceLineNo">363</span>    }<a name="line.363"></a>
-<span class="sourceLineNo">364</span><a name="line.364"></a>
-<span class="sourceLineNo">365</span>    @SuppressWarnings( "unchecked" )<a name="line.365"></a>
-<span class="sourceLineNo">366</span>    public static List&lt;String&gt; reverseTopologicalSortedRoleList( RedbackRoleModel model )<a name="line.366"></a>
-<span class="sourceLineNo">367</span>    {<a name="line.367"></a>
-<span class="sourceLineNo">368</span>        SimpleGraph graph = generateRoleGraph(model);<a name="line.368"></a>
-<span class="sourceLineNo">369</span>        List&lt;String&gt; sortedGraph = Traversal.topologialSort(graph.getNode(ROOT)).stream().map(n -&gt; n.getId())<a name="line.369"></a>
-<span class="sourceLineNo">370</span>                .filter(id -&gt; !ROOT.equals(id)).collect(Collectors.toList());<a name="line.370"></a>
-<span class="sourceLineNo">371</span>        Collections.reverse(sortedGraph);<a name="line.371"></a>
-<span class="sourceLineNo">372</span>        return sortedGraph;<a name="line.372"></a>
-<span class="sourceLineNo">373</span>    }<a name="line.373"></a>
-<span class="sourceLineNo">374</span><a name="line.374"></a>
-<span class="sourceLineNo">375</span>}<a name="line.375"></a>
+<pre><span class="sourceLineNo">001</span><a id="line.1">package org.apache.archiva.redback.role.util;</a>
+<span class="sourceLineNo">002</span><a id="line.2"></a>
+<span class="sourceLineNo">003</span><a id="line.3">/*</a>
+<span class="sourceLineNo">004</span><a id="line.4"> * Licensed to the Apache Software Foundation (ASF) under one</a>
+<span class="sourceLineNo">005</span><a id="line.5"> * or more contributor license agreements.  See the NOTICE file</a>
+<span class="sourceLineNo">006</span><a id="line.6"> * distributed with this work for additional information</a>
+<span class="sourceLineNo">007</span><a id="line.7"> * regarding copyright ownership.  The ASF licenses this file</a>
+<span class="sourceLineNo">008</span><a id="line.8"> * to you under the Apache License, Version 2.0 (the</a>
+<span class="sourceLineNo">009</span><a id="line.9"> * "License"); you may not use this file except in compliance</a>
+<span class="sourceLineNo">010</span><a id="line.10"> * with the License.  You may obtain a copy of the License at</a>
+<span class="sourceLineNo">011</span><a id="line.11"> *</a>
+<span class="sourceLineNo">012</span><a id="line.12"> * http://www.apache.org/licenses/LICENSE-2.0</a>
+<span class="sourceLineNo">013</span><a id="line.13"> *</a>
+<span class="sourceLineNo">014</span><a id="line.14"> * Unless required by applicable law or agreed to in writing,</a>
+<span class="sourceLineNo">015</span><a id="line.15"> * software distributed under the License is distributed on an</a>
+<span class="sourceLineNo">016</span><a id="line.16"> * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</a>
+<span class="sourceLineNo">017</span><a id="line.17"> * KIND, either express or implied.  See the License for the</a>
+<span class="sourceLineNo">018</span><a id="line.18"> * specific language governing permissions and limitations</a>
+<span class="sourceLineNo">019</span><a id="line.19"> * under the License.</a>
+<span class="sourceLineNo">020</span><a id="line.20"> */</a>
+<span class="sourceLineNo">021</span><a id="line.21"></a>
+<span class="sourceLineNo">022</span><a id="line.22">import org.apache.archiva.components.graph.api.Category;</a>
+<span class="sourceLineNo">023</span><a id="line.23">import org.apache.archiva.components.graph.api.RelationType;</a>
+<span class="sourceLineNo">024</span><a id="line.24">import org.apache.archiva.components.graph.base.SimpleGraph;</a>
+<span class="sourceLineNo">025</span><a id="line.25">import org.apache.archiva.components.graph.base.SimpleNode;</a>
+<span class="sourceLineNo">026</span><a id="line.26">import org.apache.archiva.components.graph.util.Traversal;</a>
+<span class="sourceLineNo">027</span><a id="line.27">import org.apache.archiva.redback.role.model.ModelApplication;</a>
+<span class="sourceLineNo">028</span><a id="line.28">import org.apache.archiva.redback.role.model.ModelOperation;</a>
+<span class="sourceLineNo">029</span><a id="line.29">import org.apache.archiva.redback.role.model.ModelResource;</a>
+<span class="sourceLineNo">030</span><a id="line.30">import org.apache.archiva.redback.role.model.ModelRole;</a>
+<span class="sourceLineNo">031</span><a id="line.31">import org.apache.archiva.redback.role.model.ModelTemplate;</a>
+<span class="sourceLineNo">032</span><a id="line.32">import org.apache.archiva.redback.role.model.RedbackRoleModel;</a>
+<span class="sourceLineNo">033</span><a id="line.33">import org.slf4j.Logger;</a>
+<span class="sourceLineNo">034</span><a id="line.34">import org.slf4j.LoggerFactory;</a>
+<span class="sourceLineNo">035</span><a id="line.35"></a>
+<span class="sourceLineNo">036</span><a id="line.36">import java.util.ArrayList;</a>
+<span class="sourceLineNo">037</span><a id="line.37">import java.util.Collections;</a>
+<span class="sourceLineNo">038</span><a id="line.38">import java.util.LinkedList;</a>
+<span class="sourceLineNo">039</span><a id="line.39">import java.util.List;</a>
+<span class="sourceLineNo">040</span><a id="line.40">import java.util.stream.Collectors;</a>
+<span class="sourceLineNo">041</span><a id="line.41"></a>
+<span class="sourceLineNo">042</span><a id="line.42">/**</a>
+<span class="sourceLineNo">043</span><a id="line.43"> * RoleModelUtils:</a>
+<span class="sourceLineNo">044</span><a id="line.44"> *</a>
+<span class="sourceLineNo">045</span><a id="line.45"> * @author: Jesse McConnell</a>
+<span class="sourceLineNo">046</span><a id="line.46"> *</a>
+<span class="sourceLineNo">047</span><a id="line.47"> */</a>
+<span class="sourceLineNo">048</span><a id="line.48">public class RoleModelUtils</a>
+<span class="sourceLineNo">049</span><a id="line.49">{</a>
+<span class="sourceLineNo">050</span><a id="line.50">    public enum RoleType implements Category {</a>
+<span class="sourceLineNo">051</span><a id="line.51">        ROLE,TEMPLATE</a>
+<span class="sourceLineNo">052</span><a id="line.52">    }</a>
+<span class="sourceLineNo">053</span><a id="line.53"></a>
+<span class="sourceLineNo">054</span><a id="line.54">    public enum RoleRelation implements RelationType {</a>
+<span class="sourceLineNo">055</span><a id="line.55">        ROLE_TO_ROLE,ROLE_TO_TEMPLATE,TEMPLATE_TO_ROLE,TEMPLATE_TO_TEMPLATE;</a>
+<span class="sourceLineNo">056</span><a id="line.56">    }</a>
+<span class="sourceLineNo">057</span><a id="line.57"></a>
+<span class="sourceLineNo">058</span><a id="line.58">    public static final String ROOT = ":archiva:node:root";</a>
+<span class="sourceLineNo">059</span><a id="line.59"></a>
+<span class="sourceLineNo">060</span><a id="line.60">    private static final Logger log = LoggerFactory.getLogger(RoleModelUtils.class);</a>
+<span class="sourceLineNo">061</span><a id="line.61"></a>
+<span class="sourceLineNo">062</span><a id="line.62">    public static List&lt;ModelRole&gt; getRoles( RedbackRoleModel model )</a>
+<span class="sourceLineNo">063</span><a id="line.63">    {</a>
+<span class="sourceLineNo">064</span><a id="line.64">        List&lt;ModelRole&gt; roleList = new ArrayList&lt;ModelRole&gt;( );</a>
+<span class="sourceLineNo">065</span><a id="line.65"></a>
+<span class="sourceLineNo">066</span><a id="line.66">        for ( ModelApplication application : model.getApplications() )</a>
+<span class="sourceLineNo">067</span><a id="line.67">        {</a>
+<span class="sourceLineNo">068</span><a id="line.68">            roleList.addAll( application.getRoles() );</a>
+<span class="sourceLineNo">069</span><a id="line.69">        }</a>
+<span class="sourceLineNo">070</span><a id="line.70"></a>
+<span class="sourceLineNo">071</span><a id="line.71">        return roleList;</a>
+<span class="sourceLineNo">072</span><a id="line.72">    }</a>
+<span class="sourceLineNo">073</span><a id="line.73"></a>
+<span class="sourceLineNo">074</span><a id="line.74">    public static List&lt;ModelTemplate&gt; getTemplates( RedbackRoleModel model )</a>
+<span class="sourceLineNo">075</span><a id="line.75">    {</a>
+<span class="sourceLineNo">076</span><a id="line.76">        List&lt;ModelTemplate&gt; templateList = new ArrayList&lt;ModelTemplate&gt;();</a>
+<span class="sourceLineNo">077</span><a id="line.77"></a>
+<span class="sourceLineNo">078</span><a id="line.78">        for ( ModelApplication application : model.getApplications() )</a>
+<span class="sourceLineNo">079</span><a id="line.79">        {</a>
+<span class="sourceLineNo">080</span><a id="line.80">            templateList.addAll( application.getTemplates() );</a>
+<span class="sourceLineNo">081</span><a id="line.81">        }</a>
+<span class="sourceLineNo">082</span><a id="line.82"></a>
+<span class="sourceLineNo">083</span><a id="line.83">        return templateList;</a>
+<span class="sourceLineNo">084</span><a id="line.84">    }</a>
+<span class="sourceLineNo">085</span><a id="line.85"></a>
+<span class="sourceLineNo">086</span><a id="line.86">    @SuppressWarnings( "unchecked" )</a>
+<span class="sourceLineNo">087</span><a id="line.87">    public static List&lt;String&gt; getOperationIdList( RedbackRoleModel model )</a>
+<span class="sourceLineNo">088</span><a id="line.88">    {</a>
+<span class="sourceLineNo">089</span><a id="line.89">        List&lt;String&gt; operationsIdList = new ArrayList&lt;String&gt;();</a>
+<span class="sourceLineNo">090</span><a id="line.90"></a>
+<span class="sourceLineNo">091</span><a id="line.91">        for ( ModelApplication application : model.getApplications() )</a>
+<span class="sourceLineNo">092</span><a id="line.92">        {</a>
+<span class="sourceLineNo">093</span><a id="line.93">            for ( ModelOperation operation : application.getOperations() )</a>
+<span class="sourceLineNo">094</span><a id="line.94">            {</a>
+<span class="sourceLineNo">095</span><a id="line.95">                operationsIdList.add( operation.getId() );</a>
+<span class="sourceLineNo">096</span><a id="line.96">            }</a>
+<span class="sourceLineNo">097</span><a id="line.97">        }</a>
+<span class="sourceLineNo">098</span><a id="line.98"></a>
+<span class="sourceLineNo">099</span><a id="line.99">        return operationsIdList;</a>
+<span class="sourceLineNo">100</span><a id="line.100">    }</a>
+<span class="sourceLineNo">101</span><a id="line.101"></a>
+<span class="sourceLineNo">102</span><a id="line.102">    @SuppressWarnings( "unchecked" )</a>
+<span class="sourceLineNo">103</span><a id="line.103">    public static List&lt;String&gt; getResourceIdList( RedbackRoleModel model )</a>
+<span class="sourceLineNo">104</span><a id="line.104">    {</a>
+<span class="sourceLineNo">105</span><a id="line.105">        List&lt;String&gt; resourceIdList = new ArrayList&lt;String&gt;();</a>
+<span class="sourceLineNo">106</span><a id="line.106"></a>
+<span class="sourceLineNo">107</span><a id="line.107">        for ( ModelApplication application : model.getApplications() )</a>
+<span class="sourceLineNo">108</span><a id="line.108">        {</a>
+<span class="sourceLineNo">109</span><a id="line.109">            for ( ModelResource resource : application.getResources() )</a>
+<span class="sourceLineNo">110</span><a id="line.110">            {</a>
+<span class="sourceLineNo">111</span><a id="line.111">                resourceIdList.add( resource.getId() );</a>
+<span class="sourceLineNo">112</span><a id="line.112">            }</a>
+<span class="sourceLineNo">113</span><a id="line.113">        }</a>
+<span class="sourceLineNo">114</span><a id="line.114"></a>
+<span class="sourceLineNo">115</span><a id="line.115">        return resourceIdList;</a>
+<span class="sourceLineNo">116</span><a id="line.116">    }</a>
+<span class="sourceLineNo">117</span><a id="line.117"></a>
+<span class="sourceLineNo">118</span><a id="line.118">    public static List&lt;String&gt; getRoleIdList( RedbackRoleModel model )</a>
+<span class="sourceLineNo">119</span><a id="line.119">    {</a>
+<span class="sourceLineNo">120</span><a id="line.120">        List&lt;String&gt; roleIdList = new ArrayList&lt;String&gt;();</a>
+<span class="sourceLineNo">121</span><a id="line.121"></a>
+<span class="sourceLineNo">122</span><a id="line.122">        for ( ModelApplication application : model.getApplications() )</a>
+<span class="sourceLineNo">123</span><a id="line.123">        {</a>
+<span class="sourceLineNo">124</span><a id="line.124">            for ( ModelRole role : application.getRoles() )</a>
+<span class="sourceLineNo">125</span><a id="line.125">            {</a>
+<span class="sourceLineNo">126</span><a id="line.126">                roleIdList.add( role.getId() );</a>
+<span class="sourceLineNo">127</span><a id="line.127">            }</a>
+<span class="sourceLineNo">128</span><a id="line.128">        }</a>
+<span class="sourceLineNo">129</span><a id="line.129"></a>
+<span class="sourceLineNo">130</span><a id="line.130">        return roleIdList;</a>
+<span class="sourceLineNo">131</span><a id="line.131">    }</a>
+<span class="sourceLineNo">132</span><a id="line.132"></a>
+<span class="sourceLineNo">133</span><a id="line.133"></a>
+<span class="sourceLineNo">134</span><a id="line.134">    public static List&lt;String&gt; getTemplateIdList( RedbackRoleModel model )</a>
+<span class="sourceLineNo">135</span><a id="line.135">    {</a>
+<span class="sourceLineNo">136</span><a id="line.136">        List&lt;String&gt; templateIdList = new ArrayList&lt;String&gt;();</a>
+<span class="sourceLineNo">137</span><a id="line.137"></a>
+<span class="sourceLineNo">138</span><a id="line.138">        for ( ModelApplication application : model.getApplications() )</a>
+<span class="sourceLineNo">139</span><a id="line.139">        {</a>
+<span class="sourceLineNo">140</span><a id="line.140">            for ( ModelTemplate template : application.getTemplates() )</a>
+<span class="sourceLineNo">141</span><a id="line.141">            {</a>
+<span class="sourceLineNo">142</span><a id="line.142">                templateIdList.add( template.getId() );</a>
+<span class="sourceLineNo">143</span><a id="line.143">            }</a>
+<span class="sourceLineNo">144</span><a id="line.144">        }</a>
+<span class="sourceLineNo">145</span><a id="line.145"></a>
+<span class="sourceLineNo">146</span><a id="line.146">        return templateIdList;</a>
+<span class="sourceLineNo">147</span><a id="line.147"></a>
+<span class="sourceLineNo">148</span><a id="line.148">    }</a>
+<span class="sourceLineNo">149</span><a id="line.149"></a>
+<span class="sourceLineNo">150</span><a id="line.150">    /**</a>
+<span class="sourceLineNo">151</span><a id="line.151">     * WARNING: can return null</a>
+<span class="sourceLineNo">152</span><a id="line.152">     *</a>
+<span class="sourceLineNo">153</span><a id="line.153">     * @param model</a>
+<span class="sourceLineNo">154</span><a id="line.154">     * @param roleId</a>
+<span class="sourceLineNo">155</span><a id="line.155">     * @return</a>
+<span class="sourceLineNo">156</span><a id="line.156">     */</a>
+<span class="sourceLineNo">157</span><a id="line.157">    @SuppressWarnings( "unchecked" )</a>
+<span class="sourceLineNo">158</span><a id="line.158">    public static ModelRole getModelRole( RedbackRoleModel model, String roleId )</a>
+<span class="sourceLineNo">159</span><a id="line.159">    {</a>
+<span class="sourceLineNo">160</span><a id="line.160">        ModelRole mrole = null;</a>
+<span class="sourceLineNo">161</span><a id="line.161"></a>
+<span class="sourceLineNo">162</span><a id="line.162">        for ( ModelApplication application : model.getApplications() )</a>
+<span class="sourceLineNo">163</span><a id="line.163">        {</a>
+<span class="sourceLineNo">164</span><a id="line.164">            for ( ModelRole role : application.getRoles() )</a>
+<span class="sourceLineNo">165</span><a id="line.165">            {</a>
+<span class="sourceLineNo">166</span><a id="line.166">                if ( roleId.equals( role.getId() ) )</a>
+<span class="sourceLineNo">167</span><a id="line.167">                {</a>
+<span class="sourceLineNo">168</span><a id="line.168">                    mrole = role;</a>
+<span class="sourceLineNo">169</span><a id="line.169">                }</a>
+<span class="sourceLineNo">170</span><a id="line.170">            }</a>
+<span class="sourceLineNo">171</span><a id="line.171">        }</a>
+<span class="sourceLineNo">172</span><a id="line.172"></a>
+<span class="sourceLineNo">173</span><a id="line.173">        return mrole;</a>
+<span class="sourceLineNo">174</span><a id="line.174">    }</a>
+<span class="sourceLineNo">175</span><a id="line.175"></a>
+<span class="sourceLineNo">176</span><a id="line.176">    /**</a>
+<span class="sourceLineNo">177</span><a id="line.177">     * WARNING: can return null</a>
+<span class="sourceLineNo">178</span><a id="line.178">     *</a>
+<span class="sourceLineNo">179</span><a id="line.179">     * @param model</a>
+<span class="sourceLineNo">180</span><a id="line.180">     * @param templateId</a>
+<span class="sourceLineNo">181</span><a id="line.181">     * @return</a>
+<span class="sourceLineNo">182</span><a id="line.182">     */</a>
+<span class="sourceLineNo">183</span><a id="line.183">    @SuppressWarnings( "unchecked" )</a>
+<span class="sourceLineNo">184</span><a id="line.184">    public static ModelTemplate getModelTemplate( RedbackRoleModel model, String templateId )</a>
+<span class="sourceLineNo">185</span><a id="line.185">    {</a>
+<span class="sourceLineNo">186</span><a id="line.186">        ModelTemplate mtemplate = null;</a>
+<span class="sourceLineNo">187</span><a id="line.187"></a>
+<span class="sourceLineNo">188</span><a id="line.188">        for ( ModelApplication application : model.getApplications() )</a>
+<span class="sourceLineNo">189</span><a id="line.189">        {</a>
+<span class="sourceLineNo">190</span><a id="line.190">            for ( ModelTemplate template : application.getTemplates() )</a>
+<span class="sourceLineNo">191</span><a id="line.191">            {</a>
+<span class="sourceLineNo">192</span><a id="line.192">                if ( templateId.equals( template.getId() ) )</a>
+<span class="sourceLineNo">193</span><a id="line.193">                {</a>
+<span class="sourceLineNo">194</span><a id="line.194">                    mtemplate = template;</a>
+<span class="sourceLineNo">195</span><a id="line.195">                }</a>
+<span class="sourceLineNo">196</span><a id="line.196">            }</a>
+<span class="sourceLineNo">197</span><a id="line.197">        }</a>
+<span class="sourceLineNo">198</span><a id="line.198"></a>
+<span class="sourceLineNo">199</span><a id="line.199">        return mtemplate;</a>
+<span class="sourceLineNo">200</span><a id="line.200">    }</a>
+<span class="sourceLineNo">201</span><a id="line.201"></a>
+<span class="sourceLineNo">202</span><a id="line.202">    /**</a>
+<span class="sourceLineNo">203</span><a id="line.203">     * WARNING: can return null</a>
+<span class="sourceLineNo">204</span><a id="line.204">     *</a>
+<span class="sourceLineNo">205</span><a id="line.205">     * @param model</a>
+<span class="sourceLineNo">206</span><a id="line.206">     * @param operationId</a>
+<span class="sourceLineNo">207</span><a id="line.207">     * @return</a>
+<span class="sourceLineNo">208</span><a id="line.208">     */</a>
+<span class="sourceLineNo">209</span><a id="line.209">    @SuppressWarnings( "unchecked" )</a>
+<span class="sourceLineNo">210</span><a id="line.210">    public static ModelOperation getModelOperation( RedbackRoleModel model, String operationId )</a>
+<span class="sourceLineNo">211</span><a id="line.211">    {</a>
+<span class="sourceLineNo">212</span><a id="line.212">        ModelOperation moperation = null;</a>
+<span class="sourceLineNo">213</span><a id="line.213"></a>
+<span class="sourceLineNo">214</span><a id="line.214">        for ( ModelApplication application : model.getApplications() )</a>
+<span class="sourceLineNo">215</span><a id="line.215">        {</a>
+<span class="sourceLineNo">216</span><a id="line.216">            for ( ModelOperation operation : application.getOperations() )</a>
+<span class="sourceLineNo">217</span><a id="line.217">            {</a>
+<span class="sourceLineNo">218</span><a id="line.218">                if ( operationId.equals( operation.getId() ) )</a>
+<span class="sourceLineNo">219</span><a id="line.219">                {</a>
+<span class="sourceLineNo">220</span><a id="line.220">                    moperation = operation;</a>
+<span class="sourceLineNo">221</span><a id="line.221">                }</a>
+<span class="sourceLineNo">222</span><a id="line.222">            }</a>
+<span class="sourceLineNo">223</span><a id="line.223">        }</a>
+<span class="sourceLineNo">224</span><a id="line.224"></a>
+<span class="sourceLineNo">225</span><a id="line.225">        return moperation;</a>
+<span class="sourceLineNo">226</span><a id="line.226">    }</a>
+<span class="sourceLineNo">227</span><a id="line.227"></a>
+<span class="sourceLineNo">228</span><a id="line.228">    @SuppressWarnings( "unchecked" )</a>
+<span class="sourceLineNo">229</span><a id="line.229">    public static ModelResource getModelResource( RedbackRoleModel model, String resourceId )</a>
+<span class="sourceLineNo">230</span><a id="line.230">    {</a>
+<span class="sourceLineNo">231</span><a id="line.231">        ModelResource mresource = null;</a>
+<span class="sourceLineNo">232</span><a id="line.232"></a>
+<span class="sourceLineNo">233</span><a id="line.233">        for ( ModelApplication application : model.getApplications() )</a>
+<span class="sourceLineNo">234</span><a id="line.234">        {</a>
+<span class="sourceLineNo">235</span><a id="line.235">            for ( ModelResource resource : application.getResources() )</a>
+<span class="sourceLineNo">236</span><a id="line.236">            {</a>
+<span class="sourceLineNo">237</span><a id="line.237">                if ( resourceId.equals( resource.getId() ) )</a>
+<span class="sourceLineNo">238</span><a id="line.238">                {</a>
+<span class="sourceLineNo">239</span><a id="line.239">                    mresource = resource;</a>
+<span class="sourceLineNo">240</span><a id="line.240">                }</a>
+<span class="sourceLineNo">241</span><a id="line.241">            }</a>
+<span class="sourceLineNo">242</span><a id="line.242">        }</a>
+<span class="sourceLineNo">243</span><a id="line.243"></a>
+<span class="sourceLineNo">244</span><a id="line.244">        return mresource;</a>
+<span class="sourceLineNo">245</span><a id="line.245">    }</a>
+<span class="sourceLineNo">246</span><a id="line.246"></a>
+<span class="sourceLineNo">247</span><a id="line.247">    @SuppressWarnings( "unchecked" )</a>
+<span class="sourceLineNo">248</span><a id="line.248">    public static SimpleGraph generateRoleGraph(RedbackRoleModel model )</a>
+<span class="sourceLineNo">249</span><a id="line.249"></a>
+<span class="sourceLineNo">250</span><a id="line.250">    {</a>
+<span class="sourceLineNo">251</span><a id="line.251">        SimpleGraph roleGraph = new SimpleGraph();</a>
+<span class="sourceLineNo">252</span><a id="line.252">        SimpleNode rootNode = roleGraph.addNode(ROOT, ROOT);</a>
+<span class="sourceLineNo">253</span><a id="line.253"></a>
+<span class="sourceLineNo">254</span><a id="line.254">        log.debug("Created graph with root {}", rootNode);</a>
+<span class="sourceLineNo">255</span><a id="line.255"></a>
+<span class="sourceLineNo">256</span><a id="line.256">        for ( ModelApplication application : model.getApplications() )</a>
+<span class="sourceLineNo">257</span><a id="line.257">        {</a>
+<span class="sourceLineNo">258</span><a id="line.258">            log.debug("Application {}", application.getId());</a>
+<span class="sourceLineNo">259</span><a id="line.259">            for ( ModelRole role : application.getRoles() )</a>
+<span class="sourceLineNo">260</span><a id="line.260">            {</a>
+<span class="sourceLineNo">261</span><a id="line.261">                final String roleId = role.getId();</a>
+<span class="sourceLineNo">262</span><a id="line.262">                SimpleNode roleNode = roleGraph.addNode(roleId, roleId);</a>
+<span class="sourceLineNo">263</span><a id="line.263">                roleNode.addCategory(RoleType.ROLE);</a>
+<span class="sourceLineNo">264</span><a id="line.264">                if (role.getParentRoles()==null || role.getParentRoles().size()==0) {</a>
+<span class="sourceLineNo">265</span><a id="line.265">                    // We add it to the root node only, if it has no parent roles</a>
+<span class="sourceLineNo">266</span><a id="line.266">                    roleGraph.addEdge("root:" + roleId, "root -&gt; " + roleId, rootNode, roleNode);</a>
+<span class="sourceLineNo">267</span><a id="line.267">                }</a>
+<span class="sourceLineNo">268</span><a id="line.268"></a>
+<span class="sourceLineNo">269</span><a id="line.269">                if ( role.getChildRoles() != null )</a>
+<span class="sourceLineNo">270</span><a id="line.270">                {</a>
+<span class="sourceLineNo">271</span><a id="line.271">                    for ( String childRole : role.getChildRoles() )</a>
+<span class="sourceLineNo">272</span><a id="line.272">                    {</a>
+<span class="sourceLineNo">273</span><a id="line.273">                        SimpleNode childNode = roleGraph.addNode(childRole, childRole);</a>
+<span class="sourceLineNo">274</span><a id="line.274">                        childNode.addCategory(RoleType.ROLE);</a>
+<span class="sourceLineNo">275</span><a id="line.275">                        roleGraph.addEdge( RoleRelation.ROLE_TO_ROLE, roleId+":"+childRole,</a>
+<span class="sourceLineNo">276</span><a id="line.276">                                roleId+" -&gt; "+childRole, roleNode, childNode );</a>
+<span class="sourceLineNo">277</span><a id="line.277"></a>
+<span class="sourceLineNo">278</span><a id="line.278">                    }</a>
+<span class="sourceLineNo">279</span><a id="line.279">                }</a>
+<span class="sourceLineNo">280</span><a id="line.280"></a>
+<span class="sourceLineNo">281</span><a id="line.281">                if ( role.getParentRoles() != null )</a>
+<span class="sourceLineNo">282</span><a id="line.282">                {</a>
+<span class="sourceLineNo">283</span><a id="line.283">                    for ( String parentRole : role.getParentRoles() )</a>
+<span class="sourceLineNo">284</span><a id="line.284">                    {</a>
+<span class="sourceLineNo">285</span><a id="line.285">                        SimpleNode parentNode = roleGraph.addNode( parentRole, parentRole );</a>
+<span class="sourceLineNo">286</span><a id="line.286">                        parentNode.addCategory(RoleType.ROLE);</a>
+<span class="sourceLineNo">287</span><a id="line.287">                        roleGraph.addEdge( RoleRelation.ROLE_TO_ROLE, parentRole+":"+roleId,</a>
+<span class="sourceLineNo">288</span><a id="line.288">                                parentRole + " -&gt; "+ roleId, parentNode, roleNode);</a>
+<span class="sourceLineNo">289</span><a id="line.289">                    }</a>
+<span class="sourceLineNo">290</span><a id="line.290">                }</a>
+<span class="sourceLineNo">291</span><a id="line.291">            }</a>
+<span class="sourceLineNo">292</span><a id="line.292">        }</a>
+<span class="sourceLineNo">293</span><a id="line.293"></a>
+<span class="sourceLineNo">294</span><a id="line.294">        return roleGraph;</a>
+<span class="sourceLineNo">295</span><a id="line.295">    }</a>
+<span class="sourceLineNo">296</span><a id="line.296"></a>
+<span class="sourceLineNo">297</span><a id="line.297">    @SuppressWarnings( "unchecked" )</a>
+<span class="sourceLineNo">298</span><a id="line.298">    public static SimpleGraph generateTemplateGraph( RedbackRoleModel model )</a>
+<span class="sourceLineNo">299</span><a id="line.299"></a>
+<span class="sourceLineNo">300</span><a id="line.300">    {</a>
+<span class="sourceLineNo">301</span><a id="line.301">        SimpleGraph templateGraph = generateRoleGraph( model );</a>
+<span class="sourceLineNo">302</span><a id="line.302">        SimpleNode rootNode = templateGraph.getNode(ROOT);</a>
+<span class="sourceLineNo">303</span><a id="line.303"></a>
+<span class="sourceLineNo">304</span><a id="line.304">        for ( ModelApplication application : model.getApplications() )</a>
+<span class="sourceLineNo">305</span><a id="line.305">        {</a>
+<span class="sourceLineNo">306</span><a id="line.306">            for ( ModelTemplate template : application.getTemplates() )</a>
+<span class="sourceLineNo">307</span><a id="line.307">            {</a>
+<span class="sourceLineNo">308</span><a id="line.308">                final String templId = template.getId();</a>
+<span class="sourceLineNo">309</span><a id="line.309">                SimpleNode templateNode = templateGraph.addNode(templId, templId);</a>
+<span class="sourceLineNo">310</span><a id="line.310">                templateNode.addCategory(RoleType.TEMPLATE);</a>
+<span class="sourceLineNo">311</span><a id="line.311">                if ((template.getParentRoles() == null || template.getParentRoles().size()==0)</a>
+<span class="sourceLineNo">312</span><a id="line.312">                &amp;&amp; ( template.getParentTemplates() == null || template.getParentTemplates().size()==0) ) {</a>
+<span class="sourceLineNo">313</span><a id="line.313">                    templateGraph.addEdge("root:" + templId, "root -&gt; " + templId, rootNode, templateNode);</a>
+<span class="sourceLineNo">314</span><a id="line.314">                }</a>
+<span class="sourceLineNo">315</span><a id="line.315"></a>
+<span class="sourceLineNo">316</span><a id="line.316">                if ( template.getChildRoles() != null )</a>
+<span class="sourceLineNo">317</span><a id="line.317">                {</a>
+<span class="sourceLineNo">318</span><a id="line.318">                    for ( String childRole : template.getChildRoles() )</a>
+<span class="sourceLineNo">319</span><a id="line.319">                    {</a>
+<span class="sourceLineNo">320</span><a id="line.320">                        SimpleNode childNode = templateGraph.addNode(childRole, childRole);</a>
+<span class="sourceLineNo">321</span><a id="line.321">                        childNode.addCategory(RoleType.ROLE);</a>
+<span class="sourceLineNo">322</span><a id="line.322">                        templateGraph.addEdge( RoleRelation.TEMPLATE_TO_ROLE, templId+":"+childNode, templId+" -&gt; "+childNode, templateNode, childNode );</a>
+<span class="sourceLineNo">323</span><a id="line.323">                    }</a>
+<span class="sourceLineNo">324</span><a id="line.324">                }</a>
+<span class="sourceLineNo">325</span><a id="line.325"></a>
+<span class="sourceLineNo">326</span><a id="line.326">                if ( template.getParentRoles() != null )</a>
+<span class="sourceLineNo">327</span><a id="line.327">                {</a>
+<span class="sourceLineNo">328</span><a id="line.328">                    for ( String parentRole : template.getParentRoles() )</a>
+<span class="sourceLineNo">329</span><a id="line.329">                    {</a>
+<span class="sourceLineNo">330</span><a id="line.330">                        SimpleNode parentNode = templateGraph.addNode(parentRole, parentRole);</a>
+<span class="sourceLineNo">331</span><a id="line.331">                        parentNode.addCategory(RoleType.ROLE);</a>
+<span class="sourceLineNo">332</span><a id="line.332">                        templateGraph.addEdge( RoleRelation.ROLE_TO_TEMPLATE, parentRole+":"+templId,</a>
+<span class="sourceLineNo">333</span><a id="line.333">                                parentRole+" -&gt; "+templId, parentNode, templateNode);</a>
+<span class="sourceLineNo">334</span><a id="line.334">                    }</a>
+<span class="sourceLineNo">335</span><a id="line.335">                }</a>
+<span class="sourceLineNo">336</span><a id="line.336"></a>
+<span class="sourceLineNo">337</span><a id="line.337">                if ( template.getChildTemplates() != null )</a>
+<span class="sourceLineNo">338</span><a id="line.338">                {</a>
+<span class="sourceLineNo">339</span><a id="line.339">                    for ( String childTemplate : template.getChildTemplates() )</a>
+<span class="sourceLineNo">340</span><a id="line.340">                    {</a>
+<span class="sourceLineNo">341</span><a id="line.341">                        SimpleNode childTemplNode = templateGraph.addNode(childTemplate, childTemplate);</a>
+<span class="sourceLineNo">342</span><a id="line.342">                        childTemplNode.addCategory(RoleType.TEMPLATE);</a>
+<span class="sourceLineNo">343</span><a id="line.343">                        templateGraph.addEdge( RoleRelation.TEMPLATE_TO_TEMPLATE, templId+":"+childTemplate,</a>
+<span class="sourceLineNo">344</span><a id="line.344">                                templId+" -&gt; "+childTemplate, templateNode, childTemplNode);</a>
+<span class="sourceLineNo">345</span><a id="line.345">                    }</a>
+<span class="sourceLineNo">346</span><a id="line.346">                }</a>
+<span class="sourceLineNo">347</span><a id="line.347"></a>
+<span class="sourceLineNo">348</span><a id="line.348">                if ( template.getParentTemplates() != null )</a>
+<span class="sourceLineNo">349</span><a id="line.349">                {</a>
+<span class="sourceLineNo">350</span><a id="line.350">                    for ( String parentTemplate : template.getParentTemplates() )</a>
+<span class="sourceLineNo">351</span><a id="line.351">                    {</a>
+<span class="sourceLineNo">352</span><a id="line.352">                        SimpleNode parentTemplNode = templateGraph.addNode( parentTemplate, parentTemplate );</a>
+<span class="sourceLineNo">353</span><a id="line.353">                        parentTemplNode.addCategory(RoleType.TEMPLATE);</a>
+<span class="sourceLineNo">354</span><a id="line.354">                        templateGraph.addEdge( RoleRelation.TEMPLATE_TO_TEMPLATE,</a>
+<span class="sourceLineNo">355</span><a id="line.355">                                parentTemplate+":"+templId, parentTemplate+" -&gt; "+templId,</a>
+<span class="sourceLineNo">356</span><a id="line.356">                                parentTemplNode, templateNode);</a>
+<span class="sourceLineNo">357</span><a id="line.357">                    }</a>
+<span class="sourceLineNo">358</span><a id="line.358">                }</a>
+<span class="sourceLineNo">359</span><a id="line.359">            }</a>
+<span class="sourceLineNo">360</span><a id="line.360">        }</a>
+<span class="sourceLineNo">361</span><a id="line.361"></a>
+<span class="sourceLineNo">362</span><a id="line.362">        return templateGraph;</a>
+<span class="sourceLineNo">363</span><a id="line.363">    }</a>
+<span class="sourceLineNo">364</span><a id="line.364"></a>
+<span class="sourceLineNo">365</span><a id="line.365">    @SuppressWarnings( "unchecked" )</a>
+<span class="sourceLineNo">366</span><a id="line.366">    public static List&lt;String&gt; reverseTopologicalSortedRoleList( RedbackRoleModel model )</a>
+<span class="sourceLineNo">367</span><a id="line.367">    {</a>
+<span class="sourceLineNo">368</span><a id="line.368">        SimpleGraph graph = generateRoleGraph(model);</a>
+<span class="sourceLineNo">369</span><a id="line.369">        List&lt;String&gt; sortedGraph = Traversal.topologialSort(graph.getNode(ROOT)).stream().map(n -&gt; n.getId())</a>
+<span class="sourceLineNo">370</span><a id="line.370">                .filter(id -&gt; !ROOT.equals(id)).collect(Collectors.toList());</a>
+<span class="sourceLineNo">371</span><a id="line.371">        Collections.reverse(sortedGraph);</a>
+<span class="sourceLineNo">372</span><a id="line.372">        return sortedGraph;</a>
+<span class="sourceLineNo">373</span><a id="line.373">    }</a>
+<span class="sourceLineNo">374</span><a id="line.374"></a>
+<span class="sourceLineNo">375</span><a id="line.375">    public static String getRoleId( String templateId, String resource) {</a>
+<span class="sourceLineNo">376</span><a id="line.376">        return templateId + "." + resource;</a>
+<span class="sourceLineNo">377</span><a id="line.377">    }</a>
+<span class="sourceLineNo">378</span><a id="line.378"></a>
+<span class="sourceLineNo">379</span><a id="line.379">}</a>
 
 
 
@@ -443,5 +448,6 @@
 
 </pre>
 </div>
+</main>
 </body>
 </html>

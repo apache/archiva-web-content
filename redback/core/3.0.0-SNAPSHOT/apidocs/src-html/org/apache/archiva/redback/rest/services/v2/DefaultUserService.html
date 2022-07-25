@@ -1,0 +1,1382 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<main role="main">
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span><a id="line.1">package org.apache.archiva.redback.rest.services.v2;</a>
+<span class="sourceLineNo">002</span><a id="line.2"></a>
+<span class="sourceLineNo">003</span><a id="line.3">/*</a>
+<span class="sourceLineNo">004</span><a id="line.4"> * Licensed to the Apache Software Foundation (ASF) under one</a>
+<span class="sourceLineNo">005</span><a id="line.5"> * or more contributor license agreements.  See the NOTICE file</a>
+<span class="sourceLineNo">006</span><a id="line.6"> * distributed with this work for additional information</a>
+<span class="sourceLineNo">007</span><a id="line.7"> * regarding copyright ownership.  The ASF licenses this file</a>
+<span class="sourceLineNo">008</span><a id="line.8"> * to you under the Apache License, Version 2.0 (the</a>
+<span class="sourceLineNo">009</span><a id="line.9"> * "License"); you may not use this file except in compliance</a>
+<span class="sourceLineNo">010</span><a id="line.10"> * with the License.  You may obtain a copy of the License at</a>
+<span class="sourceLineNo">011</span><a id="line.11"> *</a>
+<span class="sourceLineNo">012</span><a id="line.12"> * http://www.apache.org/licenses/LICENSE-2.0</a>
+<span class="sourceLineNo">013</span><a id="line.13"> *</a>
+<span class="sourceLineNo">014</span><a id="line.14"> * Unless required by applicable law or agreed to in writing,</a>
+<span class="sourceLineNo">015</span><a id="line.15"> * software distributed under the License is distributed on an</a>
+<span class="sourceLineNo">016</span><a id="line.16"> * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</a>
+<span class="sourceLineNo">017</span><a id="line.17"> * KIND, either express or implied.  See the License for the</a>
+<span class="sourceLineNo">018</span><a id="line.18"> * specific language governing permissions and limitations</a>
+<span class="sourceLineNo">019</span><a id="line.19"> * under the License.</a>
+<span class="sourceLineNo">020</span><a id="line.20"> */</a>
+<span class="sourceLineNo">021</span><a id="line.21"></a>
+<span class="sourceLineNo">022</span><a id="line.22">import org.apache.archiva.components.cache.Cache;</a>
+<span class="sourceLineNo">023</span><a id="line.23">import org.apache.archiva.components.rest.model.PagedResult;</a>
+<span class="sourceLineNo">024</span><a id="line.24">import org.apache.archiva.redback.authentication.AuthenticationException;</a>
+<span class="sourceLineNo">025</span><a id="line.25">import org.apache.archiva.redback.authentication.Token;</a>
+<span class="sourceLineNo">026</span><a id="line.26">import org.apache.archiva.redback.authentication.TokenBasedAuthenticationDataSource;</a>
+<span class="sourceLineNo">027</span><a id="line.27">import org.apache.archiva.redback.authentication.jwt.JwtAuthenticator;</a>
+<span class="sourceLineNo">028</span><a id="line.28">import org.apache.archiva.redback.configuration.UserConfiguration;</a>
+<span class="sourceLineNo">029</span><a id="line.29">import org.apache.archiva.redback.configuration.UserConfigurationKeys;</a>
+<span class="sourceLineNo">030</span><a id="line.30">import org.apache.archiva.redback.integration.filter.authentication.HttpAuthenticator;</a>
+<span class="sourceLineNo">031</span><a id="line.31">import org.apache.archiva.redback.integration.mail.Mailer;</a>
+<span class="sourceLineNo">032</span><a id="line.32">import org.apache.archiva.redback.integration.security.role.RedbackRoleConstants;</a>
+<span class="sourceLineNo">033</span><a id="line.33">import org.apache.archiva.redback.keys.AuthenticationKey;</a>
+<span class="sourceLineNo">034</span><a id="line.34">import org.apache.archiva.redback.keys.KeyManager;</a>
+<span class="sourceLineNo">035</span><a id="line.35">import org.apache.archiva.redback.keys.KeyManagerException;</a>
+<span class="sourceLineNo">036</span><a id="line.36">import org.apache.archiva.redback.keys.KeyNotFoundException;</a>
+<span class="sourceLineNo">037</span><a id="line.37">import org.apache.archiva.redback.policy.AccountLockedException;</a>
+<span class="sourceLineNo">038</span><a id="line.38">import org.apache.archiva.redback.policy.MustChangePasswordException;</a>
+<span class="sourceLineNo">039</span><a id="line.39">import org.apache.archiva.redback.policy.PasswordEncoder;</a>
+<span class="sourceLineNo">040</span><a id="line.40">import org.apache.archiva.redback.policy.PasswordRuleViolationException;</a>
+<span class="sourceLineNo">041</span><a id="line.41">import org.apache.archiva.redback.policy.PasswordRuleViolations;</a>
+<span class="sourceLineNo">042</span><a id="line.42">import org.apache.archiva.redback.policy.UserSecurityPolicy;</a>
+<span class="sourceLineNo">043</span><a id="line.43">import org.apache.archiva.redback.rbac.RBACManager;</a>
+<span class="sourceLineNo">044</span><a id="line.44">import org.apache.archiva.redback.rbac.RbacManagerException;</a>
+<span class="sourceLineNo">045</span><a id="line.45">import org.apache.archiva.redback.rbac.Role;</a>
+<span class="sourceLineNo">046</span><a id="line.46">import org.apache.archiva.redback.rbac.UserAssignment;</a>
+<span class="sourceLineNo">047</span><a id="line.47">import org.apache.archiva.redback.rest.api.MessageKeys;</a>
+<span class="sourceLineNo">048</span><a id="line.48">import org.apache.archiva.redback.rest.api.model.ErrorMessage;</a>
+<span class="sourceLineNo">049</span><a id="line.49">import org.apache.archiva.redback.rest.api.model.v2.Application;</a>
+<span class="sourceLineNo">050</span><a id="line.50">import org.apache.archiva.redback.rest.api.model.v2.AvailabilityStatus;</a>
+<span class="sourceLineNo">051</span><a id="line.51">import org.apache.archiva.redback.rest.api.model.v2.BaseRoleInfo;</a>
+<span class="sourceLineNo">052</span><a id="line.52">import org.apache.archiva.redback.rest.api.model.v2.Operation;</a>
+<span class="sourceLineNo">053</span><a id="line.53">import org.apache.archiva.redback.rest.api.model.v2.PasswordChange;</a>
+<span class="sourceLineNo">054</span><a id="line.54">import org.apache.archiva.redback.rest.api.model.v2.Permission;</a>
+<span class="sourceLineNo">055</span><a id="line.55">import org.apache.archiva.redback.rest.api.model.v2.PingResult;</a>
+<span class="sourceLineNo">056</span><a id="line.56">import org.apache.archiva.redback.rest.api.model.v2.RegistrationKey;</a>
+<span class="sourceLineNo">057</span><a id="line.57">import org.apache.archiva.redback.rest.api.model.v2.Resource;</a>
+<span class="sourceLineNo">058</span><a id="line.58">import org.apache.archiva.redback.rest.api.model.v2.RoleInfo;</a>
+<span class="sourceLineNo">059</span><a id="line.59">import org.apache.archiva.redback.rest.api.model.v2.RoleTree;</a>
+<span class="sourceLineNo">060</span><a id="line.60">import org.apache.archiva.redback.rest.api.model.v2.SelfUserData;</a>
+<span class="sourceLineNo">061</span><a id="line.61">import org.apache.archiva.redback.rest.api.model.v2.User;</a>
+<span class="sourceLineNo">062</span><a id="line.62">import org.apache.archiva.redback.rest.api.model.v2.UserInfo;</a>
+<span class="sourceLineNo">063</span><a id="line.63">import org.apache.archiva.redback.rest.api.model.v2.UserRegistrationRequest;</a>
+<span class="sourceLineNo">064</span><a id="line.64">import org.apache.archiva.redback.rest.api.model.v2.VerificationStatus;</a>
+<span class="sourceLineNo">065</span><a id="line.65">import org.apache.archiva.redback.rest.api.services.RedbackServiceException;</a>
+<span class="sourceLineNo">066</span><a id="line.66">import org.apache.archiva.redback.rest.api.services.v2.UserService;</a>
+<span class="sourceLineNo">067</span><a id="line.67">import org.apache.archiva.redback.rest.services.RedbackAuthenticationThreadLocal;</a>
+<span class="sourceLineNo">068</span><a id="line.68">import org.apache.archiva.redback.rest.services.RedbackRequestInformation;</a>
+<span class="sourceLineNo">069</span><a id="line.69">import org.apache.archiva.redback.rest.services.interceptors.RedbackPrincipal;</a>
+<span class="sourceLineNo">070</span><a id="line.70">import org.apache.archiva.redback.rest.services.utils.PasswordValidator;</a>
+<span class="sourceLineNo">071</span><a id="line.71">import org.apache.archiva.redback.role.RoleManager;</a>
+<span class="sourceLineNo">072</span><a id="line.72">import org.apache.archiva.redback.role.RoleManagerException;</a>
+<span class="sourceLineNo">073</span><a id="line.73">import org.apache.archiva.redback.role.model.ModelApplication;</a>
+<span class="sourceLineNo">074</span><a id="line.74">import org.apache.archiva.redback.system.SecuritySession;</a>
+<span class="sourceLineNo">075</span><a id="line.75">import org.apache.archiva.redback.system.SecuritySystem;</a>
+<span class="sourceLineNo">076</span><a id="line.76">import org.apache.archiva.redback.users.UserManager;</a>
+<span class="sourceLineNo">077</span><a id="line.77">import org.apache.archiva.redback.users.UserManagerException;</a>
+<span class="sourceLineNo">078</span><a id="line.78">import org.apache.archiva.redback.users.UserNotFoundException;</a>
+<span class="sourceLineNo">079</span><a id="line.79">import org.apache.commons.lang3.StringUtils;</a>
+<span class="sourceLineNo">080</span><a id="line.80">import org.slf4j.Logger;</a>
+<span class="sourceLineNo">081</span><a id="line.81">import org.slf4j.LoggerFactory;</a>
+<span class="sourceLineNo">082</span><a id="line.82">import org.springframework.stereotype.Service;</a>
+<span class="sourceLineNo">083</span><a id="line.83"></a>
+<span class="sourceLineNo">084</span><a id="line.84">import javax.inject.Inject;</a>
+<span class="sourceLineNo">085</span><a id="line.85">import javax.inject.Named;</a>
+<span class="sourceLineNo">086</span><a id="line.86">import javax.mail.internet.AddressException;</a>
+<span class="sourceLineNo">087</span><a id="line.87">import javax.mail.internet.InternetAddress;</a>
+<span class="sourceLineNo">088</span><a id="line.88">import javax.servlet.http.HttpServletRequest;</a>
+<span class="sourceLineNo">089</span><a id="line.89">import javax.servlet.http.HttpServletResponse;</a>
+<span class="sourceLineNo">090</span><a id="line.90">import javax.ws.rs.core.Context;</a>
+<span class="sourceLineNo">091</span><a id="line.91">import javax.ws.rs.core.Response;</a>
+<span class="sourceLineNo">092</span><a id="line.92">import javax.ws.rs.core.SecurityContext;</a>
+<span class="sourceLineNo">093</span><a id="line.93">import javax.ws.rs.core.UriInfo;</a>
+<span class="sourceLineNo">094</span><a id="line.94">import java.security.Principal;</a>
+<span class="sourceLineNo">095</span><a id="line.95">import java.util.ArrayList;</a>
+<span class="sourceLineNo">096</span><a id="line.96">import java.util.Arrays;</a>
+<span class="sourceLineNo">097</span><a id="line.97">import java.util.Collection;</a>
+<span class="sourceLineNo">098</span><a id="line.98">import java.util.HashMap;</a>
+<span class="sourceLineNo">099</span><a id="line.99">import java.util.HashSet;</a>
+<span class="sourceLineNo">100</span><a id="line.100">import java.util.List;</a>
+<span class="sourceLineNo">101</span><a id="line.101">import java.util.Map;</a>
+<span class="sourceLineNo">102</span><a id="line.102">import java.util.Optional;</a>
+<span class="sourceLineNo">103</span><a id="line.103">import java.util.Set;</a>
+<span class="sourceLineNo">104</span><a id="line.104">import java.util.function.Function;</a>
+<span class="sourceLineNo">105</span><a id="line.105">import java.util.stream.Collectors;</a>
+<span class="sourceLineNo">106</span><a id="line.106">import java.util.stream.Stream;</a>
+<span class="sourceLineNo">107</span><a id="line.107"></a>
+<span class="sourceLineNo">108</span><a id="line.108">@Service( "v2.userService#rest" )</a>
+<span class="sourceLineNo">109</span><a id="line.109">public class DefaultUserService extends BaseRedbackService</a>
+<span class="sourceLineNo">110</span><a id="line.110">    implements UserService</a>
+<span class="sourceLineNo">111</span><a id="line.111">{</a>
+<span class="sourceLineNo">112</span><a id="line.112"></a>
+<span class="sourceLineNo">113</span><a id="line.113">    private final Logger log = LoggerFactory.getLogger( getClass( ) );</a>
+<span class="sourceLineNo">114</span><a id="line.114"></a>
+<span class="sourceLineNo">115</span><a id="line.115">    private static final String VALID_USERNAME_CHARS = "[a-zA-Z_0-9\\-.@]*";</a>
+<span class="sourceLineNo">116</span><a id="line.116">    private static final String[] INVALID_CREATE_USER_NAMES = {"admin", "guest", "me"};</a>
+<span class="sourceLineNo">117</span><a id="line.117"></a>
+<span class="sourceLineNo">118</span><a id="line.118"></a>
+<span class="sourceLineNo">119</span><a id="line.119">    private SecuritySystem securitySystem;</a>
+<span class="sourceLineNo">120</span><a id="line.120"></a>
+<span class="sourceLineNo">121</span><a id="line.121">    @Inject</a>
+<span class="sourceLineNo">122</span><a id="line.122">    @Named( value = "userConfiguration#default" )</a>
+<span class="sourceLineNo">123</span><a id="line.123">    private UserConfiguration config;</a>
+<span class="sourceLineNo">124</span><a id="line.124"></a>
+<span class="sourceLineNo">125</span><a id="line.125">    @Inject</a>
+<span class="sourceLineNo">126</span><a id="line.126">    private JwtAuthenticator jwtAuthenticator;</a>
+<span class="sourceLineNo">127</span><a id="line.127"></a>
+<span class="sourceLineNo">128</span><a id="line.128">    @Inject</a>
+<span class="sourceLineNo">129</span><a id="line.129">    private RoleManager roleManager;</a>
+<span class="sourceLineNo">130</span><a id="line.130"></a>
+<span class="sourceLineNo">131</span><a id="line.131">    /**</a>
+<span class="sourceLineNo">132</span><a id="line.132">     * cache used for user assignments</a>
+<span class="sourceLineNo">133</span><a id="line.133">     */</a>
+<span class="sourceLineNo">134</span><a id="line.134">    @Inject</a>
+<span class="sourceLineNo">135</span><a id="line.135">    @Named( value = "cache#userAssignments" )</a>
+<span class="sourceLineNo">136</span><a id="line.136">    private Cache&lt;String, ? extends UserAssignment&gt; userAssignmentsCache;</a>
+<span class="sourceLineNo">137</span><a id="line.137"></a>
+<span class="sourceLineNo">138</span><a id="line.138">    /**</a>
+<span class="sourceLineNo">139</span><a id="line.139">     * cache used for user permissions</a>
+<span class="sourceLineNo">140</span><a id="line.140">     */</a>
+<span class="sourceLineNo">141</span><a id="line.141">    @Inject</a>
+<span class="sourceLineNo">142</span><a id="line.142">    @Named( value = "cache#userPermissions" )</a>
+<span class="sourceLineNo">143</span><a id="line.143">    private Cache&lt;String, ? extends Permission&gt; userPermissionsCache;</a>
+<span class="sourceLineNo">144</span><a id="line.144"></a>
+<span class="sourceLineNo">145</span><a id="line.145">    /**</a>
+<span class="sourceLineNo">146</span><a id="line.146">     * Cache used for users</a>
+<span class="sourceLineNo">147</span><a id="line.147">     */</a>
+<span class="sourceLineNo">148</span><a id="line.148">    @Inject</a>
+<span class="sourceLineNo">149</span><a id="line.149">    @Named( value = "cache#users" )</a>
+<span class="sourceLineNo">150</span><a id="line.150">    private Cache&lt;String, ? extends User&gt; usersCache;</a>
+<span class="sourceLineNo">151</span><a id="line.151"></a>
+<span class="sourceLineNo">152</span><a id="line.152">    @Inject</a>
+<span class="sourceLineNo">153</span><a id="line.153">    private Mailer mailer;</a>
+<span class="sourceLineNo">154</span><a id="line.154"></a>
+<span class="sourceLineNo">155</span><a id="line.155"></a>
+<span class="sourceLineNo">156</span><a id="line.156">    @Inject</a>
+<span class="sourceLineNo">157</span><a id="line.157">    @Named( value = "v2.roleService#rest" )</a>
+<span class="sourceLineNo">158</span><a id="line.158">    private DefaultRoleService roleManagementService;</a>
+<span class="sourceLineNo">159</span><a id="line.159"></a>
+<span class="sourceLineNo">160</span><a id="line.160">    private HttpAuthenticator httpAuthenticator;</a>
+<span class="sourceLineNo">161</span><a id="line.161"></a>
+<span class="sourceLineNo">162</span><a id="line.162">    @Inject</a>
+<span class="sourceLineNo">163</span><a id="line.163">    private PasswordValidator passwordValidator;</a>
+<span class="sourceLineNo">164</span><a id="line.164"></a>
+<span class="sourceLineNo">165</span><a id="line.165">    @Context</a>
+<span class="sourceLineNo">166</span><a id="line.166">    private HttpServletRequest httpServletRequest;</a>
+<span class="sourceLineNo">167</span><a id="line.167"></a>
+<span class="sourceLineNo">168</span><a id="line.168">    @Context</a>
+<span class="sourceLineNo">169</span><a id="line.169">    private HttpServletResponse httpServletResponse;</a>
+<span class="sourceLineNo">170</span><a id="line.170"></a>
+<span class="sourceLineNo">171</span><a id="line.171">    @Context</a>
+<span class="sourceLineNo">172</span><a id="line.172">    private UriInfo uriInfo;</a>
+<span class="sourceLineNo">173</span><a id="line.173"></a>
+<span class="sourceLineNo">174</span><a id="line.174">    @Context</a>
+<span class="sourceLineNo">175</span><a id="line.175">    private SecurityContext securityContext;</a>
+<span class="sourceLineNo">176</span><a id="line.176"></a>
+<span class="sourceLineNo">177</span><a id="line.177">    @Inject</a>
+<span class="sourceLineNo">178</span><a id="line.178">    public DefaultUserService(@Named( value = "rbacManager#default" ) RBACManager rbacManager,</a>
+<span class="sourceLineNo">179</span><a id="line.179">                              @Named( value = "userManager#default" ) UserManager userManager ,</a>
+<span class="sourceLineNo">180</span><a id="line.180">                               SecuritySystem securitySystem )</a>
+<span class="sourceLineNo">181</span><a id="line.181">    {</a>
+<span class="sourceLineNo">182</span><a id="line.182">        super( rbacManager, userManager );</a>
+<span class="sourceLineNo">183</span><a id="line.183">        this.securitySystem = securitySystem;</a>
+<span class="sourceLineNo">184</span><a id="line.184">    }</a>
+<span class="sourceLineNo">185</span><a id="line.185"></a>
+<span class="sourceLineNo">186</span><a id="line.186">    RedbackPrincipal getPrincipal( )</a>
+<span class="sourceLineNo">187</span><a id="line.187">    {</a>
+<span class="sourceLineNo">188</span><a id="line.188">        if ( this.securityContext != null )</a>
+<span class="sourceLineNo">189</span><a id="line.189">        {</a>
+<span class="sourceLineNo">190</span><a id="line.190">            Principal pri = this.securityContext.getUserPrincipal( );</a>
+<span class="sourceLineNo">191</span><a id="line.191">            if ( pri != null &amp;&amp; pri instanceof RedbackPrincipal )</a>
+<span class="sourceLineNo">192</span><a id="line.192">            {</a>
+<span class="sourceLineNo">193</span><a id="line.193">                return (RedbackPrincipal) pri;</a>
+<span class="sourceLineNo">194</span><a id="line.194">            }</a>
+<span class="sourceLineNo">195</span><a id="line.195">        }</a>
+<span class="sourceLineNo">196</span><a id="line.196">        return null;</a>
+<span class="sourceLineNo">197</span><a id="line.197">    }</a>
+<span class="sourceLineNo">198</span><a id="line.198"></a>
+<span class="sourceLineNo">199</span><a id="line.199">    @Override</a>
+<span class="sourceLineNo">200</span><a id="line.200">    public UserInfo createUser( User user )</a>
+<span class="sourceLineNo">201</span><a id="line.201">        throws RedbackServiceException</a>
+<span class="sourceLineNo">202</span><a id="line.202">    {</a>
+<span class="sourceLineNo">203</span><a id="line.203">        if ( user == null )</a>
+<span class="sourceLineNo">204</span><a id="line.204">        {</a>
+<span class="sourceLineNo">205</span><a id="line.205">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_ID_EMPTY ), 422 );</a>
+<span class="sourceLineNo">206</span><a id="line.206">        }</a>
+<span class="sourceLineNo">207</span><a id="line.207">        UserInfo result;</a>
+<span class="sourceLineNo">208</span><a id="line.208">        if ( Arrays.binarySearch( INVALID_CREATE_USER_NAMES, user.getUserId( ) ) &gt;= 0 )</a>
+<span class="sourceLineNo">209</span><a id="line.209">        {</a>
+<span class="sourceLineNo">210</span><a id="line.210">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_ID_INVALID, user.getUserId( ) ), 422 );</a>
+<span class="sourceLineNo">211</span><a id="line.211">        }</a>
+<span class="sourceLineNo">212</span><a id="line.212"></a>
+<span class="sourceLineNo">213</span><a id="line.213">        try</a>
+<span class="sourceLineNo">214</span><a id="line.214">        {</a>
+<span class="sourceLineNo">215</span><a id="line.215">            org.apache.archiva.redback.users.User u = userManager.findUser( user.getUserId( ) );</a>
+<span class="sourceLineNo">216</span><a id="line.216">            if ( u != null )</a>
+<span class="sourceLineNo">217</span><a id="line.217">            {</a>
+<span class="sourceLineNo">218</span><a id="line.218">                httpServletResponse.setHeader( "Location", uriInfo.getAbsolutePathBuilder( ).path( u.getUsername( ) ).build( ).toString( ) );</a>
+<span class="sourceLineNo">219</span><a id="line.219">                throw new RedbackServiceException(</a>
+<span class="sourceLineNo">220</span><a id="line.220">                    ErrorMessage.of( MessageKeys.ERR_USER_EXISTS, user.getUserId( ) ), 303 );</a>
+<span class="sourceLineNo">221</span><a id="line.221">            }</a>
+<span class="sourceLineNo">222</span><a id="line.222">        }</a>
+<span class="sourceLineNo">223</span><a id="line.223">        catch ( UserNotFoundException e )</a>
+<span class="sourceLineNo">224</span><a id="line.224">        {</a>
+<span class="sourceLineNo">225</span><a id="line.225">            //ignore we just want to prevent non human readable error message from backend :-)</a>
+<span class="sourceLineNo">226</span><a id="line.226">            log.debug( "User {} does not exist", user.getUserId( ) );</a>
+<span class="sourceLineNo">227</span><a id="line.227">        }</a>
+<span class="sourceLineNo">228</span><a id="line.228">        catch ( UserManagerException e )</a>
+<span class="sourceLineNo">229</span><a id="line.229">        {</a>
+<span class="sourceLineNo">230</span><a id="line.230">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_UNKNOWN, e.getMessage( ) ) );</a>
+<span class="sourceLineNo">231</span><a id="line.231">        }</a>
+<span class="sourceLineNo">232</span><a id="line.232"></a>
+<span class="sourceLineNo">233</span><a id="line.233">        // data validation</a>
+<span class="sourceLineNo">234</span><a id="line.234">        if ( StringUtils.isEmpty( user.getUserId( ) ) )</a>
+<span class="sourceLineNo">235</span><a id="line.235">        {</a>
+<span class="sourceLineNo">236</span><a id="line.236">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_ID_EMPTY ), 422 );</a>
+<span class="sourceLineNo">237</span><a id="line.237">        }</a>
+<span class="sourceLineNo">238</span><a id="line.238"></a>
+<span class="sourceLineNo">239</span><a id="line.239">        if ( StringUtils.isEmpty( user.getFullName( ) ) )</a>
+<span class="sourceLineNo">240</span><a id="line.240">        {</a>
+<span class="sourceLineNo">241</span><a id="line.241">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_FULL_NAME_EMPTY ), 422 );</a>
+<span class="sourceLineNo">242</span><a id="line.242">        }</a>
+<span class="sourceLineNo">243</span><a id="line.243"></a>
+<span class="sourceLineNo">244</span><a id="line.244">        if ( StringUtils.isEmpty( user.getEmail( ) ) )</a>
+<span class="sourceLineNo">245</span><a id="line.245">        {</a>
+<span class="sourceLineNo">246</span><a id="line.246">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_EMAIL_EMPTY ), 422 );</a>
+<span class="sourceLineNo">247</span><a id="line.247">        }</a>
+<span class="sourceLineNo">248</span><a id="line.248"></a>
+<span class="sourceLineNo">249</span><a id="line.249">        try</a>
+<span class="sourceLineNo">250</span><a id="line.250">        {</a>
+<span class="sourceLineNo">251</span><a id="line.251"></a>
+<span class="sourceLineNo">252</span><a id="line.252">            org.apache.archiva.redback.users.User u =</a>
+<span class="sourceLineNo">253</span><a id="line.253">                userManager.createUser( user.getUserId( ), user.getFullName( ), user.getEmail( ) );</a>
+<span class="sourceLineNo">254</span><a id="line.254">            u.setPassword( user.getPassword( ) );</a>
+<span class="sourceLineNo">255</span><a id="line.255">            u.setLocked( user.isLocked( ) );</a>
+<span class="sourceLineNo">256</span><a id="line.256">            u.setPasswordChangeRequired( user.isPasswordChangeRequired( ) );</a>
+<span class="sourceLineNo">257</span><a id="line.257">            u.setValidated( user.isValidated( ) );</a>
+<span class="sourceLineNo">258</span><a id="line.258">            u = userManager.addUser( u );</a>
+<span class="sourceLineNo">259</span><a id="line.259">            if ( !user.isPasswordChangeRequired( ) )</a>
+<span class="sourceLineNo">260</span><a id="line.260">            {</a>
+<span class="sourceLineNo">261</span><a id="line.261">                u.setPasswordChangeRequired( false );</a>
+<span class="sourceLineNo">262</span><a id="line.262">                try</a>
+<span class="sourceLineNo">263</span><a id="line.263">                {</a>
+<span class="sourceLineNo">264</span><a id="line.264">                    u = userManager.updateUser( u );</a>
+<span class="sourceLineNo">265</span><a id="line.265">                    log.debug( "User {} created", u.getUsername( ) );</a>
+<span class="sourceLineNo">266</span><a id="line.266">                }</a>
+<span class="sourceLineNo">267</span><a id="line.267">                catch ( UserNotFoundException e )</a>
+<span class="sourceLineNo">268</span><a id="line.268">                {</a>
+<span class="sourceLineNo">269</span><a id="line.269">                    throw new RedbackServiceException( e.getMessage( ) );</a>
+<span class="sourceLineNo">270</span><a id="line.270">                }</a>
+<span class="sourceLineNo">271</span><a id="line.271">            }</a>
+<span class="sourceLineNo">272</span><a id="line.272"></a>
+<span class="sourceLineNo">273</span><a id="line.273">            roleManager.assignRole( RedbackRoleConstants.REGISTERED_USER_ROLE_ID, u.getUsername( ) );</a>
+<span class="sourceLineNo">274</span><a id="line.274">            result = getRestUser( u );</a>
+<span class="sourceLineNo">275</span><a id="line.275">            httpServletResponse.setStatus( 201 );</a>
+<span class="sourceLineNo">276</span><a id="line.276">            httpServletResponse.setHeader( "Location", uriInfo.getAbsolutePathBuilder( ).path( user.getUserId( ) ).build( ).toString( ) );</a>
+<span class="sourceLineNo">277</span><a id="line.277">        }</a>
+<span class="sourceLineNo">278</span><a id="line.278">        catch ( RoleManagerException rpe )</a>
+<span class="sourceLineNo">279</span><a id="line.279">        {</a>
+<span class="sourceLineNo">280</span><a id="line.280">            log.error( "RoleProfile Error: {}", rpe.getMessage( ), rpe );</a>
+<span class="sourceLineNo">281</span><a id="line.281">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_ASSIGN_ROLE ) );</a>
+<span class="sourceLineNo">282</span><a id="line.282">        }</a>
+<span class="sourceLineNo">283</span><a id="line.283">        catch ( UserManagerException e )</a>
+<span class="sourceLineNo">284</span><a id="line.284">        {</a>
+<span class="sourceLineNo">285</span><a id="line.285">            log.error( "UserManagerException: {}", e.getMessage( ), e );</a>
+<span class="sourceLineNo">286</span><a id="line.286">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_UNKNOWN, e.getMessage( ) ) );</a>
+<span class="sourceLineNo">287</span><a id="line.287">        }</a>
+<span class="sourceLineNo">288</span><a id="line.288">        return result;</a>
+<span class="sourceLineNo">289</span><a id="line.289">    }</a>
+<span class="sourceLineNo">290</span><a id="line.290"></a>
+<span class="sourceLineNo">291</span><a id="line.291">    @Override</a>
+<span class="sourceLineNo">292</span><a id="line.292">    public void deleteUser( String userId )</a>
+<span class="sourceLineNo">293</span><a id="line.293">        throws RedbackServiceException</a>
+<span class="sourceLineNo">294</span><a id="line.294">    {</a>
+<span class="sourceLineNo">295</span><a id="line.295">        if ( StringUtils.isEmpty( userId ) )</a>
+<span class="sourceLineNo">296</span><a id="line.296">        {</a>
+<span class="sourceLineNo">297</span><a id="line.297">            throw new RedbackServiceException( MessageKeys.ERR_USER_ID_EMPTY, 404 );</a>
+<span class="sourceLineNo">298</span><a id="line.298">        }</a>
+<span class="sourceLineNo">299</span><a id="line.299"></a>
+<span class="sourceLineNo">300</span><a id="line.300">        try</a>
+<span class="sourceLineNo">301</span><a id="line.301">        {</a>
+<span class="sourceLineNo">302</span><a id="line.302"></a>
+<span class="sourceLineNo">303</span><a id="line.303">            if ( rbacManager.userAssignmentExists( userId ) )</a>
+<span class="sourceLineNo">304</span><a id="line.304">            {</a>
+<span class="sourceLineNo">305</span><a id="line.305">                UserAssignment assignment = rbacManager.getUserAssignment( userId );</a>
+<span class="sourceLineNo">306</span><a id="line.306">                rbacManager.removeUserAssignment( assignment );</a>
+<span class="sourceLineNo">307</span><a id="line.307">            }</a>
+<span class="sourceLineNo">308</span><a id="line.308"></a>
+<span class="sourceLineNo">309</span><a id="line.309">        }</a>
+<span class="sourceLineNo">310</span><a id="line.310">        catch ( RbacManagerException e )</a>
+<span class="sourceLineNo">311</span><a id="line.311">        {</a>
+<span class="sourceLineNo">312</span><a id="line.312">            log.error( e.getMessage( ), e );</a>
+<span class="sourceLineNo">313</span><a id="line.313">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_RBACMANAGER_FAIL, e.getMessage( ) ) );</a>
+<span class="sourceLineNo">314</span><a id="line.314">        }</a>
+<span class="sourceLineNo">315</span><a id="line.315">        try</a>
+<span class="sourceLineNo">316</span><a id="line.316">        {</a>
+<span class="sourceLineNo">317</span><a id="line.317">            userManager.deleteUser( userId );</a>
+<span class="sourceLineNo">318</span><a id="line.318">        }</a>
+<span class="sourceLineNo">319</span><a id="line.319">        catch ( UserNotFoundException e )</a>
+<span class="sourceLineNo">320</span><a id="line.320">        {</a>
+<span class="sourceLineNo">321</span><a id="line.321">            log.error( e.getMessage( ), e );</a>
+<span class="sourceLineNo">322</span><a id="line.322">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_NOT_FOUND ), 404 );</a>
+<span class="sourceLineNo">323</span><a id="line.323">        }</a>
+<span class="sourceLineNo">324</span><a id="line.324">        catch ( UserManagerException e )</a>
+<span class="sourceLineNo">325</span><a id="line.325">        {</a>
+<span class="sourceLineNo">326</span><a id="line.326">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USERMANAGER_FAIL, e.getMessage( ) ) );</a>
+<span class="sourceLineNo">327</span><a id="line.327">        }</a>
+<span class="sourceLineNo">328</span><a id="line.328">        finally</a>
+<span class="sourceLineNo">329</span><a id="line.329">        {</a>
+<span class="sourceLineNo">330</span><a id="line.330">            removeFromCache( userId );</a>
+<span class="sourceLineNo">331</span><a id="line.331">        }</a>
+<span class="sourceLineNo">332</span><a id="line.332">        httpServletResponse.setStatus( 200 );</a>
+<span class="sourceLineNo">333</span><a id="line.333">    }</a>
+<span class="sourceLineNo">334</span><a id="line.334"></a>
+<span class="sourceLineNo">335</span><a id="line.335"></a>
+<span class="sourceLineNo">336</span><a id="line.336">    @Override</a>
+<span class="sourceLineNo">337</span><a id="line.337">    public UserInfo getUser( String userId )</a>
+<span class="sourceLineNo">338</span><a id="line.338">        throws RedbackServiceException</a>
+<span class="sourceLineNo">339</span><a id="line.339">    {</a>
+<span class="sourceLineNo">340</span><a id="line.340">        if ( StringUtils.isEmpty( userId ) )</a>
+<span class="sourceLineNo">341</span><a id="line.341">        {</a>
+<span class="sourceLineNo">342</span><a id="line.342">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_ID_EMPTY ), 404 );</a>
+<span class="sourceLineNo">343</span><a id="line.343">        }</a>
+<span class="sourceLineNo">344</span><a id="line.344">        try</a>
+<span class="sourceLineNo">345</span><a id="line.345">        {</a>
+<span class="sourceLineNo">346</span><a id="line.346">            if ( "guest".equals( userId ) )</a>
+<span class="sourceLineNo">347</span><a id="line.347">            {</a>
+<span class="sourceLineNo">348</span><a id="line.348">                return getRestUser( userManager.getGuestUser( ) );</a>
+<span class="sourceLineNo">349</span><a id="line.349">            }</a>
+<span class="sourceLineNo">350</span><a id="line.350">            org.apache.archiva.redback.users.User user = userManager.findUser( userId );</a>
+<span class="sourceLineNo">351</span><a id="line.351">            return getRestUser( user );</a>
+<span class="sourceLineNo">352</span><a id="line.352">        }</a>
+<span class="sourceLineNo">353</span><a id="line.353">        catch ( UserNotFoundException e )</a>
+<span class="sourceLineNo">354</span><a id="line.354">        {</a>
+<span class="sourceLineNo">355</span><a id="line.355">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_NOT_FOUND ), 404 );</a>
+<span class="sourceLineNo">356</span><a id="line.356">        }</a>
+<span class="sourceLineNo">357</span><a id="line.357">        catch ( UserManagerException e )</a>
+<span class="sourceLineNo">358</span><a id="line.358">        {</a>
+<span class="sourceLineNo">359</span><a id="line.359">            throw new RedbackServiceException( new ErrorMessage( e.getMessage( ) ) );</a>
+<span class="sourceLineNo">360</span><a id="line.360">        }</a>
+<span class="sourceLineNo">361</span><a id="line.361">    }</a>
+<span class="sourceLineNo">362</span><a id="line.362"></a>
+<span class="sourceLineNo">363</span><a id="line.363">    @Override</a>
+<span class="sourceLineNo">364</span><a id="line.364">    public PagedResult&lt;UserInfo&gt; getUsers( String q, Integer offset,</a>
+<span class="sourceLineNo">365</span><a id="line.365">                                           Integer limit, List&lt;String&gt; orderBy, String order )</a>
+<span class="sourceLineNo">366</span><a id="line.366">        throws RedbackServiceException</a>
+<span class="sourceLineNo">367</span><a id="line.367">    {</a>
+<span class="sourceLineNo">368</span><a id="line.368">        boolean ascending = isAscending( order );</a>
+<span class="sourceLineNo">369</span><a id="line.369">        try</a>
+<span class="sourceLineNo">370</span><a id="line.370">        {</a>
+<span class="sourceLineNo">371</span><a id="line.371">            // UserQuery does not work here, because the configurable user manager does only return the query for</a>
+<span class="sourceLineNo">372</span><a id="line.372">            // the first user manager in the list. So we have to fetch the whole user list</a>
+<span class="sourceLineNo">373</span><a id="line.373">            List&lt;? extends org.apache.archiva.redback.users.User&gt; rawUsers = userManager.getUsers( );</a>
+<span class="sourceLineNo">374</span><a id="line.374">            return getUserInfoPagedResult( rawUsers, q, offset, limit, orderBy, ascending );</a>
+<span class="sourceLineNo">375</span><a id="line.375">        }</a>
+<span class="sourceLineNo">376</span><a id="line.376">        catch ( UserManagerException e )</a>
+<span class="sourceLineNo">377</span><a id="line.377">        {</a>
+<span class="sourceLineNo">378</span><a id="line.378">            throw new RedbackServiceException( new ErrorMessage( e.getMessage( ) ) );</a>
+<span class="sourceLineNo">379</span><a id="line.379">        }</a>
+<span class="sourceLineNo">380</span><a id="line.380">    }</a>
+<span class="sourceLineNo">381</span><a id="line.381"></a>
+<span class="sourceLineNo">382</span><a id="line.382"></a>
+<span class="sourceLineNo">383</span><a id="line.383">    @Override</a>
+<span class="sourceLineNo">384</span><a id="line.384">    public UserInfo updateMe( SelfUserData user )</a>
+<span class="sourceLineNo">385</span><a id="line.385">        throws RedbackServiceException</a>
+<span class="sourceLineNo">386</span><a id="line.386">    {</a>
+<span class="sourceLineNo">387</span><a id="line.387">        RedbackPrincipal principal = getPrincipal( );</a>
+<span class="sourceLineNo">388</span><a id="line.388">        if ( principal == null )</a>
+<span class="sourceLineNo">389</span><a id="line.389">        {</a>
+<span class="sourceLineNo">390</span><a id="line.390">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_AUTH_UNAUTHORIZED_REQUEST ), 401 );</a>
+<span class="sourceLineNo">391</span><a id="line.391">        }</a>
+<span class="sourceLineNo">392</span><a id="line.392"></a>
+<span class="sourceLineNo">393</span><a id="line.393">        // check oldPassword with the current one</a>
+<span class="sourceLineNo">394</span><a id="line.394">        // only 3 fields to update</a>
+<span class="sourceLineNo">395</span><a id="line.395">        // ui can limit to not update password</a>
+<span class="sourceLineNo">396</span><a id="line.396">        org.apache.archiva.redback.users.User foundUser = updateUser( principal.getName( ), realUser -&gt; {</a>
+<span class="sourceLineNo">397</span><a id="line.397">            try</a>
+<span class="sourceLineNo">398</span><a id="line.398">            {</a>
+<span class="sourceLineNo">399</span><a id="line.399">                // current password is only needed, if password change is requested</a>
+<span class="sourceLineNo">400</span><a id="line.400">                if ( StringUtils.isNotBlank( user.getPassword( ) ) )</a>
+<span class="sourceLineNo">401</span><a id="line.401">                {</a>
+<span class="sourceLineNo">402</span><a id="line.402">                    String previousEncodedPassword =</a>
+<span class="sourceLineNo">403</span><a id="line.403">                        securitySystem.getUserManager( ).findUser( principal.getName( ), false ).getEncodedPassword( );</a>
+<span class="sourceLineNo">404</span><a id="line.404"></a>
+<span class="sourceLineNo">405</span><a id="line.405">                    // check oldPassword with the current one</a>
+<span class="sourceLineNo">406</span><a id="line.406"></a>
+<span class="sourceLineNo">407</span><a id="line.407">                    PasswordEncoder encoder = securitySystem.getPolicy( ).getPasswordEncoder( );</a>
+<span class="sourceLineNo">408</span><a id="line.408"></a>
+<span class="sourceLineNo">409</span><a id="line.409">                    if ( !encoder.isPasswordValid( previousEncodedPassword, user.getCurrentPassword( ) ) )</a>
+<span class="sourceLineNo">410</span><a id="line.410">                    {</a>
+<span class="sourceLineNo">411</span><a id="line.411"></a>
+<span class="sourceLineNo">412</span><a id="line.412">                        return new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_BAD_PASSWORD ),</a>
+<span class="sourceLineNo">413</span><a id="line.413">                            Response.Status.BAD_REQUEST.getStatusCode( ) );</a>
+<span class="sourceLineNo">414</span><a id="line.414">                    }</a>
+<span class="sourceLineNo">415</span><a id="line.415">                }</a>
+<span class="sourceLineNo">416</span><a id="line.416">            }</a>
+<span class="sourceLineNo">417</span><a id="line.417">            catch ( UserNotFoundException e )</a>
+<span class="sourceLineNo">418</span><a id="line.418">            {</a>
+<span class="sourceLineNo">419</span><a id="line.419">                return new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_NOT_FOUND ),</a>
+<span class="sourceLineNo">420</span><a id="line.420">                    Response.Status.BAD_REQUEST.getStatusCode( ) );</a>
+<span class="sourceLineNo">421</span><a id="line.421">            }</a>
+<span class="sourceLineNo">422</span><a id="line.422">            catch ( UserManagerException e )</a>
+<span class="sourceLineNo">423</span><a id="line.423">            {</a>
+<span class="sourceLineNo">424</span><a id="line.424">                return new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USERMANAGER_FAIL, e.getMessage( ) ) );</a>
+<span class="sourceLineNo">425</span><a id="line.425">            }</a>
+<span class="sourceLineNo">426</span><a id="line.426">            // only 3 fields to update</a>
+<span class="sourceLineNo">427</span><a id="line.427">            if ( StringUtils.isNotBlank( user.getFullName( ) ) )</a>
+<span class="sourceLineNo">428</span><a id="line.428">            {</a>
+<span class="sourceLineNo">429</span><a id="line.429">                realUser.setFullName( user.getFullName( ) );</a>
+<span class="sourceLineNo">430</span><a id="line.430">            }</a>
+<span class="sourceLineNo">431</span><a id="line.431">            if ( StringUtils.isNotBlank( user.getEmail( ) ) )</a>
+<span class="sourceLineNo">432</span><a id="line.432">            {</a>
+<span class="sourceLineNo">433</span><a id="line.433">                realUser.setEmail( user.getEmail( ) );</a>
+<span class="sourceLineNo">434</span><a id="line.434">            }</a>
+<span class="sourceLineNo">435</span><a id="line.435">            // ui can limit to not update password</a>
+<span class="sourceLineNo">436</span><a id="line.436">            if ( StringUtils.isNotBlank( user.getPassword( ) ) )</a>
+<span class="sourceLineNo">437</span><a id="line.437">            {</a>
+<span class="sourceLineNo">438</span><a id="line.438">                realUser.setPassword( user.getPassword( ) );</a>
+<span class="sourceLineNo">439</span><a id="line.439">            }</a>
+<span class="sourceLineNo">440</span><a id="line.440">            return null;</a>
+<span class="sourceLineNo">441</span><a id="line.441">        } );</a>
+<span class="sourceLineNo">442</span><a id="line.442"></a>
+<span class="sourceLineNo">443</span><a id="line.443">        return getRestUser( foundUser );</a>
+<span class="sourceLineNo">444</span><a id="line.444">    }</a>
+<span class="sourceLineNo">445</span><a id="line.445"></a>
+<span class="sourceLineNo">446</span><a id="line.446">    @Override</a>
+<span class="sourceLineNo">447</span><a id="line.447">    public UserInfo getLoggedInUser( )</a>
+<span class="sourceLineNo">448</span><a id="line.448">        throws RedbackServiceException</a>
+<span class="sourceLineNo">449</span><a id="line.449">    {</a>
+<span class="sourceLineNo">450</span><a id="line.450">        RedbackPrincipal principal = getPrincipal( );</a>
+<span class="sourceLineNo">451</span><a id="line.451">        if ( principal == null || principal.getUser()==null )</a>
+<span class="sourceLineNo">452</span><a id="line.452">        {</a>
+<span class="sourceLineNo">453</span><a id="line.453">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_AUTH_UNAUTHORIZED_REQUEST ), 401 );</a>
+<span class="sourceLineNo">454</span><a id="line.454">        }</a>
+<span class="sourceLineNo">455</span><a id="line.455"></a>
+<span class="sourceLineNo">456</span><a id="line.456">        try</a>
+<span class="sourceLineNo">457</span><a id="line.457">        {</a>
+<span class="sourceLineNo">458</span><a id="line.458">            org.apache.archiva.redback.users.User foundUser = userManager.findUser( principal.getUser( ).getUsername( ), false );</a>
+<span class="sourceLineNo">459</span><a id="line.459">            return getRestUser( foundUser );</a>
+<span class="sourceLineNo">460</span><a id="line.460">        }</a>
+<span class="sourceLineNo">461</span><a id="line.461">        catch ( UserManagerException e )</a>
+<span class="sourceLineNo">462</span><a id="line.462">        {</a>
+<span class="sourceLineNo">463</span><a id="line.463">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USERMANAGER_FAIL, e.getMessage( ) ), 400 );</a>
+<span class="sourceLineNo">464</span><a id="line.464">        }</a>
+<span class="sourceLineNo">465</span><a id="line.465">    }</a>
+<span class="sourceLineNo">466</span><a id="line.466"></a>
+<span class="sourceLineNo">467</span><a id="line.467">    @Override</a>
+<span class="sourceLineNo">468</span><a id="line.468">    public UserInfo updateUser( String userId, User user )</a>
+<span class="sourceLineNo">469</span><a id="line.469">        throws RedbackServiceException</a>
+<span class="sourceLineNo">470</span><a id="line.470">    {</a>
+<span class="sourceLineNo">471</span><a id="line.471">        try</a>
+<span class="sourceLineNo">472</span><a id="line.472">        {</a>
+<span class="sourceLineNo">473</span><a id="line.473">            org.apache.archiva.redback.users.User rawUser = userManager.findUser( userId, false );</a>
+<span class="sourceLineNo">474</span><a id="line.474">            if ( user.getFullName( ) != null )</a>
+<span class="sourceLineNo">475</span><a id="line.475">                rawUser.setFullName( user.getFullName( ) );</a>
+<span class="sourceLineNo">476</span><a id="line.476">            if ( user.getEmail( ) != null )</a>
+<span class="sourceLineNo">477</span><a id="line.477">                rawUser.setEmail( user.getEmail( ) );</a>
+<span class="sourceLineNo">478</span><a id="line.478">            rawUser.setValidated( user.isValidated( ) );</a>
+<span class="sourceLineNo">479</span><a id="line.479">            rawUser.setLocked( user.isLocked( ) );</a>
+<span class="sourceLineNo">480</span><a id="line.480">            if ( !StringUtils.isEmpty( user.getPassword( ) ) )</a>
+<span class="sourceLineNo">481</span><a id="line.481">                rawUser.setPassword( user.getPassword( ) );</a>
+<span class="sourceLineNo">482</span><a id="line.482">            rawUser.setPasswordChangeRequired( user.isPasswordChangeRequired( ) );</a>
+<span class="sourceLineNo">483</span><a id="line.483"></a>
+<span class="sourceLineNo">484</span><a id="line.484">            org.apache.archiva.redback.users.User updatedUser = userManager.updateUser( rawUser );</a>
+<span class="sourceLineNo">485</span><a id="line.485"></a>
+<span class="sourceLineNo">486</span><a id="line.486">            return getRestUser( updatedUser );</a>
+<span class="sourceLineNo">487</span><a id="line.487">        }</a>
+<span class="sourceLineNo">488</span><a id="line.488">        catch ( UserNotFoundException e )</a>
+<span class="sourceLineNo">489</span><a id="line.489">        {</a>
+<span class="sourceLineNo">490</span><a id="line.490">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_NOT_FOUND ), 404 );</a>
+<span class="sourceLineNo">491</span><a id="line.491">        }</a>
+<span class="sourceLineNo">492</span><a id="line.492">        catch ( PasswordRuleViolationException e )</a>
+<span class="sourceLineNo">493</span><a id="line.493">        {</a>
+<span class="sourceLineNo">494</span><a id="line.494">            List&lt;ErrorMessage&gt; messages = e.getViolations( ).getViolations( ).stream( ).map( m -&gt; ErrorMessage.of( m.getKey( ), m.getArgs( ) ) ).collect( Collectors.toList( ) );</a>
+<span class="sourceLineNo">495</span><a id="line.495">            throw new RedbackServiceException( messages, 422 );</a>
+<span class="sourceLineNo">496</span><a id="line.496">        }</a>
+<span class="sourceLineNo">497</span><a id="line.497">        catch ( UserManagerException e )</a>
+<span class="sourceLineNo">498</span><a id="line.498">        {</a>
+<span class="sourceLineNo">499</span><a id="line.499">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USERMANAGER_FAIL, e.getMessage( ) ), 400 );</a>
+<span class="sourceLineNo">500</span><a id="line.500">        }</a>
+<span class="sourceLineNo">501</span><a id="line.501">    }</a>
+<span class="sourceLineNo">502</span><a id="line.502"></a>
+<span class="sourceLineNo">503</span><a id="line.503">    @Override</a>
+<span class="sourceLineNo">504</span><a id="line.504">    public Response removeFromCache( String userId )</a>
+<span class="sourceLineNo">505</span><a id="line.505">        throws RedbackServiceException</a>
+<span class="sourceLineNo">506</span><a id="line.506">    {</a>
+<span class="sourceLineNo">507</span><a id="line.507">        if ( userAssignmentsCache != null )</a>
+<span class="sourceLineNo">508</span><a id="line.508">        {</a>
+<span class="sourceLineNo">509</span><a id="line.509">            userAssignmentsCache.remove( userId );</a>
+<span class="sourceLineNo">510</span><a id="line.510">        }</a>
+<span class="sourceLineNo">511</span><a id="line.511">        if ( userPermissionsCache != null )</a>
+<span class="sourceLineNo">512</span><a id="line.512">        {</a>
+<span class="sourceLineNo">513</span><a id="line.513">            userPermissionsCache.remove( userId );</a>
+<span class="sourceLineNo">514</span><a id="line.514">        }</a>
+<span class="sourceLineNo">515</span><a id="line.515">        if ( usersCache != null )</a>
+<span class="sourceLineNo">516</span><a id="line.516">        {</a>
+<span class="sourceLineNo">517</span><a id="line.517">            usersCache.remove( userId );</a>
+<span class="sourceLineNo">518</span><a id="line.518">        }</a>
+<span class="sourceLineNo">519</span><a id="line.519"></a>
+<span class="sourceLineNo">520</span><a id="line.520">        return Response.ok( ).build( );</a>
+<span class="sourceLineNo">521</span><a id="line.521">    }</a>
+<span class="sourceLineNo">522</span><a id="line.522"></a>
+<span class="sourceLineNo">523</span><a id="line.523">    @Override</a>
+<span class="sourceLineNo">524</span><a id="line.524">    public PingResult ping( )</a>
+<span class="sourceLineNo">525</span><a id="line.525">        throws RedbackServiceException</a>
+<span class="sourceLineNo">526</span><a id="line.526">    {</a>
+<span class="sourceLineNo">527</span><a id="line.527">        return new PingResult( true );</a>
+<span class="sourceLineNo">528</span><a id="line.528">    }</a>
+<span class="sourceLineNo">529</span><a id="line.529"></a>
+<span class="sourceLineNo">530</span><a id="line.530">    @Override</a>
+<span class="sourceLineNo">531</span><a id="line.531">    public UserInfo createAdminUser( User adminUser )</a>
+<span class="sourceLineNo">532</span><a id="line.532">        throws RedbackServiceException</a>
+<span class="sourceLineNo">533</span><a id="line.533">    {</a>
+<span class="sourceLineNo">534</span><a id="line.534">        UserInfo result;</a>
+<span class="sourceLineNo">535</span><a id="line.535">        if ( getAdminStatus( ).isExists( ) )</a>
+<span class="sourceLineNo">536</span><a id="line.536">        {</a>
+<span class="sourceLineNo">537</span><a id="line.537">            log.warn( "Admin user exists already" );</a>
+<span class="sourceLineNo">538</span><a id="line.538">            httpServletResponse.setHeader( "Location", uriInfo.getAbsolutePath( ).toString( ) );</a>
+<span class="sourceLineNo">539</span><a id="line.539">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_ADMIN_EXISTS ), 303 );</a>
+<span class="sourceLineNo">540</span><a id="line.540">        }</a>
+<span class="sourceLineNo">541</span><a id="line.541">        log.debug( "Creating admin admin user '{}'", adminUser.getUserId( ) );</a>
+<span class="sourceLineNo">542</span><a id="line.542">        if ( !RedbackRoleConstants.ADMINISTRATOR_ACCOUNT_NAME.equals( adminUser.getUserId( ) ) )</a>
+<span class="sourceLineNo">543</span><a id="line.543">        {</a>
+<span class="sourceLineNo">544</span><a id="line.544">            log.error( "Wrong admin user name {}", adminUser.getUserId( ) );</a>
+<span class="sourceLineNo">545</span><a id="line.545">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_ADMIN_BAD_NAME ), 422 );</a>
+<span class="sourceLineNo">546</span><a id="line.546">        }</a>
+<span class="sourceLineNo">547</span><a id="line.547"></a>
+<span class="sourceLineNo">548</span><a id="line.548">        try</a>
+<span class="sourceLineNo">549</span><a id="line.549">        {</a>
+<span class="sourceLineNo">550</span><a id="line.550">            org.apache.archiva.redback.users.User user =</a>
+<span class="sourceLineNo">551</span><a id="line.551">                userManager.createUser( RedbackRoleConstants.ADMINISTRATOR_ACCOUNT_NAME, adminUser.getFullName( ),</a>
+<span class="sourceLineNo">552</span><a id="line.552">                    adminUser.getEmail( ) );</a>
+<span class="sourceLineNo">553</span><a id="line.553">            user.setPassword( adminUser.getPassword( ) );</a>
+<span class="sourceLineNo">554</span><a id="line.554"></a>
+<span class="sourceLineNo">555</span><a id="line.555">            user.setLocked( false );</a>
+<span class="sourceLineNo">556</span><a id="line.556">            user.setPasswordChangeRequired( false );</a>
+<span class="sourceLineNo">557</span><a id="line.557">            user.setPermanent( true );</a>
+<span class="sourceLineNo">558</span><a id="line.558">            user.setValidated( true );</a>
+<span class="sourceLineNo">559</span><a id="line.559"></a>
+<span class="sourceLineNo">560</span><a id="line.560">            userManager.addUser( user );</a>
+<span class="sourceLineNo">561</span><a id="line.561">            result = getRestUser( user );</a>
+<span class="sourceLineNo">562</span><a id="line.562">            roleManager.assignRole( "system-administrator", user.getUsername( ) );</a>
+<span class="sourceLineNo">563</span><a id="line.563">        }</a>
+<span class="sourceLineNo">564</span><a id="line.564">        catch ( RoleManagerException e )</a>
+<span class="sourceLineNo">565</span><a id="line.565">        {</a>
+<span class="sourceLineNo">566</span><a id="line.566">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_ROLEMANAGER_FAIL, e.getMessage( ) ), 400 );</a>
+<span class="sourceLineNo">567</span><a id="line.567">        }</a>
+<span class="sourceLineNo">568</span><a id="line.568">        catch ( UserManagerException e )</a>
+<span class="sourceLineNo">569</span><a id="line.569">        {</a>
+<span class="sourceLineNo">570</span><a id="line.570">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USERMANAGER_FAIL, e.getMessage( ) ), 400 );</a>
+<span class="sourceLineNo">571</span><a id="line.571">        }</a>
+<span class="sourceLineNo">572</span><a id="line.572">        httpServletResponse.setStatus( 201 );</a>
+<span class="sourceLineNo">573</span><a id="line.573">        httpServletResponse.setHeader( "Location", uriInfo.getAbsolutePath( ).toString( ) );</a>
+<span class="sourceLineNo">574</span><a id="line.574">        return result;</a>
+<span class="sourceLineNo">575</span><a id="line.575">    }</a>
+<span class="sourceLineNo">576</span><a id="line.576"></a>
+<span class="sourceLineNo">577</span><a id="line.577">    @Override</a>
+<span class="sourceLineNo">578</span><a id="line.578">    public AvailabilityStatus getAdminStatus( )</a>
+<span class="sourceLineNo">579</span><a id="line.579">        throws RedbackServiceException</a>
+<span class="sourceLineNo">580</span><a id="line.580">    {</a>
+<span class="sourceLineNo">581</span><a id="line.581">        try</a>
+<span class="sourceLineNo">582</span><a id="line.582">        {</a>
+<span class="sourceLineNo">583</span><a id="line.583">            org.apache.archiva.redback.users.User user = userManager.findUser( config.getString( UserConfigurationKeys.DEFAULT_ADMIN ) );</a>
+<span class="sourceLineNo">584</span><a id="line.584">            if ( user.getAccountCreationDate( ) != null )</a>
+<span class="sourceLineNo">585</span><a id="line.585">            {</a>
+<span class="sourceLineNo">586</span><a id="line.586">                return new AvailabilityStatus( true, user.getAccountCreationDate( ).toInstant( ) );</a>
+<span class="sourceLineNo">587</span><a id="line.587">            }</a>
+<span class="sourceLineNo">588</span><a id="line.588">            else</a>
+<span class="sourceLineNo">589</span><a id="line.589">            {</a>
+<span class="sourceLineNo">590</span><a id="line.590">                return new AvailabilityStatus( true );</a>
+<span class="sourceLineNo">591</span><a id="line.591">            }</a>
+<span class="sourceLineNo">592</span><a id="line.592">        }</a>
+<span class="sourceLineNo">593</span><a id="line.593">        catch ( UserNotFoundException e )</a>
+<span class="sourceLineNo">594</span><a id="line.594">        {</a>
+<span class="sourceLineNo">595</span><a id="line.595">            // ignore</a>
+<span class="sourceLineNo">596</span><a id="line.596">        }</a>
+<span class="sourceLineNo">597</span><a id="line.597">        catch ( UserManagerException e )</a>
+<span class="sourceLineNo">598</span><a id="line.598">        {</a>
+<span class="sourceLineNo">599</span><a id="line.599">            Throwable cause = e.getCause( );</a>
+<span class="sourceLineNo">600</span><a id="line.600"></a>
+<span class="sourceLineNo">601</span><a id="line.601">            if ( cause != null &amp;&amp; cause instanceof UserNotFoundException )</a>
+<span class="sourceLineNo">602</span><a id="line.602">            {</a>
+<span class="sourceLineNo">603</span><a id="line.603">                return new AvailabilityStatus( false );</a>
+<span class="sourceLineNo">604</span><a id="line.604">            }</a>
+<span class="sourceLineNo">605</span><a id="line.605">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USERMANAGER_FAIL, e.getMessage( ) ), 400 );</a>
+<span class="sourceLineNo">606</span><a id="line.606">        }</a>
+<span class="sourceLineNo">607</span><a id="line.607">        return new AvailabilityStatus( false );</a>
+<span class="sourceLineNo">608</span><a id="line.608">    }</a>
+<span class="sourceLineNo">609</span><a id="line.609"></a>
+<span class="sourceLineNo">610</span><a id="line.610">    @Override</a>
+<span class="sourceLineNo">611</span><a id="line.611">    public Response resetPassword( String userId )</a>
+<span class="sourceLineNo">612</span><a id="line.612">        throws RedbackServiceException</a>
+<span class="sourceLineNo">613</span><a id="line.613">    {</a>
+<span class="sourceLineNo">614</span><a id="line.614">        String username = userId;</a>
+<span class="sourceLineNo">615</span><a id="line.615">        if ( StringUtils.isEmpty( username ) )</a>
+<span class="sourceLineNo">616</span><a id="line.616">        {</a>
+<span class="sourceLineNo">617</span><a id="line.617">            throw new RedbackServiceException( new ErrorMessage( "username.cannot.be.empty" ) );</a>
+<span class="sourceLineNo">618</span><a id="line.618">        }</a>
+<span class="sourceLineNo">619</span><a id="line.619"></a>
+<span class="sourceLineNo">620</span><a id="line.620">        UserManager userManager = securitySystem.getUserManager( );</a>
+<span class="sourceLineNo">621</span><a id="line.621">        KeyManager keyManager = securitySystem.getKeyManager( );</a>
+<span class="sourceLineNo">622</span><a id="line.622">        UserSecurityPolicy policy = securitySystem.getPolicy( );</a>
+<span class="sourceLineNo">623</span><a id="line.623"></a>
+<span class="sourceLineNo">624</span><a id="line.624">        try</a>
+<span class="sourceLineNo">625</span><a id="line.625">        {</a>
+<span class="sourceLineNo">626</span><a id="line.626">            org.apache.archiva.redback.users.User user = userManager.findUser( username );</a>
+<span class="sourceLineNo">627</span><a id="line.627"></a>
+<span class="sourceLineNo">628</span><a id="line.628">            AuthenticationKey authkey = keyManager.createKey( username, "Password Reset Request",</a>
+<span class="sourceLineNo">629</span><a id="line.629">                policy.getUserValidationSettings( ).getEmailValidationTimeout( ) );</a>
+<span class="sourceLineNo">630</span><a id="line.630"></a>
+<span class="sourceLineNo">631</span><a id="line.631">            String applicationUrl = getBaseUrl( );</a>
+<span class="sourceLineNo">632</span><a id="line.632"></a>
+<span class="sourceLineNo">633</span><a id="line.633">            mailer.sendPasswordResetEmail( Arrays.asList( user.getEmail( ) ), authkey, applicationUrl );</a>
+<span class="sourceLineNo">634</span><a id="line.634">            log.info( "password reset request for username {}", username );</a>
+<span class="sourceLineNo">635</span><a id="line.635">        }</a>
+<span class="sourceLineNo">636</span><a id="line.636">        catch ( UserNotFoundException e )</a>
+<span class="sourceLineNo">637</span><a id="line.637">        {</a>
+<span class="sourceLineNo">638</span><a id="line.638">            log.info( "Password Reset on non-existant user [{}].", username );</a>
+<span class="sourceLineNo">639</span><a id="line.639">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_NOT_FOUND, userId ), 404 );</a>
+<span class="sourceLineNo">640</span><a id="line.640">        }</a>
+<span class="sourceLineNo">641</span><a id="line.641">        catch ( KeyManagerException e )</a>
+<span class="sourceLineNo">642</span><a id="line.642">        {</a>
+<span class="sourceLineNo">643</span><a id="line.643">            log.info( "Unable to issue password reset.", e );</a>
+<span class="sourceLineNo">644</span><a id="line.644">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_PASSWD_RESET_FAILED, e.getMessage( ) ), 400 );</a>
+<span class="sourceLineNo">645</span><a id="line.645">        }</a>
+<span class="sourceLineNo">646</span><a id="line.646">        catch ( UserManagerException e )</a>
+<span class="sourceLineNo">647</span><a id="line.647">        {</a>
+<span class="sourceLineNo">648</span><a id="line.648">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USERMANAGER_FAIL, e.getMessage( ) ), 400 );</a>
+<span class="sourceLineNo">649</span><a id="line.649">        }</a>
+<span class="sourceLineNo">650</span><a id="line.650"></a>
+<span class="sourceLineNo">651</span><a id="line.651">        return Response.ok( ).build( );</a>
+<span class="sourceLineNo">652</span><a id="line.652">    }</a>
+<span class="sourceLineNo">653</span><a id="line.653"></a>
+<span class="sourceLineNo">654</span><a id="line.654">    @Override</a>
+<span class="sourceLineNo">655</span><a id="line.655">    public RegistrationKey registerUser( String userId, UserRegistrationRequest userRegistrationRequest )</a>
+<span class="sourceLineNo">656</span><a id="line.656">        throws RedbackServiceException</a>
+<span class="sourceLineNo">657</span><a id="line.657">    {</a>
+<span class="sourceLineNo">658</span><a id="line.658">        User user = userRegistrationRequest.getUser( );</a>
+<span class="sourceLineNo">659</span><a id="line.659">        if ( user == null )</a>
+<span class="sourceLineNo">660</span><a id="line.660">        {</a>
+<span class="sourceLineNo">661</span><a id="line.661">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_NOT_FOUND, userId ), 404 );</a>
+<span class="sourceLineNo">662</span><a id="line.662"></a>
+<span class="sourceLineNo">663</span><a id="line.663">        }</a>
+<span class="sourceLineNo">664</span><a id="line.664"></a>
+<span class="sourceLineNo">665</span><a id="line.665">        UserSecurityPolicy securityPolicy = securitySystem.getPolicy( );</a>
+<span class="sourceLineNo">666</span><a id="line.666"></a>
+<span class="sourceLineNo">667</span><a id="line.667">        boolean emailValidationRequired = securityPolicy.getUserValidationSettings( ).isEmailValidationRequired( );</a>
+<span class="sourceLineNo">668</span><a id="line.668"></a>
+<span class="sourceLineNo">669</span><a id="line.669">        if ( emailValidationRequired )</a>
+<span class="sourceLineNo">670</span><a id="line.670">        {</a>
+<span class="sourceLineNo">671</span><a id="line.671">            validateCredentialsLoose( user );</a>
+<span class="sourceLineNo">672</span><a id="line.672">        }</a>
+<span class="sourceLineNo">673</span><a id="line.673">        else</a>
+<span class="sourceLineNo">674</span><a id="line.674">        {</a>
+<span class="sourceLineNo">675</span><a id="line.675">            validateCredentialsStrict( user );</a>
+<span class="sourceLineNo">676</span><a id="line.676">        }</a>
+<span class="sourceLineNo">677</span><a id="line.677"></a>
+<span class="sourceLineNo">678</span><a id="line.678">        org.apache.archiva.redback.users.User u = null;</a>
+<span class="sourceLineNo">679</span><a id="line.679"></a>
+<span class="sourceLineNo">680</span><a id="line.680">        try</a>
+<span class="sourceLineNo">681</span><a id="line.681">        {</a>
+<span class="sourceLineNo">682</span><a id="line.682"></a>
+<span class="sourceLineNo">683</span><a id="line.683">            // NOTE: Do not perform Password Rules Validation Here.</a>
+<span class="sourceLineNo">684</span><a id="line.684"></a>
+<span class="sourceLineNo">685</span><a id="line.685">            if ( userManager.userExists( user.getUserId( ) ) )</a>
+<span class="sourceLineNo">686</span><a id="line.686">            {</a>
+<span class="sourceLineNo">687</span><a id="line.687">                throw new RedbackServiceException(</a>
+<span class="sourceLineNo">688</span><a id="line.688">                    ErrorMessage.of( MessageKeys.ERR_USER_EXISTS, user.getUserId() ));</a>
+<span class="sourceLineNo">689</span><a id="line.689">            }</a>
+<span class="sourceLineNo">690</span><a id="line.690"></a>
+<span class="sourceLineNo">691</span><a id="line.691">            u = userManager.createUser( user.getUserId( ), user.getFullName( ), user.getEmail( ) );</a>
+<span class="sourceLineNo">692</span><a id="line.692">            u.setPassword( user.getPassword( ) );</a>
+<span class="sourceLineNo">693</span><a id="line.693">            u.setValidated( false );</a>
+<span class="sourceLineNo">694</span><a id="line.694">            u.setLocked( false );</a>
+<span class="sourceLineNo">695</span><a id="line.695"></a>
+<span class="sourceLineNo">696</span><a id="line.696">            roleManager.assignRole( RedbackRoleConstants.REGISTERED_USER_ROLE_ID, u.getUsername( ) );</a>
+<span class="sourceLineNo">697</span><a id="line.697">        }</a>
+<span class="sourceLineNo">698</span><a id="line.698">        catch ( RoleManagerException rpe )</a>
+<span class="sourceLineNo">699</span><a id="line.699">        {</a>
+<span class="sourceLineNo">700</span><a id="line.700">            log.error( "RoleProfile Error: {}", rpe.getMessage( ), rpe );</a>
+<span class="sourceLineNo">701</span><a id="line.701">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_REGISTRATION_ROLE_ASSIGNMENT_FAILED, rpe.getMessage( ) ), 400 );</a>
+<span class="sourceLineNo">702</span><a id="line.702">        }</a>
+<span class="sourceLineNo">703</span><a id="line.703">        catch ( UserManagerException e )</a>
+<span class="sourceLineNo">704</span><a id="line.704">        {</a>
+<span class="sourceLineNo">705</span><a id="line.705">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USERMANAGER_FAIL, e.getMessage( ) ), 400 );</a>
+<span class="sourceLineNo">706</span><a id="line.706">        }</a>
+<span class="sourceLineNo">707</span><a id="line.707"></a>
+<span class="sourceLineNo">708</span><a id="line.708">        if ( emailValidationRequired )</a>
+<span class="sourceLineNo">709</span><a id="line.709">        {</a>
+<span class="sourceLineNo">710</span><a id="line.710">            u.setLocked( true );</a>
+<span class="sourceLineNo">711</span><a id="line.711"></a>
+<span class="sourceLineNo">712</span><a id="line.712">            try</a>
+<span class="sourceLineNo">713</span><a id="line.713">            {</a>
+<span class="sourceLineNo">714</span><a id="line.714">                AuthenticationKey authkey =</a>
+<span class="sourceLineNo">715</span><a id="line.715">                    securitySystem.getKeyManager( ).createKey( u.getUsername( ), "New User Email Validation",</a>
+<span class="sourceLineNo">716</span><a id="line.716">                        securityPolicy.getUserValidationSettings( ).getEmailValidationTimeout( ) );</a>
+<span class="sourceLineNo">717</span><a id="line.717"></a>
+<span class="sourceLineNo">718</span><a id="line.718">                String baseUrl = userRegistrationRequest.getApplicationUrl( );</a>
+<span class="sourceLineNo">719</span><a id="line.719">                if ( StringUtils.isBlank( baseUrl ) )</a>
+<span class="sourceLineNo">720</span><a id="line.720">                {</a>
+<span class="sourceLineNo">721</span><a id="line.721">                    baseUrl = getBaseUrl( );</a>
+<span class="sourceLineNo">722</span><a id="line.722">                }</a>
+<span class="sourceLineNo">723</span><a id="line.723"></a>
+<span class="sourceLineNo">724</span><a id="line.724">                log.debug( "register user {} with email {} and app url {}", u.getUsername( ), u.getEmail( ), baseUrl );</a>
+<span class="sourceLineNo">725</span><a id="line.725"></a>
+<span class="sourceLineNo">726</span><a id="line.726">                mailer.sendAccountValidationEmail( Arrays.asList( u.getEmail( ) ), authkey, baseUrl );</a>
+<span class="sourceLineNo">727</span><a id="line.727"></a>
+<span class="sourceLineNo">728</span><a id="line.728">                securityPolicy.setEnabled( false );</a>
+<span class="sourceLineNo">729</span><a id="line.729">                userManager.addUser( u );</a>
+<span class="sourceLineNo">730</span><a id="line.730">                return new RegistrationKey( authkey.getKey( ), true );</a>
+<span class="sourceLineNo">731</span><a id="line.731"></a>
+<span class="sourceLineNo">732</span><a id="line.732">            }</a>
+<span class="sourceLineNo">733</span><a id="line.733">            catch ( KeyManagerException e )</a>
+<span class="sourceLineNo">734</span><a id="line.734">            {</a>
+<span class="sourceLineNo">735</span><a id="line.735">                log.error( "Unable to register a new user.", e );</a>
+<span class="sourceLineNo">736</span><a id="line.736">                throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_KEYMANAGER_FAIL, e.getMessage( ) ), 400 );</a>
+<span class="sourceLineNo">737</span><a id="line.737">            }</a>
+<span class="sourceLineNo">738</span><a id="line.738">            catch ( UserManagerException e )</a>
+<span class="sourceLineNo">739</span><a id="line.739">            {</a>
+<span class="sourceLineNo">740</span><a id="line.740">                throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USERMANAGER_FAIL, e.getMessage( ) ), 400 );</a>
+<span class="sourceLineNo">741</span><a id="line.741">            }</a>
+<span class="sourceLineNo">742</span><a id="line.742">            finally</a>
+<span class="sourceLineNo">743</span><a id="line.743">            {</a>
+<span class="sourceLineNo">744</span><a id="line.744">                securityPolicy.setEnabled( true );</a>
+<span class="sourceLineNo">745</span><a id="line.745">            }</a>
+<span class="sourceLineNo">746</span><a id="line.746">        }</a>
+<span class="sourceLineNo">747</span><a id="line.747">        else</a>
+<span class="sourceLineNo">748</span><a id="line.748">        {</a>
+<span class="sourceLineNo">749</span><a id="line.749">            try</a>
+<span class="sourceLineNo">750</span><a id="line.750">            {</a>
+<span class="sourceLineNo">751</span><a id="line.751">                userManager.addUser( u );</a>
+<span class="sourceLineNo">752</span><a id="line.752">                return new RegistrationKey( "-1", false );</a>
+<span class="sourceLineNo">753</span><a id="line.753">            }</a>
+<span class="sourceLineNo">754</span><a id="line.754">            catch ( UserManagerException e )</a>
+<span class="sourceLineNo">755</span><a id="line.755">            {</a>
+<span class="sourceLineNo">756</span><a id="line.756">                throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USERMANAGER_FAIL, e.getMessage( ) ), 400 );</a>
+<span class="sourceLineNo">757</span><a id="line.757">            }</a>
+<span class="sourceLineNo">758</span><a id="line.758">        }</a>
+<span class="sourceLineNo">759</span><a id="line.759"></a>
+<span class="sourceLineNo">760</span><a id="line.760">        // FIXME log this event</a>
+<span class="sourceLineNo">761</span><a id="line.761">        /*</a>
+<span class="sourceLineNo">762</span><a id="line.762">        AuditEvent event = new AuditEvent( getText( "log.account.create" ) );</a>
+<span class="sourceLineNo">763</span><a id="line.763">        event.setAffectedUser( username );</a>
+<span class="sourceLineNo">764</span><a id="line.764">        event.log();</a>
+<span class="sourceLineNo">765</span><a id="line.765">        */</a>
+<span class="sourceLineNo">766</span><a id="line.766"></a>
+<span class="sourceLineNo">767</span><a id="line.767">    }</a>
+<span class="sourceLineNo">768</span><a id="line.768"></a>
+<span class="sourceLineNo">769</span><a id="line.769"></a>
+<span class="sourceLineNo">770</span><a id="line.770">    @Override</a>
+<span class="sourceLineNo">771</span><a id="line.771">    public Collection&lt;Permission&gt; getCurrentUserPermissions( )</a>
+<span class="sourceLineNo">772</span><a id="line.772">        throws RedbackServiceException</a>
+<span class="sourceLineNo">773</span><a id="line.773">    {</a>
+<span class="sourceLineNo">774</span><a id="line.774">        RedbackRequestInformation redbackRequestInformation = RedbackAuthenticationThreadLocal.get( );</a>
+<span class="sourceLineNo">775</span><a id="line.775">        String userName = UserManager.GUEST_USERNAME;</a>
+<span class="sourceLineNo">776</span><a id="line.776">        if ( redbackRequestInformation != null &amp;&amp; redbackRequestInformation.getUser( ) != null )</a>
+<span class="sourceLineNo">777</span><a id="line.777">        {</a>
+<span class="sourceLineNo">778</span><a id="line.778">            userName = redbackRequestInformation.getUser( ).getUsername( );</a>
+<span class="sourceLineNo">779</span><a id="line.779">        }</a>
+<span class="sourceLineNo">780</span><a id="line.780">        else</a>
+<span class="sourceLineNo">781</span><a id="line.781">        {</a>
+<span class="sourceLineNo">782</span><a id="line.782">            log.warn( "RedbackRequestInformation from ThreadLocal is null" );</a>
+<span class="sourceLineNo">783</span><a id="line.783">        }</a>
+<span class="sourceLineNo">784</span><a id="line.784"></a>
+<span class="sourceLineNo">785</span><a id="line.785">        return getUserPermissions( userName );</a>
+<span class="sourceLineNo">786</span><a id="line.786">    }</a>
+<span class="sourceLineNo">787</span><a id="line.787"></a>
+<span class="sourceLineNo">788</span><a id="line.788">    @Override</a>
+<span class="sourceLineNo">789</span><a id="line.789">    public Collection&lt;Operation&gt; getCurrentUserOperations( )</a>
+<span class="sourceLineNo">790</span><a id="line.790">        throws RedbackServiceException</a>
+<span class="sourceLineNo">791</span><a id="line.791">    {</a>
+<span class="sourceLineNo">792</span><a id="line.792">        RedbackRequestInformation redbackRequestInformation = RedbackAuthenticationThreadLocal.get( );</a>
+<span class="sourceLineNo">793</span><a id="line.793">        String userName = UserManager.GUEST_USERNAME;</a>
+<span class="sourceLineNo">794</span><a id="line.794">        if ( redbackRequestInformation != null &amp;&amp; redbackRequestInformation.getUser( ) != null )</a>
+<span class="sourceLineNo">795</span><a id="line.795">        {</a>
+<span class="sourceLineNo">796</span><a id="line.796">            userName = redbackRequestInformation.getUser( ).getUsername( );</a>
+<span class="sourceLineNo">797</span><a id="line.797">        }</a>
+<span class="sourceLineNo">798</span><a id="line.798">        else</a>
+<span class="sourceLineNo">799</span><a id="line.799">        {</a>
+<span class="sourceLineNo">800</span><a id="line.800">            log.warn( "RedbackRequestInformation from ThreadLocal is null" );</a>
+<span class="sourceLineNo">801</span><a id="line.801">        }</a>
+<span class="sourceLineNo">802</span><a id="line.802"></a>
+<span class="sourceLineNo">803</span><a id="line.803">        return getUserOperations( userName );</a>
+<span class="sourceLineNo">804</span><a id="line.804">    }</a>
+<span class="sourceLineNo">805</span><a id="line.805"></a>
+<span class="sourceLineNo">806</span><a id="line.806">    @Override</a>
+<span class="sourceLineNo">807</span><a id="line.807">    public VerificationStatus validateUserRegistration( String userId, String key ) throws RedbackServiceException</a>
+<span class="sourceLineNo">808</span><a id="line.808">    {</a>
+<span class="sourceLineNo">809</span><a id="line.809">        String principal = null;</a>
+<span class="sourceLineNo">810</span><a id="line.810">        try</a>
+<span class="sourceLineNo">811</span><a id="line.811">        {</a>
+<span class="sourceLineNo">812</span><a id="line.812">            AuthenticationKey authkey = securitySystem.getKeyManager( ).findKey( key );</a>
+<span class="sourceLineNo">813</span><a id="line.813"></a>
+<span class="sourceLineNo">814</span><a id="line.814">            org.apache.archiva.redback.users.User user =</a>
+<span class="sourceLineNo">815</span><a id="line.815">                securitySystem.getUserManager( ).findUser( authkey.getForPrincipal( ) );</a>
+<span class="sourceLineNo">816</span><a id="line.816"></a>
+<span class="sourceLineNo">817</span><a id="line.817">            if ( user.isValidated( ) )</a>
+<span class="sourceLineNo">818</span><a id="line.818">            {</a>
+<span class="sourceLineNo">819</span><a id="line.819">                throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_REGISTRATION_USER_VALIDATED ), 404 );</a>
+<span class="sourceLineNo">820</span><a id="line.820">            }</a>
+<span class="sourceLineNo">821</span><a id="line.821">            user.setValidated( true );</a>
+<span class="sourceLineNo">822</span><a id="line.822">            user.setLocked( false );</a>
+<span class="sourceLineNo">823</span><a id="line.823">            user.setPasswordChangeRequired( true );</a>
+<span class="sourceLineNo">824</span><a id="line.824">            user.setEncodedPassword( "" );</a>
+<span class="sourceLineNo">825</span><a id="line.825">            securitySystem.getUserManager( ).updateUser( user );</a>
+<span class="sourceLineNo">826</span><a id="line.826">            principal = user.getUsername( );</a>
+<span class="sourceLineNo">827</span><a id="line.827"></a>
+<span class="sourceLineNo">828</span><a id="line.828">            TokenBasedAuthenticationDataSource authsource = new TokenBasedAuthenticationDataSource( );</a>
+<span class="sourceLineNo">829</span><a id="line.829">            authsource.setPrincipal( principal );</a>
+<span class="sourceLineNo">830</span><a id="line.830">            authsource.setToken( authkey.getKey( ) );</a>
+<span class="sourceLineNo">831</span><a id="line.831">            authsource.setEnforcePasswordChange( false );</a>
+<span class="sourceLineNo">832</span><a id="line.832"></a>
+<span class="sourceLineNo">833</span><a id="line.833">            VerificationStatus status = new VerificationStatus( false );</a>
+<span class="sourceLineNo">834</span><a id="line.834">            SecuritySession authStatus = securitySystem.authenticate( authsource );</a>
+<span class="sourceLineNo">835</span><a id="line.835">            if ( authStatus.isAuthenticated( ) )</a>
+<span class="sourceLineNo">836</span><a id="line.836">            {</a>
+<span class="sourceLineNo">837</span><a id="line.837">                Token accessToken = jwtAuthenticator.generateToken( principal );</a>
+<span class="sourceLineNo">838</span><a id="line.838">                status.setAccessToken( accessToken.getData( ) );</a>
+<span class="sourceLineNo">839</span><a id="line.839">                status.setSuccess( true );</a>
+<span class="sourceLineNo">840</span><a id="line.840">            }</a>
+<span class="sourceLineNo">841</span><a id="line.841">            else</a>
+<span class="sourceLineNo">842</span><a id="line.842">            {</a>
+<span class="sourceLineNo">843</span><a id="line.843">                user.setValidated( false );</a>
+<span class="sourceLineNo">844</span><a id="line.844">                user.setLocked( true );</a>
+<span class="sourceLineNo">845</span><a id="line.845">                user.setPasswordChangeRequired( false );</a>
+<span class="sourceLineNo">846</span><a id="line.846">                securitySystem.getUserManager( ).updateUser( user );</a>
+<span class="sourceLineNo">847</span><a id="line.847">            }</a>
+<span class="sourceLineNo">848</span><a id="line.848"></a>
+<span class="sourceLineNo">849</span><a id="line.849">            log.info( "account validated for user {}", user.getUsername( ) );</a>
+<span class="sourceLineNo">850</span><a id="line.850"></a>
+<span class="sourceLineNo">851</span><a id="line.851">            return status;</a>
+<span class="sourceLineNo">852</span><a id="line.852">        }</a>
+<span class="sourceLineNo">853</span><a id="line.853">        catch ( MustChangePasswordException e )</a>
+<span class="sourceLineNo">854</span><a id="line.854">        {</a>
+<span class="sourceLineNo">855</span><a id="line.855">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_AUTH_PASSWORD_CHANGE_REQUIRED ), Response.Status.FORBIDDEN.getStatusCode( ) );</a>
+<span class="sourceLineNo">856</span><a id="line.856">        }</a>
+<span class="sourceLineNo">857</span><a id="line.857">        catch ( AccountLockedException e )</a>
+<span class="sourceLineNo">858</span><a id="line.858">        {</a>
+<span class="sourceLineNo">859</span><a id="line.859">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_AUTH_ACCOUNT_LOCKED ), Response.Status.FORBIDDEN.getStatusCode( ) );</a>
+<span class="sourceLineNo">860</span><a id="line.860">        }</a>
+<span class="sourceLineNo">861</span><a id="line.861">        catch ( AuthenticationException e )</a>
+<span class="sourceLineNo">862</span><a id="line.862">        {</a>
+<span class="sourceLineNo">863</span><a id="line.863">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_AUTH_INVALID_CREDENTIALS ), Response.Status.FORBIDDEN.getStatusCode( ) );</a>
+<span class="sourceLineNo">864</span><a id="line.864">        }</a>
+<span class="sourceLineNo">865</span><a id="line.865">        catch ( KeyNotFoundException e )</a>
+<span class="sourceLineNo">866</span><a id="line.866">        {</a>
+<span class="sourceLineNo">867</span><a id="line.867">            log.info( "Invalid key requested: {}", key );</a>
+<span class="sourceLineNo">868</span><a id="line.868">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_REGISTRATION_KEY_INVALID ), 404 );</a>
+<span class="sourceLineNo">869</span><a id="line.869">        }</a>
+<span class="sourceLineNo">870</span><a id="line.870">        catch ( KeyManagerException e )</a>
+<span class="sourceLineNo">871</span><a id="line.871">        {</a>
+<span class="sourceLineNo">872</span><a id="line.872">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_KEYMANAGER_FAIL, e.getMessage( ) ), 400 );</a>
+<span class="sourceLineNo">873</span><a id="line.873"></a>
+<span class="sourceLineNo">874</span><a id="line.874">        }</a>
+<span class="sourceLineNo">875</span><a id="line.875">        catch ( UserNotFoundException e )</a>
+<span class="sourceLineNo">876</span><a id="line.876">        {</a>
+<span class="sourceLineNo">877</span><a id="line.877">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_NOT_FOUND, principal ), 404 );</a>
+<span class="sourceLineNo">878</span><a id="line.878"></a>
+<span class="sourceLineNo">879</span><a id="line.879">        }</a>
+<span class="sourceLineNo">880</span><a id="line.880">        catch ( UserManagerException e )</a>
+<span class="sourceLineNo">881</span><a id="line.881">        {</a>
+<span class="sourceLineNo">882</span><a id="line.882">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USERMANAGER_FAIL, e.getMessage( ) ), 400 );</a>
+<span class="sourceLineNo">883</span><a id="line.883">        }</a>
+<span class="sourceLineNo">884</span><a id="line.884">    }</a>
+<span class="sourceLineNo">885</span><a id="line.885"></a>
+<span class="sourceLineNo">886</span><a id="line.886">    @Override</a>
+<span class="sourceLineNo">887</span><a id="line.887">    public List&lt;RoleInfo&gt; getEffectivelyAssignedRoles( String username ) throws RedbackServiceException</a>
+<span class="sourceLineNo">888</span><a id="line.888">    {</a>
+<span class="sourceLineNo">889</span><a id="line.889">        try</a>
+<span class="sourceLineNo">890</span><a id="line.890">        {</a>
+<span class="sourceLineNo">891</span><a id="line.891">            return rbacManager.getEffectivelyAssignedRoles( username ).stream( )</a>
+<span class="sourceLineNo">892</span><a id="line.892">                .filter( org.apache.archiva.redback.rbac.Role::isAssignable )</a>
+<span class="sourceLineNo">893</span><a id="line.893">                .map( this::getRoleInfoOptional )</a>
+<span class="sourceLineNo">894</span><a id="line.894">                .filter( Optional::isPresent )</a>
+<span class="sourceLineNo">895</span><a id="line.895">                .map(Optional::get).collect( Collectors.toList());</a>
+<span class="sourceLineNo">896</span><a id="line.896">        }</a>
+<span class="sourceLineNo">897</span><a id="line.897">        catch ( RbacManagerException e )</a>
+<span class="sourceLineNo">898</span><a id="line.898">        {</a>
+<span class="sourceLineNo">899</span><a id="line.899">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_RBACMANAGER_FAIL, e.getMessage( ) ) );</a>
+<span class="sourceLineNo">900</span><a id="line.900">        }</a>
+<span class="sourceLineNo">901</span><a id="line.901">    }</a>
+<span class="sourceLineNo">902</span><a id="line.902"></a>
+<span class="sourceLineNo">903</span><a id="line.903">    private static final Application toApplication( ModelApplication app )</a>
+<span class="sourceLineNo">904</span><a id="line.904">    {</a>
+<span class="sourceLineNo">905</span><a id="line.905">        Application application = new Application( );</a>
+<span class="sourceLineNo">906</span><a id="line.906">        application.setId( app.getId( ) );</a>
+<span class="sourceLineNo">907</span><a id="line.907">        application.setVersion( app.getVersion( ) );</a>
+<span class="sourceLineNo">908</span><a id="line.908">        application.setDescription( app.getDescription( ) == null ? "" :app.getDescription() );</a>
+<span class="sourceLineNo">909</span><a id="line.909">        application.setLongDescription( app.getLongDescription( ) == null ? "" : app.getLongDescription( ) );</a>
+<span class="sourceLineNo">910</span><a id="line.910">        return application;</a>
+<span class="sourceLineNo">911</span><a id="line.911">    }</a>
+<span class="sourceLineNo">912</span><a id="line.912"></a>
+<span class="sourceLineNo">913</span><a id="line.913">    private List&lt;Application&gt; getAllApplications( )</a>
+<span class="sourceLineNo">914</span><a id="line.914">    {</a>
+<span class="sourceLineNo">915</span><a id="line.915">        return roleManager.getModel( ).getApplications( ).stream( ).map( DefaultUserService::toApplication ).collect( Collectors.toList( ) );</a>
+<span class="sourceLineNo">916</span><a id="line.916">    }</a>
+<span class="sourceLineNo">917</span><a id="line.917"></a>
+<span class="sourceLineNo">918</span><a id="line.918"></a>
+<span class="sourceLineNo">919</span><a id="line.919">    @Override</a>
+<span class="sourceLineNo">920</span><a id="line.920">    public RoleTree getRoleTree( final String username ) throws RedbackServiceException</a>
+<span class="sourceLineNo">921</span><a id="line.921">    {</a>
+<span class="sourceLineNo">922</span><a id="line.922">        final Map&lt;String, String&gt; roleApplicationMap = roleManager.getModel( ).getApplications( ).stream( )</a>
+<span class="sourceLineNo">923</span><a id="line.923">            .flatMap( modelApplication -&gt; modelApplication.getRoles( ).stream( ).map( role -&gt; {</a>
+<span class="sourceLineNo">924</span><a id="line.924">                BaseRoleInfo roleInfo = new BaseRoleInfo( );</a>
+<span class="sourceLineNo">925</span><a id="line.925">                roleInfo.setId( role.getId( ) );</a>
+<span class="sourceLineNo">926</span><a id="line.926">                roleInfo.setApplicationId( modelApplication.getId( ) );</a>
+<span class="sourceLineNo">927</span><a id="line.927">                return roleInfo;</a>
+<span class="sourceLineNo">928</span><a id="line.928">            } ) ).collect( Collectors.toMap( BaseRoleInfo::getId, BaseRoleInfo::getApplicationId ) );</a>
+<span class="sourceLineNo">929</span><a id="line.929"></a>
+<span class="sourceLineNo">930</span><a id="line.930">        try</a>
+<span class="sourceLineNo">931</span><a id="line.931">        {</a>
+<span class="sourceLineNo">932</span><a id="line.932">            final Set&lt;String&gt; assignedRoleIds = new HashSet( rbacManager.getUserAssignment( username ).getRoleIds( ) );</a>
+<span class="sourceLineNo">933</span><a id="line.933">            // We have to reuse the BaseRoleInfo objects, because the roles are not returned starting from the roots</a>
+<span class="sourceLineNo">934</span><a id="line.934">            final Map&lt;String, BaseRoleInfo&gt; roleIdCache = new HashMap&lt;&gt;( );</a>
+<span class="sourceLineNo">935</span><a id="line.935">            List&lt;BaseRoleInfo&gt; roleList = rbacManager.getAllRoles( ).stream( ).flatMap( this::flattenRole ).map( role -&gt;</a>
+<span class="sourceLineNo">936</span><a id="line.936">            {</a>
+<span class="sourceLineNo">937</span><a id="line.937">                BaseRoleInfo roleInfo = roleIdCache.computeIfAbsent( role.getId( ), s -&gt; new BaseRoleInfo( ) );</a>
+<span class="sourceLineNo">938</span><a id="line.938">                // Setting the role data, as there may be child role objects that are not completely initialized</a>
+<span class="sourceLineNo">939</span><a id="line.939">                roleInfo = BaseRoleInfo.of( role, roleInfo );</a>
+<span class="sourceLineNo">940</span><a id="line.940">                roleInfo.setApplicationId( roleApplicationMap.get( role.getId( ) ) );</a>
+<span class="sourceLineNo">941</span><a id="line.941">                roleInfo.setAssigned( assignedRoleIds.contains( role.getId( ) ) );</a>
+<span class="sourceLineNo">942</span><a id="line.942">                roleInfo.setChildren( role.getChildRoleIds( ).stream( )</a>
+<span class="sourceLineNo">943</span><a id="line.943">                    .map( roleId -&gt;</a>
+<span class="sourceLineNo">944</span><a id="line.944">                    {</a>
+<span class="sourceLineNo">945</span><a id="line.945">                        BaseRoleInfo childRoleInfo = roleIdCache.computeIfAbsent( roleId, s -&gt; BaseRoleInfo.ofId( roleId ) );</a>
+<span class="sourceLineNo">946</span><a id="line.946">                        childRoleInfo.setChild( true );</a>
+<span class="sourceLineNo">947</span><a id="line.947">                        return childRoleInfo;</a>
+<span class="sourceLineNo">948</span><a id="line.948">                    } )</a>
+<span class="sourceLineNo">949</span><a id="line.949">                    .collect( Collectors.toList( ) ) );</a>
+<span class="sourceLineNo">950</span><a id="line.950">                return roleInfo;</a>
+<span class="sourceLineNo">951</span><a id="line.951">            } ).collect( Collectors.toList( ) );</a>
+<span class="sourceLineNo">952</span><a id="line.952">            RoleTree roleTree = new RoleTree( );</a>
+<span class="sourceLineNo">953</span><a id="line.953">            roleTree.setApplications( getAllApplications( ).stream( ).collect( Collectors.toMap( Application::getId, Function.identity( ) ) ) );</a>
+<span class="sourceLineNo">954</span><a id="line.954">            roleTree.setRootRoles( roleList.stream( ).filter( BaseRoleInfo::isNotChild ).collect( Collectors.toList( ) ) );</a>
+<span class="sourceLineNo">955</span><a id="line.955">            roleTree.setUserId( username );</a>
+<span class="sourceLineNo">956</span><a id="line.956">            return roleTree;</a>
+<span class="sourceLineNo">957</span><a id="line.957">        }</a>
+<span class="sourceLineNo">958</span><a id="line.958">        catch ( RbacManagerException e )</a>
+<span class="sourceLineNo">959</span><a id="line.959">        {</a>
+<span class="sourceLineNo">960</span><a id="line.960">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_RBACMANAGER_FAIL, e.getMessage( ) ) );</a>
+<span class="sourceLineNo">961</span><a id="line.961">        }</a>
+<span class="sourceLineNo">962</span><a id="line.962">    }</a>
+<span class="sourceLineNo">963</span><a id="line.963"></a>
+<span class="sourceLineNo">964</span><a id="line.964">    @Override</a>
+<span class="sourceLineNo">965</span><a id="line.965">    public Response changePasswordUnauthenticated( String userId, PasswordChange passwordChange ) throws RedbackServiceException</a>
+<span class="sourceLineNo">966</span><a id="line.966">    {</a>
+<span class="sourceLineNo">967</span><a id="line.967">        changeUserPassword( userId, passwordChange );</a>
+<span class="sourceLineNo">968</span><a id="line.968">        return Response.ok( ).build( );</a>
+<span class="sourceLineNo">969</span><a id="line.969">    }</a>
+<span class="sourceLineNo">970</span><a id="line.970"></a>
+<span class="sourceLineNo">971</span><a id="line.971">    @Override</a>
+<span class="sourceLineNo">972</span><a id="line.972">    public Response changePassword( PasswordChange passwordChange ) throws RedbackServiceException</a>
+<span class="sourceLineNo">973</span><a id="line.973">    {</a>
+<span class="sourceLineNo">974</span><a id="line.974">        RedbackPrincipal principal = getPrincipal( );</a>
+<span class="sourceLineNo">975</span><a id="line.975">        if ( principal == null )</a>
+<span class="sourceLineNo">976</span><a id="line.976">        {</a>
+<span class="sourceLineNo">977</span><a id="line.977">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_AUTH_UNAUTHORIZED_REQUEST ), 401 );</a>
+<span class="sourceLineNo">978</span><a id="line.978">        }</a>
+<span class="sourceLineNo">979</span><a id="line.979">        String userId = principal.getUser( ).getUsername( );</a>
+<span class="sourceLineNo">980</span><a id="line.980">        changeUserPassword( userId, passwordChange );</a>
+<span class="sourceLineNo">981</span><a id="line.981">        return Response.ok( ).build( );</a>
+<span class="sourceLineNo">982</span><a id="line.982">    }</a>
+<span class="sourceLineNo">983</span><a id="line.983"></a>
+<span class="sourceLineNo">984</span><a id="line.984">    private List&lt;ErrorMessage&gt; getPasswordViolationMessages( PasswordRuleViolationException e )</a>
+<span class="sourceLineNo">985</span><a id="line.985">    {</a>
+<span class="sourceLineNo">986</span><a id="line.986">        PasswordRuleViolations violations = e.getViolations( );</a>
+<span class="sourceLineNo">987</span><a id="line.987">        List&lt;ErrorMessage&gt; errorMessages = new ArrayList&lt;&gt;( violations.getViolations( ).size( ) );</a>
+<span class="sourceLineNo">988</span><a id="line.988">        if ( violations != null )</a>
+<span class="sourceLineNo">989</span><a id="line.989">        {</a>
+<span class="sourceLineNo">990</span><a id="line.990">            for ( PasswordRuleViolations.MessageReference violation : violations.getViolations() )</a>
+<span class="sourceLineNo">991</span><a id="line.991">            {</a>
+<span class="sourceLineNo">992</span><a id="line.992">                errorMessages.add( new ErrorMessage( violation.getKey(), violation.getArgs() ) );</a>
+<span class="sourceLineNo">993</span><a id="line.993">            }</a>
+<span class="sourceLineNo">994</span><a id="line.994">        }</a>
+<span class="sourceLineNo">995</span><a id="line.995">        return errorMessages;</a>
+<span class="sourceLineNo">996</span><a id="line.996">    }</a>
+<span class="sourceLineNo">997</span><a id="line.997"></a>
+<span class="sourceLineNo">998</span><a id="line.998">    private void changeUserPassword(final String userId, final PasswordChange passwordChange) throws RedbackServiceException</a>
+<span class="sourceLineNo">999</span><a id="line.999">    {</a>
+<span class="sourceLineNo">1000</span><a id="line.1000">        if ( StringUtils.isEmpty( passwordChange.getCurrentPassword() ) )</a>
+<span class="sourceLineNo">1001</span><a id="line.1001">        {</a>
+<span class="sourceLineNo">1002</span><a id="line.1002">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_PASSWORDCHANGE_CURRENT_EMPTY ), 400 );</a>
+<span class="sourceLineNo">1003</span><a id="line.1003">        }</a>
+<span class="sourceLineNo">1004</span><a id="line.1004">        if ( passwordChange.getUserId( ) == null || ( !passwordChange.getUserId( ).equals( userId ) ) )</a>
+<span class="sourceLineNo">1005</span><a id="line.1005">        {</a>
+<span class="sourceLineNo">1006</span><a id="line.1006">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_ID_INVALID ), 403 );</a>
+<span class="sourceLineNo">1007</span><a id="line.1007">        }</a>
+<span class="sourceLineNo">1008</span><a id="line.1008"></a>
+<span class="sourceLineNo">1009</span><a id="line.1009">        if ( StringUtils.isEmpty( passwordChange.getNewPassword() ) )</a>
+<span class="sourceLineNo">1010</span><a id="line.1010">        {</a>
+<span class="sourceLineNo">1011</span><a id="line.1011">            throw new RedbackServiceException( ErrorMessage.of(MessageKeys.ERR_PASSWORDCHANGE_NEW_EMPTY), 400 );</a>
+<span class="sourceLineNo">1012</span><a id="line.1012">        }</a>
+<span class="sourceLineNo">1013</span><a id="line.1013">        if ( StringUtils.isEmpty( passwordChange.getNewPasswordConfirmation() ) )</a>
+<span class="sourceLineNo">1014</span><a id="line.1014">        {</a>
+<span class="sourceLineNo">1015</span><a id="line.1015">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_PASSWORDCHANGE_CONFIRMATION_EMPTY ),</a>
+<span class="sourceLineNo">1016</span><a id="line.1016">                400 );</a>
+<span class="sourceLineNo">1017</span><a id="line.1017">        }</a>
+<span class="sourceLineNo">1018</span><a id="line.1018">        if ( !StringUtils.equals( passwordChange.getNewPassword(), passwordChange.getNewPasswordConfirmation() ) )</a>
+<span class="sourceLineNo">1019</span><a id="line.1019">        {</a>
+<span class="sourceLineNo">1020</span><a id="line.1020">            throw new RedbackServiceException(ErrorMessage.of( MessageKeys.ERR_PASSWORDCHANGE_BAD_CONFIRMATION ),</a>
+<span class="sourceLineNo">1021</span><a id="line.1021">                403 );</a>
+<span class="sourceLineNo">1022</span><a id="line.1022">        }</a>
+<span class="sourceLineNo">1023</span><a id="line.1023"></a>
+<span class="sourceLineNo">1024</span><a id="line.1024">        try</a>
+<span class="sourceLineNo">1025</span><a id="line.1025">        {</a>
+<span class="sourceLineNo">1026</span><a id="line.1026">            org.apache.archiva.redback.users.User u = securitySystem.getUserManager().findUser( userId );</a>
+<span class="sourceLineNo">1027</span><a id="line.1027"></a>
+<span class="sourceLineNo">1028</span><a id="line.1028">            String previousEncodedPassword = u.getEncodedPassword();</a>
+<span class="sourceLineNo">1029</span><a id="line.1029"></a>
+<span class="sourceLineNo">1030</span><a id="line.1030">            // check oldPassword with the current one</a>
+<span class="sourceLineNo">1031</span><a id="line.1031"></a>
+<span class="sourceLineNo">1032</span><a id="line.1032">            PasswordEncoder encoder = securitySystem.getPolicy().getPasswordEncoder();</a>
+<span class="sourceLineNo">1033</span><a id="line.1033"></a>
+<span class="sourceLineNo">1034</span><a id="line.1034">            if ( !encoder.isPasswordValid( previousEncodedPassword, passwordChange.getCurrentPassword() ) )</a>
+<span class="sourceLineNo">1035</span><a id="line.1035">            {</a>
+<span class="sourceLineNo">1036</span><a id="line.1036"></a>
+<span class="sourceLineNo">1037</span><a id="line.1037">                throw new RedbackServiceException( MessageKeys.ERR_AUTH_INVALID_CREDENTIALS,</a>
+<span class="sourceLineNo">1038</span><a id="line.1038">                    401 );</a>
+<span class="sourceLineNo">1039</span><a id="line.1039">            }</a>
+<span class="sourceLineNo">1040</span><a id="line.1040"></a>
+<span class="sourceLineNo">1041</span><a id="line.1041">            u.setPassword( passwordChange.getNewPassword() );</a>
+<span class="sourceLineNo">1042</span><a id="line.1042">            securitySystem.getUserManager().updateUser( u );</a>
+<span class="sourceLineNo">1043</span><a id="line.1043">        }</a>
+<span class="sourceLineNo">1044</span><a id="line.1044">        catch ( UserNotFoundException e )</a>
+<span class="sourceLineNo">1045</span><a id="line.1045">        {</a>
+<span class="sourceLineNo">1046</span><a id="line.1046">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_NOT_FOUND ),</a>
+<span class="sourceLineNo">1047</span><a id="line.1047">                400 );</a>
+<span class="sourceLineNo">1048</span><a id="line.1048">        }</a>
+<span class="sourceLineNo">1049</span><a id="line.1049">        catch ( UserManagerException e )</a>
+<span class="sourceLineNo">1050</span><a id="line.1050">        {</a>
+<span class="sourceLineNo">1051</span><a id="line.1051">            log.info( "UserManagerException: {}", e.getMessage() );</a>
+<span class="sourceLineNo">1052</span><a id="line.1052">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USERMANAGER_FAIL, e.getMessage() ) );</a>
+<span class="sourceLineNo">1053</span><a id="line.1053">        }</a>
+<span class="sourceLineNo">1054</span><a id="line.1054">        catch ( PasswordRuleViolationException e )</a>
+<span class="sourceLineNo">1055</span><a id="line.1055">        {</a>
+<span class="sourceLineNo">1056</span><a id="line.1056">            throw new RedbackServiceException( getPasswordViolationMessages( e ), 401 );</a>
+<span class="sourceLineNo">1057</span><a id="line.1057">        }</a>
+<span class="sourceLineNo">1058</span><a id="line.1058"></a>
+<span class="sourceLineNo">1059</span><a id="line.1059"></a>
+<span class="sourceLineNo">1060</span><a id="line.1060">    }</a>
+<span class="sourceLineNo">1061</span><a id="line.1061"></a>
+<span class="sourceLineNo">1062</span><a id="line.1062">    private Stream&lt;Role&gt; flattenRole( Role role )</a>
+<span class="sourceLineNo">1063</span><a id="line.1063">    {</a>
+<span class="sourceLineNo">1064</span><a id="line.1064">        return Stream.concat( Stream.of( role ), this.getChildren( role ).flatMap( this::flattenRole ) ).distinct( );</a>
+<span class="sourceLineNo">1065</span><a id="line.1065">    }</a>
+<span class="sourceLineNo">1066</span><a id="line.1066"></a>
+<span class="sourceLineNo">1067</span><a id="line.1067">    private Stream&lt;? extends Role&gt; getChildren( Role role )</a>
+<span class="sourceLineNo">1068</span><a id="line.1068">    {</a>
+<span class="sourceLineNo">1069</span><a id="line.1069">        try</a>
+<span class="sourceLineNo">1070</span><a id="line.1070">        {</a>
+<span class="sourceLineNo">1071</span><a id="line.1071">            return rbacManager.getChildRoleNames( role ).values( ).stream( );</a>
+<span class="sourceLineNo">1072</span><a id="line.1072">        }</a>
+<span class="sourceLineNo">1073</span><a id="line.1073">        catch ( RbacManagerException e )</a>
+<span class="sourceLineNo">1074</span><a id="line.1074">        {</a>
+<span class="sourceLineNo">1075</span><a id="line.1075">            throw new RuntimeException( e );</a>
+<span class="sourceLineNo">1076</span><a id="line.1076">        }</a>
+<span class="sourceLineNo">1077</span><a id="line.1077">    }</a>
+<span class="sourceLineNo">1078</span><a id="line.1078"></a>
+<span class="sourceLineNo">1079</span><a id="line.1079">    @Override</a>
+<span class="sourceLineNo">1080</span><a id="line.1080">    public Collection&lt;Operation&gt; getUserOperations( String userName )</a>
+<span class="sourceLineNo">1081</span><a id="line.1081">        throws RedbackServiceException</a>
+<span class="sourceLineNo">1082</span><a id="line.1082">    {</a>
+<span class="sourceLineNo">1083</span><a id="line.1083">        Collection&lt;Permission&gt; permissions = getUserPermissions( userName );</a>
+<span class="sourceLineNo">1084</span><a id="line.1084">        List&lt;Operation&gt; operations = new ArrayList&lt;&gt;( permissions.size( ) );</a>
+<span class="sourceLineNo">1085</span><a id="line.1085">        for ( Permission permission : permissions )</a>
+<span class="sourceLineNo">1086</span><a id="line.1086">        {</a>
+<span class="sourceLineNo">1087</span><a id="line.1087">            if ( permission.getOperation( ) != null )</a>
+<span class="sourceLineNo">1088</span><a id="line.1088">            {</a>
+<span class="sourceLineNo">1089</span><a id="line.1089">                Operation operation = new Operation( );</a>
+<span class="sourceLineNo">1090</span><a id="line.1090">                operation.setName( permission.getOperation( ).getName( ) );</a>
+<span class="sourceLineNo">1091</span><a id="line.1091">                operations.add( operation );</a>
+<span class="sourceLineNo">1092</span><a id="line.1092">            }</a>
+<span class="sourceLineNo">1093</span><a id="line.1093">        }</a>
+<span class="sourceLineNo">1094</span><a id="line.1094">        return operations;</a>
+<span class="sourceLineNo">1095</span><a id="line.1095">    }</a>
+<span class="sourceLineNo">1096</span><a id="line.1096"></a>
+<span class="sourceLineNo">1097</span><a id="line.1097">    @Override</a>
+<span class="sourceLineNo">1098</span><a id="line.1098">    public Collection&lt;Permission&gt; getUserPermissions( String userName )</a>
+<span class="sourceLineNo">1099</span><a id="line.1099">        throws RedbackServiceException</a>
+<span class="sourceLineNo">1100</span><a id="line.1100">    {</a>
+<span class="sourceLineNo">1101</span><a id="line.1101">        try</a>
+<span class="sourceLineNo">1102</span><a id="line.1102">        {</a>
+<span class="sourceLineNo">1103</span><a id="line.1103">            Set&lt;? extends org.apache.archiva.redback.rbac.Permission&gt; permissions =</a>
+<span class="sourceLineNo">1104</span><a id="line.1104">                rbacManager.getAssignedPermissions( userName );</a>
+<span class="sourceLineNo">1105</span><a id="line.1105">            // FIXME return guest permissions !!</a>
+<span class="sourceLineNo">1106</span><a id="line.1106">            List&lt;Permission&gt; userPermissions = new ArrayList&lt;&gt;( permissions.size( ) );</a>
+<span class="sourceLineNo">1107</span><a id="line.1107">            for ( org.apache.archiva.redback.rbac.Permission p : permissions )</a>
+<span class="sourceLineNo">1108</span><a id="line.1108">            {</a>
+<span class="sourceLineNo">1109</span><a id="line.1109">                Permission permission = new Permission( );</a>
+<span class="sourceLineNo">1110</span><a id="line.1110">                permission.setName( p.getName( ) );</a>
+<span class="sourceLineNo">1111</span><a id="line.1111"></a>
+<span class="sourceLineNo">1112</span><a id="line.1112">                if ( p.getOperation( ) != null )</a>
+<span class="sourceLineNo">1113</span><a id="line.1113">                {</a>
+<span class="sourceLineNo">1114</span><a id="line.1114">                    Operation operation = new Operation( );</a>
+<span class="sourceLineNo">1115</span><a id="line.1115">                    operation.setName( p.getOperation( ).getName( ) );</a>
+<span class="sourceLineNo">1116</span><a id="line.1116">                    permission.setOperation( operation );</a>
+<span class="sourceLineNo">1117</span><a id="line.1117">                }</a>
+<span class="sourceLineNo">1118</span><a id="line.1118"></a>
+<span class="sourceLineNo">1119</span><a id="line.1119">                if ( p.getResource( ) != null )</a>
+<span class="sourceLineNo">1120</span><a id="line.1120">                {</a>
+<span class="sourceLineNo">1121</span><a id="line.1121">                    Resource resource = new Resource( );</a>
+<span class="sourceLineNo">1122</span><a id="line.1122">                    resource.setIdentifier( p.getResource( ).getIdentifier( ) );</a>
+<span class="sourceLineNo">1123</span><a id="line.1123">                    resource.setPattern( p.getResource( ).isPattern( ) );</a>
+<span class="sourceLineNo">1124</span><a id="line.1124">                    permission.setResource( resource );</a>
+<span class="sourceLineNo">1125</span><a id="line.1125">                }</a>
+<span class="sourceLineNo">1126</span><a id="line.1126"></a>
+<span class="sourceLineNo">1127</span><a id="line.1127">                userPermissions.add( permission );</a>
+<span class="sourceLineNo">1128</span><a id="line.1128">            }</a>
+<span class="sourceLineNo">1129</span><a id="line.1129">            return userPermissions;</a>
+<span class="sourceLineNo">1130</span><a id="line.1130">        }</a>
+<span class="sourceLineNo">1131</span><a id="line.1131">        catch ( RbacManagerException e )</a>
+<span class="sourceLineNo">1132</span><a id="line.1132">        {</a>
+<span class="sourceLineNo">1133</span><a id="line.1133">            log.error( e.getMessage( ), e );</a>
+<span class="sourceLineNo">1134</span><a id="line.1134">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_RBACMANAGER_FAIL, e.getMessage( ) ), 400 );</a>
+<span class="sourceLineNo">1135</span><a id="line.1135">        }</a>
+<span class="sourceLineNo">1136</span><a id="line.1136">    }</a>
+<span class="sourceLineNo">1137</span><a id="line.1137"></a>
+<span class="sourceLineNo">1138</span><a id="line.1138">    @Override</a>
+<span class="sourceLineNo">1139</span><a id="line.1139">    public Collection&lt;Permission&gt; getGuestPermissions( ) throws RedbackServiceException</a>
+<span class="sourceLineNo">1140</span><a id="line.1140">    {</a>
+<span class="sourceLineNo">1141</span><a id="line.1141">        return getUserPermissions( UserManager.GUEST_USERNAME );</a>
+<span class="sourceLineNo">1142</span><a id="line.1142">    }</a>
+<span class="sourceLineNo">1143</span><a id="line.1143"></a>
+<span class="sourceLineNo">1144</span><a id="line.1144">    public void validateCredentialsLoose( User user )</a>
+<span class="sourceLineNo">1145</span><a id="line.1145">        throws RedbackServiceException</a>
+<span class="sourceLineNo">1146</span><a id="line.1146">    {</a>
+<span class="sourceLineNo">1147</span><a id="line.1147">        RedbackServiceException redbackServiceException =</a>
+<span class="sourceLineNo">1148</span><a id="line.1148">            new RedbackServiceException( "issues during validating user", 422 );</a>
+<span class="sourceLineNo">1149</span><a id="line.1149">        if ( StringUtils.isEmpty( user.getUserId( ) ) )</a>
+<span class="sourceLineNo">1150</span><a id="line.1150">        {</a>
+<span class="sourceLineNo">1151</span><a id="line.1151">            redbackServiceException.addErrorMessage( ErrorMessage.of( MessageKeys.ERR_USER_ID_EMPTY ) );</a>
+<span class="sourceLineNo">1152</span><a id="line.1152">        }</a>
+<span class="sourceLineNo">1153</span><a id="line.1153">        else</a>
+<span class="sourceLineNo">1154</span><a id="line.1154">        {</a>
+<span class="sourceLineNo">1155</span><a id="line.1155">            if ( !user.getUserId( ).matches( VALID_USERNAME_CHARS ) )</a>
+<span class="sourceLineNo">1156</span><a id="line.1156">            {</a>
+<span class="sourceLineNo">1157</span><a id="line.1157">                redbackServiceException.addErrorMessage( ErrorMessage.of( MessageKeys.ERR_USER_ID_INVALID ) );</a>
+<span class="sourceLineNo">1158</span><a id="line.1158">            }</a>
+<span class="sourceLineNo">1159</span><a id="line.1159">        }</a>
+<span class="sourceLineNo">1160</span><a id="line.1160"></a>
+<span class="sourceLineNo">1161</span><a id="line.1161">        if ( StringUtils.isEmpty( user.getFullName( ) ) )</a>
+<span class="sourceLineNo">1162</span><a id="line.1162">        {</a>
+<span class="sourceLineNo">1163</span><a id="line.1163">            redbackServiceException.addErrorMessage( ErrorMessage.of( MessageKeys.ERR_USER_FULL_NAME_EMPTY ) );</a>
+<span class="sourceLineNo">1164</span><a id="line.1164">        }</a>
+<span class="sourceLineNo">1165</span><a id="line.1165"></a>
+<span class="sourceLineNo">1166</span><a id="line.1166">        if ( StringUtils.isEmpty( user.getEmail( ) ) )</a>
+<span class="sourceLineNo">1167</span><a id="line.1167">        {</a>
+<span class="sourceLineNo">1168</span><a id="line.1168">            redbackServiceException.addErrorMessage( ErrorMessage.of( MessageKeys.ERR_USER_EMAIL_EMPTY ) );</a>
+<span class="sourceLineNo">1169</span><a id="line.1169">        }</a>
+<span class="sourceLineNo">1170</span><a id="line.1170"></a>
+<span class="sourceLineNo">1171</span><a id="line.1171">        if ( !StringUtils.equals( user.getPassword( ), user.getConfirmPassword( ) ) )</a>
+<span class="sourceLineNo">1172</span><a id="line.1172">        {</a>
+<span class="sourceLineNo">1173</span><a id="line.1173">            redbackServiceException.addErrorMessage( ErrorMessage.of( MessageKeys.ERR_AUTH_INVALID_CREDENTIALS, "nomatch" ) );</a>
+<span class="sourceLineNo">1174</span><a id="line.1174">        }</a>
+<span class="sourceLineNo">1175</span><a id="line.1175"></a>
+<span class="sourceLineNo">1176</span><a id="line.1176">        try</a>
+<span class="sourceLineNo">1177</span><a id="line.1177">        {</a>
+<span class="sourceLineNo">1178</span><a id="line.1178">            if ( !StringUtils.isEmpty( user.getEmail( ) ) )</a>
+<span class="sourceLineNo">1179</span><a id="line.1179">            {</a>
+<span class="sourceLineNo">1180</span><a id="line.1180">                new InternetAddress( user.getEmail( ), true );</a>
+<span class="sourceLineNo">1181</span><a id="line.1181">            }</a>
+<span class="sourceLineNo">1182</span><a id="line.1182">        }</a>
+<span class="sourceLineNo">1183</span><a id="line.1183">        catch ( AddressException e )</a>
+<span class="sourceLineNo">1184</span><a id="line.1184">        {</a>
+<span class="sourceLineNo">1185</span><a id="line.1185">            redbackServiceException.addErrorMessage( ErrorMessage.of( MessageKeys.ERR_USER_EMAIL_INVALID ) );</a>
+<span class="sourceLineNo">1186</span><a id="line.1186">        }</a>
+<span class="sourceLineNo">1187</span><a id="line.1187">        if ( !redbackServiceException.getErrorMessages( ).isEmpty( ) )</a>
+<span class="sourceLineNo">1188</span><a id="line.1188">        {</a>
+<span class="sourceLineNo">1189</span><a id="line.1189">            throw redbackServiceException;</a>
+<span class="sourceLineNo">1190</span><a id="line.1190">        }</a>
+<span class="sourceLineNo">1191</span><a id="line.1191">    }</a>
+<span class="sourceLineNo">1192</span><a id="line.1192"></a>
+<span class="sourceLineNo">1193</span><a id="line.1193">    public void validateCredentialsStrict( User user )</a>
+<span class="sourceLineNo">1194</span><a id="line.1194">        throws RedbackServiceException</a>
+<span class="sourceLineNo">1195</span><a id="line.1195">    {</a>
+<span class="sourceLineNo">1196</span><a id="line.1196">        validateCredentialsLoose( user );</a>
+<span class="sourceLineNo">1197</span><a id="line.1197">        try</a>
+<span class="sourceLineNo">1198</span><a id="line.1198">        {</a>
+<span class="sourceLineNo">1199</span><a id="line.1199">            org.apache.archiva.redback.users.User tmpuser =</a>
+<span class="sourceLineNo">1200</span><a id="line.1200">                userManager.createUser( user.getUserId( ), user.getFullName( ), user.getEmail( ) );</a>
+<span class="sourceLineNo">1201</span><a id="line.1201"></a>
+<span class="sourceLineNo">1202</span><a id="line.1202">            user.setPassword( user.getPassword( ) );</a>
+<span class="sourceLineNo">1203</span><a id="line.1203"></a>
+<span class="sourceLineNo">1204</span><a id="line.1204">            securitySystem.getPolicy( ).validatePassword( tmpuser );</a>
+<span class="sourceLineNo">1205</span><a id="line.1205"></a>
+<span class="sourceLineNo">1206</span><a id="line.1206">            if ( ( StringUtils.isEmpty( user.getPassword( ) ) ) )</a>
+<span class="sourceLineNo">1207</span><a id="line.1207">            {</a>
+<span class="sourceLineNo">1208</span><a id="line.1208">                throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_AUTH_INVALID_CREDENTIALS, "empty" ) );</a>
+<span class="sourceLineNo">1209</span><a id="line.1209">            }</a>
+<span class="sourceLineNo">1210</span><a id="line.1210">        }</a>
+<span class="sourceLineNo">1211</span><a id="line.1211">        catch ( UserManagerException e )</a>
+<span class="sourceLineNo">1212</span><a id="line.1212">        {</a>
+<span class="sourceLineNo">1213</span><a id="line.1213">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_AUTH_INVALID_CREDENTIALS, e.getMessage( ) ) );</a>
+<span class="sourceLineNo">1214</span><a id="line.1214">        }</a>
+<span class="sourceLineNo">1215</span><a id="line.1215">    }</a>
+<span class="sourceLineNo">1216</span><a id="line.1216"></a>
+<span class="sourceLineNo">1217</span><a id="line.1217">    private String getBaseUrl( )</a>
+<span class="sourceLineNo">1218</span><a id="line.1218">    {</a>
+<span class="sourceLineNo">1219</span><a id="line.1219">        if ( httpServletRequest != null )</a>
+<span class="sourceLineNo">1220</span><a id="line.1220">        {</a>
+<span class="sourceLineNo">1221</span><a id="line.1221">            if ( httpServletRequest != null )</a>
+<span class="sourceLineNo">1222</span><a id="line.1222">            {</a>
+<span class="sourceLineNo">1223</span><a id="line.1223">                return httpServletRequest.getScheme( ) + "://" + httpServletRequest.getServerName( ) + (</a>
+<span class="sourceLineNo">1224</span><a id="line.1224">                    httpServletRequest.getServerPort( ) == 80</a>
+<span class="sourceLineNo">1225</span><a id="line.1225">                        ? ""</a>
+<span class="sourceLineNo">1226</span><a id="line.1226">                        : ":" + httpServletRequest.getServerPort( ) ) + httpServletRequest.getContextPath( );</a>
+<span class="sourceLineNo">1227</span><a id="line.1227">            }</a>
+<span class="sourceLineNo">1228</span><a id="line.1228">        }</a>
+<span class="sourceLineNo">1229</span><a id="line.1229">        return null;</a>
+<span class="sourceLineNo">1230</span><a id="line.1230">    }</a>
+<span class="sourceLineNo">1231</span><a id="line.1231"></a>
+<span class="sourceLineNo">1232</span><a id="line.1232"></a>
+<span class="sourceLineNo">1233</span><a id="line.1233">    private org.apache.archiva.redback.users.User updateUser( String userId, Function&lt;org.apache.archiva.redback.users.User, RedbackServiceException&gt; updateFunction ) throws RedbackServiceException</a>
+<span class="sourceLineNo">1234</span><a id="line.1234">    {</a>
+<span class="sourceLineNo">1235</span><a id="line.1235"></a>
+<span class="sourceLineNo">1236</span><a id="line.1236">        try</a>
+<span class="sourceLineNo">1237</span><a id="line.1237">        {</a>
+<span class="sourceLineNo">1238</span><a id="line.1238">            org.apache.archiva.redback.users.User rawUser = userManager.findUser( userId, false );</a>
+<span class="sourceLineNo">1239</span><a id="line.1239">            if ( rawUser != null )</a>
+<span class="sourceLineNo">1240</span><a id="line.1240">            {</a>
+<span class="sourceLineNo">1241</span><a id="line.1241">                RedbackServiceException result = updateFunction.apply( rawUser );</a>
+<span class="sourceLineNo">1242</span><a id="line.1242">                if ( result != null )</a>
+<span class="sourceLineNo">1243</span><a id="line.1243">                {</a>
+<span class="sourceLineNo">1244</span><a id="line.1244">                    throw result;</a>
+<span class="sourceLineNo">1245</span><a id="line.1245">                }</a>
+<span class="sourceLineNo">1246</span><a id="line.1246">                userManager.updateUser( rawUser, false );</a>
+<span class="sourceLineNo">1247</span><a id="line.1247">            }</a>
+<span class="sourceLineNo">1248</span><a id="line.1248">            else</a>
+<span class="sourceLineNo">1249</span><a id="line.1249">            {</a>
+<span class="sourceLineNo">1250</span><a id="line.1250">                throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_NOT_FOUND, userId ), 404 );</a>
+<span class="sourceLineNo">1251</span><a id="line.1251">            }</a>
+<span class="sourceLineNo">1252</span><a id="line.1252">            return rawUser;</a>
+<span class="sourceLineNo">1253</span><a id="line.1253">        }</a>
+<span class="sourceLineNo">1254</span><a id="line.1254">        catch ( UserNotFoundException e )</a>
+<span class="sourceLineNo">1255</span><a id="line.1255">        {</a>
+<span class="sourceLineNo">1256</span><a id="line.1256">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USER_NOT_FOUND ), 404 );</a>
+<span class="sourceLineNo">1257</span><a id="line.1257">        }</a>
+<span class="sourceLineNo">1258</span><a id="line.1258">        catch ( UserManagerException e )</a>
+<span class="sourceLineNo">1259</span><a id="line.1259">        {</a>
+<span class="sourceLineNo">1260</span><a id="line.1260">            throw new RedbackServiceException( ErrorMessage.of( MessageKeys.ERR_USERMANAGER_FAIL, e.getMessage( ) ) );</a>
+<span class="sourceLineNo">1261</span><a id="line.1261">        }</a>
+<span class="sourceLineNo">1262</span><a id="line.1262">    }</a>
+<span class="sourceLineNo">1263</span><a id="line.1263"></a>
+<span class="sourceLineNo">1264</span><a id="line.1264">    @Override</a>
+<span class="sourceLineNo">1265</span><a id="line.1265">    public void unlockUser( String userId )</a>
+<span class="sourceLineNo">1266</span><a id="line.1266">        throws RedbackServiceException</a>
+<span class="sourceLineNo">1267</span><a id="line.1267">    {</a>
+<span class="sourceLineNo">1268</span><a id="line.1268">        updateUser( userId, user -&gt; {</a>
+<span class="sourceLineNo">1269</span><a id="line.1269">            user.setLocked( false );</a>
+<span class="sourceLineNo">1270</span><a id="line.1270">            return null;</a>
+<span class="sourceLineNo">1271</span><a id="line.1271">        } );</a>
+<span class="sourceLineNo">1272</span><a id="line.1272">        httpServletResponse.setStatus( 200 );</a>
+<span class="sourceLineNo">1273</span><a id="line.1273">    }</a>
+<span class="sourceLineNo">1274</span><a id="line.1274"></a>
+<span class="sourceLineNo">1275</span><a id="line.1275">    @Override</a>
+<span class="sourceLineNo">1276</span><a id="line.1276">    public void lockUser( String userId )</a>
+<span class="sourceLineNo">1277</span><a id="line.1277">        throws RedbackServiceException</a>
+<span class="sourceLineNo">1278</span><a id="line.1278">    {</a>
+<span class="sourceLineNo">1279</span><a id="line.1279">        updateUser( userId, user -&gt; {</a>
+<span class="sourceLineNo">1280</span><a id="line.1280">            user.setLocked( true );</a>
+<span class="sourceLineNo">1281</span><a id="line.1281">            return null;</a>
+<span class="sourceLineNo">1282</span><a id="line.1282">        } );</a>
+<span class="sourceLineNo">1283</span><a id="line.1283">        httpServletResponse.setStatus( 200 );</a>
+<span class="sourceLineNo">1284</span><a id="line.1284">    }</a>
+<span class="sourceLineNo">1285</span><a id="line.1285"></a>
+<span class="sourceLineNo">1286</span><a id="line.1286">    @Override</a>
+<span class="sourceLineNo">1287</span><a id="line.1287">    public void setRequirePasswordChangeFlag( String userId )</a>
+<span class="sourceLineNo">1288</span><a id="line.1288">        throws RedbackServiceException</a>
+<span class="sourceLineNo">1289</span><a id="line.1289">    {</a>
+<span class="sourceLineNo">1290</span><a id="line.1290">        updateUser( userId, user -&gt; {</a>
+<span class="sourceLineNo">1291</span><a id="line.1291">            user.setPasswordChangeRequired( true );</a>
+<span class="sourceLineNo">1292</span><a id="line.1292">            return null;</a>
+<span class="sourceLineNo">1293</span><a id="line.1293">        } );</a>
+<span class="sourceLineNo">1294</span><a id="line.1294">        httpServletResponse.setStatus( 200 );</a>
+<span class="sourceLineNo">1295</span><a id="line.1295">    }</a>
+<span class="sourceLineNo">1296</span><a id="line.1296"></a>
+<span class="sourceLineNo">1297</span><a id="line.1297">    @Override</a>
+<span class="sourceLineNo">1298</span><a id="line.1298">    public void clearRequirePasswordChangeFlag( String userId )</a>
+<span class="sourceLineNo">1299</span><a id="line.1299">        throws RedbackServiceException</a>
+<span class="sourceLineNo">1300</span><a id="line.1300">    {</a>
+<span class="sourceLineNo">1301</span><a id="line.1301">        updateUser( userId, user -&gt; {</a>
+<span class="sourceLineNo">1302</span><a id="line.1302">            user.setPasswordChangeRequired( false );</a>
+<span class="sourceLineNo">1303</span><a id="line.1303">            return null;</a>
+<span class="sourceLineNo">1304</span><a id="line.1304">        } );</a>
+<span class="sourceLineNo">1305</span><a id="line.1305">        httpServletResponse.setStatus( 200 );</a>
+<span class="sourceLineNo">1306</span><a id="line.1306">    }</a>
+<span class="sourceLineNo">1307</span><a id="line.1307"></a>
+<span class="sourceLineNo">1308</span><a id="line.1308">}</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</main>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<main role="main">
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span><a id="line.1">package org.apache.archiva.redback.rest.api;/*</a>
+<span class="sourceLineNo">002</span><a id="line.2"> * Licensed to the Apache Software Foundation (ASF) under one</a>
+<span class="sourceLineNo">003</span><a id="line.3"> * or more contributor license agreements.  See the NOTICE file</a>
+<span class="sourceLineNo">004</span><a id="line.4"> * distributed with this work for additional information</a>
+<span class="sourceLineNo">005</span><a id="line.5"> * regarding copyright ownership.  The ASF licenses this file</a>
+<span class="sourceLineNo">006</span><a id="line.6"> * to you under the Apache License, Version 2.0 (the</a>
+<span class="sourceLineNo">007</span><a id="line.7"> * "License"); you may not use this file except in compliance</a>
+<span class="sourceLineNo">008</span><a id="line.8"> * with the License.  You may obtain a copy of the License at</a>
+<span class="sourceLineNo">009</span><a id="line.9"> *</a>
+<span class="sourceLineNo">010</span><a id="line.10"> * http://www.apache.org/licenses/LICENSE-2.0</a>
+<span class="sourceLineNo">011</span><a id="line.11"> * Unless required by applicable law or agreed to in writing,</a>
+<span class="sourceLineNo">012</span><a id="line.12"> * software distributed under the License is distributed on an</a>
+<span class="sourceLineNo">013</span><a id="line.13"> * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</a>
+<span class="sourceLineNo">014</span><a id="line.14"> * KIND, either express or implied.  See the License for the</a>
+<span class="sourceLineNo">015</span><a id="line.15"> * specific language governing permissions and limitations</a>
+<span class="sourceLineNo">016</span><a id="line.16"> * under the License.</a>
+<span class="sourceLineNo">017</span><a id="line.17"> */</a>
+<span class="sourceLineNo">018</span><a id="line.18"></a>
+<span class="sourceLineNo">019</span><a id="line.19">/**</a>
+<span class="sourceLineNo">020</span><a id="line.20"> * Keys for error messages that are returned by REST API</a>
+<span class="sourceLineNo">021</span><a id="line.21"> *</a>
+<span class="sourceLineNo">022</span><a id="line.22"> * @author Martin Stockhammer &lt;martin_s@apache.org&gt;</a>
+<span class="sourceLineNo">023</span><a id="line.23"> */</a>
+<span class="sourceLineNo">024</span><a id="line.24">public interface MessageKeys</a>
+<span class="sourceLineNo">025</span><a id="line.25">{</a>
+<span class="sourceLineNo">026</span><a id="line.26">    String ERR_UNKNOWN = "rb.unknown_error";</a>
+<span class="sourceLineNo">027</span><a id="line.27">    String ERR_USERMANAGER_FAIL = "rb.usermanager_error";</a>
+<span class="sourceLineNo">028</span><a id="line.28">    String ERR_ROLEMANAGER_FAIL = "rb.rolemanager_error";</a>
+<span class="sourceLineNo">029</span><a id="line.29">    String ERR_RBACMANAGER_FAIL = "rb.rbacmanager_error";</a>
+<span class="sourceLineNo">030</span><a id="line.30">    String ERR_KEYMANAGER_FAIL = "rb.keymanager_error";</a>
+<span class="sourceLineNo">031</span><a id="line.31">    String ERR_EMPTY_DATA = "rb.empty_data_received";</a>
+<span class="sourceLineNo">032</span><a id="line.32">    String ERR_INVALID_POST_DATA = "rb.invalid_post_data";</a>
+<span class="sourceLineNo">033</span><a id="line.33">    String ERR_USER_EXISTS = "rb.user.exists";</a>
+<span class="sourceLineNo">034</span><a id="line.34">    String ERR_USER_ID_EMPTY = "rb.user.id.empty";</a>
+<span class="sourceLineNo">035</span><a id="line.35">    String ERR_USER_ID_INVALID = "rb.user.id.invalid";</a>
+<span class="sourceLineNo">036</span><a id="line.36">    String ERR_USER_FULL_NAME_EMPTY = "rb.user.fullname.empty";</a>
+<span class="sourceLineNo">037</span><a id="line.37">    String ERR_USER_EMAIL_EMPTY = "rb.user.email.empty";</a>
+<span class="sourceLineNo">038</span><a id="line.38">    String ERR_USER_EMAIL_INVALID = "rb.user.email.invalid";</a>
+<span class="sourceLineNo">039</span><a id="line.39">    String ERR_USER_ASSIGN_ROLE = "rb.user.role.assign.failure";</a>
+<span class="sourceLineNo">040</span><a id="line.40">    String ERR_USER_NOT_VALIDATED = "rb.user.not_validated";</a>
+<span class="sourceLineNo">041</span><a id="line.41">    String ERR_USER_ADMIN_EXISTS = "rb.user.admin.exists";</a>
+<span class="sourceLineNo">042</span><a id="line.42">    String ERR_USER_ADMIN_BAD_NAME = "rb.user.admin.badname";</a>
+<span class="sourceLineNo">043</span><a id="line.43">    String ERR_USER_NOT_FOUND = "rb.user.not_found";</a>
+<span class="sourceLineNo">044</span><a id="line.44">    String ERR_USER_BAD_PASSWORD = "rb.user.bad.password";</a>
+<span class="sourceLineNo">045</span><a id="line.45">    String ERR_PASSWORD_VIOLATION = "rb.user.password_violation";</a>
+<span class="sourceLineNo">046</span><a id="line.46">    String ERR_PASSWORDCHANGE_CURRENT_EMPTY = "rb.user.passwordchange.current_empty";</a>
+<span class="sourceLineNo">047</span><a id="line.47">    String ERR_PASSWORDCHANGE_KEY_EMPTY = "rb.user.passwordchange.key_empty";</a>
+<span class="sourceLineNo">048</span><a id="line.48">    String ERR_PASSWORDCHANGE_NEW_EMPTY = "rb.user.passwordchange.new_empty";</a>
+<span class="sourceLineNo">049</span><a id="line.49">    String ERR_PASSWORDCHANGE_CONFIRMATION_EMPTY = "rb.user.passwordchange.confirmation_empty";</a>
+<span class="sourceLineNo">050</span><a id="line.50">    String ERR_PASSWORDCHANGE_BAD_CONFIRMATION = "rb.user.passwordchange.bad_confirmation";</a>
+<span class="sourceLineNo">051</span><a id="line.51">    String ERR_PASSWORDCHANGE_BAD_KEY = "rb.user.passwordchange.bad_key";</a>
+<span class="sourceLineNo">052</span><a id="line.52">    String ERR_PASSWORDCHANGE_USER_NOT_FOUND = "rb.user.passwordchange.bad_key";</a>
+<span class="sourceLineNo">053</span><a id="line.53"></a>
+<span class="sourceLineNo">054</span><a id="line.54"></a>
+<span class="sourceLineNo">055</span><a id="line.55">    String ERR_LDAP_GENERIC = "rb.ldap.error";</a>
+<span class="sourceLineNo">056</span><a id="line.56">    String ERR_ROLE_MAPPING = "rb.role.mapping.error";</a>
+<span class="sourceLineNo">057</span><a id="line.57">    String ERR_ROLE_MAPPING_NOT_FOUND = "rb.role.mapping.not_found";</a>
+<span class="sourceLineNo">058</span><a id="line.58">    String ERR_ROLE_NOT_FOUND = "rb.role.not_found";</a>
+<span class="sourceLineNo">059</span><a id="line.59">    // A template instance not found. With arguments templateId, resource</a>
+<span class="sourceLineNo">060</span><a id="line.60">    String ERR_ROLE_INSTANCE_NOT_FOUND = "rb.role.instance.not_found";</a>
+<span class="sourceLineNo">061</span><a id="line.61">    String ERR_ROLE_EXISTS = "rb.role.exists";</a>
+<span class="sourceLineNo">062</span><a id="line.62">    // A template instance exists. With arguments templateId, resource</a>
+<span class="sourceLineNo">063</span><a id="line.63">    String ERR_ROLE_INSTANCE_EXISTS = "rb.role.instance.exists";</a>
+<span class="sourceLineNo">064</span><a id="line.64">    String ERR_ROLE_ID_INVALID = "rb.role.invalid_id";</a>
+<span class="sourceLineNo">065</span><a id="line.65">    String ERR_ROLE_DELETION_WITH_PERMANENT_FLAG = "rb.role.deletion_with_permanent_flag";</a>
+<span class="sourceLineNo">066</span><a id="line.66"></a>
+<span class="sourceLineNo">067</span><a id="line.67">    String ERR_AUTH_BAD_CODE = "rb.auth.bad_authorization_code";</a>
+<span class="sourceLineNo">068</span><a id="line.68">    String ERR_AUTH_INVALID_CREDENTIALS = "rb.auth.invalid_credentials";</a>
+<span class="sourceLineNo">069</span><a id="line.69">    String ERR_AUTH_FAIL_MSG = "rb.auth.fail";</a>
+<span class="sourceLineNo">070</span><a id="line.70">    String ERR_AUTH_ACCOUNT_LOCKED = "rb.auth.account_locked";</a>
+<span class="sourceLineNo">071</span><a id="line.71">    String ERR_AUTH_PASSWORD_CHANGE_REQUIRED = "rb.auth.password_change_required";</a>
+<span class="sourceLineNo">072</span><a id="line.72">    String ERR_AUTH_UNSUPPORTED_GRANT_TYPE = "rb.auth.unsupported_grant";</a>
+<span class="sourceLineNo">073</span><a id="line.73">    String ERR_AUTH_INVALID_TOKEN = "rb.auth.invalid_token";</a>
+<span class="sourceLineNo">074</span><a id="line.74">    String ERR_AUTH_UNAUTHORIZED_REQUEST = "rb.auth.unauthorized_request";</a>
+<span class="sourceLineNo">075</span><a id="line.75"></a>
+<span class="sourceLineNo">076</span><a id="line.76">    String ERR_PASSWD_RESET_FAILED = "rb.passwd.reset.fail";</a>
+<span class="sourceLineNo">077</span><a id="line.77"></a>
+<span class="sourceLineNo">078</span><a id="line.78">    String ERR_REGISTRATION_KEY_INVALID = "rb.registration.key.invalid";</a>
+<span class="sourceLineNo">079</span><a id="line.79">    String ERR_REGISTRATION_USER_VALIDATED = "rb.registration.user.validated";</a>
+<span class="sourceLineNo">080</span><a id="line.80">    String ERR_REGISTRATION_ROLE_ASSIGNMENT_FAILED = "rb.registration.role.assignment.failed";</a>
+<span class="sourceLineNo">081</span><a id="line.81"></a>
+<span class="sourceLineNo">082</span><a id="line.82">    String ERR_INVALID_PAGING_RESULT_ERROR = "rb.paging_result.invalid";</a>
+<span class="sourceLineNo">083</span><a id="line.83">}</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</main>
+</body>
+</html>

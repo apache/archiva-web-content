@@ -1,274 +1,277 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
 <title>Source code</title>
 <link rel="stylesheet" type="text/css" href="../../../../../../../../stylesheet.css" title="Style">
 </head>
 <body>
+<main role="main">
 <div class="sourceContainer">
-<pre><span class="sourceLineNo">001</span>package org.apache.archiva.redback.rest.api.services;<a name="line.1"></a>
-<span class="sourceLineNo">002</span><a name="line.2"></a>
-<span class="sourceLineNo">003</span>/*<a name="line.3"></a>
-<span class="sourceLineNo">004</span> * Licensed to the Apache Software Foundation (ASF) under one<a name="line.4"></a>
-<span class="sourceLineNo">005</span> * or more contributor license agreements.  See the NOTICE file<a name="line.5"></a>
-<span class="sourceLineNo">006</span> * distributed with this work for additional information<a name="line.6"></a>
-<span class="sourceLineNo">007</span> * regarding copyright ownership.  The ASF licenses this file<a name="line.7"></a>
-<span class="sourceLineNo">008</span> * to you under the Apache License, Version 2.0 (the<a name="line.8"></a>
-<span class="sourceLineNo">009</span> * "License"); you may not use this file except in compliance<a name="line.9"></a>
-<span class="sourceLineNo">010</span> * with the License.  You may obtain a copy of the License at<a name="line.10"></a>
-<span class="sourceLineNo">011</span> *<a name="line.11"></a>
-<span class="sourceLineNo">012</span> * http://www.apache.org/licenses/LICENSE-2.0<a name="line.12"></a>
-<span class="sourceLineNo">013</span> *<a name="line.13"></a>
-<span class="sourceLineNo">014</span> * Unless required by applicable law or agreed to in writing,<a name="line.14"></a>
-<span class="sourceLineNo">015</span> * software distributed under the License is distributed on an<a name="line.15"></a>
-<span class="sourceLineNo">016</span> * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY<a name="line.16"></a>
-<span class="sourceLineNo">017</span> * KIND, either express or implied.  See the License for the<a name="line.17"></a>
-<span class="sourceLineNo">018</span> * specific language governing permissions and limitations<a name="line.18"></a>
-<span class="sourceLineNo">019</span> * under the License.<a name="line.19"></a>
-<span class="sourceLineNo">020</span> */<a name="line.20"></a>
-<span class="sourceLineNo">021</span><a name="line.21"></a>
-<span class="sourceLineNo">022</span>import org.apache.archiva.redback.authorization.RedbackAuthorization;<a name="line.22"></a>
-<span class="sourceLineNo">023</span>import org.apache.archiva.redback.integration.security.role.RedbackRoleConstants;<a name="line.23"></a>
-<span class="sourceLineNo">024</span>import org.apache.archiva.redback.rest.api.model.Operation;<a name="line.24"></a>
-<span class="sourceLineNo">025</span>import org.apache.archiva.redback.rest.api.model.Permission;<a name="line.25"></a>
-<span class="sourceLineNo">026</span>import org.apache.archiva.redback.rest.api.model.RegistrationKey;<a name="line.26"></a>
-<span class="sourceLineNo">027</span>import org.apache.archiva.redback.rest.api.model.ResetPasswordRequest;<a name="line.27"></a>
-<span class="sourceLineNo">028</span>import org.apache.archiva.redback.rest.api.model.User;<a name="line.28"></a>
-<span class="sourceLineNo">029</span>import org.apache.archiva.redback.rest.api.model.UserRegistrationRequest;<a name="line.29"></a>
-<span class="sourceLineNo">030</span><a name="line.30"></a>
-<span class="sourceLineNo">031</span>import javax.ws.rs.Consumes;<a name="line.31"></a>
-<span class="sourceLineNo">032</span>import javax.ws.rs.GET;<a name="line.32"></a>
-<span class="sourceLineNo">033</span>import javax.ws.rs.POST;<a name="line.33"></a>
-<span class="sourceLineNo">034</span>import javax.ws.rs.Path;<a name="line.34"></a>
-<span class="sourceLineNo">035</span>import javax.ws.rs.PathParam;<a name="line.35"></a>
-<span class="sourceLineNo">036</span>import javax.ws.rs.Produces;<a name="line.36"></a>
-<span class="sourceLineNo">037</span>import javax.ws.rs.core.MediaType;<a name="line.37"></a>
-<span class="sourceLineNo">038</span>import java.util.Collection;<a name="line.38"></a>
-<span class="sourceLineNo">039</span>import java.util.List;<a name="line.39"></a>
-<span class="sourceLineNo">040</span><a name="line.40"></a>
-<span class="sourceLineNo">041</span>@Path( "/userService/" )<a name="line.41"></a>
-<span class="sourceLineNo">042</span>public interface UserService<a name="line.42"></a>
-<span class="sourceLineNo">043</span>{<a name="line.43"></a>
-<span class="sourceLineNo">044</span>    @Path( "getUser/{userName}" )<a name="line.44"></a>
-<span class="sourceLineNo">045</span>    @GET<a name="line.45"></a>
-<span class="sourceLineNo">046</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )<a name="line.46"></a>
-<span class="sourceLineNo">047</span>    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_EDIT_OPERATION )<a name="line.47"></a>
-<span class="sourceLineNo">048</span>    User getUser( @PathParam( "userName" ) String username )<a name="line.48"></a>
-<span class="sourceLineNo">049</span>        throws RedbackServiceException;<a name="line.49"></a>
-<span class="sourceLineNo">050</span><a name="line.50"></a>
-<span class="sourceLineNo">051</span><a name="line.51"></a>
-<span class="sourceLineNo">052</span>    @Path( "getUsers" )<a name="line.52"></a>
-<span class="sourceLineNo">053</span>    @GET<a name="line.53"></a>
-<span class="sourceLineNo">054</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )<a name="line.54"></a>
-<span class="sourceLineNo">055</span>    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_LIST_OPERATION )<a name="line.55"></a>
-<span class="sourceLineNo">056</span>    List&lt;User&gt; getUsers()<a name="line.56"></a>
-<span class="sourceLineNo">057</span>        throws RedbackServiceException;<a name="line.57"></a>
-<span class="sourceLineNo">058</span><a name="line.58"></a>
-<span class="sourceLineNo">059</span>    @Path( "createUser" )<a name="line.59"></a>
-<span class="sourceLineNo">060</span>    @POST<a name="line.60"></a>
-<span class="sourceLineNo">061</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.61"></a>
-<span class="sourceLineNo">062</span>    @Consumes( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )<a name="line.62"></a>
-<span class="sourceLineNo">063</span>    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_CREATE_OPERATION )<a name="line.63"></a>
-<span class="sourceLineNo">064</span>    Boolean createUser( User user )<a name="line.64"></a>
-<span class="sourceLineNo">065</span>        throws RedbackServiceException;<a name="line.65"></a>
-<span class="sourceLineNo">066</span><a name="line.66"></a>
-<span class="sourceLineNo">067</span><a name="line.67"></a>
-<span class="sourceLineNo">068</span>    /**<a name="line.68"></a>
-<span class="sourceLineNo">069</span>     * will create admin user only if not exists !! if exists will return false<a name="line.69"></a>
-<span class="sourceLineNo">070</span>     */<a name="line.70"></a>
-<span class="sourceLineNo">071</span>    @Path( "createAdminUser" )<a name="line.71"></a>
-<span class="sourceLineNo">072</span>    @POST<a name="line.72"></a>
-<span class="sourceLineNo">073</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.73"></a>
-<span class="sourceLineNo">074</span>    @Consumes( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )<a name="line.74"></a>
-<span class="sourceLineNo">075</span>    @RedbackAuthorization( noRestriction = true )<a name="line.75"></a>
-<span class="sourceLineNo">076</span>    Boolean createAdminUser( User user )<a name="line.76"></a>
-<span class="sourceLineNo">077</span>        throws RedbackServiceException;<a name="line.77"></a>
-<span class="sourceLineNo">078</span><a name="line.78"></a>
-<span class="sourceLineNo">079</span>    @Path( "isAdminUserExists" )<a name="line.79"></a>
-<span class="sourceLineNo">080</span>    @GET<a name="line.80"></a>
-<span class="sourceLineNo">081</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.81"></a>
-<span class="sourceLineNo">082</span>    @RedbackAuthorization( noRestriction = true )<a name="line.82"></a>
-<span class="sourceLineNo">083</span>    Boolean isAdminUserExists()<a name="line.83"></a>
-<span class="sourceLineNo">084</span>        throws RedbackServiceException;<a name="line.84"></a>
-<span class="sourceLineNo">085</span><a name="line.85"></a>
-<span class="sourceLineNo">086</span><a name="line.86"></a>
-<span class="sourceLineNo">087</span>    @Path( "deleteUser/{userName}" )<a name="line.87"></a>
-<span class="sourceLineNo">088</span>    @GET<a name="line.88"></a>
-<span class="sourceLineNo">089</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.89"></a>
-<span class="sourceLineNo">090</span>    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_DELETE_OPERATION )<a name="line.90"></a>
-<span class="sourceLineNo">091</span>    Boolean deleteUser( @PathParam( "userName" ) String username )<a name="line.91"></a>
-<span class="sourceLineNo">092</span>        throws RedbackServiceException;<a name="line.92"></a>
-<span class="sourceLineNo">093</span><a name="line.93"></a>
-<span class="sourceLineNo">094</span>    @Path( "updateUser" )<a name="line.94"></a>
-<span class="sourceLineNo">095</span>    @POST<a name="line.95"></a>
-<span class="sourceLineNo">096</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.96"></a>
-<span class="sourceLineNo">097</span>    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_EDIT_OPERATION )<a name="line.97"></a>
-<span class="sourceLineNo">098</span>    Boolean updateUser( User user )<a name="line.98"></a>
-<span class="sourceLineNo">099</span>        throws RedbackServiceException;<a name="line.99"></a>
-<span class="sourceLineNo">100</span><a name="line.100"></a>
-<span class="sourceLineNo">101</span>    /**<a name="line.101"></a>
-<span class="sourceLineNo">102</span>     * @since 2.0<a name="line.102"></a>
-<span class="sourceLineNo">103</span>     */<a name="line.103"></a>
-<span class="sourceLineNo">104</span>    @Path( "lockUser/{username}" )<a name="line.104"></a>
-<span class="sourceLineNo">105</span>    @GET<a name="line.105"></a>
-<span class="sourceLineNo">106</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.106"></a>
-<span class="sourceLineNo">107</span>    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_EDIT_OPERATION )<a name="line.107"></a>
-<span class="sourceLineNo">108</span>    Boolean lockUser( @PathParam( "username" ) String username )<a name="line.108"></a>
-<span class="sourceLineNo">109</span>        throws RedbackServiceException;<a name="line.109"></a>
-<span class="sourceLineNo">110</span><a name="line.110"></a>
-<span class="sourceLineNo">111</span>    /**<a name="line.111"></a>
-<span class="sourceLineNo">112</span>     * @since 2.0<a name="line.112"></a>
-<span class="sourceLineNo">113</span>     */<a name="line.113"></a>
-<span class="sourceLineNo">114</span>    @Path( "unlockUser/{username}" )<a name="line.114"></a>
-<span class="sourceLineNo">115</span>    @GET<a name="line.115"></a>
-<span class="sourceLineNo">116</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.116"></a>
-<span class="sourceLineNo">117</span>    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_EDIT_OPERATION )<a name="line.117"></a>
-<span class="sourceLineNo">118</span>    Boolean unlockUser( @PathParam( "username" ) String username )<a name="line.118"></a>
-<span class="sourceLineNo">119</span>        throws RedbackServiceException;<a name="line.119"></a>
-<span class="sourceLineNo">120</span><a name="line.120"></a>
-<span class="sourceLineNo">121</span><a name="line.121"></a>
-<span class="sourceLineNo">122</span>    /**<a name="line.122"></a>
-<span class="sourceLineNo">123</span>     * @since 2.0<a name="line.123"></a>
-<span class="sourceLineNo">124</span>     */<a name="line.124"></a>
-<span class="sourceLineNo">125</span>    @Path( "passwordChangeRequired/{username}" )<a name="line.125"></a>
-<span class="sourceLineNo">126</span>    @GET<a name="line.126"></a>
-<span class="sourceLineNo">127</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.127"></a>
-<span class="sourceLineNo">128</span>    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_EDIT_OPERATION )<a name="line.128"></a>
-<span class="sourceLineNo">129</span>    Boolean passwordChangeRequired( @PathParam( "username" ) String username )<a name="line.129"></a>
-<span class="sourceLineNo">130</span>        throws RedbackServiceException;<a name="line.130"></a>
-<span class="sourceLineNo">131</span><a name="line.131"></a>
-<span class="sourceLineNo">132</span>    /**<a name="line.132"></a>
-<span class="sourceLineNo">133</span>     * @since 2.0<a name="line.133"></a>
-<span class="sourceLineNo">134</span>     */<a name="line.134"></a>
-<span class="sourceLineNo">135</span>    @Path( "passwordChangeNotRequired/{username}" )<a name="line.135"></a>
-<span class="sourceLineNo">136</span>    @GET<a name="line.136"></a>
-<span class="sourceLineNo">137</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.137"></a>
-<span class="sourceLineNo">138</span>    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_EDIT_OPERATION )<a name="line.138"></a>
-<span class="sourceLineNo">139</span>    Boolean passwordChangeNotRequired( @PathParam( "username" ) String username )<a name="line.139"></a>
-<span class="sourceLineNo">140</span>        throws RedbackServiceException;<a name="line.140"></a>
-<span class="sourceLineNo">141</span><a name="line.141"></a>
-<span class="sourceLineNo">142</span><a name="line.142"></a>
-<span class="sourceLineNo">143</span>    /**<a name="line.143"></a>
-<span class="sourceLineNo">144</span>     * update only the current user and this fields: fullname, email, password.<a name="line.144"></a>
-<span class="sourceLineNo">145</span>     * the service verify the curent logged user with the one passed in the method<a name="line.145"></a>
-<span class="sourceLineNo">146</span>     * @since 1.4<a name="line.146"></a>
-<span class="sourceLineNo">147</span>     */<a name="line.147"></a>
-<span class="sourceLineNo">148</span>    @Path( "updateMe" )<a name="line.148"></a>
-<span class="sourceLineNo">149</span>    @POST<a name="line.149"></a>
-<span class="sourceLineNo">150</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.150"></a>
-<span class="sourceLineNo">151</span>    @RedbackAuthorization( noRestriction = false, noPermission = true )<a name="line.151"></a>
-<span class="sourceLineNo">152</span>    Boolean updateMe( User user )<a name="line.152"></a>
-<span class="sourceLineNo">153</span>        throws RedbackServiceException;<a name="line.153"></a>
-<span class="sourceLineNo">154</span><a name="line.154"></a>
-<span class="sourceLineNo">155</span>    @Path( "ping" )<a name="line.155"></a>
-<span class="sourceLineNo">156</span>    @GET<a name="line.156"></a>
-<span class="sourceLineNo">157</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.157"></a>
-<span class="sourceLineNo">158</span>    @RedbackAuthorization( noRestriction = true )<a name="line.158"></a>
-<span class="sourceLineNo">159</span>    Boolean ping()<a name="line.159"></a>
-<span class="sourceLineNo">160</span>        throws RedbackServiceException;<a name="line.160"></a>
-<span class="sourceLineNo">161</span><a name="line.161"></a>
-<span class="sourceLineNo">162</span>    @Path( "removeFromCache/{userName}" )<a name="line.162"></a>
-<span class="sourceLineNo">163</span>    @GET<a name="line.163"></a>
-<span class="sourceLineNo">164</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.164"></a>
-<span class="sourceLineNo">165</span>    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_EDIT_OPERATION )<a name="line.165"></a>
-<span class="sourceLineNo">166</span>    int removeFromCache( @PathParam( "userName" ) String username )<a name="line.166"></a>
-<span class="sourceLineNo">167</span>        throws RedbackServiceException;<a name="line.167"></a>
-<span class="sourceLineNo">168</span><a name="line.168"></a>
-<span class="sourceLineNo">169</span>    @Path( "getGuestUser" )<a name="line.169"></a>
-<span class="sourceLineNo">170</span>    @GET<a name="line.170"></a>
-<span class="sourceLineNo">171</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.171"></a>
-<span class="sourceLineNo">172</span>    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_EDIT_OPERATION )<a name="line.172"></a>
-<span class="sourceLineNo">173</span>    User getGuestUser()<a name="line.173"></a>
-<span class="sourceLineNo">174</span>        throws RedbackServiceException;<a name="line.174"></a>
-<span class="sourceLineNo">175</span><a name="line.175"></a>
-<span class="sourceLineNo">176</span>    @Path( "createGuestUser" )<a name="line.176"></a>
-<span class="sourceLineNo">177</span>    @GET<a name="line.177"></a>
-<span class="sourceLineNo">178</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.178"></a>
-<span class="sourceLineNo">179</span>    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_EDIT_OPERATION )<a name="line.179"></a>
-<span class="sourceLineNo">180</span>    User createGuestUser()<a name="line.180"></a>
-<span class="sourceLineNo">181</span>        throws RedbackServiceException;<a name="line.181"></a>
-<span class="sourceLineNo">182</span><a name="line.182"></a>
-<span class="sourceLineNo">183</span>    /**<a name="line.183"></a>
-<span class="sourceLineNo">184</span>     * if redback is not configured for email validation is required, -1 is returned as key<a name="line.184"></a>
-<span class="sourceLineNo">185</span>     * @since 1.4<a name="line.185"></a>
-<span class="sourceLineNo">186</span>     */<a name="line.186"></a>
-<span class="sourceLineNo">187</span>    @Path( "registerUser" )<a name="line.187"></a>
-<span class="sourceLineNo">188</span>    @POST<a name="line.188"></a>
-<span class="sourceLineNo">189</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )<a name="line.189"></a>
-<span class="sourceLineNo">190</span>    @RedbackAuthorization( noRestriction = true, noPermission = true )<a name="line.190"></a>
-<span class="sourceLineNo">191</span>    RegistrationKey registerUser( UserRegistrationRequest userRegistrationRequest )<a name="line.191"></a>
-<span class="sourceLineNo">192</span>        throws RedbackServiceException;<a name="line.192"></a>
-<span class="sourceLineNo">193</span><a name="line.193"></a>
-<span class="sourceLineNo">194</span><a name="line.194"></a>
-<span class="sourceLineNo">195</span>    /**<a name="line.195"></a>
-<span class="sourceLineNo">196</span>     * validate the key and the user with forcing a password change for next login.<a name="line.196"></a>
-<span class="sourceLineNo">197</span>     * http session is created.<a name="line.197"></a>
-<span class="sourceLineNo">198</span>     * @param key authentication key<a name="line.198"></a>
-<span class="sourceLineNo">199</span>     * @since 1.4<a name="line.199"></a>
-<span class="sourceLineNo">200</span>     */<a name="line.200"></a>
-<span class="sourceLineNo">201</span>    @Path( "validateKey/{key}" )<a name="line.201"></a>
-<span class="sourceLineNo">202</span>    @GET<a name="line.202"></a>
-<span class="sourceLineNo">203</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.203"></a>
-<span class="sourceLineNo">204</span>    @RedbackAuthorization( noRestriction = true, noPermission = true )<a name="line.204"></a>
-<span class="sourceLineNo">205</span>    Boolean validateUserFromKey( @PathParam( "key" ) String key )<a name="line.205"></a>
-<span class="sourceLineNo">206</span>        throws RedbackServiceException;<a name="line.206"></a>
-<span class="sourceLineNo">207</span><a name="line.207"></a>
-<span class="sourceLineNo">208</span>    /**<a name="line.208"></a>
-<span class="sourceLineNo">209</span>     *<a name="line.209"></a>
-<span class="sourceLineNo">210</span>     * @param resetPasswordRequest contains username for send a password reset email<a name="line.210"></a>
-<span class="sourceLineNo">211</span>     * @since 1.4<a name="line.211"></a>
-<span class="sourceLineNo">212</span>     */<a name="line.212"></a>
-<span class="sourceLineNo">213</span>    @Path( "resetPassword" )<a name="line.213"></a>
-<span class="sourceLineNo">214</span>    @POST<a name="line.214"></a>
-<span class="sourceLineNo">215</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.215"></a>
-<span class="sourceLineNo">216</span>    @Consumes( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )<a name="line.216"></a>
-<span class="sourceLineNo">217</span>    @RedbackAuthorization( noRestriction = true, noPermission = true )<a name="line.217"></a>
-<span class="sourceLineNo">218</span>    Boolean resetPassword( ResetPasswordRequest resetPasswordRequest )<a name="line.218"></a>
-<span class="sourceLineNo">219</span>        throws RedbackServiceException;<a name="line.219"></a>
-<span class="sourceLineNo">220</span><a name="line.220"></a>
-<span class="sourceLineNo">221</span>    /**<a name="line.221"></a>
-<span class="sourceLineNo">222</span>     * @since 1.4<a name="line.222"></a>
-<span class="sourceLineNo">223</span>     */<a name="line.223"></a>
-<span class="sourceLineNo">224</span>    @Path( "getUserPermissions/{userName}" )<a name="line.224"></a>
-<span class="sourceLineNo">225</span>    @GET<a name="line.225"></a>
-<span class="sourceLineNo">226</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.226"></a>
-<span class="sourceLineNo">227</span>    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_LIST_OPERATION )<a name="line.227"></a>
-<span class="sourceLineNo">228</span>    Collection&lt;Permission&gt; getUserPermissions( @PathParam( "userName" ) String userName )<a name="line.228"></a>
-<span class="sourceLineNo">229</span>        throws RedbackServiceException;<a name="line.229"></a>
-<span class="sourceLineNo">230</span><a name="line.230"></a>
-<span class="sourceLineNo">231</span>    /**<a name="line.231"></a>
-<span class="sourceLineNo">232</span>     * @since 1.4<a name="line.232"></a>
-<span class="sourceLineNo">233</span>     */<a name="line.233"></a>
-<span class="sourceLineNo">234</span>    @Path( "getUserOperations/{userName}" )<a name="line.234"></a>
-<span class="sourceLineNo">235</span>    @GET<a name="line.235"></a>
-<span class="sourceLineNo">236</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.236"></a>
-<span class="sourceLineNo">237</span>    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_LIST_OPERATION )<a name="line.237"></a>
-<span class="sourceLineNo">238</span>    Collection&lt;Operation&gt; getUserOperations( @PathParam( "userName" ) String userName )<a name="line.238"></a>
-<span class="sourceLineNo">239</span>        throws RedbackServiceException;<a name="line.239"></a>
-<span class="sourceLineNo">240</span><a name="line.240"></a>
-<span class="sourceLineNo">241</span>    /**<a name="line.241"></a>
-<span class="sourceLineNo">242</span>     * @return  the current logged user permissions, if no logged user guest permissions are returned<a name="line.242"></a>
-<span class="sourceLineNo">243</span>     * @since 1.4<a name="line.243"></a>
-<span class="sourceLineNo">244</span>     */<a name="line.244"></a>
-<span class="sourceLineNo">245</span>    @Path( "getCurrentUserPermissions" )<a name="line.245"></a>
-<span class="sourceLineNo">246</span>    @GET<a name="line.246"></a>
-<span class="sourceLineNo">247</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.247"></a>
-<span class="sourceLineNo">248</span>    @RedbackAuthorization( noRestriction = true, noPermission = true )<a name="line.248"></a>
-<span class="sourceLineNo">249</span>    Collection&lt;Permission&gt; getCurrentUserPermissions()<a name="line.249"></a>
-<span class="sourceLineNo">250</span>        throws RedbackServiceException;<a name="line.250"></a>
-<span class="sourceLineNo">251</span><a name="line.251"></a>
-<span class="sourceLineNo">252</span>    /**<a name="line.252"></a>
-<span class="sourceLineNo">253</span>     * @return the current logged user operations, if no logged user guest operations are returned<a name="line.253"></a>
-<span class="sourceLineNo">254</span>     * @since 1.4<a name="line.254"></a>
-<span class="sourceLineNo">255</span>     */<a name="line.255"></a>
-<span class="sourceLineNo">256</span>    @Path( "getCurrentUserOperations" )<a name="line.256"></a>
-<span class="sourceLineNo">257</span>    @GET<a name="line.257"></a>
-<span class="sourceLineNo">258</span>    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )<a name="line.258"></a>
-<span class="sourceLineNo">259</span>    @RedbackAuthorization( noRestriction = true, noPermission = true )<a name="line.259"></a>
-<span class="sourceLineNo">260</span>    Collection&lt;Operation&gt; getCurrentUserOperations()<a name="line.260"></a>
-<span class="sourceLineNo">261</span>        throws RedbackServiceException;<a name="line.261"></a>
-<span class="sourceLineNo">262</span><a name="line.262"></a>
-<span class="sourceLineNo">263</span>}<a name="line.263"></a>
+<pre><span class="sourceLineNo">001</span><a id="line.1">package org.apache.archiva.redback.rest.api.services;</a>
+<span class="sourceLineNo">002</span><a id="line.2"></a>
+<span class="sourceLineNo">003</span><a id="line.3">/*</a>
+<span class="sourceLineNo">004</span><a id="line.4"> * Licensed to the Apache Software Foundation (ASF) under one</a>
+<span class="sourceLineNo">005</span><a id="line.5"> * or more contributor license agreements.  See the NOTICE file</a>
+<span class="sourceLineNo">006</span><a id="line.6"> * distributed with this work for additional information</a>
+<span class="sourceLineNo">007</span><a id="line.7"> * regarding copyright ownership.  The ASF licenses this file</a>
+<span class="sourceLineNo">008</span><a id="line.8"> * to you under the Apache License, Version 2.0 (the</a>
+<span class="sourceLineNo">009</span><a id="line.9"> * "License"); you may not use this file except in compliance</a>
+<span class="sourceLineNo">010</span><a id="line.10"> * with the License.  You may obtain a copy of the License at</a>
+<span class="sourceLineNo">011</span><a id="line.11"> *</a>
+<span class="sourceLineNo">012</span><a id="line.12"> * http://www.apache.org/licenses/LICENSE-2.0</a>
+<span class="sourceLineNo">013</span><a id="line.13"> *</a>
+<span class="sourceLineNo">014</span><a id="line.14"> * Unless required by applicable law or agreed to in writing,</a>
+<span class="sourceLineNo">015</span><a id="line.15"> * software distributed under the License is distributed on an</a>
+<span class="sourceLineNo">016</span><a id="line.16"> * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</a>
+<span class="sourceLineNo">017</span><a id="line.17"> * KIND, either express or implied.  See the License for the</a>
+<span class="sourceLineNo">018</span><a id="line.18"> * specific language governing permissions and limitations</a>
+<span class="sourceLineNo">019</span><a id="line.19"> * under the License.</a>
+<span class="sourceLineNo">020</span><a id="line.20"> */</a>
+<span class="sourceLineNo">021</span><a id="line.21"></a>
+<span class="sourceLineNo">022</span><a id="line.22">import org.apache.archiva.redback.authorization.RedbackAuthorization;</a>
+<span class="sourceLineNo">023</span><a id="line.23">import org.apache.archiva.redback.integration.security.role.RedbackRoleConstants;</a>
+<span class="sourceLineNo">024</span><a id="line.24">import org.apache.archiva.redback.rest.api.model.Operation;</a>
+<span class="sourceLineNo">025</span><a id="line.25">import org.apache.archiva.redback.rest.api.model.Permission;</a>
+<span class="sourceLineNo">026</span><a id="line.26">import org.apache.archiva.redback.rest.api.model.RegistrationKey;</a>
+<span class="sourceLineNo">027</span><a id="line.27">import org.apache.archiva.redback.rest.api.model.ResetPasswordRequest;</a>
+<span class="sourceLineNo">028</span><a id="line.28">import org.apache.archiva.redback.rest.api.model.User;</a>
+<span class="sourceLineNo">029</span><a id="line.29">import org.apache.archiva.redback.rest.api.model.UserRegistrationRequest;</a>
+<span class="sourceLineNo">030</span><a id="line.30"></a>
+<span class="sourceLineNo">031</span><a id="line.31">import javax.ws.rs.Consumes;</a>
+<span class="sourceLineNo">032</span><a id="line.32">import javax.ws.rs.GET;</a>
+<span class="sourceLineNo">033</span><a id="line.33">import javax.ws.rs.POST;</a>
+<span class="sourceLineNo">034</span><a id="line.34">import javax.ws.rs.Path;</a>
+<span class="sourceLineNo">035</span><a id="line.35">import javax.ws.rs.PathParam;</a>
+<span class="sourceLineNo">036</span><a id="line.36">import javax.ws.rs.Produces;</a>
+<span class="sourceLineNo">037</span><a id="line.37">import javax.ws.rs.core.MediaType;</a>
+<span class="sourceLineNo">038</span><a id="line.38">import java.util.Collection;</a>
+<span class="sourceLineNo">039</span><a id="line.39">import java.util.List;</a>
+<span class="sourceLineNo">040</span><a id="line.40"></a>
+<span class="sourceLineNo">041</span><a id="line.41">/**</a>
+<span class="sourceLineNo">042</span><a id="line.42"> * This service is deprecated. Please use {@link org.apache.archiva.redback.rest.api.services.v2.UserService}</a>
+<span class="sourceLineNo">043</span><a id="line.43"> */</a>
+<span class="sourceLineNo">044</span><a id="line.44">@Path( "/userService/" )</a>
+<span class="sourceLineNo">045</span><a id="line.45">@Deprecated</a>
+<span class="sourceLineNo">046</span><a id="line.46">public interface UserService</a>
+<span class="sourceLineNo">047</span><a id="line.47">{</a>
+<span class="sourceLineNo">048</span><a id="line.48">    @Path( "getUser/{userName}" )</a>
+<span class="sourceLineNo">049</span><a id="line.49">    @GET</a>
+<span class="sourceLineNo">050</span><a id="line.50">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )</a>
+<span class="sourceLineNo">051</span><a id="line.51">    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_EDIT_OPERATION )</a>
+<span class="sourceLineNo">052</span><a id="line.52">    User getUser( @PathParam( "userName" ) String username )</a>
+<span class="sourceLineNo">053</span><a id="line.53">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">054</span><a id="line.54"></a>
+<span class="sourceLineNo">055</span><a id="line.55"></a>
+<span class="sourceLineNo">056</span><a id="line.56">    @Path( "getUsers" )</a>
+<span class="sourceLineNo">057</span><a id="line.57">    @GET</a>
+<span class="sourceLineNo">058</span><a id="line.58">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )</a>
+<span class="sourceLineNo">059</span><a id="line.59">    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_LIST_OPERATION )</a>
+<span class="sourceLineNo">060</span><a id="line.60">    List&lt;User&gt; getUsers()</a>
+<span class="sourceLineNo">061</span><a id="line.61">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">062</span><a id="line.62"></a>
+<span class="sourceLineNo">063</span><a id="line.63">    @Path( "createUser" )</a>
+<span class="sourceLineNo">064</span><a id="line.64">    @POST</a>
+<span class="sourceLineNo">065</span><a id="line.65">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">066</span><a id="line.66">    @Consumes( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )</a>
+<span class="sourceLineNo">067</span><a id="line.67">    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_CREATE_OPERATION )</a>
+<span class="sourceLineNo">068</span><a id="line.68">    Boolean createUser( User user )</a>
+<span class="sourceLineNo">069</span><a id="line.69">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">070</span><a id="line.70"></a>
+<span class="sourceLineNo">071</span><a id="line.71"></a>
+<span class="sourceLineNo">072</span><a id="line.72">    /**</a>
+<span class="sourceLineNo">073</span><a id="line.73">     * will create admin user only if not exists !! if exists will return false</a>
+<span class="sourceLineNo">074</span><a id="line.74">     */</a>
+<span class="sourceLineNo">075</span><a id="line.75">    @Path( "createAdminUser" )</a>
+<span class="sourceLineNo">076</span><a id="line.76">    @POST</a>
+<span class="sourceLineNo">077</span><a id="line.77">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">078</span><a id="line.78">    @Consumes( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )</a>
+<span class="sourceLineNo">079</span><a id="line.79">    @RedbackAuthorization( noRestriction = true )</a>
+<span class="sourceLineNo">080</span><a id="line.80">    Boolean createAdminUser( User user )</a>
+<span class="sourceLineNo">081</span><a id="line.81">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">082</span><a id="line.82"></a>
+<span class="sourceLineNo">083</span><a id="line.83">    @Path( "isAdminUserExists" )</a>
+<span class="sourceLineNo">084</span><a id="line.84">    @GET</a>
+<span class="sourceLineNo">085</span><a id="line.85">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">086</span><a id="line.86">    @RedbackAuthorization( noRestriction = true )</a>
+<span class="sourceLineNo">087</span><a id="line.87">    Boolean isAdminUserExists()</a>
+<span class="sourceLineNo">088</span><a id="line.88">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">089</span><a id="line.89"></a>
+<span class="sourceLineNo">090</span><a id="line.90"></a>
+<span class="sourceLineNo">091</span><a id="line.91">    @Path( "deleteUser/{userName}" )</a>
+<span class="sourceLineNo">092</span><a id="line.92">    @GET</a>
+<span class="sourceLineNo">093</span><a id="line.93">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">094</span><a id="line.94">    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_DELETE_OPERATION )</a>
+<span class="sourceLineNo">095</span><a id="line.95">    Boolean deleteUser( @PathParam( "userName" ) String username )</a>
+<span class="sourceLineNo">096</span><a id="line.96">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">097</span><a id="line.97"></a>
+<span class="sourceLineNo">098</span><a id="line.98">    @Path( "updateUser" )</a>
+<span class="sourceLineNo">099</span><a id="line.99">    @POST</a>
+<span class="sourceLineNo">100</span><a id="line.100">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">101</span><a id="line.101">    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_EDIT_OPERATION )</a>
+<span class="sourceLineNo">102</span><a id="line.102">    Boolean updateUser( User user )</a>
+<span class="sourceLineNo">103</span><a id="line.103">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">104</span><a id="line.104"></a>
+<span class="sourceLineNo">105</span><a id="line.105">    /**</a>
+<span class="sourceLineNo">106</span><a id="line.106">     * @since 2.0</a>
+<span class="sourceLineNo">107</span><a id="line.107">     */</a>
+<span class="sourceLineNo">108</span><a id="line.108">    @Path( "lockUser/{username}" )</a>
+<span class="sourceLineNo">109</span><a id="line.109">    @GET</a>
+<span class="sourceLineNo">110</span><a id="line.110">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">111</span><a id="line.111">    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_EDIT_OPERATION )</a>
+<span class="sourceLineNo">112</span><a id="line.112">    Boolean lockUser( @PathParam( "username" ) String username )</a>
+<span class="sourceLineNo">113</span><a id="line.113">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">114</span><a id="line.114"></a>
+<span class="sourceLineNo">115</span><a id="line.115">    /**</a>
+<span class="sourceLineNo">116</span><a id="line.116">     * @since 2.0</a>
+<span class="sourceLineNo">117</span><a id="line.117">     */</a>
+<span class="sourceLineNo">118</span><a id="line.118">    @Path( "unlockUser/{username}" )</a>
+<span class="sourceLineNo">119</span><a id="line.119">    @GET</a>
+<span class="sourceLineNo">120</span><a id="line.120">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">121</span><a id="line.121">    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_EDIT_OPERATION )</a>
+<span class="sourceLineNo">122</span><a id="line.122">    Boolean unlockUser( @PathParam( "username" ) String username )</a>
+<span class="sourceLineNo">123</span><a id="line.123">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">124</span><a id="line.124"></a>
+<span class="sourceLineNo">125</span><a id="line.125"></a>
+<span class="sourceLineNo">126</span><a id="line.126">    /**</a>
+<span class="sourceLineNo">127</span><a id="line.127">     * @since 2.0</a>
+<span class="sourceLineNo">128</span><a id="line.128">     */</a>
+<span class="sourceLineNo">129</span><a id="line.129">    @Path( "passwordChangeRequired/{username}" )</a>
+<span class="sourceLineNo">130</span><a id="line.130">    @GET</a>
+<span class="sourceLineNo">131</span><a id="line.131">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">132</span><a id="line.132">    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_EDIT_OPERATION )</a>
+<span class="sourceLineNo">133</span><a id="line.133">    Boolean passwordChangeRequired( @PathParam( "username" ) String username )</a>
+<span class="sourceLineNo">134</span><a id="line.134">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">135</span><a id="line.135"></a>
+<span class="sourceLineNo">136</span><a id="line.136">    /**</a>
+<span class="sourceLineNo">137</span><a id="line.137">     * @since 2.0</a>
+<span class="sourceLineNo">138</span><a id="line.138">     */</a>
+<span class="sourceLineNo">139</span><a id="line.139">    @Path( "passwordChangeNotRequired/{username}" )</a>
+<span class="sourceLineNo">140</span><a id="line.140">    @GET</a>
+<span class="sourceLineNo">141</span><a id="line.141">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">142</span><a id="line.142">    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_EDIT_OPERATION )</a>
+<span class="sourceLineNo">143</span><a id="line.143">    Boolean passwordChangeNotRequired( @PathParam( "username" ) String username )</a>
+<span class="sourceLineNo">144</span><a id="line.144">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">145</span><a id="line.145">    /**</a>
+<span class="sourceLineNo">146</span><a id="line.146">     * update only the current user and this fields: fullname, email, password.</a>
+<span class="sourceLineNo">147</span><a id="line.147">     * the service verify the curent logged user with the one passed in the method</a>
+<span class="sourceLineNo">148</span><a id="line.148">     * @since 1.4</a>
+<span class="sourceLineNo">149</span><a id="line.149">     */</a>
+<span class="sourceLineNo">150</span><a id="line.150">    @Path( "updateMe" )</a>
+<span class="sourceLineNo">151</span><a id="line.151">    @POST</a>
+<span class="sourceLineNo">152</span><a id="line.152">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">153</span><a id="line.153">    @RedbackAuthorization( noRestriction = false, noPermission = true )</a>
+<span class="sourceLineNo">154</span><a id="line.154">    Boolean updateMe( User user )</a>
+<span class="sourceLineNo">155</span><a id="line.155">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">156</span><a id="line.156"></a>
+<span class="sourceLineNo">157</span><a id="line.157">    @Path( "ping" )</a>
+<span class="sourceLineNo">158</span><a id="line.158">    @GET</a>
+<span class="sourceLineNo">159</span><a id="line.159">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">160</span><a id="line.160">    @RedbackAuthorization( noRestriction = true )</a>
+<span class="sourceLineNo">161</span><a id="line.161">    Boolean ping()</a>
+<span class="sourceLineNo">162</span><a id="line.162">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">163</span><a id="line.163"></a>
+<span class="sourceLineNo">164</span><a id="line.164">    @Path( "removeFromCache/{userName}" )</a>
+<span class="sourceLineNo">165</span><a id="line.165">    @GET</a>
+<span class="sourceLineNo">166</span><a id="line.166">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">167</span><a id="line.167">    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_EDIT_OPERATION )</a>
+<span class="sourceLineNo">168</span><a id="line.168">    int removeFromCache( @PathParam( "userName" ) String username )</a>
+<span class="sourceLineNo">169</span><a id="line.169">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">170</span><a id="line.170"></a>
+<span class="sourceLineNo">171</span><a id="line.171">    @Path( "getGuestUser" )</a>
+<span class="sourceLineNo">172</span><a id="line.172">    @GET</a>
+<span class="sourceLineNo">173</span><a id="line.173">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">174</span><a id="line.174">    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_EDIT_OPERATION )</a>
+<span class="sourceLineNo">175</span><a id="line.175">    User getGuestUser()</a>
+<span class="sourceLineNo">176</span><a id="line.176">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">177</span><a id="line.177"></a>
+<span class="sourceLineNo">178</span><a id="line.178">    @Path( "createGuestUser" )</a>
+<span class="sourceLineNo">179</span><a id="line.179">    @GET</a>
+<span class="sourceLineNo">180</span><a id="line.180">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">181</span><a id="line.181">    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_EDIT_OPERATION )</a>
+<span class="sourceLineNo">182</span><a id="line.182">    User createGuestUser()</a>
+<span class="sourceLineNo">183</span><a id="line.183">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">184</span><a id="line.184"></a>
+<span class="sourceLineNo">185</span><a id="line.185">    /**</a>
+<span class="sourceLineNo">186</span><a id="line.186">     * if redback is not configured for email validation is required, -1 is returned as key</a>
+<span class="sourceLineNo">187</span><a id="line.187">     * @since 1.4</a>
+<span class="sourceLineNo">188</span><a id="line.188">     */</a>
+<span class="sourceLineNo">189</span><a id="line.189">    @Path( "registerUser" )</a>
+<span class="sourceLineNo">190</span><a id="line.190">    @POST</a>
+<span class="sourceLineNo">191</span><a id="line.191">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )</a>
+<span class="sourceLineNo">192</span><a id="line.192">    @RedbackAuthorization( noRestriction = true, noPermission = true )</a>
+<span class="sourceLineNo">193</span><a id="line.193">    RegistrationKey registerUser( UserRegistrationRequest userRegistrationRequest )</a>
+<span class="sourceLineNo">194</span><a id="line.194">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">195</span><a id="line.195"></a>
+<span class="sourceLineNo">196</span><a id="line.196"></a>
+<span class="sourceLineNo">197</span><a id="line.197">    /**</a>
+<span class="sourceLineNo">198</span><a id="line.198">     * validate the key and the user with forcing a password change for next login.</a>
+<span class="sourceLineNo">199</span><a id="line.199">     * http session is created.</a>
+<span class="sourceLineNo">200</span><a id="line.200">     * @param key authentication key</a>
+<span class="sourceLineNo">201</span><a id="line.201">     * @since 1.4</a>
+<span class="sourceLineNo">202</span><a id="line.202">     */</a>
+<span class="sourceLineNo">203</span><a id="line.203">    @Path( "validateKey/{key}" )</a>
+<span class="sourceLineNo">204</span><a id="line.204">    @GET</a>
+<span class="sourceLineNo">205</span><a id="line.205">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">206</span><a id="line.206">    @RedbackAuthorization( noRestriction = true, noPermission = true )</a>
+<span class="sourceLineNo">207</span><a id="line.207">    Boolean validateUserFromKey( @PathParam( "key" ) String key )</a>
+<span class="sourceLineNo">208</span><a id="line.208">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">209</span><a id="line.209"></a>
+<span class="sourceLineNo">210</span><a id="line.210">    /**</a>
+<span class="sourceLineNo">211</span><a id="line.211">     *</a>
+<span class="sourceLineNo">212</span><a id="line.212">     * @param resetPasswordRequest contains username for send a password reset email</a>
+<span class="sourceLineNo">213</span><a id="line.213">     * @since 1.4</a>
+<span class="sourceLineNo">214</span><a id="line.214">     */</a>
+<span class="sourceLineNo">215</span><a id="line.215">    @Path( "resetPassword" )</a>
+<span class="sourceLineNo">216</span><a id="line.216">    @POST</a>
+<span class="sourceLineNo">217</span><a id="line.217">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">218</span><a id="line.218">    @Consumes( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )</a>
+<span class="sourceLineNo">219</span><a id="line.219">    @RedbackAuthorization( noRestriction = true, noPermission = true )</a>
+<span class="sourceLineNo">220</span><a id="line.220">    Boolean resetPassword( ResetPasswordRequest resetPasswordRequest )</a>
+<span class="sourceLineNo">221</span><a id="line.221">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">222</span><a id="line.222"></a>
+<span class="sourceLineNo">223</span><a id="line.223">    /**</a>
+<span class="sourceLineNo">224</span><a id="line.224">     * @since 1.4</a>
+<span class="sourceLineNo">225</span><a id="line.225">     */</a>
+<span class="sourceLineNo">226</span><a id="line.226">    @Path( "getUserPermissions/{userName}" )</a>
+<span class="sourceLineNo">227</span><a id="line.227">    @GET</a>
+<span class="sourceLineNo">228</span><a id="line.228">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">229</span><a id="line.229">    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_LIST_OPERATION )</a>
+<span class="sourceLineNo">230</span><a id="line.230">    Collection&lt;Permission&gt; getUserPermissions( @PathParam( "userName" ) String userName )</a>
+<span class="sourceLineNo">231</span><a id="line.231">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">232</span><a id="line.232"></a>
+<span class="sourceLineNo">233</span><a id="line.233">    /**</a>
+<span class="sourceLineNo">234</span><a id="line.234">     * @since 1.4</a>
+<span class="sourceLineNo">235</span><a id="line.235">     */</a>
+<span class="sourceLineNo">236</span><a id="line.236">    @Path( "getUserOperations/{userName}" )</a>
+<span class="sourceLineNo">237</span><a id="line.237">    @GET</a>
+<span class="sourceLineNo">238</span><a id="line.238">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">239</span><a id="line.239">    @RedbackAuthorization( permissions = RedbackRoleConstants.USER_MANAGEMENT_USER_LIST_OPERATION )</a>
+<span class="sourceLineNo">240</span><a id="line.240">    Collection&lt;Operation&gt; getUserOperations( @PathParam( "userName" ) String userName )</a>
+<span class="sourceLineNo">241</span><a id="line.241">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">242</span><a id="line.242"></a>
+<span class="sourceLineNo">243</span><a id="line.243">    /**</a>
+<span class="sourceLineNo">244</span><a id="line.244">     * @return  the current logged user permissions, if no logged user guest permissions are returned</a>
+<span class="sourceLineNo">245</span><a id="line.245">     * @since 1.4</a>
+<span class="sourceLineNo">246</span><a id="line.246">     */</a>
+<span class="sourceLineNo">247</span><a id="line.247">    @Path( "getCurrentUserPermissions" )</a>
+<span class="sourceLineNo">248</span><a id="line.248">    @GET</a>
+<span class="sourceLineNo">249</span><a id="line.249">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">250</span><a id="line.250">    @RedbackAuthorization( noRestriction = true, noPermission = true )</a>
+<span class="sourceLineNo">251</span><a id="line.251">    Collection&lt;Permission&gt; getCurrentUserPermissions()</a>
+<span class="sourceLineNo">252</span><a id="line.252">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">253</span><a id="line.253"></a>
+<span class="sourceLineNo">254</span><a id="line.254">    /**</a>
+<span class="sourceLineNo">255</span><a id="line.255">     * @return the current logged user operations, if no logged user guest operations are returned</a>
+<span class="sourceLineNo">256</span><a id="line.256">     * @since 1.4</a>
+<span class="sourceLineNo">257</span><a id="line.257">     */</a>
+<span class="sourceLineNo">258</span><a id="line.258">    @Path( "getCurrentUserOperations" )</a>
+<span class="sourceLineNo">259</span><a id="line.259">    @GET</a>
+<span class="sourceLineNo">260</span><a id="line.260">    @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN } )</a>
+<span class="sourceLineNo">261</span><a id="line.261">    @RedbackAuthorization( noRestriction = true, noPermission = true )</a>
+<span class="sourceLineNo">262</span><a id="line.262">    Collection&lt;Operation&gt; getCurrentUserOperations()</a>
+<span class="sourceLineNo">263</span><a id="line.263">        throws RedbackServiceException;</a>
+<span class="sourceLineNo">264</span><a id="line.264"></a>
+<span class="sourceLineNo">265</span><a id="line.265">}</a>
 
 
 
@@ -331,5 +334,6 @@
 
 </pre>
 </div>
+</main>
 </body>
 </html>

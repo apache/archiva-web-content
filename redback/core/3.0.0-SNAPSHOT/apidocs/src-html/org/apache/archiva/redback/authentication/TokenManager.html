@@ -1,324 +1,325 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
 <title>Source code</title>
 <link rel="stylesheet" type="text/css" href="../../../../../../stylesheet.css" title="Style">
 </head>
 <body>
+<main role="main">
 <div class="sourceContainer">
-<pre><span class="sourceLineNo">001</span>package org.apache.archiva.redback.authentication;<a name="line.1"></a>
-<span class="sourceLineNo">002</span><a name="line.2"></a>
-<span class="sourceLineNo">003</span>/*<a name="line.3"></a>
-<span class="sourceLineNo">004</span> * Licensed to the Apache Software Foundation (ASF) under one<a name="line.4"></a>
-<span class="sourceLineNo">005</span> * or more contributor license agreements.  See the NOTICE file<a name="line.5"></a>
-<span class="sourceLineNo">006</span> * distributed with this work for additional information<a name="line.6"></a>
-<span class="sourceLineNo">007</span> * regarding copyright ownership.  The ASF licenses this file<a name="line.7"></a>
-<span class="sourceLineNo">008</span> * to you under the Apache License, Version 2.0 (the<a name="line.8"></a>
-<span class="sourceLineNo">009</span> * "License"); you may not use this file except in compliance<a name="line.9"></a>
-<span class="sourceLineNo">010</span> * with the License.  You may obtain a copy of the License at<a name="line.10"></a>
-<span class="sourceLineNo">011</span> *<a name="line.11"></a>
-<span class="sourceLineNo">012</span> * http://www.apache.org/licenses/LICENSE-2.0<a name="line.12"></a>
-<span class="sourceLineNo">013</span> *<a name="line.13"></a>
-<span class="sourceLineNo">014</span> * Unless required by applicable law or agreed to in writing,<a name="line.14"></a>
-<span class="sourceLineNo">015</span> * software distributed under the License is distributed on an<a name="line.15"></a>
-<span class="sourceLineNo">016</span> * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY<a name="line.16"></a>
-<span class="sourceLineNo">017</span> * KIND, either express or implied.  See the License for the<a name="line.17"></a>
-<span class="sourceLineNo">018</span> * specific language governing permissions and limitations<a name="line.18"></a>
-<span class="sourceLineNo">019</span> * under the License.<a name="line.19"></a>
-<span class="sourceLineNo">020</span> */<a name="line.20"></a>
-<span class="sourceLineNo">021</span><a name="line.21"></a>
-<span class="sourceLineNo">022</span>import org.apache.commons.codec.binary.Base64;<a name="line.22"></a>
-<span class="sourceLineNo">023</span>import org.apache.commons.lang3.ArrayUtils;<a name="line.23"></a>
-<span class="sourceLineNo">024</span>import org.slf4j.Logger;<a name="line.24"></a>
-<span class="sourceLineNo">025</span>import org.slf4j.LoggerFactory;<a name="line.25"></a>
-<span class="sourceLineNo">026</span>import org.springframework.stereotype.Service;<a name="line.26"></a>
-<span class="sourceLineNo">027</span><a name="line.27"></a>
-<span class="sourceLineNo">028</span>import javax.annotation.PostConstruct;<a name="line.28"></a>
-<span class="sourceLineNo">029</span>import javax.crypto.BadPaddingException;<a name="line.29"></a>
-<span class="sourceLineNo">030</span>import javax.crypto.Cipher;<a name="line.30"></a>
-<span class="sourceLineNo">031</span>import javax.crypto.IllegalBlockSizeException;<a name="line.31"></a>
-<span class="sourceLineNo">032</span>import javax.crypto.KeyGenerator;<a name="line.32"></a>
-<span class="sourceLineNo">033</span>import javax.crypto.NoSuchPaddingException;<a name="line.33"></a>
-<span class="sourceLineNo">034</span>import javax.crypto.SecretKey;<a name="line.34"></a>
-<span class="sourceLineNo">035</span>import javax.crypto.spec.IvParameterSpec;<a name="line.35"></a>
-<span class="sourceLineNo">036</span>import java.io.ByteArrayInputStream;<a name="line.36"></a>
-<span class="sourceLineNo">037</span>import java.io.ByteArrayOutputStream;<a name="line.37"></a>
-<span class="sourceLineNo">038</span>import java.io.IOException;<a name="line.38"></a>
-<span class="sourceLineNo">039</span>import java.io.InvalidClassException;<a name="line.39"></a>
-<span class="sourceLineNo">040</span>import java.io.ObjectInputStream;<a name="line.40"></a>
-<span class="sourceLineNo">041</span>import java.io.ObjectOutputStream;<a name="line.41"></a>
-<span class="sourceLineNo">042</span>import java.security.InvalidAlgorithmParameterException;<a name="line.42"></a>
-<span class="sourceLineNo">043</span>import java.security.InvalidKeyException;<a name="line.43"></a>
-<span class="sourceLineNo">044</span>import java.security.NoSuchAlgorithmException;<a name="line.44"></a>
-<span class="sourceLineNo">045</span>import java.security.SecureRandom;<a name="line.45"></a>
-<span class="sourceLineNo">046</span>import java.util.Arrays;<a name="line.46"></a>
-<span class="sourceLineNo">047</span><a name="line.47"></a>
-<span class="sourceLineNo">048</span><a name="line.48"></a>
-<span class="sourceLineNo">049</span>/**<a name="line.49"></a>
-<span class="sourceLineNo">050</span> *<a name="line.50"></a>
-<span class="sourceLineNo">051</span> * Class that manages tokens that are encrypted with a dynamic key. The tokens<a name="line.51"></a>
-<span class="sourceLineNo">052</span> * are converted into BASE64 strings.<a name="line.52"></a>
-<span class="sourceLineNo">053</span> *<a name="line.53"></a>
-<span class="sourceLineNo">054</span> * Each token contains information about username,<a name="line.54"></a>
-<span class="sourceLineNo">055</span> *<a name="line.55"></a>
-<span class="sourceLineNo">056</span> * Created by Martin Stockhammer on 03.02.17.<a name="line.56"></a>
-<span class="sourceLineNo">057</span> */<a name="line.57"></a>
-<span class="sourceLineNo">058</span>@Service("tokenManager#jce")<a name="line.58"></a>
-<span class="sourceLineNo">059</span>public class TokenManager {<a name="line.59"></a>
-<span class="sourceLineNo">060</span><a name="line.60"></a>
-<span class="sourceLineNo">061</span>    private final ThreadLocal&lt;SecureRandom&gt; rd = new ThreadLocal&lt;SecureRandom&gt;();<a name="line.61"></a>
-<span class="sourceLineNo">062</span>    private final Logger log = LoggerFactory.getLogger(getClass());<a name="line.62"></a>
-<span class="sourceLineNo">063</span>    private String algorithm = "AES/CBC/PKCS5Padding";<a name="line.63"></a>
-<span class="sourceLineNo">064</span>    private int keySize = -1;<a name="line.64"></a>
-<span class="sourceLineNo">065</span>    private int ivSize = -1;<a name="line.65"></a>
-<span class="sourceLineNo">066</span>    private SecretKey secretKey;<a name="line.66"></a>
-<span class="sourceLineNo">067</span><a name="line.67"></a>
-<span class="sourceLineNo">068</span>    boolean paddingUsed = true;<a name="line.68"></a>
-<span class="sourceLineNo">069</span><a name="line.69"></a>
-<span class="sourceLineNo">070</span><a name="line.70"></a>
-<span class="sourceLineNo">071</span>    @PostConstruct<a name="line.71"></a>
-<span class="sourceLineNo">072</span>    public void initialize() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, EncryptionFailedException, InvalidAlgorithmParameterException {<a name="line.72"></a>
-<span class="sourceLineNo">073</span>        log.debug("Initializing key for token generator");<a name="line.73"></a>
-<span class="sourceLineNo">074</span>        try {<a name="line.74"></a>
-<span class="sourceLineNo">075</span>            rd.set(new SecureRandom());<a name="line.75"></a>
-<span class="sourceLineNo">076</span>            Cipher enCipher = Cipher.getInstance(algorithm);<a name="line.76"></a>
-<span class="sourceLineNo">077</span>            String[] keyAlg = enCipher.getAlgorithm().split("/");<a name="line.77"></a>
-<span class="sourceLineNo">078</span>            if (keyAlg.length&lt;1) {<a name="line.78"></a>
-<span class="sourceLineNo">079</span>                throw new EncryptionFailedException("Initialization of key failed. Not algorithm found.");<a name="line.79"></a>
-<span class="sourceLineNo">080</span>            }<a name="line.80"></a>
-<span class="sourceLineNo">081</span>            String encryptionAlgorithm = keyAlg[0];<a name="line.81"></a>
-<span class="sourceLineNo">082</span>            KeyGenerator keyGen = KeyGenerator.getInstance(encryptionAlgorithm);<a name="line.82"></a>
-<span class="sourceLineNo">083</span>            if (keySize&gt;0) {<a name="line.83"></a>
-<span class="sourceLineNo">084</span>                keyGen.init(keySize);<a name="line.84"></a>
-<span class="sourceLineNo">085</span>            }<a name="line.85"></a>
-<span class="sourceLineNo">086</span>            if (keyAlg.length==3 &amp;&amp; keyAlg[2].equals("NoPadding")) {<a name="line.86"></a>
-<span class="sourceLineNo">087</span>                paddingUsed=false;<a name="line.87"></a>
-<span class="sourceLineNo">088</span>            }<a name="line.88"></a>
-<span class="sourceLineNo">089</span>            this.secretKey = keyGen.generateKey();<a name="line.89"></a>
-<span class="sourceLineNo">090</span>            enCipher.init(Cipher.ENCRYPT_MODE, secretKey);<a name="line.90"></a>
-<span class="sourceLineNo">091</span>            // We have to provide the IV depending on the algorithm used<a name="line.91"></a>
-<span class="sourceLineNo">092</span>            // CBC needs an IV, ECB not.<a name="line.92"></a>
-<span class="sourceLineNo">093</span>            if (enCipher.getIV()==null) {<a name="line.93"></a>
-<span class="sourceLineNo">094</span>                ivSize=-1;<a name="line.94"></a>
-<span class="sourceLineNo">095</span>            } else {<a name="line.95"></a>
-<span class="sourceLineNo">096</span>                ivSize=enCipher.getIV().length;<a name="line.96"></a>
-<span class="sourceLineNo">097</span>            }<a name="line.97"></a>
-<span class="sourceLineNo">098</span>        } catch (NoSuchAlgorithmException e) {<a name="line.98"></a>
-<span class="sourceLineNo">099</span>            log.error("Error occurred during key initialization. Requested algorithm not available. "+e.getMessage());<a name="line.99"></a>
-<span class="sourceLineNo">100</span>            throw e;<a name="line.100"></a>
-<span class="sourceLineNo">101</span>        } catch (NoSuchPaddingException e) {<a name="line.101"></a>
-<span class="sourceLineNo">102</span>            log.error("Error occurred during key initialization. Requested padding not available. "+e.getMessage());<a name="line.102"></a>
-<span class="sourceLineNo">103</span>            throw e;<a name="line.103"></a>
-<span class="sourceLineNo">104</span>        } catch (InvalidKeyException e) {<a name="line.104"></a>
-<span class="sourceLineNo">105</span>            log.error("The key is not valid.");<a name="line.105"></a>
-<span class="sourceLineNo">106</span>            throw e;<a name="line.106"></a>
-<span class="sourceLineNo">107</span>        }<a name="line.107"></a>
-<span class="sourceLineNo">108</span>    }<a name="line.108"></a>
-<span class="sourceLineNo">109</span><a name="line.109"></a>
-<span class="sourceLineNo">110</span>    public String encryptToken(String user, long lifetime) throws EncryptionFailedException {<a name="line.110"></a>
-<span class="sourceLineNo">111</span>        return encryptToken(new SimpleTokenData(user, lifetime, createNonce()));<a name="line.111"></a>
-<span class="sourceLineNo">112</span>    }<a name="line.112"></a>
-<span class="sourceLineNo">113</span><a name="line.113"></a>
-<span class="sourceLineNo">114</span>    public String encryptToken(TokenData tokenData) throws EncryptionFailedException {<a name="line.114"></a>
-<span class="sourceLineNo">115</span>        try {<a name="line.115"></a>
-<span class="sourceLineNo">116</span>            return encode(encrypt(tokenData));<a name="line.116"></a>
-<span class="sourceLineNo">117</span>        } catch (IOException e) {<a name="line.117"></a>
-<span class="sourceLineNo">118</span>            log.error("Error during object conversion: "+e.getMessage());<a name="line.118"></a>
-<span class="sourceLineNo">119</span>            throw new EncryptionFailedException(e);<a name="line.119"></a>
-<span class="sourceLineNo">120</span>        } catch (BadPaddingException e) {<a name="line.120"></a>
-<span class="sourceLineNo">121</span>            log.error("Padding invalid");<a name="line.121"></a>
-<span class="sourceLineNo">122</span>            throw new EncryptionFailedException(e);<a name="line.122"></a>
-<span class="sourceLineNo">123</span>        } catch (IllegalBlockSizeException e) {<a name="line.123"></a>
-<span class="sourceLineNo">124</span>            log.error("Block size invalid");<a name="line.124"></a>
-<span class="sourceLineNo">125</span>            throw new EncryptionFailedException(e);<a name="line.125"></a>
-<span class="sourceLineNo">126</span>        } catch (NoSuchPaddingException e) {<a name="line.126"></a>
-<span class="sourceLineNo">127</span>            log.error("Padding not available "+algorithm);<a name="line.127"></a>
-<span class="sourceLineNo">128</span>            throw new EncryptionFailedException(e);<a name="line.128"></a>
-<span class="sourceLineNo">129</span>        } catch (InvalidKeyException e) {<a name="line.129"></a>
-<span class="sourceLineNo">130</span>            log.error("Bad encryption key");<a name="line.130"></a>
-<span class="sourceLineNo">131</span>            throw new EncryptionFailedException(e);<a name="line.131"></a>
-<span class="sourceLineNo">132</span>        } catch (NoSuchAlgorithmException e) {<a name="line.132"></a>
-<span class="sourceLineNo">133</span>            log.error("Bad encryption algorithm "+algorithm);<a name="line.133"></a>
-<span class="sourceLineNo">134</span>            throw new EncryptionFailedException(e);<a name="line.134"></a>
-<span class="sourceLineNo">135</span>        } catch (InvalidAlgorithmParameterException e) {<a name="line.135"></a>
-<span class="sourceLineNo">136</span>            log.error("Invalid encryption parameters");<a name="line.136"></a>
-<span class="sourceLineNo">137</span>            throw new EncryptionFailedException(e);<a name="line.137"></a>
-<span class="sourceLineNo">138</span>        }<a name="line.138"></a>
-<span class="sourceLineNo">139</span>    }<a name="line.139"></a>
-<span class="sourceLineNo">140</span><a name="line.140"></a>
-<span class="sourceLineNo">141</span>    public TokenData decryptToken(String token) throws InvalidTokenException {<a name="line.141"></a>
-<span class="sourceLineNo">142</span>        try {<a name="line.142"></a>
-<span class="sourceLineNo">143</span>            return decrypt(decode(token));<a name="line.143"></a>
-<span class="sourceLineNo">144</span>        } catch (IOException ex) {<a name="line.144"></a>
-<span class="sourceLineNo">145</span>            log.error("Error during data read. " + ex.getMessage());<a name="line.145"></a>
-<span class="sourceLineNo">146</span>            throw new InvalidTokenException(ex);<a name="line.146"></a>
-<span class="sourceLineNo">147</span>        } catch (ClassNotFoundException ex) {<a name="line.147"></a>
-<span class="sourceLineNo">148</span>            log.error("Token data invalid.");<a name="line.148"></a>
-<span class="sourceLineNo">149</span>            throw new InvalidTokenException(ex);<a name="line.149"></a>
-<span class="sourceLineNo">150</span>        } catch (BadPaddingException ex) {<a name="line.150"></a>
-<span class="sourceLineNo">151</span>            log.error("The encrypted token has the wrong padding.");<a name="line.151"></a>
-<span class="sourceLineNo">152</span>            throw new InvalidTokenException(ex);<a name="line.152"></a>
-<span class="sourceLineNo">153</span>        } catch (IllegalBlockSizeException ex) {<a name="line.153"></a>
-<span class="sourceLineNo">154</span>            log.error("The encrypted token has the wrong block size.");<a name="line.154"></a>
-<span class="sourceLineNo">155</span>            throw new InvalidTokenException(ex);<a name="line.155"></a>
-<span class="sourceLineNo">156</span>        } catch (NoSuchPaddingException e) {<a name="line.156"></a>
-<span class="sourceLineNo">157</span>            log.error("Padding not available "+algorithm);<a name="line.157"></a>
-<span class="sourceLineNo">158</span>            throw new InvalidTokenException(e);<a name="line.158"></a>
-<span class="sourceLineNo">159</span>        } catch (InvalidKeyException e) {<a name="line.159"></a>
-<span class="sourceLineNo">160</span>            log.error("Invalid decryption key");<a name="line.160"></a>
-<span class="sourceLineNo">161</span>            throw new InvalidTokenException(e);<a name="line.161"></a>
-<span class="sourceLineNo">162</span>        } catch (NoSuchAlgorithmException e) {<a name="line.162"></a>
-<span class="sourceLineNo">163</span>            log.error("Encryption algorithm not available "+algorithm);<a name="line.163"></a>
-<span class="sourceLineNo">164</span>            throw new InvalidTokenException(e);<a name="line.164"></a>
-<span class="sourceLineNo">165</span>        } catch (InvalidAlgorithmParameterException e) {<a name="line.165"></a>
-<span class="sourceLineNo">166</span>            log.error("Invalid encryption parameters");<a name="line.166"></a>
-<span class="sourceLineNo">167</span>            throw new InvalidTokenException(e);<a name="line.167"></a>
-<span class="sourceLineNo">168</span>        }<a name="line.168"></a>
-<span class="sourceLineNo">169</span>    }<a name="line.169"></a>
-<span class="sourceLineNo">170</span><a name="line.170"></a>
-<span class="sourceLineNo">171</span>    private long createNonce() {<a name="line.171"></a>
-<span class="sourceLineNo">172</span>        if (rd.get()==null) {<a name="line.172"></a>
-<span class="sourceLineNo">173</span>            rd.set(new SecureRandom());<a name="line.173"></a>
-<span class="sourceLineNo">174</span>        }<a name="line.174"></a>
-<span class="sourceLineNo">175</span>        return rd.get().nextLong();<a name="line.175"></a>
-<span class="sourceLineNo">176</span>    }<a name="line.176"></a>
-<span class="sourceLineNo">177</span><a name="line.177"></a>
-<span class="sourceLineNo">178</span>    protected byte[] encrypt(TokenData info) throws IOException, BadPaddingException, IllegalBlockSizeException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException {<a name="line.178"></a>
-<span class="sourceLineNo">179</span>        return doEncrypt(convertToByteArray(info), info.getNonce());<a name="line.179"></a>
-<span class="sourceLineNo">180</span>    }<a name="line.180"></a>
-<span class="sourceLineNo">181</span><a name="line.181"></a>
-<span class="sourceLineNo">182</span>    private byte[] getIv(long nonce) {<a name="line.182"></a>
-<span class="sourceLineNo">183</span>        byte[] iv = new byte[ivSize];<a name="line.183"></a>
-<span class="sourceLineNo">184</span>        SecureRandom sr = getRandomGenerator();<a name="line.184"></a>
-<span class="sourceLineNo">185</span>        sr.setSeed(nonce);<a name="line.185"></a>
-<span class="sourceLineNo">186</span>        sr.nextBytes(iv);<a name="line.186"></a>
-<span class="sourceLineNo">187</span>        return iv;<a name="line.187"></a>
-<span class="sourceLineNo">188</span>    }<a name="line.188"></a>
-<span class="sourceLineNo">189</span><a name="line.189"></a>
-<span class="sourceLineNo">190</span>    protected byte[] doEncrypt(byte[] data, long nonce) throws BadPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException {<a name="line.190"></a>
-<span class="sourceLineNo">191</span>        Cipher cipher = getEnCipher();<a name="line.191"></a>
-<span class="sourceLineNo">192</span>        byte[] encData;<a name="line.192"></a>
-<span class="sourceLineNo">193</span>        byte[] iv;<a name="line.193"></a>
-<span class="sourceLineNo">194</span>        if (ivSize&gt;0) {<a name="line.194"></a>
-<span class="sourceLineNo">195</span>            iv = getIv(nonce);<a name="line.195"></a>
-<span class="sourceLineNo">196</span>            cipher.init(Cipher.ENCRYPT_MODE,this.secretKey,new IvParameterSpec(iv));<a name="line.196"></a>
-<span class="sourceLineNo">197</span>        } else {<a name="line.197"></a>
-<span class="sourceLineNo">198</span>            iv = new byte[0];<a name="line.198"></a>
-<span class="sourceLineNo">199</span>            cipher.init(Cipher.ENCRYPT_MODE,this.secretKey);<a name="line.199"></a>
-<span class="sourceLineNo">200</span>        }<a name="line.200"></a>
-<span class="sourceLineNo">201</span>        if (!paddingUsed &amp;&amp; (data.length % cipher.getBlockSize())!=0) {<a name="line.201"></a>
-<span class="sourceLineNo">202</span>            int blocks = data.length / cipher.getBlockSize();<a name="line.202"></a>
-<span class="sourceLineNo">203</span>            encData = Arrays.copyOf(data, cipher.getBlockSize()*(blocks+1));<a name="line.203"></a>
-<span class="sourceLineNo">204</span>        } else {<a name="line.204"></a>
-<span class="sourceLineNo">205</span>            encData = data;<a name="line.205"></a>
-<span class="sourceLineNo">206</span>        }<a name="line.206"></a>
-<span class="sourceLineNo">207</span>        byte[] encrypted = cipher.doFinal(encData);<a name="line.207"></a>
-<span class="sourceLineNo">208</span>        // prepending the iv to the token<a name="line.208"></a>
-<span class="sourceLineNo">209</span>        return ArrayUtils.addAll(iv,encrypted);<a name="line.209"></a>
-<span class="sourceLineNo">210</span>    }<a name="line.210"></a>
-<span class="sourceLineNo">211</span><a name="line.211"></a>
-<span class="sourceLineNo">212</span>    protected TokenData decrypt(byte[] token) throws BadPaddingException, IllegalBlockSizeException, IOException, ClassNotFoundException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException {<a name="line.212"></a>
-<span class="sourceLineNo">213</span>        Object result = convertFromByteArray(doDecrypt(token));<a name="line.213"></a>
-<span class="sourceLineNo">214</span>        if (!(result instanceof TokenData)) {<a name="line.214"></a>
-<span class="sourceLineNo">215</span>            throw new InvalidClassException("No TokenData found in decrypted token");<a name="line.215"></a>
-<span class="sourceLineNo">216</span>        }<a name="line.216"></a>
-<span class="sourceLineNo">217</span>        return (TokenData)result;<a name="line.217"></a>
-<span class="sourceLineNo">218</span>    }<a name="line.218"></a>
-<span class="sourceLineNo">219</span><a name="line.219"></a>
-<span class="sourceLineNo">220</span>    protected byte[] doDecrypt(byte[] encryptedData) throws BadPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, InvalidKeyException {<a name="line.220"></a>
-<span class="sourceLineNo">221</span>        Cipher cipher = getDeCipher();<a name="line.221"></a>
-<span class="sourceLineNo">222</span>        if (ivSize&gt;0) {<a name="line.222"></a>
-<span class="sourceLineNo">223</span>            byte[] iv = Arrays.copyOfRange(encryptedData,0,ivSize);<a name="line.223"></a>
-<span class="sourceLineNo">224</span>            cipher.init(Cipher.DECRYPT_MODE,this.secretKey,new IvParameterSpec(iv));<a name="line.224"></a>
-<span class="sourceLineNo">225</span>            return cipher.doFinal(encryptedData,ivSize,encryptedData.length-ivSize);<a name="line.225"></a>
-<span class="sourceLineNo">226</span>        } else {<a name="line.226"></a>
-<span class="sourceLineNo">227</span>            cipher.init(Cipher.DECRYPT_MODE,this.secretKey);<a name="line.227"></a>
-<span class="sourceLineNo">228</span>            return cipher.doFinal(encryptedData);<a name="line.228"></a>
-<span class="sourceLineNo">229</span>        }<a name="line.229"></a>
-<span class="sourceLineNo">230</span>    }<a name="line.230"></a>
-<span class="sourceLineNo">231</span><a name="line.231"></a>
-<span class="sourceLineNo">232</span>    private SecureRandom getRandomGenerator() {<a name="line.232"></a>
-<span class="sourceLineNo">233</span>        if (rd.get()==null) {<a name="line.233"></a>
-<span class="sourceLineNo">234</span>            rd.set(new SecureRandom());<a name="line.234"></a>
-<span class="sourceLineNo">235</span>        }<a name="line.235"></a>
-<span class="sourceLineNo">236</span>        return rd.get();<a name="line.236"></a>
-<span class="sourceLineNo">237</span>    }<a name="line.237"></a>
-<span class="sourceLineNo">238</span><a name="line.238"></a>
-<span class="sourceLineNo">239</span>    private Cipher getEnCipher() throws NoSuchPaddingException, NoSuchAlgorithmException {<a name="line.239"></a>
-<span class="sourceLineNo">240</span>        return Cipher.getInstance(algorithm);<a name="line.240"></a>
-<span class="sourceLineNo">241</span>    }<a name="line.241"></a>
-<span class="sourceLineNo">242</span><a name="line.242"></a>
-<span class="sourceLineNo">243</span>    private Cipher getDeCipher() throws NoSuchPaddingException, NoSuchAlgorithmException {<a name="line.243"></a>
-<span class="sourceLineNo">244</span>        return Cipher.getInstance(algorithm);<a name="line.244"></a>
-<span class="sourceLineNo">245</span>    }<a name="line.245"></a>
-<span class="sourceLineNo">246</span><a name="line.246"></a>
-<span class="sourceLineNo">247</span>    private String encode(byte[] token) {<a name="line.247"></a>
-<span class="sourceLineNo">248</span>        return Base64.encodeBase64String(token);<a name="line.248"></a>
-<span class="sourceLineNo">249</span>    }<a name="line.249"></a>
-<span class="sourceLineNo">250</span><a name="line.250"></a>
-<span class="sourceLineNo">251</span>    private byte[] decode(String token) {<a name="line.251"></a>
-<span class="sourceLineNo">252</span>        return Base64.decodeBase64(token);<a name="line.252"></a>
-<span class="sourceLineNo">253</span>    }<a name="line.253"></a>
-<span class="sourceLineNo">254</span><a name="line.254"></a>
-<span class="sourceLineNo">255</span><a name="line.255"></a>
-<span class="sourceLineNo">256</span>    private Object convertFromByteArray(byte[] byteObject) throws IOException,<a name="line.256"></a>
-<span class="sourceLineNo">257</span>            ClassNotFoundException {<a name="line.257"></a>
-<span class="sourceLineNo">258</span>        ByteArrayInputStream bais;<a name="line.258"></a>
-<span class="sourceLineNo">259</span>        ObjectInputStream in;<a name="line.259"></a>
-<span class="sourceLineNo">260</span>        bais = new ByteArrayInputStream(byteObject);<a name="line.260"></a>
-<span class="sourceLineNo">261</span>        in = new ObjectInputStream(bais);<a name="line.261"></a>
-<span class="sourceLineNo">262</span>        Object o = in.readObject();<a name="line.262"></a>
-<span class="sourceLineNo">263</span>        in.close();<a name="line.263"></a>
-<span class="sourceLineNo">264</span>        return o;<a name="line.264"></a>
-<span class="sourceLineNo">265</span><a name="line.265"></a>
-<span class="sourceLineNo">266</span>    }<a name="line.266"></a>
-<span class="sourceLineNo">267</span><a name="line.267"></a>
-<span class="sourceLineNo">268</span><a name="line.268"></a>
-<span class="sourceLineNo">269</span>    private byte[] convertToByteArray(Object complexObject) throws IOException {<a name="line.269"></a>
-<span class="sourceLineNo">270</span>        ByteArrayOutputStream baos;<a name="line.270"></a>
-<span class="sourceLineNo">271</span>        ObjectOutputStream out;<a name="line.271"></a>
-<span class="sourceLineNo">272</span>        baos = new ByteArrayOutputStream();<a name="line.272"></a>
-<span class="sourceLineNo">273</span>        out = new ObjectOutputStream(baos);<a name="line.273"></a>
-<span class="sourceLineNo">274</span>        out.writeObject(complexObject);<a name="line.274"></a>
-<span class="sourceLineNo">275</span>        out.close();<a name="line.275"></a>
-<span class="sourceLineNo">276</span>        return baos.toByteArray();<a name="line.276"></a>
-<span class="sourceLineNo">277</span>    }<a name="line.277"></a>
-<span class="sourceLineNo">278</span><a name="line.278"></a>
-<span class="sourceLineNo">279</span>    public String getAlgorithm() {<a name="line.279"></a>
-<span class="sourceLineNo">280</span>        return algorithm;<a name="line.280"></a>
-<span class="sourceLineNo">281</span>    }<a name="line.281"></a>
-<span class="sourceLineNo">282</span><a name="line.282"></a>
-<span class="sourceLineNo">283</span>    /**<a name="line.283"></a>
-<span class="sourceLineNo">284</span>     * Sets the encryption algorithm and resets the key size. You may change the key size after<a name="line.284"></a>
-<span class="sourceLineNo">285</span>     * calling this method.<a name="line.285"></a>
-<span class="sourceLineNo">286</span>     * Additionally run the initialize() method after setting algorithm and keysize.<a name="line.286"></a>
-<span class="sourceLineNo">287</span>     *<a name="line.287"></a>
-<span class="sourceLineNo">288</span>     *<a name="line.288"></a>
-<span class="sourceLineNo">289</span>     * @param algorithm The encryption algorithm to use.<a name="line.289"></a>
-<span class="sourceLineNo">290</span>     */<a name="line.290"></a>
-<span class="sourceLineNo">291</span>    public void setAlgorithm(String algorithm) {<a name="line.291"></a>
-<span class="sourceLineNo">292</span>        if (!this.algorithm.equals(algorithm)) {<a name="line.292"></a>
-<span class="sourceLineNo">293</span>            this.algorithm = algorithm;<a name="line.293"></a>
-<span class="sourceLineNo">294</span>            this.keySize=-1;<a name="line.294"></a>
-<span class="sourceLineNo">295</span>        }<a name="line.295"></a>
-<span class="sourceLineNo">296</span>    }<a name="line.296"></a>
-<span class="sourceLineNo">297</span><a name="line.297"></a>
-<span class="sourceLineNo">298</span>    public int getKeySize() {<a name="line.298"></a>
-<span class="sourceLineNo">299</span>        return keySize;<a name="line.299"></a>
-<span class="sourceLineNo">300</span>    }<a name="line.300"></a>
-<span class="sourceLineNo">301</span><a name="line.301"></a>
-<span class="sourceLineNo">302</span>    /**<a name="line.302"></a>
-<span class="sourceLineNo">303</span>     * Sets the key size for the encryption. This method must be called after<a name="line.303"></a>
-<span class="sourceLineNo">304</span>     * setting the algorithm. The keysize will be reset by calling &lt;code&gt;setAlgorithm()&lt;/code&gt;<a name="line.304"></a>
-<span class="sourceLineNo">305</span>     *<a name="line.305"></a>
-<span class="sourceLineNo">306</span>     * The key size must be valid for the given algorithm.<a name="line.306"></a>
-<span class="sourceLineNo">307</span>     *<a name="line.307"></a>
-<span class="sourceLineNo">308</span>     * @param keySize The size of the encryption key<a name="line.308"></a>
-<span class="sourceLineNo">309</span>     */<a name="line.309"></a>
-<span class="sourceLineNo">310</span>    public void setKeySize(int keySize) {<a name="line.310"></a>
-<span class="sourceLineNo">311</span>        this.keySize = keySize;<a name="line.311"></a>
-<span class="sourceLineNo">312</span>    }<a name="line.312"></a>
-<span class="sourceLineNo">313</span>}<a name="line.313"></a>
+<pre><span class="sourceLineNo">001</span><a id="line.1">package org.apache.archiva.redback.authentication;</a>
+<span class="sourceLineNo">002</span><a id="line.2"></a>
+<span class="sourceLineNo">003</span><a id="line.3">/*</a>
+<span class="sourceLineNo">004</span><a id="line.4"> * Licensed to the Apache Software Foundation (ASF) under one</a>
+<span class="sourceLineNo">005</span><a id="line.5"> * or more contributor license agreements.  See the NOTICE file</a>
+<span class="sourceLineNo">006</span><a id="line.6"> * distributed with this work for additional information</a>
+<span class="sourceLineNo">007</span><a id="line.7"> * regarding copyright ownership.  The ASF licenses this file</a>
+<span class="sourceLineNo">008</span><a id="line.8"> * to you under the Apache License, Version 2.0 (the</a>
+<span class="sourceLineNo">009</span><a id="line.9"> * "License"); you may not use this file except in compliance</a>
+<span class="sourceLineNo">010</span><a id="line.10"> * with the License.  You may obtain a copy of the License at</a>
+<span class="sourceLineNo">011</span><a id="line.11"> *</a>
+<span class="sourceLineNo">012</span><a id="line.12"> * http://www.apache.org/licenses/LICENSE-2.0</a>
+<span class="sourceLineNo">013</span><a id="line.13"> *</a>
+<span class="sourceLineNo">014</span><a id="line.14"> * Unless required by applicable law or agreed to in writing,</a>
+<span class="sourceLineNo">015</span><a id="line.15"> * software distributed under the License is distributed on an</a>
+<span class="sourceLineNo">016</span><a id="line.16"> * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</a>
+<span class="sourceLineNo">017</span><a id="line.17"> * KIND, either express or implied.  See the License for the</a>
+<span class="sourceLineNo">018</span><a id="line.18"> * specific language governing permissions and limitations</a>
+<span class="sourceLineNo">019</span><a id="line.19"> * under the License.</a>
+<span class="sourceLineNo">020</span><a id="line.20"> */</a>
+<span class="sourceLineNo">021</span><a id="line.21"></a>
+<span class="sourceLineNo">022</span><a id="line.22">import org.apache.commons.codec.binary.Base64;</a>
+<span class="sourceLineNo">023</span><a id="line.23">import org.apache.commons.lang3.ArrayUtils;</a>
+<span class="sourceLineNo">024</span><a id="line.24">import org.slf4j.Logger;</a>
+<span class="sourceLineNo">025</span><a id="line.25">import org.slf4j.LoggerFactory;</a>
+<span class="sourceLineNo">026</span><a id="line.26">import org.springframework.stereotype.Service;</a>
+<span class="sourceLineNo">027</span><a id="line.27"></a>
+<span class="sourceLineNo">028</span><a id="line.28">import javax.annotation.PostConstruct;</a>
+<span class="sourceLineNo">029</span><a id="line.29">import javax.crypto.BadPaddingException;</a>
+<span class="sourceLineNo">030</span><a id="line.30">import javax.crypto.Cipher;</a>
+<span class="sourceLineNo">031</span><a id="line.31">import javax.crypto.IllegalBlockSizeException;</a>
+<span class="sourceLineNo">032</span><a id="line.32">import javax.crypto.KeyGenerator;</a>
+<span class="sourceLineNo">033</span><a id="line.33">import javax.crypto.NoSuchPaddingException;</a>
+<span class="sourceLineNo">034</span><a id="line.34">import javax.crypto.SecretKey;</a>
+<span class="sourceLineNo">035</span><a id="line.35">import javax.crypto.spec.IvParameterSpec;</a>
+<span class="sourceLineNo">036</span><a id="line.36">import java.io.ByteArrayInputStream;</a>
+<span class="sourceLineNo">037</span><a id="line.37">import java.io.ByteArrayOutputStream;</a>
+<span class="sourceLineNo">038</span><a id="line.38">import java.io.IOException;</a>
+<span class="sourceLineNo">039</span><a id="line.39">import java.io.InvalidClassException;</a>
+<span class="sourceLineNo">040</span><a id="line.40">import java.io.ObjectInputStream;</a>
+<span class="sourceLineNo">041</span><a id="line.41">import java.io.ObjectOutputStream;</a>
+<span class="sourceLineNo">042</span><a id="line.42">import java.security.InvalidAlgorithmParameterException;</a>
+<span class="sourceLineNo">043</span><a id="line.43">import java.security.InvalidKeyException;</a>
+<span class="sourceLineNo">044</span><a id="line.44">import java.security.NoSuchAlgorithmException;</a>
+<span class="sourceLineNo">045</span><a id="line.45">import java.security.SecureRandom;</a>
+<span class="sourceLineNo">046</span><a id="line.46">import java.util.Arrays;</a>
+<span class="sourceLineNo">047</span><a id="line.47"></a>
+<span class="sourceLineNo">048</span><a id="line.48"></a>
+<span class="sourceLineNo">049</span><a id="line.49">/**</a>
+<span class="sourceLineNo">050</span><a id="line.50"> *</a>
+<span class="sourceLineNo">051</span><a id="line.51"> * Class that manages tokens that are encrypted with a dynamic key. The tokens</a>
+<span class="sourceLineNo">052</span><a id="line.52"> * are converted into BASE64 strings.</a>
+<span class="sourceLineNo">053</span><a id="line.53"> *</a>
+<span class="sourceLineNo">054</span><a id="line.54"> * Each token contains information about username,</a>
+<span class="sourceLineNo">055</span><a id="line.55"> *</a>
+<span class="sourceLineNo">056</span><a id="line.56"> * Created by Martin Stockhammer on 03.02.17.</a>
+<span class="sourceLineNo">057</span><a id="line.57"> */</a>
+<span class="sourceLineNo">058</span><a id="line.58">@Service("tokenManager#jce")</a>
+<span class="sourceLineNo">059</span><a id="line.59">public class TokenManager {</a>
+<span class="sourceLineNo">060</span><a id="line.60"></a>
+<span class="sourceLineNo">061</span><a id="line.61">    private final ThreadLocal&lt;SecureRandom&gt; rd = new ThreadLocal&lt;SecureRandom&gt;();</a>
+<span class="sourceLineNo">062</span><a id="line.62">    private final Logger log = LoggerFactory.getLogger(getClass());</a>
+<span class="sourceLineNo">063</span><a id="line.63">    private String algorithm = "AES/CBC/PKCS5Padding";</a>
+<span class="sourceLineNo">064</span><a id="line.64">    private int keySize = -1;</a>
+<span class="sourceLineNo">065</span><a id="line.65">    private int ivSize = -1;</a>
+<span class="sourceLineNo">066</span><a id="line.66">    private SecretKey secretKey;</a>
+<span class="sourceLineNo">067</span><a id="line.67"></a>
+<span class="sourceLineNo">068</span><a id="line.68">    boolean paddingUsed = true;</a>
+<span class="sourceLineNo">069</span><a id="line.69"></a>
+<span class="sourceLineNo">070</span><a id="line.70"></a>
+<span class="sourceLineNo">071</span><a id="line.71">    @PostConstruct</a>
+<span class="sourceLineNo">072</span><a id="line.72">    public void initialize() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, EncryptionFailedException, InvalidAlgorithmParameterException {</a>
+<span class="sourceLineNo">073</span><a id="line.73">        log.debug("Initializing key for token generator");</a>
+<span class="sourceLineNo">074</span><a id="line.74">        try {</a>
+<span class="sourceLineNo">075</span><a id="line.75">            rd.set(new SecureRandom());</a>
+<span class="sourceLineNo">076</span><a id="line.76">            Cipher enCipher = Cipher.getInstance(algorithm);</a>
+<span class="sourceLineNo">077</span><a id="line.77">            String[] keyAlg = enCipher.getAlgorithm().split("/");</a>
+<span class="sourceLineNo">078</span><a id="line.78">            if (keyAlg.length&lt;1) {</a>
+<span class="sourceLineNo">079</span><a id="line.79">                throw new EncryptionFailedException("Initialization of key failed. Not algorithm found.");</a>
+<span class="sourceLineNo">080</span><a id="line.80">            }</a>
+<span class="sourceLineNo">081</span><a id="line.81">            String encryptionAlgorithm = keyAlg[0];</a>
+<span class="sourceLineNo">082</span><a id="line.82">            KeyGenerator keyGen = KeyGenerator.getInstance(encryptionAlgorithm);</a>
+<span class="sourceLineNo">083</span><a id="line.83">            if (keySize&gt;0) {</a>
+<span class="sourceLineNo">084</span><a id="line.84">                keyGen.init(keySize);</a>
+<span class="sourceLineNo">085</span><a id="line.85">            }</a>
+<span class="sourceLineNo">086</span><a id="line.86">            if (keyAlg.length==3 &amp;&amp; keyAlg[2].equals("NoPadding")) {</a>
+<span class="sourceLineNo">087</span><a id="line.87">                paddingUsed=false;</a>
+<span class="sourceLineNo">088</span><a id="line.88">            }</a>
+<span class="sourceLineNo">089</span><a id="line.89">            this.secretKey = keyGen.generateKey();</a>
+<span class="sourceLineNo">090</span><a id="line.90">            enCipher.init(Cipher.ENCRYPT_MODE, secretKey);</a>
+<span class="sourceLineNo">091</span><a id="line.91">            // We have to provide the IV depending on the algorithm used</a>
+<span class="sourceLineNo">092</span><a id="line.92">            // CBC needs an IV, ECB not.</a>
+<span class="sourceLineNo">093</span><a id="line.93">            if (enCipher.getIV()==null) {</a>
+<span class="sourceLineNo">094</span><a id="line.94">                ivSize=-1;</a>
+<span class="sourceLineNo">095</span><a id="line.95">            } else {</a>
+<span class="sourceLineNo">096</span><a id="line.96">                ivSize=enCipher.getIV().length;</a>
+<span class="sourceLineNo">097</span><a id="line.97">            }</a>
+<span class="sourceLineNo">098</span><a id="line.98">        } catch (NoSuchAlgorithmException e) {</a>
+<span class="sourceLineNo">099</span><a id="line.99">            log.error("Error occurred during key initialization. Requested algorithm not available. "+e.getMessage());</a>
+<span class="sourceLineNo">100</span><a id="line.100">            throw e;</a>
+<span class="sourceLineNo">101</span><a id="line.101">        } catch (NoSuchPaddingException e) {</a>
+<span class="sourceLineNo">102</span><a id="line.102">            log.error("Error occurred during key initialization. Requested padding not available. "+e.getMessage());</a>
+<span class="sourceLineNo">103</span><a id="line.103">            throw e;</a>
+<span class="sourceLineNo">104</span><a id="line.104">        } catch (InvalidKeyException e) {</a>
+<span class="sourceLineNo">105</span><a id="line.105">            log.error("The key is not valid.");</a>
+<span class="sourceLineNo">106</span><a id="line.106">            throw e;</a>
+<span class="sourceLineNo">107</span><a id="line.107">        }</a>
+<span class="sourceLineNo">108</span><a id="line.108">    }</a>
+<span class="sourceLineNo">109</span><a id="line.109"></a>
+<span class="sourceLineNo">110</span><a id="line.110">    public String encryptToken(String user, long lifetime) throws EncryptionFailedException {</a>
+<span class="sourceLineNo">111</span><a id="line.111">        return encryptToken(new SimpleTokenData(user, lifetime, createNonce()));</a>
+<span class="sourceLineNo">112</span><a id="line.112">    }</a>
+<span class="sourceLineNo">113</span><a id="line.113"></a>
+<span class="sourceLineNo">114</span><a id="line.114">    public String encryptToken(TokenData tokenData) throws EncryptionFailedException {</a>
+<span class="sourceLineNo">115</span><a id="line.115">        try {</a>
+<span class="sourceLineNo">116</span><a id="line.116">            return encode(encrypt(tokenData));</a>
+<span class="sourceLineNo">117</span><a id="line.117">        } catch (IOException e) {</a>
+<span class="sourceLineNo">118</span><a id="line.118">            log.error("Error during object conversion: "+e.getMessage());</a>
+<span class="sourceLineNo">119</span><a id="line.119">            throw new EncryptionFailedException(e);</a>
+<span class="sourceLineNo">120</span><a id="line.120">        } catch (BadPaddingException e) {</a>
+<span class="sourceLineNo">121</span><a id="line.121">            log.error("Padding invalid");</a>
+<span class="sourceLineNo">122</span><a id="line.122">            throw new EncryptionFailedException(e);</a>
+<span class="sourceLineNo">123</span><a id="line.123">        } catch (IllegalBlockSizeException e) {</a>
+<span class="sourceLineNo">124</span><a id="line.124">            log.error("Block size invalid");</a>
+<span class="sourceLineNo">125</span><a id="line.125">            throw new EncryptionFailedException(e);</a>
+<span class="sourceLineNo">126</span><a id="line.126">        } catch (NoSuchPaddingException e) {</a>
+<span class="sourceLineNo">127</span><a id="line.127">            log.error("Padding not available "+algorithm);</a>
+<span class="sourceLineNo">128</span><a id="line.128">            throw new EncryptionFailedException(e);</a>
+<span class="sourceLineNo">129</span><a id="line.129">        } catch (InvalidKeyException e) {</a>
+<span class="sourceLineNo">130</span><a id="line.130">            log.error("Bad encryption key");</a>
+<span class="sourceLineNo">131</span><a id="line.131">            throw new EncryptionFailedException(e);</a>
+<span class="sourceLineNo">132</span><a id="line.132">        } catch (NoSuchAlgorithmException e) {</a>
+<span class="sourceLineNo">133</span><a id="line.133">            log.error("Bad encryption algorithm "+algorithm);</a>
+<span class="sourceLineNo">134</span><a id="line.134">            throw new EncryptionFailedException(e);</a>
+<span class="sourceLineNo">135</span><a id="line.135">        } catch (InvalidAlgorithmParameterException e) {</a>
+<span class="sourceLineNo">136</span><a id="line.136">            log.error("Invalid encryption parameters");</a>
+<span class="sourceLineNo">137</span><a id="line.137">            throw new EncryptionFailedException(e);</a>
+<span class="sourceLineNo">138</span><a id="line.138">        }</a>
+<span class="sourceLineNo">139</span><a id="line.139">    }</a>
+<span class="sourceLineNo">140</span><a id="line.140"></a>
+<span class="sourceLineNo">141</span><a id="line.141">    public TokenData decryptToken(String token) throws InvalidTokenException {</a>
+<span class="sourceLineNo">142</span><a id="line.142">        try {</a>
+<span class="sourceLineNo">143</span><a id="line.143">            return decrypt(decode(token));</a>
+<span class="sourceLineNo">144</span><a id="line.144">        } catch (IOException ex) {</a>
+<span class="sourceLineNo">145</span><a id="line.145">            log.error("Error during data read. " + ex.getMessage());</a>
+<span class="sourceLineNo">146</span><a id="line.146">            throw new InvalidTokenException(ex);</a>
+<span class="sourceLineNo">147</span><a id="line.147">        } catch (ClassNotFoundException ex) {</a>
+<span class="sourceLineNo">148</span><a id="line.148">            log.error("Token data invalid.");</a>
+<span class="sourceLineNo">149</span><a id="line.149">            throw new InvalidTokenException(ex);</a>
+<span class="sourceLineNo">150</span><a id="line.150">        } catch (BadPaddingException ex) {</a>
+<span class="sourceLineNo">151</span><a id="line.151">            log.error("The encrypted token has the wrong padding.");</a>
+<span class="sourceLineNo">152</span><a id="line.152">            throw new InvalidTokenException(ex);</a>
+<span class="sourceLineNo">153</span><a id="line.153">        } catch (IllegalBlockSizeException ex) {</a>
+<span class="sourceLineNo">154</span><a id="line.154">            log.error("The encrypted token has the wrong block size.");</a>
+<span class="sourceLineNo">155</span><a id="line.155">            throw new InvalidTokenException(ex);</a>
+<span class="sourceLineNo">156</span><a id="line.156">        } catch (NoSuchPaddingException e) {</a>
+<span class="sourceLineNo">157</span><a id="line.157">            log.error("Padding not available "+algorithm);</a>
+<span class="sourceLineNo">158</span><a id="line.158">            throw new InvalidTokenException(e);</a>
+<span class="sourceLineNo">159</span><a id="line.159">        } catch (InvalidKeyException e) {</a>
+<span class="sourceLineNo">160</span><a id="line.160">            log.error("Invalid decryption key");</a>
+<span class="sourceLineNo">161</span><a id="line.161">            throw new InvalidTokenException(e);</a>
+<span class="sourceLineNo">162</span><a id="line.162">        } catch (NoSuchAlgorithmException e) {</a>
+<span class="sourceLineNo">163</span><a id="line.163">            log.error("Encryption algorithm not available "+algorithm);</a>
+<span class="sourceLineNo">164</span><a id="line.164">            throw new InvalidTokenException(e);</a>
+<span class="sourceLineNo">165</span><a id="line.165">        } catch (InvalidAlgorithmParameterException e) {</a>
+<span class="sourceLineNo">166</span><a id="line.166">            log.error("Invalid encryption parameters");</a>
+<span class="sourceLineNo">167</span><a id="line.167">            throw new InvalidTokenException(e);</a>
+<span class="sourceLineNo">168</span><a id="line.168">        }</a>
+<span class="sourceLineNo">169</span><a id="line.169">    }</a>
+<span class="sourceLineNo">170</span><a id="line.170"></a>
+<span class="sourceLineNo">171</span><a id="line.171">    private long createNonce() {</a>
+<span class="sourceLineNo">172</span><a id="line.172">        if (rd.get()==null) {</a>
+<span class="sourceLineNo">173</span><a id="line.173">            rd.set(new SecureRandom());</a>
+<span class="sourceLineNo">174</span><a id="line.174">        }</a>
+<span class="sourceLineNo">175</span><a id="line.175">        return rd.get().nextLong();</a>
+<span class="sourceLineNo">176</span><a id="line.176">    }</a>
+<span class="sourceLineNo">177</span><a id="line.177"></a>
+<span class="sourceLineNo">178</span><a id="line.178">    protected byte[] encrypt(TokenData info) throws IOException, BadPaddingException, IllegalBlockSizeException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException {</a>
+<span class="sourceLineNo">179</span><a id="line.179">        return doEncrypt(convertToByteArray(info), info.getNonce());</a>
+<span class="sourceLineNo">180</span><a id="line.180">    }</a>
+<span class="sourceLineNo">181</span><a id="line.181"></a>
+<span class="sourceLineNo">182</span><a id="line.182">    private byte[] getIv(long nonce) {</a>
+<span class="sourceLineNo">183</span><a id="line.183">        byte[] iv = new byte[ivSize];</a>
+<span class="sourceLineNo">184</span><a id="line.184">        SecureRandom sr = getRandomGenerator();</a>
+<span class="sourceLineNo">185</span><a id="line.185">        sr.setSeed(nonce);</a>
+<span class="sourceLineNo">186</span><a id="line.186">        sr.nextBytes(iv);</a>
+<span class="sourceLineNo">187</span><a id="line.187">        return iv;</a>
+<span class="sourceLineNo">188</span><a id="line.188">    }</a>
+<span class="sourceLineNo">189</span><a id="line.189"></a>
+<span class="sourceLineNo">190</span><a id="line.190">    protected byte[] doEncrypt(byte[] data, long nonce) throws BadPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException {</a>
+<span class="sourceLineNo">191</span><a id="line.191">        Cipher cipher = getEnCipher();</a>
+<span class="sourceLineNo">192</span><a id="line.192">        byte[] encData;</a>
+<span class="sourceLineNo">193</span><a id="line.193">        byte[] iv;</a>
+<span class="sourceLineNo">194</span><a id="line.194">        if (ivSize&gt;0) {</a>
+<span class="sourceLineNo">195</span><a id="line.195">            iv = getIv(nonce);</a>
+<span class="sourceLineNo">196</span><a id="line.196">            cipher.init(Cipher.ENCRYPT_MODE,this.secretKey,new IvParameterSpec(iv));</a>
+<span class="sourceLineNo">197</span><a id="line.197">        } else {</a>
+<span class="sourceLineNo">198</span><a id="line.198">            iv = new byte[0];</a>
+<span class="sourceLineNo">199</span><a id="line.199">            cipher.init(Cipher.ENCRYPT_MODE,this.secretKey);</a>
+<span class="sourceLineNo">200</span><a id="line.200">        }</a>
+<span class="sourceLineNo">201</span><a id="line.201">        if (!paddingUsed &amp;&amp; (data.length % cipher.getBlockSize())!=0) {</a>
+<span class="sourceLineNo">202</span><a id="line.202">            int blocks = data.length / cipher.getBlockSize();</a>
+<span class="sourceLineNo">203</span><a id="line.203">            encData = Arrays.copyOf(data, cipher.getBlockSize()*(blocks+1));</a>
+<span class="sourceLineNo">204</span><a id="line.204">        } else {</a>
+<span class="sourceLineNo">205</span><a id="line.205">            encData = data;</a>
+<span class="sourceLineNo">206</span><a id="line.206">        }</a>
+<span class="sourceLineNo">207</span><a id="line.207">        byte[] encrypted = cipher.doFinal(encData);</a>
+<span class="sourceLineNo">208</span><a id="line.208">        // prepending the iv to the token</a>
+<span class="sourceLineNo">209</span><a id="line.209">        return ArrayUtils.addAll(iv,encrypted);</a>
+<span class="sourceLineNo">210</span><a id="line.210">    }</a>
+<span class="sourceLineNo">211</span><a id="line.211"></a>
+<span class="sourceLineNo">212</span><a id="line.212">    protected TokenData decrypt(byte[] token) throws BadPaddingException, IllegalBlockSizeException, IOException, ClassNotFoundException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException {</a>
+<span class="sourceLineNo">213</span><a id="line.213">        Object result = convertFromByteArray(doDecrypt(token));</a>
+<span class="sourceLineNo">214</span><a id="line.214">        if (!(result instanceof TokenData)) {</a>
+<span class="sourceLineNo">215</span><a id="line.215">            throw new InvalidClassException("No TokenData found in decrypted token");</a>
+<span class="sourceLineNo">216</span><a id="line.216">        }</a>
+<span class="sourceLineNo">217</span><a id="line.217">        return (TokenData)result;</a>
+<span class="sourceLineNo">218</span><a id="line.218">    }</a>
+<span class="sourceLineNo">219</span><a id="line.219"></a>
+<span class="sourceLineNo">220</span><a id="line.220">    protected byte[] doDecrypt(byte[] encryptedData) throws BadPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, InvalidKeyException {</a>
+<span class="sourceLineNo">221</span><a id="line.221">        Cipher cipher = getDeCipher();</a>
+<span class="sourceLineNo">222</span><a id="line.222">        if (ivSize&gt;0) {</a>
+<span class="sourceLineNo">223</span><a id="line.223">            byte[] iv = Arrays.copyOfRange(encryptedData,0,ivSize);</a>
+<span class="sourceLineNo">224</span><a id="line.224">            cipher.init(Cipher.DECRYPT_MODE,this.secretKey,new IvParameterSpec(iv));</a>
+<span class="sourceLineNo">225</span><a id="line.225">            return cipher.doFinal(encryptedData,ivSize,encryptedData.length-ivSize);</a>
+<span class="sourceLineNo">226</span><a id="line.226">        } else {</a>
+<span class="sourceLineNo">227</span><a id="line.227">            cipher.init(Cipher.DECRYPT_MODE,this.secretKey);</a>
+<span class="sourceLineNo">228</span><a id="line.228">            return cipher.doFinal(encryptedData);</a>
+<span class="sourceLineNo">229</span><a id="line.229">        }</a>
+<span class="sourceLineNo">230</span><a id="line.230">    }</a>
+<span class="sourceLineNo">231</span><a id="line.231"></a>
+<span class="sourceLineNo">232</span><a id="line.232">    private SecureRandom getRandomGenerator() {</a>
+<span class="sourceLineNo">233</span><a id="line.233">        if (rd.get()==null) {</a>
+<span class="sourceLineNo">234</span><a id="line.234">            rd.set(new SecureRandom());</a>
+<span class="sourceLineNo">235</span><a id="line.235">        }</a>
+<span class="sourceLineNo">236</span><a id="line.236">        return rd.get();</a>
+<span class="sourceLineNo">237</span><a id="line.237">    }</a>
+<span class="sourceLineNo">238</span><a id="line.238"></a>
+<span class="sourceLineNo">239</span><a id="line.239">    private Cipher getEnCipher() throws NoSuchPaddingException, NoSuchAlgorithmException {</a>
+<span class="sourceLineNo">240</span><a id="line.240">        return Cipher.getInstance(algorithm);</a>
+<span class="sourceLineNo">241</span><a id="line.241">    }</a>
+<span class="sourceLineNo">242</span><a id="line.242"></a>
+<span class="sourceLineNo">243</span><a id="line.243">    private Cipher getDeCipher() throws NoSuchPaddingException, NoSuchAlgorithmException {</a>
+<span class="sourceLineNo">244</span><a id="line.244">        return Cipher.getInstance(algorithm);</a>
+<span class="sourceLineNo">245</span><a id="line.245">    }</a>
+<span class="sourceLineNo">246</span><a id="line.246"></a>
+<span class="sourceLineNo">247</span><a id="line.247">    private String encode(byte[] token) {</a>
+<span class="sourceLineNo">248</span><a id="line.248">        return Base64.encodeBase64String(token);</a>
+<span class="sourceLineNo">249</span><a id="line.249">    }</a>
+<span class="sourceLineNo">250</span><a id="line.250"></a>
+<span class="sourceLineNo">251</span><a id="line.251">    private byte[] decode(String token) {</a>
+<span class="sourceLineNo">252</span><a id="line.252">        return Base64.decodeBase64(token);</a>
+<span class="sourceLineNo">253</span><a id="line.253">    }</a>
+<span class="sourceLineNo">254</span><a id="line.254"></a>
+<span class="sourceLineNo">255</span><a id="line.255"></a>
+<span class="sourceLineNo">256</span><a id="line.256">    private Object convertFromByteArray(byte[] byteObject) throws IOException,</a>
+<span class="sourceLineNo">257</span><a id="line.257">            ClassNotFoundException {</a>
+<span class="sourceLineNo">258</span><a id="line.258">        ByteArrayInputStream bais;</a>
+<span class="sourceLineNo">259</span><a id="line.259">        ObjectInputStream in;</a>
+<span class="sourceLineNo">260</span><a id="line.260">        bais = new ByteArrayInputStream(byteObject);</a>
+<span class="sourceLineNo">261</span><a id="line.261">        in = new ObjectInputStream(bais);</a>
+<span class="sourceLineNo">262</span><a id="line.262">        Object o = in.readObject();</a>
+<span class="sourceLineNo">263</span><a id="line.263">        in.close();</a>
+<span class="sourceLineNo">264</span><a id="line.264">        return o;</a>
+<span class="sourceLineNo">265</span><a id="line.265"></a>
+<span class="sourceLineNo">266</span><a id="line.266">    }</a>
+<span class="sourceLineNo">267</span><a id="line.267"></a>
+<span class="sourceLineNo">268</span><a id="line.268"></a>
+<span class="sourceLineNo">269</span><a id="line.269">    private byte[] convertToByteArray(Object complexObject) throws IOException {</a>
+<span class="sourceLineNo">270</span><a id="line.270">        ByteArrayOutputStream baos;</a>
+<span class="sourceLineNo">271</span><a id="line.271">        ObjectOutputStream out;</a>
+<span class="sourceLineNo">272</span><a id="line.272">        baos = new ByteArrayOutputStream();</a>
+<span class="sourceLineNo">273</span><a id="line.273">        out = new ObjectOutputStream(baos);</a>
+<span class="sourceLineNo">274</span><a id="line.274">        out.writeObject(complexObject);</a>
+<span class="sourceLineNo">275</span><a id="line.275">        out.close();</a>
+<span class="sourceLineNo">276</span><a id="line.276">        return baos.toByteArray();</a>
+<span class="sourceLineNo">277</span><a id="line.277">    }</a>
+<span class="sourceLineNo">278</span><a id="line.278"></a>
+<span class="sourceLineNo">279</span><a id="line.279">    public String getAlgorithm() {</a>
+<span class="sourceLineNo">280</span><a id="line.280">        return algorithm;</a>
+<span class="sourceLineNo">281</span><a id="line.281">    }</a>
+<span class="sourceLineNo">282</span><a id="line.282"></a>
+<span class="sourceLineNo">283</span><a id="line.283">    /**</a>
+<span class="sourceLineNo">284</span><a id="line.284">     * Sets the encryption algorithm and resets the key size. You may change the key size after</a>
+<span class="sourceLineNo">285</span><a id="line.285">     * calling this method.</a>
+<span class="sourceLineNo">286</span><a id="line.286">     * Additionally run the initialize() method after setting algorithm and keysize.</a>
+<span class="sourceLineNo">287</span><a id="line.287">     *</a>
+<span class="sourceLineNo">288</span><a id="line.288">     *</a>
+<span class="sourceLineNo">289</span><a id="line.289">     * @param algorithm The encryption algorithm to use.</a>
+<span class="sourceLineNo">290</span><a id="line.290">     */</a>
+<span class="sourceLineNo">291</span><a id="line.291">    public void setAlgorithm(String algorithm) {</a>
+<span class="sourceLineNo">292</span><a id="line.292">        if (!this.algorithm.equals(algorithm)) {</a>
+<span class="sourceLineNo">293</span><a id="line.293">            this.algorithm = algorithm;</a>
+<span class="sourceLineNo">294</span><a id="line.294">            this.keySize=-1;</a>
+<span class="sourceLineNo">295</span><a id="line.295">        }</a>
+<span class="sourceLineNo">296</span><a id="line.296">    }</a>
+<span class="sourceLineNo">297</span><a id="line.297"></a>
+<span class="sourceLineNo">298</span><a id="line.298">    public int getKeySize() {</a>
+<span class="sourceLineNo">299</span><a id="line.299">        return keySize;</a>
+<span class="sourceLineNo">300</span><a id="line.300">    }</a>
+<span class="sourceLineNo">301</span><a id="line.301"></a>
+<span class="sourceLineNo">302</span><a id="line.302">    /**</a>
+<span class="sourceLineNo">303</span><a id="line.303">     * Sets the key size for the encryption. This method must be called after</a>
+<span class="sourceLineNo">304</span><a id="line.304">     * setting the algorithm. The keysize will be reset by calling &lt;code&gt;setAlgorithm()&lt;/code&gt;</a>
+<span class="sourceLineNo">305</span><a id="line.305">     *</a>
+<span class="sourceLineNo">306</span><a id="line.306">     * The key size must be valid for the given algorithm.</a>
+<span class="sourceLineNo">307</span><a id="line.307">     *</a>
+<span class="sourceLineNo">308</span><a id="line.308">     * @param keySize The size of the encryption key</a>
+<span class="sourceLineNo">309</span><a id="line.309">     */</a>
+<span class="sourceLineNo">310</span><a id="line.310">    public void setKeySize(int keySize) {</a>
+<span class="sourceLineNo">311</span><a id="line.311">        this.keySize = keySize;</a>
+<span class="sourceLineNo">312</span><a id="line.312">    }</a>
+<span class="sourceLineNo">313</span><a id="line.313">}</a>
 
 
 
@@ -381,5 +382,6 @@
 
 </pre>
 </div>
+</main>
 </body>
 </html>
