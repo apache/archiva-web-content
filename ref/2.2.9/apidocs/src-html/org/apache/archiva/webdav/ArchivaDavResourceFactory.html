@@ -1,0 +1,1529 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>package org.apache.archiva.webdav;<a name="line.1"></a>
+<span class="sourceLineNo">002</span><a name="line.2"></a>
+<span class="sourceLineNo">003</span>/*<a name="line.3"></a>
+<span class="sourceLineNo">004</span> * Licensed to the Apache Software Foundation (ASF) under one<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * or more contributor license agreements.  See the NOTICE file<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * distributed with this work for additional information<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * regarding copyright ownership.  The ASF licenses this file<a name="line.7"></a>
+<span class="sourceLineNo">008</span> * to you under the Apache License, Version 2.0 (the<a name="line.8"></a>
+<span class="sourceLineNo">009</span> * "License"); you may not use this file except in compliance<a name="line.9"></a>
+<span class="sourceLineNo">010</span> * with the License.  You may obtain a copy of the License at<a name="line.10"></a>
+<span class="sourceLineNo">011</span> *<a name="line.11"></a>
+<span class="sourceLineNo">012</span> *  http://www.apache.org/licenses/LICENSE-2.0<a name="line.12"></a>
+<span class="sourceLineNo">013</span> *<a name="line.13"></a>
+<span class="sourceLineNo">014</span> * Unless required by applicable law or agreed to in writing,<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * software distributed under the License is distributed on an<a name="line.15"></a>
+<span class="sourceLineNo">016</span> * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY<a name="line.16"></a>
+<span class="sourceLineNo">017</span> * KIND, either express or implied.  See the License for the<a name="line.17"></a>
+<span class="sourceLineNo">018</span> * specific language governing permissions and limitations<a name="line.18"></a>
+<span class="sourceLineNo">019</span> * under the License.<a name="line.19"></a>
+<span class="sourceLineNo">020</span> */<a name="line.20"></a>
+<span class="sourceLineNo">021</span><a name="line.21"></a>
+<span class="sourceLineNo">022</span>import org.apache.archiva.admin.model.RepositoryAdminException;<a name="line.22"></a>
+<span class="sourceLineNo">023</span>import org.apache.archiva.admin.model.beans.ManagedRepository;<a name="line.23"></a>
+<span class="sourceLineNo">024</span>import org.apache.archiva.admin.model.beans.RemoteRepository;<a name="line.24"></a>
+<span class="sourceLineNo">025</span>import org.apache.archiva.admin.model.managed.ManagedRepositoryAdmin;<a name="line.25"></a>
+<span class="sourceLineNo">026</span>import org.apache.archiva.admin.model.remote.RemoteRepositoryAdmin;<a name="line.26"></a>
+<span class="sourceLineNo">027</span>import org.apache.archiva.audit.Auditable;<a name="line.27"></a>
+<span class="sourceLineNo">028</span>import org.apache.archiva.common.filelock.FileLockManager;<a name="line.28"></a>
+<span class="sourceLineNo">029</span>import org.apache.archiva.common.plexusbridge.PlexusSisuBridge;<a name="line.29"></a>
+<span class="sourceLineNo">030</span>import org.apache.archiva.common.plexusbridge.PlexusSisuBridgeException;<a name="line.30"></a>
+<span class="sourceLineNo">031</span>import org.apache.archiva.common.utils.PathUtil;<a name="line.31"></a>
+<span class="sourceLineNo">032</span>import org.apache.archiva.common.utils.VersionUtil;<a name="line.32"></a>
+<span class="sourceLineNo">033</span>import org.apache.archiva.configuration.ArchivaConfiguration;<a name="line.33"></a>
+<span class="sourceLineNo">034</span>import org.apache.archiva.configuration.RepositoryGroupConfiguration;<a name="line.34"></a>
+<span class="sourceLineNo">035</span>import org.apache.archiva.indexer.merger.IndexMerger;<a name="line.35"></a>
+<span class="sourceLineNo">036</span>import org.apache.archiva.indexer.merger.IndexMergerException;<a name="line.36"></a>
+<span class="sourceLineNo">037</span>import org.apache.archiva.indexer.merger.IndexMergerRequest;<a name="line.37"></a>
+<span class="sourceLineNo">038</span>import org.apache.archiva.indexer.merger.MergedRemoteIndexesTask;<a name="line.38"></a>
+<span class="sourceLineNo">039</span>import org.apache.archiva.indexer.merger.MergedRemoteIndexesTaskRequest;<a name="line.39"></a>
+<span class="sourceLineNo">040</span>import org.apache.archiva.indexer.merger.TemporaryGroupIndex;<a name="line.40"></a>
+<span class="sourceLineNo">041</span>import org.apache.archiva.indexer.search.RepositorySearch;<a name="line.41"></a>
+<span class="sourceLineNo">042</span>import org.apache.archiva.maven2.metadata.MavenMetadataReader;<a name="line.42"></a>
+<span class="sourceLineNo">043</span>import org.apache.archiva.metadata.model.facets.AuditEvent;<a name="line.43"></a>
+<span class="sourceLineNo">044</span>import org.apache.archiva.metadata.repository.storage.RelocationException;<a name="line.44"></a>
+<span class="sourceLineNo">045</span>import org.apache.archiva.metadata.repository.storage.RepositoryStorage;<a name="line.45"></a>
+<span class="sourceLineNo">046</span>import org.apache.archiva.model.ArchivaRepositoryMetadata;<a name="line.46"></a>
+<span class="sourceLineNo">047</span>import org.apache.archiva.model.ArtifactReference;<a name="line.47"></a>
+<span class="sourceLineNo">048</span>import org.apache.archiva.policies.ProxyDownloadException;<a name="line.48"></a>
+<span class="sourceLineNo">049</span>import org.apache.archiva.proxy.model.RepositoryProxyConnectors;<a name="line.49"></a>
+<span class="sourceLineNo">050</span>import org.apache.archiva.redback.authentication.AuthenticationException;<a name="line.50"></a>
+<span class="sourceLineNo">051</span>import org.apache.archiva.redback.authentication.AuthenticationResult;<a name="line.51"></a>
+<span class="sourceLineNo">052</span>import org.apache.archiva.redback.authorization.AuthorizationException;<a name="line.52"></a>
+<span class="sourceLineNo">053</span>import org.apache.archiva.redback.authorization.UnauthorizedException;<a name="line.53"></a>
+<span class="sourceLineNo">054</span>import org.apache.archiva.redback.integration.filter.authentication.HttpAuthenticator;<a name="line.54"></a>
+<span class="sourceLineNo">055</span>import org.apache.archiva.redback.policy.AccountLockedException;<a name="line.55"></a>
+<span class="sourceLineNo">056</span>import org.apache.archiva.redback.policy.MustChangePasswordException;<a name="line.56"></a>
+<span class="sourceLineNo">057</span>import org.apache.archiva.redback.system.SecuritySession;<a name="line.57"></a>
+<span class="sourceLineNo">058</span>import org.apache.archiva.redback.users.User;<a name="line.58"></a>
+<span class="sourceLineNo">059</span>import org.apache.archiva.redback.users.UserManager;<a name="line.59"></a>
+<span class="sourceLineNo">060</span>import org.apache.archiva.repository.ManagedRepositoryContent;<a name="line.60"></a>
+<span class="sourceLineNo">061</span>import org.apache.archiva.repository.RepositoryContentFactory;<a name="line.61"></a>
+<span class="sourceLineNo">062</span>import org.apache.archiva.repository.RepositoryException;<a name="line.62"></a>
+<span class="sourceLineNo">063</span>import org.apache.archiva.repository.RepositoryNotFoundException;<a name="line.63"></a>
+<span class="sourceLineNo">064</span>import org.apache.archiva.repository.content.maven2.RepositoryRequest;<a name="line.64"></a>
+<span class="sourceLineNo">065</span>import org.apache.archiva.repository.events.AuditListener;<a name="line.65"></a>
+<span class="sourceLineNo">066</span>import org.apache.archiva.repository.layout.LayoutException;<a name="line.66"></a>
+<span class="sourceLineNo">067</span>import org.apache.archiva.repository.metadata.MetadataTools;<a name="line.67"></a>
+<span class="sourceLineNo">068</span>import org.apache.archiva.repository.metadata.RepositoryMetadataException;<a name="line.68"></a>
+<span class="sourceLineNo">069</span>import org.apache.archiva.repository.metadata.RepositoryMetadataMerge;<a name="line.69"></a>
+<span class="sourceLineNo">070</span>import org.apache.archiva.repository.metadata.RepositoryMetadataWriter;<a name="line.70"></a>
+<span class="sourceLineNo">071</span>import org.apache.archiva.scheduler.repository.model.RepositoryArchivaTaskScheduler;<a name="line.71"></a>
+<span class="sourceLineNo">072</span>import org.apache.archiva.security.ServletAuthenticator;<a name="line.72"></a>
+<span class="sourceLineNo">073</span>import org.apache.archiva.webdav.util.MimeTypes;<a name="line.73"></a>
+<span class="sourceLineNo">074</span>import org.apache.archiva.webdav.util.TemporaryGroupIndexSessionCleaner;<a name="line.74"></a>
+<span class="sourceLineNo">075</span>import org.apache.archiva.webdav.util.WebdavMethodUtil;<a name="line.75"></a>
+<span class="sourceLineNo">076</span>import org.apache.archiva.xml.XMLException;<a name="line.76"></a>
+<span class="sourceLineNo">077</span>import org.apache.commons.io.FileUtils;<a name="line.77"></a>
+<span class="sourceLineNo">078</span>import org.apache.commons.io.FilenameUtils;<a name="line.78"></a>
+<span class="sourceLineNo">079</span>import org.apache.commons.lang.StringUtils;<a name="line.79"></a>
+<span class="sourceLineNo">080</span>import org.apache.commons.lang.SystemUtils;<a name="line.80"></a>
+<span class="sourceLineNo">081</span>import org.apache.jackrabbit.webdav.DavException;<a name="line.81"></a>
+<span class="sourceLineNo">082</span>import org.apache.jackrabbit.webdav.DavResource;<a name="line.82"></a>
+<span class="sourceLineNo">083</span>import org.apache.jackrabbit.webdav.DavResourceFactory;<a name="line.83"></a>
+<span class="sourceLineNo">084</span>import org.apache.jackrabbit.webdav.DavResourceLocator;<a name="line.84"></a>
+<span class="sourceLineNo">085</span>import org.apache.jackrabbit.webdav.DavServletRequest;<a name="line.85"></a>
+<span class="sourceLineNo">086</span>import org.apache.jackrabbit.webdav.DavServletResponse;<a name="line.86"></a>
+<span class="sourceLineNo">087</span>import org.apache.jackrabbit.webdav.DavSession;<a name="line.87"></a>
+<span class="sourceLineNo">088</span>import org.apache.jackrabbit.webdav.lock.LockManager;<a name="line.88"></a>
+<span class="sourceLineNo">089</span>import org.apache.jackrabbit.webdav.lock.SimpleLockManager;<a name="line.89"></a>
+<span class="sourceLineNo">090</span>import org.apache.maven.index.context.IndexingContext;<a name="line.90"></a>
+<span class="sourceLineNo">091</span>import org.codehaus.plexus.digest.ChecksumFile;<a name="line.91"></a>
+<span class="sourceLineNo">092</span>import org.codehaus.plexus.digest.Digester;<a name="line.92"></a>
+<span class="sourceLineNo">093</span>import org.codehaus.plexus.digest.DigesterException;<a name="line.93"></a>
+<span class="sourceLineNo">094</span>import org.slf4j.Logger;<a name="line.94"></a>
+<span class="sourceLineNo">095</span>import org.slf4j.LoggerFactory;<a name="line.95"></a>
+<span class="sourceLineNo">096</span>import org.slf4j.MarkerFactory;<a name="line.96"></a>
+<span class="sourceLineNo">097</span>import org.springframework.context.ApplicationContext;<a name="line.97"></a>
+<span class="sourceLineNo">098</span>import org.springframework.stereotype.Service;<a name="line.98"></a>
+<span class="sourceLineNo">099</span><a name="line.99"></a>
+<span class="sourceLineNo">100</span>import javax.annotation.PostConstruct;<a name="line.100"></a>
+<span class="sourceLineNo">101</span>import javax.inject.Inject;<a name="line.101"></a>
+<span class="sourceLineNo">102</span>import javax.inject.Named;<a name="line.102"></a>
+<span class="sourceLineNo">103</span>import javax.servlet.http.HttpServletResponse;<a name="line.103"></a>
+<span class="sourceLineNo">104</span>import javax.servlet.http.HttpSession;<a name="line.104"></a>
+<span class="sourceLineNo">105</span>import java.io.File;<a name="line.105"></a>
+<span class="sourceLineNo">106</span>import java.io.IOException;<a name="line.106"></a>
+<span class="sourceLineNo">107</span>import java.nio.file.Files;<a name="line.107"></a>
+<span class="sourceLineNo">108</span>import java.util.ArrayList;<a name="line.108"></a>
+<span class="sourceLineNo">109</span>import java.util.Date;<a name="line.109"></a>
+<span class="sourceLineNo">110</span>import java.util.HashMap;<a name="line.110"></a>
+<span class="sourceLineNo">111</span>import java.util.HashSet;<a name="line.111"></a>
+<span class="sourceLineNo">112</span>import java.util.List;<a name="line.112"></a>
+<span class="sourceLineNo">113</span>import java.util.Map;<a name="line.113"></a>
+<span class="sourceLineNo">114</span>import java.util.Set;<a name="line.114"></a>
+<span class="sourceLineNo">115</span><a name="line.115"></a>
+<span class="sourceLineNo">116</span>/**<a name="line.116"></a>
+<span class="sourceLineNo">117</span> *<a name="line.117"></a>
+<span class="sourceLineNo">118</span> */<a name="line.118"></a>
+<span class="sourceLineNo">119</span>@Service( "davResourceFactory#archiva" )<a name="line.119"></a>
+<span class="sourceLineNo">120</span>public class ArchivaDavResourceFactory<a name="line.120"></a>
+<span class="sourceLineNo">121</span>    implements DavResourceFactory, Auditable<a name="line.121"></a>
+<span class="sourceLineNo">122</span>{<a name="line.122"></a>
+<span class="sourceLineNo">123</span>    private static final String PROXIED_SUFFIX = " (proxied)";<a name="line.123"></a>
+<span class="sourceLineNo">124</span><a name="line.124"></a>
+<span class="sourceLineNo">125</span>    private static final String HTTP_PUT_METHOD = "PUT";<a name="line.125"></a>
+<span class="sourceLineNo">126</span><a name="line.126"></a>
+<span class="sourceLineNo">127</span>    private Logger log = LoggerFactory.getLogger( ArchivaDavResourceFactory.class );<a name="line.127"></a>
+<span class="sourceLineNo">128</span><a name="line.128"></a>
+<span class="sourceLineNo">129</span>    @Inject<a name="line.129"></a>
+<span class="sourceLineNo">130</span>    private List&lt;AuditListener&gt; auditListeners = new ArrayList&lt;&gt;();<a name="line.130"></a>
+<span class="sourceLineNo">131</span><a name="line.131"></a>
+<span class="sourceLineNo">132</span>    @Inject<a name="line.132"></a>
+<span class="sourceLineNo">133</span>    private RepositoryContentFactory repositoryFactory;<a name="line.133"></a>
+<span class="sourceLineNo">134</span><a name="line.134"></a>
+<span class="sourceLineNo">135</span>    private RepositoryRequest repositoryRequest;<a name="line.135"></a>
+<span class="sourceLineNo">136</span><a name="line.136"></a>
+<span class="sourceLineNo">137</span>    @Inject<a name="line.137"></a>
+<span class="sourceLineNo">138</span>    @Named( value = "repositoryProxyConnectors#default" )<a name="line.138"></a>
+<span class="sourceLineNo">139</span>    private RepositoryProxyConnectors connectors;<a name="line.139"></a>
+<span class="sourceLineNo">140</span><a name="line.140"></a>
+<span class="sourceLineNo">141</span>    @Inject<a name="line.141"></a>
+<span class="sourceLineNo">142</span>    private MetadataTools metadataTools;<a name="line.142"></a>
+<span class="sourceLineNo">143</span><a name="line.143"></a>
+<span class="sourceLineNo">144</span>    @Inject<a name="line.144"></a>
+<span class="sourceLineNo">145</span>    private MimeTypes mimeTypes;<a name="line.145"></a>
+<span class="sourceLineNo">146</span><a name="line.146"></a>
+<span class="sourceLineNo">147</span>    private ArchivaConfiguration archivaConfiguration;<a name="line.147"></a>
+<span class="sourceLineNo">148</span><a name="line.148"></a>
+<span class="sourceLineNo">149</span>    @Inject<a name="line.149"></a>
+<span class="sourceLineNo">150</span>    private ServletAuthenticator servletAuth;<a name="line.150"></a>
+<span class="sourceLineNo">151</span><a name="line.151"></a>
+<span class="sourceLineNo">152</span>    @Inject<a name="line.152"></a>
+<span class="sourceLineNo">153</span>    @Named( value = "httpAuthenticator#basic" )<a name="line.153"></a>
+<span class="sourceLineNo">154</span>    private HttpAuthenticator httpAuth;<a name="line.154"></a>
+<span class="sourceLineNo">155</span><a name="line.155"></a>
+<span class="sourceLineNo">156</span>    @Inject<a name="line.156"></a>
+<span class="sourceLineNo">157</span>    private RemoteRepositoryAdmin remoteRepositoryAdmin;<a name="line.157"></a>
+<span class="sourceLineNo">158</span><a name="line.158"></a>
+<span class="sourceLineNo">159</span>    @Inject<a name="line.159"></a>
+<span class="sourceLineNo">160</span>    private ManagedRepositoryAdmin managedRepositoryAdmin;<a name="line.160"></a>
+<span class="sourceLineNo">161</span><a name="line.161"></a>
+<span class="sourceLineNo">162</span>    @Inject<a name="line.162"></a>
+<span class="sourceLineNo">163</span>    private IndexMerger indexMerger;<a name="line.163"></a>
+<span class="sourceLineNo">164</span><a name="line.164"></a>
+<span class="sourceLineNo">165</span>    @Inject<a name="line.165"></a>
+<span class="sourceLineNo">166</span>    private RepositorySearch repositorySearch;<a name="line.166"></a>
+<span class="sourceLineNo">167</span><a name="line.167"></a>
+<span class="sourceLineNo">168</span>    /**<a name="line.168"></a>
+<span class="sourceLineNo">169</span>     * Lock Manager - use simple implementation from JackRabbit<a name="line.169"></a>
+<span class="sourceLineNo">170</span>     */<a name="line.170"></a>
+<span class="sourceLineNo">171</span>    private final LockManager lockManager = new SimpleLockManager();<a name="line.171"></a>
+<span class="sourceLineNo">172</span><a name="line.172"></a>
+<span class="sourceLineNo">173</span>    private ChecksumFile checksum;<a name="line.173"></a>
+<span class="sourceLineNo">174</span><a name="line.174"></a>
+<span class="sourceLineNo">175</span>    private Digester digestSha1;<a name="line.175"></a>
+<span class="sourceLineNo">176</span><a name="line.176"></a>
+<span class="sourceLineNo">177</span>    private Digester digestMd5;<a name="line.177"></a>
+<span class="sourceLineNo">178</span><a name="line.178"></a>
+<span class="sourceLineNo">179</span>    @Inject<a name="line.179"></a>
+<span class="sourceLineNo">180</span>    @Named( value = "archivaTaskScheduler#repository" )<a name="line.180"></a>
+<span class="sourceLineNo">181</span>    private RepositoryArchivaTaskScheduler scheduler;<a name="line.181"></a>
+<span class="sourceLineNo">182</span><a name="line.182"></a>
+<span class="sourceLineNo">183</span>    @Inject<a name="line.183"></a>
+<span class="sourceLineNo">184</span>    @Named( value = "fileLockManager#default" )<a name="line.184"></a>
+<span class="sourceLineNo">185</span>    private FileLockManager fileLockManager;<a name="line.185"></a>
+<span class="sourceLineNo">186</span><a name="line.186"></a>
+<span class="sourceLineNo">187</span>    private ApplicationContext applicationContext;<a name="line.187"></a>
+<span class="sourceLineNo">188</span><a name="line.188"></a>
+<span class="sourceLineNo">189</span>    @Inject<a name="line.189"></a>
+<span class="sourceLineNo">190</span>    public ArchivaDavResourceFactory( ApplicationContext applicationContext, PlexusSisuBridge plexusSisuBridge,<a name="line.190"></a>
+<span class="sourceLineNo">191</span>                                      ArchivaConfiguration archivaConfiguration )<a name="line.191"></a>
+<span class="sourceLineNo">192</span>        throws PlexusSisuBridgeException<a name="line.192"></a>
+<span class="sourceLineNo">193</span>    {<a name="line.193"></a>
+<span class="sourceLineNo">194</span>        this.archivaConfiguration = archivaConfiguration;<a name="line.194"></a>
+<span class="sourceLineNo">195</span>        this.applicationContext = applicationContext;<a name="line.195"></a>
+<span class="sourceLineNo">196</span>        this.checksum = plexusSisuBridge.lookup( ChecksumFile.class );<a name="line.196"></a>
+<span class="sourceLineNo">197</span><a name="line.197"></a>
+<span class="sourceLineNo">198</span>        this.digestMd5 = plexusSisuBridge.lookup( Digester.class, "md5" );<a name="line.198"></a>
+<span class="sourceLineNo">199</span>        this.digestSha1 = plexusSisuBridge.lookup( Digester.class, "sha1" );<a name="line.199"></a>
+<span class="sourceLineNo">200</span><a name="line.200"></a>
+<span class="sourceLineNo">201</span>        // TODO remove this hard dependency on maven !!<a name="line.201"></a>
+<span class="sourceLineNo">202</span>        repositoryRequest = new RepositoryRequest( );<a name="line.202"></a>
+<span class="sourceLineNo">203</span>    }<a name="line.203"></a>
+<span class="sourceLineNo">204</span><a name="line.204"></a>
+<span class="sourceLineNo">205</span>    @PostConstruct<a name="line.205"></a>
+<span class="sourceLineNo">206</span>    public void initialize()<a name="line.206"></a>
+<span class="sourceLineNo">207</span>    {<a name="line.207"></a>
+<span class="sourceLineNo">208</span>        // no op<a name="line.208"></a>
+<span class="sourceLineNo">209</span>    }<a name="line.209"></a>
+<span class="sourceLineNo">210</span><a name="line.210"></a>
+<span class="sourceLineNo">211</span>    @Override<a name="line.211"></a>
+<span class="sourceLineNo">212</span>    public DavResource createResource( final DavResourceLocator locator, final DavServletRequest request,<a name="line.212"></a>
+<span class="sourceLineNo">213</span>                                       final DavServletResponse response )<a name="line.213"></a>
+<span class="sourceLineNo">214</span>        throws DavException<a name="line.214"></a>
+<span class="sourceLineNo">215</span>    {<a name="line.215"></a>
+<span class="sourceLineNo">216</span>        ArchivaDavResourceLocator archivaLocator = checkLocatorIsInstanceOfRepositoryLocator( locator );<a name="line.216"></a>
+<span class="sourceLineNo">217</span><a name="line.217"></a>
+<span class="sourceLineNo">218</span>        RepositoryGroupConfiguration repoGroupConfig =<a name="line.218"></a>
+<span class="sourceLineNo">219</span>            archivaConfiguration.getConfiguration().getRepositoryGroupsAsMap().get( archivaLocator.getRepositoryId() );<a name="line.219"></a>
+<span class="sourceLineNo">220</span><a name="line.220"></a>
+<span class="sourceLineNo">221</span>        String activePrincipal = getActivePrincipal( request );<a name="line.221"></a>
+<span class="sourceLineNo">222</span><a name="line.222"></a>
+<span class="sourceLineNo">223</span>        List&lt;String&gt; resourcesInAbsolutePath = new ArrayList&lt;&gt;();<a name="line.223"></a>
+<span class="sourceLineNo">224</span><a name="line.224"></a>
+<span class="sourceLineNo">225</span>        boolean readMethod = WebdavMethodUtil.isReadMethod( request.getMethod() );<a name="line.225"></a>
+<span class="sourceLineNo">226</span>        DavResource resource;<a name="line.226"></a>
+<span class="sourceLineNo">227</span>        if ( repoGroupConfig != null )<a name="line.227"></a>
+<span class="sourceLineNo">228</span>        {<a name="line.228"></a>
+<span class="sourceLineNo">229</span>            if ( !readMethod )<a name="line.229"></a>
+<span class="sourceLineNo">230</span>            {<a name="line.230"></a>
+<span class="sourceLineNo">231</span>                throw new DavException( HttpServletResponse.SC_METHOD_NOT_ALLOWED,<a name="line.231"></a>
+<span class="sourceLineNo">232</span>                                        "Write method not allowed for repository groups." );<a name="line.232"></a>
+<span class="sourceLineNo">233</span>            }<a name="line.233"></a>
+<span class="sourceLineNo">234</span><a name="line.234"></a>
+<span class="sourceLineNo">235</span>            log.debug( "Repository group '{}' accessed by '{}", repoGroupConfig.getId(), activePrincipal );<a name="line.235"></a>
+<span class="sourceLineNo">236</span><a name="line.236"></a>
+<span class="sourceLineNo">237</span>            // handle browse requests for virtual repos<a name="line.237"></a>
+<span class="sourceLineNo">238</span>            if ( getLogicalResource( archivaLocator, null, true ).endsWith( "/" ) )<a name="line.238"></a>
+<span class="sourceLineNo">239</span>            {<a name="line.239"></a>
+<span class="sourceLineNo">240</span>                try<a name="line.240"></a>
+<span class="sourceLineNo">241</span>                {<a name="line.241"></a>
+<span class="sourceLineNo">242</span>                    DavResource davResource =<a name="line.242"></a>
+<span class="sourceLineNo">243</span>                        getResourceFromGroup( request, repoGroupConfig.getRepositories(), archivaLocator,<a name="line.243"></a>
+<span class="sourceLineNo">244</span>                                              repoGroupConfig );<a name="line.244"></a>
+<span class="sourceLineNo">245</span><a name="line.245"></a>
+<span class="sourceLineNo">246</span>                    setHeaders( response, locator, davResource, true );<a name="line.246"></a>
+<span class="sourceLineNo">247</span><a name="line.247"></a>
+<span class="sourceLineNo">248</span>                    return davResource;<a name="line.248"></a>
+<span class="sourceLineNo">249</span><a name="line.249"></a>
+<span class="sourceLineNo">250</span>                }<a name="line.250"></a>
+<span class="sourceLineNo">251</span>                catch ( RepositoryAdminException e )<a name="line.251"></a>
+<span class="sourceLineNo">252</span>                {<a name="line.252"></a>
+<span class="sourceLineNo">253</span>                    throw new DavException( HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e );<a name="line.253"></a>
+<span class="sourceLineNo">254</span>                }<a name="line.254"></a>
+<span class="sourceLineNo">255</span>            }<a name="line.255"></a>
+<span class="sourceLineNo">256</span>            else<a name="line.256"></a>
+<span class="sourceLineNo">257</span>            {<a name="line.257"></a>
+<span class="sourceLineNo">258</span>                // make a copy to avoid potential concurrent modifications (eg. by configuration)<a name="line.258"></a>
+<span class="sourceLineNo">259</span>                // TODO: ultimately, locking might be more efficient than copying in this fashion since updates are<a name="line.259"></a>
+<span class="sourceLineNo">260</span>                //  infrequent<a name="line.260"></a>
+<span class="sourceLineNo">261</span>                List&lt;String&gt; repositories = new ArrayList&lt;&gt;( repoGroupConfig.getRepositories() );<a name="line.261"></a>
+<span class="sourceLineNo">262</span>                resource = processRepositoryGroup( request, archivaLocator, repositories, activePrincipal,<a name="line.262"></a>
+<span class="sourceLineNo">263</span>                                                   resourcesInAbsolutePath, repoGroupConfig );<a name="line.263"></a>
+<span class="sourceLineNo">264</span>            }<a name="line.264"></a>
+<span class="sourceLineNo">265</span>        }<a name="line.265"></a>
+<span class="sourceLineNo">266</span>        else<a name="line.266"></a>
+<span class="sourceLineNo">267</span>        {<a name="line.267"></a>
+<span class="sourceLineNo">268</span><a name="line.268"></a>
+<span class="sourceLineNo">269</span>            try<a name="line.269"></a>
+<span class="sourceLineNo">270</span>            {<a name="line.270"></a>
+<span class="sourceLineNo">271</span>                RemoteRepository remoteRepository =<a name="line.271"></a>
+<span class="sourceLineNo">272</span>                    remoteRepositoryAdmin.getRemoteRepository( archivaLocator.getRepositoryId() );<a name="line.272"></a>
+<span class="sourceLineNo">273</span><a name="line.273"></a>
+<span class="sourceLineNo">274</span>                if ( remoteRepository != null )<a name="line.274"></a>
+<span class="sourceLineNo">275</span>                {<a name="line.275"></a>
+<span class="sourceLineNo">276</span>                    String logicalResource = getLogicalResource( archivaLocator, null, false );<a name="line.276"></a>
+<span class="sourceLineNo">277</span>                    IndexingContext indexingContext = remoteRepositoryAdmin.createIndexContext( remoteRepository );<a name="line.277"></a>
+<span class="sourceLineNo">278</span>                    File resourceFile = StringUtils.equals( logicalResource, "/" )<a name="line.278"></a>
+<span class="sourceLineNo">279</span>                        ? new File( indexingContext.getIndexDirectoryFile().getParent() )<a name="line.279"></a>
+<span class="sourceLineNo">280</span>                        : new File( indexingContext.getIndexDirectoryFile().getParent(), logicalResource );<a name="line.280"></a>
+<span class="sourceLineNo">281</span>                    resource = new ArchivaDavResource( resourceFile.getAbsolutePath(), //<a name="line.281"></a>
+<span class="sourceLineNo">282</span>                                                       locator.getResourcePath(), //<a name="line.282"></a>
+<span class="sourceLineNo">283</span>                                                       null, //<a name="line.283"></a>
+<span class="sourceLineNo">284</span>                                                       request.getRemoteAddr(), //<a name="line.284"></a>
+<span class="sourceLineNo">285</span>                                                       activePrincipal, //<a name="line.285"></a>
+<span class="sourceLineNo">286</span>                                                       request.getDavSession(), //<a name="line.286"></a>
+<span class="sourceLineNo">287</span>                                                       archivaLocator, //<a name="line.287"></a>
+<span class="sourceLineNo">288</span>                                                       this, //<a name="line.288"></a>
+<span class="sourceLineNo">289</span>                                                       mimeTypes, //<a name="line.289"></a>
+<span class="sourceLineNo">290</span>                                                       auditListeners, //<a name="line.290"></a>
+<span class="sourceLineNo">291</span>                                                       scheduler, //<a name="line.291"></a>
+<span class="sourceLineNo">292</span>                                                       fileLockManager );<a name="line.292"></a>
+<span class="sourceLineNo">293</span>                    setHeaders( response, locator, resource, false );<a name="line.293"></a>
+<span class="sourceLineNo">294</span>                    return resource;<a name="line.294"></a>
+<span class="sourceLineNo">295</span>                }<a name="line.295"></a>
+<span class="sourceLineNo">296</span>            }<a name="line.296"></a>
+<span class="sourceLineNo">297</span>            catch ( RepositoryAdminException e )<a name="line.297"></a>
+<span class="sourceLineNo">298</span>            {<a name="line.298"></a>
+<span class="sourceLineNo">299</span>                log.debug( "RepositoryException remote repository with d'{}' not found, msg: {}",<a name="line.299"></a>
+<span class="sourceLineNo">300</span>                           archivaLocator.getRepositoryId(), e.getMessage() );<a name="line.300"></a>
+<span class="sourceLineNo">301</span>            }<a name="line.301"></a>
+<span class="sourceLineNo">302</span><a name="line.302"></a>
+<span class="sourceLineNo">303</span>            ManagedRepositoryContent managedRepositoryContent = null;<a name="line.303"></a>
+<span class="sourceLineNo">304</span><a name="line.304"></a>
+<span class="sourceLineNo">305</span>            try<a name="line.305"></a>
+<span class="sourceLineNo">306</span>            {<a name="line.306"></a>
+<span class="sourceLineNo">307</span>                managedRepositoryContent =<a name="line.307"></a>
+<span class="sourceLineNo">308</span>                    repositoryFactory.getManagedRepositoryContent( archivaLocator.getRepositoryId() );<a name="line.308"></a>
+<span class="sourceLineNo">309</span>            }<a name="line.309"></a>
+<span class="sourceLineNo">310</span>            catch ( RepositoryNotFoundException e )<a name="line.310"></a>
+<span class="sourceLineNo">311</span>            {<a name="line.311"></a>
+<span class="sourceLineNo">312</span>                throw new DavException( HttpServletResponse.SC_NOT_FOUND,<a name="line.312"></a>
+<span class="sourceLineNo">313</span>                                        "Invalid repository: " + archivaLocator.getRepositoryId() );<a name="line.313"></a>
+<span class="sourceLineNo">314</span>            }<a name="line.314"></a>
+<span class="sourceLineNo">315</span>            catch ( RepositoryException e )<a name="line.315"></a>
+<span class="sourceLineNo">316</span>            {<a name="line.316"></a>
+<span class="sourceLineNo">317</span>                throw new DavException( HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e );<a name="line.317"></a>
+<span class="sourceLineNo">318</span>            }<a name="line.318"></a>
+<span class="sourceLineNo">319</span><a name="line.319"></a>
+<span class="sourceLineNo">320</span>            log.debug( "Managed repository '{}' accessed by '{}'", managedRepositoryContent.getId(), activePrincipal );<a name="line.320"></a>
+<span class="sourceLineNo">321</span><a name="line.321"></a>
+<span class="sourceLineNo">322</span>            try<a name="line.322"></a>
+<span class="sourceLineNo">323</span>            {<a name="line.323"></a>
+<span class="sourceLineNo">324</span>                resource = processRepository( request, archivaLocator, activePrincipal, managedRepositoryContent,<a name="line.324"></a>
+<span class="sourceLineNo">325</span>                                              managedRepositoryAdmin.getManagedRepository(<a name="line.325"></a>
+<span class="sourceLineNo">326</span>                                                  archivaLocator.getRepositoryId() ) );<a name="line.326"></a>
+<span class="sourceLineNo">327</span><a name="line.327"></a>
+<span class="sourceLineNo">328</span>                String logicalResource = getLogicalResource( archivaLocator, null, false );<a name="line.328"></a>
+<span class="sourceLineNo">329</span>                resourcesInAbsolutePath.add(<a name="line.329"></a>
+<span class="sourceLineNo">330</span>                    new File( managedRepositoryContent.getRepoRoot(), logicalResource ).getAbsolutePath() );<a name="line.330"></a>
+<span class="sourceLineNo">331</span><a name="line.331"></a>
+<span class="sourceLineNo">332</span>            }<a name="line.332"></a>
+<span class="sourceLineNo">333</span>            catch ( RepositoryAdminException | IOException e )<a name="line.333"></a>
+<span class="sourceLineNo">334</span>            {<a name="line.334"></a>
+<span class="sourceLineNo">335</span>                throw new DavException( HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e );<a name="line.335"></a>
+<span class="sourceLineNo">336</span>            }<a name="line.336"></a>
+<span class="sourceLineNo">337</span>        }<a name="line.337"></a>
+<span class="sourceLineNo">338</span><a name="line.338"></a>
+<span class="sourceLineNo">339</span>        String requestedResource = request.getRequestURI();<a name="line.339"></a>
+<span class="sourceLineNo">340</span><a name="line.340"></a>
+<span class="sourceLineNo">341</span>        // MRM-872 : merge all available metadata<a name="line.341"></a>
+<span class="sourceLineNo">342</span>        // merge metadata only when requested via the repo group<a name="line.342"></a>
+<span class="sourceLineNo">343</span>        if ( ( repositoryRequest.isMetadata( requestedResource ) || repositoryRequest.isMetadataSupportFile(<a name="line.343"></a>
+<span class="sourceLineNo">344</span>            requestedResource ) ) &amp;&amp; repoGroupConfig != null )<a name="line.344"></a>
+<span class="sourceLineNo">345</span>        {<a name="line.345"></a>
+<span class="sourceLineNo">346</span>            // this should only be at the project level not version level!<a name="line.346"></a>
+<span class="sourceLineNo">347</span>            if ( isProjectReference( requestedResource ) )<a name="line.347"></a>
+<span class="sourceLineNo">348</span>            {<a name="line.348"></a>
+<span class="sourceLineNo">349</span><a name="line.349"></a>
+<span class="sourceLineNo">350</span>                ArchivaDavResource res = (ArchivaDavResource) resource;<a name="line.350"></a>
+<span class="sourceLineNo">351</span>                String filePath =<a name="line.351"></a>
+<span class="sourceLineNo">352</span>                    StringUtils.substringBeforeLast( res.getLocalResource().getAbsolutePath().replace( '\\', '/' ),<a name="line.352"></a>
+<span class="sourceLineNo">353</span>                                                     "/" );<a name="line.353"></a>
+<span class="sourceLineNo">354</span>                filePath = filePath + "/maven-metadata-" + repoGroupConfig.getId() + ".xml";<a name="line.354"></a>
+<span class="sourceLineNo">355</span><a name="line.355"></a>
+<span class="sourceLineNo">356</span>                // for MRM-872 handle checksums of the merged metadata files<a name="line.356"></a>
+<span class="sourceLineNo">357</span>                if ( repositoryRequest.isSupportFile( requestedResource ) )<a name="line.357"></a>
+<span class="sourceLineNo">358</span>                {<a name="line.358"></a>
+<span class="sourceLineNo">359</span>                    File metadataChecksum =<a name="line.359"></a>
+<span class="sourceLineNo">360</span>                        new File( filePath + "." + StringUtils.substringAfterLast( requestedResource, "." ) );<a name="line.360"></a>
+<span class="sourceLineNo">361</span><a name="line.361"></a>
+<span class="sourceLineNo">362</span>                    if ( metadataChecksum.exists() )<a name="line.362"></a>
+<span class="sourceLineNo">363</span>                    {<a name="line.363"></a>
+<span class="sourceLineNo">364</span>                        LogicalResource logicalResource =<a name="line.364"></a>
+<span class="sourceLineNo">365</span>                            new LogicalResource( getLogicalResource( archivaLocator, null, false ) );<a name="line.365"></a>
+<span class="sourceLineNo">366</span><a name="line.366"></a>
+<span class="sourceLineNo">367</span>                        resource =<a name="line.367"></a>
+<span class="sourceLineNo">368</span>                            new ArchivaDavResource( metadataChecksum.getAbsolutePath(), logicalResource.getPath(), null,<a name="line.368"></a>
+<span class="sourceLineNo">369</span>                                                    request.getRemoteAddr(), activePrincipal, request.getDavSession(),<a name="line.369"></a>
+<span class="sourceLineNo">370</span>                                                    archivaLocator, this, mimeTypes, auditListeners, scheduler,<a name="line.370"></a>
+<span class="sourceLineNo">371</span>                                                    fileLockManager );<a name="line.371"></a>
+<span class="sourceLineNo">372</span>                    }<a name="line.372"></a>
+<span class="sourceLineNo">373</span>                }<a name="line.373"></a>
+<span class="sourceLineNo">374</span>                else<a name="line.374"></a>
+<span class="sourceLineNo">375</span>                {<a name="line.375"></a>
+<span class="sourceLineNo">376</span>                    if ( resourcesInAbsolutePath != null &amp;&amp; resourcesInAbsolutePath.size() &gt; 1 )<a name="line.376"></a>
+<span class="sourceLineNo">377</span>                    {<a name="line.377"></a>
+<span class="sourceLineNo">378</span>                        // merge the metadata of all repos under group<a name="line.378"></a>
+<span class="sourceLineNo">379</span>                        ArchivaRepositoryMetadata mergedMetadata = new ArchivaRepositoryMetadata();<a name="line.379"></a>
+<span class="sourceLineNo">380</span>                        for ( String resourceAbsPath : resourcesInAbsolutePath )<a name="line.380"></a>
+<span class="sourceLineNo">381</span>                        {<a name="line.381"></a>
+<span class="sourceLineNo">382</span>                            try<a name="line.382"></a>
+<span class="sourceLineNo">383</span>                            {<a name="line.383"></a>
+<span class="sourceLineNo">384</span>                                File metadataFile = new File( resourceAbsPath );<a name="line.384"></a>
+<span class="sourceLineNo">385</span>                                ArchivaRepositoryMetadata repoMetadata = MavenMetadataReader.read( metadataFile );<a name="line.385"></a>
+<span class="sourceLineNo">386</span>                                mergedMetadata = RepositoryMetadataMerge.merge( mergedMetadata, repoMetadata );<a name="line.386"></a>
+<span class="sourceLineNo">387</span>                            }<a name="line.387"></a>
+<span class="sourceLineNo">388</span>                            catch ( XMLException e )<a name="line.388"></a>
+<span class="sourceLineNo">389</span>                            {<a name="line.389"></a>
+<span class="sourceLineNo">390</span>                                throw new DavException( HttpServletResponse.SC_INTERNAL_SERVER_ERROR,<a name="line.390"></a>
+<span class="sourceLineNo">391</span>                                                        "Error occurred while reading metadata file." );<a name="line.391"></a>
+<span class="sourceLineNo">392</span>                            }<a name="line.392"></a>
+<span class="sourceLineNo">393</span>                            catch ( RepositoryMetadataException r )<a name="line.393"></a>
+<span class="sourceLineNo">394</span>                            {<a name="line.394"></a>
+<span class="sourceLineNo">395</span>                                throw new DavException( HttpServletResponse.SC_INTERNAL_SERVER_ERROR,<a name="line.395"></a>
+<span class="sourceLineNo">396</span>                                                        "Error occurred while merging metadata file." );<a name="line.396"></a>
+<span class="sourceLineNo">397</span>                            }<a name="line.397"></a>
+<span class="sourceLineNo">398</span>                        }<a name="line.398"></a>
+<span class="sourceLineNo">399</span><a name="line.399"></a>
+<span class="sourceLineNo">400</span>                        try<a name="line.400"></a>
+<span class="sourceLineNo">401</span>                        {<a name="line.401"></a>
+<span class="sourceLineNo">402</span>                            File resourceFile = writeMergedMetadataToFile( mergedMetadata, filePath );<a name="line.402"></a>
+<span class="sourceLineNo">403</span><a name="line.403"></a>
+<span class="sourceLineNo">404</span>                            LogicalResource logicalResource =<a name="line.404"></a>
+<span class="sourceLineNo">405</span>                                new LogicalResource( getLogicalResource( archivaLocator, null, false ) );<a name="line.405"></a>
+<span class="sourceLineNo">406</span><a name="line.406"></a>
+<span class="sourceLineNo">407</span>                            resource =<a name="line.407"></a>
+<span class="sourceLineNo">408</span>                                new ArchivaDavResource( resourceFile.getAbsolutePath(), logicalResource.getPath(), null,<a name="line.408"></a>
+<span class="sourceLineNo">409</span>                                                        request.getRemoteAddr(), activePrincipal,<a name="line.409"></a>
+<span class="sourceLineNo">410</span>                                                        request.getDavSession(), archivaLocator, this, mimeTypes,<a name="line.410"></a>
+<span class="sourceLineNo">411</span>                                                        auditListeners, scheduler, fileLockManager );<a name="line.411"></a>
+<span class="sourceLineNo">412</span>                        }<a name="line.412"></a>
+<span class="sourceLineNo">413</span>                        catch ( RepositoryMetadataException r )<a name="line.413"></a>
+<span class="sourceLineNo">414</span>                        {<a name="line.414"></a>
+<span class="sourceLineNo">415</span>                            throw new DavException( HttpServletResponse.SC_INTERNAL_SERVER_ERROR,<a name="line.415"></a>
+<span class="sourceLineNo">416</span>                                                    "Error occurred while writing metadata file." );<a name="line.416"></a>
+<span class="sourceLineNo">417</span>                        }<a name="line.417"></a>
+<span class="sourceLineNo">418</span>                        catch ( IOException ie )<a name="line.418"></a>
+<span class="sourceLineNo">419</span>                        {<a name="line.419"></a>
+<span class="sourceLineNo">420</span>                            throw new DavException( HttpServletResponse.SC_INTERNAL_SERVER_ERROR,<a name="line.420"></a>
+<span class="sourceLineNo">421</span>                                                    "Error occurred while generating checksum files." );<a name="line.421"></a>
+<span class="sourceLineNo">422</span>                        }<a name="line.422"></a>
+<span class="sourceLineNo">423</span>                        catch ( DigesterException de )<a name="line.423"></a>
+<span class="sourceLineNo">424</span>                        {<a name="line.424"></a>
+<span class="sourceLineNo">425</span>                            throw new DavException( HttpServletResponse.SC_INTERNAL_SERVER_ERROR,<a name="line.425"></a>
+<span class="sourceLineNo">426</span>                                                    "Error occurred while generating checksum files."<a name="line.426"></a>
+<span class="sourceLineNo">427</span>                                                        + de.getMessage() );<a name="line.427"></a>
+<span class="sourceLineNo">428</span>                        }<a name="line.428"></a>
+<span class="sourceLineNo">429</span>                    }<a name="line.429"></a>
+<span class="sourceLineNo">430</span>                }<a name="line.430"></a>
+<span class="sourceLineNo">431</span>            }<a name="line.431"></a>
+<span class="sourceLineNo">432</span>        }<a name="line.432"></a>
+<span class="sourceLineNo">433</span><a name="line.433"></a>
+<span class="sourceLineNo">434</span>        setHeaders( response, locator, resource, false );<a name="line.434"></a>
+<span class="sourceLineNo">435</span><a name="line.435"></a>
+<span class="sourceLineNo">436</span>        // compatibility with MRM-440 to ensure browsing the repository works ok<a name="line.436"></a>
+<span class="sourceLineNo">437</span>        if ( resource.isCollection() &amp;&amp; !request.getRequestURI().endsWith( "/" ) )<a name="line.437"></a>
+<span class="sourceLineNo">438</span>        {<a name="line.438"></a>
+<span class="sourceLineNo">439</span>            throw new BrowserRedirectException( resource.getHref() );<a name="line.439"></a>
+<span class="sourceLineNo">440</span>        }<a name="line.440"></a>
+<span class="sourceLineNo">441</span>        resource.addLockManager( lockManager );<a name="line.441"></a>
+<span class="sourceLineNo">442</span>        return resource;<a name="line.442"></a>
+<span class="sourceLineNo">443</span>    }<a name="line.443"></a>
+<span class="sourceLineNo">444</span><a name="line.444"></a>
+<span class="sourceLineNo">445</span>    private DavResource processRepositoryGroup( final DavServletRequest request,<a name="line.445"></a>
+<span class="sourceLineNo">446</span>                                                ArchivaDavResourceLocator archivaLocator, List&lt;String&gt; repositories,<a name="line.446"></a>
+<span class="sourceLineNo">447</span>                                                String activePrincipal, List&lt;String&gt; resourcesInAbsolutePath,<a name="line.447"></a>
+<span class="sourceLineNo">448</span>                                                RepositoryGroupConfiguration repoGroupConfig )<a name="line.448"></a>
+<span class="sourceLineNo">449</span>        throws DavException<a name="line.449"></a>
+<span class="sourceLineNo">450</span>    {<a name="line.450"></a>
+<span class="sourceLineNo">451</span>        DavResource resource = null;<a name="line.451"></a>
+<span class="sourceLineNo">452</span>        List&lt;DavException&gt; storedExceptions = new ArrayList&lt;&gt;();<a name="line.452"></a>
+<span class="sourceLineNo">453</span><a name="line.453"></a>
+<span class="sourceLineNo">454</span>        String pathInfo = StringUtils.removeEnd( request.getPathInfo(), "/" );<a name="line.454"></a>
+<span class="sourceLineNo">455</span><a name="line.455"></a>
+<span class="sourceLineNo">456</span>        String rootPath = StringUtils.substringBeforeLast( pathInfo, "/" );<a name="line.456"></a>
+<span class="sourceLineNo">457</span><a name="line.457"></a>
+<span class="sourceLineNo">458</span>        if ( StringUtils.endsWith( rootPath, repoGroupConfig.getMergedIndexPath() ) )<a name="line.458"></a>
+<span class="sourceLineNo">459</span>        {<a name="line.459"></a>
+<span class="sourceLineNo">460</span>            // we are in the case of index file request<a name="line.460"></a>
+<span class="sourceLineNo">461</span>            String requestedFileName = StringUtils.substringAfterLast( pathInfo, "/" );<a name="line.461"></a>
+<span class="sourceLineNo">462</span>            File temporaryIndexDirectory =<a name="line.462"></a>
+<span class="sourceLineNo">463</span>                buildMergedIndexDirectory( repositories, activePrincipal, request, repoGroupConfig );<a name="line.463"></a>
+<span class="sourceLineNo">464</span><a name="line.464"></a>
+<span class="sourceLineNo">465</span>            File resourceFile = new File( temporaryIndexDirectory, requestedFileName );<a name="line.465"></a>
+<span class="sourceLineNo">466</span>            resource = new ArchivaDavResource( resourceFile.getAbsolutePath(), requestedFileName, null,<a name="line.466"></a>
+<span class="sourceLineNo">467</span>                                               request.getRemoteAddr(), activePrincipal, request.getDavSession(),<a name="line.467"></a>
+<span class="sourceLineNo">468</span>                                               archivaLocator, this, mimeTypes, auditListeners, scheduler,<a name="line.468"></a>
+<span class="sourceLineNo">469</span>                                               fileLockManager );<a name="line.469"></a>
+<span class="sourceLineNo">470</span><a name="line.470"></a>
+<span class="sourceLineNo">471</span>        }<a name="line.471"></a>
+<span class="sourceLineNo">472</span>        else<a name="line.472"></a>
+<span class="sourceLineNo">473</span>        {<a name="line.473"></a>
+<span class="sourceLineNo">474</span>            for ( String repositoryId : repositories )<a name="line.474"></a>
+<span class="sourceLineNo">475</span>            {<a name="line.475"></a>
+<span class="sourceLineNo">476</span>                ManagedRepositoryContent managedRepositoryContent;<a name="line.476"></a>
+<span class="sourceLineNo">477</span>                try<a name="line.477"></a>
+<span class="sourceLineNo">478</span>                {<a name="line.478"></a>
+<span class="sourceLineNo">479</span>                    managedRepositoryContent = repositoryFactory.getManagedRepositoryContent( repositoryId );<a name="line.479"></a>
+<span class="sourceLineNo">480</span>                }<a name="line.480"></a>
+<span class="sourceLineNo">481</span>                catch ( RepositoryException e )<a name="line.481"></a>
+<span class="sourceLineNo">482</span>                {<a name="line.482"></a>
+<span class="sourceLineNo">483</span>                    throw new DavException( HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e );<a name="line.483"></a>
+<span class="sourceLineNo">484</span>                }<a name="line.484"></a>
+<span class="sourceLineNo">485</span><a name="line.485"></a>
+<span class="sourceLineNo">486</span>                try<a name="line.486"></a>
+<span class="sourceLineNo">487</span>                {<a name="line.487"></a>
+<span class="sourceLineNo">488</span>                    ManagedRepository managedRepository = managedRepositoryAdmin.getManagedRepository( repositoryId );<a name="line.488"></a>
+<span class="sourceLineNo">489</span>                    DavResource updatedResource =<a name="line.489"></a>
+<span class="sourceLineNo">490</span>                        processRepository( request, archivaLocator, activePrincipal, managedRepositoryContent,<a name="line.490"></a>
+<span class="sourceLineNo">491</span>                                           managedRepository );<a name="line.491"></a>
+<span class="sourceLineNo">492</span>                    if ( resource == null )<a name="line.492"></a>
+<span class="sourceLineNo">493</span>                    {<a name="line.493"></a>
+<span class="sourceLineNo">494</span>                        resource = updatedResource;<a name="line.494"></a>
+<span class="sourceLineNo">495</span>                    }<a name="line.495"></a>
+<span class="sourceLineNo">496</span><a name="line.496"></a>
+<span class="sourceLineNo">497</span>                    String logicalResource = getLogicalResource( archivaLocator, null, false );<a name="line.497"></a>
+<span class="sourceLineNo">498</span>                    if ( logicalResource.endsWith( "/" ) )<a name="line.498"></a>
+<span class="sourceLineNo">499</span>                    {<a name="line.499"></a>
+<span class="sourceLineNo">500</span>                        logicalResource = logicalResource.substring( 1 );<a name="line.500"></a>
+<span class="sourceLineNo">501</span>                    }<a name="line.501"></a>
+<span class="sourceLineNo">502</span>                    resourcesInAbsolutePath.add(<a name="line.502"></a>
+<span class="sourceLineNo">503</span>                        new File( managedRepositoryContent.getRepoRoot(), logicalResource ).getAbsolutePath() );<a name="line.503"></a>
+<span class="sourceLineNo">504</span>                }<a name="line.504"></a>
+<span class="sourceLineNo">505</span>                catch ( DavException e )<a name="line.505"></a>
+<span class="sourceLineNo">506</span>                {<a name="line.506"></a>
+<span class="sourceLineNo">507</span>                    storedExceptions.add( e );<a name="line.507"></a>
+<span class="sourceLineNo">508</span>                }<a name="line.508"></a>
+<span class="sourceLineNo">509</span>                catch ( IOException | RepositoryAdminException e )<a name="line.509"></a>
+<span class="sourceLineNo">510</span>                {<a name="line.510"></a>
+<span class="sourceLineNo">511</span>                    storedExceptions.add( new DavException( HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e ) );<a name="line.511"></a>
+<span class="sourceLineNo">512</span>                }<a name="line.512"></a>
+<span class="sourceLineNo">513</span>            }<a name="line.513"></a>
+<span class="sourceLineNo">514</span>        }<a name="line.514"></a>
+<span class="sourceLineNo">515</span>        if ( resource == null )<a name="line.515"></a>
+<span class="sourceLineNo">516</span>        {<a name="line.516"></a>
+<span class="sourceLineNo">517</span>            if ( !storedExceptions.isEmpty() )<a name="line.517"></a>
+<span class="sourceLineNo">518</span>            {<a name="line.518"></a>
+<span class="sourceLineNo">519</span>                // MRM-1232<a name="line.519"></a>
+<span class="sourceLineNo">520</span>                for ( DavException e : storedExceptions )<a name="line.520"></a>
+<span class="sourceLineNo">521</span>                {<a name="line.521"></a>
+<span class="sourceLineNo">522</span>                    if ( 401 == e.getErrorCode() )<a name="line.522"></a>
+<span class="sourceLineNo">523</span>                    {<a name="line.523"></a>
+<span class="sourceLineNo">524</span>                        throw e;<a name="line.524"></a>
+<span class="sourceLineNo">525</span>                    }<a name="line.525"></a>
+<span class="sourceLineNo">526</span>                }<a name="line.526"></a>
+<span class="sourceLineNo">527</span><a name="line.527"></a>
+<span class="sourceLineNo">528</span>                throw new DavException( HttpServletResponse.SC_NOT_FOUND );<a name="line.528"></a>
+<span class="sourceLineNo">529</span>            }<a name="line.529"></a>
+<span class="sourceLineNo">530</span>            else<a name="line.530"></a>
+<span class="sourceLineNo">531</span>            {<a name="line.531"></a>
+<span class="sourceLineNo">532</span>                throw new DavException( HttpServletResponse.SC_NOT_FOUND );<a name="line.532"></a>
+<span class="sourceLineNo">533</span>            }<a name="line.533"></a>
+<span class="sourceLineNo">534</span>        }<a name="line.534"></a>
+<span class="sourceLineNo">535</span>        return resource;<a name="line.535"></a>
+<span class="sourceLineNo">536</span>    }<a name="line.536"></a>
+<span class="sourceLineNo">537</span><a name="line.537"></a>
+<span class="sourceLineNo">538</span>    private String getLogicalResource( ArchivaDavResourceLocator archivaLocator, ManagedRepository managedRepository,<a name="line.538"></a>
+<span class="sourceLineNo">539</span>                                       boolean useOrigResourcePath )<a name="line.539"></a>
+<span class="sourceLineNo">540</span>    {<a name="line.540"></a>
+<span class="sourceLineNo">541</span>        // FIXME remove this hack<a name="line.541"></a>
+<span class="sourceLineNo">542</span>        // but currently managedRepository can be null in case of group<a name="line.542"></a>
+<span class="sourceLineNo">543</span>        String layout = managedRepository == null ? new ManagedRepository().getLayout() : managedRepository.getLayout();<a name="line.543"></a>
+<span class="sourceLineNo">544</span>        RepositoryStorage repositoryStorage =<a name="line.544"></a>
+<span class="sourceLineNo">545</span>            this.applicationContext.getBean( "repositoryStorage#" + layout, RepositoryStorage.class );<a name="line.545"></a>
+<span class="sourceLineNo">546</span>        String path = repositoryStorage.getFilePath(<a name="line.546"></a>
+<span class="sourceLineNo">547</span>            useOrigResourcePath ? archivaLocator.getOrigResourcePath() : archivaLocator.getResourcePath(),<a name="line.547"></a>
+<span class="sourceLineNo">548</span>            managedRepository );<a name="line.548"></a>
+<span class="sourceLineNo">549</span>        log.debug( "found path {} for resourcePath: '{}' with managedRepo '{}' and layout '{}'", path,<a name="line.549"></a>
+<span class="sourceLineNo">550</span>                   archivaLocator.getResourcePath(), managedRepository == null ? "null" : managedRepository.getId(),<a name="line.550"></a>
+<span class="sourceLineNo">551</span>                   layout );<a name="line.551"></a>
+<span class="sourceLineNo">552</span>        return path;<a name="line.552"></a>
+<span class="sourceLineNo">553</span>    }<a name="line.553"></a>
+<span class="sourceLineNo">554</span><a name="line.554"></a>
+<span class="sourceLineNo">555</span>    private String evaluatePathWithVersion( ArchivaDavResourceLocator archivaLocator, //<a name="line.555"></a>
+<span class="sourceLineNo">556</span>                                            ManagedRepositoryContent managedRepositoryContent, //<a name="line.556"></a>
+<span class="sourceLineNo">557</span>                                            String contextPath )<a name="line.557"></a>
+<span class="sourceLineNo">558</span>        throws DavException<a name="line.558"></a>
+<span class="sourceLineNo">559</span>    {<a name="line.559"></a>
+<span class="sourceLineNo">560</span>        String layout = managedRepositoryContent.getRepository() == null<a name="line.560"></a>
+<span class="sourceLineNo">561</span>            ? new ManagedRepository().getLayout()<a name="line.561"></a>
+<span class="sourceLineNo">562</span>            : managedRepositoryContent.getRepository().getLayout();<a name="line.562"></a>
+<span class="sourceLineNo">563</span>        RepositoryStorage repositoryStorage =<a name="line.563"></a>
+<span class="sourceLineNo">564</span>            this.applicationContext.getBean( "repositoryStorage#" + layout, RepositoryStorage.class );<a name="line.564"></a>
+<span class="sourceLineNo">565</span>        try<a name="line.565"></a>
+<span class="sourceLineNo">566</span>        {<a name="line.566"></a>
+<span class="sourceLineNo">567</span>            return repositoryStorage.getFilePathWithVersion( archivaLocator.getResourcePath(), //<a name="line.567"></a>
+<span class="sourceLineNo">568</span>                                                             managedRepositoryContent );<a name="line.568"></a>
+<span class="sourceLineNo">569</span>        }<a name="line.569"></a>
+<span class="sourceLineNo">570</span>        catch ( RelocationException e )<a name="line.570"></a>
+<span class="sourceLineNo">571</span>        {<a name="line.571"></a>
+<span class="sourceLineNo">572</span>            String path = e.getPath();<a name="line.572"></a>
+<span class="sourceLineNo">573</span>            log.debug( "Relocation to {}", path );<a name="line.573"></a>
+<span class="sourceLineNo">574</span><a name="line.574"></a>
+<span class="sourceLineNo">575</span>            throw new BrowserRedirectException( addHrefPrefix( contextPath, path ), e.getRelocationType() );<a name="line.575"></a>
+<span class="sourceLineNo">576</span>        }<a name="line.576"></a>
+<span class="sourceLineNo">577</span>        catch ( XMLException e )<a name="line.577"></a>
+<span class="sourceLineNo">578</span>        {<a name="line.578"></a>
+<span class="sourceLineNo">579</span>            log.error( e.getMessage(), e );<a name="line.579"></a>
+<span class="sourceLineNo">580</span>            throw new DavException( HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e );<a name="line.580"></a>
+<span class="sourceLineNo">581</span>        }<a name="line.581"></a>
+<span class="sourceLineNo">582</span>    }<a name="line.582"></a>
+<span class="sourceLineNo">583</span><a name="line.583"></a>
+<span class="sourceLineNo">584</span>    private DavResource processRepository( final DavServletRequest request, ArchivaDavResourceLocator archivaLocator,<a name="line.584"></a>
+<span class="sourceLineNo">585</span>                                           String activePrincipal, ManagedRepositoryContent managedRepositoryContent,<a name="line.585"></a>
+<span class="sourceLineNo">586</span>                                           ManagedRepository managedRepository )<a name="line.586"></a>
+<span class="sourceLineNo">587</span>        throws DavException, IOException<a name="line.587"></a>
+<span class="sourceLineNo">588</span>    {<a name="line.588"></a>
+<span class="sourceLineNo">589</span>        DavResource resource = null;<a name="line.589"></a>
+<span class="sourceLineNo">590</span>        if ( isAuthorized( request, managedRepositoryContent.getId() ) )<a name="line.590"></a>
+<span class="sourceLineNo">591</span>        {<a name="line.591"></a>
+<span class="sourceLineNo">592</span>            boolean readMethod = WebdavMethodUtil.isReadMethod( request.getMethod() );<a name="line.592"></a>
+<span class="sourceLineNo">593</span>            // Maven Centric part ask evaluation if -SNAPSHOT<a name="line.593"></a>
+<span class="sourceLineNo">594</span>            // MRM-1846 test if read method to prevent issue with maven 2.2.1 and uniqueVersion false<a name="line.594"></a>
+<span class="sourceLineNo">595</span><a name="line.595"></a>
+<span class="sourceLineNo">596</span>            String path = readMethod<a name="line.596"></a>
+<span class="sourceLineNo">597</span>                ? evaluatePathWithVersion( archivaLocator, managedRepositoryContent, request.getContextPath() )<a name="line.597"></a>
+<span class="sourceLineNo">598</span>                : getLogicalResource( archivaLocator, managedRepository, false );<a name="line.598"></a>
+<span class="sourceLineNo">599</span>            if ( path.startsWith( "/" ) )<a name="line.599"></a>
+<span class="sourceLineNo">600</span>            {<a name="line.600"></a>
+<span class="sourceLineNo">601</span>                path = path.substring( 1 );<a name="line.601"></a>
+<span class="sourceLineNo">602</span>            }<a name="line.602"></a>
+<span class="sourceLineNo">603</span>            LogicalResource logicalResource = new LogicalResource( path );<a name="line.603"></a>
+<span class="sourceLineNo">604</span>            File resourceFile = new File( managedRepositoryContent.getRepoRoot(), path );<a name="line.604"></a>
+<span class="sourceLineNo">605</span>            if(!resourceFile.getCanonicalPath().equals(resourceFile.getAbsolutePath()))<a name="line.605"></a>
+<span class="sourceLineNo">606</span>            {<a name="line.606"></a>
+<span class="sourceLineNo">607</span>                throw new DavException( HttpServletResponse.SC_BAD_REQUEST );<a name="line.607"></a>
+<span class="sourceLineNo">608</span>            }<a name="line.608"></a>
+<span class="sourceLineNo">609</span>            resource =<a name="line.609"></a>
+<span class="sourceLineNo">610</span>                new ArchivaDavResource( resourceFile.getAbsolutePath(), path, managedRepositoryContent.getRepository(),<a name="line.610"></a>
+<span class="sourceLineNo">611</span>                                        request.getRemoteAddr(), activePrincipal, request.getDavSession(),<a name="line.611"></a>
+<span class="sourceLineNo">612</span>                                        archivaLocator, this, mimeTypes, auditListeners, scheduler, fileLockManager );<a name="line.612"></a>
+<span class="sourceLineNo">613</span><a name="line.613"></a>
+<span class="sourceLineNo">614</span>            if ( WebdavMethodUtil.isReadMethod( request.getMethod() ) )<a name="line.614"></a>
+<span class="sourceLineNo">615</span>            {<a name="line.615"></a>
+<span class="sourceLineNo">616</span>                if ( archivaLocator.getHref( false ).endsWith( "/" ) &amp;&amp; !resourceFile.isDirectory() )<a name="line.616"></a>
+<span class="sourceLineNo">617</span>                {<a name="line.617"></a>
+<span class="sourceLineNo">618</span>                    // force a resource not found<a name="line.618"></a>
+<span class="sourceLineNo">619</span>                    throw new DavException( HttpServletResponse.SC_NOT_FOUND, "Resource does not exist" );<a name="line.619"></a>
+<span class="sourceLineNo">620</span>                }<a name="line.620"></a>
+<span class="sourceLineNo">621</span>                else<a name="line.621"></a>
+<span class="sourceLineNo">622</span>                {<a name="line.622"></a>
+<span class="sourceLineNo">623</span>                    if ( !resource.isCollection() )<a name="line.623"></a>
+<span class="sourceLineNo">624</span>                    {<a name="line.624"></a>
+<span class="sourceLineNo">625</span>                        boolean previouslyExisted = resourceFile.exists();<a name="line.625"></a>
+<span class="sourceLineNo">626</span><a name="line.626"></a>
+<span class="sourceLineNo">627</span>                        boolean fromProxy = fetchContentFromProxies( managedRepositoryContent, request, logicalResource );<a name="line.627"></a>
+<span class="sourceLineNo">628</span><a name="line.628"></a>
+<span class="sourceLineNo">629</span>                        // At this point the incoming request can either be in default or<a name="line.629"></a>
+<span class="sourceLineNo">630</span>                        // legacy layout format.<a name="line.630"></a>
+<span class="sourceLineNo">631</span>                        try<a name="line.631"></a>
+<span class="sourceLineNo">632</span>                        {<a name="line.632"></a>
+<span class="sourceLineNo">633</span>                            // Perform an adjustment of the resource to the managed<a name="line.633"></a>
+<span class="sourceLineNo">634</span>                            // repository expected path.<a name="line.634"></a>
+<span class="sourceLineNo">635</span>                            String localResourcePath =<a name="line.635"></a>
+<span class="sourceLineNo">636</span>                                repositoryRequest.toNativePath( logicalResource.getPath(), managedRepositoryContent );<a name="line.636"></a>
+<span class="sourceLineNo">637</span>                            resourceFile = new File( managedRepositoryContent.getRepoRoot(), localResourcePath );<a name="line.637"></a>
+<span class="sourceLineNo">638</span>                            resource =<a name="line.638"></a>
+<span class="sourceLineNo">639</span>                                new ArchivaDavResource( resourceFile.getAbsolutePath(), logicalResource.getPath(),<a name="line.639"></a>
+<span class="sourceLineNo">640</span>                                                        managedRepositoryContent.getRepository(),<a name="line.640"></a>
+<span class="sourceLineNo">641</span>                                                        request.getRemoteAddr(), activePrincipal,<a name="line.641"></a>
+<span class="sourceLineNo">642</span>                                                        request.getDavSession(), archivaLocator, this, mimeTypes,<a name="line.642"></a>
+<span class="sourceLineNo">643</span>                                                        auditListeners, scheduler, fileLockManager );<a name="line.643"></a>
+<span class="sourceLineNo">644</span>                        }<a name="line.644"></a>
+<span class="sourceLineNo">645</span>                        catch ( LayoutException e )<a name="line.645"></a>
+<span class="sourceLineNo">646</span>                        {<a name="line.646"></a>
+<span class="sourceLineNo">647</span>                            if ( !resourceFile.exists() )<a name="line.647"></a>
+<span class="sourceLineNo">648</span>                            {<a name="line.648"></a>
+<span class="sourceLineNo">649</span>                                throw new DavException( HttpServletResponse.SC_NOT_FOUND, e );<a name="line.649"></a>
+<span class="sourceLineNo">650</span>                            }<a name="line.650"></a>
+<span class="sourceLineNo">651</span>                        }<a name="line.651"></a>
+<span class="sourceLineNo">652</span><a name="line.652"></a>
+<span class="sourceLineNo">653</span>                        if ( fromProxy )<a name="line.653"></a>
+<span class="sourceLineNo">654</span>                        {<a name="line.654"></a>
+<span class="sourceLineNo">655</span>                            String action = ( previouslyExisted ? AuditEvent.MODIFY_FILE : AuditEvent.CREATE_FILE )<a name="line.655"></a>
+<span class="sourceLineNo">656</span>                                + PROXIED_SUFFIX;<a name="line.656"></a>
+<span class="sourceLineNo">657</span><a name="line.657"></a>
+<span class="sourceLineNo">658</span>                            log.debug( "Proxied artifact '{}' in repository '{}' (current user '{}')",<a name="line.658"></a>
+<span class="sourceLineNo">659</span>                                       resourceFile.getName(), managedRepositoryContent.getId(), activePrincipal );<a name="line.659"></a>
+<span class="sourceLineNo">660</span><a name="line.660"></a>
+<span class="sourceLineNo">661</span>                            triggerAuditEvent( request.getRemoteAddr(), archivaLocator.getRepositoryId(),<a name="line.661"></a>
+<span class="sourceLineNo">662</span>                                               logicalResource.getPath(), action, activePrincipal );<a name="line.662"></a>
+<span class="sourceLineNo">663</span>                        }<a name="line.663"></a>
+<span class="sourceLineNo">664</span><a name="line.664"></a>
+<span class="sourceLineNo">665</span>                        if ( !resourceFile.exists() )<a name="line.665"></a>
+<span class="sourceLineNo">666</span>                        {<a name="line.666"></a>
+<span class="sourceLineNo">667</span>                            throw new DavException( HttpServletResponse.SC_NOT_FOUND, "Resource does not exist" );<a name="line.667"></a>
+<span class="sourceLineNo">668</span>                        }<a name="line.668"></a>
+<span class="sourceLineNo">669</span>                    }<a name="line.669"></a>
+<span class="sourceLineNo">670</span>                }<a name="line.670"></a>
+<span class="sourceLineNo">671</span>            }<a name="line.671"></a>
+<span class="sourceLineNo">672</span><a name="line.672"></a>
+<span class="sourceLineNo">673</span>            if ( request.getMethod().equals( HTTP_PUT_METHOD ) )<a name="line.673"></a>
+<span class="sourceLineNo">674</span>            {<a name="line.674"></a>
+<span class="sourceLineNo">675</span>                String resourcePath = logicalResource.getPath();<a name="line.675"></a>
+<span class="sourceLineNo">676</span><a name="line.676"></a>
+<span class="sourceLineNo">677</span>                // check if target repo is enabled for releases<a name="line.677"></a>
+<span class="sourceLineNo">678</span>                // we suppose that release-artifacts can be deployed only to repos enabled for releases<a name="line.678"></a>
+<span class="sourceLineNo">679</span>                if ( managedRepositoryContent.getRepository().isReleases() &amp;&amp; !repositoryRequest.isMetadata(<a name="line.679"></a>
+<span class="sourceLineNo">680</span>                    resourcePath ) &amp;&amp; !repositoryRequest.isSupportFile( resourcePath ) )<a name="line.680"></a>
+<span class="sourceLineNo">681</span>                {<a name="line.681"></a>
+<span class="sourceLineNo">682</span>                    ArtifactReference artifact = null;<a name="line.682"></a>
+<span class="sourceLineNo">683</span>                    try<a name="line.683"></a>
+<span class="sourceLineNo">684</span>                    {<a name="line.684"></a>
+<span class="sourceLineNo">685</span>                        artifact = managedRepositoryContent.toArtifactReference( resourcePath );<a name="line.685"></a>
+<span class="sourceLineNo">686</span><a name="line.686"></a>
+<span class="sourceLineNo">687</span>                        if ( !VersionUtil.isSnapshot( artifact.getVersion() ) )<a name="line.687"></a>
+<span class="sourceLineNo">688</span>                        {<a name="line.688"></a>
+<span class="sourceLineNo">689</span>                            // check if artifact already exists and if artifact re-deployment to the repository is allowed<a name="line.689"></a>
+<span class="sourceLineNo">690</span>                            if ( managedRepositoryContent.hasContent( artifact )<a name="line.690"></a>
+<span class="sourceLineNo">691</span>                                &amp;&amp; managedRepositoryContent.getRepository().isBlockRedeployments() )<a name="line.691"></a>
+<span class="sourceLineNo">692</span>                            {<a name="line.692"></a>
+<span class="sourceLineNo">693</span>                                log.warn( "Overwriting released artifacts in repository '{}' is not allowed.",<a name="line.693"></a>
+<span class="sourceLineNo">694</span>                                          managedRepositoryContent.getId() );<a name="line.694"></a>
+<span class="sourceLineNo">695</span>                                throw new DavException( HttpServletResponse.SC_CONFLICT,<a name="line.695"></a>
+<span class="sourceLineNo">696</span>                                                        "Overwriting released artifacts is not allowed." );<a name="line.696"></a>
+<span class="sourceLineNo">697</span>                            }<a name="line.697"></a>
+<span class="sourceLineNo">698</span>                        }<a name="line.698"></a>
+<span class="sourceLineNo">699</span>                    }<a name="line.699"></a>
+<span class="sourceLineNo">700</span>                    catch ( LayoutException e )<a name="line.700"></a>
+<span class="sourceLineNo">701</span>                    {<a name="line.701"></a>
+<span class="sourceLineNo">702</span>                        log.warn( "Artifact path '{}' is invalid.", resourcePath );<a name="line.702"></a>
+<span class="sourceLineNo">703</span>                    }<a name="line.703"></a>
+<span class="sourceLineNo">704</span>                }<a name="line.704"></a>
+<span class="sourceLineNo">705</span><a name="line.705"></a>
+<span class="sourceLineNo">706</span>                /*<a name="line.706"></a>
+<span class="sourceLineNo">707</span>                 * Create parent directories that don't exist when writing a file This actually makes this<a name="line.707"></a>
+<span class="sourceLineNo">708</span>                 * implementation not compliant to the WebDAV RFC - but we have enough knowledge about how the<a name="line.708"></a>
+<span class="sourceLineNo">709</span>                 * collection is being used to do this reasonably and some versions of Maven's WebDAV don't correctly<a name="line.709"></a>
+<span class="sourceLineNo">710</span>                 * create the collections themselves.<a name="line.710"></a>
+<span class="sourceLineNo">711</span>                 */<a name="line.711"></a>
+<span class="sourceLineNo">712</span><a name="line.712"></a>
+<span class="sourceLineNo">713</span>                File rootDirectory = new File( managedRepositoryContent.getRepoRoot() );<a name="line.713"></a>
+<span class="sourceLineNo">714</span>                File destDir = new File( rootDirectory, logicalResource.getPath() ).getParentFile();<a name="line.714"></a>
+<span class="sourceLineNo">715</span><a name="line.715"></a>
+<span class="sourceLineNo">716</span>                if ( !destDir.exists() )<a name="line.716"></a>
+<span class="sourceLineNo">717</span>                {<a name="line.717"></a>
+<span class="sourceLineNo">718</span>                    destDir.mkdirs();<a name="line.718"></a>
+<span class="sourceLineNo">719</span>                    String relPath = PathUtil.getRelative( rootDirectory.getAbsolutePath(), destDir );<a name="line.719"></a>
+<span class="sourceLineNo">720</span><a name="line.720"></a>
+<span class="sourceLineNo">721</span>                    log.debug( "Creating destination directory '{}' (current user '{}')", destDir.getName(),<a name="line.721"></a>
+<span class="sourceLineNo">722</span>                               activePrincipal );<a name="line.722"></a>
+<span class="sourceLineNo">723</span><a name="line.723"></a>
+<span class="sourceLineNo">724</span>                    triggerAuditEvent( request.getRemoteAddr(), managedRepositoryContent.getId(), relPath,<a name="line.724"></a>
+<span class="sourceLineNo">725</span>                                       AuditEvent.CREATE_DIR, activePrincipal );<a name="line.725"></a>
+<span class="sourceLineNo">726</span>                }<a name="line.726"></a>
+<span class="sourceLineNo">727</span>            }<a name="line.727"></a>
+<span class="sourceLineNo">728</span>        }<a name="line.728"></a>
+<span class="sourceLineNo">729</span>        return resource;<a name="line.729"></a>
+<span class="sourceLineNo">730</span>    }<a name="line.730"></a>
+<span class="sourceLineNo">731</span><a name="line.731"></a>
+<span class="sourceLineNo">732</span>    @Override<a name="line.732"></a>
+<span class="sourceLineNo">733</span>    public DavResource createResource( final DavResourceLocator locator, final DavSession davSession )<a name="line.733"></a>
+<span class="sourceLineNo">734</span>        throws DavException<a name="line.734"></a>
+<span class="sourceLineNo">735</span>    {<a name="line.735"></a>
+<span class="sourceLineNo">736</span>        ArchivaDavResourceLocator archivaLocator = checkLocatorIsInstanceOfRepositoryLocator( locator );<a name="line.736"></a>
+<span class="sourceLineNo">737</span><a name="line.737"></a>
+<span class="sourceLineNo">738</span>        ManagedRepositoryContent managedRepositoryContent;<a name="line.738"></a>
+<span class="sourceLineNo">739</span>        try<a name="line.739"></a>
+<span class="sourceLineNo">740</span>        {<a name="line.740"></a>
+<span class="sourceLineNo">741</span>            managedRepositoryContent =<a name="line.741"></a>
+<span class="sourceLineNo">742</span>                repositoryFactory.getManagedRepositoryContent( archivaLocator.getRepositoryId() );<a name="line.742"></a>
+<span class="sourceLineNo">743</span>        }<a name="line.743"></a>
+<span class="sourceLineNo">744</span>        catch ( RepositoryNotFoundException e )<a name="line.744"></a>
+<span class="sourceLineNo">745</span>        {<a name="line.745"></a>
+<span class="sourceLineNo">746</span>            throw new DavException( HttpServletResponse.SC_NOT_FOUND,<a name="line.746"></a>
+<span class="sourceLineNo">747</span>                                    "Invalid repository: " + archivaLocator.getRepositoryId() );<a name="line.747"></a>
+<span class="sourceLineNo">748</span>        }<a name="line.748"></a>
+<span class="sourceLineNo">749</span>        catch ( RepositoryException e )<a name="line.749"></a>
+<span class="sourceLineNo">750</span>        {<a name="line.750"></a>
+<span class="sourceLineNo">751</span>            throw new DavException( HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e );<a name="line.751"></a>
+<span class="sourceLineNo">752</span>        }<a name="line.752"></a>
+<span class="sourceLineNo">753</span><a name="line.753"></a>
+<span class="sourceLineNo">754</span>        DavResource resource = null;<a name="line.754"></a>
+<span class="sourceLineNo">755</span>        try<a name="line.755"></a>
+<span class="sourceLineNo">756</span>        {<a name="line.756"></a>
+<span class="sourceLineNo">757</span>            String logicalResource = getLogicalResource( archivaLocator, managedRepositoryAdmin.getManagedRepository(<a name="line.757"></a>
+<span class="sourceLineNo">758</span>                archivaLocator.getRepositoryId() ), false );<a name="line.758"></a>
+<span class="sourceLineNo">759</span>            if ( logicalResource.startsWith( "/" ) )<a name="line.759"></a>
+<span class="sourceLineNo">760</span>            {<a name="line.760"></a>
+<span class="sourceLineNo">761</span>                logicalResource = logicalResource.substring( 1 );<a name="line.761"></a>
+<span class="sourceLineNo">762</span>            }<a name="line.762"></a>
+<span class="sourceLineNo">763</span>            File resourceFile = new File( managedRepositoryContent.getRepoRoot(), logicalResource );<a name="line.763"></a>
+<span class="sourceLineNo">764</span>            resource = new ArchivaDavResource( resourceFile.getAbsolutePath(), logicalResource,<a name="line.764"></a>
+<span class="sourceLineNo">765</span>                                               managedRepositoryContent.getRepository(), davSession, archivaLocator,<a name="line.765"></a>
+<span class="sourceLineNo">766</span>                                               this, mimeTypes, auditListeners, scheduler, fileLockManager );<a name="line.766"></a>
+<span class="sourceLineNo">767</span><a name="line.767"></a>
+<span class="sourceLineNo">768</span>            resource.addLockManager( lockManager );<a name="line.768"></a>
+<span class="sourceLineNo">769</span>        }<a name="line.769"></a>
+<span class="sourceLineNo">770</span>        catch ( RepositoryAdminException e )<a name="line.770"></a>
+<span class="sourceLineNo">771</span>        {<a name="line.771"></a>
+<span class="sourceLineNo">772</span>            throw new DavException( HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e );<a name="line.772"></a>
+<span class="sourceLineNo">773</span>        }<a name="line.773"></a>
+<span class="sourceLineNo">774</span>        return resource;<a name="line.774"></a>
+<span class="sourceLineNo">775</span>    }<a name="line.775"></a>
+<span class="sourceLineNo">776</span><a name="line.776"></a>
+<span class="sourceLineNo">777</span>    private boolean fetchContentFromProxies( ManagedRepositoryContent managedRepository, DavServletRequest request,<a name="line.777"></a>
+<span class="sourceLineNo">778</span>                                             LogicalResource resource )<a name="line.778"></a>
+<span class="sourceLineNo">779</span>        throws DavException<a name="line.779"></a>
+<span class="sourceLineNo">780</span>    {<a name="line.780"></a>
+<span class="sourceLineNo">781</span>        String path = resource.getPath();<a name="line.781"></a>
+<span class="sourceLineNo">782</span>        if ( repositoryRequest.isSupportFile( path ) )<a name="line.782"></a>
+<span class="sourceLineNo">783</span>        {<a name="line.783"></a>
+<span class="sourceLineNo">784</span>            File proxiedFile = connectors.fetchFromProxies( managedRepository, path );<a name="line.784"></a>
+<span class="sourceLineNo">785</span><a name="line.785"></a>
+<span class="sourceLineNo">786</span>            return ( proxiedFile != null );<a name="line.786"></a>
+<span class="sourceLineNo">787</span>        }<a name="line.787"></a>
+<span class="sourceLineNo">788</span><a name="line.788"></a>
+<span class="sourceLineNo">789</span>        // Is it a Metadata resource?<a name="line.789"></a>
+<span class="sourceLineNo">790</span>        if ( repositoryRequest.isDefault( path ) &amp;&amp; repositoryRequest.isMetadata( path ) )<a name="line.790"></a>
+<span class="sourceLineNo">791</span>        {<a name="line.791"></a>
+<span class="sourceLineNo">792</span>            return connectors.fetchMetadataFromProxies( managedRepository, path ).isModified();<a name="line.792"></a>
+<span class="sourceLineNo">793</span>        }<a name="line.793"></a>
+<span class="sourceLineNo">794</span><a name="line.794"></a>
+<span class="sourceLineNo">795</span>        // Is it an Archetype Catalog?<a name="line.795"></a>
+<span class="sourceLineNo">796</span>        if ( repositoryRequest.isArchetypeCatalog( path ) )<a name="line.796"></a>
+<span class="sourceLineNo">797</span>        {<a name="line.797"></a>
+<span class="sourceLineNo">798</span>            // FIXME we must implement a merge of remote archetype catalog from remote servers.<a name="line.798"></a>
+<span class="sourceLineNo">799</span>            File proxiedFile = connectors.fetchFromProxies( managedRepository, path );<a name="line.799"></a>
+<span class="sourceLineNo">800</span><a name="line.800"></a>
+<span class="sourceLineNo">801</span>            return ( proxiedFile != null );<a name="line.801"></a>
+<span class="sourceLineNo">802</span>        }<a name="line.802"></a>
+<span class="sourceLineNo">803</span><a name="line.803"></a>
+<span class="sourceLineNo">804</span>        // Not any of the above? Then it's gotta be an artifact reference.<a name="line.804"></a>
+<span class="sourceLineNo">805</span>        try<a name="line.805"></a>
+<span class="sourceLineNo">806</span>        {<a name="line.806"></a>
+<span class="sourceLineNo">807</span>            // Get the artifact reference in a layout neutral way.<a name="line.807"></a>
+<span class="sourceLineNo">808</span>            ArtifactReference artifact = repositoryRequest.toArtifactReference( path );<a name="line.808"></a>
+<span class="sourceLineNo">809</span><a name="line.809"></a>
+<span class="sourceLineNo">810</span>            if ( artifact != null )<a name="line.810"></a>
+<span class="sourceLineNo">811</span>            {<a name="line.811"></a>
+<span class="sourceLineNo">812</span>                String repositoryLayout = managedRepository.getRepository().getLayout();<a name="line.812"></a>
+<span class="sourceLineNo">813</span><a name="line.813"></a>
+<span class="sourceLineNo">814</span>                RepositoryStorage repositoryStorage =<a name="line.814"></a>
+<span class="sourceLineNo">815</span>                    this.applicationContext.getBean( "repositoryStorage#" + repositoryLayout, RepositoryStorage.class );<a name="line.815"></a>
+<span class="sourceLineNo">816</span>                repositoryStorage.applyServerSideRelocation( managedRepository, artifact );<a name="line.816"></a>
+<span class="sourceLineNo">817</span><a name="line.817"></a>
+<span class="sourceLineNo">818</span>                File proxiedFile = connectors.fetchFromProxies( managedRepository, artifact );<a name="line.818"></a>
+<span class="sourceLineNo">819</span><a name="line.819"></a>
+<span class="sourceLineNo">820</span>                resource.setPath( managedRepository.toPath( artifact ) );<a name="line.820"></a>
+<span class="sourceLineNo">821</span><a name="line.821"></a>
+<span class="sourceLineNo">822</span>                log.debug( "Proxied artifact '{}:{}:{}'", artifact.getGroupId(), artifact.getArtifactId(),<a name="line.822"></a>
+<span class="sourceLineNo">823</span>                           artifact.getVersion() );<a name="line.823"></a>
+<span class="sourceLineNo">824</span><a name="line.824"></a>
+<span class="sourceLineNo">825</span>                return ( proxiedFile != null );<a name="line.825"></a>
+<span class="sourceLineNo">826</span>            }<a name="line.826"></a>
+<span class="sourceLineNo">827</span>        }<a name="line.827"></a>
+<span class="sourceLineNo">828</span>        catch ( LayoutException e )<a name="line.828"></a>
+<span class="sourceLineNo">829</span>        {<a name="line.829"></a>
+<span class="sourceLineNo">830</span>            /* eat it */<a name="line.830"></a>
+<span class="sourceLineNo">831</span>        }<a name="line.831"></a>
+<span class="sourceLineNo">832</span>        catch ( ProxyDownloadException e )<a name="line.832"></a>
+<span class="sourceLineNo">833</span>        {<a name="line.833"></a>
+<span class="sourceLineNo">834</span>            log.error( e.getMessage(), e );<a name="line.834"></a>
+<span class="sourceLineNo">835</span>            throw new DavException( HttpServletResponse.SC_INTERNAL_SERVER_ERROR,<a name="line.835"></a>
+<span class="sourceLineNo">836</span>                                    "Unable to fetch artifact resource." );<a name="line.836"></a>
+<span class="sourceLineNo">837</span>        }<a name="line.837"></a>
+<span class="sourceLineNo">838</span>        return false;<a name="line.838"></a>
+<span class="sourceLineNo">839</span>    }<a name="line.839"></a>
+<span class="sourceLineNo">840</span><a name="line.840"></a>
+<span class="sourceLineNo">841</span>    // TODO: remove?<a name="line.841"></a>
+<span class="sourceLineNo">842</span><a name="line.842"></a>
+<span class="sourceLineNo">843</span>    private void triggerAuditEvent( String remoteIP, String repositoryId, String resource, String action,<a name="line.843"></a>
+<span class="sourceLineNo">844</span>                                    String principal )<a name="line.844"></a>
+<span class="sourceLineNo">845</span>    {<a name="line.845"></a>
+<span class="sourceLineNo">846</span>        AuditEvent event = new AuditEvent( repositoryId, principal, resource, action );<a name="line.846"></a>
+<span class="sourceLineNo">847</span>        event.setRemoteIP( remoteIP );<a name="line.847"></a>
+<span class="sourceLineNo">848</span><a name="line.848"></a>
+<span class="sourceLineNo">849</span>        for ( AuditListener listener : auditListeners )<a name="line.849"></a>
+<span class="sourceLineNo">850</span>        {<a name="line.850"></a>
+<span class="sourceLineNo">851</span>            listener.auditEvent( event );<a name="line.851"></a>
+<span class="sourceLineNo">852</span>        }<a name="line.852"></a>
+<span class="sourceLineNo">853</span>    }<a name="line.853"></a>
+<span class="sourceLineNo">854</span><a name="line.854"></a>
+<span class="sourceLineNo">855</span>    @Override<a name="line.855"></a>
+<span class="sourceLineNo">856</span>    public void addAuditListener( AuditListener listener )<a name="line.856"></a>
+<span class="sourceLineNo">857</span>    {<a name="line.857"></a>
+<span class="sourceLineNo">858</span>        this.auditListeners.add( listener );<a name="line.858"></a>
+<span class="sourceLineNo">859</span>    }<a name="line.859"></a>
+<span class="sourceLineNo">860</span><a name="line.860"></a>
+<span class="sourceLineNo">861</span>    @Override<a name="line.861"></a>
+<span class="sourceLineNo">862</span>    public void clearAuditListeners()<a name="line.862"></a>
+<span class="sourceLineNo">863</span>    {<a name="line.863"></a>
+<span class="sourceLineNo">864</span>        this.auditListeners.clear();<a name="line.864"></a>
+<span class="sourceLineNo">865</span>    }<a name="line.865"></a>
+<span class="sourceLineNo">866</span><a name="line.866"></a>
+<span class="sourceLineNo">867</span>    @Override<a name="line.867"></a>
+<span class="sourceLineNo">868</span>    public void removeAuditListener( AuditListener listener )<a name="line.868"></a>
+<span class="sourceLineNo">869</span>    {<a name="line.869"></a>
+<span class="sourceLineNo">870</span>        this.auditListeners.remove( listener );<a name="line.870"></a>
+<span class="sourceLineNo">871</span>    }<a name="line.871"></a>
+<span class="sourceLineNo">872</span><a name="line.872"></a>
+<span class="sourceLineNo">873</span>    private void setHeaders( DavServletResponse response, DavResourceLocator locator, DavResource resource,<a name="line.873"></a>
+<span class="sourceLineNo">874</span>                             boolean group )<a name="line.874"></a>
+<span class="sourceLineNo">875</span>    {<a name="line.875"></a>
+<span class="sourceLineNo">876</span>        // [MRM-503] - Metadata file need Pragma:no-cache response<a name="line.876"></a>
+<span class="sourceLineNo">877</span>        // header.<a name="line.877"></a>
+<span class="sourceLineNo">878</span>        if ( locator.getResourcePath().endsWith( "/maven-metadata.xml" ) || ( resource instanceof ArchivaDavResource<a name="line.878"></a>
+<span class="sourceLineNo">879</span>            &amp;&amp; ( ArchivaDavResource.class.cast( resource ).getLocalResource().isDirectory() ) ) )<a name="line.879"></a>
+<span class="sourceLineNo">880</span>        {<a name="line.880"></a>
+<span class="sourceLineNo">881</span>            response.setHeader( "Pragma", "no-cache" );<a name="line.881"></a>
+<span class="sourceLineNo">882</span>            response.setHeader( "Cache-Control", "no-cache" );<a name="line.882"></a>
+<span class="sourceLineNo">883</span>            response.setDateHeader( "Last-Modified", new Date().getTime() );<a name="line.883"></a>
+<span class="sourceLineNo">884</span>        }<a name="line.884"></a>
+<span class="sourceLineNo">885</span>        // if the resource is a directory don't cache it as new groupId deployed will be available<a name="line.885"></a>
+<span class="sourceLineNo">886</span>        // without need of refreshing browser<a name="line.886"></a>
+<span class="sourceLineNo">887</span>        else if ( locator.getResourcePath().endsWith( "/maven-metadata.xml" ) || (<a name="line.887"></a>
+<span class="sourceLineNo">888</span>            resource instanceof ArchivaVirtualDavResource &amp;&amp; ( new File(<a name="line.888"></a>
+<span class="sourceLineNo">889</span>                ArchivaVirtualDavResource.class.cast( resource ).getLogicalResource() ).isDirectory() ) ) )<a name="line.889"></a>
+<span class="sourceLineNo">890</span>        {<a name="line.890"></a>
+<span class="sourceLineNo">891</span>            response.setHeader( "Pragma", "no-cache" );<a name="line.891"></a>
+<span class="sourceLineNo">892</span>            response.setHeader( "Cache-Control", "no-cache" );<a name="line.892"></a>
+<span class="sourceLineNo">893</span>            response.setDateHeader( "Last-Modified", new Date().getTime() );<a name="line.893"></a>
+<span class="sourceLineNo">894</span>        }<a name="line.894"></a>
+<span class="sourceLineNo">895</span>        else if ( group )<a name="line.895"></a>
+<span class="sourceLineNo">896</span>        {<a name="line.896"></a>
+<span class="sourceLineNo">897</span>            if ( resource instanceof ArchivaVirtualDavResource )<a name="line.897"></a>
+<span class="sourceLineNo">898</span>            {<a name="line.898"></a>
+<span class="sourceLineNo">899</span>                //MRM-1854 here we have a directory so force "Last-Modified"<a name="line.899"></a>
+<span class="sourceLineNo">900</span>                response.setDateHeader( "Last-Modified", new Date().getTime() );<a name="line.900"></a>
+<span class="sourceLineNo">901</span>            }<a name="line.901"></a>
+<span class="sourceLineNo">902</span>        }<a name="line.902"></a>
+<span class="sourceLineNo">903</span>        else<a name="line.903"></a>
+<span class="sourceLineNo">904</span>        {<a name="line.904"></a>
+<span class="sourceLineNo">905</span>            // We need to specify this so connecting wagons can work correctly<a name="line.905"></a>
+<span class="sourceLineNo">906</span>            response.setDateHeader( "Last-Modified", resource.getModificationTime() );<a name="line.906"></a>
+<span class="sourceLineNo">907</span>        }<a name="line.907"></a>
+<span class="sourceLineNo">908</span>        // TODO: [MRM-524] determine http caching options for other types of files (artifacts, sha1, md5, snapshots)<a name="line.908"></a>
+<span class="sourceLineNo">909</span>    }<a name="line.909"></a>
+<span class="sourceLineNo">910</span><a name="line.910"></a>
+<span class="sourceLineNo">911</span>    private ArchivaDavResourceLocator checkLocatorIsInstanceOfRepositoryLocator( DavResourceLocator locator )<a name="line.911"></a>
+<span class="sourceLineNo">912</span>        throws DavException<a name="line.912"></a>
+<span class="sourceLineNo">913</span>    {<a name="line.913"></a>
+<span class="sourceLineNo">914</span>        if ( !( locator instanceof ArchivaDavResourceLocator ) )<a name="line.914"></a>
+<span class="sourceLineNo">915</span>        {<a name="line.915"></a>
+<span class="sourceLineNo">916</span>            throw new DavException( HttpServletResponse.SC_INTERNAL_SERVER_ERROR,<a name="line.916"></a>
+<span class="sourceLineNo">917</span>                                    "Locator does not implement RepositoryLocator" );<a name="line.917"></a>
+<span class="sourceLineNo">918</span>        }<a name="line.918"></a>
+<span class="sourceLineNo">919</span><a name="line.919"></a>
+<span class="sourceLineNo">920</span>        // Hidden paths<a name="line.920"></a>
+<span class="sourceLineNo">921</span>        if ( locator.getResourcePath().startsWith( ArchivaDavResource.HIDDEN_PATH_PREFIX ) )<a name="line.921"></a>
+<span class="sourceLineNo">922</span>        {<a name="line.922"></a>
+<span class="sourceLineNo">923</span>            throw new DavException( HttpServletResponse.SC_NOT_FOUND );<a name="line.923"></a>
+<span class="sourceLineNo">924</span>        }<a name="line.924"></a>
+<span class="sourceLineNo">925</span><a name="line.925"></a>
+<span class="sourceLineNo">926</span>        ArchivaDavResourceLocator archivaLocator = (ArchivaDavResourceLocator) locator;<a name="line.926"></a>
+<span class="sourceLineNo">927</span><a name="line.927"></a>
+<span class="sourceLineNo">928</span>        // MRM-419 - Windows Webdav support. Should not 404 if there is no content.<a name="line.928"></a>
+<span class="sourceLineNo">929</span>        if ( StringUtils.isEmpty( archivaLocator.getRepositoryId() ) )<a name="line.929"></a>
+<span class="sourceLineNo">930</span>        {<a name="line.930"></a>
+<span class="sourceLineNo">931</span>            throw new DavException( HttpServletResponse.SC_NO_CONTENT );<a name="line.931"></a>
+<span class="sourceLineNo">932</span>        }<a name="line.932"></a>
+<span class="sourceLineNo">933</span>        return archivaLocator;<a name="line.933"></a>
+<span class="sourceLineNo">934</span>    }<a name="line.934"></a>
+<span class="sourceLineNo">935</span><a name="line.935"></a>
+<span class="sourceLineNo">936</span>    private String addHrefPrefix( String contextPath, String path ) {<a name="line.936"></a>
+<span class="sourceLineNo">937</span>        String prefix = archivaConfiguration.getConfiguration().getWebapp().getUi().getApplicationUrl();<a name="line.937"></a>
+<span class="sourceLineNo">938</span>        if (prefix == null || prefix.isEmpty()) {<a name="line.938"></a>
+<span class="sourceLineNo">939</span>            prefix = contextPath;<a name="line.939"></a>
+<span class="sourceLineNo">940</span>        }<a name="line.940"></a>
+<span class="sourceLineNo">941</span>        return prefix + ( StringUtils.startsWith( path, "/" ) ? "" :<a name="line.941"></a>
+<span class="sourceLineNo">942</span>                        ( StringUtils.endsWith( prefix, "/" ) ? "" : "/" ) )<a name="line.942"></a>
+<span class="sourceLineNo">943</span>                      + path;<a name="line.943"></a>
+<span class="sourceLineNo">944</span>    }<a name="line.944"></a>
+<span class="sourceLineNo">945</span><a name="line.945"></a>
+<span class="sourceLineNo">946</span>    private static class LogicalResource<a name="line.946"></a>
+<span class="sourceLineNo">947</span>    {<a name="line.947"></a>
+<span class="sourceLineNo">948</span>        private String path;<a name="line.948"></a>
+<span class="sourceLineNo">949</span><a name="line.949"></a>
+<span class="sourceLineNo">950</span>        public LogicalResource( String path )<a name="line.950"></a>
+<span class="sourceLineNo">951</span>        {<a name="line.951"></a>
+<span class="sourceLineNo">952</span>            this.path = path;<a name="line.952"></a>
+<span class="sourceLineNo">953</span>        }<a name="line.953"></a>
+<span class="sourceLineNo">954</span><a name="line.954"></a>
+<span class="sourceLineNo">955</span>        public String getPath()<a name="line.955"></a>
+<span class="sourceLineNo">956</span>        {<a name="line.956"></a>
+<span class="sourceLineNo">957</span>            return path;<a name="line.957"></a>
+<span class="sourceLineNo">958</span>        }<a name="line.958"></a>
+<span class="sourceLineNo">959</span><a name="line.959"></a>
+<span class="sourceLineNo">960</span>        public void setPath( String path )<a name="line.960"></a>
+<span class="sourceLineNo">961</span>        {<a name="line.961"></a>
+<span class="sourceLineNo">962</span>            this.path = path;<a name="line.962"></a>
+<span class="sourceLineNo">963</span>        }<a name="line.963"></a>
+<span class="sourceLineNo">964</span>    }<a name="line.964"></a>
+<span class="sourceLineNo">965</span><a name="line.965"></a>
+<span class="sourceLineNo">966</span>    protected boolean isAuthorized( DavServletRequest request, String repositoryId )<a name="line.966"></a>
+<span class="sourceLineNo">967</span>        throws DavException<a name="line.967"></a>
+<span class="sourceLineNo">968</span>    {<a name="line.968"></a>
+<span class="sourceLineNo">969</span>        try<a name="line.969"></a>
+<span class="sourceLineNo">970</span>        {<a name="line.970"></a>
+<span class="sourceLineNo">971</span>            AuthenticationResult result = httpAuth.getAuthenticationResult( request, null );<a name="line.971"></a>
+<span class="sourceLineNo">972</span>            SecuritySession securitySession = httpAuth.getSecuritySession( request.getSession( true ) );<a name="line.972"></a>
+<span class="sourceLineNo">973</span><a name="line.973"></a>
+<span class="sourceLineNo">974</span>            return servletAuth.isAuthenticated( request, result ) //<a name="line.974"></a>
+<span class="sourceLineNo">975</span>                &amp;&amp; servletAuth.isAuthorized( request, securitySession, repositoryId, //<a name="line.975"></a>
+<span class="sourceLineNo">976</span>                                             WebdavMethodUtil.getMethodPermission( request.getMethod() ) );<a name="line.976"></a>
+<span class="sourceLineNo">977</span>        }<a name="line.977"></a>
+<span class="sourceLineNo">978</span>        catch ( AuthenticationException e )<a name="line.978"></a>
+<span class="sourceLineNo">979</span>        {<a name="line.979"></a>
+<span class="sourceLineNo">980</span>            // safety check for MRM-911<a name="line.980"></a>
+<span class="sourceLineNo">981</span>            String guest = UserManager.GUEST_USERNAME;<a name="line.981"></a>
+<span class="sourceLineNo">982</span>            try<a name="line.982"></a>
+<span class="sourceLineNo">983</span>            {<a name="line.983"></a>
+<span class="sourceLineNo">984</span>                if ( servletAuth.isAuthorized( guest,<a name="line.984"></a>
+<span class="sourceLineNo">985</span>                                               ( (ArchivaDavResourceLocator) request.getRequestLocator() ).getRepositoryId(),<a name="line.985"></a>
+<span class="sourceLineNo">986</span>                                               WebdavMethodUtil.getMethodPermission( request.getMethod() ) ) )<a name="line.986"></a>
+<span class="sourceLineNo">987</span>                {<a name="line.987"></a>
+<span class="sourceLineNo">988</span>                    return true;<a name="line.988"></a>
+<span class="sourceLineNo">989</span>                }<a name="line.989"></a>
+<span class="sourceLineNo">990</span>            }<a name="line.990"></a>
+<span class="sourceLineNo">991</span>            catch ( UnauthorizedException ae )<a name="line.991"></a>
+<span class="sourceLineNo">992</span>            {<a name="line.992"></a>
+<span class="sourceLineNo">993</span>                throw new UnauthorizedDavException( repositoryId,<a name="line.993"></a>
+<span class="sourceLineNo">994</span>                                                    "You are not authenticated and authorized to access any repository." );<a name="line.994"></a>
+<span class="sourceLineNo">995</span>            }<a name="line.995"></a>
+<span class="sourceLineNo">996</span><a name="line.996"></a>
+<span class="sourceLineNo">997</span>            throw new UnauthorizedDavException( repositoryId, "You are not authenticated" );<a name="line.997"></a>
+<span class="sourceLineNo">998</span>        }<a name="line.998"></a>
+<span class="sourceLineNo">999</span>        catch ( MustChangePasswordException e )<a name="line.999"></a>
+<span class="sourceLineNo">1000</span>        {<a name="line.1000"></a>
+<span class="sourceLineNo">1001</span>            throw new UnauthorizedDavException( repositoryId, "You must change your password." );<a name="line.1001"></a>
+<span class="sourceLineNo">1002</span>        }<a name="line.1002"></a>
+<span class="sourceLineNo">1003</span>        catch ( AccountLockedException e )<a name="line.1003"></a>
+<span class="sourceLineNo">1004</span>        {<a name="line.1004"></a>
+<span class="sourceLineNo">1005</span>            throw new UnauthorizedDavException( repositoryId, "User account is locked." );<a name="line.1005"></a>
+<span class="sourceLineNo">1006</span>        }<a name="line.1006"></a>
+<span class="sourceLineNo">1007</span>        catch ( AuthorizationException e )<a name="line.1007"></a>
+<span class="sourceLineNo">1008</span>        {<a name="line.1008"></a>
+<span class="sourceLineNo">1009</span>            throw new DavException( HttpServletResponse.SC_INTERNAL_SERVER_ERROR,<a name="line.1009"></a>
+<span class="sourceLineNo">1010</span>                                    "Fatal Authorization Subsystem Error." );<a name="line.1010"></a>
+<span class="sourceLineNo">1011</span>        }<a name="line.1011"></a>
+<span class="sourceLineNo">1012</span>        catch ( UnauthorizedException e )<a name="line.1012"></a>
+<span class="sourceLineNo">1013</span>        {<a name="line.1013"></a>
+<span class="sourceLineNo">1014</span>            throw new UnauthorizedDavException( repositoryId, e.getMessage() );<a name="line.1014"></a>
+<span class="sourceLineNo">1015</span>        }<a name="line.1015"></a>
+<span class="sourceLineNo">1016</span>    }<a name="line.1016"></a>
+<span class="sourceLineNo">1017</span><a name="line.1017"></a>
+<span class="sourceLineNo">1018</span>    private DavResource getResourceFromGroup( DavServletRequest request, List&lt;String&gt; repositories,<a name="line.1018"></a>
+<span class="sourceLineNo">1019</span>                                              ArchivaDavResourceLocator locator,<a name="line.1019"></a>
+<span class="sourceLineNo">1020</span>                                              RepositoryGroupConfiguration repositoryGroupConfiguration )<a name="line.1020"></a>
+<span class="sourceLineNo">1021</span>        throws DavException, RepositoryAdminException<a name="line.1021"></a>
+<span class="sourceLineNo">1022</span>    {<a name="line.1022"></a>
+<span class="sourceLineNo">1023</span>        if ( repositoryGroupConfiguration.getRepositories() == null<a name="line.1023"></a>
+<span class="sourceLineNo">1024</span>            || repositoryGroupConfiguration.getRepositories().isEmpty() )<a name="line.1024"></a>
+<span class="sourceLineNo">1025</span>        {<a name="line.1025"></a>
+<span class="sourceLineNo">1026</span>            File file =<a name="line.1026"></a>
+<span class="sourceLineNo">1027</span>                new File( System.getProperty( "appserver.base" ), "groups/" + repositoryGroupConfiguration.getId() );<a name="line.1027"></a>
+<span class="sourceLineNo">1028</span><a name="line.1028"></a>
+<span class="sourceLineNo">1029</span>            return new ArchivaDavResource( file.getPath(), "groups/" + repositoryGroupConfiguration.getId(), null,<a name="line.1029"></a>
+<span class="sourceLineNo">1030</span>                                           request.getDavSession(), locator, this, mimeTypes, auditListeners, scheduler,<a name="line.1030"></a>
+<span class="sourceLineNo">1031</span>                                           fileLockManager );<a name="line.1031"></a>
+<span class="sourceLineNo">1032</span>        }<a name="line.1032"></a>
+<span class="sourceLineNo">1033</span>        List&lt;File&gt; mergedRepositoryContents = new ArrayList&lt;&gt;();<a name="line.1033"></a>
+<span class="sourceLineNo">1034</span>        // multiple repo types so we guess they are all the same type<a name="line.1034"></a>
+<span class="sourceLineNo">1035</span>        // so use the first one<a name="line.1035"></a>
+<span class="sourceLineNo">1036</span>        // FIXME add a method with group in the repository storage<a name="line.1036"></a>
+<span class="sourceLineNo">1037</span>        String firstRepoId = repositoryGroupConfiguration.getRepositories().get( 0 );<a name="line.1037"></a>
+<span class="sourceLineNo">1038</span><a name="line.1038"></a>
+<span class="sourceLineNo">1039</span>        String path = getLogicalResource( locator, managedRepositoryAdmin.getManagedRepository( firstRepoId ), false );<a name="line.1039"></a>
+<span class="sourceLineNo">1040</span>        if ( path.startsWith( "/" ) )<a name="line.1040"></a>
+<span class="sourceLineNo">1041</span>        {<a name="line.1041"></a>
+<span class="sourceLineNo">1042</span>            path = path.substring( 1 );<a name="line.1042"></a>
+<span class="sourceLineNo">1043</span>        }<a name="line.1043"></a>
+<span class="sourceLineNo">1044</span>        LogicalResource logicalResource = new LogicalResource( path );<a name="line.1044"></a>
+<span class="sourceLineNo">1045</span><a name="line.1045"></a>
+<span class="sourceLineNo">1046</span>        // flow:<a name="line.1046"></a>
+<span class="sourceLineNo">1047</span>        // if the current user logged in has permission to any of the repositories, allow user to<a name="line.1047"></a>
+<span class="sourceLineNo">1048</span>        // browse the repo group but displaying only the repositories which the user has permission to access.<a name="line.1048"></a>
+<span class="sourceLineNo">1049</span>        // otherwise, prompt for authentication.<a name="line.1049"></a>
+<span class="sourceLineNo">1050</span><a name="line.1050"></a>
+<span class="sourceLineNo">1051</span>        String activePrincipal = getActivePrincipal( request );<a name="line.1051"></a>
+<span class="sourceLineNo">1052</span><a name="line.1052"></a>
+<span class="sourceLineNo">1053</span>        boolean allow = isAllowedToContinue( request, repositories, activePrincipal );<a name="line.1053"></a>
+<span class="sourceLineNo">1054</span><a name="line.1054"></a>
+<span class="sourceLineNo">1055</span>        // remove last /<a name="line.1055"></a>
+<span class="sourceLineNo">1056</span>        String pathInfo = StringUtils.removeEnd( request.getPathInfo(), "/" );<a name="line.1056"></a>
+<span class="sourceLineNo">1057</span><a name="line.1057"></a>
+<span class="sourceLineNo">1058</span>        if ( allow )<a name="line.1058"></a>
+<span class="sourceLineNo">1059</span>        {<a name="line.1059"></a>
+<span class="sourceLineNo">1060</span><a name="line.1060"></a>
+<span class="sourceLineNo">1061</span>            if ( StringUtils.endsWith( pathInfo, repositoryGroupConfiguration.getMergedIndexPath() ) )<a name="line.1061"></a>
+<span class="sourceLineNo">1062</span>            {<a name="line.1062"></a>
+<span class="sourceLineNo">1063</span>                File mergedRepoDir =<a name="line.1063"></a>
+<span class="sourceLineNo">1064</span>                    buildMergedIndexDirectory( repositories, activePrincipal, request, repositoryGroupConfiguration );<a name="line.1064"></a>
+<span class="sourceLineNo">1065</span>                mergedRepositoryContents.add( mergedRepoDir );<a name="line.1065"></a>
+<span class="sourceLineNo">1066</span>            }<a name="line.1066"></a>
+<span class="sourceLineNo">1067</span>            else<a name="line.1067"></a>
+<span class="sourceLineNo">1068</span>            {<a name="line.1068"></a>
+<span class="sourceLineNo">1069</span>                if ( StringUtils.equalsIgnoreCase( pathInfo, "/" + repositoryGroupConfiguration.getId() ) )<a name="line.1069"></a>
+<span class="sourceLineNo">1070</span>                {<a name="line.1070"></a>
+<span class="sourceLineNo">1071</span>                    File tmpDirectory = new File( SystemUtils.getJavaIoTmpDir(),<a name="line.1071"></a>
+<span class="sourceLineNo">1072</span>                                                  repositoryGroupConfiguration.getId() + "/"<a name="line.1072"></a>
+<span class="sourceLineNo">1073</span>                                                      + repositoryGroupConfiguration.getMergedIndexPath() );<a name="line.1073"></a>
+<span class="sourceLineNo">1074</span>                    if ( !tmpDirectory.exists() )<a name="line.1074"></a>
+<span class="sourceLineNo">1075</span>                    {<a name="line.1075"></a>
+<span class="sourceLineNo">1076</span>                        synchronized ( tmpDirectory.getAbsolutePath() )<a name="line.1076"></a>
+<span class="sourceLineNo">1077</span>                        {<a name="line.1077"></a>
+<span class="sourceLineNo">1078</span>                            if ( !tmpDirectory.exists() )<a name="line.1078"></a>
+<span class="sourceLineNo">1079</span>                            {<a name="line.1079"></a>
+<span class="sourceLineNo">1080</span>                                tmpDirectory.mkdirs();<a name="line.1080"></a>
+<span class="sourceLineNo">1081</span>                            }<a name="line.1081"></a>
+<span class="sourceLineNo">1082</span>                        }<a name="line.1082"></a>
+<span class="sourceLineNo">1083</span>                    }<a name="line.1083"></a>
+<span class="sourceLineNo">1084</span>                    mergedRepositoryContents.add( tmpDirectory.getParentFile() );<a name="line.1084"></a>
+<span class="sourceLineNo">1085</span>                }<a name="line.1085"></a>
+<span class="sourceLineNo">1086</span>                for ( String repository : repositories )<a name="line.1086"></a>
+<span class="sourceLineNo">1087</span>                {<a name="line.1087"></a>
+<span class="sourceLineNo">1088</span>                    ManagedRepositoryContent managedRepository = null;<a name="line.1088"></a>
+<span class="sourceLineNo">1089</span><a name="line.1089"></a>
+<span class="sourceLineNo">1090</span>                    try<a name="line.1090"></a>
+<span class="sourceLineNo">1091</span>                    {<a name="line.1091"></a>
+<span class="sourceLineNo">1092</span>                        managedRepository = repositoryFactory.getManagedRepositoryContent( repository );<a name="line.1092"></a>
+<span class="sourceLineNo">1093</span>                    }<a name="line.1093"></a>
+<span class="sourceLineNo">1094</span>                    catch ( RepositoryNotFoundException e )<a name="line.1094"></a>
+<span class="sourceLineNo">1095</span>                    {<a name="line.1095"></a>
+<span class="sourceLineNo">1096</span>                        throw new DavException( HttpServletResponse.SC_INTERNAL_SERVER_ERROR,<a name="line.1096"></a>
+<span class="sourceLineNo">1097</span>                                                "Invalid managed repository &lt;" + repository + "&gt;: " + e.getMessage() );<a name="line.1097"></a>
+<span class="sourceLineNo">1098</span>                    }<a name="line.1098"></a>
+<span class="sourceLineNo">1099</span>                    catch ( RepositoryException e )<a name="line.1099"></a>
+<span class="sourceLineNo">1100</span>                    {<a name="line.1100"></a>
+<span class="sourceLineNo">1101</span>                        throw new DavException( HttpServletResponse.SC_INTERNAL_SERVER_ERROR,<a name="line.1101"></a>
+<span class="sourceLineNo">1102</span>                                                "Invalid managed repository &lt;" + repository + "&gt;: " + e.getMessage() );<a name="line.1102"></a>
+<span class="sourceLineNo">1103</span>                    }<a name="line.1103"></a>
+<span class="sourceLineNo">1104</span><a name="line.1104"></a>
+<span class="sourceLineNo">1105</span>                    File resourceFile = new File( managedRepository.getRepoRoot(), logicalResource.getPath() );<a name="line.1105"></a>
+<span class="sourceLineNo">1106</span>                    if ( resourceFile.exists() )<a name="line.1106"></a>
+<span class="sourceLineNo">1107</span>                    {<a name="line.1107"></a>
+<span class="sourceLineNo">1108</span>                        // in case of group displaying index directory doesn't have sense !!<a name="line.1108"></a>
+<span class="sourceLineNo">1109</span>                        String repoIndexDirectory = managedRepository.getRepository().getIndexDirectory();<a name="line.1109"></a>
+<span class="sourceLineNo">1110</span>                        if ( StringUtils.isNotEmpty( repoIndexDirectory ) )<a name="line.1110"></a>
+<span class="sourceLineNo">1111</span>                        {<a name="line.1111"></a>
+<span class="sourceLineNo">1112</span>                            if ( !new File( repoIndexDirectory ).isAbsolute() )<a name="line.1112"></a>
+<span class="sourceLineNo">1113</span>                            {<a name="line.1113"></a>
+<span class="sourceLineNo">1114</span>                                repoIndexDirectory = new File( managedRepository.getRepository().getLocation(),<a name="line.1114"></a>
+<span class="sourceLineNo">1115</span>                                                               StringUtils.isEmpty( repoIndexDirectory )<a name="line.1115"></a>
+<span class="sourceLineNo">1116</span>                                                                   ? ".indexer"<a name="line.1116"></a>
+<span class="sourceLineNo">1117</span>                                                                   : repoIndexDirectory ).getAbsolutePath();<a name="line.1117"></a>
+<span class="sourceLineNo">1118</span>                            }<a name="line.1118"></a>
+<span class="sourceLineNo">1119</span>                        }<a name="line.1119"></a>
+<span class="sourceLineNo">1120</span>                        if ( StringUtils.isEmpty( repoIndexDirectory ) )<a name="line.1120"></a>
+<span class="sourceLineNo">1121</span>                        {<a name="line.1121"></a>
+<span class="sourceLineNo">1122</span>                            repoIndexDirectory = new File( managedRepository.getRepository().getLocation(),<a name="line.1122"></a>
+<span class="sourceLineNo">1123</span>                                                           ".indexer" ).getAbsolutePath();<a name="line.1123"></a>
+<span class="sourceLineNo">1124</span>                        }<a name="line.1124"></a>
+<span class="sourceLineNo">1125</span><a name="line.1125"></a>
+<span class="sourceLineNo">1126</span>                        if ( !StringUtils.equals( FilenameUtils.normalize( repoIndexDirectory ),<a name="line.1126"></a>
+<span class="sourceLineNo">1127</span>                                                  FilenameUtils.normalize( resourceFile.getAbsolutePath() ) ) )<a name="line.1127"></a>
+<span class="sourceLineNo">1128</span>                        {<a name="line.1128"></a>
+<span class="sourceLineNo">1129</span>                            // for prompted authentication<a name="line.1129"></a>
+<span class="sourceLineNo">1130</span>                            if ( httpAuth.getSecuritySession( request.getSession( true ) ) != null )<a name="line.1130"></a>
+<span class="sourceLineNo">1131</span>                            {<a name="line.1131"></a>
+<span class="sourceLineNo">1132</span>                                try<a name="line.1132"></a>
+<span class="sourceLineNo">1133</span>                                {<a name="line.1133"></a>
+<span class="sourceLineNo">1134</span>                                    if ( isAuthorized( request, repository ) )<a name="line.1134"></a>
+<span class="sourceLineNo">1135</span>                                    {<a name="line.1135"></a>
+<span class="sourceLineNo">1136</span>                                        mergedRepositoryContents.add( resourceFile );<a name="line.1136"></a>
+<span class="sourceLineNo">1137</span>                                        log.debug( "Repository '{}' accessed by '{}'", repository, activePrincipal );<a name="line.1137"></a>
+<span class="sourceLineNo">1138</span>                                    }<a name="line.1138"></a>
+<span class="sourceLineNo">1139</span>                                }<a name="line.1139"></a>
+<span class="sourceLineNo">1140</span>                                catch ( DavException e )<a name="line.1140"></a>
+<span class="sourceLineNo">1141</span>                                {<a name="line.1141"></a>
+<span class="sourceLineNo">1142</span>                                    // TODO: review exception handling<a name="line.1142"></a>
+<span class="sourceLineNo">1143</span><a name="line.1143"></a>
+<span class="sourceLineNo">1144</span>                                    log.debug( "Skipping repository '{}' for user '{}': {}", managedRepository,<a name="line.1144"></a>
+<span class="sourceLineNo">1145</span>                                               activePrincipal, e.getMessage() );<a name="line.1145"></a>
+<span class="sourceLineNo">1146</span><a name="line.1146"></a>
+<span class="sourceLineNo">1147</span>                                }<a name="line.1147"></a>
+<span class="sourceLineNo">1148</span><a name="line.1148"></a>
+<span class="sourceLineNo">1149</span>                            }<a name="line.1149"></a>
+<span class="sourceLineNo">1150</span>                            else<a name="line.1150"></a>
+<span class="sourceLineNo">1151</span>                            {<a name="line.1151"></a>
+<span class="sourceLineNo">1152</span>                                // for the current user logged in<a name="line.1152"></a>
+<span class="sourceLineNo">1153</span>                                try<a name="line.1153"></a>
+<span class="sourceLineNo">1154</span>                                {<a name="line.1154"></a>
+<span class="sourceLineNo">1155</span>                                    if ( servletAuth.isAuthorized( activePrincipal, repository,<a name="line.1155"></a>
+<span class="sourceLineNo">1156</span>                                                                   WebdavMethodUtil.getMethodPermission(<a name="line.1156"></a>
+<span class="sourceLineNo">1157</span>                                                                       request.getMethod() ) ) )<a name="line.1157"></a>
+<span class="sourceLineNo">1158</span>                                    {<a name="line.1158"></a>
+<span class="sourceLineNo">1159</span>                                        mergedRepositoryContents.add( resourceFile );<a name="line.1159"></a>
+<span class="sourceLineNo">1160</span>                                        log.debug( "Repository '{}' accessed by '{}'", repository, activePrincipal );<a name="line.1160"></a>
+<span class="sourceLineNo">1161</span>                                    }<a name="line.1161"></a>
+<span class="sourceLineNo">1162</span>                                }<a name="line.1162"></a>
+<span class="sourceLineNo">1163</span>                                catch ( UnauthorizedException e )<a name="line.1163"></a>
+<span class="sourceLineNo">1164</span>                                {<a name="line.1164"></a>
+<span class="sourceLineNo">1165</span>                                    // TODO: review exception handling<a name="line.1165"></a>
+<span class="sourceLineNo">1166</span><a name="line.1166"></a>
+<span class="sourceLineNo">1167</span>                                    log.debug( "Skipping repository '{}' for user '{}': {}", managedRepository,<a name="line.1167"></a>
+<span class="sourceLineNo">1168</span>                                               activePrincipal, e.getMessage() );<a name="line.1168"></a>
+<span class="sourceLineNo">1169</span><a name="line.1169"></a>
+<span class="sourceLineNo">1170</span>                                }<a name="line.1170"></a>
+<span class="sourceLineNo">1171</span>                            }<a name="line.1171"></a>
+<span class="sourceLineNo">1172</span>                        }<a name="line.1172"></a>
+<span class="sourceLineNo">1173</span>                    }<a name="line.1173"></a>
+<span class="sourceLineNo">1174</span>                }<a name="line.1174"></a>
+<span class="sourceLineNo">1175</span>            }<a name="line.1175"></a>
+<span class="sourceLineNo">1176</span>        }<a name="line.1176"></a>
+<span class="sourceLineNo">1177</span>        else<a name="line.1177"></a>
+<span class="sourceLineNo">1178</span>        {<a name="line.1178"></a>
+<span class="sourceLineNo">1179</span>            throw new UnauthorizedDavException( locator.getRepositoryId(), "User not authorized." );<a name="line.1179"></a>
+<span class="sourceLineNo">1180</span>        }<a name="line.1180"></a>
+<span class="sourceLineNo">1181</span><a name="line.1181"></a>
+<span class="sourceLineNo">1182</span>        ArchivaVirtualDavResource resource =<a name="line.1182"></a>
+<span class="sourceLineNo">1183</span>            new ArchivaVirtualDavResource( mergedRepositoryContents, logicalResource.getPath(), mimeTypes, locator,<a name="line.1183"></a>
+<span class="sourceLineNo">1184</span>                                           this );<a name="line.1184"></a>
+<span class="sourceLineNo">1185</span><a name="line.1185"></a>
+<span class="sourceLineNo">1186</span>        // compatibility with MRM-440 to ensure browsing the repository group works ok<a name="line.1186"></a>
+<span class="sourceLineNo">1187</span>        if ( resource.isCollection() &amp;&amp; !request.getRequestURI().endsWith( "/" ) )<a name="line.1187"></a>
+<span class="sourceLineNo">1188</span>        {<a name="line.1188"></a>
+<span class="sourceLineNo">1189</span>            throw new BrowserRedirectException( resource.getHref() );<a name="line.1189"></a>
+<span class="sourceLineNo">1190</span>        }<a name="line.1190"></a>
+<span class="sourceLineNo">1191</span><a name="line.1191"></a>
+<span class="sourceLineNo">1192</span>        return resource;<a name="line.1192"></a>
+<span class="sourceLineNo">1193</span>    }<a name="line.1193"></a>
+<span class="sourceLineNo">1194</span><a name="line.1194"></a>
+<span class="sourceLineNo">1195</span>    protected String getActivePrincipal( DavServletRequest request )<a name="line.1195"></a>
+<span class="sourceLineNo">1196</span>    {<a name="line.1196"></a>
+<span class="sourceLineNo">1197</span>        User sessionUser = httpAuth.getSessionUser( request.getSession() );<a name="line.1197"></a>
+<span class="sourceLineNo">1198</span>        return sessionUser != null ? sessionUser.getUsername() : UserManager.GUEST_USERNAME;<a name="line.1198"></a>
+<span class="sourceLineNo">1199</span>    }<a name="line.1199"></a>
+<span class="sourceLineNo">1200</span><a name="line.1200"></a>
+<span class="sourceLineNo">1201</span>    /**<a name="line.1201"></a>
+<span class="sourceLineNo">1202</span>     * Check if the current user is authorized to access any of the repos<a name="line.1202"></a>
+<span class="sourceLineNo">1203</span>     *<a name="line.1203"></a>
+<span class="sourceLineNo">1204</span>     * @param request<a name="line.1204"></a>
+<span class="sourceLineNo">1205</span>     * @param repositories<a name="line.1205"></a>
+<span class="sourceLineNo">1206</span>     * @param activePrincipal<a name="line.1206"></a>
+<span class="sourceLineNo">1207</span>     * @return<a name="line.1207"></a>
+<span class="sourceLineNo">1208</span>     */<a name="line.1208"></a>
+<span class="sourceLineNo">1209</span>    private boolean isAllowedToContinue( DavServletRequest request, List&lt;String&gt; repositories, String activePrincipal )<a name="line.1209"></a>
+<span class="sourceLineNo">1210</span>    {<a name="line.1210"></a>
+<span class="sourceLineNo">1211</span>        // when no repositories configured it's impossible to browse nothing !<a name="line.1211"></a>
+<span class="sourceLineNo">1212</span>        // at least make possible to see nothing :-)<a name="line.1212"></a>
+<span class="sourceLineNo">1213</span>        if ( repositories == null || repositories.isEmpty() )<a name="line.1213"></a>
+<span class="sourceLineNo">1214</span>        {<a name="line.1214"></a>
+<span class="sourceLineNo">1215</span>            return true;<a name="line.1215"></a>
+<span class="sourceLineNo">1216</span>        }<a name="line.1216"></a>
+<span class="sourceLineNo">1217</span><a name="line.1217"></a>
+<span class="sourceLineNo">1218</span>        boolean allow = false;<a name="line.1218"></a>
+<span class="sourceLineNo">1219</span><a name="line.1219"></a>
+<span class="sourceLineNo">1220</span>        // if securitySession != null, it means that the user was prompted for authentication<a name="line.1220"></a>
+<span class="sourceLineNo">1221</span>        if ( httpAuth.getSecuritySession( request.getSession() ) != null )<a name="line.1221"></a>
+<span class="sourceLineNo">1222</span>        {<a name="line.1222"></a>
+<span class="sourceLineNo">1223</span>            for ( String repository : repositories )<a name="line.1223"></a>
+<span class="sourceLineNo">1224</span>            {<a name="line.1224"></a>
+<span class="sourceLineNo">1225</span>                try<a name="line.1225"></a>
+<span class="sourceLineNo">1226</span>                {<a name="line.1226"></a>
+<span class="sourceLineNo">1227</span>                    if ( isAuthorized( request, repository ) )<a name="line.1227"></a>
+<span class="sourceLineNo">1228</span>                    {<a name="line.1228"></a>
+<span class="sourceLineNo">1229</span>                        allow = true;<a name="line.1229"></a>
+<span class="sourceLineNo">1230</span>                        break;<a name="line.1230"></a>
+<span class="sourceLineNo">1231</span>                    }<a name="line.1231"></a>
+<span class="sourceLineNo">1232</span>                }<a name="line.1232"></a>
+<span class="sourceLineNo">1233</span>                catch ( DavException e )<a name="line.1233"></a>
+<span class="sourceLineNo">1234</span>                {<a name="line.1234"></a>
+<span class="sourceLineNo">1235</span>                    continue;<a name="line.1235"></a>
+<span class="sourceLineNo">1236</span>                }<a name="line.1236"></a>
+<span class="sourceLineNo">1237</span>            }<a name="line.1237"></a>
+<span class="sourceLineNo">1238</span>        }<a name="line.1238"></a>
+<span class="sourceLineNo">1239</span>        else<a name="line.1239"></a>
+<span class="sourceLineNo">1240</span>        {<a name="line.1240"></a>
+<span class="sourceLineNo">1241</span>            for ( String repository : repositories )<a name="line.1241"></a>
+<span class="sourceLineNo">1242</span>            {<a name="line.1242"></a>
+<span class="sourceLineNo">1243</span>                try<a name="line.1243"></a>
+<span class="sourceLineNo">1244</span>                {<a name="line.1244"></a>
+<span class="sourceLineNo">1245</span>                    if ( servletAuth.isAuthorized( activePrincipal, repository,<a name="line.1245"></a>
+<span class="sourceLineNo">1246</span>                                                   WebdavMethodUtil.getMethodPermission( request.getMethod() ) ) )<a name="line.1246"></a>
+<span class="sourceLineNo">1247</span>                    {<a name="line.1247"></a>
+<span class="sourceLineNo">1248</span>                        allow = true;<a name="line.1248"></a>
+<span class="sourceLineNo">1249</span>                        break;<a name="line.1249"></a>
+<span class="sourceLineNo">1250</span>                    }<a name="line.1250"></a>
+<span class="sourceLineNo">1251</span>                }<a name="line.1251"></a>
+<span class="sourceLineNo">1252</span>                catch ( UnauthorizedException e )<a name="line.1252"></a>
+<span class="sourceLineNo">1253</span>                {<a name="line.1253"></a>
+<span class="sourceLineNo">1254</span>                    continue;<a name="line.1254"></a>
+<span class="sourceLineNo">1255</span>                }<a name="line.1255"></a>
+<span class="sourceLineNo">1256</span>            }<a name="line.1256"></a>
+<span class="sourceLineNo">1257</span>        }<a name="line.1257"></a>
+<span class="sourceLineNo">1258</span><a name="line.1258"></a>
+<span class="sourceLineNo">1259</span>        return allow;<a name="line.1259"></a>
+<span class="sourceLineNo">1260</span>    }<a name="line.1260"></a>
+<span class="sourceLineNo">1261</span><a name="line.1261"></a>
+<span class="sourceLineNo">1262</span>    private File writeMergedMetadataToFile( ArchivaRepositoryMetadata mergedMetadata, String outputFilename )<a name="line.1262"></a>
+<span class="sourceLineNo">1263</span>        throws RepositoryMetadataException, DigesterException, IOException<a name="line.1263"></a>
+<span class="sourceLineNo">1264</span>    {<a name="line.1264"></a>
+<span class="sourceLineNo">1265</span>        File outputFile = new File( outputFilename );<a name="line.1265"></a>
+<span class="sourceLineNo">1266</span>        if ( outputFile.exists() )<a name="line.1266"></a>
+<span class="sourceLineNo">1267</span>        {<a name="line.1267"></a>
+<span class="sourceLineNo">1268</span>            FileUtils.deleteQuietly( outputFile );<a name="line.1268"></a>
+<span class="sourceLineNo">1269</span>        }<a name="line.1269"></a>
+<span class="sourceLineNo">1270</span><a name="line.1270"></a>
+<span class="sourceLineNo">1271</span>        outputFile.getParentFile().mkdirs();<a name="line.1271"></a>
+<span class="sourceLineNo">1272</span>        RepositoryMetadataWriter.write( mergedMetadata, outputFile );<a name="line.1272"></a>
+<span class="sourceLineNo">1273</span><a name="line.1273"></a>
+<span class="sourceLineNo">1274</span>        createChecksumFile( outputFilename, digestSha1 );<a name="line.1274"></a>
+<span class="sourceLineNo">1275</span>        createChecksumFile( outputFilename, digestMd5 );<a name="line.1275"></a>
+<span class="sourceLineNo">1276</span><a name="line.1276"></a>
+<span class="sourceLineNo">1277</span>        return outputFile;<a name="line.1277"></a>
+<span class="sourceLineNo">1278</span>    }<a name="line.1278"></a>
+<span class="sourceLineNo">1279</span><a name="line.1279"></a>
+<span class="sourceLineNo">1280</span>    private void createChecksumFile( String path, Digester digester )<a name="line.1280"></a>
+<span class="sourceLineNo">1281</span>        throws DigesterException, IOException<a name="line.1281"></a>
+<span class="sourceLineNo">1282</span>    {<a name="line.1282"></a>
+<span class="sourceLineNo">1283</span>        File checksumFile = new File( path + digester.getFilenameExtension() );<a name="line.1283"></a>
+<span class="sourceLineNo">1284</span>        if ( !checksumFile.exists() )<a name="line.1284"></a>
+<span class="sourceLineNo">1285</span>        {<a name="line.1285"></a>
+<span class="sourceLineNo">1286</span>            FileUtils.deleteQuietly( checksumFile );<a name="line.1286"></a>
+<span class="sourceLineNo">1287</span>            checksum.createChecksum( new File( path ), digester );<a name="line.1287"></a>
+<span class="sourceLineNo">1288</span>        }<a name="line.1288"></a>
+<span class="sourceLineNo">1289</span>        else if ( !checksumFile.isFile() )<a name="line.1289"></a>
+<span class="sourceLineNo">1290</span>        {<a name="line.1290"></a>
+<span class="sourceLineNo">1291</span>            log.error( "Checksum file is not a file." );<a name="line.1291"></a>
+<span class="sourceLineNo">1292</span>        }<a name="line.1292"></a>
+<span class="sourceLineNo">1293</span>    }<a name="line.1293"></a>
+<span class="sourceLineNo">1294</span><a name="line.1294"></a>
+<span class="sourceLineNo">1295</span>    private boolean isProjectReference( String requestedResource )<a name="line.1295"></a>
+<span class="sourceLineNo">1296</span>    {<a name="line.1296"></a>
+<span class="sourceLineNo">1297</span>        try<a name="line.1297"></a>
+<span class="sourceLineNo">1298</span>        {<a name="line.1298"></a>
+<span class="sourceLineNo">1299</span>            metadataTools.toVersionedReference( requestedResource );<a name="line.1299"></a>
+<span class="sourceLineNo">1300</span>            return false;<a name="line.1300"></a>
+<span class="sourceLineNo">1301</span>        }<a name="line.1301"></a>
+<span class="sourceLineNo">1302</span>        catch ( RepositoryMetadataException re )<a name="line.1302"></a>
+<span class="sourceLineNo">1303</span>        {<a name="line.1303"></a>
+<span class="sourceLineNo">1304</span>            return true;<a name="line.1304"></a>
+<span class="sourceLineNo">1305</span>        }<a name="line.1305"></a>
+<span class="sourceLineNo">1306</span>    }<a name="line.1306"></a>
+<span class="sourceLineNo">1307</span><a name="line.1307"></a>
+<span class="sourceLineNo">1308</span>    protected File buildMergedIndexDirectory( List&lt;String&gt; repositories, String activePrincipal,<a name="line.1308"></a>
+<span class="sourceLineNo">1309</span>                                              DavServletRequest request,<a name="line.1309"></a>
+<span class="sourceLineNo">1310</span>                                              RepositoryGroupConfiguration repositoryGroupConfiguration )<a name="line.1310"></a>
+<span class="sourceLineNo">1311</span>        throws DavException<a name="line.1311"></a>
+<span class="sourceLineNo">1312</span>    {<a name="line.1312"></a>
+<span class="sourceLineNo">1313</span><a name="line.1313"></a>
+<span class="sourceLineNo">1314</span>        try<a name="line.1314"></a>
+<span class="sourceLineNo">1315</span>        {<a name="line.1315"></a>
+<span class="sourceLineNo">1316</span>            HttpSession session = request.getSession();<a name="line.1316"></a>
+<span class="sourceLineNo">1317</span><a name="line.1317"></a>
+<span class="sourceLineNo">1318</span>            Map&lt;String, TemporaryGroupIndex&gt; temporaryGroupIndexMap =<a name="line.1318"></a>
+<span class="sourceLineNo">1319</span>                (Map&lt;String, TemporaryGroupIndex&gt;) session.getAttribute(<a name="line.1319"></a>
+<span class="sourceLineNo">1320</span>                    TemporaryGroupIndexSessionCleaner.TEMPORARY_INDEX_SESSION_KEY );<a name="line.1320"></a>
+<span class="sourceLineNo">1321</span>            if ( temporaryGroupIndexMap == null )<a name="line.1321"></a>
+<span class="sourceLineNo">1322</span>            {<a name="line.1322"></a>
+<span class="sourceLineNo">1323</span>                temporaryGroupIndexMap = new HashMap&lt;&gt;();<a name="line.1323"></a>
+<span class="sourceLineNo">1324</span>            }<a name="line.1324"></a>
+<span class="sourceLineNo">1325</span><a name="line.1325"></a>
+<span class="sourceLineNo">1326</span>            TemporaryGroupIndex tmp = temporaryGroupIndexMap.get( repositoryGroupConfiguration.getId() );<a name="line.1326"></a>
+<span class="sourceLineNo">1327</span><a name="line.1327"></a>
+<span class="sourceLineNo">1328</span>            if ( tmp != null &amp;&amp; tmp.getDirectory() != null &amp;&amp; tmp.getDirectory().exists() )<a name="line.1328"></a>
+<span class="sourceLineNo">1329</span>            {<a name="line.1329"></a>
+<span class="sourceLineNo">1330</span>                if ( System.currentTimeMillis() - tmp.getCreationTime() &gt; (<a name="line.1330"></a>
+<span class="sourceLineNo">1331</span>                    repositoryGroupConfiguration.getMergedIndexTtl() * 60 * 1000 ) )<a name="line.1331"></a>
+<span class="sourceLineNo">1332</span>                {<a name="line.1332"></a>
+<span class="sourceLineNo">1333</span>                    log.debug( MarkerFactory.getMarker( "group.merged.index" ),<a name="line.1333"></a>
+<span class="sourceLineNo">1334</span>                               "tmp group index '{}' is too old so delete it", repositoryGroupConfiguration.getId() );<a name="line.1334"></a>
+<span class="sourceLineNo">1335</span>                    indexMerger.cleanTemporaryGroupIndex( tmp );<a name="line.1335"></a>
+<span class="sourceLineNo">1336</span>                }<a name="line.1336"></a>
+<span class="sourceLineNo">1337</span>                else<a name="line.1337"></a>
+<span class="sourceLineNo">1338</span>                {<a name="line.1338"></a>
+<span class="sourceLineNo">1339</span>                    log.debug( MarkerFactory.getMarker( "group.merged.index" ),<a name="line.1339"></a>
+<span class="sourceLineNo">1340</span>                               "merged index for group '{}' found in cache", repositoryGroupConfiguration.getId() );<a name="line.1340"></a>
+<span class="sourceLineNo">1341</span>                    return tmp.getDirectory();<a name="line.1341"></a>
+<span class="sourceLineNo">1342</span>                }<a name="line.1342"></a>
+<span class="sourceLineNo">1343</span>            }<a name="line.1343"></a>
+<span class="sourceLineNo">1344</span><a name="line.1344"></a>
+<span class="sourceLineNo">1345</span>            Set&lt;String&gt; authzRepos = new HashSet&lt;&gt;();<a name="line.1345"></a>
+<span class="sourceLineNo">1346</span><a name="line.1346"></a>
+<span class="sourceLineNo">1347</span>            String permission = WebdavMethodUtil.getMethodPermission( request.getMethod() );<a name="line.1347"></a>
+<span class="sourceLineNo">1348</span><a name="line.1348"></a>
+<span class="sourceLineNo">1349</span>            for ( String repository : repositories )<a name="line.1349"></a>
+<span class="sourceLineNo">1350</span>            {<a name="line.1350"></a>
+<span class="sourceLineNo">1351</span>                try<a name="line.1351"></a>
+<span class="sourceLineNo">1352</span>                {<a name="line.1352"></a>
+<span class="sourceLineNo">1353</span>                    if ( servletAuth.isAuthorized( activePrincipal, repository, permission ) )<a name="line.1353"></a>
+<span class="sourceLineNo">1354</span>                    {<a name="line.1354"></a>
+<span class="sourceLineNo">1355</span>                        authzRepos.add( repository );<a name="line.1355"></a>
+<span class="sourceLineNo">1356</span>                        authzRepos.addAll( this.repositorySearch.getRemoteIndexingContextIds( repository ) );<a name="line.1356"></a>
+<span class="sourceLineNo">1357</span>                    }<a name="line.1357"></a>
+<span class="sourceLineNo">1358</span>                }<a name="line.1358"></a>
+<span class="sourceLineNo">1359</span>                catch ( UnauthorizedException e )<a name="line.1359"></a>
+<span class="sourceLineNo">1360</span>                {<a name="line.1360"></a>
+<span class="sourceLineNo">1361</span>                    // TODO: review exception handling<a name="line.1361"></a>
+<span class="sourceLineNo">1362</span><a name="line.1362"></a>
+<span class="sourceLineNo">1363</span>                    log.debug( "Skipping repository '{}' for user '{}': {}", repository, activePrincipal,<a name="line.1363"></a>
+<span class="sourceLineNo">1364</span>                               e.getMessage() );<a name="line.1364"></a>
+<span class="sourceLineNo">1365</span>                }<a name="line.1365"></a>
+<span class="sourceLineNo">1366</span>            }<a name="line.1366"></a>
+<span class="sourceLineNo">1367</span>            log.info( "generate temporary merged index for repository group '{}' for repositories '{}'",<a name="line.1367"></a>
+<span class="sourceLineNo">1368</span>                      repositoryGroupConfiguration.getId(), authzRepos );<a name="line.1368"></a>
+<span class="sourceLineNo">1369</span><a name="line.1369"></a>
+<span class="sourceLineNo">1370</span>            File tempRepoFile = Files.createTempDirectory( "temp" ).toFile();<a name="line.1370"></a>
+<span class="sourceLineNo">1371</span>            tempRepoFile.deleteOnExit();<a name="line.1371"></a>
+<span class="sourceLineNo">1372</span><a name="line.1372"></a>
+<span class="sourceLineNo">1373</span>            IndexMergerRequest indexMergerRequest =<a name="line.1373"></a>
+<span class="sourceLineNo">1374</span>                new IndexMergerRequest( authzRepos, true, repositoryGroupConfiguration.getId(),<a name="line.1374"></a>
+<span class="sourceLineNo">1375</span>                                        repositoryGroupConfiguration.getMergedIndexPath(),<a name="line.1375"></a>
+<span class="sourceLineNo">1376</span>                                        repositoryGroupConfiguration.getMergedIndexTtl() ).mergedIndexDirectory(<a name="line.1376"></a>
+<span class="sourceLineNo">1377</span>                    tempRepoFile ).temporary( true );<a name="line.1377"></a>
+<span class="sourceLineNo">1378</span><a name="line.1378"></a>
+<span class="sourceLineNo">1379</span>            MergedRemoteIndexesTaskRequest taskRequest =<a name="line.1379"></a>
+<span class="sourceLineNo">1380</span>                new MergedRemoteIndexesTaskRequest( indexMergerRequest, indexMerger );<a name="line.1380"></a>
+<span class="sourceLineNo">1381</span><a name="line.1381"></a>
+<span class="sourceLineNo">1382</span>            MergedRemoteIndexesTask job = new MergedRemoteIndexesTask( taskRequest );<a name="line.1382"></a>
+<span class="sourceLineNo">1383</span><a name="line.1383"></a>
+<span class="sourceLineNo">1384</span>            IndexingContext indexingContext = job.execute().getIndexingContext();<a name="line.1384"></a>
+<span class="sourceLineNo">1385</span><a name="line.1385"></a>
+<span class="sourceLineNo">1386</span>            File mergedRepoDir = indexingContext.getIndexDirectoryFile();<a name="line.1386"></a>
+<span class="sourceLineNo">1387</span>            TemporaryGroupIndex temporaryGroupIndex =<a name="line.1387"></a>
+<span class="sourceLineNo">1388</span>                new TemporaryGroupIndex( mergedRepoDir, indexingContext.getId(), repositoryGroupConfiguration.getId(),<a name="line.1388"></a>
+<span class="sourceLineNo">1389</span>                                         repositoryGroupConfiguration.getMergedIndexTtl() ) //<a name="line.1389"></a>
+<span class="sourceLineNo">1390</span>                    .setCreationTime( new Date().getTime() );<a name="line.1390"></a>
+<span class="sourceLineNo">1391</span>            temporaryGroupIndexMap.put( repositoryGroupConfiguration.getId(), temporaryGroupIndex );<a name="line.1391"></a>
+<span class="sourceLineNo">1392</span>            session.setAttribute( TemporaryGroupIndexSessionCleaner.TEMPORARY_INDEX_SESSION_KEY,<a name="line.1392"></a>
+<span class="sourceLineNo">1393</span>                                  temporaryGroupIndexMap );<a name="line.1393"></a>
+<span class="sourceLineNo">1394</span>            return mergedRepoDir;<a name="line.1394"></a>
+<span class="sourceLineNo">1395</span>        }<a name="line.1395"></a>
+<span class="sourceLineNo">1396</span>        catch ( RepositoryAdminException | IndexMergerException | IOException e )<a name="line.1396"></a>
+<span class="sourceLineNo">1397</span>        {<a name="line.1397"></a>
+<span class="sourceLineNo">1398</span>            throw new DavException( HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e );<a name="line.1398"></a>
+<span class="sourceLineNo">1399</span>        }<a name="line.1399"></a>
+<span class="sourceLineNo">1400</span>    }<a name="line.1400"></a>
+<span class="sourceLineNo">1401</span><a name="line.1401"></a>
+<span class="sourceLineNo">1402</span><a name="line.1402"></a>
+<span class="sourceLineNo">1403</span>    public void setServletAuth( ServletAuthenticator servletAuth )<a name="line.1403"></a>
+<span class="sourceLineNo">1404</span>    {<a name="line.1404"></a>
+<span class="sourceLineNo">1405</span>        this.servletAuth = servletAuth;<a name="line.1405"></a>
+<span class="sourceLineNo">1406</span>    }<a name="line.1406"></a>
+<span class="sourceLineNo">1407</span><a name="line.1407"></a>
+<span class="sourceLineNo">1408</span>    public void setHttpAuth( HttpAuthenticator httpAuth )<a name="line.1408"></a>
+<span class="sourceLineNo">1409</span>    {<a name="line.1409"></a>
+<span class="sourceLineNo">1410</span>        this.httpAuth = httpAuth;<a name="line.1410"></a>
+<span class="sourceLineNo">1411</span>    }<a name="line.1411"></a>
+<span class="sourceLineNo">1412</span><a name="line.1412"></a>
+<span class="sourceLineNo">1413</span>    public void setScheduler( RepositoryArchivaTaskScheduler scheduler )<a name="line.1413"></a>
+<span class="sourceLineNo">1414</span>    {<a name="line.1414"></a>
+<span class="sourceLineNo">1415</span>        this.scheduler = scheduler;<a name="line.1415"></a>
+<span class="sourceLineNo">1416</span>    }<a name="line.1416"></a>
+<span class="sourceLineNo">1417</span><a name="line.1417"></a>
+<span class="sourceLineNo">1418</span>    public void setArchivaConfiguration( ArchivaConfiguration archivaConfiguration )<a name="line.1418"></a>
+<span class="sourceLineNo">1419</span>    {<a name="line.1419"></a>
+<span class="sourceLineNo">1420</span>        this.archivaConfiguration = archivaConfiguration;<a name="line.1420"></a>
+<span class="sourceLineNo">1421</span>    }<a name="line.1421"></a>
+<span class="sourceLineNo">1422</span><a name="line.1422"></a>
+<span class="sourceLineNo">1423</span>    public void setRepositoryFactory( RepositoryContentFactory repositoryFactory )<a name="line.1423"></a>
+<span class="sourceLineNo">1424</span>    {<a name="line.1424"></a>
+<span class="sourceLineNo">1425</span>        this.repositoryFactory = repositoryFactory;<a name="line.1425"></a>
+<span class="sourceLineNo">1426</span>    }<a name="line.1426"></a>
+<span class="sourceLineNo">1427</span><a name="line.1427"></a>
+<span class="sourceLineNo">1428</span>    public void setRepositoryRequest( RepositoryRequest repositoryRequest )<a name="line.1428"></a>
+<span class="sourceLineNo">1429</span>    {<a name="line.1429"></a>
+<span class="sourceLineNo">1430</span>        this.repositoryRequest = repositoryRequest;<a name="line.1430"></a>
+<span class="sourceLineNo">1431</span>    }<a name="line.1431"></a>
+<span class="sourceLineNo">1432</span><a name="line.1432"></a>
+<span class="sourceLineNo">1433</span>    public void setConnectors( RepositoryProxyConnectors connectors )<a name="line.1433"></a>
+<span class="sourceLineNo">1434</span>    {<a name="line.1434"></a>
+<span class="sourceLineNo">1435</span>        this.connectors = connectors;<a name="line.1435"></a>
+<span class="sourceLineNo">1436</span>    }<a name="line.1436"></a>
+<span class="sourceLineNo">1437</span><a name="line.1437"></a>
+<span class="sourceLineNo">1438</span>    public RemoteRepositoryAdmin getRemoteRepositoryAdmin()<a name="line.1438"></a>
+<span class="sourceLineNo">1439</span>    {<a name="line.1439"></a>
+<span class="sourceLineNo">1440</span>        return remoteRepositoryAdmin;<a name="line.1440"></a>
+<span class="sourceLineNo">1441</span>    }<a name="line.1441"></a>
+<span class="sourceLineNo">1442</span><a name="line.1442"></a>
+<span class="sourceLineNo">1443</span>    public void setRemoteRepositoryAdmin( RemoteRepositoryAdmin remoteRepositoryAdmin )<a name="line.1443"></a>
+<span class="sourceLineNo">1444</span>    {<a name="line.1444"></a>
+<span class="sourceLineNo">1445</span>        this.remoteRepositoryAdmin = remoteRepositoryAdmin;<a name="line.1445"></a>
+<span class="sourceLineNo">1446</span>    }<a name="line.1446"></a>
+<span class="sourceLineNo">1447</span><a name="line.1447"></a>
+<span class="sourceLineNo">1448</span>    public ManagedRepositoryAdmin getManagedRepositoryAdmin()<a name="line.1448"></a>
+<span class="sourceLineNo">1449</span>    {<a name="line.1449"></a>
+<span class="sourceLineNo">1450</span>        return managedRepositoryAdmin;<a name="line.1450"></a>
+<span class="sourceLineNo">1451</span>    }<a name="line.1451"></a>
+<span class="sourceLineNo">1452</span><a name="line.1452"></a>
+<span class="sourceLineNo">1453</span>    public void setManagedRepositoryAdmin( ManagedRepositoryAdmin managedRepositoryAdmin )<a name="line.1453"></a>
+<span class="sourceLineNo">1454</span>    {<a name="line.1454"></a>
+<span class="sourceLineNo">1455</span>        this.managedRepositoryAdmin = managedRepositoryAdmin;<a name="line.1455"></a>
+<span class="sourceLineNo">1456</span>    }<a name="line.1456"></a>
+<span class="sourceLineNo">1457</span>}<a name="line.1457"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>
